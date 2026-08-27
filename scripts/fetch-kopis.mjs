@@ -85,8 +85,7 @@ const VENUE_CITY_MAP = {
   '인스파이어 아레나': '인천',
   '인천문학경기장': '인천',
   '강릉아트센터': '강릉',
-  '엑스코': '대구',
-  'EXCO': '대구',
+  '엑스코': '대구', // NOT also 'EXCO' - that's a substring of 'BEXCO' (Busan) and matched it first, see troubleshooting log in README
   '소향씨어터': '부산',
   '벡스코': '부산',
   'BEXCO': '부산',
