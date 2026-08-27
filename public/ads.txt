@@ -1,0 +1,2 @@
+# TODO: 애드센스 승인 후 Google이 제공하는 실제 라인으로 교체하세요, 예:
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

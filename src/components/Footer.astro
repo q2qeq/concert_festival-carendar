@@ -1,0 +1,20 @@
+---
+import { SITE_TITLE } from '../consts';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; {year} {SITE_TITLE}. 공연 일정은 주최측 사정에 따라 변경될 수 있으니 예매 전 공식 채널에서 최종 확인하세요.</p>
+    <div class="links">
+      <a href="/privacy-policy">개인정보처리방침</a>
+      <a href="/about">소개</a>
+      <a href="/contact">문의</a>
+    </div>
+  </div>
+</footer>
+<style>
+  .site-footer { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 3rem; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 2rem 1.25rem; color: #a9a4c9; font-size: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .links { display: flex; gap: 1rem; white-space: nowrap; }
+  .links a { color: #a9a4c9; }
+</style>

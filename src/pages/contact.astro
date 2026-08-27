@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_TITLE } from '../consts';
+---
+<BaseLayout title="문의">
+  <h1>문의</h1>
+  <p>
+    <!-- TODO: 실제로 확인 가능한 이메일 주소로 교체하세요 -->
+    공연 정보 오류 제보, 날짜 변경 안내, 제휴 문의는
+    <a href="mailto:hello@example.com">hello@example.com</a>으로 보내주세요.
+  </p>
+  <p>{SITE_TITLE}는 특정 공연 기획사, 티켓 판매처와 공식 제휴 관계가 없는 독립 정보
+    사이트이며, 공연 예매는 각 공식 판매처를 통해 진행해주세요.</p>
+</BaseLayout>

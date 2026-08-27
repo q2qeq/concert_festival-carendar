@@ -1,0 +1,90 @@
+[
+  {
+    "id": "official-hige-dandism-2026-08",
+    "artist": "Official髭男dism (오피셜히게단디즘)",
+    "genre": "J-POP",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-08-08",
+    "endDate": "2026-08-09",
+    "ticketUrl": "",
+    "note": "일본 밴드 오피셜히게단디즘 내한 공연."
+  },
+  {
+    "id": "back-number-2026-09",
+    "artist": "back number (백넘버)",
+    "genre": "J-POP",
+    "venue": "KINTEX",
+    "city": "고양",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-13",
+    "ticketUrl": "",
+    "note": "일본 밴드 백넘버 내한 공연."
+  },
+  {
+    "id": "vaundy-2026-09",
+    "artist": "Vaundy (반디)",
+    "genre": "J-POP",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-09-19",
+    "endDate": "2026-09-20",
+    "ticketUrl": "",
+    "note": "일본 싱어송라이터 Vaundy 내한 공연. 예매: NOL티켓."
+  },
+  {
+    "id": "post-malone-2026-10",
+    "artist": "Post Malone (포스트 말론)",
+    "genre": "팝/힙합",
+    "venue": "고양종합운동장",
+    "city": "고양",
+    "startDate": "2026-10-02",
+    "endDate": "2026-10-02",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "id": "lany-2026-10",
+    "artist": "LANY (레이니)",
+    "genre": "팝",
+    "venue": "KINTEX",
+    "city": "고양",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-03",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "id": "charlie-puth-2026-10",
+    "artist": "Charlie Puth (찰리 푸스)",
+    "genre": "팝",
+    "venue": "고양종합운동장",
+    "city": "고양",
+    "startDate": "2026-10-11",
+    "endDate": "2026-10-11",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "id": "jason-mraz-2026-11",
+    "artist": "Jason Mraz (제이슨 므라즈)",
+    "genre": "팝",
+    "venue": "KINTEX",
+    "city": "고양",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-14",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "id": "5-seconds-of-summer-2026-11",
+    "artist": "5 Seconds of Summer (파이브 세컨즈 오브 서머)",
+    "genre": "팝/락",
+    "venue": "KINTEX",
+    "city": "고양",
+    "startDate": "2026-11-19",
+    "endDate": "2026-11-19",
+    "ticketUrl": "",
+    "note": "수능일과 일정이 겹쳐 화제가 된 바 있음 - 날짜 변동 여부 재확인 권장."
+  }
+]

@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { upcomingEvents, allGenres, monthLabel } from '../lib/events';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const events = upcomingEvents();
+const genres = allGenres();
+
+const groups: { label: string; items: typeof events }[] = [];
+for (const e of events) {
+  const label = monthLabel(e.startDate);
+  let group = groups.find((g) => g.label === label);
+  if (!group) {
+    group = { label, items: [] };
+    groups.push(group);
+  }
+  group.items.push(e);
+}
+---
+<BaseLayout>
+  <section class="intro">
+    <h1>{SITE_TITLE}</h1>
+    <p>{SITE_DESCRIPTION}</p>
+  </section>
+
+  {genres.length > 0 && (
+    <div class="filters" id="genre-filters">
+      <button class="chip active" data-genre="all">전체</button>
+      {genres.map((g) => (
+        <button class="chip" data-genre={g}>{g}</button>
+      ))}
+    </div>
+  )}
+
+  <AdSlot slot="home-top" />
+
+  {groups.map((group) => (
+    <section class="month-group">
+      <h2>{group.label}</h2>
+      {group.items.map((e) => (
+        <div class="card-wrap" data-genre={e.genre}>
+          <EventCard event={e} />
+        </div>
+      ))}
+    </section>
+  ))}
+
+  {events.length === 0 && <p>현재 등록된 예정 공연이 없습니다. 곧 업데이트할게요.</p>}
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('#genre-filters .chip');
+  const cards = document.querySelectorAll<HTMLElement>('.card-wrap');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const genre = btn.dataset.genre;
+      cards.forEach((card) => {
+        const show = genre === 'all' || card.dataset.genre === genre;
+        card.style.display = show ? '' : 'none';
+      });
+      document.querySelectorAll<HTMLElement>('.month-group').forEach((section) => {
+        const anyVisible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).some(
+          (c) => c.style.display !== 'none'
+        );
+        section.style.display = anyVisible ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .intro { padding: 1rem 0 1.5rem; }
+  .intro h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .intro p { color: #d8d5ef; }
+  .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #d8d5ef;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .chip.active { background: #ff5fa2; border-color: #ff5fa2; color: #101018; font-weight: 700; }
+  .month-group { margin-top: 2rem; }
+  .month-group h2 { font-size: 1.15rem; color: #a9a4c9; margin-bottom: 0.25rem; }
+</style>

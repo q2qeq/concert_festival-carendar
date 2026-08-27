@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { events } from '../../lib/events';
+
+export function getStaticPaths() {
+  return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
+}
+
+const { event } = Astro.props;
+
+function fmtFull(iso: string) {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
+}
+const dateLabel = event.startDate === event.endDate
+  ? fmtFull(event.startDate)
+  : `${fmtFull(event.startDate)} ~ ${fmtFull(event.endDate)}`;
+---
+<BaseLayout title={`${event.artist} 내한공연 일정`} description={`${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`}>
+  <article>
+    <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
+    <header class="event-header">
+      <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate}>—</div>
+      <div>
+        <h1>{event.artist}</h1>
+        <p class="meta">{event.genre} · {event.city}</p>
+      </div>
+    </header>
+
+    <AdSlot slot="event-top" />
+
+    <dl class="facts">
+      <div><dt>일정</dt><dd>{dateLabel}</dd></div>
+      <div><dt>장소</dt><dd>{event.venue} ({event.city})</dd></div>
+      <div><dt>장르</dt><dd>{event.genre}</dd></div>
+      {event.ticketUrl && (
+        <div><dt>예매</dt><dd><a href={event.ticketUrl} target="_blank" rel="noopener noreferrer">예매 링크</a></dd></div>
+      )}
+    </dl>
+
+    {event.note && <p class="note">{event.note}</p>}
+
+    <p class="disclaimer">
+      공연 일정·장소·가격 등은 주최측 사정으로 변경될 수 있습니다. 예매 전 반드시 공식
+      티켓 판매처 및 아티스트/기획사 공지에서 최신 정보를 확인하세요.
+    </p>
+
+    <AdSlot slot="event-bottom" />
+  </article>
+</BaseLayout>
+
+<style>
+  .breadcrumb a { color: #a9a4c9; font-size: 0.9rem; text-decoration: none; }
+  .event-header { display: flex; align-items: center; gap: 1.25rem; margin: 1rem 0 1.5rem; }
+  .dday-badge.big { font-size: 1.1rem; padding: 0.5rem 0.9rem; min-width: 4.5rem; }
+  h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
+  .meta { margin: 0; color: #a9a4c9; }
+  .facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.5rem; margin: 1.5rem 0; }
+  .facts dt { color: #a9a4c9; }
+  .facts dd { margin: 0; }
+  .note { color: #d8d5ef; }
+  .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.85rem; }
+</style>

@@ -1,0 +1,19 @@
+{
+  "name": "krconcerts",
+  "version": "0.1.0",
+  "description": "D-콘서트 - 내한공연/페스티벌 일정 캘린더",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "fetch:kopis": "node scripts/fetch-kopis.mjs"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.2.8"
+  }
+}

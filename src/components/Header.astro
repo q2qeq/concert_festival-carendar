@@ -1,0 +1,21 @@
+---
+import { SITE_TITLE } from '../consts';
+---
+<header class="site-header">
+  <nav>
+    <a class="brand" href="/">{SITE_TITLE}</a>
+    <div class="links">
+      <a href="/">전체 일정</a>
+      <a href="/about">소개</a>
+      <a href="/contact">문의</a>
+    </div>
+  </nav>
+</header>
+<style>
+  .site-header { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  nav { max-width: 880px; margin: 0 auto; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+  .brand { font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
+  .links { display: flex; gap: 1rem; }
+  .links a { color: #a9a4c9; text-decoration: none; font-size: 0.95rem; }
+  .links a:hover { color: #fff; }
+</style>

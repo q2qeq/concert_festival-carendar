@@ -1,0 +1,21 @@
+---
+import { ADSENSE_PUBLISHER_ID } from '../consts';
+interface Props { slot?: string; }
+const { slot = 'auto' } = Astro.props;
+const enabled = ADSENSE_PUBLISHER_ID.length > 0;
+---
+{enabled && (
+  <div class="ad-slot" data-slot={slot}>
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client={ADSENSE_PUBLISHER_ID}
+      data-ad-slot={slot}
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+    <script is:inline>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+)}
