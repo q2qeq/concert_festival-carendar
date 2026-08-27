@@ -146,7 +146,7 @@ async function fetchKopisRaw() {
     stdate: todayISO(),
     eddate: monthsFromNowISO(6),
     cpage: '1',
-    rows: '200',
+    rows: '100', // KOPIS rejected rows=200 (returned an empty result set, no error) - 100 is the verified-working value, don't raise it without testing against the real API first
     shcate: CONCERT_GENRE_CODE,
   });
   const url = `https://www.kopis.or.kr/openApi/restful/pblprfr?${params.toString()}`;
@@ -220,6 +220,13 @@ async function main() {
   await writeFile(CANDIDATES_PATH, JSON.stringify(candidates, null, 2) + '\n');
 
   console.log(`KOPIS raw results: ${raw.length}`);
+  if (raw.length === 0) {
+    console.warn(
+      'WARNING: KOPIS returned 0 raw results. This usually means the API rejected a ' +
+      'request parameter (e.g. rows/date range) rather than "no concerts in range" - ' +
+      'check the KOPIS response manually if this keeps happening.'
+    );
+  }
   console.log(`Dropped (already in events.json / duplicate): ${droppedDuplicate}`);
   console.log(`Dropped (venue not in whitelist, see VENUE_CITY_MAP): ${droppedNoVenueMatch}`);
   console.log(`Wrote ${candidates.length} candidate(s) to src/data/kopis-candidates.json`);
