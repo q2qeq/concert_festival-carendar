@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="#101018"/>
-  <text x="32" y="40" font-size="24" text-anchor="middle" fill="#ff5fa2" font-family="Arial, sans-serif" font-weight="800">D-</text>
+  <rect x="14" y="18" width="36" height="30" rx="4" fill="none" stroke="#ff5fa2" stroke-width="4"/>
+  <line x1="14" y1="28" x2="50" y2="28" stroke="#ff5fa2" stroke-width="4"/>
+  <line x1="22" y1="12" x2="22" y2="22" stroke="#ff5fa2" stroke-width="4" stroke-linecap="round"/>
+  <line x1="42" y1="12" x2="42" y2="22" stroke="#ff5fa2" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="24" cy="37" r="3" fill="#6ee7ff"/>
 </svg>

@@ -1,7 +1,7 @@
 {
   "name": "krconcerts",
   "version": "0.1.0",
-  "description": "D-콘서트 - 내한공연/페스티벌 일정 캘린더",
+  "description": "공연캘린더 - 내한공연/페스티벌 일정 캘린더",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
