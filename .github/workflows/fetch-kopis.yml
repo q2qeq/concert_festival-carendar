@@ -1,0 +1,68 @@
+name: Fetch KOPIS events
+
+# Weekly automated pull from KOPIS (공연예술통합전산망) into src/data/events.json.
+# Opens a PR instead of pushing straight to main, because fetch-kopis.mjs itself
+# says new entries need a human to fill in city/genre before publishing (see
+# scripts/fetch-kopis.mjs and README.md). The weekly cadence also keeps the KOPIS
+# API key from auto-cancelling (it expires after 3 months of no use).
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # every Monday 00:00 UTC (09:00 KST)
+  workflow_dispatch: {} # allow manual "Run workflow" from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fetch-kopis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch KOPIS listings
+        env:
+          KOPIS_SERVICE_KEY: ${{ secrets.KOPIS_SERVICE_KEY }}
+        run: npm run fetch:kopis
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          if git diff --quiet -- src/data/events.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open pull request with new events
+        if: steps.git-check.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: KOPIS 자동 수집 - 신규 공연 후보 업데이트"
+          title: "KOPIS 자동 수집: 신규 공연 후보 (자동 생성)"
+          body: |
+            매주 실행되는 KOPIS 자동 수집 워크플로우가 `src/data/events.json`에
+            새 공연 후보를 추가했습니다.
+
+            **머지 전 확인 체크리스트**
+            - [ ] 신규 항목의 `city`, `genre`가 비어있지 않은지 채우기
+            - [ ] 실제로 존재/정확한 공연인지 확인 (KOPIS 원본 오류 가능성)
+            - [ ] 가능하면 `ticketUrl` / `officialUrl` 등 공식 링크 보강
+            - [ ] 기존 수동 등록 이벤트와 중복(같은 공연이 다른 id로 들어옴)이 없는지 확인
+
+            자동 생성된 PR입니다 - 사람이 검토 후 머지하세요. 머지되면 Vercel이
+            자동으로 재배포합니다.
+          branch: kopis-auto-update
+          delete-branch: true
+          labels: |
+            automated
+            kopis

@@ -89,9 +89,13 @@ npm run fetch:kopis   # KOPIS API로 새 공연 데이터 병합 (.env 설정 �
 2. 실제 도메인 구매 후 `astro.config.mjs`의 `SITE_URL`, `public/robots.txt`의 사이트맵
    경로 갱신.
 3. GitHub에 push → Vercel에 import (Astro 자동 감지).
-4. KOPIS 데이터를 주기적으로 갱신하려면 GitHub Actions로 `npm run fetch:kopis`를
-   매일/매주 실행 + 변경사항 자동 커밋 → Vercel 자동 재배포, 이런 파이프라인을 다음
-   단계로 구성하는 걸 추천합니다 (지금은 스캐폴드만 있고 자동화 워크플로는 아직 없음).
+4. **완료**: `.github/workflows/fetch-kopis.yml`이 매주 월요일 09:00 KST에
+   `npm run fetch:kopis`를 자동 실행합니다. 단, 새 항목은 city/genre가 비어있고
+   검증이 필요하므로 main에 바로 커밋하지 않고 **PR을 자동으로 엽니다** — 사람이
+   체크리스트를 보고 리뷰/머지하면 그 시점에 Vercel이 재배포합니다. GitHub 저장소
+   Settings → Secrets and variables → Actions에서 `KOPIS_SERVICE_KEY` 시크릿을
+   `.env`에 있는 값으로 등록해야 워크플로가 동작합니다 (한 번만 하면 됨). 등록 후
+   Actions 탭에서 "Run workflow"로 수동 실행해 정상 동작하는지 먼저 확인하세요.
 5. 애드센스 신청은 실제 트래픽이 붙기 시작하고 정보량(등록된 공연 수)이 충분히
    쌓인 뒤에 진행하세요 — 빈 데이터베이스 상태로 신청하면 저품질 콘텐츠로 반려될
    가능성이 높습니다.
