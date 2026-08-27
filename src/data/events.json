@@ -33,6 +33,28 @@
     "note": "일본 싱어송라이터 Vaundy 내한 공연. 예매: NOL티켓."
   },
   {
+    "id": "kopis-pyeonghwanuri-picnic-2026-09",
+    "artist": "평화누리 피크닉 페스티벌",
+    "genre": "페스티벌",
+    "venue": "파주 임진각 평화누리",
+    "city": "파주",
+    "startDate": "2026-09-19",
+    "endDate": "2026-09-19",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준."
+  },
+  {
+    "id": "kopis-onewe-live-2026-09",
+    "artist": "ONEWE 6th Live Concert: O! NEW E!volution VI",
+    "genre": "가요",
+    "venue": "KBS스포츠월드(아레나)",
+    "city": "서울",
+    "startDate": "2026-09-19",
+    "endDate": "2026-09-20",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준."
+  },
+  {
     "id": "post-malone-2026-10",
     "artist": "Post Malone (포스트 말론)",
     "genre": "팝/힙합",
@@ -55,6 +77,28 @@
     "note": ""
   },
   {
+    "id": "kopis-jarasum-jazz-2026-10",
+    "artist": "자라섬재즈페스티벌 [강릉]",
+    "genre": "페스티벌",
+    "venue": "강릉아트센터",
+    "city": "강릉",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-11",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준."
+  },
+  {
+    "id": "kopis-10cm-fanconcert-2026-10",
+    "artist": "10CM FAN CONCERT: THE MISSING TRACKS (CASE No.1010)",
+    "genre": "가요",
+    "venue": "올림픽공원",
+    "city": "서울",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-10",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준."
+  },
+  {
     "id": "charlie-puth-2026-10",
     "artist": "Charlie Puth (찰리 푸스)",
     "genre": "팝",
@@ -64,6 +108,61 @@
     "endDate": "2026-10-11",
     "ticketUrl": "",
     "note": ""
+  },
+  {
+    "id": "kopis-ska-festival-2026-10",
+    "artist": "스카 페스티벌 10주년 기념공연: Super-Swag",
+    "genre": "페스티벌",
+    "venue": "KBS스포츠월드(아레나)",
+    "city": "서울",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-24",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준."
+  },
+  {
+    "id": "kopis-yeotak-jeonju-2026-10",
+    "artist": "영탁 단독 콘서트: TAK SHOW5 [전주]",
+    "genre": "가요",
+    "venue": "한국소리문화의전당",
+    "city": "전주",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-25",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준."
+  },
+  {
+    "id": "kopis-everblue-daegu-2026-10",
+    "artist": "EverBlue Festival 에버블루 페스티벌 [대구]",
+    "genre": "페스티벌",
+    "venue": "엑스코(EXCO)",
+    "city": "대구",
+    "startDate": "2026-10-31",
+    "endDate": "2026-10-31",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준."
+  },
+  {
+    "id": "kopis-yoonjongshin-busan-2026-10",
+    "artist": "윤종신 전국투어 콘서트: 가을냄새 [부산]",
+    "genre": "가요",
+    "venue": "소향씨어터",
+    "city": "부산",
+    "startDate": "2026-10-31",
+    "endDate": "2026-10-31",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 인천·수원 등 다른 도시 공연도 별도 진행."
+  },
+  {
+    "id": "kopis-kimjanghun-miryang-2026-11",
+    "artist": "김장훈 전국투어 콘서트: 원맨쇼 [밀양]",
+    "genre": "가요",
+    "venue": "밀양아리랑아트센터",
+    "city": "밀양",
+    "startDate": "2026-11-08",
+    "endDate": "2026-11-08",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준."
   },
   {
     "id": "jason-mraz-2026-11",
@@ -86,5 +185,16 @@
     "endDate": "2026-11-19",
     "ticketUrl": "",
     "note": "수능일과 일정이 겹쳐 화제가 된 바 있음 - 날짜 변동 여부 재확인 권장."
+  },
+  {
+    "id": "kopis-domi-jdbeck-2026-12",
+    "artist": "DOMi & JD BECK - WHO ASKED? TOUR [서울]",
+    "genre": "재즈/내한",
+    "venue": "공감센터",
+    "city": "서울",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-12",
+    "ticketUrl": "",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연."
   }
 ]

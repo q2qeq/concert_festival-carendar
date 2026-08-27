@@ -11,15 +11,18 @@
  *   of data — no ToS risk, no anti-bot fight, and it's the source many existing Korean
  *   concert/performance apps already build on.
  *
- * STATUS: this script is a *scaffold*. Before relying on it:
- *   1. Register for a free KOPIS API key (see .env.example) and put it in .env.
- *   2. Confirm the current endpoint + parameter names against KOPIS's own docs at
- *      https://www.kopis.or.kr/por/cs/openapi/openApiInfo.do?menuId=MNU_00074
- *      (I could not fetch the full parameter table programmatically while building
- *      this — the values below are the widely-documented conventional ones, but
- *      verify shcate's code for "대중음악(콘서트)" against KOPIS's own code table,
- *      since that's the one value I'm least certain of.)
- *   3. Run `npm run fetch:kopis` and inspect src/data/events.json before publishing.
+ * STATUS (updated 2026-08-27): registered + live-tested with a real KOPIS key.
+ *   - Endpoint, params (service/stdate/eddate/cpage/rows/shcate), and the concert
+ *     genre code (shcate=CCCD, verified live — NOT the commonly-guessed BBBF, which
+ *     returned zero results) all confirmed working against real data.
+ *   - KOPIS's coverage skews toward domestic acts/festivals/jazz; several major
+ *     foreign arena tours (e.g. Post Malone, Charlie Puth) did NOT show up in test
+ *     queries. Treat KOPIS as a supplement for domestic-leaning listings, not a full
+ *     replacement for manually entering major international tours in events.json.
+ *   - KOPIS keys expire 1 year after issue, and auto-cancel after 3 months of no use —
+ *     run this on a schedule (see README) so the key doesn't go stale, and renew via
+ *     kopis@gokams.or.kr before the 1-year mark.
+ *   - Run `npm run fetch:kopis` and inspect src/data/events.json before publishing.
  *
  * KOPIS returns XML by default; this script asks for XML and parses it with a tiny
  * regex-based extractor to avoid adding an XML parser dependency for a scaffold —
@@ -34,9 +37,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const EVENTS_PATH = path.join(__dirname, '..', 'src', 'data', 'events.json');
 
 const SERVICE_KEY = process.env.KOPIS_SERVICE_KEY;
-// TODO verify: KOPIS genre code for 대중음악(콘서트). Commonly documented as BBBF —
-// double-check against the live code table before trusting this in production.
-const CONCERT_GENRE_CODE = 'BBBF';
+// Verified live on 2026-08-27 by actually calling the API: CCCD returned real
+// concert/festival entries (윤종신, 10CM, 자라섬재즈페스티벌, etc). An earlier guess,
+// BBBF, returned zero results for the same date range and was wrong - don't reuse it.
+const CONCERT_GENRE_CODE = 'CCCD';
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10).replace(/-/g, '');
