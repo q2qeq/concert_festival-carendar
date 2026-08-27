@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
-import { events } from '../../lib/events';
+import { events, eventImagePath } from '../../lib/events';
+import { SITE_TITLE } from '../../consts';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -16,10 +17,62 @@ function fmtFull(iso: string) {
 const dateLabel = event.startDate === event.endDate
   ? fmtFull(event.startDate)
   : `${fmtFull(event.startDate)} ~ ${fmtFull(event.endDate)}`;
+
+const imagePath = eventImagePath(event);
+const imageAbsolute = new URL(imagePath, Astro.site).toString();
+const pageDescription = event.description
+  ? `${event.description} (${dateLabel}, ${event.venue})`
+  : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`;
+
+// schema.org structured data for Google's Event rich results.
+// Offers is deliberately omitted: we don't have a verified ticket URL/price for
+// this event yet, and fabricating one would be inaccurate structured data.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicEvent',
+  name: event.artist,
+  startDate: event.startDate,
+  endDate: event.endDate,
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: event.venue,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: event.city,
+      addressCountry: 'KR',
+    },
+  },
+  image: [imageAbsolute],
+  description: event.description ?? pageDescription,
+  performer: {
+    '@type': 'PerformingGroup',
+    name: event.artist,
+  },
+  ...(event.ticketUrl
+    ? {
+        offers: {
+          '@type': 'Offer',
+          url: event.ticketUrl,
+          availability: 'https://schema.org/InStock',
+        },
+      }
+    : {}),
+};
 ---
-<BaseLayout title={`${event.artist} 내한공연 일정`} description={`${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`}>
+<BaseLayout
+  title={`${event.artist} 내한공연 일정`}
+  description={pageDescription}
+  image={imagePath}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
   <article>
     <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
+
+    <img class="cover" src={imagePath} alt={`${event.artist} - ${SITE_TITLE}`} width="1200" height="675" />
+
     <header class="event-header">
       <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate}>—</div>
       <div>
@@ -29,6 +82,8 @@ const dateLabel = event.startDate === event.endDate
     </header>
 
     <AdSlot slot="event-top" />
+
+    {event.description && <p class="lead">{event.description}</p>}
 
     <dl class="facts">
       <div><dt>일정</dt><dd>{dateLabel}</dd></div>
@@ -52,10 +107,12 @@ const dateLabel = event.startDate === event.endDate
 
 <style>
   .breadcrumb a { color: #a9a4c9; font-size: 0.9rem; text-decoration: none; }
+  .cover { width: 100%; aspect-ratio: 1200 / 675; object-fit: cover; margin: 1rem 0; border-radius: 12px; }
   .event-header { display: flex; align-items: center; gap: 1.25rem; margin: 1rem 0 1.5rem; }
   .dday-badge.big { font-size: 1.1rem; padding: 0.5rem 0.9rem; min-width: 4.5rem; }
   h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
   .meta { margin: 0; color: #a9a4c9; }
+  .lead { font-size: 1.05rem; color: #e5e2f7; }
   .facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.5rem; margin: 1.5rem 0; }
   .facts dt { color: #a9a4c9; }
   .facts dd { margin: 0; }

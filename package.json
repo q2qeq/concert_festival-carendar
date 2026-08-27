@@ -9,11 +9,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fetch:kopis": "node scripts/fetch-kopis.mjs"
+    "fetch:kopis": "node scripts/fetch-kopis.mjs",
+    "gen:images": "node scripts/generate-event-images.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.2.8"
+    "astro": "^7.2.8",
+    "pretendard": "^1.3.9",
+    "pureimage": "^0.4.20"
   }
 }

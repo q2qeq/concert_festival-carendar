@@ -10,6 +10,12 @@ export interface ConcertEvent {
   endDate: string;
   ticketUrl?: string;
   note?: string;
+  description?: string;
+}
+
+/** Path to this event's generated share/schema image (see scripts/generate-event-images.mjs). */
+export function eventImagePath(event: ConcertEvent): string {
+  return `/og/${event.id}.png`;
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();

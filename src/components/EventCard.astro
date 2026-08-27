@@ -1,5 +1,6 @@
 ---
 import type { ConcertEvent } from '../lib/events';
+import { eventImagePath } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -12,6 +13,7 @@ const dateLabel = event.startDate === event.endDate
   : `${fmt(event.startDate)} - ${fmt(event.endDate)}`;
 ---
 <a class="event-card" href={`/events/${event.id}/`}>
+  <img class="thumb" src={eventImagePath(event)} alt="" loading="lazy" width="1200" height="675" />
   <div class="dday-badge" data-dday-start={event.startDate} data-dday-end={event.endDate}>—</div>
   <div class="info">
     <h3>{event.artist}</h3>
@@ -29,6 +31,14 @@ const dateLabel = event.startDate === event.endDate
     color: inherit;
   }
   .event-card:hover h3 { color: #ff5fa2; }
+  .thumb {
+    width: 96px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+    background: rgba(255,255,255,0.06);
+  }
   .info { flex: 1; min-width: 0; }
   h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
   .meta { margin: 0; color: #a9a4c9; font-size: 0.85rem; }
