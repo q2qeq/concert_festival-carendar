@@ -64,25 +64,23 @@ npm run preview
 npm run fetch:kopis   # KOPIS API로 새 공연 데이터 병합 (.env 설정 후)
 ```
 
-## Event 구조화 데이터 + 공유 이미지 (2026-08-27 추가)
+## Event 구조화 데이터 + 공식 링크 (2026-08-27)
 
 각 공연 상세 페이지에 다음을 추가했습니다:
 
 - **schema.org `MusicEvent` JSON-LD** — 구글이 검색결과에 날짜/장소를 리치 스니펫으로
-  보여줄 수 있게 해주는 구조화 데이터. `name`/`startDate`/`endDate`/`location`/`image`/
-  `description`/`performer`를 채워넣었고, `offers`(예매 링크·가격)는 실제 티켓 URL이
-  없는 이벤트에는 의도적으로 뺐습니다 — 없는 가격/재고 정보를 지어내면 오히려 잘못된
-  구조화 데이터가 되니까요. `ticketUrl`을 채워넣으면 자동으로 `offers`가 추가됩니다.
-- **공연별 공유 이미지** (`public/og/<id>.png`, 1200×675) — 실제 아티스트 사진이나
-  공식 포스터는 저작권이 있는 프로모션 자료라 무단으로 올리면 저작권 리스크가 있어서,
-  대신 아티스트명·날짜·장소·장르를 담은 자체 브랜드 카드를 코드로 생성했습니다.
-  `scripts/generate-event-images.mjs`가 `pureimage`(순수 JS, 네이티브 바이너리 없음 —
-  이 프로젝트에서 한 번 native binding 설치 문제를 겪어서 일부러 피함)와 Pretendard
-  폰트로 렌더링합니다. 이 이미지는 JSON-LD의 `image`, Open Graph(`og:image`), 트위터
-  카드, 목록 페이지 썸네일에 전부 재사용됩니다.
-- `events.json`을 수정한 뒤에는 `npm run gen:images`로 이미지를 다시 생성하세요.
-- 각 이벤트에 `description` 필드(2~3문장, 실제 아티스트/공연 정보 기반)를 채웠습니다 —
-  검색 스니펫과 JSON-LD 설명 둘 다에 쓰입니다.
+  보여줄 수 있게 해주는 구조화 데이터. `name`/`startDate`/`endDate`/`location`/
+  `description`/`performer`를 채워넣었고, `offers`(예매 링크)는 실제 `ticketUrl`이
+  있는 이벤트에만 자동으로 붙습니다 — 없는 가격/재고 정보를 지어내지 않기 위함입니다.
+- 처음엔 자체 생성 브랜드 카드 이미지(코드로 그린 placeholder)를 넣었었는데, 실제
+  아티스트 사진/포스터가 아니라 정보 제공 목적에는 오히려 안 넣느니만 못하다고 판단해서
+  **완전히 제거**했습니다. 이미지 대신 각 공연의 **공식 링크**(`ConcertEvent`의
+  `ticketUrl` / `officialUrl` / `mdUrl` / `fanclubUrl`)를 상세 페이지에 버튼으로
+  노출합니다 — 실제로 검색해서 확인한 링크만 넣었고, 확인 안 된 건 절대 추측해서 채우지
+  않았습니다 (잘못된 링크는 없는 것보다 나쁨).
+- 각 이벤트에 `description` 필드(2~3문장, 실제 아티스트/공연 정보 기반)를 채웠습니다.
+- 지금은 대형 해외 내한 8건만 링크가 채워져 있고, KOPIS 소싱 10건은 아직 없습니다 —
+  이어서 채워나가면 됩니다.
 
 ## 배포 전 체크리스트
 

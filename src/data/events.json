@@ -7,7 +7,7 @@
     "city": "서울",
     "startDate": "2026-08-08",
     "endDate": "2026-08-09",
-    "ticketUrl": "",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13341",
     "note": "일본 밴드 오피셜히게단디즘 내한 공연.",
     "description": "'Pretender', 'Subtitle' 등으로 알려진 일본 4인조 밴드 오피셜히게단디즘의 내한 공연. 애니메이션 주제가로도 국내에 폭넓은 팬층을 보유하고 있다."
   },
@@ -19,7 +19,7 @@
     "city": "고양",
     "startDate": "2026-09-12",
     "endDate": "2026-09-13",
-    "ticketUrl": "",
+    "ticketUrl": "https://m.ticket.yes24.com/English/Perf/Detail/FnPerfInfo.aspx?IdPerf=58079",
     "note": "일본 밴드 백넘버 내한 공연.",
     "description": "서정적인 가사와 미디엄 템포 발라드로 유명한 일본 3인조 록밴드 백넘버(back number)의 내한 공연."
   },
@@ -31,7 +31,7 @@
     "city": "인천",
     "startDate": "2026-09-19",
     "endDate": "2026-09-20",
-    "ticketUrl": "",
+    "ticketUrl": "https://nol.yanolja.com/ticket/places/26000240/products/26003199",
     "note": "일본 싱어송라이터 Vaundy 내한 공연. 예매: NOL티켓.",
     "description": "장르를 넘나드는 사운드로 일본 젊은 세대에게 폭넓은 지지를 받는 싱어송라이터 Vaundy의 내한 공연."
   },
@@ -43,7 +43,6 @@
     "city": "파주",
     "startDate": "2026-09-19",
     "endDate": "2026-09-19",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "파주 임진각 평화누리 일원에서 열리는 야외 음악 페스티벌."
   },
@@ -55,7 +54,6 @@
     "city": "서울",
     "startDate": "2026-09-19",
     "endDate": "2026-09-20",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "밴드 ONEWE의 단독 라이브 콘서트 'O! NEW E!volution VI'."
   },
@@ -67,9 +65,10 @@
     "city": "고양",
     "startDate": "2026-10-02",
     "endDate": "2026-10-02",
-    "ticketUrl": "",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26004944",
     "note": "",
-    "description": "'Circles', 'Sunflower' 등 다수의 글로벌 히트곡을 보유한 미국 싱어송라이터 포스트 말론의 내한 공연."
+    "description": "'Circles', 'Sunflower' 등 다수의 글로벌 히트곡을 보유한 미국 싱어송라이터 포스트 말론의 내한 공연.",
+    "officialUrl": "https://www.livenation.kr/event/post-malone-presents-the-big-stadium-world-tour-seoul-tickets-edp1664856"
   },
   {
     "id": "lany-2026-10",
@@ -79,9 +78,10 @@
     "city": "고양",
     "startDate": "2026-10-03",
     "endDate": "2026-10-03",
-    "ticketUrl": "",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13286",
     "note": "",
-    "description": "감성적인 신스팝 사운드로 국내에도 두터운 팬층을 보유한 미국 밴드 LANY의 내한 공연."
+    "description": "감성적인 신스팝 사운드로 국내에도 두터운 팬층을 보유한 미국 밴드 LANY의 내한 공연.",
+    "officialUrl": "https://www.livenation.kr/event/lany-soft-world-tour-seoul-tickets-edp1663105"
   },
   {
     "id": "kopis-jarasum-jazz-2026-10",
@@ -91,7 +91,6 @@
     "city": "강릉",
     "startDate": "2026-10-10",
     "endDate": "2026-10-11",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "국내를 대표하는 재즈 페스티벌 중 하나인 자라섬재즈페스티벌의 강릉 지역 라인업."
   },
@@ -103,7 +102,6 @@
     "city": "서울",
     "startDate": "2026-10-10",
     "endDate": "2026-10-10",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "인디 듀오 10CM의 팬 콘서트 'THE MISSING TRACKS' 시리즈."
   },
@@ -115,9 +113,10 @@
     "city": "고양",
     "startDate": "2026-10-11",
     "endDate": "2026-10-11",
-    "ticketUrl": "",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13571",
     "note": "",
-    "description": "'See You Again', 'Attention' 등을 히트시킨 미국 싱어송라이터 겸 프로듀서 찰리 푸스의 내한 공연."
+    "description": "'See You Again', 'Attention' 등을 히트시킨 미국 싱어송라이터 겸 프로듀서 찰리 푸스의 내한 공연.",
+    "officialUrl": "https://www.livenation.kr/event/charlie-puth-whatever-s-clever-world-tour-seoul-tickets-edp1668245"
   },
   {
     "id": "kopis-ska-festival-2026-10",
@@ -127,7 +126,6 @@
     "city": "서울",
     "startDate": "2026-10-24",
     "endDate": "2026-10-24",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "국내 스카·펑크 신의 아티스트들이 한자리에 모이는 스카 페스티벌 10주년 기념 공연."
   },
@@ -139,7 +137,6 @@
     "city": "전주",
     "startDate": "2026-10-24",
     "endDate": "2026-10-25",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "트로트 가수 영탁의 단독 콘서트 'TAK SHOW5' 전주 공연."
   },
@@ -151,7 +148,6 @@
     "city": "대구",
     "startDate": "2026-10-31",
     "endDate": "2026-10-31",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "대구 엑스코에서 열리는 음악 페스티벌 EverBlue Festival."
   },
@@ -163,7 +159,6 @@
     "city": "부산",
     "startDate": "2026-10-31",
     "endDate": "2026-10-31",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 인천·수원 등 다른 도시 공연도 별도 진행.",
     "description": "싱어송라이터 윤종신의 전국투어 콘서트 '가을냄새' 부산 공연."
   },
@@ -175,7 +170,6 @@
     "city": "밀양",
     "startDate": "2026-11-08",
     "endDate": "2026-11-08",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "가수 김장훈의 전국투어 원맨쇼 밀양 공연."
   },
@@ -187,9 +181,10 @@
     "city": "고양",
     "startDate": "2026-11-14",
     "endDate": "2026-11-14",
-    "ticketUrl": "",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13649",
     "note": "",
-    "description": "'I'm Yours'로 잘 알려진 미국 어쿠스틱·포크팝 싱어송라이터 제이슨 므라즈의 내한 공연."
+    "description": "'I'm Yours'로 잘 알려진 미국 어쿠스틱·포크팝 싱어송라이터 제이슨 므라즈의 내한 공연.",
+    "officialUrl": "https://jasonmraz.com/seoul-kr/"
   },
   {
     "id": "5-seconds-of-summer-2026-11",
@@ -199,9 +194,10 @@
     "city": "고양",
     "startDate": "2026-11-19",
     "endDate": "2026-11-19",
-    "ticketUrl": "",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13669",
     "note": "수능일과 일정이 겹쳐 화제가 된 바 있음 - 날짜 변동 여부 재확인 권장.",
-    "description": "국내에도 두터운 팬덤을 보유한 호주 출신 팝록 밴드 5 Seconds of Summer의 내한 공연."
+    "description": "국내에도 두터운 팬덤을 보유한 호주 출신 팝록 밴드 5 Seconds of Summer의 내한 공연.",
+    "mdUrl": "https://5sos.com/"
   },
   {
     "id": "kopis-domi-jdbeck-2026-12",
@@ -211,7 +207,6 @@
     "city": "서울",
     "startDate": "2026-12-12",
     "endDate": "2026-12-12",
-    "ticketUrl": "",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연.",
     "description": "그래미 수상 프로듀서들과의 협업으로 주목받은 미국 재즈·퓨전 듀오 DOMi & JD BECK의 내한 공연."
   }

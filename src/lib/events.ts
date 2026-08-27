@@ -8,14 +8,12 @@ export interface ConcertEvent {
   city: string;
   startDate: string; // ISO yyyy-mm-dd
   endDate: string;
-  ticketUrl?: string;
+  ticketUrl?: string; // official ticket vendor page for this specific show
+  officialUrl?: string; // artist/tour official site or promoter's official event page
+  mdUrl?: string; // official merch/goods store, only when a real one was found
+  fanclubUrl?: string; // official fan club page, mostly relevant for K-pop/J-pop acts
   note?: string;
   description?: string;
-}
-
-/** Path to this event's generated share/schema image (see scripts/generate-event-images.mjs). */
-export function eventImagePath(event: ConcertEvent): string {
-  return `/og/${event.id}.png`;
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();

@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
-import { events, eventImagePath } from '../../lib/events';
-import { SITE_TITLE } from '../../consts';
+import { events } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -18,15 +17,19 @@ const dateLabel = event.startDate === event.endDate
   ? fmtFull(event.startDate)
   : `${fmtFull(event.startDate)} ~ ${fmtFull(event.endDate)}`;
 
-const imagePath = eventImagePath(event);
-const imageAbsolute = new URL(imagePath, Astro.site).toString();
 const pageDescription = event.description
   ? `${event.description} (${dateLabel}, ${event.venue})`
   : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`;
 
+const links = [
+  event.ticketUrl && { label: '티켓 예매', url: event.ticketUrl, primary: true },
+  event.officialUrl && { label: '공식 홈페이지·공지', url: event.officialUrl },
+  event.mdUrl && { label: 'MD·굿즈 스토어', url: event.mdUrl },
+  event.fanclubUrl && { label: '팬클럽', url: event.fanclubUrl },
+].filter(Boolean) as { label: string; url: string; primary?: boolean }[];
+
 // schema.org structured data for Google's Event rich results.
-// Offers is deliberately omitted: we don't have a verified ticket URL/price for
-// this event yet, and fabricating one would be inaccurate structured data.
+// `offers` is only included when we have a real ticket URL - never fabricated.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicEvent',
@@ -44,7 +47,6 @@ const jsonLd = {
       addressCountry: 'KR',
     },
   },
-  image: [imageAbsolute],
   description: event.description ?? pageDescription,
   performer: {
     '@type': 'PerformingGroup',
@@ -64,14 +66,11 @@ const jsonLd = {
 <BaseLayout
   title={`${event.artist} 내한공연 일정`}
   description={pageDescription}
-  image={imagePath}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <article>
     <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
-
-    <img class="cover" src={imagePath} alt={`${event.artist} - ${SITE_TITLE}`} width="1200" height="675" />
 
     <header class="event-header">
       <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate}>—</div>
@@ -89,16 +88,28 @@ const jsonLd = {
       <div><dt>일정</dt><dd>{dateLabel}</dd></div>
       <div><dt>장소</dt><dd>{event.venue} ({event.city})</dd></div>
       <div><dt>장르</dt><dd>{event.genre}</dd></div>
-      {event.ticketUrl && (
-        <div><dt>예매</dt><dd><a href={event.ticketUrl} target="_blank" rel="noopener noreferrer">예매 링크</a></dd></div>
-      )}
     </dl>
+
+    {links.length > 0 && (
+      <div class="links">
+        {links.map((l) => (
+          <a
+            class={`link-btn ${l.primary ? 'primary' : ''}`}
+            href={l.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {l.label} ↗
+          </a>
+        ))}
+      </div>
+    )}
 
     {event.note && <p class="note">{event.note}</p>}
 
     <p class="disclaimer">
-      공연 일정·장소·가격 등은 주최측 사정으로 변경될 수 있습니다. 예매 전 반드시 공식
-      티켓 판매처 및 아티스트/기획사 공지에서 최신 정보를 확인하세요.
+      공연 일정·장소·가격 등은 주최측 사정으로 변경될 수 있습니다. 예매 전 반드시 위
+      공식 링크 또는 아티스트/기획사 공지에서 최신 정보를 확인하세요.
     </p>
 
     <AdSlot slot="event-bottom" />
@@ -107,8 +118,7 @@ const jsonLd = {
 
 <style>
   .breadcrumb a { color: #a9a4c9; font-size: 0.9rem; text-decoration: none; }
-  .cover { width: 100%; aspect-ratio: 1200 / 675; object-fit: cover; margin: 1rem 0; border-radius: 12px; }
-  .event-header { display: flex; align-items: center; gap: 1.25rem; margin: 1rem 0 1.5rem; }
+  .event-header { display: flex; align-items: center; gap: 1.25rem; margin: 1.5rem 0; }
   .dday-badge.big { font-size: 1.1rem; padding: 0.5rem 0.9rem; min-width: 4.5rem; }
   h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
   .meta { margin: 0; color: #a9a4c9; }
@@ -116,6 +126,20 @@ const jsonLd = {
   .facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.5rem; margin: 1.5rem 0; }
   .facts dt { color: #a9a4c9; }
   .facts dd { margin: 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0; }
+  .link-btn {
+    display: inline-block;
+    padding: 0.65rem 1.1rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    color: #f5f3ff;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+  .link-btn:hover { background: rgba(255,255,255,0.14); }
+  .link-btn.primary { background: #ff5fa2; color: #101018; }
+  .link-btn.primary:hover { background: #ff7bb2; }
   .note { color: #d8d5ef; }
   .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.85rem; }
 </style>
