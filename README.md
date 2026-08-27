@@ -90,12 +90,23 @@ npm run fetch:kopis   # KOPIS API로 새 공연 데이터 병합 (.env 설정 �
    경로 갱신.
 3. GitHub에 push → Vercel에 import (Astro 자동 감지).
 4. **완료**: `.github/workflows/fetch-kopis.yml`이 매주 월요일 09:00 KST에
-   `npm run fetch:kopis`를 자동 실행합니다. 단, 새 항목은 city/genre가 비어있고
-   검증이 필요하므로 main에 바로 커밋하지 않고 **PR을 자동으로 엽니다** — 사람이
-   체크리스트를 보고 리뷰/머지하면 그 시점에 Vercel이 재배포합니다. GitHub 저장소
-   Settings → Secrets and variables → Actions에서 `KOPIS_SERVICE_KEY` 시크릿을
-   `.env`에 있는 값으로 등록해야 워크플로가 동작합니다 (한 번만 하면 됨). 등록 후
-   Actions 탭에서 "Run workflow"로 수동 실행해 정상 동작하는지 먼저 확인하세요.
+   `npm run fetch:kopis`를 자동 실행합니다. GitHub 저장소 Settings → Secrets and
+   variables → Actions에서 `KOPIS_SERVICE_KEY` 시크릿을 `.env`에 있는 값으로
+   등록해야 동작합니다 (한 번만 하면 됨).
+   - **2026-08-27 업데이트**: 처음 버전은 `events.json`에 바로 머지하는 PR을
+     열었는데, `shcate=CCCD`가 홍대 소극장/스튜디오 등 소규모 공연까지 전부
+     반환해서 한 번 실행에 후보 80건 가까이 딸려왔고 대부분 이 사이트 성격(해외
+     내한/대형 페스티벌)과 안 맞았습니다. 그래서 스크립트를 고쳐서 이제:
+     - `VENUE_CITY_MAP`(스크립트 안에 정의된 주요 공연장 화이트리스트)에 있는
+       장소의 공연만 후보로 남기고, 나머지는 버립니다 — city를 정확히 알 수 있는
+       곳만 통과시키는 방식이라 "city 비어있음" 문제도 같이 해결됨.
+     - 이미 `events.json`에 있는 공연과 (장소+날짜) 또는 아티스트명이 겹치면
+       자동으로 제외합니다.
+     - 결과를 `events.json`이 아니라 **`src/data/kopis-candidates.json`**에
+       씁니다 — 이 파일은 사이트가 읽지 않는 스테이징 파일이라(`src/lib/events.ts`
+       참고) PR을 실수로 머지해도 사이트엔 영향 없음. 마음에 드는 후보를 손으로
+       `events.json`에 옮기고 공식 링크를 채우는 게 여전히 필요합니다.
+   - Actions 탭에서 "Run workflow"로 수동 실행해 정상 동작하는지 먼저 확인하세요.
 5. 애드센스 신청은 실제 트래픽이 붙기 시작하고 정보량(등록된 공연 수)이 충분히
    쌓인 뒤에 진행하세요 — 빈 데이터베이스 상태로 신청하면 저품질 콘텐츠로 반려될
    가능성이 높습니다.
