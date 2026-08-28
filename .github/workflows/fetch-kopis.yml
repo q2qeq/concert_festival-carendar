@@ -1,18 +1,24 @@
 name: Fetch KOPIS events
 
-# Weekly automated pull from KOPIS (공연예술통합전산망) into
+# Twice-weekly automated pull from KOPIS (공연예술통합전산망) into
 # src/data/kopis-candidates.json — NOT src/data/events.json, which is the only
 # file the site actually renders (src/lib/events.ts). fetch-kopis.mjs already
 # filters raw KOPIS results down to a whitelist of major venues and skips
 # anything that looks like it duplicates an existing event; what's left still
 # needs a human to hand-copy into events.json with a real id/links, which is
-# why this opens a PR instead of pushing straight to main. The weekly cadence
-# also keeps the KOPIS API key from auto-cancelling (it expires after 3 months
-# of no use).
+# why this opens a PR instead of pushing straight to main. Bumped from weekly
+# to Mon+Thu (2026-08-28) for fall festival season, when new registrations
+# come in faster; can drop back to weekly (just Monday) once things quiet down.
+# Either cadence keeps the KOPIS API key from auto-cancelling (it expires
+# after 3 months of no use). For an immediate one-off refresh instead of
+# waiting for the next scheduled run, either use "Run workflow" on the
+# Actions tab (workflow_dispatch below), or just ask Claude to run
+# `npm run fetch:kopis` locally — it updates kopis-candidates.json directly
+# in this repo checkout, no need to wait on GitHub Actions.
 
 on:
   schedule:
-    - cron: '0 0 * * 1' # every Monday 00:00 UTC (09:00 KST)
+    - cron: '0 0 * * 1,4' # every Monday & Thursday 00:00 UTC (09:00 KST)
   workflow_dispatch: {} # allow manual "Run workflow" from the Actions tab
 
 permissions:
