@@ -66,9 +66,10 @@
     "startDate": "2026-10-02",
     "endDate": "2026-10-02",
     "ticketUrl": "https://nol.yanolja.com/ticket/products/26004944",
-    "note": "",
+    "note": "2026-08-27 라이브네이션코리아가 공식 SNS를 통해 공연 취소를 발표했습니다. 기존 티켓 구매자는 결제 수단으로 수수료 없이 전액 환불받을 수 있습니다. 최신 소식은 공식 채널에서 확인하세요.",
     "description": "'Circles', 'Sunflower' 등 다수의 글로벌 히트곡을 보유한 미국 싱어송라이터 포스트 말론의 내한 공연.",
-    "officialUrl": "https://www.livenation.kr/event/post-malone-presents-the-big-stadium-world-tour-seoul-tickets-edp1664856"
+    "officialUrl": "https://www.livenation.kr/event/post-malone-presents-the-big-stadium-world-tour-seoul-tickets-edp1664856",
+    "status": "cancelled"
   },
   {
     "id": "lany-2026-10",
@@ -82,6 +83,19 @@
     "note": "",
     "description": "감성적인 신스팝 사운드로 국내에도 두터운 팬층을 보유한 미국 밴드 LANY의 내한 공연.",
     "officialUrl": "https://www.livenation.kr/event/lany-soft-world-tour-seoul-tickets-edp1663105"
+  },
+  {
+    "id": "xmf-2026-10",
+    "artist": "XMF 2026 (Xnterstellar Music Festival)",
+    "genre": "페스티벌",
+    "venue": "파라다이스시티",
+    "city": "인천",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-04",
+    "ticketUrl": "https://m.ticket.yes24.com/Perf/59422",
+    "officialUrl": "https://xmfestival.com/",
+    "note": "1일권/양일권 예스24 판매. 2026-08-03 티켓 오픈.",
+    "description": "아도(Ado), 윤하, YB, FT아일랜드, 원위 등 한국·일본 대표 아티스트 총 22팀이 출연하는 한일 합동 뮤직 페스티벌."
   },
   {
     "id": "kopis-jarasum-jazz-2026-10",
@@ -200,6 +214,19 @@
     "mdUrl": "https://5sos.com/"
   },
   {
+    "id": "wonderlivet-2026-11",
+    "artist": "WONDERLIVET 2026 (원더리벳 2026)",
+    "genre": "페스티벌",
+    "venue": "킨텍스 제2전시장",
+    "city": "고양",
+    "startDate": "2026-11-20",
+    "endDate": "2026-11-22",
+    "ticketUrl": "",
+    "officialUrl": "https://wonderli.vet/",
+    "note": "국내 최대 규모 J-POP·서브컬처 페스티벌. 라인업은 순차 공개 예정이며, 티켓은 2026-09-01 20:00 멜론티켓·티켓링크·예스24티켓·티켓피아에서 오픈 예정입니다.",
+    "description": "원더로크와 LIVET이 주최하는 국내 최대 규모 J-POP & Iconic 아티스트 페스티벌. 2023년 시작돼 매년 4분기 킨텍스에서 열리며, 2025년에는 2만 명 이상이 방문했다."
+  },
+  {
     "id": "kopis-domi-jdbeck-2026-12",
     "artist": "DOMi & JD BECK - WHO ASKED? TOUR [서울]",
     "genre": "재즈/내한",
@@ -209,5 +236,18 @@
     "endDate": "2026-12-12",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연.",
     "description": "그래미 수상 프로듀서들과의 협업으로 주목받은 미국 재즈·퓨전 듀오 DOMi & JD BECK의 내한 공연."
+  },
+  {
+    "id": "ghost-festival-2026-10",
+    "artist": "2026 GHOST Festival (경기 한류 OST 페스티벌)",
+    "genre": "페스티벌",
+    "venue": "임진각 평화누리",
+    "city": "파주",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-11",
+    "ticketUrl": "",
+    "officialUrl": "https://www.ghostfestival.kr/",
+    "note": "2026-08-19(수) 14:00 지정석 티켓 오픈 (NOL/티켓링크/네이버예약/멜론티켓/KREAM 등). 라인업: YB, 비, 거미, 백지영, 김창완밴드 등 최종 30팀.",
+    "description": "경기도 파주 임진각 평화누리에서 열리는 한류 OST 테마 뮤직 페스티벌."
   }
 ]
