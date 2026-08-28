@@ -10,14 +10,21 @@ function fmt(iso: string) {
 const dateLabel = event.startDate === event.endDate
   ? fmt(event.startDate)
   : `${fmt(event.startDate)} - ${fmt(event.endDate)}`;
+
+const status = event.status ?? 'scheduled';
+const STATUS_LABEL: Record<string, string> = {
+  postponed: '연기',
+  cancelled: '취소',
+};
 ---
-<a class="event-card" href={`/events/${event.id}/`}>
-  <div class="dday-badge" data-dday-start={event.startDate} data-dday-end={event.endDate}>—</div>
+<a class={`event-card${status !== 'scheduled' ? ' is-' + status : ''}`} href={`/events/${event.id}/`}>
+  <div class="dday-badge" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
   <div class="info">
     <h3>{event.artist}</h3>
     <p class="meta">{dateLabel} · {event.venue} ({event.city}) · {event.genre}</p>
   </div>
-  {event.ticketUrl && <span class="ticket-tag">예매 가능</span>}
+  {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
+  {status === 'scheduled' && event.ticketUrl && <span class="ticket-tag">예매 가능</span>}
 </a>
 <style>
   .event-card {
@@ -30,6 +37,9 @@ const dateLabel = event.startDate === event.endDate
     color: inherit;
   }
   .event-card:hover h3 { color: #ff5fa2; }
+  .event-card.is-postponed,
+  .event-card.is-cancelled { opacity: 0.6; }
+  .event-card.is-cancelled h3 { text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.6); }
   .info { flex: 1; min-width: 0; }
   h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
   .meta { margin: 0; color: #a9a4c9; font-size: 0.85rem; }
@@ -41,4 +51,13 @@ const dateLabel = event.startDate === event.endDate
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
   }
+  .status-tag {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+  }
+  .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); background: rgba(255,184,76,0.1); }
+  .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); background: rgba(255,107,107,0.1); }
 </style>
