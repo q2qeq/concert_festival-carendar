@@ -1,1 +1,86 @@
-[]
+[
+  {
+    "id": "kopis-PF298846",
+    "artist": "PARK JI HOON ASIA FANCON, RE: FLECT [서울 (앵콜) ]",
+    "genre": "콘서트",
+    "venue": "잠실종합운동장",
+    "city": "서울",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-13",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF298966",
+    "artist": "TVT (THE VOLUNTEERS) CONCERT : 우리네 인생은 끝없는 서부영화. (Our Life Is A Constant Western Film)",
+    "genre": "콘서트",
+    "venue": "장충체육관",
+    "city": "서울",
+    "startDate": "2026-09-18",
+    "endDate": "2026-09-20",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF299306",
+    "artist": "10CM FAN CONCERT: THE MISSING TRACKS 사라진 곡들의 행방, CASE No.1009",
+    "genre": "콘서트",
+    "venue": "올림픽공원",
+    "city": "서울",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-09",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF298950",
+    "artist": "tripleS World Tour: ANDLESS [서울]",
+    "genre": "콘서트",
+    "venue": "장충체육관",
+    "city": "서울",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-11",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF299563",
+    "artist": "10CM FAN CONCERT: THE MISSING TRACKS 사라진 곡들의 행방, CASE No.1011",
+    "genre": "콘서트",
+    "venue": "올림픽공원",
+    "city": "서울",
+    "startDate": "2026-10-11",
+    "endDate": "2026-10-11",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF298971",
+    "artist": "하루 첫 팬 콘서트: 오늘, 하루: 처음 들려주는 이야기 [부산]",
+    "genre": "콘서트",
+    "venue": "벡스코 (BEXCO)",
+    "city": "대구",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-17",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF299464",
+    "artist": "THE MAIN VOCALS: Season 1",
+    "genre": "콘서트",
+    "venue": "KBS스포츠월드(아레나)",
+    "city": "서울",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-23",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  }
+]
