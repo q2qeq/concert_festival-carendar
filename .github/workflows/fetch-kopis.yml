@@ -11,10 +11,10 @@ name: Fetch KOPIS events
 # come in faster; can drop back to weekly (just Monday) once things quiet down.
 # Either cadence keeps the KOPIS API key from auto-cancelling (it expires
 # after 3 months of no use). For an immediate one-off refresh instead of
-# waiting for the next scheduled run, either use "Run workflow" on the
-# Actions tab (workflow_dispatch below), or just ask Claude to run
-# `npm run fetch:kopis` locally — it updates kopis-candidates.json directly
-# in this repo checkout, no need to wait on GitHub Actions.
+# waiting for the next scheduled run, use "Run workflow" on the Actions tab
+# (workflow_dispatch below) — kopis.or.kr is blocked from Claude's own shells
+# (local device_bash included, confirmed 2026-08-28), so this has to be
+# triggered by hand rather than by asking Claude to run it directly.
 
 on:
   schedule:
