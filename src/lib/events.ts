@@ -18,6 +18,12 @@ export interface ConcertEvent {
   // real official source and prefer linking over rehosting — never generated,
   // scraped from an unofficial site, or fabricated.
   posterUrl?: string;
+  // Headliner/confirmed-artist list. Required in spirit for genre === '페스티벌' -
+  // events/[id].astro always renders a 라인업 section for festivals (showing a
+  // "공개 예정" placeholder when this is empty) so the gap is visible rather than
+  // silently missing. No API provides festival lineups, so this stays a manual,
+  // sourced-from-the-official-announcement field - never guessed.
+  lineup?: string[];
   note?: string;
   description?: string;
   // Absent/undefined is treated as 'scheduled'. Set when a show's status changes

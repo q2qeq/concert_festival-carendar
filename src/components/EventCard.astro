@@ -18,6 +18,9 @@ const STATUS_LABEL: Record<string, string> = {
 };
 ---
 <a class={`event-card${status !== 'scheduled' ? ' is-' + status : ''}`} href={`/events/${event.id}/`}>
+  {event.posterUrl && (
+    <img class="thumb" src={event.posterUrl} alt="" loading="lazy" width="44" height="60" />
+  )}
   <div class="dday-badge" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
   <div class="info">
     <h3>{event.artist}</h3>
@@ -37,6 +40,14 @@ const STATUS_LABEL: Record<string, string> = {
     color: inherit;
   }
   .event-card:hover h3 { color: #ff5fa2; }
+  .thumb {
+    flex-shrink: 0;
+    width: 44px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.05);
+  }
   .event-card.is-postponed,
   .event-card.is-cancelled { opacity: 0.6; }
   .event-card.is-cancelled h3 { text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.6); }
