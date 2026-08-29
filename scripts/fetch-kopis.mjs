@@ -51,6 +51,17 @@
  * KOPIS returns XML by default; this script asks for XML and parses it with a tiny
  * regex-based extractor to avoid adding an XML parser dependency for a scaffold —
  * swap in a real XML parser (e.g. fast-xml-parser) if this grows beyond a scaffold.
+ *
+ * POSTER IMAGES (added 2026-08-29): the list endpoint above (pblprfr) never returns
+ * a poster. KOPIS's separate *detail* endpoint (pblprfr/{mt20id}) does, in a <poster>
+ * tag — real government open data, safe to use directly (no scraping/rehosting risk
+ * the way an unofficial promoter poster would be). Only candidates that already
+ * survived the venue-whitelist + dedup filters get a detail call, one at a time with
+ * a short delay between requests to be polite to a public API. A failed/missing
+ * poster for one candidate never aborts the run — it just ships with posterUrl: ''.
+ * International-tour events entered by hand in events.json are NOT covered by this —
+ * KOPIS doesn't list most of them, so their posters (if added) stay a manual,
+ * copyright-conscious job (link to the official source rather than rehosting art).
  */
 import { writeFile, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -97,6 +108,7 @@ const VENUE_CITY_MAP = {
   '창원실내체육관': '창원',
   '김대중컨벤션센터': '광주',
   '한밭종합운동장': '대전',
+  '파라다이스시티': '인천', // added 2026-08-27 after manually curating XMF 2026
 };
 
 function resolveCity(venue) {
@@ -168,6 +180,31 @@ async function fetchKopisRaw() {
   }));
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Fetches the KOPIS *detail* record for one performance and pulls its <poster>
+// image URL, if any. Returns '' (never throws past its own boundary) on any
+// failure — a missing poster is not worth failing the whole fetch run over.
+async function fetchKopisPoster(kopisId) {
+  const params = new URLSearchParams({ service: SERVICE_KEY });
+  const url = `https://www.kopis.or.kr/openApi/restful/pblprfr/${kopisId}?${params.toString()}`;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.warn(`  poster lookup failed for ${kopisId}: HTTP ${res.status}`);
+      return '';
+    }
+    const xml = await res.text();
+    const [poster] = extractTag(xml, 'poster');
+    return poster ? unescapeXml(poster) : '';
+  } catch (err) {
+    console.warn(`  poster lookup failed for ${kopisId}: ${err.message}`);
+    return '';
+  }
+}
+
 async function main() {
   const existing = JSON.parse(await readFile(EVENTS_PATH, 'utf-8'));
   const existingIds = new Set(existing.map((e) => e.id));
@@ -181,6 +218,7 @@ async function main() {
   const candidates = [];
   let droppedNoVenueMatch = 0;
   let droppedDuplicate = 0;
+  let postersFound = 0;
 
   for (const r of raw) {
     const id = `kopis-${r.kopisId}`;
@@ -201,6 +239,12 @@ async function main() {
       droppedNoVenueMatch++;
       continue;
     }
+    // Only reached for candidates that already survived every filter above, so this
+    // never fires more than once per genuinely new listing (raw results are usually
+    // ~100, surviving candidates are usually single digits — see README log).
+    const posterUrl = await fetchKopisPoster(r.kopisId);
+    if (posterUrl) postersFound++;
+    await sleep(300); // be polite to a shared public API between detail calls
     candidates.push({
       id,
       artist: r.artist,
@@ -211,6 +255,7 @@ async function main() {
       endDate: r.endDate,
       ticketUrl: '',
       officialUrl: '',
+      posterUrl,
       note: 'KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요.',
     });
   }
@@ -228,6 +273,7 @@ async function main() {
   }
   console.log(`Dropped (already in events.json / duplicate): ${droppedDuplicate}`);
   console.log(`Dropped (venue not in whitelist, see VENUE_CITY_MAP): ${droppedNoVenueMatch}`);
+  console.log(`Posters found via KOPIS detail API: ${postersFound}/${candidates.length}`);
   console.log(`Wrote ${candidates.length} candidate(s) to src/data/kopis-candidates.json`);
   console.log('This file is NOT read by the site — review it and hand-copy anything worth publishing into events.json.');
 }

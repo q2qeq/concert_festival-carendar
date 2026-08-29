@@ -12,8 +12,18 @@ export interface ConcertEvent {
   officialUrl?: string; // artist/tour official site or promoter's official event page
   mdUrl?: string; // official merch/goods store, only when a real one was found
   fanclubUrl?: string; // official fan club page, mostly relevant for K-pop/J-pop acts
+  // Official poster image URL. For KOPIS-sourced domestic events this can be filled
+  // automatically (scripts/fetch-kopis.mjs calls KOPIS's detail API, a legit gov
+  // open-data source). For hand-entered international tours, only set this from a
+  // real official source and prefer linking over rehosting — never generated,
+  // scraped from an unofficial site, or fabricated.
+  posterUrl?: string;
   note?: string;
   description?: string;
+  // Absent/undefined is treated as 'scheduled'. Set when a show's status changes
+  // after it was first published (e.g. a postponement announced in the news, not
+  // something the KOPIS auto-fetch pipeline can detect on its own).
+  status?: 'scheduled' | 'postponed' | 'cancelled';
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();

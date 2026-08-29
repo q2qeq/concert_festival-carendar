@@ -30,13 +30,24 @@ const links = [
 
 // schema.org structured data for Google's Event rich results.
 // `offers` is only included when we have a real ticket URL - never fabricated.
+// Google's structured data guidance: for a postponed event with no new date,
+// omit startDate/endDate and use previousStartDate instead; for a cancelled
+// event, keep the original startDate. https://schema.org/EventPostponed
+const EVENT_STATUS_MAP = {
+  scheduled: 'https://schema.org/EventScheduled',
+  postponed: 'https://schema.org/EventPostponed',
+  cancelled: 'https://schema.org/EventCancelled',
+};
+const status = event.status ?? 'scheduled';
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicEvent',
   name: event.artist,
-  startDate: event.startDate,
-  endDate: event.endDate,
-  eventStatus: 'https://schema.org/EventScheduled',
+  eventStatus: EVENT_STATUS_MAP[status],
+  ...(status === 'postponed'
+    ? { previousStartDate: event.startDate }
+    : { startDate: event.startDate, endDate: event.endDate }),
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
     '@type': 'Place',
@@ -52,7 +63,8 @@ const jsonLd = {
     '@type': 'PerformingGroup',
     name: event.artist,
   },
-  ...(event.ticketUrl
+  ...(event.posterUrl ? { image: event.posterUrl } : {}),
+  ...(event.ticketUrl && status === 'scheduled'
     ? {
         offers: {
           '@type': 'Offer',
@@ -72,13 +84,33 @@ const jsonLd = {
   <article>
     <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
 
+    {event.posterUrl && (
+      <img
+        class="poster"
+        src={event.posterUrl}
+        alt={`${event.artist} 공식 포스터`}
+        loading="lazy"
+        width="400"
+        height="560"
+      />
+    )}
+
     <header class="event-header">
-      <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate}>—</div>
+      <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
       <div>
         <h1>{event.artist}</h1>
         <p class="meta">{event.genre} · {event.city}</p>
       </div>
     </header>
+
+    {status === 'postponed' && (
+      <p class="status-banner status-postponed">
+        ⚠️ 이 공연은 연기되었습니다. 재개최 일정이 정해지지 않았다면 아래 안내를 확인하세요.
+      </p>
+    )}
+    {status === 'cancelled' && (
+      <p class="status-banner status-cancelled">🚫 이 공연은 취소되었습니다.</p>
+    )}
 
     <AdSlot slot="event-top" />
 
@@ -142,4 +174,22 @@ const jsonLd = {
   .link-btn.primary:hover { background: #ff7bb2; }
   .note { color: #d8d5ef; }
   .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.85rem; }
+  .status-banner {
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .status-postponed { background: rgba(255, 184, 76, 0.14); color: #ffb84c; }
+  .status-cancelled { background: rgba(255, 95, 95, 0.14); color: #ff6b6b; }
+  .poster {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 12px;
+    margin: 1.5rem 0 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
 </style>

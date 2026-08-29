@@ -40,6 +40,19 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
       function updateDday() {
         const todayISO = new Date().toISOString().slice(0, 10);
         document.querySelectorAll('[data-dday-start]').forEach((el) => {
+          const status = el.getAttribute('data-status') || 'scheduled';
+          // A countdown to a date that's no longer happening is misleading, so
+          // postponed/cancelled shows get a status label instead of D-day math.
+          if (status === 'postponed') {
+            el.textContent = '연기';
+            el.classList.add('is-postponed');
+            return;
+          }
+          if (status === 'cancelled') {
+            el.textContent = '취소';
+            el.classList.add('is-cancelled');
+            return;
+          }
           const start = el.getAttribute('data-dday-start') || '';
           const end = el.getAttribute('data-dday-end') || start;
           let label = '';
@@ -93,4 +106,6 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
   }
   .dday-badge.is-today { background: var(--accent); color: #101018; }
   .dday-badge.is-past { background: rgba(255,255,255,0.08); color: var(--muted); }
+  .dday-badge.is-postponed { background: rgba(255, 184, 76, 0.18); color: #ffb84c; }
+  .dday-badge.is-cancelled { background: rgba(255, 95, 95, 0.18); color: #ff6b6b; }
 </style>
