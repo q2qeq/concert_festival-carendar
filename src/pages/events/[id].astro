@@ -34,6 +34,11 @@ const links = [
   event.fanclubUrl && { label: '팬클럽', url: event.fanclubUrl },
 ].filter(Boolean) as { label: string; url: string; primary?: boolean }[];
 
+// 페스티벌 라인업이 이 숫자를 넘으면 요약만 먼저 보여주고 <details>로 접어
+// 30팀 안팎인 대형 페스티벌 페이지가 아티스트 이름 벽으로 압도하지 않게 한다.
+const LINEUP_COLLAPSE_THRESHOLD = 12;
+const LINEUP_PREVIEW_COUNT = 6;
+
 // schema.org structured data for Google's Event rich results.
 // `offers` is only included when we have a real ticket URL - never fabricated.
 // Google's structured data guidance: for a postponed event with no new date,
@@ -130,11 +135,23 @@ const jsonLd = {
 
     {event.genre === '페스티벌' && (
       <section class="lineup-section">
-        <h2>라인업</h2>
+        <h2>라인업{event.lineup && event.lineup.length > 0 ? ` (${event.lineup.length}팀)` : ''}</h2>
         {event.lineup && event.lineup.length > 0 ? (
-          <ul class="lineup-list">
-            {event.lineup.map((artist) => <li>{artist}</li>)}
-          </ul>
+          event.lineup.length > LINEUP_COLLAPSE_THRESHOLD ? (
+            <details class="lineup-details">
+              <summary>
+                {event.lineup.slice(0, LINEUP_PREVIEW_COUNT).join(' · ')} 외 {event.lineup.length - LINEUP_PREVIEW_COUNT}팀
+                <span class="lineup-toggle-hint">전체 라인업 보기</span>
+              </summary>
+              <ul class="lineup-list">
+                {event.lineup.map((artist) => <li>{artist}</li>)}
+              </ul>
+            </details>
+          ) : (
+            <ul class="lineup-list">
+              {event.lineup.map((artist) => <li>{artist}</li>)}
+            </ul>
+          )
         ) : (
           <p class="lineup-pending">
             라인업이 아직 이 페이지에 정리되지 않았습니다. 공식 홈페이지·공지에서 최신 라인업을 확인하세요.
@@ -216,20 +233,41 @@ const jsonLd = {
   .lineup-section { margin: 1.5rem 0; }
   .lineup-section h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #e5e2f7; }
   .lineup-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    columns: 2;
+    column-gap: 1.75rem;
     margin: 0;
     padding: 0;
     list-style: none;
   }
+  @media (min-width: 640px) {
+    .lineup-list { columns: 3; }
+  }
   .lineup-list li {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
+    break-inside: avoid;
     color: #d8d5ef;
-    padding: 0.35rem 0.8rem;
-    border-radius: 999px;
+    font-size: 0.92rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .lineup-details summary {
+    cursor: pointer;
+    list-style: none;
+    color: #d8d5ef;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+  }
+  .lineup-details summary::-webkit-details-marker { display: none; }
+  .lineup-toggle-hint {
+    display: block;
+    margin-top: 0.35rem;
+    color: #ff8fbe;
+    font-weight: 600;
     font-size: 0.85rem;
   }
+  .lineup-details[open] summary { border-radius: 8px 8px 0 0; margin-bottom: 0.75rem; }
+  .lineup-details .lineup-list { padding: 0 0.25rem; }
   .lineup-pending { color: #a9a4c9; font-size: 0.9rem; margin: 0; }
 </style>

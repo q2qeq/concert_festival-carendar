@@ -62,6 +62,22 @@
  * International-tour events entered by hand in events.json are NOT covered by this —
  * KOPIS doesn't list most of them, so their posters (if added) stay a manual,
  * copyright-conscious job (link to the official source rather than rehosting art).
+ *
+ * FESTIVALS WERE NEVER FETCHED AT ALL (found + fixed 2026-08-29): this script only
+ * ever called KOPIS's general performance-list endpoint (pblprfr) with
+ * shcate=CCCD (대중음악), which is why every festival on this site — all 7 of
+ * them, KOPIS-sourced or not — has always shipped with posterUrl: ''. KOPIS does
+ * NOT file festivals under a concert genre code at all; it has a wholly separate
+ * REST resource for them, `prffest` (confirmed via a third-party KOPIS API
+ * wrapper's source — github.com/jinwooYoon/kopisapi — which documents both
+ * `pblprfr` and `prffest` as sibling endpoints sharing the same request shape
+ * (service/stdate/eddate/cpage/rows/shcate/signgucode) and the same response shape
+ * (<dbs><db>...). This script now also queries `prffest` (see fetchKopisFestivalsRaw
+ * below) and runs its survivors through the exact same venue-whitelist, dedup and
+ * per-item poster-detail-call pipeline as concerts, tagging them genre: '페스티벌'.
+ * UNVERIFIED against a live response (same kopis.or.kr network block as the rest of
+ * this file — see the class doc above) — confirm field names/poster presence on
+ * the next real `npm run fetch:kopis` run, same as the original poster feature was.
  */
 import { writeFile, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -76,6 +92,14 @@ const SERVICE_KEY = process.env.KOPIS_SERVICE_KEY;
 // concert/festival entries (윤종신, 10CM, 자라섬재즈페스티벌, etc). An earlier guess,
 // BBBF, returned zero results for the same date range and was wrong - don't reuse it.
 const CONCERT_GENRE_CODE = 'CCCD';
+
+// KOPIS endpoint for the pblprfr (general performance) list — kept as a named
+// constant now that a second endpoint (FESTIVAL_ENDPOINT below) exists alongside it.
+const CONCERT_ENDPOINT = 'pblprfr';
+// Festivals are NOT under a genre code within pblprfr — they live at this sibling
+// REST resource instead (see the FESTIVALS WERE NEVER FETCHED AT ALL header note).
+// UNVERIFIED against a live response; confirm on the next real fetch:kopis run.
+const FESTIVAL_ENDPOINT = 'prffest';
 
 // Major venues this site already curates events at (extend as needed — anything
 // NOT in this map gets dropped rather than published with a guessed/empty city).
@@ -147,7 +171,12 @@ function normalizeForMatch(s) {
   return s.toLowerCase().replace(/[\s()[\].,'"“”·:!?-]/g, '');
 }
 
-async function fetchKopisRaw() {
+// Shared list-fetch for both KOPIS endpoints — pblprfr (concerts, filtered to
+// CONCERT_GENRE_CODE) and prffest (festivals; no shcate filter, since a festival's
+// own internal genre is beside the point — see FESTIVAL_ENDPOINT above). Tags every
+// row with `sourceEndpoint` and `genre` so downstream code (the poster detail call,
+// the candidate's genre field) doesn't need to re-derive which list it came from.
+async function fetchKopisList(endpoint, { shcate, genre } = {}) {
   if (!SERVICE_KEY) {
     console.error('Missing KOPIS_SERVICE_KEY env var. Copy .env.example to .env and fill it in.');
     process.exit(1);
@@ -158,11 +187,11 @@ async function fetchKopisRaw() {
     eddate: monthsFromNowISO(6),
     cpage: '1',
     rows: '100', // KOPIS rejected rows=200 (returned an empty result set, no error) - 100 is the verified-working value, don't raise it without testing against the real API first
-    shcate: CONCERT_GENRE_CODE,
+    ...(shcate ? { shcate } : {}),
   });
-  const url = `https://www.kopis.or.kr/openApi/restful/pblprfr?${params.toString()}`;
+  const url = `https://www.kopis.or.kr/openApi/restful/${endpoint}?${params.toString()}`;
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`KOPIS request failed: ${res.status}`);
+  if (!res.ok) throw new Error(`KOPIS request failed (${endpoint}): ${res.status}`);
   const xml = await res.text();
 
   const ids = extractTag(xml, 'mt20id');
@@ -177,28 +206,51 @@ async function fetchKopisRaw() {
     venue: unescapeXml(venues[i] ?? ''),
     startDate: (startDates[i] ?? '').replaceAll('.', '-'),
     endDate: (endDates[i] ?? startDates[i] ?? '').replaceAll('.', '-'),
+    sourceEndpoint: endpoint,
+    genre,
   }));
+}
+
+async function fetchKopisRaw() {
+  return fetchKopisList(CONCERT_ENDPOINT, { shcate: CONCERT_GENRE_CODE, genre: '콘서트' });
+}
+
+async function fetchKopisFestivalsRaw() {
+  return fetchKopisList(FESTIVAL_ENDPOINT, { genre: '페스티벌' });
 }
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// Fetches the KOPIS *detail* record for one performance and pulls its <poster>
-// image URL, if any. Returns '' (never throws past its own boundary) on any
-// failure — a missing poster is not worth failing the whole fetch run over.
-async function fetchKopisPoster(kopisId) {
+// Fetches the KOPIS *detail* record for one item and pulls its <poster> image URL,
+// if any. `endpoint` is whichever list resource the item came from (pblprfr or
+// prffest) — RESTful symmetry suggests each has its own /{id} detail route, but
+// that's UNVERIFIED for prffest specifically (see the FESTIVALS WERE NEVER FETCHED
+// AT ALL header note), so a festival item that 404s/empties there falls back to the
+// general pblprfr detail route once, in case festival mt20ids resolve there too.
+// Never throws past its own boundary — a missing poster is not worth failing the
+// whole fetch run over.
+async function fetchKopisDetailPoster(kopisId, endpoint) {
   const params = new URLSearchParams({ service: SERVICE_KEY });
-  const url = `https://www.kopis.or.kr/openApi/restful/pblprfr/${kopisId}?${params.toString()}`;
-  try {
+  const fetchPosterFrom = async (ep) => {
+    const url = `https://www.kopis.or.kr/openApi/restful/${ep}/${kopisId}?${params.toString()}`;
     const res = await fetch(url);
-    if (!res.ok) {
-      console.warn(`  poster lookup failed for ${kopisId}: HTTP ${res.status}`);
-      return '';
-    }
+    if (!res.ok) return { ok: false, status: res.status };
     const xml = await res.text();
     const [poster] = extractTag(xml, 'poster');
-    return poster ? unescapeXml(poster) : '';
+    return { ok: true, poster: poster ? unescapeXml(poster) : '' };
+  };
+  try {
+    const result = await fetchPosterFrom(endpoint);
+    if (result.ok) return result.poster;
+    console.warn(`  poster lookup failed for ${kopisId} via ${endpoint}: HTTP ${result.status}`);
+    if (endpoint !== CONCERT_ENDPOINT) {
+      const fallback = await fetchPosterFrom(CONCERT_ENDPOINT);
+      if (fallback.ok) return fallback.poster;
+      console.warn(`  poster lookup fallback (${CONCERT_ENDPOINT}) also failed for ${kopisId}: HTTP ${fallback.status}`);
+    }
+    return '';
   } catch (err) {
     console.warn(`  poster lookup failed for ${kopisId}: ${err.message}`);
     return '';
@@ -213,7 +265,18 @@ async function main() {
     existing.filter((e) => e.venue && e.startDate).map((e) => `${e.venue}__${e.startDate}`)
   );
 
-  const raw = await fetchKopisRaw();
+  const [concertRaw, festivalRaw] = await Promise.all([fetchKopisRaw(), fetchKopisFestivalsRaw()]);
+
+  // A big festival can also show up as its own entry in the general concert list
+  // (or vice versa) — dedupe the combined pool by kopisId before filtering so it
+  // never gets processed (and poster-detail-called) twice under two genre labels.
+  const seenKopisIds = new Set();
+  const raw = [];
+  for (const r of [...concertRaw, ...festivalRaw]) {
+    if (seenKopisIds.has(r.kopisId)) continue;
+    seenKopisIds.add(r.kopisId);
+    raw.push(r);
+  }
 
   const candidates = [];
   let droppedNoVenueMatch = 0;
@@ -242,13 +305,13 @@ async function main() {
     // Only reached for candidates that already survived every filter above, so this
     // never fires more than once per genuinely new listing (raw results are usually
     // ~100, surviving candidates are usually single digits — see README log).
-    const posterUrl = await fetchKopisPoster(r.kopisId);
+    const posterUrl = await fetchKopisDetailPoster(r.kopisId, r.sourceEndpoint);
     if (posterUrl) postersFound++;
     await sleep(300); // be polite to a shared public API between detail calls
     candidates.push({
       id,
       artist: r.artist,
-      genre: '콘서트',
+      genre: r.genre,
       venue: r.venue,
       city,
       startDate: r.startDate,
@@ -263,12 +326,15 @@ async function main() {
   candidates.sort((a, b) => a.startDate.localeCompare(b.startDate));
   await writeFile(CANDIDATES_PATH, JSON.stringify(candidates, null, 2) + '\n');
 
-  console.log(`KOPIS raw results: ${raw.length}`);
-  if (raw.length === 0) {
+  console.log(`KOPIS raw results: ${raw.length} (concerts: ${concertRaw.length}, festivals: ${festivalRaw.length}, after cross-endpoint dedupe: ${raw.length})`);
+  if (concertRaw.length === 0 || festivalRaw.length === 0) {
     console.warn(
-      'WARNING: KOPIS returned 0 raw results. This usually means the API rejected a ' +
-      'request parameter (e.g. rows/date range) rather than "no concerts in range" - ' +
-      'check the KOPIS response manually if this keeps happening.'
+      `WARNING: one KOPIS endpoint returned 0 raw results (concerts: ${concertRaw.length}, ` +
+      `festivals: ${festivalRaw.length}). This usually means the API rejected a request ` +
+      'parameter (e.g. rows/date range) rather than "nothing in range" - check the KOPIS ' +
+      'response manually if this keeps happening. (The prffest festival endpoint is newer ' +
+      'and UNVERIFIED against a live response - 0 results there specifically could also mean ' +
+      'the endpoint name or param shape is wrong, see the header comment.)'
     );
   }
   console.log(`Dropped (already in events.json / duplicate): ${droppedDuplicate}`);
