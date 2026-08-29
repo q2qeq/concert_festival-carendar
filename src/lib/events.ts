@@ -36,6 +36,15 @@ export function allGenres(): string[] {
   return Array.from(new Set(events.map((e) => e.genre))).sort();
 }
 
+export function allCities(): string[] {
+  const counts = new Map<string, number>();
+  for (const e of events) counts.set(e.city, (counts.get(e.city) ?? 0) + 1);
+  // Most events first (bigger cities/venues surface first), alphabetical as tiebreak.
+  return Array.from(counts.keys()).sort(
+    (a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0) || a.localeCompare(b, 'ko')
+  );
+}
+
 export function monthLabel(iso: string): string {
   const d = new Date(iso + 'T00:00:00');
   return `${d.getFullYear()}년 ${d.getMonth() + 1}월`;

@@ -2,11 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EventCard from '../components/EventCard.astro';
 import AdSlot from '../components/AdSlot.astro';
-import { upcomingEvents, allGenres, monthLabel } from '../lib/events';
+import { upcomingEvents, allGenres, allCities, monthLabel } from '../lib/events';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const events = upcomingEvents();
 const genres = allGenres();
+const cities = allCities();
 
 const groups: { label: string; items: typeof events }[] = [];
 for (const e of events) {
@@ -26,11 +27,26 @@ for (const e of events) {
   </section>
 
   {genres.length > 0 && (
-    <div class="filters" id="genre-filters">
-      <button class="chip active" data-genre="all">전체</button>
-      {genres.map((g) => (
-        <button class="chip" data-genre={g}>{g}</button>
-      ))}
+    <div class="filter-group">
+      <p class="filter-caption">장르</p>
+      <div class="filters" id="genre-filters">
+        <button class="chip active" data-genre="all">전체</button>
+        {genres.map((g) => (
+          <button class="chip" data-genre={g}>{g}</button>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {cities.length > 0 && (
+    <div class="filter-group">
+      <p class="filter-caption">지역</p>
+      <div class="filters" id="city-filters">
+        <button class="chip active" data-city="all">전체 지역</button>
+        {cities.map((c) => (
+          <button class="chip" data-city={c}>{c}</button>
+        ))}
+      </div>
     </div>
   )}
 
@@ -40,7 +56,7 @@ for (const e of events) {
     <section class="month-group">
       <h2>{group.label}</h2>
       {group.items.map((e) => (
-        <div class="card-wrap" data-genre={e.genre}>
+        <div class="card-wrap" data-genre={e.genre} data-city={e.city}>
           <EventCard event={e} />
         </div>
       ))}
@@ -51,23 +67,42 @@ for (const e of events) {
 </BaseLayout>
 
 <script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('#genre-filters .chip');
+  const genreButtons = document.querySelectorAll<HTMLButtonElement>('#genre-filters .chip');
+  const cityButtons = document.querySelectorAll<HTMLButtonElement>('#city-filters .chip');
   const cards = document.querySelectorAll<HTMLElement>('.card-wrap');
-  buttons.forEach((btn) => {
+
+  let activeGenre = 'all';
+  let activeCity = 'all';
+
+  function applyFilters() {
+    cards.forEach((card) => {
+      const genreMatch = activeGenre === 'all' || card.dataset.genre === activeGenre;
+      const cityMatch = activeCity === 'all' || card.dataset.city === activeCity;
+      card.style.display = genreMatch && cityMatch ? '' : 'none';
+    });
+    document.querySelectorAll<HTMLElement>('.month-group').forEach((section) => {
+      const anyVisible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).some(
+        (c) => c.style.display !== 'none'
+      );
+      section.style.display = anyVisible ? '' : 'none';
+    });
+  }
+
+  genreButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      buttons.forEach((b) => b.classList.remove('active'));
+      genreButtons.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
-      const genre = btn.dataset.genre;
-      cards.forEach((card) => {
-        const show = genre === 'all' || card.dataset.genre === genre;
-        card.style.display = show ? '' : 'none';
-      });
-      document.querySelectorAll<HTMLElement>('.month-group').forEach((section) => {
-        const anyVisible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).some(
-          (c) => c.style.display !== 'none'
-        );
-        section.style.display = anyVisible ? '' : 'none';
-      });
+      activeGenre = btn.dataset.genre ?? 'all';
+      applyFilters();
+    });
+  });
+
+  cityButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      cityButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCity = btn.dataset.city ?? 'all';
+      applyFilters();
     });
   });
 </script>
@@ -76,7 +111,15 @@ for (const e of events) {
   .intro { padding: 1rem 0 1.5rem; }
   .intro h1 { font-size: 2rem; margin-bottom: 0.5rem; }
   .intro p { color: #d8d5ef; }
-  .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .filter-group { margin-bottom: 1.25rem; }
+  .filter-caption {
+    font-size: 0.72rem;
+    color: #7d78a0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.4rem;
+  }
+  .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .chip {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
