@@ -10,7 +10,8 @@
     "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13341",
     "note": "일본 밴드 오피셜히게단디즘 내한 공연.",
     "description": "'Pretender', 'Subtitle' 등으로 알려진 일본 4인조 밴드 오피셜히게단디즘의 내한 공연. 애니메이션 주제가로도 국내에 폭넓은 팬층을 보유하고 있다.",
-    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26005670_p.gif"
+    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26005670_p.gif",
+    "officialUrl": "https://higedan.com/?lang=en"
   },
   {
     "id": "back-number-2026-09",
@@ -23,7 +24,8 @@
     "ticketUrl": "https://m.ticket.yes24.com/English/Perf/Detail/FnPerfInfo.aspx?IdPerf=58079",
     "note": "일본 밴드 백넘버 내한 공연.",
     "description": "서정적인 가사와 미디엄 템포 발라드로 유명한 일본 3인조 록밴드 백넘버(back number)의 내한 공연.",
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202604/20260416/20260416-58079.jpg"
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202604/20260416/20260416-58079.jpg",
+    "officialUrl": "https://backnumber.info/?lang=en"
   },
   {
     "id": "vaundy-2026-09",
@@ -36,7 +38,8 @@
     "ticketUrl": "https://nol.yanolja.com/ticket/places/26000240/products/26003199",
     "note": "일본 싱어송라이터 Vaundy 내한 공연. 예매: NOL티켓.",
     "description": "장르를 넘나드는 사운드로 일본 젊은 세대에게 폭넓은 지지를 받는 싱어송라이터 Vaundy의 내한 공연.",
-    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26003199_p.gif"
+    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26003199_p.gif",
+    "officialUrl": "https://vaundy.jp/?lang=en"
   },
   {
     "id": "kopis-pyeonghwanuri-picnic-2026-09",
@@ -46,7 +49,7 @@
     "city": "파주",
     "startDate": "2026-09-19",
     "endDate": "2026-09-19",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 공식 홈페이지 없음 — 위 링크는 주최측 공식 인스타그램(@all_that_dmz)입니다. 재검증(2026-08-29): 실제 행사 자체는 9/18(금)~20(일) 3일간 진행되지만, 넬·10CM·선우정아 등 라인업 공연(메인 공연)은 둘째 날인 9/19(토) 하루에 집중되어 있습니다 — KOPIS의 9/19 단독 등록은 오류가 아니라 콘서트 프로그램 자체의 일정을 정확히 반영한 것으로 보입니다(출처: 국제뉴스 2026-08-24 보도). 포스터는 경기관광공사 공식 제공/보도자료 이미지입니다.",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 공식 홈페이지 없음 — 위 링크는 주최측 공식 인스타그램(@all_that_dmz)입니다. 재검증(2026-08-29): 실제 행사 자체는 9/18(금)~20(일) 3일간 진행되지만, 넬·10CM·선우정아 등 라인업 공연(메인 공연)은 둘째 날인 9/19(토) 하루에 집중되어 있습니다 — KOPIS의 9/19 단독 등록은 오류가 아니라 콘서트 프로그램 자체의 일정을 정확히 반영한 것으로 보입니다(출처: 국제뉴스 2026-08-24 보도). 포스터는 경기관광공사 공식 제공/보도자료 이미지입니다. 재검증(2026-08-29): 예매처(티켓링크)는 확인했으나 검색 결과 상당수가 2025년 에디션(9/5~7) 관련 기사라 2026년(9/18~20) 개별 예매 링크는 아직 찾지 못했습니다.",
     "description": "파주 임진각 평화누리 일원에서 열리는 야외 음악 페스티벌.",
     "officialUrl": "https://www.instagram.com/all_that_dmz",
     "lineup": [
@@ -68,7 +71,8 @@
     "startDate": "2026-09-19",
     "endDate": "2026-09-20",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
-    "description": "밴드 ONEWE의 단독 라이브 콘서트 'O! NEW E!volution VI'."
+    "description": "밴드 ONEWE의 단독 라이브 콘서트 'O! NEW E!volution VI'.",
+    "officialUrl": "https://onewe.co.kr/"
   },
   {
     "id": "post-malone-2026-10",
@@ -156,7 +160,10 @@
     "startDate": "2026-10-10",
     "endDate": "2026-10-10",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
-    "description": "인디 듀오 10CM의 팬 콘서트 'THE MISSING TRACKS' 시리즈."
+    "description": "인디 듀오 10CM의 팬 콘서트 'THE MISSING TRACKS' 시리즈.",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14951",
+    "posterUrl": "https://images.khan.co.kr/article/2026/08/19/news-p.v1.20260819.8832c2932e994b868d6a6b37bfd0e0a8_P1.jpeg",
+    "officialUrl": "https://camwus.com/"
   },
   {
     "id": "charlie-puth-2026-10",
@@ -191,7 +198,7 @@
     "city": "전주",
     "startDate": "2026-10-24",
     "endDate": "2026-10-25",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 재검증(2026-08-29): 서울(고려대 화정체육관, 10/3~5) 예매만 공개된 상태였고, 전주 등 지방 투어는 보도(2026-08-20) 시점 기준 \"추후 공개 예정\"이라 개별 예매 링크를 아직 찾지 못했습니다.",
     "description": "트로트 가수 영탁의 단독 콘서트 'TAK SHOW5' 전주 공연."
   },
   {
@@ -213,8 +220,9 @@
     "city": "부산",
     "startDate": "2026-10-31",
     "endDate": "2026-10-31",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 인천·수원 등 다른 도시 공연도 별도 진행.",
-    "description": "싱어송라이터 윤종신의 전국투어 콘서트 '가을냄새' 부산 공연."
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 인천·수원 등 다른 도시 공연도 별도 진행. 재검증(2026-08-29): 포스터는 확보했으나, 보도(2026-08-21) 시점에는 서울·고양 공연 예매처만 공개되어 부산 공연 개별 예매 링크는 아직 찾지 못했습니다.",
+    "description": "싱어송라이터 윤종신의 전국투어 콘서트 '가을냄새' 부산 공연.",
+    "posterUrl": "https://cdn.mhns.co.kr/news/thumbnail/202608/757137_890861_5055_v150.jpg"
   },
   {
     "id": "kopis-kimjanghun-miryang-2026-11",
@@ -224,7 +232,7 @@
     "city": "밀양",
     "startDate": "2026-11-08",
     "endDate": "2026-11-08",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 재검증(2026-08-29): 예스24에서 제주·대전·창원·김해 등 타 도시 예매 페이지는 확인했지만 밀양 개별 예매 링크는 찾지 못했습니다 — 인천/춘천 공연을 관리하는 기획사(도로시컴퍼니)의 KOPIS 등록 목록에도 밀양 공연은 없어 별도 지역 주최사가 진행하는 것으로 보입니다.",
     "description": "가수 김장훈의 전국투어 원맨쇼 밀양 공연."
   },
   {
@@ -238,7 +246,8 @@
     "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13649",
     "note": "",
     "description": "'I'm Yours'로 잘 알려진 미국 어쿠스틱·포크팝 싱어송라이터 제이슨 므라즈의 내한 공연.",
-    "officialUrl": "https://jasonmraz.com/seoul-kr/"
+    "officialUrl": "https://jasonmraz.com/seoul-kr/",
+    "posterUrl": "https://7lgigmttrjuyfehsudec15072.edge.naverncp.com/news/photo/202604/813454_1329482_2429.jpg"
   },
   {
     "id": "5-seconds-of-summer-2026-11",
@@ -251,7 +260,9 @@
     "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13669",
     "note": "수능일과 일정이 겹쳐 화제가 된 바 있음 - 날짜 변동 여부 재확인 권장.",
     "description": "국내에도 두터운 팬덤을 보유한 호주 출신 팝록 밴드 5 Seconds of Summer의 내한 공연.",
-    "mdUrl": "https://5sos.com/"
+    "mdUrl": "https://5sos.com/",
+    "officialUrl": "https://5sos.com/",
+    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26006756_p.gif"
   },
   {
     "id": "wonderlivet-2026-11",
@@ -261,7 +272,7 @@
     "city": "고양",
     "startDate": "2026-11-20",
     "endDate": "2026-11-22",
-    "ticketUrl": "",
+    "ticketUrl": "https://ticket.yes24.com/Perf/59840",
     "officialUrl": "https://wonderli.vet/",
     "note": "국내 최대 규모 J-POP·서브컬처 페스티벌. 전체 라인업 42팀 2026-08-28 발표 완료 (타임테이블은 9월 말 공개 예정). 티켓은 2026-09-01 20:00 멜론티켓·티켓링크·예스24티켓·티켓피아에서 오픈 예정입니다.",
     "description": "원더로크와 LIVET이 주최하는 국내 최대 규모 J-POP & Iconic 아티스트 페스티벌. 2023년 시작돼 매년 4분기 킨텍스에서 열리며, 2025년에는 2만 명 이상이 방문했다.",
@@ -297,7 +308,8 @@
     "startDate": "2026-12-12",
     "endDate": "2026-12-12",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연.",
-    "description": "그래미 수상 프로듀서들과의 협업으로 주목받은 미국 재즈·퓨전 듀오 DOMi & JD BECK의 내한 공연."
+    "description": "그래미 수상 프로듀서들과의 협업으로 주목받은 미국 재즈·퓨전 듀오 DOMi & JD BECK의 내한 공연.",
+    "officialUrl": "https://www.domiandjdbeck.com/tour/"
   },
   {
     "id": "ghost-festival-2026-10",
@@ -307,7 +319,7 @@
     "city": "파주",
     "startDate": "2026-10-09",
     "endDate": "2026-10-11",
-    "ticketUrl": "",
+    "ticketUrl": "https://www.luck-d.com/ticket/902",
     "officialUrl": "https://www.ghostfestival.kr/",
     "note": "2026-08-19(수) 14:00 지정석 티켓 오픈 (NOL/티켓링크/네이버예약/멜론티켓/KREAM 등). 라인업: YB, 비, 거미, 백지영, 김창완밴드 등 최종 30팀.",
     "description": "경기도 파주 임진각 평화누리에서 열리는 한류 OST 테마 뮤직 페스티벌.",
