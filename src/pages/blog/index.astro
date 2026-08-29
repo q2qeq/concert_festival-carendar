@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const allPosts = await getCollection('posts', ({ data }) => !data.draft);
+const posts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+function fmt(d: Date) {
+  return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
+}
+---
+<BaseLayout
+  title="이슈"
+  description="내한공연·페스티벌 취소/연기 소식과 라인업 정리, 뒷이야기까지 - 공연캘린더가 정리하는 콘서트 이슈."
+>
+  <section class="intro">
+    <h1>이슈</h1>
+    <p>취소·연기 소식부터 페스티벌 라인업 비교까지, 일정표엔 다 못 담는 이야기를 정리해요.</p>
+  </section>
+
+  <AdSlot slot="blog-top" />
+
+  {posts.length > 0 ? (
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <a class="post-card" href={`/blog/${post.id}/`}>
+            <p class="post-date">{fmt(post.data.pubDate)}</p>
+            <h2>{post.data.title}</h2>
+            <p class="post-desc">{post.data.description}</p>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="post-tags">
+                {post.data.tags.map((t) => <span class="tag">{t}</span>)}
+              </div>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>아직 등록된 글이 없습니다. 곧 첫 글을 올릴게요.</p>
+  )}
+</BaseLayout>
+
+<style>
+  .intro { padding: 1rem 0 1.5rem; }
+  .intro h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .intro p { color: #d8d5ef; }
+  .post-list { list-style: none; margin: 1.5rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; }
+  .post-card {
+    display: block;
+    padding: 1.25rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+    color: inherit;
+  }
+  .post-card:hover { background: rgba(255,255,255,0.07); }
+  .post-date { margin: 0 0 0.4rem; color: #a9a4c9; font-size: 0.8rem; }
+  .post-card h2 { margin: 0 0 0.5rem; font-size: 1.2rem; color: #f5f3ff; }
+  .post-card:hover h2 { color: #ff5fa2; }
+  .post-desc { margin: 0; color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; }
+  .post-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+  .tag {
+    font-size: 0.75rem;
+    color: #6ee7ff;
+    border: 1px solid rgba(110,231,255,0.35);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+  }
+</style>
