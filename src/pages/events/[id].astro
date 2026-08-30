@@ -4,6 +4,7 @@ import AdSlot from '../../components/AdSlot.astro';
 import CharacterNote from '../../components/CharacterNote.astro';
 import UpdateLog from '../../components/UpdateLog.astro';
 import VenueInfoBox from '../../components/VenueInfoBox.astro';
+import ShuttleInfo from '../../components/ShuttleInfo.astro';
 import SourceList from '../../components/SourceList.astro';
 import MerchGrid from '../../components/MerchGrid.astro';
 import PresaleInfo from '../../components/PresaleInfo.astro';
@@ -230,6 +231,8 @@ const jsonLd = {
     {event.youtubeVideos && event.youtubeVideos.length > 0 && <YoutubeEmbeds videos={event.youtubeVideos} />}
 
     {event.updates && event.updates.length > 0 && <UpdateLog updates={event.updates} />}
+
+    {event.shuttleBus && event.shuttleBus.length > 0 && <ShuttleInfo shuttleBus={event.shuttleBus} />}
 
     <VenueInfoBox venue={event.venue} />
 

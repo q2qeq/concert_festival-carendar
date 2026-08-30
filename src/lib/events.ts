@@ -76,6 +76,19 @@ export interface YoutubeVideo {
   sourceUrl?: string; // the original watch URL, for the "출처" line
 }
 
+// A shuttle bus service to/from a venue - usually a paid app-booking service run
+// by a third-party operator (buses to festivals at remote venues like 자라섬,
+// KINTEX, 인천 등) rather than the promoter itself. Only include real, currently
+// bookable services found on the event's official site/notice - never a generic
+// "보통 셔틀이 있어요" guess, and never invent an app/operator name.
+export interface ShuttleBusInfo {
+  operator: string; // e.g. "타고가campus", "waybus", "대성고속 전세버스"
+  appName?: string; // booking app/platform name, if different from operator
+  url?: string; // booking link
+  routes?: string[]; // e.g. ["서울(잠실) ↔ 자라섬", "홍대 ↔ 인천 파라다이스시티"]
+  note?: string; // price, schedule caveats, "선착순 마감" etc.
+}
+
 export interface ConcertEvent {
   id: string;
   artist: string;
@@ -150,6 +163,10 @@ export interface ConcertEvent {
   // Human-readable ticket-open date/time when known ahead of the actual open
   // (e.g. "2026-09-01 오후 8시 (예정)"). Only for shows with ticketingAnnounced.
   ticketOpenDate?: string;
+  // Official/known shuttle bus services to the venue. Mostly relevant for festivals
+  // at remote or hard-to-reach venues (자라섬, KINTEX, 파라다이스시티 등) - see
+  // ShuttleBusInfo for sourcing rules. Rendered next to VenueInfoBox.
+  shuttleBus?: ShuttleBusInfo[];
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();

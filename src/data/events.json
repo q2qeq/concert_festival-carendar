@@ -498,6 +498,11 @@
         "date": "2026-08-12",
         "text": "2차 라인업이 공개되며 데이식스·원오크록·나카시마 미카가 새로 확정됐어요. 10월 3일/4일 날짜별 출연진도 이때 함께 나왔습니다. 다음 달 3차 라인업이 추가로 공개될 예정이라고 해요.",
         "sourceUrl": "https://www.etoday.co.kr/news/view/2613703"
+      },
+      {
+        "date": "2026-08-30",
+        "text": "퀸즈스마일 운영 유료 셔틀버스 정보 추가 (공식 NOTICE 확인)",
+        "sourceUrl": "https://xmfestival.com/notice"
       }
     ],
     "sources": [
@@ -512,6 +517,17 @@
       {
         "label": "아도·YB·윤하, 한일 합동 페스티벌 'XMF 2026' 첫 라인업 - 톱스타뉴스",
         "url": "https://www.topstarnews.net/news/articleView.html?idxno=16151240"
+      },
+      {
+        "label": "XMF 2026 공식 NOTICE - [교통] 유료 셔틀버스 운영 및 예약 안내",
+        "url": "https://xmfestival.com/notice"
+      }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDA5",
+        "note": "유료 셔틀버스. 노선/운행시간/요금/탑승장소 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ]
   },
@@ -622,6 +638,11 @@
         "date": "2026-08-17",
         "text": "최종 30팀 라인업이 발표됐어요. 레귤러 티켓은 8/19(수) 14:00부터 NOL·멜론티켓·티켓링크·KREAM에서 오픈됩니다.",
         "sourceUrl": "https://www.kyeonggi.com/article/20260817580135"
+      },
+      {
+        "date": "2026-08-30",
+        "text": "무료 셔틀(문산역·운정중앙역)과 페어플레이 유료 셔틀(사당·서울역·합정·종합운동장·노원) 정보 추가",
+        "sourceUrl": "https://www.ghostfestival.kr/"
       }
     ],
     "sources": [
@@ -632,6 +653,29 @@
       {
         "label": "2026 GHOST Festival 공식 홈페이지",
         "url": "https://www.ghostfestival.kr/"
+      }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "GHOST 페스티벌 자체 운영 (무료)",
+        "routes": [
+          "문산역(경의중앙선) ↔ 행사장",
+          "운정중앙역(GTX-A) ↔ 행사장"
+        ],
+        "note": "무료. 운영기간 10/9~11 10:00~22:30, 배차간격 문산역 30분·운정중앙역 20분"
+      },
+      {
+        "operator": "페어플레이",
+        "appName": "페어플레이 (유료 셔틀)",
+        "url": "https://pairplaytravel.com/",
+        "routes": [
+          "사당역",
+          "서울역",
+          "합정역",
+          "종합운동장역",
+          "노원역"
+        ],
+        "note": "예매 기간 8/11~10/1. 문의: 카카오톡 채널 또는 02-6952-0321"
       }
     ]
   },
