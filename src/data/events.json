@@ -49,7 +49,7 @@
     "city": "파주",
     "startDate": "2026-09-19",
     "endDate": "2026-09-19",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 공식 홈페이지 없음 — 위 링크는 주최측 공식 인스타그램(@all_that_dmz)입니다. 재검증(2026-08-29): 실제 행사 자체는 9/18(금)~20(일) 3일간 진행되지만, 넬·10CM·선우정아 등 라인업 공연(메인 공연)은 둘째 날인 9/19(토) 하루에 집중되어 있습니다 — KOPIS의 9/19 단독 등록은 오류가 아니라 콘서트 프로그램 자체의 일정을 정확히 반영한 것으로 보입니다(출처: 국제뉴스 2026-08-24 보도). 포스터는 경기관광공사 공식 제공/보도자료 이미지입니다. 재검증(2026-08-29): 예매처(티켓링크)는 확인했으나 검색 결과 상당수가 2025년 에디션(9/5~7) 관련 기사라 2026년(9/18~20) 개별 예매 링크는 아직 찾지 못했습니다.",
+    "note": "공식 홈페이지 없음 — 주최측 공식 인스타그램(@all_that_dmz)이 공식 채널입니다. 포스터는 경기관광공사 공식 제공 이미지.",
     "description": "파주 임진각 평화누리 일원에서 열리는 야외 음악 페스티벌.",
     "officialUrl": "https://www.instagram.com/all_that_dmz",
     "lineup": [
@@ -60,7 +60,76 @@
       "서도밴드",
       "더픽스"
     ],
-    "posterUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
+    "posterUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png",
+    "schedule": "9월 19일(토) 16:30 시작, 관람 시간 약 270분(4시간 30분)",
+    "funFacts": [
+      "티켓 가격이 3,000원(예매수수료 2,000원 별도)이에요. 넬·10CM·선우정아 조합을 이 가격에 볼 수 있는 건 경기관광공사가 여는 공공 페스티벌이라 가능한 일 — 라인업은 민간 페스티벌급, 가격은 공공요금인 셈입니다.",
+      "이름 그대로 '피크닉' 컨셉이라 좌석이 아니라 잔디밭에 돗자리를 깔고 앉아서 보는 형식이에요. 얇은 돗자리나 방석은 챙겨가는 걸 추천.",
+      "행사 자체는 9/18(금)~20(일) 3일이지만, 넬·10CM 라인업이 걸린 메인 공연은 9/19(토) 하루뿐이에요. 앞뒤 이틀은 캠핑장에서 버스킹·요가·바람개비 만들기 같은 부대 프로그램 위주로 진행됩니다.",
+      "바로 옆 수풀누리에서 '경기 푸드 페스타 2026'이 같은 시기에 열려서, 공연 전후로 먹거리 부스도 같이 구경할 수 있어요.",
+      "1부 무대엔 뮤지컬 배우 민우혁이 오르는 평화 특별무대가 따로 마련돼 있어요 — DMZ 접경 지역이라는 장소성을 살린 구성입니다."
+    ],
+    "lineupByDay": [
+      {
+        "date": "2026-09-19",
+        "label": "9월 19일(토) · 메인 공연",
+        "acts": [
+          "넬(NELL)",
+          "10CM",
+          "선우정아",
+          "너드커넥션",
+          "서도밴드",
+          "더픽스",
+          "민우혁 (평화 특별무대, 1부)"
+        ]
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-08-24",
+        "text": "국제뉴스 보도로 메인 라인업(넬·10CM·선우정아)이 9/19 하루에 집중된다는 걸 확인했어요. KOPIS에 9/19로만 등록된 게 오류가 아니라 실제 프로그램 구성이었습니다.",
+        "sourceUrl": "https://www.gukjenews.com/news/articleView.html?idxno=3672269"
+      },
+      {
+        "date": "2026-08-26",
+        "text": "티켓링크에서 예매가 열렸어요. 가격은 3,000원(예매수수료 2,000원 별도), 새로 생긴 지정석 스페셜존도 확인했습니다.",
+        "sourceUrl": "https://www.asiatoday.co.kr/kn/view.php?key=20260824010007776"
+      },
+      {
+        "date": "2026-08-30",
+        "text": "예매 링크를 다시 확인했는데, 검색되는 기사 상당수가 2025년 에디션(9/5~7) 관련이라 2026년 개별 예매 페이지 URL은 아직 특정하지 못했어요. 티켓링크에서 '평화누리 피크닉'으로 직접 검색하는 걸 추천합니다."
+      }
+    ],
+    "sources": [
+      {
+        "label": "경기관광공사, '2026 평화누리 피크닉 페스티벌' 개최 - 전국도민일보",
+        "url": "http://www.dmilbo.com/news/articleView.html?idxno=562957"
+      },
+      {
+        "label": "'돗자리 펴놓고' 즐기는 평화누리 피크닉 페스티벌 - 국제뉴스",
+        "url": "https://www.gukjenews.com/news/articleView.html?idxno=3672269"
+      },
+      {
+        "label": "넬·10CM 뜬다…임진각 잔디밭이 콘서트장으로 - 천지일보",
+        "url": "https://www.newscj.com/news/articleView.html?idxno=3427460"
+      },
+      {
+        "label": "돗자리 펴고 가을밤 라이브 즐긴다 - 아시아투데이",
+        "url": "https://www.asiatoday.co.kr/kn/view.php?key=20260824010007776"
+      },
+      {
+        "label": "경기도, 평화누리 피크닉 페스티벌 개최 - hbnpress",
+        "url": "https://hbnpress.com/news/view/1065585620847167"
+      },
+      {
+        "label": "임진각 평화누리 - 파주시 문화관광",
+        "url": "https://tour.paju.go.kr/user/tour/place/BD_tourPlaceInfoView.do?menuCode=78&cntntsSn=52&q_gubunCode=1003"
+      },
+      {
+        "label": "임진각 평화누리공원 근처 맛집·카페 - 펜후스토리",
+        "url": "https://penhoo.com/post/bae1c1ba/416"
+      }
+    ]
   },
   {
     "id": "kopis-onewe-live-2026-09",
@@ -276,7 +345,7 @@
     "endDate": "2026-11-22",
     "ticketUrl": "https://ticket.yes24.com/Perf/59840",
     "officialUrl": "https://wonderli.vet/",
-    "note": "국내 최대 규모 J-POP·서브컬처 페스티벌. 전체 라인업 42팀 2026-08-28 발표 완료 (타임테이블은 9월 말 공개 예정). 티켓은 2026-09-01 20:00 멜론티켓·티켓링크·예스24티켓·티켓피아에서 오픈 예정입니다.",
+    "note": "타임테이블(날짜별 출연 순서)은 9월 말 공개 예정 — 확정되는 대로 이 페이지의 라인업을 날짜별로 나눌 예정입니다.",
     "description": "원더로크와 LIVET이 주최하는 국내 최대 규모 J-POP & Iconic 아티스트 페스티벌. 2023년 시작돼 매년 4분기 킨텍스에서 열리며, 2025년에는 2만 명 이상이 방문했다.",
     "lineup": [
       "THE ORAL CIGARETTES",
@@ -299,7 +368,48 @@
       "쏜애플",
       "송소희"
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png"
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png",
+    "funFacts": [
+      "쿠로미(Kuromi)가 라인업에 이름을 올렸어요 — 산리오 캐릭터의 '국내 최초 라이브 무대'라고 하니, 기존 음악 페스티벌에서 보기 힘든 조합입니다.",
+      "호시마치 스이세이·하츠네 미쿠 같은 버추얼 아티스트가 TAK과 협업해 3D 버추얼 무대를 선보일 예정이에요. BanG Dream! 프로젝트(MyGO!!!!!·Roselia)까지 더하면 서브컬처 라인업만으로도 하루 스케줄이 꽉 찹니다.",
+      "2025년 관객 수가 22,578명으로 전년(11,697명) 대비 93% 늘었어요. KOPIS 집계 기준 2025년 국내 뮤직 페스티벌 중 8위 규모였습니다.",
+      "2025년엔 이키모노가카리가 26년 만에 첫 내한을, 여러 밴드가 생애 첫 해외 공연을 원더리벳에서 치렀어요 — '해외 첫 무대'가 자주 나오는 페스티벌이라는 뜻이죠.",
+      "작년(2025년)엔 공식 굿즈 판매처(버프즈)의 재고 관리 오류로 일부 주문이 취소되는 일이 있었어요(공식 사과문 발표, 마일리지 보상 진행). 올해도 굿즈 오픈 직후엔 몰릴 가능성이 높으니 참고하세요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-28",
+        "text": "한·일 총 42팀 전체 라인업이 공개됐어요. 쿠로미의 라이브 데뷔, 호시마치 스이세이·하츠네 미쿠×TAK 협업 무대가 특히 화제가 됐습니다.",
+        "sourceUrl": "https://www.starnewskorea.com/music/2026/08/28/2026082811013161926"
+      },
+      {
+        "date": "2026-08-30",
+        "text": "티켓 오픈은 9/1(화) 20:00 멜론티켓·티켓링크·예스24티켓·티켓피아로 확정됐어요. 세부 타임테이블은 아직 안 나왔는데, 공개되는 대로 날짜별 라인업으로 정리할게요.",
+        "sourceUrl": "https://ticket.yes24.com/Perf/59840"
+      }
+    ],
+    "sources": [
+      {
+        "label": "한로로·넬·쿠로미 등장…'원더리벳 2026' 韓·日 라인업 42팀 공개 - 스타뉴스",
+        "url": "https://www.starnewskorea.com/music/2026/08/28/2026082811013161926"
+      },
+      {
+        "label": "'원더리벳 2026', 日·韓 전체 라인업 42팀 오픈 - 필드뉴스",
+        "url": "https://www.fieldnews.co.kr/news/articleView.html?idxno=233569"
+      },
+      {
+        "label": "WONDERLIVET 2025 - 나무위키",
+        "url": "https://namu.wiki/w/WONDERLIVET%202025"
+      },
+      {
+        "label": "WONDERLIVET 2025 공식 굿즈 판매 버프즈 공식 사과문",
+        "url": "https://buffz.co.kr/article/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD/1/10152"
+      },
+      {
+        "label": "WONDERLIVET 2026 (원더리벳 2026) - 티켓링크",
+        "url": "https://m.ticketlink.co.kr/product/65048"
+      }
+    ]
   },
   {
     "id": "kopis-domi-jdbeck-2026-12",
@@ -358,6 +468,80 @@
       "TEI(테이)",
       "2am(투에이엠)"
     ],
-    "posterUrl": "https://static.luck-d.com/ticket/performance/902/poster_1784872819559.webp"
+    "posterUrl": "https://static.luck-d.com/ticket/performance/902/poster_1784872819559.webp",
+    "funFacts": [
+      "페스티벌 이름의 '고스트(GHOST)'는 무서운 얘기가 아니라 'K-드라마·영화 OST'에서 따온 말장난이에요 — 정식 부제도 '경기 한류 OST 페스티벌'입니다.",
+      "최종 라인업이 30팀까지 확정됐지만, 날짜별 출연진은 아직 절반도 공개되지 않았어요. 지금까지 확인된 건 9일 멜로망스, 10일 웬디, 11일 이영지·모그·윤일상&WE필하모닉 정도고 나머지는 공식 채널에서 순차 공개될 예정입니다.",
+      "같은 임진각 평화누리에서 9월엔 [평화누리 피크닉 페스티벌](/events/kopis-pyeonghwanuri-picnic-2026-09/)이, 10월엔 이 GHOST Festival이 열려요 — 한 장소에서 성격이 다른 야외 페스티벌을 연달아 볼 수 있는 셈이에요."
+    ],
+    "lineupByDay": [
+      {
+        "date": "2026-10-09",
+        "acts": [
+          "MeloMance(멜로망스)"
+        ]
+      },
+      {
+        "date": "2026-10-10",
+        "acts": [
+          "WENDY(웬디)"
+        ]
+      },
+      {
+        "date": "2026-10-11",
+        "acts": [
+          "LEE YOUNGJI(이영지)",
+          "Mowg(모그)",
+          "윤일상 & WE필하모닉 with 썸일상"
+        ]
+      },
+      {
+        "label": "날짜 미정 · 공식 채널 순차 공개 예정",
+        "acts": [
+          "FTISLAND",
+          "YB",
+          "Wonstein(원슈타인)",
+          "Lee Mujin(이무진)",
+          "LEESEOKHOON(이석훈)",
+          "TOUCHED(터치드)",
+          "PUNCH(펀치)",
+          "Heize(헤이즈)",
+          "ISAAC HONG(아이작홍)",
+          "GUMMY(거미)",
+          "Kim Na Young(김나영)",
+          "LYn(린)",
+          "Baek Z Young(백지영)",
+          "WINNER(위너)",
+          "KickFlip(킥플립)",
+          "Paul Kim(폴킴)",
+          "FLARE U(플레어유)",
+          "HAJIN(하진)",
+          "Kim Jong Kook(김종국)",
+          "KIMCHANGWAN BAND(김창완밴드)",
+          "RESCENE(리센느)",
+          "RAIN(비)",
+          "Lee Eun Mee(이은미)",
+          "TEI(테이)",
+          "2am(투에이엠)"
+        ]
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-08-17",
+        "text": "최종 30팀 라인업이 발표됐어요. 레귤러 티켓은 8/19(수) 14:00부터 NOL·멜론티켓·티켓링크·KREAM에서 오픈됩니다.",
+        "sourceUrl": "https://www.kyeonggi.com/article/20260817580135"
+      }
+    ],
+    "sources": [
+      {
+        "label": "'2026 고스트 페스티벌' 최종 라인업 30팀 공개 - 경기일보",
+        "url": "https://www.kyeonggi.com/article/20260817580135"
+      },
+      {
+        "label": "2026 GHOST Festival 공식 홈페이지",
+        "url": "https://www.ghostfestival.kr/"
+      }
+    ]
   }
 ]

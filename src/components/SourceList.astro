@@ -1,0 +1,23 @@
+---
+import type { EventSource } from '../lib/events';
+interface Props { sources: EventSource[] }
+const { sources } = Astro.props;
+---
+{sources.length > 0 && (
+  <section class="source-list">
+    <h3>정보 출처</h3>
+    <ol>
+      {sources.map((s) => (
+        <li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.label}</a></li>
+      ))}
+    </ol>
+  </section>
+)}
+<style>
+  .source-list { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); }
+  .source-list h3 { margin: 0 0 0.5rem; font-size: 0.72rem; font-weight: 600; color: #6e6a8c; text-transform: uppercase; letter-spacing: 0.04em; }
+  .source-list ol { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.25rem; }
+  .source-list li { font-size: 0.74rem; color: #6e6a8c; line-height: 1.5; }
+  .source-list a { color: #6e6a8c; text-decoration: underline; text-decoration-color: rgba(110,106,140,0.4); }
+  .source-list a:hover { color: #a9a4c9; }
+</style>

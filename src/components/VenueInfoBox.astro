@@ -1,0 +1,55 @@
+---
+import { getVenueInfo } from '../lib/venues';
+interface Props { venue: string }
+const { venue } = Astro.props;
+const info = getVenueInfo(venue);
+---
+{info && (
+  <section class="venue-box">
+    <h2>공연장 정보 · {venue}</h2>
+    {info.address && <p class="venue-address">{info.address}</p>}
+
+    {info.transit && info.transit.length > 0 && (
+      <div class="venue-block">
+        <h3>오시는 길</h3>
+        <ul>{info.transit.map((t) => <li>{t}</li>)}</ul>
+      </div>
+    )}
+
+    {info.parking && (
+      <div class="venue-block">
+        <h3>주차</h3>
+        <p>{info.parking}</p>
+      </div>
+    )}
+
+    {info.nearbyFood && info.nearbyFood.length > 0 && (
+      <div class="venue-block">
+        <h3>주변 맛집</h3>
+        <ul class="food-list">
+          {info.nearbyFood.map((f) => (
+            <li><strong>{f.name}</strong><span>{f.desc}</span></li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {info.tip && <p class="venue-tip">{info.tip}</p>}
+  </section>
+)}
+<style>
+  .venue-box { margin: 2rem 0; padding: 1.25rem; background: rgba(255,255,255,0.04); border-radius: 12px; }
+  .venue-box h2 { font-size: 1.05rem; margin: 0 0 0.5rem; color: #e5e2f7; }
+  .venue-address { margin: 0 0 1rem; color: #a9a4c9; font-size: 0.9rem; }
+  .venue-block { margin: 0 0 1.1rem; }
+  .venue-block:last-of-type { margin-bottom: 0; }
+  .venue-block h3 { font-size: 0.88rem; margin: 0 0 0.4rem; color: #ff8fbe; text-transform: uppercase; letter-spacing: 0.03em; }
+  .venue-block ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .venue-block p { margin: 0; color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; }
+  .venue-block li { color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; }
+  .food-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem 1rem; padding-left: 0 !important; list-style: none; }
+  .food-list li { display: flex; flex-direction: column; gap: 0.1rem; }
+  .food-list strong { color: #f5f3ff; font-size: 0.92rem; }
+  .food-list span { color: #a9a4c9; font-size: 0.82rem; }
+  .venue-tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(110,231,255,0.08); border-radius: 8px; color: #bdeeff; font-size: 0.85rem; }
+</style>

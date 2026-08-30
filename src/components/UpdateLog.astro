@@ -1,0 +1,49 @@
+---
+import type { UpdateLogEntry } from '../lib/events';
+interface Props { updates: UpdateLogEntry[] }
+const { updates } = Astro.props;
+const sorted = updates.slice().sort((a, b) => b.date.localeCompare(a.date));
+
+function fmt(iso: string) {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()}`;
+}
+---
+{sorted.length > 0 && (
+  <section class="update-log">
+    <h2>직관냥의 취재 수첩 <span class="sub">계속 확인하고 업데이트해요</span></h2>
+    <ol class="update-log-list">
+      {sorted.map((u) => (
+        <li>
+          <span class="update-date">{fmt(u.date)}</span>
+          <span class="update-text">
+            {u.text}
+            {u.sourceUrl && (
+              <a class="update-source" href={u.sourceUrl} target="_blank" rel="noopener noreferrer">근거 보기 ↗</a>
+            )}
+          </span>
+        </li>
+      ))}
+    </ol>
+  </section>
+)}
+<style>
+  .update-log { margin: 1.75rem 0; }
+  .update-log h2 { font-size: 1.05rem; margin: 0 0 0.85rem; color: #e5e2f7; display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+  .update-log .sub { font-size: 0.78rem; font-weight: 400; color: #a9a4c9; }
+  .update-log-list { list-style: none; margin: 0; padding: 0; border-left: 2px solid rgba(255,255,255,0.1); }
+  .update-log-list li { position: relative; padding: 0 0 1rem 1.25rem; display: flex; gap: 0.75rem; }
+  .update-log-list li::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0.35rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff5fa2;
+  }
+  .update-date { flex-shrink: 0; font-weight: 700; color: #ff8fbe; font-size: 0.85rem; min-width: 2.6rem; }
+  .update-text { color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; }
+  .update-source { margin-left: 0.4rem; font-size: 0.82rem; color: #6ee7ff; white-space: nowrap; }
+</style>

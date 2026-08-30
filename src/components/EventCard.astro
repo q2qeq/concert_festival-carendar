@@ -1,5 +1,6 @@
 ---
 import type { ConcertEvent } from '../lib/events';
+import { hasRecentUpdate } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -16,6 +17,7 @@ const STATUS_LABEL: Record<string, string> = {
   postponed: '연기',
   cancelled: '취소',
 };
+const isFresh = hasRecentUpdate(event);
 ---
 <a class={`event-card${status !== 'scheduled' ? ' is-' + status : ''}`} href={`/events/${event.id}/`}>
   {event.posterUrl && (
@@ -26,19 +28,26 @@ const STATUS_LABEL: Record<string, string> = {
     <h3>{event.artist}</h3>
     <p class="meta">{dateLabel} · {event.venue} ({event.city}) · {event.genre}</p>
   </div>
-  {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
-  {status === 'scheduled' && event.ticketUrl && <span class="ticket-tag">예매 가능</span>}
+  <div class="tags">
+    {isFresh && <span class="fresh-tag">새 소식</span>}
+    {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
+    {status === 'scheduled' && event.ticketUrl && <span class="ticket-tag">예매 가능</span>}
+  </div>
 </a>
 <style>
   .event-card {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem 0;
+    padding: 0.9rem 0.75rem;
+    margin: 0 -0.75rem;
+    border-radius: 12px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     text-decoration: none;
     color: inherit;
+    transition: background 0.15s;
   }
+  .event-card:hover { background: rgba(255,255,255,0.04); }
   .event-card:hover h3 { color: #ff5fa2; }
   .thumb {
     flex-shrink: 0;
@@ -47,20 +56,31 @@ const STATUS_LABEL: Record<string, string> = {
     object-fit: cover;
     border-radius: 6px;
     background: rgba(255,255,255,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
   .event-card.is-postponed,
   .event-card.is-cancelled { opacity: 0.6; }
   .event-card.is-cancelled h3 { text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.6); }
   .info { flex: 1; min-width: 0; }
-  h3 { margin: 0 0 0.2rem; font-size: 1.05rem; }
+  h3 { margin: 0 0 0.2rem; font-size: 1.05rem; transition: color 0.15s; }
   .meta { margin: 0; color: #a9a4c9; font-size: 0.85rem; }
+  .tags { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; flex-shrink: 0; }
   .ticket-tag {
-    flex-shrink: 0;
     font-size: 0.75rem;
     color: #6ee7ff;
     border: 1px solid rgba(110,231,255,0.4);
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
+    white-space: nowrap;
+  }
+  .fresh-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #101018;
+    background: linear-gradient(120deg, #ff5fa2, #ff8fbe);
+    padding: 0.22rem 0.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
   }
   .status-tag {
     flex-shrink: 0;
@@ -68,6 +88,7 @@ const STATUS_LABEL: Record<string, string> = {
     font-weight: 700;
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
+    white-space: nowrap;
   }
   .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); background: rgba(255,184,76,0.1); }
   .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); background: rgba(255,107,107,0.1); }

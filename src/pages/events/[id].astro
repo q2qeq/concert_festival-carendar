@@ -1,7 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
-import { events } from '../../lib/events';
+import CharacterNote from '../../components/CharacterNote.astro';
+import UpdateLog from '../../components/UpdateLog.astro';
+import VenueInfoBox from '../../components/VenueInfoBox.astro';
+import SourceList from '../../components/SourceList.astro';
+import MerchGrid from '../../components/MerchGrid.astro';
+import { events, festivalLineupDays } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -9,9 +14,15 @@ export function getStaticPaths() {
 
 const { event } = Astro.props;
 
+const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
+
 function fmtFull(iso: string) {
   const d = new Date(iso + 'T00:00:00');
   return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
+}
+function fmtDay(iso: string) {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}월 ${d.getDate()}일 (${WEEKDAYS[d.getDay()]})`;
 }
 const dateLabel = event.startDate === event.endDate
   ? fmtFull(event.startDate)
@@ -38,6 +49,8 @@ const links = [
 // 30팀 안팎인 대형 페스티벌 페이지가 아티스트 이름 벽으로 압도하지 않게 한다.
 const LINEUP_COLLAPSE_THRESHOLD = 12;
 const LINEUP_PREVIEW_COUNT = 6;
+const lineupDays = festivalLineupDays(event);
+const lineupTotal = lineupDays.reduce((sum, d) => sum + d.acts.length, 0);
 
 // schema.org structured data for Google's Event rich results.
 // `offers` is only included when we have a real ticket URL - never fabricated.
@@ -131,27 +144,43 @@ const jsonLd = {
       <div><dt>일정</dt><dd>{dateLabel}</dd></div>
       <div><dt>장소</dt><dd>{event.venue} ({event.city})</dd></div>
       <div><dt>장르</dt><dd>{event.genre}</dd></div>
+      {event.schedule && <div><dt>타임테이블</dt><dd>{event.schedule}</dd></div>}
     </dl>
+
+    {event.note && <p class="note">{event.note}</p>}
+
+    {event.funFacts && event.funFacts.length > 0 && (
+      <CharacterNote facts={event.funFacts} />
+    )}
 
     {event.genre === '페스티벌' && (
       <section class="lineup-section">
-        <h2>라인업{event.lineup && event.lineup.length > 0 ? ` (${event.lineup.length}팀)` : ''}</h2>
-        {event.lineup && event.lineup.length > 0 ? (
-          event.lineup.length > LINEUP_COLLAPSE_THRESHOLD ? (
-            <details class="lineup-details">
-              <summary>
-                {event.lineup.slice(0, LINEUP_PREVIEW_COUNT).join(' · ')} 외 {event.lineup.length - LINEUP_PREVIEW_COUNT}팀
-                <span class="lineup-toggle-hint">전체 라인업 보기</span>
-              </summary>
-              <ul class="lineup-list">
-                {event.lineup.map((artist) => <li>{artist}</li>)}
-              </ul>
-            </details>
-          ) : (
-            <ul class="lineup-list">
-              {event.lineup.map((artist) => <li>{artist}</li>)}
-            </ul>
-          )
+        <h2>라인업{lineupTotal > 0 ? ` (${lineupTotal}팀)` : ''}</h2>
+        {lineupDays.length > 0 ? (
+          <div class="lineup-days">
+            {lineupDays.map((day) => (
+              <div class="lineup-day">
+                {(day.date || day.label) && (
+                  <h3 class="lineup-day-label">{day.date ? fmtDay(day.date) : day.label}</h3>
+                )}
+                {day.acts.length > LINEUP_COLLAPSE_THRESHOLD ? (
+                  <details class="lineup-details">
+                    <summary>
+                      {day.acts.slice(0, LINEUP_PREVIEW_COUNT).join(' · ')} 외 {day.acts.length - LINEUP_PREVIEW_COUNT}팀
+                      <span class="lineup-toggle-hint">전체 라인업 보기</span>
+                    </summary>
+                    <ul class="lineup-list">
+                      {day.acts.map((artist) => <li>{artist}</li>)}
+                    </ul>
+                  </details>
+                ) : (
+                  <ul class="lineup-list">
+                    {day.acts.map((artist) => <li>{artist}</li>)}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
         ) : (
           <p class="lineup-pending">
             라인업이 아직 이 페이지에 정리되지 않았습니다. 공식 홈페이지·공지에서 최신 라인업을 확인하세요.
@@ -159,6 +188,8 @@ const jsonLd = {
         )}
       </section>
     )}
+
+    {event.merch && event.merch.length > 0 && <MerchGrid items={event.merch} />}
 
     {links.length > 0 && (
       <div class="links">
@@ -175,12 +206,18 @@ const jsonLd = {
       </div>
     )}
 
-    {event.note && <p class="note">{event.note}</p>}
+    <AdSlot slot="event-mid" />
+
+    {event.updates && event.updates.length > 0 && <UpdateLog updates={event.updates} />}
+
+    <VenueInfoBox venue={event.venue} />
 
     <p class="disclaimer">
       공연 일정·장소·가격 등은 주최측 사정으로 변경될 수 있습니다. 예매 전 반드시 위
       공식 링크 또는 아티스트/기획사 공지에서 최신 정보를 확인하세요.
     </p>
+
+    {event.sources && event.sources.length > 0 && <SourceList sources={event.sources} />}
 
     <AdSlot slot="event-bottom" />
   </article>
@@ -206,11 +243,12 @@ const jsonLd = {
     text-decoration: none;
     font-size: 0.92rem;
     font-weight: 600;
+    transition: background 0.15s, transform 0.15s;
   }
-  .link-btn:hover { background: rgba(255,255,255,0.14); }
+  .link-btn:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
   .link-btn.primary { background: #ff5fa2; color: #101018; }
   .link-btn.primary:hover { background: #ff7bb2; }
-  .note { color: #d8d5ef; }
+  .note { color: #d8d5ef; background: rgba(255,255,255,0.04); padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem; }
   .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.85rem; }
   .status-banner {
     margin: 1rem 0;
@@ -232,6 +270,17 @@ const jsonLd = {
   }
   .lineup-section { margin: 1.5rem 0; }
   .lineup-section h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #e5e2f7; }
+  .lineup-days { display: flex; flex-direction: column; gap: 1.1rem; }
+  .lineup-day-label {
+    font-size: 0.85rem;
+    margin: 0 0 0.5rem;
+    color: #ff8fbe;
+    font-weight: 700;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background: rgba(255, 95, 162, 0.12);
+    border-radius: 999px;
+  }
   .lineup-list {
     columns: 2;
     column-gap: 1.75rem;

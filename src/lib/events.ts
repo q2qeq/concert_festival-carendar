@@ -1,5 +1,35 @@
 import raw from '../data/events.json';
 
+export interface EventSource {
+  label: string;
+  url: string;
+}
+
+// One day's worth of festival lineup. `date` is an ISO date when known; leave it
+// unset (and use `label` instead) for a bucket of acts whose exact day hasn't been
+// announced yet - never guess a date just to fill the field in.
+export interface LineupDay {
+  date?: string;
+  label?: string;
+  acts: string[];
+}
+
+export interface MerchItem {
+  label: string;
+  imageUrl?: string;
+  url?: string;
+  note?: string;
+}
+
+// A dated research/verification log entry, shown to readers as a timeline instead
+// of buried inside `note`. This is also where "새 소식이 있었다" issue-tracking
+// updates belong (lineup reveals, ticket opens, controversies, etc).
+export interface UpdateLogEntry {
+  date: string; // ISO date
+  text: string;
+  sourceUrl?: string;
+}
+
 export interface ConcertEvent {
   id: string;
   artist: string;
@@ -18,14 +48,36 @@ export interface ConcertEvent {
   // real official source and prefer linking over rehosting — never generated,
   // scraped from an unofficial site, or fabricated.
   posterUrl?: string;
-  // Headliner/confirmed-artist list. Required in spirit for genre === '페스티벌' -
-  // events/[id].astro always renders a 라인업 section for festivals (showing a
-  // "공개 예정" placeholder when this is empty) so the gap is visible rather than
-  // silently missing. No API provides festival lineups, so this stays a manual,
-  // sourced-from-the-official-announcement field - never guessed.
+  // Headliner/confirmed-artist list, flat (no per-day breakdown known/needed).
+  // Prefer `lineupByDay` when the festival spans multiple days with different
+  // acts each day - events/[id].astro falls back to this field wrapped as a
+  // single group when `lineupByDay` isn't set.
   lineup?: string[];
+  // Per-day lineup breakdown. Use this whenever official sources confirm which
+  // acts play which day. A bucket with no confirmed date yet (rest of the lineup,
+  // TBA) should omit `date` and use `label` instead - never invent a date.
+  lineupByDay?: LineupDay[];
+  // A specific start time / running time detail worth surfacing on its own
+  // (e.g. "16:30 시작, 관람 시간 약 270분"), separate from the date range.
+  schedule?: string;
+  // Short, essential caveats only (e.g. "공식 홈페이지 없음 — 아래는 공식 인스타그램").
+  // Long research reasoning belongs in `updates` instead, and citations in `sources`.
   note?: string;
   description?: string;
+  // Researched trivia/context that makes the event worth reading about, not just
+  // attending - history, scale, why a lineup choice is notable, practical tips.
+  // Always sourced from real reporting; never invented.
+  funFacts?: string[];
+  // Official merch/goods info, only when a real product photo/listing was found.
+  // Leave unset (not a placeholder) when nothing official has been announced yet.
+  merch?: MerchItem[];
+  // Dated timeline of what's changed or been confirmed since the event was first
+  // published - lineup reveals, ticket opens, notable news. Renders as a visible
+  // "최근 업데이트" log so readers have a reason to check back on this page.
+  updates?: UpdateLogEntry[];
+  // Citations for the research above. Rendered in small print at the very bottom
+  // of the page, separate from the reader-facing content.
+  sources?: EventSource[];
   // Absent/undefined is treated as 'scheduled'. Set when a show's status changes
   // after it was first published (e.g. a postponement announced in the news, not
   // something the KOPIS auto-fetch pipeline can detect on its own).
@@ -64,4 +116,31 @@ export function allCities(): string[] {
 export function monthLabel(iso: string): string {
   const d = new Date(iso + 'T00:00:00');
   return `${d.getFullYear()}년 ${d.getMonth() + 1}월`;
+}
+
+// Normalizes an event's lineup into day-grouped form for rendering, whether the
+// data came in as `lineupByDay` (preferred) or a flat `lineup` array (fallback,
+// wrapped as a single unlabeled group).
+export function festivalLineupDays(event: ConcertEvent): LineupDay[] {
+  if (event.lineupByDay && event.lineupByDay.length > 0) return event.lineupByDay;
+  if (event.lineup && event.lineup.length > 0) return [{ acts: event.lineup }];
+  return [];
+}
+
+// Most recent update date for an event, or null. Used to surface a "최근 업데이트"
+// signal on list cards so returning readers can spot pages with fresh news.
+export function latestUpdateISO(event: ConcertEvent): string | null {
+  if (!event.updates || event.updates.length === 0) return null;
+  return event.updates.reduce((max, u) => (u.date > max ? u.date : max), event.updates[0].date);
+}
+
+// True when an event's most recent update happened within `days` days of `fromISO`
+// (defaults to today). Drives the "업데이트" badge on EventCard.
+export function hasRecentUpdate(event: ConcertEvent, days = 7, fromISO?: string): boolean {
+  const latest = latestUpdateISO(event);
+  if (!latest) return false;
+  const from = fromISO ? new Date(fromISO + 'T00:00:00') : new Date();
+  const latestDate = new Date(latest + 'T00:00:00');
+  const diffDays = Math.floor((from.getTime() - latestDate.getTime()) / 86400000);
+  return diffDays >= 0 && diffDays <= days;
 }
