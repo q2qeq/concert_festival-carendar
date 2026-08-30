@@ -516,6 +516,126 @@
     ]
   },
   {
+    "id": "ghost-festival-2026-10",
+    "artist": "2026 GHOST Festival (경기 한류 OST 페스티벌)",
+    "genre": "페스티벌",
+    "venue": "임진각 평화누리",
+    "city": "파주",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-11",
+    "ticketUrl": "https://www.luck-d.com/ticket/902",
+    "officialUrl": "https://www.ghostfestival.kr/",
+    "note": "2026-08-19(수) 14:00 지정석 티켓 오픈 (NOL/티켓링크/네이버예약/멜론티켓/KREAM 등). 라인업: YB, 비, 거미, 백지영, 김창완밴드 등 최종 30팀.",
+    "description": "경기도 파주 임진각 평화누리에서 열리는 한류 OST 테마 뮤직 페스티벌.",
+    "lineup": [
+      "MeloMance(멜로망스)",
+      "FTISLAND",
+      "YB",
+      "Wonstein(원슈타인)",
+      "Lee Mujin(이무진)",
+      "LEESEOKHOON(이석훈)",
+      "TOUCHED(터치드)",
+      "PUNCH(펀치)",
+      "Heize(헤이즈)",
+      "ISAAC HONG(아이작홍)",
+      "GUMMY(거미)",
+      "Kim Na Young(김나영)",
+      "LYn(린)",
+      "Baek Z Young(백지영)",
+      "WENDY(웬디)",
+      "WINNER(위너)",
+      "KickFlip(킥플립)",
+      "Paul Kim(폴킴)",
+      "FLARE U(플레어유)",
+      "HAJIN(하진)",
+      "Kim Jong Kook(김종국)",
+      "KIMCHANGWAN BAND(김창완밴드)",
+      "RESCENE(리센느)",
+      "Mowg(모그)",
+      "RAIN(비)",
+      "윤일상 & WE필하모닉 with 썸일상",
+      "LEE YOUNGJI(이영지)",
+      "Lee Eun Mee(이은미)",
+      "TEI(테이)",
+      "2am(투에이엠)"
+    ],
+    "posterUrl": "https://static.luck-d.com/ticket/performance/902/poster_1784872819559.webp",
+    "funFacts": [
+      "페스티벌 이름의 '고스트(GHOST)'는 무서운 얘기가 아니라 'K-드라마·영화 OST'에서 따온 말장난이에요 — 정식 부제도 '경기 한류 OST 페스티벌'입니다.",
+      "최종 라인업이 30팀까지 확정됐지만, 날짜별 출연진은 아직 절반도 공개되지 않았어요. 지금까지 확인된 건 9일 멜로망스, 10일 웬디, 11일 이영지·모그·윤일상&WE필하모닉 정도고 나머지는 공식 채널에서 순차 공개될 예정입니다.",
+      "같은 임진각 평화누리에서 9월엔 [평화누리 피크닉 페스티벌](/events/kopis-pyeonghwanuri-picnic-2026-09/)이, 10월엔 이 GHOST Festival이 열려요 — 한 장소에서 성격이 다른 야외 페스티벌을 연달아 볼 수 있는 셈이에요."
+    ],
+    "lineupByDay": [
+      {
+        "date": "2026-10-09",
+        "acts": [
+          "MeloMance(멜로망스)"
+        ]
+      },
+      {
+        "date": "2026-10-10",
+        "acts": [
+          "WENDY(웬디)"
+        ]
+      },
+      {
+        "date": "2026-10-11",
+        "acts": [
+          "LEE YOUNGJI(이영지)",
+          "Mowg(모그)",
+          "윤일상 & WE필하모닉 with 썸일상"
+        ]
+      },
+      {
+        "label": "날짜 미정 · 공식 채널 순차 공개 예정",
+        "acts": [
+          "FTISLAND",
+          "YB",
+          "Wonstein(원슈타인)",
+          "Lee Mujin(이무진)",
+          "LEESEOKHOON(이석훈)",
+          "TOUCHED(터치드)",
+          "PUNCH(펀치)",
+          "Heize(헤이즈)",
+          "ISAAC HONG(아이작홍)",
+          "GUMMY(거미)",
+          "Kim Na Young(김나영)",
+          "LYn(린)",
+          "Baek Z Young(백지영)",
+          "WINNER(위너)",
+          "KickFlip(킥플립)",
+          "Paul Kim(폴킴)",
+          "FLARE U(플레어유)",
+          "HAJIN(하진)",
+          "Kim Jong Kook(김종국)",
+          "KIMCHANGWAN BAND(김창완밴드)",
+          "RESCENE(리센느)",
+          "RAIN(비)",
+          "Lee Eun Mee(이은미)",
+          "TEI(테이)",
+          "2am(투에이엠)"
+        ]
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-08-17",
+        "text": "최종 30팀 라인업이 발표됐어요. 레귤러 티켓은 8/19(수) 14:00부터 NOL·멜론티켓·티켓링크·KREAM에서 오픈됩니다.",
+        "sourceUrl": "https://www.kyeonggi.com/article/20260817580135"
+      }
+    ],
+    "sources": [
+      {
+        "label": "'2026 고스트 페스티벌' 최종 라인업 30팀 공개 - 경기일보",
+        "url": "https://www.kyeonggi.com/article/20260817580135"
+      },
+      {
+        "label": "2026 GHOST Festival 공식 홈페이지",
+        "url": "https://www.ghostfestival.kr/"
+      }
+    ]
+  },
+  {
     "id": "kopis-jarasum-jazz-2026-10",
     "artist": "자라섬재즈페스티벌×강릉아트센터: 킨가 그위크 (Kinga Głyk)",
     "genre": "페스티벌",
@@ -587,6 +707,17 @@
     ]
   },
   {
+    "id": "kopis-PF297586",
+    "artist": "cero, Contemporary Seoul Cruise",
+    "genre": "J-POP",
+    "venue": "KT&G 상상마당 라이브홀 [마포]",
+    "city": "서울",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-10",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297586_260804_102420.jpg",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+  },
+  {
     "id": "charlie-puth-2026-10",
     "artist": "Charlie Puth (찰리 푸스)",
     "genre": "팝",
@@ -613,6 +744,17 @@
         "url": "https://www.stagelink.kr/blog/charlie-puth-whatevers-clever-world-tour-seoul"
       }
     ]
+  },
+  {
+    "id": "kopis-PF295821",
+    "artist": "티스퀘어 라이브 인 서울: 7년만의 단독 내한공연",
+    "genre": "J-POP",
+    "venue": "연세대학교 대강당",
+    "city": "서울",
+    "startDate": "2026-10-11",
+    "endDate": "2026-10-11",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295821_260710_144242.gif",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
   },
   {
     "id": "kopis-ska-festival-2026-10",
@@ -938,126 +1080,6 @@
       {
         "label": "DOMi & JD BECK, 12월 첫 韓 공연 개최 - 전자신문",
         "url": "https://www.etnews.com/20260812000409"
-      }
-    ]
-  },
-  {
-    "id": "ghost-festival-2026-10",
-    "artist": "2026 GHOST Festival (경기 한류 OST 페스티벌)",
-    "genre": "페스티벌",
-    "venue": "임진각 평화누리",
-    "city": "파주",
-    "startDate": "2026-10-09",
-    "endDate": "2026-10-11",
-    "ticketUrl": "https://www.luck-d.com/ticket/902",
-    "officialUrl": "https://www.ghostfestival.kr/",
-    "note": "2026-08-19(수) 14:00 지정석 티켓 오픈 (NOL/티켓링크/네이버예약/멜론티켓/KREAM 등). 라인업: YB, 비, 거미, 백지영, 김창완밴드 등 최종 30팀.",
-    "description": "경기도 파주 임진각 평화누리에서 열리는 한류 OST 테마 뮤직 페스티벌.",
-    "lineup": [
-      "MeloMance(멜로망스)",
-      "FTISLAND",
-      "YB",
-      "Wonstein(원슈타인)",
-      "Lee Mujin(이무진)",
-      "LEESEOKHOON(이석훈)",
-      "TOUCHED(터치드)",
-      "PUNCH(펀치)",
-      "Heize(헤이즈)",
-      "ISAAC HONG(아이작홍)",
-      "GUMMY(거미)",
-      "Kim Na Young(김나영)",
-      "LYn(린)",
-      "Baek Z Young(백지영)",
-      "WENDY(웬디)",
-      "WINNER(위너)",
-      "KickFlip(킥플립)",
-      "Paul Kim(폴킴)",
-      "FLARE U(플레어유)",
-      "HAJIN(하진)",
-      "Kim Jong Kook(김종국)",
-      "KIMCHANGWAN BAND(김창완밴드)",
-      "RESCENE(리센느)",
-      "Mowg(모그)",
-      "RAIN(비)",
-      "윤일상 & WE필하모닉 with 썸일상",
-      "LEE YOUNGJI(이영지)",
-      "Lee Eun Mee(이은미)",
-      "TEI(테이)",
-      "2am(투에이엠)"
-    ],
-    "posterUrl": "https://static.luck-d.com/ticket/performance/902/poster_1784872819559.webp",
-    "funFacts": [
-      "페스티벌 이름의 '고스트(GHOST)'는 무서운 얘기가 아니라 'K-드라마·영화 OST'에서 따온 말장난이에요 — 정식 부제도 '경기 한류 OST 페스티벌'입니다.",
-      "최종 라인업이 30팀까지 확정됐지만, 날짜별 출연진은 아직 절반도 공개되지 않았어요. 지금까지 확인된 건 9일 멜로망스, 10일 웬디, 11일 이영지·모그·윤일상&WE필하모닉 정도고 나머지는 공식 채널에서 순차 공개될 예정입니다.",
-      "같은 임진각 평화누리에서 9월엔 [평화누리 피크닉 페스티벌](/events/kopis-pyeonghwanuri-picnic-2026-09/)이, 10월엔 이 GHOST Festival이 열려요 — 한 장소에서 성격이 다른 야외 페스티벌을 연달아 볼 수 있는 셈이에요."
-    ],
-    "lineupByDay": [
-      {
-        "date": "2026-10-09",
-        "acts": [
-          "MeloMance(멜로망스)"
-        ]
-      },
-      {
-        "date": "2026-10-10",
-        "acts": [
-          "WENDY(웬디)"
-        ]
-      },
-      {
-        "date": "2026-10-11",
-        "acts": [
-          "LEE YOUNGJI(이영지)",
-          "Mowg(모그)",
-          "윤일상 & WE필하모닉 with 썸일상"
-        ]
-      },
-      {
-        "label": "날짜 미정 · 공식 채널 순차 공개 예정",
-        "acts": [
-          "FTISLAND",
-          "YB",
-          "Wonstein(원슈타인)",
-          "Lee Mujin(이무진)",
-          "LEESEOKHOON(이석훈)",
-          "TOUCHED(터치드)",
-          "PUNCH(펀치)",
-          "Heize(헤이즈)",
-          "ISAAC HONG(아이작홍)",
-          "GUMMY(거미)",
-          "Kim Na Young(김나영)",
-          "LYn(린)",
-          "Baek Z Young(백지영)",
-          "WINNER(위너)",
-          "KickFlip(킥플립)",
-          "Paul Kim(폴킴)",
-          "FLARE U(플레어유)",
-          "HAJIN(하진)",
-          "Kim Jong Kook(김종국)",
-          "KIMCHANGWAN BAND(김창완밴드)",
-          "RESCENE(리센느)",
-          "RAIN(비)",
-          "Lee Eun Mee(이은미)",
-          "TEI(테이)",
-          "2am(투에이엠)"
-        ]
-      }
-    ],
-    "updates": [
-      {
-        "date": "2026-08-17",
-        "text": "최종 30팀 라인업이 발표됐어요. 레귤러 티켓은 8/19(수) 14:00부터 NOL·멜론티켓·티켓링크·KREAM에서 오픈됩니다.",
-        "sourceUrl": "https://www.kyeonggi.com/article/20260817580135"
-      }
-    ],
-    "sources": [
-      {
-        "label": "'2026 고스트 페스티벌' 최종 라인업 30팀 공개 - 경기일보",
-        "url": "https://www.kyeonggi.com/article/20260817580135"
-      },
-      {
-        "label": "2026 GHOST Festival 공식 홈페이지",
-        "url": "https://www.ghostfestival.kr/"
       }
     ]
   },

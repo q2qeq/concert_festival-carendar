@@ -1,20 +1,32 @@
 name: Fetch KOPIS events
 
 # Twice-weekly automated pull from KOPIS (공연예술통합전산망) into
-# src/data/kopis-candidates.json — NOT src/data/events.json, which is the only
-# file the site actually renders (src/lib/events.ts). fetch-kopis.mjs already
-# filters raw KOPIS results down to a whitelist of major venues and skips
-# anything that looks like it duplicates an existing event; what's left still
-# needs a human to hand-copy into events.json with a real id/links, which is
-# why this opens a PR instead of pushing straight to main. Bumped from weekly
-# to Mon+Thu (2026-08-28) for fall festival season, when new registrations
-# come in faster; can drop back to weekly (just Monday) once things quiet down.
-# Either cadence keeps the KOPIS API key from auto-cancelling (it expires
-# after 3 months of no use). For an immediate one-off refresh instead of
+# src/data/kopis-candidates.json AND, as of 2026-08-30, directly into
+# src/data/events.json for any KOPIS title that matches a known J-pop artist
+# (scripts/jpop-artists.mjs) - see the "J-pop 마이너 아티스트 자동 게시
+# 파이프라인" section in README.md for the full rationale. Non-J-pop results still
+# only go to kopis-candidates.json (NOT events.json) - fetch-kopis.mjs filters those
+# down to a whitelist of major venues and skips anything that looks like it
+# duplicates an existing event; what's left still needs a human to hand-copy into
+# events.json with a real id/links.
+#
+# UPDATED 2026-08-30: this workflow now commits AND PUSHES STRAIGHT TO MAIN
+# instead of opening a PR - user explicitly decided a J-pop events.json diff
+# going live immediately is fine, since the site is just public concert-listing
+# info and there's no real downside to an auto-added show appearing without a
+# manual review step first (previously it opened a PR via kopis-auto-update so
+# a human could sanity-check the diff before it deployed). If this should go
+# back to a PR-gated flow later, ask to restore it - the previous PR-based
+# version is in git history (see the commit that introduced this comment).
+#
+# Bumped from weekly to Mon+Thu (2026-08-28) for fall festival season, when new
+# registrations come in faster; can drop back to weekly (just Monday) once things
+# quiet down. Either cadence keeps the KOPIS API key from auto-cancelling (it
+# expires after 3 months of no use). For an immediate one-off refresh instead of
 # waiting for the next scheduled run, use "Run workflow" on the Actions tab
-# (workflow_dispatch below) — kopis.or.kr is blocked from Claude's own shells
-# (local device_bash included, confirmed 2026-08-28), so this has to be
-# triggered by hand rather than by asking Claude to run it directly.
+# (workflow_dispatch below), or - since 2026-08-30 - run `npm run fetch:kopis`
+# directly in a live device-linked session (kopis.or.kr is reachable via
+# device_bash; still unconfirmed whether Claude's own cloud sandbox can reach it).
 
 on:
   schedule:
@@ -23,7 +35,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   fetch-kopis:
@@ -47,34 +58,17 @@ jobs:
       - name: Check for changes
         id: git-check
         run: |
-          if git diff --quiet -- src/data/kopis-candidates.json; then
+          if git diff --quiet -- src/data/kopis-candidates.json src/data/events.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Open pull request with new events
+      - name: Commit and push changes
         if: steps.git-check.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          commit-message: "chore: KOPIS 자동 수집 후보 갱신 (kopis-candidates.json)"
-          title: "KOPIS 자동 수집 후보 갱신 (자동 생성)"
-          body: |
-            매주 실행되는 KOPIS 자동 수집 워크플로우가 `src/data/kopis-candidates.json`을
-            새로 갱신했습니다. 이 파일은 사이트가 실제로 읽지 않는 스테이징 파일입니다
-            (`src/lib/events.ts`는 `events.json`만 읽습니다) — 머지해도 사이트에는
-            아무 영향이 없습니다.
-
-            **할 일**
-            - [ ] `kopis-candidates.json`을 열어서 마음에 드는 공연이 있는지 확인
-            - [ ] 있으면 `events.json`에 손으로 옮기고, 실제 `ticketUrl`/`officialUrl`
-                  등 공식 링크를 검색해서 채운 뒤 커밋
-            - [ ] 이 PR은 그냥 머지해도 되고 (다음 주 실행 때 다시 덮어써짐), 필요 없으면
-                  닫아도 됩니다
-
-            자동 생성된 PR입니다.
-          branch: kopis-auto-update
-          delete-branch: true
-          labels: |
-            automated
-            kopis
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/kopis-candidates.json src/data/events.json
+          git commit -m "chore: KOPIS 자동 수집 갱신 (kopis-candidates.json + J-pop events.json)"
+          git push
