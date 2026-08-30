@@ -11,7 +11,22 @@
     "note": "일본 밴드 오피셜히게단디즘 내한 공연.",
     "description": "'Pretender', 'Subtitle' 등으로 알려진 일본 4인조 밴드 오피셜히게단디즘의 내한 공연. 애니메이션 주제가로도 국내에 폭넓은 팬층을 보유하고 있다.",
     "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26005670_p.gif",
-    "officialUrl": "https://higedan.com/?lang=en"
+    "officialUrl": "https://higedan.com/?lang=en",
+    "funFacts": [
+      "이번이 2년 만의 내한이에요. 2016년 현대카드 언더스테이지에서 첫 내한을 가진 뒤 2024년 12월 킨텍스, 이번엔 KSPO DOME으로 공연장 규모를 계속 키워왔습니다.",
+      "'Pretender', 'Subtitle' 같은 히트곡 외에도 국내에선 애니메이션 주제가로 친숙한 밴드예요.",
+      "일본 아티스트 최초로 애플 뮤직 어워드 '올해의 일본 아티스트'상을 수상했고, 유튜브 구독자만 362만 명에 달해요."
+    ],
+    "sources": [
+      {
+        "label": "오피셜히게단디즘(히게단), 2년 만 내한…8월 KSPO DOME - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16021858"
+      },
+      {
+        "label": "NOL 티켓 - 오피셜히게단디즘 아시아 투어 2026 in SEOUL",
+        "url": "https://tickets.interpark.com/contents/notice/detail/13341"
+      }
+    ]
   },
   {
     "id": "back-number-2026-09",
@@ -25,7 +40,22 @@
     "note": "일본 밴드 백넘버 내한 공연.",
     "description": "서정적인 가사와 미디엄 템포 발라드로 유명한 일본 3인조 록밴드 백넘버(back number)의 내한 공연.",
     "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202604/20260416/20260416-58079.jpg",
-    "officialUrl": "https://backnumber.info/?lang=en"
+    "officialUrl": "https://backnumber.info/?lang=en",
+    "funFacts": [
+      "2004년 결성, 2011년 데뷔한 일본 3인조 밴드로 '일본 국민밴드'로 불려요. 이번이 밴드의 첫 아시아 투어이자 첫 내한 공연입니다.",
+      "국내에서 화제가 된 계기가 독특해요 — 가수 성시경이 일본 방송에서 백넘버 음악을 소개하면서 신규 팬층이 빠르게 늘었습니다.",
+      "대표곡 '수평선', '크리스마스 송' 등 30곡 이상이 일본에서 스트리밍 1억 회를 돌파했어요."
+    ],
+    "sources": [
+      {
+        "label": "일본 국민 밴드 백넘버, 첫 내한공연 확정 - 롤링스톤코리아",
+        "url": "https://rollingstone.co.kr/music/music-news/24369"
+      },
+      {
+        "label": "'日 국민밴드' 백넘버, 첫 내한공연 확정 - 노컷뉴스",
+        "url": "https://www.nocutnews.co.kr/news/6502357"
+      }
+    ]
   },
   {
     "id": "vaundy-2026-09",
@@ -39,7 +69,21 @@
     "note": "일본 싱어송라이터 Vaundy 내한 공연. 예매: NOL티켓.",
     "description": "장르를 넘나드는 사운드로 일본 젊은 세대에게 폭넓은 지지를 받는 싱어송라이터 Vaundy의 내한 공연.",
     "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26003199_p.gif",
-    "officialUrl": "https://vaundy.jp/?lang=en"
+    "officialUrl": "https://vaundy.jp/?lang=en",
+    "funFacts": [
+      "'괴물 천재'로 불리는 일본 싱어송라이터 Vaundy의 데뷔 후 첫 단독 내한 콘서트예요.",
+      "티켓은 스탠딩·지정석 R석 모두 165,000원(S석 154,000원)으로 책정됐고, NOL티켓에서 판매합니다."
+    ],
+    "sources": [
+      {
+        "label": "'괴물 천재' 바운디, 9월 첫 내한 확정…인스파이어 아레나 입성 - 텐아시아",
+        "url": "https://www.tenasia.co.kr/article/2026031254544"
+      },
+      {
+        "label": "바운디, 9월 인천 인스파이어 아레나서 첫 내한 콘서트 - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16000312"
+      }
+    ]
   },
   {
     "id": "kopis-pyeonghwanuri-picnic-2026-09",
@@ -139,10 +183,35 @@
     "city": "서울",
     "startDate": "2026-09-19",
     "endDate": "2026-09-20",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 포스터는 2026-08-21 공개 보도(중앙이코노미뉴스) 기준 공식 이미지. 티켓은 멜론티켓·티켓링크에서 판매(팬클럽 선예매 8/25, 일반예매 8/26 20시) 예정이라는 보도는 확인했으나, 개별 예매 페이지 URL은 아직 찾지 못했습니다(2026-08-30 확인).",
+    "note": "포스터는 2026-08-21 공개 보도(중앙이코노미뉴스) 기준 공식 이미지입니다.",
     "description": "밴드 ONEWE의 단독 라이브 콘서트 'O! NEW E!volution VI'.",
     "officialUrl": "https://onewe.co.kr/",
-    "posterUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
+    "posterUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg",
+    "funFacts": [
+      "벌써 6번째 시즌을 맞는 단독 콘서트 시리즈예요 — 'O! NEW E!volution' 이름을 달고 해마다 진행돼왔습니다.",
+      "이번 포스터는 5인 멤버가 각자 다른 색의 제복을 입은 '5인 5색' 컨셉으로 공개됐어요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-21",
+        "text": "포스터가 공개됐어요. 티켓은 멜론티켓·티켓링크에서 팬클럽 선예매 8/25, 일반예매 8/26 20시로 예정됐다는 보도를 확인했습니다.",
+        "sourceUrl": "https://www.metroseoul.co.kr/article/20260821500155"
+      },
+      {
+        "date": "2026-08-30",
+        "text": "개별 예매 페이지 URL은 아직 찾지 못했어요. 멜론티켓·티켓링크에서 'ONEWE'로 직접 검색하는 걸 추천합니다."
+      }
+    ],
+    "sources": [
+      {
+        "label": "ONEWE, 단독 콘서트 'O! NEW E!volution VI' 포스터 공개 - 메트로서울",
+        "url": "https://www.metroseoul.co.kr/article/20260821500155"
+      },
+      {
+        "label": "ONEWE to hold sixth live concert - allkpop",
+        "url": "https://www.allkpop.com/article/2026/08/onewe-to-hold-sixth-live-concert-o-new-evolution-vi-in-september"
+      }
+    ]
   },
   {
     "id": "post-malone-2026-10",
@@ -157,7 +226,23 @@
     "description": "'Circles', 'Sunflower' 등 다수의 글로벌 히트곡을 보유한 미국 싱어송라이터 포스트 말론의 내한 공연.",
     "officialUrl": "https://www.livenation.kr/event/post-malone-presents-the-big-stadium-world-tour-seoul-tickets-edp1664856",
     "status": "cancelled",
-    "posterUrl": "https://dynamicmedia.livenationinternational.com/f/t/x/6399af39-367b-43ff-b8e1-00ad2d67eaf2.jpg"
+    "posterUrl": "https://dynamicmedia.livenationinternational.com/f/t/x/6399af39-367b-43ff-b8e1-00ad2d67eaf2.jpg",
+    "funFacts": [
+      "10월 2일 고양종합운동장 공연이 예정돼 있었지만 2026년 8월 27일 라이브네이션코리아가 전면 취소를 발표했어요. 같은 시기 쿠알라룸푸르 공연도 취소되고 일본 공연은 연기로 처리되면서 아시아 투어 후반부 일정 자체가 흔들렸습니다. 취소된 다른 내한공연들과 함께 정리한 이야기는 [블로그 글](/blog/post1/)에서 더 볼 수 있어요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-27",
+        "text": "라이브네이션코리아가 공식 취소를 발표했어요. 기존 결제 수단으로 수수료 없이 전액 환불이 진행됩니다.",
+        "sourceUrl": "https://sports.khan.co.kr/article/202608271723003/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "포스트 말론 아시아 투어 후반부 취소·연기 - 스포츠경향",
+        "url": "https://sports.khan.co.kr/article/202608271723003/"
+      }
+    ]
   },
   {
     "id": "lany-2026-10",
@@ -171,7 +256,16 @@
     "note": "",
     "description": "감성적인 신스팝 사운드로 국내에도 두터운 팬층을 보유한 미국 밴드 LANY의 내한 공연.",
     "officialUrl": "https://www.livenation.kr/event/lany-soft-world-tour-seoul-tickets-edp1663105",
-    "posterUrl": "https://dynamicmedia.livenationinternational.com/j/d/r/e3791d3d-c82d-4fbe-9a93-928a15bd8691.jpg"
+    "posterUrl": "https://dynamicmedia.livenationinternational.com/j/d/r/e3791d3d-c82d-4fbe-9a93-928a15bd8691.jpg",
+    "funFacts": [
+      "'Soft World Tour'의 서울 공연으로, 킨텍스 9홀에서 하루만 열려요."
+    ],
+    "sources": [
+      {
+        "label": "LANY: soft world tour at KINTEX Hall 9 - Live Nation",
+        "url": "https://www.livenation.com/event/intl_1663105/lany"
+      }
+    ]
   },
   {
     "id": "xmf-2026-10",
@@ -196,15 +290,80 @@
       "Novelbright",
       "My Hair is Bad",
       "PEOPLE 1",
+      "MIKA NAKASHIMA(나카시마 미카)",
       "YB",
       "THE FIX(더 픽스)",
       "Hi-Fi Un!corn",
       "Saucy Dog",
       "Ae! group",
       "Marcy",
-      "YURINA HIRATE"
+      "YURINA HIRATE",
+      "DAY6(데이식스)",
+      "ONE OK ROCK(원오크록)"
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg"
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg",
+    "lineupByDay": [
+      {
+        "date": "2026-10-03",
+        "acts": [
+          "Ado",
+          "LUCY(루시)",
+          "YOUNHA(윤하)",
+          "coldrain",
+          "FTISLAND(FT아일랜드)",
+          "MIKA NAKASHIMA(나카시마 미카)",
+          "hrtz.wav",
+          "My Hair is Bad",
+          "Novelbright(노벨브라이트)",
+          "ONEWE(원위)",
+          "PEOPLE 1"
+        ]
+      },
+      {
+        "date": "2026-10-04",
+        "acts": [
+          "DAY6(데이식스)",
+          "ONE OK ROCK(원오크록)",
+          "YB",
+          "Ae! group(에에! 그룹)",
+          "Hi-Fi Un!corn",
+          "Marcy(마르시)",
+          "Saucy Dog",
+          "THE FIX(더 픽스)",
+          "YURINA HIRATE(히라테 유리나)"
+        ]
+      }
+    ],
+    "funFacts": [
+      "2차 라인업에서 데이식스·원오크록·나카시마 미카가 새로 추가됐어요. 3차 라인업 발표가 아직 남아 있어서 최종 라인업은 조금 더 늘어날 수 있습니다.",
+      "10월 3일은 아도·윤하·콜드레인 등 11팀, 10월 4일은 데이식스·원오크록·YB 등 9팀으로 날짜가 나뉘어요."
+    ],
+    "updates": [
+      {
+        "date": "2026-07-31",
+        "text": "1차 라인업과 티켓 오픈 일정이 공개됐어요(8/3 예스24 티켓 오픈).",
+        "sourceUrl": "https://sports.khan.co.kr/en/article/202607311953007/"
+      },
+      {
+        "date": "2026-08-12",
+        "text": "2차 라인업이 공개되며 데이식스·원오크록·나카시마 미카가 새로 확정됐어요. 10월 3일/4일 날짜별 출연진도 이때 함께 나왔습니다. 다음 달 3차 라인업이 추가로 공개될 예정이라고 해요.",
+        "sourceUrl": "https://www.etoday.co.kr/news/view/2613703"
+      }
+    ],
+    "sources": [
+      {
+        "label": "데이식스 출격…'XMF 2026' 2차 라인업 공개 - 이투데이",
+        "url": "https://www.etoday.co.kr/news/view/2613703"
+      },
+      {
+        "label": "한일 음악 페스티벌 'XMF 2026', 아도 온다 - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202607311953007/"
+      },
+      {
+        "label": "아도·YB·윤하, 한일 합동 페스티벌 'XMF 2026' 첫 라인업 - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16151240"
+      }
+    ]
   },
   {
     "id": "kopis-jarasum-jazz-2026-10",
@@ -214,11 +373,35 @@
     "city": "강릉",
     "startDate": "2026-10-10",
     "endDate": "2026-10-11",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 재검증 완료(2026-08-29): 이전에 남겨둔 'KOPIS 등록 오류 가능성' 의심은 해소되었습니다 — 같은 강릉 공연이 KOPIS에 '자라섬재즈페스티벌, 킨가 그위크 [강릉]'(mt20Id=PF248465)로 별도 등록되어 있고, 강릉아트센터가 매년 자라섬재즈페스티벌과 연계해 여는 타이업 프로그램이라는 지역 언론 보도(2023년 기준, 매년 반복 개최)로도 확인됩니다. 다만 강릉아트센터 자체 예매/공지 페이지(gn.go.kr, moonhwain.net)는 접근이 차단되어 공식 포스터·티켓 링크는 아직 직접 확인하지 못했습니다 — 예매 전 강릉아트센터 홈페이지에서 직접 확인하세요. 재검증(2026-08-30): 강릉아트센터 관련 도메인(gn.go.kr, gangneung.go.kr, gn.moonhwain.net)이 모두 SSL 인증서 오류로 여전히 접근 불가함을 재확인했고, 강릉문화재단(gncaf.or.kr) 공식 사이트에도 아직 관련 공지가 없습니다. 2023년 사례를 보면 이 강릉 연계 공연 보도는 행사 직전(10월 초)에야 나오는 패턴이라, 아직 시점상 이르기 때문일 가능성이 있습니다.",
+    "note": "예매 전 강릉아트센터 홈페이지에서 최신 정보를 직접 확인하세요.",
     "description": "가평 자라섬 국제 재즈 페스티벌과 연계해 강릉아트센터가 매년 여는 지역 타이업 프로그램 '자라섬재즈페스티벌×강릉아트센터'(야외 프로그램명 '우당탕탕 재즈하게')의 2026년 강릉 공연. 이번 강릉 공연은 베이시스트 킨가 그위크(Kinga Głyk) 무대로 KOPIS에 등록되어 있습니다.",
     "officialUrl": "https://www.gn.go.kr/artscenter/index.do",
     "lineup": [
       "킨가 그위크 (Kinga Głyk)"
+    ],
+    "funFacts": [
+      "자라섬재즈페스티벌은 2004년 가평에서 시작해 2021년 기준 18회, 55개국 1,147팀이 다녀간 국내 최대 규모의 재즈 축제예요.",
+      "이번 강릉 공연은 강릉아트센터가 매년 자라섬재즈페스티벌과 연계해서 여는 타이업 프로그램이에요 — 가평 본 행사와는 별개로 강릉에서 따로 진행됩니다."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-29",
+        "text": "강릉 공연이 KOPIS에 '자라섬재즈페스티벌, 킨가 그위크 [강릉]'으로 별도 등록된 걸 확인했어요. 지역 언론 보도(2023년 기준)로도 매년 반복되는 연계 프로그램이라는 게 확인됩니다."
+      },
+      {
+        "date": "2026-08-30",
+        "text": "강릉아트센터 공식 사이트 계열 도메인이 여전히 SSL 인증서 오류로 접근이 안 돼서 공식 포스터·티켓 링크는 아직 못 찾았어요. 2023년 사례를 보면 이 연계 공연 보도는 행사 직전(10월 초)에야 나오는 편이라 조금 더 기다려봐야 할 것 같습니다."
+      }
+    ],
+    "sources": [
+      {
+        "label": "대한민국 대표 재즈 축제! '자라섬 국제 재즈 페스티벌' - 경향신문 올댓아트",
+        "url": "https://www.khan.co.kr/culture/culture-general/article/202112031007001"
+      },
+      {
+        "label": "자라섬국제재즈페스티벌 - 위키백과",
+        "url": "https://ko.wikipedia.org/wiki/%EC%9E%90%EB%9D%BC%EC%84%AC%EA%B5%AD%EC%A0%9C%EC%9E%AC%EC%A6%88%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C"
+      }
     ]
   },
   {
@@ -233,7 +416,25 @@
     "description": "인디 듀오 10CM의 팬 콘서트 'THE MISSING TRACKS' 시리즈.",
     "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14951",
     "posterUrl": "https://images.khan.co.kr/article/2026/08/19/news-p.v1.20260819.8832c2932e994b868d6a6b37bfd0e0a8_P1.jpeg",
-    "officialUrl": "https://camwus.com/"
+    "officialUrl": "https://camwus.com/",
+    "schedule": "10CM 콘서트는 10/9~11 사흘간 매일 오후 6시 진행되며, 이 페이지는 그중 10/10 공연을 다룹니다.",
+    "funFacts": [
+      "부제 'CASE No.1010'은 날짜를 그대로 딴 이름이에요 — 이 콘서트는 10/9~11 사흘간 열리는데 매일 다른 부제와 셋리스트로 진행되고, 이 페이지가 다루는 건 그중 10/10('텐텐데이') 공연입니다.",
+      "무대에서 사라진 곡들을 찾아 나선다는 스토리 컨셉의 공연이에요. 10/10 공연은 특히 팬들이 원하는 곡을 직접 투표로 골라 그날의 셋리스트를 함께 만드는 방식으로 진행됩니다."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-19",
+        "text": "공연 콘셉트와 3일간(10/9~11) 일정이 공개됐어요.",
+        "sourceUrl": "https://sports.khan.co.kr/en/article/202608192303007/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "10CM to hold a special-concept fan concert in October - 스포츠경향(영문)",
+        "url": "https://sports.khan.co.kr/en/article/202608192303007/"
+      }
+    ]
   },
   {
     "id": "charlie-puth-2026-10",
@@ -247,7 +448,21 @@
     "note": "",
     "description": "'See You Again', 'Attention' 등을 히트시킨 미국 싱어송라이터 겸 프로듀서 찰리 푸스의 내한 공연.",
     "officialUrl": "https://www.livenation.kr/event/charlie-puth-whatever-s-clever-world-tour-seoul-tickets-edp1668245",
-    "posterUrl": "https://dynamicmedia.livenationinternational.com/x/c/e/35bab8b3-6480-41f3-940b-6b575dc007e0.jpg"
+    "posterUrl": "https://dynamicmedia.livenationinternational.com/x/c/e/35bab8b3-6480-41f3-940b-6b575dc007e0.jpg",
+    "schedule": "10월 11일(일) 오후 7시",
+    "funFacts": [
+      "'Whatever's Clever!' 월드투어의 서울 공연으로, 고양종합운동장 주경기장에서 열려요."
+    ],
+    "sources": [
+      {
+        "label": "Charlie Puth Goyang-si Tickets - Songkick",
+        "url": "https://www.songkick.com/concerts/43170585-charlie-puth-at-goyang-stadium-goyangjonghabundongjang"
+      },
+      {
+        "label": "찰리 푸스 내한공연 - StageLink",
+        "url": "https://www.stagelink.kr/blog/charlie-puth-whatevers-clever-world-tour-seoul"
+      }
+    ]
   },
   {
     "id": "kopis-ska-festival-2026-10",
@@ -257,8 +472,28 @@
     "city": "서울",
     "startDate": "2026-10-24",
     "endDate": "2026-10-24",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. ⚠️ 리서치 미해결(2026-08-29): 신뢰할 수 있는 공식 홈페이지·라인업 출처를 찾지 못했습니다 (검색 결과가 2018/2023년 등 과거 시즌과 섞여 나옴). 공식 채널 확인 후 채워주세요. 재검증(2026-08-29): 다시 검색했으나 여전히 신뢰할 수 있는 공식 출처를 찾지 못했습니다. 3차 재검증(2026-08-30): \"스카 수퍼스웩\" 시리즈(2017~2023년 기록 확인됨, 이번이 10주년 에디션으로 추정)로 검색 범위를 넓히고 2026 페스티벌 종합 정리 기사들도 확인했지만 이번 10주년 에디션 관련 공식 정보는 여전히 찾지 못했습니다.",
-    "description": "국내 스카·펑크 신의 아티스트들이 한자리에 모이는 스카 페스티벌 10주년 기념 공연."
+    "note": "공식 홈페이지·라인업 출처를 아직 찾지 못했습니다. 예매 전 공식 채널을 확인하세요.",
+    "description": "국내 스카·펑크 신의 아티스트들이 한자리에 모이는 스카 페스티벌 10주년 기념 공연.",
+    "funFacts": [
+      "'스카 수퍼스웩'은 실제로 있었던 시리즈예요 — 2017·2018·2023년 시즌 기록이 확인되고, 이번이 10주년 에디션으로 추정됩니다. 다만 2026년판 공식 정보는 아직 찾지 못했어요.",
+      "스카(Ska)는 한국에서는 마이너한 장르지만, 킹스턴 루디스카 같은 밴드가 20년 넘게 활동하며 '국가대표 스카밴드'로 불릴 만큼 탄탄한 씬을 유지하고 있어요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-29",
+        "text": "신뢰할 수 있는 공식 홈페이지·라인업 출처를 찾지 못했어요. 검색 결과가 2018/2023년 등 과거 시즌과 섞여 나옵니다."
+      },
+      {
+        "date": "2026-08-30",
+        "text": "'스카 수퍼스웩' 시리즈로 검색 범위를 넓히고 2026 페스티벌 종합 정리 기사도 확인했지만, 이번 10주년 에디션 관련 공식 정보는 여전히 찾지 못했어요."
+      }
+    ],
+    "sources": [
+      {
+        "label": "결성 20주년을 맞은 '국가대표 스카밴드'의 잔치 같은 무대 - 인천광역시",
+        "url": "https://incheon.go.kr/IC010205/view?beginDt=2022-05-15&curPage=211&endDt=&repSeq=DOM_0000000010669252&srchMainManagerDeptNm=&srchRepContents=&srchRepTitle="
+      }
+    ]
   },
   {
     "id": "kopis-yeotak-jeonju-2026-10",
@@ -268,9 +503,30 @@
     "city": "전주",
     "startDate": "2026-10-24",
     "endDate": "2026-10-25",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 포스터는 전국투어 'TAK SHOW5' 공통 티저 이미지(서울 공연 발표 보도 기준, 2026-08 공개) — 전주 전용 포스터는 아직 공개 전입니다. 재검증(2026-08-30): 보도(CBC뉴스, 2026-08-19)로 전주 공연이 10/24~25로 확정됐음은 재확인했으나, \"도시별 세부 예매 일정은 추후 공식 채널을 통해 안내될 예정\"이라 개별 예매 링크는 여전히 못 찾았습니다.",
+    "note": "전주 전용 포스터·개별 예매 링크는 아직 공개 전입니다. 예매 전 공식 채널을 확인하세요.",
     "description": "트로트 가수 영탁의 단독 콘서트 'TAK SHOW5' 전주 공연.",
-    "posterUrl": "https://cdn.topstarnews.net/news/photo/202608/16156505_1983393_618.jpg"
+    "posterUrl": "https://cdn.topstarnews.net/news/photo/202608/16156505_1983393_618.jpg",
+    "funFacts": [
+      "TAK SHOW는 2022년 시작된 영탁의 단독 콘서트 브랜드로, 이번이 벌써 5번째 시즌이에요. 시즌마다 공연장을 키워왔는데 KSPO DOME(1~3회)→잠실실내체육관(4회)→고려대 화정체육관(5회, 10/3~5 서울 공연)으로 이어졌습니다.",
+      "전주 공연(10/24~25)은 서울 공연을 시작으로 한 전국투어의 한 스탑이에요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-19",
+        "text": "전주 공연이 10/24~25로 확정됐다는 보도를 확인했어요. '도시별 세부 예매 일정은 추후 공식 채널을 통해 안내될 예정'이라고 합니다.",
+        "sourceUrl": "https://www.ajunews.com/view/20260819171640299"
+      }
+    ],
+    "sources": [
+      {
+        "label": "\"어느새 5년째\"…영탁 이름 건 'TAK SHOW' - 아주경제",
+        "url": "https://www.ajunews.com/view/20260819171640299"
+      },
+      {
+        "label": "영탁, 브랜드 콘서트 'TAK SHOW5' 10월 개최 - 비바100",
+        "url": "https://www.viva100.com/article/20260806500968"
+      }
+    ]
   },
   {
     "id": "kopis-everblue-daegu-2026-10",
@@ -280,8 +536,18 @@
     "city": "대구",
     "startDate": "2026-10-31",
     "endDate": "2026-10-31",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. ⚠️ 리서치 미해결(2026-08-29): 신뢰할 수 있는 공식 홈페이지·라인업 출처를 찾지 못했습니다. 공식 채널 확인 후 채워주세요. 재검증(2026-08-29): 다시 검색했으나 여전히 신뢰할 수 있는 공식 출처를 찾지 못했습니다. 3차 재검증(2026-08-30): EXCO 자체 2026년 일정 페이지(exco.co.kr)를 확인했으나 7월까지만 공개되어 있어 10월 일정은 아직 게시 전이며, 축제정보센터·Bandsintown 등 행사 아카이브에도 해당 페스티벌이 없습니다.",
-    "description": "대구 엑스코에서 열리는 음악 페스티벌 EverBlue Festival."
+    "note": "신뢰할 수 있는 공식 홈페이지·라인업 출처를 아직 찾지 못했습니다. 공식 채널 확인 후 예매하세요.",
+    "description": "대구 엑스코에서 열리는 음악 페스티벌 EverBlue Festival.",
+    "updates": [
+      {
+        "date": "2026-08-29",
+        "text": "신뢰할 수 있는 공식 홈페이지·라인업 출처를 찾지 못했어요."
+      },
+      {
+        "date": "2026-08-30",
+        "text": "EXCO 자체 2026년 일정 페이지가 7월까지만 공개돼 있고, 축제정보센터·Bandsintown 등 행사 아카이브에도 이 페스티벌이 없어요. 아직 공식 발표 전인 것으로 보입니다."
+      }
+    ]
   },
   {
     "id": "kopis-yoonjongshin-busan-2026-10",
@@ -293,7 +559,27 @@
     "endDate": "2026-10-31",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 인천·수원 등 다른 도시 공연도 별도 진행. 재검증(2026-08-29): 포스터는 확보했으나, 보도(2026-08-21) 시점에는 서울·고양 공연 예매처만 공개되어 부산 공연 개별 예매 링크는 아직 찾지 못했습니다.",
     "description": "싱어송라이터 윤종신의 전국투어 콘서트 '가을냄새' 부산 공연.",
-    "posterUrl": "https://cdn.mhns.co.kr/news/thumbnail/202608/757137_890861_5055_v150.jpg"
+    "posterUrl": "https://cdn.mhns.co.kr/news/thumbnail/202608/757137_890861_5055_v150.jpg",
+    "funFacts": [
+      "'가을냄새'는 서울·인천·수원·고양·부산·경주·대전 7개 도시를 도는 전국투어예요. 서울 공연(10/2~4, NOL씨어터 대학로 우리카드홀)을 시작으로 부산까지 이어집니다."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-21",
+        "text": "전국투어 '가을냄새' 개최 소식과 서울 공연(10/2~4) 일정이 발표됐어요. 부산을 포함한 다른 도시의 구체적 날짜·장소는 아직 안 나왔습니다.",
+        "sourceUrl": "https://www.hankyung.com/article/202608214261H"
+      },
+      {
+        "date": "2026-08-29",
+        "text": "보도 시점엔 서울·고양 공연 예매처만 공개돼 있어서 부산 공연 개별 예매 링크는 아직 찾지 못했어요."
+      }
+    ],
+    "sources": [
+      {
+        "label": "윤종신, 10월 전국투어 콘서트 가을냄새 개최 - 한국경제",
+        "url": "https://www.hankyung.com/article/202608214261H"
+      }
+    ]
   },
   {
     "id": "kopis-kimjanghun-miryang-2026-11",
@@ -304,7 +590,26 @@
     "startDate": "2026-11-08",
     "endDate": "2026-11-08",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 재검증(2026-08-29): 예스24에서 제주·대전·창원·김해 등 타 도시 예매 페이지는 확인했지만 밀양 개별 예매 링크는 찾지 못했습니다 — 인천/춘천 공연을 관리하는 기획사(도로시컴퍼니)의 KOPIS 등록 목록에도 밀양 공연은 없어 별도 지역 주최사가 진행하는 것으로 보입니다. 재검증(2026-08-30): 이 투어는 도시마다 별도 포스터·예매 페이지를 쓰는 방식(예: 창원 전용 이미지·전용 페이지)임을 확인했고, 밀양 전용 페이지는 예스24·타임티켓·트립닷컴 등 어디에도 아직 없어 다른 도시 포스터를 대신 쓰는 것은 부적절하다고 판단했습니다.",
-    "description": "가수 김장훈의 전국투어 원맨쇼 밀양 공연."
+    "description": "가수 김장훈의 전국투어 원맨쇼 밀양 공연.",
+    "funFacts": [
+      "이 전국투어는 도시마다 완전히 다른 포스터와 예매 페이지를 써요 — 수원·안양·의정부·성남·춘천·제천·광주·창원·제주 등 벌써 10개 넘는 도시가 각각 따로 열립니다. 밀양 전용 페이지가 아직 안 나온 것도 이 방식 때문이에요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-29",
+        "text": "예스24에서 제주·대전·창원·김해 등 타 도시 예매 페이지는 확인했지만 밀양 개별 예매 링크는 찾지 못했어요. 인천/춘천 공연을 관리하는 기획사(도로시컴퍼니)의 KOPIS 등록 목록에도 밀양 공연은 없어서, 별도 지역 주최사가 진행하는 것으로 보입니다."
+      },
+      {
+        "date": "2026-08-30",
+        "text": "이 투어가 도시마다 별도 포스터·예매 페이지를 쓰는 방식이라는 걸 확인했어요. 밀양 전용 페이지는 예스24·타임티켓·트립닷컴 어디에도 아직 없어서, 다른 도시 포스터를 대신 쓰지 않고 계속 확인 중입니다."
+      }
+    ],
+    "sources": [
+      {
+        "label": "[공연] 2026 김장훈 전국투어 콘서트: 원맨쇼(수원) - 타임티켓",
+        "url": "https://timeticket.co.kr/product/7057"
+      }
+    ]
   },
   {
     "id": "jason-mraz-2026-11",
@@ -318,7 +623,16 @@
     "note": "",
     "description": "'I'm Yours'로 잘 알려진 미국 어쿠스틱·포크팝 싱어송라이터 제이슨 므라즈의 내한 공연.",
     "officialUrl": "https://jasonmraz.com/seoul-kr/",
-    "posterUrl": "https://7lgigmttrjuyfehsudec15072.edge.naverncp.com/news/photo/202604/813454_1329482_2429.jpg"
+    "posterUrl": "https://7lgigmttrjuyfehsudec15072.edge.naverncp.com/news/photo/202604/813454_1329482_2429.jpg",
+    "funFacts": [
+      "2019년 이후 7년 만의 내한이에요. 'I'm Yours'로 유명한 싱어송라이터답게 팝·록·포크·재즈를 넘나드는 무대를 예고하고 있습니다."
+    ],
+    "sources": [
+      {
+        "label": "제이슨 므라즈, 7년 만에 내한 - 롤링스톤코리아",
+        "url": "https://rollingstone.co.kr/music/music-news/24447"
+      }
+    ]
   },
   {
     "id": "5-seconds-of-summer-2026-11",
@@ -333,7 +647,24 @@
     "description": "국내에도 두터운 팬덤을 보유한 호주 출신 팝록 밴드 5 Seconds of Summer의 내한 공연.",
     "mdUrl": "https://5sos.com/",
     "officialUrl": "https://5sos.com/",
-    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26006756_p.gif"
+    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26006756_p.gif",
+    "funFacts": [
+      "공연일(11/19)이 2027학년도 대학수학능력시험일과 정확히 겹쳐요. 수능을 막 마친 수험생 팬이라면 그날 저녁 바로 콘서트장으로 향할 수도 있겠네요.",
+      "목요일 저녁 7시 30분 공연이라 평일 퇴근·하교 시간대 교통 혼잡을 고려해서 움직이는 걸 추천해요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-30",
+        "text": "공연 날짜(11/19)가 2027학년도 수능일과 겹친다는 점을 확인했어요. 날짜 변동 여부는 계속 확인할게요.",
+        "sourceUrl": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156646031"
+      }
+    ],
+    "sources": [
+      {
+        "label": "2027학년도 대학수학능력시험은 2026년 11월 19일 시행 - 대한민국 정책브리핑",
+        "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156646031"
+      }
+    ]
   },
   {
     "id": "wonderlivet-2026-11",
@@ -422,7 +753,32 @@
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연. 포스터는 2026-08-12 내한 발표 보도(더팩트) 이미지. 국내 주최는 엠피엠지뮤직·민트페이퍼로 확인되나, 구체적 예매처 URL은 아직 공개되지 않았습니다(2026-08-30 확인) — 공식 투어 페이지도 'Bandsintown RSVP'로만 안내.",
     "description": "그래미 수상 프로듀서들과의 협업으로 주목받은 미국 재즈·퓨전 듀오 DOMi & JD BECK의 내한 공연.",
     "officialUrl": "https://www.domiandjdbeck.com/tour/",
-    "posterUrl": "https://img.tf.co.kr/article/home/2026/08/12/202640161786503048.jpg"
+    "posterUrl": "https://img.tf.co.kr/article/home/2026/08/12/202640161786503048.jpg",
+    "funFacts": [
+      "BTS RM의 2024년 솔로 앨범 수록곡 '?(Interlude)'에 참여한 재즈 듀오예요 — 프랑스 출신 키보디스트 DOMi와 텍사스 출신 드러머 JD Beck 조합입니다.",
+      "2022년 데뷔 앨범으로 제65회 그래미 어워즈 2개 부문(신인상 포함)에 노미네이트됐을 만큼 실력파로 꼽혀요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-12",
+        "text": "12월 첫 단독 내한공연('WHO ASKED? TOUR')이 발표됐어요. 장소는 서울 중구 공감센터 공감홀입니다.",
+        "sourceUrl": "https://biz.heraldcorp.com/article/10839578"
+      },
+      {
+        "date": "2026-08-30",
+        "text": "국내 주최는 엠피엠지뮤직·민트페이퍼로 확인되지만, 구체적 예매처 URL은 아직 공개되지 않았어요. 공식 투어 페이지도 'Bandsintown RSVP'로만 안내하고 있습니다."
+      }
+    ],
+    "sources": [
+      {
+        "label": "BTS RM과 협업한 '재즈 듀오' 도미 앤 제이디 백, 12월 첫 내한 - 헤럴드경제",
+        "url": "https://biz.heraldcorp.com/article/10839578"
+      },
+      {
+        "label": "DOMi & JD BECK, 12월 첫 韓 공연 개최 - 전자신문",
+        "url": "https://www.etnews.com/20260812000409"
+      }
+    ]
   },
   {
     "id": "ghost-festival-2026-10",
