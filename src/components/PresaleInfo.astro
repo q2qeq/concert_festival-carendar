@@ -1,0 +1,40 @@
+---
+// Promoter/fanclub/card-company presale (선예매) guide - shown when the site has
+// real, sourced info on how to get in before general sale. Never a generic "보통
+// 선예매가 있어요" placeholder - only concrete, announced presale processes.
+import type { PresaleInfo } from '../lib/events';
+interface Props { presale: PresaleInfo[] }
+const { presale } = Astro.props;
+---
+{presale.length > 0 && (
+  <section class="presale-box">
+    <h2>🎫 선예매 안내</h2>
+    <div class="presale-list">
+      {presale.map((p) => (
+        <article class="presale-item">
+          <h3>{p.title}{p.date && <span class="presale-date">{p.date}</span>}</h3>
+          <p class="presale-detail">{p.detail}</p>
+          {p.howTo && <p class="presale-howto"><strong>참여 방법</strong> — {p.howTo}</p>}
+          {p.url && (
+            <a class="presale-link" href={p.url} target="_blank" rel="noopener noreferrer">
+              선예매 페이지 바로가기 ↗
+            </a>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+<style>
+  .presale-box { margin: 1.75rem 0; padding: 1.1rem 1.25rem; background: rgba(110, 231, 255, 0.06); border: 1px solid rgba(110, 231, 255, 0.22); border-radius: 14px; }
+  .presale-box h2 { margin: 0 0 0.8rem; font-size: 1rem; color: #bdeeff; }
+  .presale-list { display: flex; flex-direction: column; gap: 1rem; }
+  .presale-item:not(:last-child) { padding-bottom: 1rem; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+  .presale-item h3 { margin: 0 0 0.35rem; font-size: 0.94rem; color: #f5f3ff; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+  .presale-date { font-size: 0.78rem; font-weight: 600; color: #6ee7ff; }
+  .presale-detail { margin: 0 0 0.4rem; color: #d8d5ef; font-size: 0.92rem; line-height: 1.6; }
+  .presale-howto { margin: 0 0 0.5rem; color: #d8d5ef; font-size: 0.9rem; line-height: 1.6; background: rgba(255,255,255,0.04); padding: 0.6rem 0.8rem; border-radius: 8px; }
+  .presale-howto strong { color: #ff8fbe; }
+  .presale-link { display: inline-block; font-size: 0.86rem; font-weight: 600; color: #6ee7ff; text-decoration: none; }
+  .presale-link:hover { text-decoration: underline; }
+</style>

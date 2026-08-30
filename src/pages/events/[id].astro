@@ -6,7 +6,10 @@ import UpdateLog from '../../components/UpdateLog.astro';
 import VenueInfoBox from '../../components/VenueInfoBox.astro';
 import SourceList from '../../components/SourceList.astro';
 import MerchGrid from '../../components/MerchGrid.astro';
-import { events, festivalLineupDays } from '../../lib/events';
+import PresaleInfo from '../../components/PresaleInfo.astro';
+import SetlistBox from '../../components/SetlistBox.astro';
+import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
+import { events, festivalLineupDays, allTicketLinks } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -32,14 +35,21 @@ const pageDescription = event.description
   ? `${event.description} (${dateLabel}, ${event.venue})`
   : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`;
 
+// 한 공연을 여러 사이트에서 판매하는 경우(예: 인터파크 + NOL티켓) 벤더별로
+// 버튼을 각각 만든다 - 하나만 대표로 골라 보여주지 않는다.
+const ticketLinks = allTicketLinks(event);
 const links = [
-  event.ticketUrl && { label: '티켓 예매', url: event.ticketUrl, primary: true },
+  ...ticketLinks.map((t, i) => ({
+    label: t.note ? `${t.vendor} 예매 (${t.note})` : `${t.vendor} 예매`,
+    url: t.url,
+    primary: i === 0,
+  })),
   // 공식 홈페이지는 원래도 항상 노출되지만, 페스티벌은 라인업 공지 등 최신 정보가
   // 공식 채널에서만 확인 가능한 경우가 많아 primary(강조) 처리한다.
   event.officialUrl && {
     label: '공식 홈페이지·공지',
     url: event.officialUrl,
-    primary: event.genre === '페스티벌',
+    primary: ticketLinks.length === 0 && event.genre === '페스티벌',
   },
   event.mdUrl && { label: 'MD·굿즈 스토어', url: event.mdUrl },
   event.fanclubUrl && { label: '팬클럽', url: event.fanclubUrl },
@@ -88,13 +98,13 @@ const jsonLd = {
     name: event.artist,
   },
   ...(event.posterUrl ? { image: event.posterUrl } : {}),
-  ...(event.ticketUrl && status === 'scheduled'
+  ...(ticketLinks.length > 0 && status === 'scheduled'
     ? {
-        offers: {
+        offers: ticketLinks.map((t) => ({
           '@type': 'Offer',
-          url: event.ticketUrl,
+          url: t.url,
           availability: 'https://schema.org/InStock',
-        },
+        })),
       }
     : {}),
 };
@@ -134,6 +144,11 @@ const jsonLd = {
     )}
     {status === 'cancelled' && (
       <p class="status-banner status-cancelled">🚫 이 공연은 취소되었습니다.</p>
+    )}
+    {event.ticketingAnnounced && ticketLinks.length === 0 && (
+      <p class="status-banner status-announced">
+        📢 티켓 오픈 예정 공연이에요{event.ticketOpenDate ? ` — 오픈: ${event.ticketOpenDate}` : ''}. 오픈되면 이 페이지에 바로 예매 링크를 추가할게요.
+      </p>
     )}
 
     <AdSlot slot="event-top" />
@@ -191,6 +206,8 @@ const jsonLd = {
 
     {event.merch && event.merch.length > 0 && <MerchGrid items={event.merch} />}
 
+    {event.presale && event.presale.length > 0 && <PresaleInfo presale={event.presale} />}
+
     {links.length > 0 && (
       <div class="links">
         {links.map((l) => (
@@ -207,6 +224,10 @@ const jsonLd = {
     )}
 
     <AdSlot slot="event-mid" />
+
+    {event.setlists && event.setlists.length > 0 && <SetlistBox setlists={event.setlists} />}
+
+    {event.youtubeVideos && event.youtubeVideos.length > 0 && <YoutubeEmbeds videos={event.youtubeVideos} />}
 
     {event.updates && event.updates.length > 0 && <UpdateLog updates={event.updates} />}
 
@@ -259,6 +280,7 @@ const jsonLd = {
   }
   .status-postponed { background: rgba(255, 184, 76, 0.14); color: #ffb84c; }
   .status-cancelled { background: rgba(255, 95, 95, 0.14); color: #ff6b6b; }
+  .status-announced { background: rgba(110, 231, 255, 0.14); color: #6ee7ff; }
   .poster {
     display: block;
     width: 100%;

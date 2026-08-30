@@ -13,9 +13,10 @@
     "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26005670_p.gif",
     "officialUrl": "https://higedan.com/?lang=en",
     "funFacts": [
-      "이번이 2년 만의 내한이에요. 2016년 현대카드 언더스테이지에서 첫 내한을 가진 뒤 2024년 12월 킨텍스, 이번엔 KSPO DOME으로 공연장 규모를 계속 키워왔습니다.",
-      "'Pretender', 'Subtitle' 같은 히트곡 외에도 국내에선 애니메이션 주제가로 친숙한 밴드예요.",
-      "일본 아티스트 최초로 애플 뮤직 어워드 '올해의 일본 아티스트'상을 수상했고, 유튜브 구독자만 362만 명에 달해요."
+      "2016년 현대카드 언더스테이지 → 2024년 킨텍스 → 이번엔 KSPO DOME까지, 내한할 때마다 공연장을 한 단계씩 키워온 밴드예요. 다음엔 어디로 갈지가 팬들 사이 떡밥이죠.",
+      "'Pretender', 'Subtitle'로 익숙하지만 사실 국내 인지도의 8할은 애니메이션 주제가예요 — '귀멸의 칼날' 극장판 주제가만 들어도 '아 이 노래!' 하실 분들 많을 거예요.",
+      "일본 아티스트 최초로 애플 뮤직 어워드 '올해의 일본 아티스트'를 받았고 유튜브 구독자는 362만 명. J-POP 밴드 중에서도 티어가 다른 대중성이에요.",
+      "팬클럽 선예매는 연간회원 'Stand by You'와 월간회원 'BROTHERS'(일본 거주자 한정) 두 트랙으로 나뉘어 진행돼요 — 자세한 내용은 아래 선예매 안내를 확인하세요."
     ],
     "sources": [
       {
@@ -25,6 +26,58 @@
       {
         "label": "NOL 티켓 - 오피셜히게단디즘 아시아 투어 2026 in SEOUL",
         "url": "https://tickets.interpark.com/contents/notice/detail/13341"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓(인터파크)",
+        "url": "https://tickets.interpark.com/contents/notice/detail/13341"
+      }
+    ],
+    "presale": [
+      {
+        "title": "팬클럽 선예매 (Stand by You / BROTHERS)",
+        "detail": "공식 팬클럽 'Stand by You'(연간회원)와 'BROTHERS'(월간 모바일 회원, ¥440/월)가 참여 대상이에요. 다만 BROTHERS는 일본 거주자만 가입할 수 있어 해외 팬은 사실상 Stand by You 쪽이 유일한 선예매 루트입니다.",
+        "howTo": "공식 팬클럽 사이트에서 좌석 등급을 최대 3순위까지 희망 신청 → 가장 비싼 희망 등급 금액이 먼저 결제되고, 낮은 순위가 당첨되면 차액 환불, 미당첨 시 수수료 제외 전액 환불되는 추첨제예요. 1인 최대 4매(일반예매는 2매)까지 신청 가능하지만 본인 명의 확인이 필요해 양도는 불가능해요.",
+        "date": "2026-03-31 ~ 2026-04-06 (당첨자 발표 4/13 18시 이후)"
+      }
+    ],
+    "setlists": [
+      {
+        "label": "OFFICIAL HIGE DANDISM one-man tour 2026 (홀 공연 기준)",
+        "date": "2026",
+        "venue": "일본 투어 17개 도시 26회 공연",
+        "songs": [
+          "Editorial",
+          "I LOVE…",
+          "Amazing",
+          "Same Blue",
+          "イエスタデイ (Yesterday)",
+          "115万キロのフィルム",
+          "Sanitizer",
+          "風船 (Balloon)",
+          "Pretender",
+          "エルダーフラワー (Elderflower)",
+          "Trailer",
+          "アポトーシス (Apoptosis)",
+          "Anarchy",
+          "たかがアイラブユー",
+          "TATTOO",
+          "Make Me Wonder",
+          "らしさ",
+          "Stand By You",
+          "(앵콜) スターダスト",
+          "(앵콜) 50%"
+        ],
+        "note": "오사카성 홀·K아레나 요코하마 등 아레나 공연에서는 6번째 곡이 '115万キロのフィルム' 대신 'Laughter'로 바뀌었어요. 서울 공연 세트리스트는 이와 다를 수 있어요.",
+        "sourceUrl": "https://muhoric.com/higedan2026oneman-setlist/"
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Official髭男dism - I LOVE… & Hello & Pretender 라이브 메들리 (한글자막)",
+        "videoId": "bzWVJa9Nmec",
+        "note": "대표곡 3연속 메들리 라이브 — 처음 보는 사람에게 가장 추천하는 입문 영상이에요."
       }
     ]
   },
@@ -42,9 +95,10 @@
     "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202604/20260416/20260416-58079.jpg",
     "officialUrl": "https://backnumber.info/?lang=en",
     "funFacts": [
-      "2004년 결성, 2011년 데뷔한 일본 3인조 밴드로 '일본 국민밴드'로 불려요. 이번이 밴드의 첫 아시아 투어이자 첫 내한 공연입니다.",
-      "국내에서 화제가 된 계기가 독특해요 — 가수 성시경이 일본 방송에서 백넘버 음악을 소개하면서 신규 팬층이 빠르게 늘었습니다.",
-      "대표곡 '수평선', '크리스마스 송' 등 30곡 이상이 일본에서 스트리밍 1억 회를 돌파했어요."
+      "2004년 결성, 2011년 데뷔한 3인조 밴드로 일본에서는 이미 '국민밴드'급 인지도예요. 그런데 이번이 밴드 인생 첫 해외 투어이자 첫 내한이라니 — 데뷔 15년 만의 첫 외출인 셈이죠.",
+      "국내 역주행의 시작이 재밌어요. 가수 성시경이 일본 방송에서 이 밴드 음악을 소개한 게 불씨가 됐고, 거기서 신규 팬층이 폭발적으로 늘었대요. 방송 하나가 밴드를 한국까지 데려온 거예요.",
+      "대표곡 '수평선', '크리스마스 송' 등 30곡 이상이 일본 스트리밍 1억 회를 돌파했어요. 발라드 밴드치고는 숫자가 상당히 무겁습니다.",
+      "공식 팬클럽 이름이 '원룸(one room)'이에요. 골드키·실버키 등급별로 선예매 기회가 다르게 열리니, 진성 팬이라면 가입부터 알아두는 게 좋아요."
     ],
     "sources": [
       {
@@ -54,6 +108,51 @@
       {
         "label": "'日 국민밴드' 백넘버, 첫 내한공연 확정 - 노컷뉴스",
         "url": "https://www.nocutnews.co.kr/news/6502357"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://m.ticket.yes24.com/English/Perf/Detail/FnPerfInfo.aspx?IdPerf=58079"
+      }
+    ],
+    "presale": [
+      {
+        "title": "공식 팬클럽 '원룸(one room)' 선예매",
+        "detail": "1차는 골드키(연간회원) 전용, 2차는 골드키+실버키 회원까지 확대되는 2단계 추첨제 선예매예요.",
+        "howTo": "공식 팬클럽 사이트 backnumber.info에서 '원룸' 가입 후 등급(골드키/실버키)을 확인하고, 각 회차 신청 기간에 공연·매수를 선택해 신청하면 돼요. 1인당 공연별 최대 2매까지 신청 가능하고, 추첨 결과에 따라 결제가 진행됩니다.",
+        "date": "1차: 2026-03-16 19:00 ~ 03-23 18:59 · 2차: 2026-03-24 12:00 ~ 03-31 19:00 (일본 시간 기준)",
+        "url": "https://backnumber.info/?lang=en"
+      }
+    ],
+    "setlists": [
+      {
+        "label": "Grateful Yesterdays 투어 (대만 타이베이 공연)",
+        "date": "2026-08-23",
+        "venue": "타이베이 아레나, 대만",
+        "songs": [
+          "幕が上がる (Maku ga Agaru)",
+          "高嶺の花子さん",
+          "クリスマスソング",
+          "青い春",
+          "SISTER",
+          "大不誠実",
+          "花束",
+          "チェックのワンピース",
+          "ハッピーエンド",
+          "そのドレスちょっと待った",
+          "ベルベットの詩",
+          "MOTTO"
+        ],
+        "note": "서울 공연보다 앞서 열린 같은 투어 대만 공연 세트리스트예요. 일부 곡만 확인됐고, 실제 서울 세트리스트는 다를 수 있어요.",
+        "sourceUrl": "https://www.setlist.fm/setlists/back-number-3bd41c8c.html"
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "back number - 恋(사랑, Koi) 라이브 (한글자막)",
+        "videoId": "tHMFOcdITL8",
+        "note": "발라드 밴드 특유의 라이브 보컬을 제대로 느낄 수 있는 곡이에요."
       }
     ]
   },
@@ -71,8 +170,9 @@
     "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26003199_p.gif",
     "officialUrl": "https://vaundy.jp/?lang=en",
     "funFacts": [
-      "'괴물 천재'로 불리는 일본 싱어송라이터 Vaundy의 데뷔 후 첫 단독 내한 콘서트예요.",
-      "티켓은 스탠딩·지정석 R석 모두 165,000원(S석 154,000원)으로 책정됐고, NOL티켓에서 판매합니다."
+      "'괴물 천재'라는 별명이 괜히 붙은 게 아니에요 — 작사·작곡·편곡은 물론 뮤직비디오 감독까지 혼자 다 합니다. 이번이 데뷔 후 첫 단독 내한 콘서트예요.",
+      "2026년 3월 발표 당시 이미 국내 팬들 사이에서 화제였는데, 결국 전석 매진을 기록했어요. 인천 인스파이어 아레나라는 큰 무대를 꽉 채운 셈이니 티켓팅 난이도는 각오하는 게 좋아요.",
+      "장르를 종잡을 수 없는 스타일이 특징이에요 — 한 앨범 안에서 록, 알앤비, 시티팝을 넘나드는데, 이번 서울 무대에서도 그 널뛰기를 라이브로 확인할 수 있을 거예요."
     ],
     "sources": [
       {
@@ -82,6 +182,56 @@
       {
         "label": "바운디, 9월 인천 인스파이어 아레나서 첫 내한 콘서트 - 톱스타뉴스",
         "url": "https://www.topstarnews.net/news/articleView.html?idxno=16000312"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓(인터파크)",
+        "url": "https://nol.yanolja.com/ticket/places/26000240/products/26003199"
+      }
+    ],
+    "setlists": [
+      {
+        "label": "Vaundy DOME TOUR 2026 'SILENCE' (도쿄돔 공연)",
+        "date": "2026-02-15",
+        "venue": "도쿄돔, 일본",
+        "songs": [
+          "東京フラッシュ",
+          "不可抗力",
+          "裸の勇者",
+          "情熱",
+          "踊り子",
+          "そんなbitterな話",
+          "恋風邪にのせて",
+          "灯火",
+          "異世人",
+          "ずっと好きだったよ",
+          "僕はどうして分かるんだろう",
+          "融解サイン",
+          "タイムパラドックス",
+          "しわあわせ",
+          "再会",
+          "風神",
+          "花占い",
+          "極楽浄土",
+          "replica",
+          "呼び声",
+          "泣き地蔵",
+          "そらみみ",
+          "CHAINSAW BLOOD",
+          "トキメキ",
+          "怪獣の花唄",
+          "SILENCE"
+        ],
+        "note": "도쿄돔 단독 공연 세트리스트로, 26곡 대곡 편성이에요. 서울 아레나 공연은 곡 수가 줄어들 가능성이 높아요.",
+        "sourceUrl": "https://www.setlist.fm/setlist/vaundy/2026/tokyo-dome-tokyo-japan-53453355.html"
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Vaundy 라이브 모음 (한글 가사 해석)",
+        "videoId": "vJlVRlVyfrg",
+        "note": "'보법부터 다르다'는 반응이 나온 라이브 퍼포먼스 모음이에요."
       }
     ]
   },
@@ -676,7 +826,7 @@
     "endDate": "2026-11-22",
     "ticketUrl": "https://ticket.yes24.com/Perf/59840",
     "officialUrl": "https://wonderli.vet/",
-    "note": "타임테이블(날짜별 출연 순서)은 9월 말 공개 예정 — 확정되는 대로 이 페이지의 라인업을 날짜별로 나눌 예정입니다.",
+    "note": "타임테이블(날짜별 출연 순서)은 9월 말 공개 예정 — 확정되는 대로 이 페이지의 라인업을 날짜별로 나눌 예정입니다. 멜론티켓·티켓피아에서도 함께 판매되지만, 두 곳은 아직 구체적인 상품 페이지 링크를 확인하지 못해 위 두 곳만 버튼으로 연결해뒀어요.",
     "description": "원더로크와 LIVET이 주최하는 국내 최대 규모 J-POP & Iconic 아티스트 페스티벌. 2023년 시작돼 매년 4분기 킨텍스에서 열리며, 2025년에는 2만 명 이상이 방문했다.",
     "lineup": [
       "THE ORAL CIGARETTES",
@@ -697,7 +847,8 @@
       "넬(NELL)",
       "이디오테잎",
       "쏜애플",
-      "송소희"
+      "송소희",
+      "쿠로미(Kuromi)"
     ],
     "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png",
     "funFacts": [
@@ -738,6 +889,16 @@
       },
       {
         "label": "WONDERLIVET 2026 (원더리벳 2026) - 티켓링크",
+        "url": "https://m.ticketlink.co.kr/product/65048"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/59840"
+      },
+      {
+        "vendor": "티켓링크",
         "url": "https://m.ticketlink.co.kr/product/65048"
       }
     ]
@@ -897,6 +1058,87 @@
       {
         "label": "2026 GHOST Festival 공식 홈페이지",
         "url": "https://www.ghostfestival.kr/"
+      }
+    ]
+  },
+  {
+    "id": "fujii-kaze-2027-01",
+    "artist": "Fujii Kaze (후지이 카제)",
+    "genre": "J-POP",
+    "venue": "고척스카이돔",
+    "city": "서울",
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-09",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213396"
+      }
+    ],
+    "officialUrl": "https://fujiikaze.com/tour/",
+    "note": "티켓 오픈은 2026년 6월 17일에 이미 진행됐어요 — 일반예매 좌석은 멜론티켓에서 실시간으로 확인하세요.",
+    "description": "'Matsuri', 'Shinunoga E-Wa' 등으로 알려진 일본 최고의 싱어송라이터 후지이 카제의 3집 'Prema' 월드투어 서울 공연. 2024년 12월 고척돔 첫 내한 이후 약 2년 만에 같은 무대로 돌아온다.",
+    "funFacts": [
+      "2024년 12월, 아시아 8개 도시를 도는 첫 해외투어의 마지막 무대로 고척돔에 처음 섰어요. 이번엔 그 자리로 다시 돌아오는 거라 '금의환향'에 가까운 내한이에요.",
+      "티켓 가격이 플로어 FR석 21만원부터 지정석 B석 13만2000원까지로, 국내에서 열리는 내한 공연 중에서도 꽤 높은 편이에요. 그만큼 무대 규모나 프로덕션에 대한 기대치도 크다는 뜻이겠죠.",
+      "2026년 4월, 코첼라 메인 무대에서 'Matsuri'를 부른 순간이 유튜브에서 두고두고 회자되고 있어요 — 일본 아티스트가 코첼라에 서는 것 자체가 흔치 않은 일이라 더 화제였죠(아래 영상 참고).",
+      "피아노를 치면서 노래하는 스타일로 유명한데, 실제로 재즈·소울·펑크(funk)를 넘나드는 편곡이 라이브에서 더 진가를 발휘한다는 평이 많아요."
+    ],
+    "setlists": [
+      {
+        "label": "2026 코첼라 페스티벌 무대",
+        "date": "2026-04-11",
+        "venue": "Empire Polo Club, 인디오(캘리포니아)",
+        "songs": [
+          "It's Alright",
+          "Matsuri",
+          "Casket Girl",
+          "I Need U Back",
+          "Nan-Nan",
+          "Okay, Goodbye",
+          "You",
+          "Prema",
+          "Shinunoga E-Wa",
+          "Hachiko"
+        ],
+        "note": "50분짜리 페스티벌 세트라 곡 수가 적어요. 단독 공연인 서울 무대는 이보다 훨씬 길고 곡 구성도 다를 가능성이 높아요.",
+        "sourceUrl": "https://www.setlist.fm/setlist/fujii-kaze/2026/empire-polo-club-mojave-indio-ca-63404683.html"
+      }
+    ],
+    "youtubeVideos": [
+      {
+        "title": "Fujii Kaze \"Matsuri\" [FANCAM/4K] @ COACHELLA 2026",
+        "videoId": "Ym36-pDEQZE",
+        "note": "직관냥이 가장 많이 돌려본 영상 — 코첼라 관중의 떼창이 인상적이에요."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Fujii Kaze 내한공연 일정 - 페스티벌라이프(X)",
+        "url": "https://x.com/FstvlLife/status/2064547026927599940"
+      },
+      {
+        "label": "2027 후지이 카제 Prema 월드 투어 - 서울 - 멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213396"
+      },
+      {
+        "label": "후지이 카제, 3년 만의 내한... 6월 17일 티켓 오픈 - 금강일보",
+        "url": "https://www.ggilbo.com/news/articleView.html?idxno=1162989"
+      },
+      {
+        "label": "일본 싱어송라이터 후지이 카제, 12월 고척돔 내한 공연 확정(2024) - 스포츠경향",
+        "url": "https://sports.khan.co.kr/article/202408282053013"
+      },
+      {
+        "label": "Fujii Kaze 후지이 카제 내한공연 - 내한공연 정보",
+        "url": "https://festivallife.kr/concert_k/?bmode=view&idx=171742329"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-06-17",
+        "text": "2027년 1월 9일 고척스카이돔 공연이 확정되고 멜론티켓에서 티켓이 오픈됐어요.",
+        "sourceUrl": "https://www.ggilbo.com/news/articleView.html?idxno=1162989"
       }
     ]
   }

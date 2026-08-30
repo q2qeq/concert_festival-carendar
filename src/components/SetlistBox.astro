@@ -1,0 +1,52 @@
+---
+// Past-tour setlists, collapsed by default per show so a page with several tour
+// legs doesn't turn into a wall of song titles. Always labeled with which show
+// the setlist is from (see SetlistEntry) so readers don't mistake it for a
+// guaranteed Korea-show setlist unless it explicitly is one.
+import type { SetlistEntry } from '../lib/events';
+interface Props { setlists: SetlistEntry[] }
+const { setlists } = Astro.props;
+---
+{setlists.length > 0 && (
+  <section class="setlist-box">
+    <h2>🎶 셋리스트 미리보기</h2>
+    <p class="setlist-caveat">실제 이번 공연 셋리스트는 투어 진행에 따라 달라질 수 있어요. 아래는 참고용이에요.</p>
+    <div class="setlist-group">
+      {setlists.map((s) => (
+        <details class="setlist-item">
+          <summary>
+            <span class="setlist-label">{s.label}</span>
+            {(s.date || s.venue) && (
+              <span class="setlist-meta">{[s.date, s.venue].filter(Boolean).join(' · ')}</span>
+            )}
+            <span class="setlist-count">{s.songs.length}곡 보기</span>
+          </summary>
+          <ol class="setlist-songs">
+            {s.songs.map((song) => <li>{song}</li>)}
+          </ol>
+          {s.note && <p class="setlist-note">{s.note}</p>}
+          {s.sourceUrl && (
+            <a class="setlist-source" href={s.sourceUrl} target="_blank" rel="noopener noreferrer">출처 보기 ↗</a>
+          )}
+        </details>
+      ))}
+    </div>
+  </section>
+)}
+<style>
+  .setlist-box { margin: 1.75rem 0; }
+  .setlist-box h2 { margin: 0 0 0.35rem; font-size: 1.05rem; color: #e5e2f7; }
+  .setlist-caveat { margin: 0 0 0.8rem; color: #a9a4c9; font-size: 0.85rem; }
+  .setlist-group { display: flex; flex-direction: column; gap: 0.6rem; }
+  .setlist-item { background: rgba(255,255,255,0.04); border-radius: 10px; overflow: hidden; }
+  .setlist-item summary {
+    cursor: pointer; list-style: none; padding: 0.75rem 1rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem;
+  }
+  .setlist-item summary::-webkit-details-marker { display: none; }
+  .setlist-label { font-weight: 700; color: #f5f3ff; font-size: 0.92rem; }
+  .setlist-meta { color: #a9a4c9; font-size: 0.82rem; }
+  .setlist-count { margin-left: auto; color: #ff8fbe; font-size: 0.82rem; font-weight: 600; }
+  .setlist-songs { margin: 0; padding: 0 1rem 0.9rem 2.1rem; color: #d8d5ef; font-size: 0.9rem; line-height: 1.75; }
+  .setlist-note { margin: 0 1rem 0.8rem; color: #a9a4c9; font-size: 0.82rem; }
+  .setlist-source { display: block; margin: 0 1rem 0.9rem; font-size: 0.8rem; color: #6ee7ff; }
+</style>

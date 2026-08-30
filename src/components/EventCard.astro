@@ -1,6 +1,6 @@
 ---
 import type { ConcertEvent } from '../lib/events';
-import { hasRecentUpdate } from '../lib/events';
+import { hasRecentUpdate, hasTicketsOnSale } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -18,6 +18,7 @@ const STATUS_LABEL: Record<string, string> = {
   cancelled: '취소',
 };
 const isFresh = hasRecentUpdate(event);
+const onSale = hasTicketsOnSale(event);
 ---
 <a class={`event-card${status !== 'scheduled' ? ' is-' + status : ''}`} href={`/events/${event.id}/`}>
   {event.posterUrl && (
@@ -31,7 +32,8 @@ const isFresh = hasRecentUpdate(event);
   <div class="tags">
     {isFresh && <span class="fresh-tag">새 소식</span>}
     {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
-    {status === 'scheduled' && event.ticketUrl && <span class="ticket-tag">예매 가능</span>}
+    {status === 'scheduled' && onSale && <span class="ticket-tag">예매 가능</span>}
+    {status === 'scheduled' && !onSale && event.ticketingAnnounced && <span class="announced-tag">티켓오픈 예정</span>}
   </div>
 </a>
 <style>
@@ -69,6 +71,14 @@ const isFresh = hasRecentUpdate(event);
     font-size: 0.75rem;
     color: #6ee7ff;
     border: 1px solid rgba(110,231,255,0.4);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .announced-tag {
+    font-size: 0.75rem;
+    color: #6ee7ff;
+    border: 1px dashed rgba(110,231,255,0.5);
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
     white-space: nowrap;

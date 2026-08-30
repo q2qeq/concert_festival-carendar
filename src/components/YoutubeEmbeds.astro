@@ -1,0 +1,42 @@
+---
+// Notable YouTube clips (official live performances, viral fancams from a
+// previous tour stop). Lazy-loaded iframes via youtube-nocookie to keep the
+// event page's initial load light.
+import type { YoutubeVideo } from '../lib/events';
+interface Props { videos: YoutubeVideo[] }
+const { videos } = Astro.props;
+---
+{videos.length > 0 && (
+  <section class="yt-box">
+    <h2>▶ 직관냥이 찾은 영상</h2>
+    <div class="yt-grid">
+      {videos.map((v) => (
+        <figure class="yt-item">
+          <div class="yt-frame">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${v.videoId}`}
+              title={v.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <figcaption>
+            <strong>{v.title}</strong>
+            {v.note && <span class="yt-note">{v.note}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+)}
+<style>
+  .yt-box { margin: 1.75rem 0; }
+  .yt-box h2 { margin: 0 0 0.8rem; font-size: 1.05rem; color: #e5e2f7; }
+  .yt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+  .yt-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+  .yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .yt-item figcaption { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.15rem; }
+  .yt-item strong { color: #f5f3ff; font-size: 0.9rem; }
+  .yt-note { color: #a9a4c9; font-size: 0.8rem; }
+</style>

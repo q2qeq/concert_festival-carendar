@@ -30,6 +30,52 @@ export interface UpdateLogEntry {
   sourceUrl?: string;
 }
 
+// One vendor's purchase page for a show. Many shows sell through more than one
+// vendor at once (e.g. 인터파크 + NOL티켓, or 예스24 + 멜론티켓) - list every real
+// one found rather than picking a single "main" link. `vendor` is a short display
+// name (e.g. "인터파크", "NOL티켓", "예스24", "멜론티켓", "티켓링크").
+export interface TicketLink {
+  vendor: string;
+  url: string;
+  note?: string; // e.g. "스탠딩 전용", "1차 선예매 종료, 일반예매만 가능"
+}
+
+// A promoter/fanclub-specific presale (선예매) window - membership presale, credit
+// card presale, fanclub presale, etc. `howTo` should be concrete step-by-step
+// guidance when the source gives it (which site, which login/membership is
+// required, what day it opens) - never invented, only what's actually announced.
+export interface PresaleInfo {
+  title: string; // e.g. "위버스 팬클럽 선예매", "현대카드 선예매"
+  detail: string; // what this presale is and who's eligible
+  howTo?: string; // concrete steps to participate
+  date?: string; // ISO date or a human label like "2026-09-01 오후 8시"
+  url?: string;
+}
+
+// A setlist from a specific show - usually a previous stop on the same tour, or
+// (when the Korea stop hasn't happened yet) the most recent tour leg elsewhere.
+// Always tag which show it's from via `label`/`date`/`venue` so readers don't
+// mistake it for a confirmed Korea setlist unless it explicitly is one.
+export interface SetlistEntry {
+  label: string; // e.g. "2026 도쿄돔 공연 셋리스트", "2025 월드투어 서울 공연"
+  date?: string;
+  venue?: string;
+  songs: string[];
+  sourceUrl?: string;
+  note?: string; // e.g. "실제 세트리스트는 공연마다 조금씩 달라질 수 있어요"
+}
+
+// A notable YouTube video worth surfacing - a viral clip, an official live
+// performance, a fancam of a previous tour stop. `videoId` is the raw 11-char
+// YouTube id (extracted from the URL at data-entry time) so the page can embed it
+// directly without parsing at render time.
+export interface YoutubeVideo {
+  title: string;
+  videoId: string;
+  note?: string;
+  sourceUrl?: string; // the original watch URL, for the "출처" line
+}
+
 export interface ConcertEvent {
   id: string;
   artist: string;
@@ -38,7 +84,12 @@ export interface ConcertEvent {
   city: string;
   startDate: string; // ISO yyyy-mm-dd
   endDate: string;
-  ticketUrl?: string; // official ticket vendor page for this specific show
+  ticketUrl?: string; // legacy single-vendor field - kept for back-compat, prefer ticketLinks
+  // All real vendor pages selling this show. Prefer this over `ticketUrl` for any
+  // show sold through more than one vendor. events/[id].astro merges both fields
+  // (ticketLinks first, then ticketUrl if its URL isn't already listed) so old
+  // entries keep working without edits.
+  ticketLinks?: TicketLink[];
   officialUrl?: string; // artist/tour official site or promoter's official event page
   mdUrl?: string; // official merch/goods store, only when a real one was found
   fanclubUrl?: string; // official fan club page, mostly relevant for K-pop/J-pop acts
@@ -66,11 +117,20 @@ export interface ConcertEvent {
   description?: string;
   // Researched trivia/context that makes the event worth reading about, not just
   // attending - history, scale, why a lineup choice is notable, practical tips.
-  // Always sourced from real reporting; never invented.
+  // Always sourced from real reporting; never invented. Write these with personality
+  // (직관냥's voice) - a punchy hook or a "왜 화제인지" angle reads better than a flat
+  // fact statement, as long as the underlying claim stays accurate and sourced.
   funFacts?: string[];
   // Official merch/goods info, only when a real product photo/listing was found.
   // Leave unset (not a placeholder) when nothing official has been announced yet.
   merch?: MerchItem[];
+  // Promoter/fanclub/card-company presale windows, only when a real announced
+  // presale process exists - never invented on the assumption "there's probably one".
+  presale?: PresaleInfo[];
+  // Past-tour setlists worth showing readers (see SetlistEntry for sourcing rules).
+  setlists?: SetlistEntry[];
+  // Notable YouTube videos (official live clips, viral fancams) - see YoutubeVideo.
+  youtubeVideos?: YoutubeVideo[];
   // Dated timeline of what's changed or been confirmed since the event was first
   // published - lineup reveals, ticket opens, notable news. Renders as a visible
   // "최근 업데이트" log so readers have a reason to check back on this page.
@@ -82,6 +142,14 @@ export interface ConcertEvent {
   // after it was first published (e.g. a postponement announced in the news, not
   // something the KOPIS auto-fetch pipeline can detect on its own).
   status?: 'scheduled' | 'postponed' | 'cancelled';
+  // True when tickets aren't on sale yet but the show/tour has been officially
+  // announced (a "티켓오픈 예정" listing). Lets the homepage/card surface these
+  // separately from shows that are already on sale. Leave unset once ticketing
+  // opens (or set it to false and add the real ticketLinks instead).
+  ticketingAnnounced?: boolean;
+  // Human-readable ticket-open date/time when known ahead of the actual open
+  // (e.g. "2026-09-01 오후 8시 (예정)"). Only for shows with ticketingAnnounced.
+  ticketOpenDate?: string;
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();
@@ -143,4 +211,20 @@ export function hasRecentUpdate(event: ConcertEvent, days = 7, fromISO?: string)
   const latestDate = new Date(latest + 'T00:00:00');
   const diffDays = Math.floor((from.getTime() - latestDate.getTime()) / 86400000);
   return diffDays >= 0 && diffDays <= days;
+}
+
+// Merges `ticketLinks` and the legacy `ticketUrl` into one de-duplicated list, so
+// every page can just call this instead of re-implementing the merge/fallback.
+export function allTicketLinks(event: ConcertEvent): TicketLink[] {
+  const links: TicketLink[] = event.ticketLinks ? event.ticketLinks.slice() : [];
+  if (event.ticketUrl && !links.some((l) => l.url === event.ticketUrl)) {
+    links.push({ vendor: '티켓 예매', url: event.ticketUrl });
+  }
+  return links;
+}
+
+// Whether an event has at least one working way to buy tickets right now (used by
+// EventCard's "예매 가능" tag and anywhere else that used to just check ticketUrl).
+export function hasTicketsOnSale(event: ConcertEvent): boolean {
+  return allTicketLinks(event).length > 0;
 }
