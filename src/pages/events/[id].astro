@@ -8,6 +8,7 @@ import ShuttleInfo from '../../components/ShuttleInfo.astro';
 import SourceList from '../../components/SourceList.astro';
 import MerchGrid from '../../components/MerchGrid.astro';
 import PresaleInfo from '../../components/PresaleInfo.astro';
+import PreviousEditionCompare from '../../components/PreviousEditionCompare.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import { events, festivalLineupDays, allTicketLinks } from '../../lib/events';
@@ -203,6 +204,10 @@ const jsonLd = {
           </p>
         )}
       </section>
+    )}
+
+    {event.previousEditions && event.previousEditions.length > 0 && (
+      <PreviousEditionCompare editions={event.previousEditions} crowdOutlook={event.crowdOutlook} />
     )}
 
     {event.merch && event.merch.length > 0 && <MerchGrid items={event.merch} />}

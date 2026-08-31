@@ -89,6 +89,43 @@ export interface ShuttleBusInfo {
   note?: string; // price, schedule caveats, "선착순 마감" etc.
 }
 
+// A single earlier real-world edition of a recurring event (annual festival, tour
+// series, etc.), used to build a "지난 회차와 비교" section. Only include editions
+// with at least one verified real data point (attendance, lineup, or a notable
+// change) - never guess or interpolate a past year's numbers just to fill the
+// field in. `year` is a display label (usually the year, optionally with an
+// edition number) rather than a strict ISO value since sources cite these
+// inconsistently (e.g. "2025", "2025 (2회)").
+export interface PreviousEdition {
+  year: string;
+  label?: string; // edition number/name if known, e.g. "1회", "22회"
+  date?: string;
+  venue?: string;
+  // Verified attendance figure only - prefer an official/government count (e.g.
+  // KOPIS) over a promoter's rounded press-release number when both exist, and
+  // note the discrepancy in `attendanceNote` rather than picking one silently.
+  attendance?: number;
+  attendanceNote?: string;
+  // Notable acts from that edition, real only - not the full lineup unless it's
+  // short enough to be meaningful at a glance.
+  lineupHighlights?: string[];
+  scaleNote?: string; // e.g. "라인업 42팀, 이틀간 진행"
+  sourceUrl?: string;
+}
+
+// A short, honest read on how this edition's lineup/scale compares to the most
+// recent previous one, and what that might reasonably mean for turnout. This is
+// commentary grounded in `previousEditions` + this year's own lineup/venue data -
+// never a hard number prediction, and never invented beyond what the cited
+// comparison actually supports. Frame it as "~일 가능성이 있다/높다" rather than a
+// guaranteed outcome. Most useful for festivals whose lineup changes year to year
+// (university festivals especially - a stronger/weaker lineup than last year is a
+// genuine, citable reason to expect more or less crowd).
+export interface CrowdOutlook {
+  text: string;
+  basis?: string; // e.g. "라인업 규모 유지 + 화제성 있는 신규 팀 추가"
+}
+
 export interface ConcertEvent {
   id: string;
   artist: string;
@@ -167,6 +204,14 @@ export interface ConcertEvent {
   // at remote or hard-to-reach venues (자라섬, KINTEX, 파라다이스시티 등) - see
   // ShuttleBusInfo for sourcing rules. Rendered next to VenueInfoBox.
   shuttleBus?: ShuttleBusInfo[];
+  // Real prior editions of this same event/series, oldest-first or any order -
+  // events/[id].astro sorts by `year` for display. Leave unset for a first-time
+  // event; see PreviousEdition for sourcing rules.
+  previousEditions?: PreviousEdition[];
+  // Optional editorial read on expected turnout vs the most recent previous
+  // edition - see CrowdOutlook. Only set when previousEditions has real data to
+  // ground it in.
+  crowdOutlook?: CrowdOutlook;
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();
@@ -244,4 +289,28 @@ export function allTicketLinks(event: ConcertEvent): TicketLink[] {
 // EventCard's "예매 가능" tag and anywhere else that used to just check ticketUrl).
 export function hasTicketsOnSale(event: ConcertEvent): boolean {
   return allTicketLinks(event).length > 0;
+}
+
+// True when we have at least one verified prior edition to compare against.
+export function hasPreviousEditions(event: ConcertEvent): boolean {
+  return !!(event.previousEditions && event.previousEditions.length > 0);
+}
+
+// Previous editions sorted oldest-first by `year` (lexicographic - fine since
+// these are always "YYYY" or "YYYY..." style labels).
+export function sortedPreviousEditions(event: ConcertEvent): PreviousEdition[] {
+  return (event.previousEditions ?? []).slice().sort((a, b) => a.year.localeCompare(b.year));
+}
+
+// Simple attendance-trend read across editions with a verified attendance
+// figure (needs at least 2 such editions). +-10% counts as flat so small
+// year-to-year noise doesn't get overstated as growth/decline.
+export function attendanceTrend(event: ConcertEvent): 'growing' | 'shrinking' | 'flat' | null {
+  const withAttendance = sortedPreviousEditions(event).filter((e) => typeof e.attendance === 'number');
+  if (withAttendance.length < 2) return null;
+  const first = withAttendance[0].attendance as number;
+  const last = withAttendance[withAttendance.length - 1].attendance as number;
+  if (last > first * 1.1) return 'growing';
+  if (last < first * 0.9) return 'shrinking';
+  return 'flat';
 }

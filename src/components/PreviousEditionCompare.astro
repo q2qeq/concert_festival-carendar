@@ -1,0 +1,86 @@
+---
+// "지난 회차와 비교" section - shown only for events with real, sourced prior
+// editions (see PreviousEdition in lib/events.ts). Renders a simple attendance
+// bar per edition (when attendance is known) plus each edition's lineup
+// highlights, and an optional editorial crowdOutlook read at the top. Never
+// invent a bar/number for an edition without a verified attendance figure -
+// those editions still render (lineup/scale only), just without a bar.
+import type { PreviousEdition, CrowdOutlook } from '../lib/events';
+
+interface Props {
+  editions: PreviousEdition[];
+  crowdOutlook?: CrowdOutlook;
+}
+const { editions, crowdOutlook } = Astro.props;
+const sorted = editions.slice().sort((a, b) => a.year.localeCompare(b.year));
+const maxAttendance = Math.max(0, ...sorted.map((e) => e.attendance ?? 0));
+---
+{sorted.length > 0 && (
+  <section class="edition-compare">
+    <h2>지난 회차와 비교</h2>
+
+    {crowdOutlook && (
+      <p class="crowd-outlook">
+        <span class="outlook-badge">인파 예상</span>
+        {crowdOutlook.text}
+        {crowdOutlook.basis && <span class="outlook-basis">근거: {crowdOutlook.basis}</span>}
+      </p>
+    )}
+
+    <div class="edition-list">
+      {sorted.map((ed) => (
+        <article class="edition-item">
+          <div class="edition-head">
+            <span class="edition-year">{ed.year}{ed.label ? ` (${ed.label})` : ''}</span>
+            {typeof ed.attendance === 'number' && (
+              <span class="edition-attendance">{ed.attendance.toLocaleString('ko-KR')}명</span>
+            )}
+          </div>
+
+          {typeof ed.attendance === 'number' && maxAttendance > 0 && (
+            <div class="attendance-bar-track">
+              <div
+                class="attendance-bar-fill"
+                style={`width: ${Math.max(4, Math.round((ed.attendance / maxAttendance) * 100))}%`}
+              />
+            </div>
+          )}
+          {ed.attendanceNote && <p class="edition-note">{ed.attendanceNote}</p>}
+
+          {(ed.venue || ed.scaleNote) && (
+            <p class="edition-scale">
+              {[ed.venue, ed.scaleNote].filter(Boolean).join(' · ')}
+            </p>
+          )}
+
+          {ed.lineupHighlights && ed.lineupHighlights.length > 0 && (
+            <p class="edition-lineup">{ed.lineupHighlights.join(' · ')}</p>
+          )}
+
+          {ed.sourceUrl && (
+            <a class="edition-source" href={ed.sourceUrl} target="_blank" rel="noopener noreferrer">근거 보기 ↗</a>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+<style>
+  .edition-compare { margin: 1.75rem 0; padding: 1.1rem 1.25rem; background: rgba(126, 217, 87, 0.06); border: 1px solid rgba(126, 217, 87, 0.22); border-radius: 14px; }
+  .edition-compare h2 { margin: 0 0 0.8rem; font-size: 1rem; color: #d4f5c1; }
+  .crowd-outlook { margin: 0 0 1rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.05); border-radius: 10px; color: #e5e2f7; font-size: 0.92rem; line-height: 1.6; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+  .outlook-badge { flex-shrink: 0; font-size: 0.75rem; font-weight: 700; color: #101018; background: #7ed957; padding: 0.15rem 0.55rem; border-radius: 999px; }
+  .outlook-basis { display: block; width: 100%; font-size: 0.8rem; color: #a9a4c9; margin-top: 0.2rem; }
+  .edition-list { display: flex; flex-direction: column; gap: 0.9rem; }
+  .edition-item:not(:last-child) { padding-bottom: 0.9rem; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+  .edition-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.35rem; }
+  .edition-year { font-weight: 700; color: #f5f3ff; font-size: 0.95rem; }
+  .edition-attendance { font-weight: 700; color: #7ed957; font-size: 0.95rem; }
+  .attendance-bar-track { height: 8px; border-radius: 999px; background: rgba(255,255,255,0.08); overflow: hidden; margin-bottom: 0.5rem; }
+  .attendance-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #4fae2f, #7ed957); }
+  .edition-note { margin: 0 0 0.4rem; color: #a9a4c9; font-size: 0.82rem; }
+  .edition-scale { margin: 0 0 0.35rem; color: #d8d5ef; font-size: 0.88rem; }
+  .edition-lineup { margin: 0 0 0.4rem; color: #d8d5ef; font-size: 0.9rem; line-height: 1.55; }
+  .edition-source { font-size: 0.82rem; color: #6ee7ff; text-decoration: none; }
+  .edition-source:hover { text-decoration: underline; }
+</style>

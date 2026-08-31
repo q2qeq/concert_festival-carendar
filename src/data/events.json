@@ -323,7 +323,36 @@
         "label": "임진각 평화누리공원 근처 맛집·카페 - 펜후스토리",
         "url": "https://penhoo.com/post/bae1c1ba/416"
       }
-    ]
+    ],
+    "previousEditions": [
+      {
+        "year": "2023",
+        "venue": "임진각 평화누리",
+        "attendance": 12000,
+        "attendanceNote": "주최측 발표 기준 '1만 2천여 명' - 정확한 공식 집계치는 아님",
+        "sourceUrl": "https://www.kyeongin.com/article/1657288"
+      },
+      {
+        "year": "2024",
+        "label": "DMZ 평화콘서트와 통합 개최",
+        "venue": "임진각 평화누리",
+        "attendance": 20000,
+        "attendanceNote": "주최측 발표 기준 '2만 명' - DMZ 평화콘서트와 함께 집계된 수치",
+        "sourceUrl": "https://go.seoul.co.kr/news/newsView.php?id=20240908500094"
+      },
+      {
+        "year": "2025",
+        "label": "with 캠핑",
+        "venue": "임진각 평화누리",
+        "attendance": 30000,
+        "attendanceNote": "주최측 발표 기준 '3만 명 운집'",
+        "sourceUrl": "https://www.kukinews.com/article/view/kuk202509080104"
+      }
+    ],
+    "crowdOutlook": {
+      "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
+      "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
+    }
   },
   {
     "id": "kopis-onewe-live-2026-09",
@@ -1087,7 +1116,35 @@
         "vendor": "티켓링크",
         "url": "https://m.ticketlink.co.kr/product/65048"
       }
-    ]
+    ],
+    "previousEditions": [
+      {
+        "year": "2024",
+        "venue": "KINTEX",
+        "attendance": 11697,
+        "attendanceNote": "공연예술통합전산망(KOPIS) 집계 기준, 3일간 최종 관객 수",
+        "scaleNote": "3일간 진행",
+        "sourceUrl": "https://namu.wiki/w/WONDERLIVET%202025"
+      },
+      {
+        "year": "2025",
+        "venue": "KINTEX",
+        "attendance": 22578,
+        "attendanceNote": "KOPIS 집계 기준 - 전년 대비 +93.02%, 2025년 국내 뮤직 페스티벌 중 8위 규모",
+        "lineupHighlights": [
+          "한로로",
+          "넬",
+          "쿠로미(국내 최초 라이브)",
+          "이키모노가카리(26년 만의 첫 내한)"
+        ],
+        "scaleNote": "42팀, 3일간 진행",
+        "sourceUrl": "https://namu.wiki/w/WONDERLIVET%202025"
+      }
+    ],
+    "crowdOutlook": {
+      "text": "2025년은 '역대급 라인업'이라는 평가 속에 관객 수가 전년 대비 93% 급증했지만, 2026년 라인업은 나무위키 등에서 '전년보다 헤드라이너 무게감이 떨어진다'는 반응이 우세해요. 대신 쿠로미·하츠네 미쿠·MyGO!!!!! 등 버튜버·리듬게임 계열 서브컬처 라인업 비중이 크게 늘어서, 대중적으로 폭발적인 증가보다는 마니아층 중심의 탄탄한 흥행에 가까울 가능성이 있어요.",
+      "basis": "2025년 관객 22,578명(KOPIS, 전년 대비 +93%) 대비 2026년 라인업 평가 - 대중적 헤드라이너 약화, 버튜버/리듬게임 등 서브컬처 비중 확대(나무위키 반응 종합)"
+    }
   },
   {
     "id": "kopis-domi-jdbeck-2026-12",
