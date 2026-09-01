@@ -1,0 +1,204 @@
+---
+import { spotlightEvents, hasTicketsOnSale, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+import Mascot from './Mascot.astro';
+
+const picks = spotlightEvents(6);
+
+function fmt(iso: string) {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()}`;
+}
+---
+{picks.length > 0 && (
+  <section class="hero">
+    <div class="hero-intro">
+      <Mascot size={104} />
+      <div class="hero-bubble">
+        <p class="hero-bubble-kicker">직관냥이 오늘 물어온 소식</p>
+        <p class="hero-bubble-text">티켓오픈 임박했거나 화제인 공연부터 모아봤다냥. 놓치면 피눈물!</p>
+      </div>
+    </div>
+    <div class="hero-rail">
+      {picks.map((e, i) => {
+        const onSale = hasTicketsOnSale(e);
+        return (
+          <a class="hero-card" href={`/events/${e.id}/`}>
+            <div class="hero-card-poster-wrap">
+              <div class="hero-card-glow" style={`background-image:url(${e.posterUrl})`}></div>
+              <img
+                class="hero-card-poster"
+                src={e.posterUrl}
+                alt=""
+                loading={i === 0 ? 'eager' : 'lazy'}
+              />
+              <div
+                class="dday-badge hero-dday"
+                data-dday-start={e.startDate}
+                data-dday-end={e.endDate}
+                data-status={e.status ?? 'scheduled'}
+              >
+                —
+              </div>
+            </div>
+            <div class="hero-card-seam"></div>
+            <div class="hero-card-body">
+              <div class="hero-card-tags">
+                {e.ticketingDifficulty && (
+                  <span class={`difficulty-tag difficulty-${e.ticketingDifficulty}`}>
+                    {DIFFICULTY_LABEL[e.ticketingDifficulty]}
+                  </span>
+                )}
+                {onSale && <span class="hero-onsale-tag">예매 가능</span>}
+              </div>
+              <h3>{e.artist}</h3>
+              <p class="hero-card-meta">{fmt(e.startDate)} · {e.venue}</p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+)}
+<style>
+  .hero { margin: 0 0 2.25rem; }
+  .hero-intro {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .hero-bubble {
+    position: relative;
+    background: var(--card);
+    border: 1px solid rgba(255, 95, 162, 0.25);
+    border-radius: 16px 16px 16px 4px;
+    padding: 0.7rem 1rem;
+  }
+  .hero-bubble-kicker {
+    margin: 0 0 0.15rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #ff8fbe;
+    letter-spacing: -0.01em;
+  }
+  .hero-bubble-text { margin: 0; font-size: 0.95rem; color: var(--fg); }
+  .hero-rail {
+    display: flex;
+    gap: 0.9rem;
+    overflow-x: auto;
+    padding: 0.15rem 0.15rem 0.75rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hero-card {
+    scroll-snap-align: start;
+    flex: 0 0 168px;
+    position: relative;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--card);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    transition: transform 0.15s;
+  }
+  .hero-card:hover { transform: translateY(-3px); }
+  .hero-card-poster-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #05050a;
+  }
+  .hero-card-glow {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px) saturate(1.5) brightness(0.7);
+    transform: scale(1.25);
+  }
+  .hero-card-poster {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 62%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    margin: 9% auto 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08);
+  }
+  .hero-dday {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2;
+    background: rgba(16, 16, 24, 0.75);
+    backdrop-filter: blur(2px);
+  }
+  .hero-card-seam {
+    position: relative;
+    height: 0;
+    border-top: 1px dashed rgba(255,255,255,0.18);
+  }
+  .hero-card-seam::before,
+  .hero-card-seam::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg);
+    border-radius: 50%;
+  }
+  .hero-card-seam::before { left: -8px; }
+  .hero-card-seam::after { right: -8px; }
+  .hero-card-body {
+    position: relative;
+    z-index: 1;
+    padding: 0.7rem 0.75rem 0.85rem;
+  }
+  .hero-card-tags {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+  }
+  .difficulty-tag {
+    font-size: 0.68rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); background: rgba(255,138,138,0.1); }
+  .difficulty-normal { color: #7ed957; border: 1px solid rgba(126,217,87,0.4); background: rgba(126,217,87,0.1); }
+  .difficulty-easy { color: #ffd166; border: 1px solid rgba(255,209,102,0.4); background: rgba(255,209,102,0.1); }
+  .hero-onsale-tag {
+    font-size: 0.68rem;
+    color: #6ee7ff;
+    border: 1px solid rgba(110,231,255,0.4);
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .hero-card h3 {
+    margin: 0 0 0.15rem;
+    font-size: 0.92rem;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .hero-card-meta {
+    margin: 0;
+    font-size: 0.76rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media (max-width: 520px) {
+    .hero-card { flex-basis: 148px; }
+  }
+</style>

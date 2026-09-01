@@ -1,9 +1,13 @@
 ---
 import { SITE_TITLE } from '../consts';
+import Mascot from './Mascot.astro';
 ---
 <header class="site-header">
   <nav>
-    <a class="brand" href="/">{SITE_TITLE}</a>
+    <a class="brand" href="/">
+      <Mascot size={30} />
+      <span>{SITE_TITLE}</span>
+    </a>
     <div class="links">
       <a href="/">전체 일정</a>
       <a href="/events/archive">지난 공연</a>
@@ -16,7 +20,7 @@ import { SITE_TITLE } from '../consts';
 <style>
   .site-header { border-bottom: 1px solid rgba(255,255,255,0.08); }
   nav { max-width: 880px; margin: 0 auto; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
-  .brand { font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
+  .brand { display: flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
   .links { display: flex; gap: 1rem; }
   .links a { color: #a9a4c9; text-decoration: none; font-size: 0.95rem; }
   .links a:hover { color: #fff; }

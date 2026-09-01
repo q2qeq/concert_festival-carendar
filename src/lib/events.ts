@@ -354,3 +354,35 @@ export function attendanceTrend(event: ConcertEvent): 'growing' | 'shrinking' | 
   if (last < first * 0.9) return 'shrinking';
   return 'flat';
 }
+
+// Curated "hot picks" for the homepage hero/gallery - not just the soonest
+// shows, but the ones worth spotlighting right now. Scores in favour of
+// brutal-demand shows (ticketingDifficulty 'hard'), shows with fresh news,
+// and shows already on sale, then breaks ties by how soon the show is.
+// Requires a poster (nothing to show in a poster gallery without one), so a
+// well-researched-but-unposterred event never takes a slot it can't render.
+export function spotlightEvents(limit = 4, fromISO?: string): ConcertEvent[] {
+  const from = fromISO ?? new Date().toISOString().slice(0, 10);
+  const pool = upcomingEvents(from).filter(
+    (e) => e.posterUrl && (e.status ?? 'scheduled') === 'scheduled'
+  );
+  function score(e: ConcertEvent): number {
+    let s = 0;
+    if (e.ticketingDifficulty === 'hard') s -= 100;
+    if (hasRecentUpdate(e, 7, from)) s -= 20;
+    if (hasTicketsOnSale(e)) s -= 10;
+    const days = Math.max(
+      0,
+      Math.floor(
+        (new Date(e.startDate + 'T00:00:00').getTime() - new Date(from + 'T00:00:00').getTime()) /
+          86400000
+      )
+    );
+    s += days * 0.1;
+    return s;
+  }
+  return pool
+    .slice()
+    .sort((a, b) => score(a) - score(b))
+    .slice(0, limit);
+}
