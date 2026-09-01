@@ -725,6 +725,77 @@
     ]
   },
   {
+    "id": "nol-festival-2026-10",
+    "artist": "NOL FESTIVAL 2026 (NOL 페스티벌)",
+    "genre": "페스티벌",
+    "venue": "킨텍스 제2전시장",
+    "city": "고양",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-18",
+    "officialUrl": "https://events.interpark.com/exhibition?exhibitionCode=260519007",
+    "note": "야놀자(NOL)가 여는 제1회 페스티벌. 지금은 정식 예매가 아니라 무료 응모 접수 기간이고, 선예매·일반예매는 9/15(화)부터 별도로 열려요.",
+    "description": "야놀자(NOL)가 처음 여는 종합 페스티벌로, 슈퍼라이브·K-POP·EDM 3개 스테이지에서 진행돼요. god·YB·아이브(IVE)·엔시티 위시·알렌 워커 등 세대와 장르를 넘나드는 라인업이 확정됐어요.",
+    "posterUrl": "https://image6.yanolja.com/cx-ydm/Rh5bzfQdWklZJxZd",
+    "lineup": [
+      "god (지오디)",
+      "YB",
+      "자우림",
+      "넬(NELL)",
+      "김준수",
+      "빈지노",
+      "규현",
+      "아이브(IVE)",
+      "엔시티 위시(NCT WISH)",
+      "코르티스(CORTIS)",
+      "트레저(TREASURE)",
+      "엔믹스(NMIXX)",
+      "크래비티(CRAVITY)",
+      "케플러(Kep1er)",
+      "키스오브라이프(KISS OF LIFE)",
+      "이무진",
+      "WOODZ",
+      "하성운",
+      "Hearts2Hearts",
+      "Alan Walker (알렌 워커)",
+      "Don Diablo (돈 디아블로)"
+    ],
+    "funFacts": [
+      "티켓을 파는 대신 NOL 앱/홈페이지에서 미션을 완료하거나 상품을 구매하면 응모권을 주는 '무료 초청' 방식으로 시작했다가, 9/15부터는 일반 선예매·예매도 별도로 열려요 — 온전한 유료 콘서트도, 완전한 무료 행사도 아닌 하이브리드 구조인 셈이에요.",
+      "K팝·슈퍼라이브·EDM 3개 스테이지를 동시에 운영하는 종합 축제라 god와 알렌 워커, 아이브가 한 행사 안에 다 모이는, 세대와 장르를 가리지 않는 라인업이 특징이에요."
+    ],
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-15",
+    "updates": [
+      {
+        "date": "2026-08-14",
+        "text": "최종 라인업이 공개됐어요 — 아이브, 엔시티 위시, 코르티스 등이 새로 확정되며 총 20팀 이상 규모가 됐습니다.",
+        "sourceUrl": "https://www.hankyung.com/article/202608140669P"
+      }
+    ],
+    "sources": [
+      {
+        "label": "놀유니버스, NOL FESTIVAL 최종 라인업 공개 - 한국경제",
+        "url": "https://www.hankyung.com/article/202608140669P"
+      },
+      {
+        "label": "세상을 행복한 놀이터로, NOL FESTIVAL 개최 소식 - 야놀자그룹 공식 블로그",
+        "url": "https://www.yanoljagroup.com/ko/blog/view?id=128"
+      },
+      {
+        "label": "NOL 페스티벌 정보 총정리 (라인업, 일정, 예매방법) - NOL 트렌드",
+        "url": "https://trends.yanolja.com/trends/%EB%86%80%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-%EB%9D%BC%EC%9D%B8%EC%97%85-%EC%98%88%EB%A7%A4%EB%B0%A9%EB%B2%95-%EC%9D%BC%EC%A0%95/"
+      },
+      {
+        "label": "NOL 페스티벌 - 나무위키",
+        "url": "https://namu.wiki/w/NOL%20%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C"
+      },
+      {
+        "label": "NOL 페스티벌을 소개합니다 - 인터파크 공식 안내 페이지",
+        "url": "https://events.interpark.com/exhibition?exhibitionCode=260519007"
+      }
+    ]
+  },
+  {
     "id": "kopis-jarasum-jazz-2026-10",
     "artist": "자라섬재즈페스티벌×강릉아트센터: 킨가 그위크 (Kinga Głyk)",
     "genre": "페스티벌",

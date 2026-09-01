@@ -22,12 +22,12 @@ const onSale = hasTicketsOnSale(event);
 ---
 <a class={`event-card${status !== 'scheduled' ? ' is-' + status : ''}`} href={`/events/${event.id}/`}>
   {event.posterUrl && (
-    <img class="thumb" src={event.posterUrl} alt="" loading="lazy" width="44" height="60" />
+    <img class="thumb" src={event.posterUrl} alt="" loading="lazy" width="60" height="82" />
   )}
   <div class="dday-badge" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
   <div class="info">
     <h3>{event.artist}</h3>
-    <p class="meta">{dateLabel} · {event.venue} ({event.city}) · {event.genre}</p>
+    <p class="meta"><strong class="meta-date">{dateLabel}</strong> · <strong class="meta-venue">{event.venue}</strong> ({event.city}) · {event.genre}</p>
   </div>
   <div class="tags">
     {isFresh && <span class="fresh-tag">새 소식</span>}
@@ -77,19 +77,23 @@ const onSale = hasTicketsOnSale(event);
   .event-card:hover h3 { color: #ff5fa2; }
   .thumb {
     flex-shrink: 0;
-    width: 44px;
-    height: 60px;
+    width: 60px;
+    height: 82px;
     object-fit: cover;
     border-radius: 6px;
     background: rgba(255,255,255,0.05);
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  @media (max-width: 420px) {
+    .thumb { width: 48px; height: 66px; }
   }
   .event-card.is-postponed,
   .event-card.is-cancelled { opacity: 0.6; }
   .event-card.is-cancelled h3 { text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.6); }
   .info { flex: 1; min-width: 0; }
   h3 { margin: 0 0 0.2rem; font-size: 1.05rem; transition: color 0.15s; }
-  .meta { margin: 0; color: #a9a4c9; font-size: 0.85rem; }
+  .meta { margin: 0; color: #a9a4c9; font-size: 0.92rem; }
+  .meta-date, .meta-venue { color: #f5f3ff; font-weight: 700; }
   .tags { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; flex-shrink: 0; }
   .ticket-tag {
     font-size: 0.75rem;

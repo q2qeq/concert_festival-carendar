@@ -9,7 +9,7 @@ const { setlists } = Astro.props;
 ---
 {setlists.length > 0 && (
   <section class="setlist-box">
-    <h2>🎶 셋리스트 미리보기</h2>
+    <h2>셋리스트 미리보기</h2>
     <p class="setlist-caveat">실제 이번 공연 셋리스트는 투어 진행에 따라 달라질 수 있어요. 아래는 참고용이에요.</p>
     <div class="setlist-group">
       {setlists.map((s) => (

@@ -92,7 +92,7 @@ function fmt(iso: string) {
   }
   .hero-card {
     scroll-snap-align: start;
-    flex: 0 0 168px;
+    flex: 0 0 190px;
     position: relative;
     display: block;
     text-decoration: none;
@@ -122,7 +122,7 @@ function fmt(iso: string) {
     position: relative;
     z-index: 1;
     display: block;
-    width: 62%;
+    width: 70%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     margin: 9% auto 0;
@@ -192,13 +192,14 @@ function fmt(iso: string) {
   }
   .hero-card-meta {
     margin: 0;
-    font-size: 0.76rem;
-    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--fg);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   @media (max-width: 520px) {
-    .hero-card { flex-basis: 148px; }
+    .hero-card { flex-basis: 168px; }
   }
 </style>

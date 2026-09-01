@@ -1,0 +1,116 @@
+---
+// Top-level "공연장" tab: every venue we have info on, in one place, so
+// checking a seat/sightline before you commit to a ticket doesn't require
+// first opening a specific event page and clicking through. Each card links
+// to the full venue page and also carries a one-click sightline search
+// (X + YouTube) right here, for the common case of "I just want to know
+// what the view looks like from this venue."
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { allVenueNames, getVenueInfo, venueSlug } from '../../lib/venues';
+import { upcomingEvents } from '../../lib/events';
+
+const events = upcomingEvents();
+
+const venues = allVenueNames()
+  .map((name) => {
+    const slug = venueSlug(name);
+    const venueEvents = events.filter((e) => venueSlug(e.venue) === slug);
+    return {
+      name,
+      slug,
+      city: venueEvents[0]?.city,
+      address: getVenueInfo(name)?.address,
+      upcomingCount: venueEvents.length,
+    };
+  })
+  // De-dupe by slug: a couple of venue-name spellings map to the same place.
+  .filter((v, i, arr) => arr.findIndex((x) => x.slug === v.slug) === i)
+  .sort((a, b) => b.upcomingCount - a.upcomingCount || a.name.localeCompare(b.name, 'ko'));
+
+const pageTitle = '공연장 정보 모음';
+const pageDescription = '내한공연·페스티벌이 열리는 공연장의 오시는 길, 주차, 시야 확인 방법을 한 곳에 모았어요.';
+---
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="page-intro">
+    <h1>공연장 정보</h1>
+    <p>공연 보러 가기 전, 자리에서 무대가 어떻게 보일지부터 확인하세요. 공연장을 고르면 오시는 길·주차·주변 맛집 정보와 예정된 공연 목록도 볼 수 있어요.</p>
+  </section>
+
+  <AdSlot slot="venues-top" />
+
+  <div class="venue-grid">
+    {venues.map((v) => (
+      <div class="venue-card">
+        <a class="venue-card-main" href={`/venues/${v.slug}/`}>
+          <h2>{v.name}</h2>
+          {v.city && <p class="venue-city">{v.city}</p>}
+          {v.address && <p class="venue-address">{v.address}</p>}
+          {v.upcomingCount > 0 && <p class="venue-count">예정된 공연 {v.upcomingCount}건</p>}
+        </a>
+        <div class="venue-card-links">
+          <a href={`https://x.com/search?q=${encodeURIComponent(`${v.name} 시야`)}`} target="_blank" rel="noopener noreferrer">
+            𝕏 시야 검색
+          </a>
+          <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(`${v.name} 시야`)}`} target="_blank" rel="noopener noreferrer">
+            유튜브 시야 검색
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {venues.length === 0 && <p class="empty">아직 정리된 공연장 정보가 없어요.</p>}
+</BaseLayout>
+<style>
+  .page-intro { padding: 1.1rem 0 1.4rem; }
+  .page-intro h1 { font-size: 1.4rem; margin: 0 0 0.4rem; }
+  .page-intro p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+  .venue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .venue-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 1.1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .venue-card-main { text-decoration: none; color: inherit; display: block; }
+  .venue-card-main h2 { margin: 0 0 0.3rem; font-size: 1.05rem; color: #f5f3ff; }
+  .venue-card-main:hover h2 { color: #ff5fa2; }
+  .venue-city {
+    display: inline-block;
+    font-size: 0.74rem;
+    color: #6ee7ff;
+    border: 1px solid rgba(110,231,255,0.4);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    margin: 0 0 0.4rem;
+  }
+  .venue-address { margin: 0 0 0.3rem; color: #a9a4c9; font-size: 0.85rem; }
+  .venue-count { margin: 0; color: #d8d5ef; font-size: 0.82rem; }
+  .venue-card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 0.65rem;
+    border-top: 1px dashed rgba(255,255,255,0.1);
+  }
+  .venue-card-links a {
+    font-size: 0.8rem;
+    color: #d8d5ef;
+    text-decoration: none;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+  }
+  .venue-card-links a:hover { background: rgba(255,95,162,0.16); border-color: rgba(255,95,162,0.4); color: #fff; }
+  .empty { color: var(--muted); margin-top: 1.5rem; }
+</style>

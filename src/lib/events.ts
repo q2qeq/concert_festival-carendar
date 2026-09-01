@@ -322,9 +322,9 @@ export function allTicketLinks(event: ConcertEvent): TicketLink[] {
 // Whether an event has at least one working way to buy tickets right now (used by
 // EventCard's "예매 가능" tag and anywhere else that used to just check ticketUrl).
 export const TICKETING_DIFFICULTY_LABEL: Record<'hard' | 'normal' | 'easy', string> = {
-  hard: '피켓팅 🔥',
-  normal: '무난 🟢',
-  easy: '현장발권 가능 🟡',
+  hard: '피켓팅',
+  normal: '무난',
+  easy: '현장발권 가능',
 };
 
 export function hasTicketsOnSale(event: ConcertEvent): boolean {

@@ -169,33 +169,33 @@ const jsonLd = {
       <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
       <div>
         <h1>{event.artist}</h1>
-        <p class="meta">{event.genre} · {event.city}</p>
+        <p class="meta">{dateLabel} · {event.venue} ({event.city})</p>
       </div>
     </header>
 
     {status === 'postponed' && (
       <p class="status-banner status-postponed">
-        ⚠️ 이 공연은 연기되었습니다. 재개최 일정이 정해지지 않았다면 아래 안내를 확인하세요.
+        이 공연은 연기되었습니다. 재개최 일정이 정해지지 않았다면 아래 안내를 확인하세요.
       </p>
     )}
     {status === 'cancelled' && (
-      <p class="status-banner status-cancelled">🚫 이 공연은 취소되었습니다.</p>
+      <p class="status-banner status-cancelled">이 공연은 취소되었습니다.</p>
     )}
     {event.ticketingAnnounced && ticketLinks.length === 0 && (
       <p class="status-banner status-announced">
-        📢 티켓 오픈 예정 공연이에요{event.ticketOpenDate ? ` — 오픈: ${event.ticketOpenDate}` : ''}. 오픈되면 이 페이지에 바로 예매 링크를 추가할게요.
+        티켓 오픈 예정 공연이에요{event.ticketOpenDate ? ` — 오픈: ${event.ticketOpenDate}` : ''}. 오픈되면 이 페이지에 바로 예매 링크를 추가할게요.
       </p>
     )}
 
     <div class="action-bar" aria-label="빠른 이용">
       {primaryLink && (
         <a class="ab-btn ab-primary" href={primaryLink.url} target="_blank" rel="noopener noreferrer">
-          {ticketLinks.length > 0 ? '🎫' : '🔗'} {primaryLink.label}
+          {primaryLink.label}
         </a>
       )}
-      {status === 'scheduled' && <a class="ab-btn" href="#calendar">🗓 캘린더 추가</a>}
+      {status === 'scheduled' && <a class="ab-btn" href="#calendar">캘린더 추가</a>}
       {event.shuttleBus && event.shuttleBus.length > 0 && (
-        <a class="ab-btn" href="#shuttle">🚌 셔틀버스</a>
+        <a class="ab-btn" href="#shuttle">셔틀버스</a>
       )}
       <button
         class="ab-btn ab-bookmark bookmark-btn"
@@ -225,7 +225,7 @@ const jsonLd = {
 
     {(links.length > 0 || (event.presale && event.presale.length > 0) || status === 'scheduled') && (
       <section id="tickets">
-        <h2 class="section-h2">🎟️ 예매·티켓팅</h2>
+        <h2 class="section-h2">예매·티켓팅</h2>
         {event.presale && event.presale.length > 0 && <PresaleInfo presale={event.presale} />}
         {links.length > 0 && (
           <div class="links">
@@ -379,9 +379,9 @@ const jsonLd = {
 <style>
   .breadcrumb a { color: #a9a4c9; font-size: 0.9rem; text-decoration: none; }
   .event-header { display: flex; align-items: center; gap: 1.25rem; margin: 1.5rem 0; }
-  .dday-badge.big { font-size: 1.1rem; padding: 0.5rem 0.9rem; min-width: 4.5rem; }
+  .dday-badge.big { font-size: 0.95rem; padding: 0.4rem 0.75rem; min-width: 3.75rem; }
   h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
-  .meta { margin: 0; color: #a9a4c9; }
+  .meta { margin: 0; color: #f5f3ff; font-weight: 600; font-size: 1.02rem; }
   .lead { font-size: 1.05rem; color: #e5e2f7; }
   .facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.5rem; margin: 1.5rem 0; }
   .facts dt { color: #a9a4c9; }
@@ -416,7 +416,7 @@ const jsonLd = {
   .poster {
     display: block;
     width: 100%;
-    max-width: 320px;
+    max-width: 440px;
     height: auto;
     border-radius: 12px;
     margin: 1.5rem 0 0;

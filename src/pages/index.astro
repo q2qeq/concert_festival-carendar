@@ -30,9 +30,9 @@ for (const e of events) {
   <Hero />
 
   <nav class="quicknav" aria-label="바로가기">
-    <a href="#find"><span aria-hidden="true">🔍</span> 공연 찾기</a>
-    <a href="#listing"><span aria-hidden="true">📅</span> 전체 일정 ({events.length})</a>
-    <a href="/blog"><span aria-hidden="true">📰</span> 이슈</a>
+    <a href="#find">공연 찾기</a>
+    <a href="#listing">전체 일정 ({events.length})</a>
+    <a href="/blog">이슈</a>
   </nav>
 
   <section id="find" class="finder">
@@ -70,7 +70,7 @@ for (const e of events) {
         placeholder="아티스트 검색 (초성 가능: 예) ㅂㄴㅂ, ㅂㄷ)"
         autocomplete="off"
       />
-      <button class="chip fav-toggle" id="fav-toggle" type="button">🤍 찜한 공연만</button>
+      <button class="chip fav-toggle" id="fav-toggle" type="button">♡ 찜한 공연만</button>
     </div>
   </section>
 
@@ -163,7 +163,7 @@ for (const e of events) {
   favToggle?.addEventListener('click', () => {
     favoritesOnly = !favoritesOnly;
     favToggle.classList.toggle('active', favoritesOnly);
-    favToggle.textContent = favoritesOnly ? '❤️ 찜한 공연만' : '🤍 찜한 공연만';
+    favToggle.textContent = favoritesOnly ? '♥ 찜한 공연만' : '♡ 찜한 공연만';
     applyFilters();
   });
 

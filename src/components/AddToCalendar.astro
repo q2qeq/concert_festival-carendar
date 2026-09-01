@@ -64,7 +64,7 @@ const icsLines = [
 const icsDataUrl = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines)}`;
 ---
 <div class="add-to-calendar">
-  <span class="atc-label">📌 캘린더에 추가</span>
+  <span class="atc-label">캘린더에 추가</span>
   <div class="atc-buttons">
     <a class="atc-btn" href={googleUrl} target="_blank" rel="noopener noreferrer">Google 캘린더</a>
     <a class="atc-btn" href={icsDataUrl} download={`${event.id}.ics`}>Apple·Outlook (.ics)</a>

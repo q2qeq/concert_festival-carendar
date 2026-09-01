@@ -29,6 +29,7 @@ const city = venueEvents[0]?.city;
 const pageTitle = `${venueName} 좌석·주차·교통 정보`;
 const pageDescription = `${venueName} 공연 관람 전 알아두면 좋은 오시는 길, 주차, 주변 편의시설 정보와 예정된 공연 목록이에요.`;
 const xSearchUrl = `https://x.com/search?q=${encodeURIComponent(`${venueName} 시야`)}`;
+const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(`${venueName} 시야`)}`;
 ---
 <BaseLayout title={pageTitle} description={pageDescription}>
   <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
@@ -39,9 +40,14 @@ const xSearchUrl = `https://x.com/search?q=${encodeURIComponent(`${venueName} �
     {info?.address && <p class="address">{info.address}</p>}
   </section>
 
-  <a class="x-search-btn" href={xSearchUrl} target="_blank" rel="noopener noreferrer">
-    𝕏에서 "{venueName} 시야" 실시간 검색 →
-  </a>
+  <div class="sightline-links">
+    <a class="x-search-btn" href={xSearchUrl} target="_blank" rel="noopener noreferrer">
+      𝕏에서 "{venueName} 시야" 실시간 검색 →
+    </a>
+    <a class="x-search-btn" href={ytSearchUrl} target="_blank" rel="noopener noreferrer">
+      유튜브에서 "{venueName} 시야" 영상 검색 →
+    </a>
+  </div>
 
   <AdSlot slot="venue-top" />
 
@@ -105,9 +111,10 @@ const xSearchUrl = `https://x.com/search?q=${encodeURIComponent(`${venueName} �
     margin-bottom: 0.5rem;
   }
   .address { color: #a9a4c9; margin: 0; }
+  .sightline-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 1.5rem; }
   .x-search-btn {
     display: inline-block;
-    margin: 1rem 0 1.5rem;
+    margin: 0;
     padding: 0.6rem 1.1rem;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.16);
