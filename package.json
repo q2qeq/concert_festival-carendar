@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fetch:kopis": "node scripts/fetch-kopis.mjs"
+    "fetch:kopis": "node scripts/fetch-kopis.mjs",
+    "tweet:new": "node scripts/tweet-new-events.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

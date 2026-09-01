@@ -269,3 +269,28 @@ npm run fetch:kopis   # KOPIS API로 새 공연 데이터 병합 (.env 설정 �
 보류 상태입니다. 사용자가 "블로그보다 실용적인 도구/캘린더형 사이트"를 원해서 이
 프로젝트로 방향을 틀었습니다. 두 프로젝트는 완전히 독립적인 Astro 앱이라 서로 코드를
 공유하지 않습니다.
+
+## X(트위터) 자동 트윗 파이프라인 (2026-09-01)
+
+`src/data/events.json`에 새 이벤트가 추가될 때마다(수동 편집이든 KOPIS 자동 파이프라인
+이든) X에 자동으로 트윗을 올립니다.
+
+- **스크립트**: `scripts/tweet-new-events.mjs` — `twitter-api-v2` 같은 외부 패키지 없이
+  Node 내장 `crypto`로 OAuth 1.0a User Context 서명을 직접 구현했습니다(다른 스크립트와
+  마찬가지로 의존성을 늘리지 않는 방향). `POST https://api.x.com/2/tweets` 호출.
+- **필요한 저장소 Secret 4개** (Settings → Secrets and variables → Actions): `X_API_KEY`,
+  `X_API_KEY_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`. X 개발자 콘솔
+  (console.x.com)의 앱 권한을 반드시 **"Read and Write"** 로 바꾼 다음 발급받은 토큰이어야
+  포스팅이 됩니다(Read-only로 발급된 토큰이면 403 남).
+- **워크플로우**: `.github/workflows/tweet-new-events.yml` — `src/data/events.json`이
+  바뀌는 main 브랜치 push마다 실행. 수동 테스트는 Actions 탭의 "Run workflow"(workflow_dispatch)로.
+- **중복 방지**: `src/data/tweeted-events.json`에 이미 트윗한 이벤트 id를 기록합니다. 이
+  파일은 파이프라인을 켤 때 그 시점까지 있던 이벤트 24개로 미리 채워둔 상태로 커밋했습니다
+  — 그래야 켜자마자 기존 이벤트가 한꺼번에 트윗되는 걸 막을 수 있습니다. 이후로는 정말
+  새로 추가된 이벤트만 트윗됩니다.
+- **한 번 실행에 최대 5건**(`MAX_PER_RUN`)만 올리도록 안전장치를 뒀습니다. 그 이상은 다음
+  실행 때 이어서 올라갑니다.
+- **트윗 문구**는 `tweetTextFor()` 한 함수에서만 만들어지므로, 톤/포맷을 바꾸고 싶으면
+  그 함수만 고치면 됩니다. 현재는 사이트의 직관냥 목소리("~냥", "~다냥")를 따르고 있습니다.
+- 로컬/기기 세션에서 바로 테스트하려면 `npm run tweet:new` (환경변수 4개가 없으면 조용히
+  에러 메시지만 찍고 종료 — 실수로 호출 안 됨).
