@@ -1,16 +1,27 @@
 ---
-// Shuttle bus booking info for a venue - shown only when the site has real,
-// sourced info on an actual bookable service (see ShuttleBusInfo in lib/events.ts
-// for sourcing rules). Rendered next to VenueInfoBox since it's the same "getting
-// there" concern, but kept as its own box since it's about a paid third-party
-// service, not the venue itself.
+// Shuttle bus info for a venue. Two modes:
+// 1) shuttleBus.length > 0 - real, sourced bookable/free service (see
+//    ShuttleBusInfo in lib/events.ts for sourcing rules).
+// 2) shuttleBus is empty but the venue is one where a shuttle is plausible
+//    (lib/venues.ts's isShuttleLikely) - render an actionable "go check
+//    yourself" box instead of nothing, so a shuttle-likely venue never goes
+//    silent just because we haven't sourced a confirmed entry yet. Never a
+//    guessed shuttle - only a pointer to where readers actually find it.
 import type { ShuttleBusInfo } from '../lib/events';
-interface Props { shuttleBus: ShuttleBusInfo[] }
-const { shuttleBus } = Astro.props;
+interface Props {
+  shuttleBus: ShuttleBusInfo[];
+  venue?: string;
+  artist?: string;
+  ticketUrl?: string;
+}
+const { shuttleBus, venue, artist, ticketUrl } = Astro.props;
+const query = [venue, artist, '셔틀버스'].filter(Boolean).join(' ');
+const naverUrl = `https://search.naver.com/search.naver?query=${encodeURIComponent(query)}`;
+const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
 ---
-{shuttleBus.length > 0 && (
-  <section class="shuttle-box">
-    <h2>셔틀버스 정보</h2>
+<section class="shuttle-box">
+  <h2>셔틀버스 정보</h2>
+  {shuttleBus.length > 0 ? (
     <div class="shuttle-list">
       {shuttleBus.map((s) => (
         <article class="shuttle-item">
@@ -29,8 +40,22 @@ const { shuttleBus } = Astro.props;
         </article>
       ))}
     </div>
-  </section>
-)}
+  ) : (
+    <div class="shuttle-fallback">
+      <p>
+        아직 이 공연의 셔틀버스 정보를 확인하지 못했어요. 다만 {venue ? <strong>{venue}</strong> : '이 공연장'}은(는)
+        공연마다 셔틀버스가 운영되는 경우가 많은 곳이라, 아래에서 직접 확인해보시는 걸 추천해요.
+      </p>
+      <div class="shuttle-fallback-links">
+        {ticketUrl && (
+          <a href={ticketUrl} target="_blank" rel="noopener noreferrer">예매처 공지사항에서 확인 ↗</a>
+        )}
+        <a href={naverUrl} target="_blank" rel="noopener noreferrer">네이버에서 "{query}" 검색 →</a>
+        <a href={googleUrl} target="_blank" rel="noopener noreferrer">구글에서 "{query}" 검색 →</a>
+      </div>
+    </div>
+  )}
+</section>
 <style>
   .shuttle-box { margin: 1.75rem 0; padding: 1.1rem 1.25rem; background: rgba(255, 200, 110, 0.06); border: 1px solid rgba(255, 200, 110, 0.22); border-radius: 14px; }
   .shuttle-box h2 { margin: 0 0 0.8rem; font-size: 1rem; color: #ffdca8; }
@@ -42,4 +67,16 @@ const { shuttleBus } = Astro.props;
   .shuttle-note { margin: 0 0 0.5rem; color: #d8d5ef; font-size: 0.88rem; line-height: 1.6; }
   .shuttle-link { display: inline-block; font-size: 0.86rem; font-weight: 600; color: #ffcb6e; text-decoration: none; }
   .shuttle-link:hover { text-decoration: underline; }
+  .shuttle-fallback p { margin: 0 0 0.9rem; color: #d8d5ef; font-size: 0.9rem; line-height: 1.6; }
+  .shuttle-fallback-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .shuttle-fallback-links a {
+    font-size: 0.85rem;
+    color: #ffcb6e;
+    text-decoration: none;
+    background: rgba(255,200,110,0.08);
+    border: 1px solid rgba(255,200,110,0.3);
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+  }
+  .shuttle-fallback-links a:hover { background: rgba(255,200,110,0.16); }
 </style>

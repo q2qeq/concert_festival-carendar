@@ -182,6 +182,14 @@
       {
         "label": "바운디, 9월 인천 인스파이어 아레나서 첫 내한 콘서트 - 톱스타뉴스",
         "url": "https://www.topstarnews.net/news/articleView.html?idxno=16000312"
+      },
+      {
+        "label": "인스파이어 아레나 무료 셔틀 버스 시간표(2026 최신) - InssaTool",
+        "url": "https://inssatool.net/%EC%9D%B8%EC%8A%A4%ED%8C%8C%EC%9D%B4%EC%96%B4-%EC%95%84%EB%A0%88%EB%82%98-%EB%AC%B4%EB%A3%8C-%EC%85%94%ED%8B%80-%EB%B2%84%EC%8A%A4-%EC%8B%9C%EA%B0%84%ED%91%9C-%EC%98%88%EC%95%BD%EB%B0%A9%EB%B2%95/"
+      },
+      {
+        "label": "인스파이어 엔터테인먼트 리조트/셔틀버스 - 나무위키",
+        "url": "https://namu.wiki/w/%EC%9D%B8%EC%8A%A4%ED%8C%8C%EC%9D%B4%EC%96%B4%20%EC%97%94%ED%84%B0%ED%85%8C%EC%9D%B8%EB%A8%BC%ED%8A%B8%20%EB%A6%AC%EC%A1%B0%ED%8A%B8/%EC%85%94%ED%8B%80%EB%B2%84%EC%8A%A4"
       }
     ],
     "ticketLinks": [
@@ -232,6 +240,22 @@
         "title": "Vaundy 라이브 모음 (한글 가사 해석)",
         "videoId": "vJlVRlVyfrg",
         "note": "'보법부터 다르다'는 반응이 나온 라이브 퍼포먼스 모음이에요."
+      }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "인스파이어 아레나 공연일 셔틀 (무료)",
+        "routes": [
+          "공항철도 공항화물청사역 2번 출구 → 인스파이어 아레나 (공연 당일 한정 운행)"
+        ],
+        "note": "무료, 사전 예약 불필요(현장 선착순). 평소엔 인천공항 T1·T2 노선만 다니지만, 아레나 공연이 있는 날엔 공항화물청사역에서 15~20분 간격으로 아레나행 셔틀이 추가로 운행돼요. 이 콘서트 전용 셔틀은 아니고 아레나 공연일마다 상시 운영되는 서비스라 정확한 시간은 공연 임박 시 인스파이어 공식 채널에서 재확인하는 걸 추천해요."
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-09-01",
+        "text": "공연 당일 한정 무료 셔틀(공항철도 공항화물청사역 ↔ 아레나) 정보 추가",
+        "sourceUrl": "https://inssatool.net/%EC%9D%B8%EC%8A%A4%ED%8C%8C%EC%9D%B4%EC%96%B4-%EC%95%84%EB%A0%88%EB%82%98-%EB%AC%B4%EB%A3%8C-%EC%85%94%ED%8B%80-%EB%B2%84%EC%8A%A4-%EC%8B%9C%EA%B0%84%ED%91%9C-%EC%98%88%EC%95%BD%EB%B0%A9%EB%B2%95/"
       }
     ]
   },
@@ -1349,6 +1373,34 @@
         "date": "2026-06-17",
         "text": "2027년 1월 9일 고척스카이돔 공연이 확정되고 멜론티켓에서 티켓이 오픈됐어요.",
         "sourceUrl": "https://www.ggilbo.com/news/articleView.html?idxno=1162989"
+      }
+    ]
+  },
+  {
+    "id": "spyair-2026-09",
+    "artist": "SPYAIR (스파이에어)",
+    "genre": "J-POP",
+    "venue": "킨텍스 제2전시장",
+    "city": "고양",
+    "startDate": "2026-09-05",
+    "endDate": "2026-09-05",
+    "schedule": "오후 6시 시작",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://m.ticket.yes24.com/Perf/58592"
+      }
+    ],
+    "note": "킨텍스 제2전시장 후면광장(야외) 공연이에요.",
+    "description": "새 보컬 요스케(YOSUKE) 합류 후 첫 단독 내한 공연 'SPYAIR JUST LIKE THIS 2026 in KOREA'.",
+    "funFacts": [
+      "전 보컬 이케가 건강상의 이유로 탈퇴한 뒤, 오디션을 거쳐 합류한 새 보컬 요스케와 함께하는 첫 단독 내한이에요 — 달라진 라인업으로 라이브가 어떻게 바뀌었을지가 관전 포인트.",
+      "작년 원더리벳 2025 헤드라이너로 내한한 지 약 1년 만의 단독 공연이라, 그때 못 본 팬이라면 이번이 좋은 기회예요."
+    ],
+    "sources": [
+      {
+        "label": "스파이에어, \"새 보컬 요스케와 함께\"...9월 5일 한국 단독 공연 - YTN",
+        "url": "https://www.ytn.co.kr/_ln/0117_202605261027303802"
       }
     ]
   }

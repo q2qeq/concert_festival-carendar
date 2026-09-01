@@ -9,7 +9,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import EventCard from '../../components/EventCard.astro';
 import AdSlot from '../../components/AdSlot.astro';
-import { getVenueInfo, allVenueNames, venueSlug, venueFromSlug } from '../../lib/venues';
+import { getVenueInfo, allVenueNames, venueSlug, venueFromSlug, mapLinks } from '../../lib/venues';
 import { upcomingEvents } from '../../lib/events';
 
 export function getStaticPaths() {
@@ -71,9 +71,19 @@ const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURICom
         <section class="info-block">
           <h2>주변 맛집</h2>
           <ul class="food-list">
-            {info.nearbyFood.map((f) => (
-              <li><strong>{f.name}</strong><span>{f.desc}</span></li>
-            ))}
+            {info.nearbyFood.map((f) => {
+              const links = mapLinks(`${f.name} ${venueName}`);
+              return (
+                <li>
+                  <strong>{f.name}</strong>
+                  <span>{f.desc}</span>
+                  <span class="food-map-links">
+                    <a href={links.naver} target="_blank" rel="noopener noreferrer">네이버지도</a>
+                    <a href={links.google} target="_blank" rel="noopener noreferrer">구글지도</a>
+                  </span>
+                </li>
+              );
+            })}
           </ul>
         </section>
       )}
@@ -132,6 +142,17 @@ const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURICom
   .food-list li { display: flex; flex-direction: column; gap: 0.1rem; }
   .food-list strong { color: #f5f3ff; font-size: 0.92rem; }
   .food-list span { color: #a9a4c9; font-size: 0.82rem; }
+  .food-map-links { display: flex; gap: 0.5rem; margin-top: 0.15rem; }
+  .food-map-links a {
+    font-size: 0.76rem;
+    color: #6ee7ff;
+    text-decoration: none;
+    background: rgba(110,231,255,0.08);
+    border: 1px solid rgba(110,231,255,0.25);
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+  }
+  .food-map-links a:hover { background: rgba(110,231,255,0.16); }
   .tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(110,231,255,0.08); border-radius: 8px; color: #bdeeff; font-size: 0.85rem; }
   .event-list { display: flex; flex-direction: column; }
   .empty { color: #a9a4c9; }

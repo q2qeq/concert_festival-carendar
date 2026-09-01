@@ -1,60 +1,68 @@
 ---
-import { getVenueInfo, venueSlug } from '../lib/venues';
+import { getVenueInfo, venueSlug, mapLinks } from '../lib/venues';
 interface Props { venue: string }
 const { venue } = Astro.props;
 const info = getVenueInfo(venue);
 ---
-{info && (
-  <section class="venue-box">
-    <h2>공연장 정보 · {venue}</h2>
-    {info.address && <p class="venue-address">{info.address}</p>}
+<section class="venue-box">
+  <h2>공연장 정보 · {venue}</h2>
+  {info?.address && <p class="venue-address">{info.address}</p>}
 
-    <div class="venue-sightline">
-      <a href={`https://x.com/search?q=${encodeURIComponent(`${venue} 시야`)}`} target="_blank" rel="noopener noreferrer">
-        𝕏에서 "{venue} 시야" 검색 →
-      </a>
-      <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(`${venue} 시야`)}`} target="_blank" rel="noopener noreferrer">
-        유튜브에서 "{venue} 시야" 검색 →
-      </a>
-    </div>
-
-    {info.transit && info.transit.length > 0 && (
-      <div class="venue-block">
-        <h3>오시는 길</h3>
-        <ul>{info.transit.map((t) => <li>{t}</li>)}</ul>
-      </div>
-    )}
-
-    {info.parking && (
-      <div class="venue-block">
-        <h3>주차</h3>
-        <p>{info.parking}</p>
-      </div>
-    )}
-
-    {info.nearbyFood && info.nearbyFood.length > 0 && (
-      <div class="venue-block">
-        <h3>주변 맛집</h3>
-        <ul class="food-list">
-          {info.nearbyFood.map((f) => (
-            <li><strong>{f.name}</strong><span>{f.desc}</span></li>
-          ))}
-        </ul>
-      </div>
-    )}
-
-    {info.tip && <p class="venue-tip">{info.tip}</p>}
-
-    <a class="venue-full-link" href={`/venues/${venueSlug(venue)}/`}>
-      {venue} 공연장 페이지 전체보기 (예정된 공연 목록 포함) →
+  <div class="venue-sightline" id="sightline">
+    <a href={`https://x.com/search?q=${encodeURIComponent(`${venue} 시야`)}`} target="_blank" rel="noopener noreferrer">
+      𝕏에서 "{venue} 시야" 검색 →
     </a>
-  </section>
-)}
+    <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(`${venue} 시야`)}`} target="_blank" rel="noopener noreferrer">
+      유튜브에서 "{venue} 시야" 검색 →
+    </a>
+  </div>
+
+  {info?.transit && info.transit.length > 0 && (
+    <div class="venue-block">
+      <h3>오시는 길</h3>
+      <ul>{info.transit.map((t) => <li>{t}</li>)}</ul>
+    </div>
+  )}
+
+  {info?.parking && (
+    <div class="venue-block">
+      <h3>주차</h3>
+      <p>{info.parking}</p>
+    </div>
+  )}
+
+  {info?.nearbyFood && info.nearbyFood.length > 0 && (
+    <div class="venue-block">
+      <h3>주변 맛집</h3>
+      <ul class="food-list">
+        {info.nearbyFood.map((f) => {
+          const links = mapLinks(`${f.name} ${venue}`);
+          return (
+            <li>
+              <strong>{f.name}</strong>
+              <span>{f.desc}</span>
+              <span class="food-map-links">
+                <a href={links.naver} target="_blank" rel="noopener noreferrer">네이버지도</a>
+                <a href={links.google} target="_blank" rel="noopener noreferrer">구글지도</a>
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  )}
+
+  {info?.tip && <p class="venue-tip">{info.tip}</p>}
+
+  <a class="venue-full-link" href={`/venues/${venueSlug(venue)}/`}>
+    {venue} 공연장 페이지 전체보기 (예정된 공연 목록 포함) →
+  </a>
+</section>
 <style>
   .venue-box { margin: 2rem 0; padding: 1.25rem; background: rgba(255,255,255,0.04); border-radius: 12px; }
   .venue-box h2 { font-size: 1.05rem; margin: 0 0 0.5rem; color: #e5e2f7; }
   .venue-address { margin: 0 0 1rem; color: #a9a4c9; font-size: 0.9rem; }
-  .venue-sightline { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0 0 1.25rem; }
+  .venue-sightline { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0 0 1.25rem; scroll-margin-top: 7rem; }
   .venue-sightline a {
     font-size: 0.85rem;
     color: #6ee7ff;
@@ -75,6 +83,17 @@ const info = getVenueInfo(venue);
   .food-list li { display: flex; flex-direction: column; gap: 0.1rem; }
   .food-list strong { color: #f5f3ff; font-size: 0.92rem; }
   .food-list span { color: #a9a4c9; font-size: 0.82rem; }
+  .food-map-links { display: flex; gap: 0.5rem; margin-top: 0.15rem; }
+  .food-map-links a {
+    font-size: 0.76rem;
+    color: #6ee7ff;
+    text-decoration: none;
+    background: rgba(110,231,255,0.08);
+    border: 1px solid rgba(110,231,255,0.25);
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+  }
+  .food-map-links a:hover { background: rgba(110,231,255,0.16); }
   .venue-tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(110,231,255,0.08); border-radius: 8px; color: #bdeeff; font-size: 0.85rem; }
   .venue-full-link { display: inline-block; margin-top: 1rem; font-size: 0.85rem; color: #6ee7ff; text-decoration: none; }
   .venue-full-link:hover { text-decoration: underline; }
