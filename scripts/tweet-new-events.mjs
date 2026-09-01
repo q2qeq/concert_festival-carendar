@@ -140,6 +140,14 @@ async function main() {
 
   writeFileSync(TWEETED_PATH, JSON.stringify(tweeted, null, 2) + '\n');
   console.log(`Done. ${posted}/${toPost.length} posted, ${newEvents.length - toPost.length} still queued for next run.`);
+
+  // Any successes are already saved above, so failing loudly here doesn't
+  // lose progress - it just makes sure a real posting failure shows up as a
+  // red X in Actions instead of a misleading green checkmark (this is what
+  // hid the client-not-enrolled / credits-depleted errors during setup).
+  if (posted < toPost.length) {
+    throw new Error(`${toPost.length - posted} of ${toPost.length} tweet(s) failed - see "Failed to tweet" lines above.`);
+  }
 }
 
 main().catch((err) => {
