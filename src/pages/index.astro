@@ -22,61 +22,79 @@ for (const e of events) {
 }
 ---
 <BaseLayout>
-  <Hero />
-  <section class="intro">
+  <section class="page-intro">
     <h1>{SITE_TITLE}</h1>
     <p>{SITE_DESCRIPTION}</p>
   </section>
 
-  {genres.length > 0 && (
-    <div class="filter-group">
-      <p class="filter-caption">장르</p>
-      <div class="filters" id="genre-filters">
-        <button class="chip active" data-genre="all">전체</button>
-        {genres.map((g) => (
-          <button class="chip" data-genre={g}>{g}</button>
-        ))}
-      </div>
-    </div>
-  )}
+  <Hero />
 
-  {cities.length > 0 && (
-    <div class="filter-group">
-      <p class="filter-caption">지역</p>
-      <div class="filters" id="city-filters">
-        <button class="chip active" data-city="all">전체 지역</button>
-        {cities.map((c) => (
-          <button class="chip" data-city={c}>{c}</button>
-        ))}
-      </div>
-    </div>
-  )}
+  <nav class="quicknav" aria-label="바로가기">
+    <a href="#find"><span aria-hidden="true">🔍</span> 공연 찾기</a>
+    <a href="#listing"><span aria-hidden="true">📅</span> 전체 일정 ({events.length})</a>
+    <a href="/blog"><span aria-hidden="true">📰</span> 이슈</a>
+  </nav>
 
-  <div class="search-row">
-    <input
-      type="search"
-      id="artist-search"
-      class="search-input"
-      placeholder="아티스트 검색 (초성 가능: 예) ㅂㄴㅂ, ㅂㄷ)"
-      autocomplete="off"
-    />
-    <button class="chip fav-toggle" id="fav-toggle" type="button">🤍 찜한 공연만</button>
-  </div>
+  <section id="find" class="finder">
+    <h2>공연 찾기</h2>
+
+    {genres.length > 0 && (
+      <div class="filter-group">
+        <p class="filter-caption">장르</p>
+        <div class="filters" id="genre-filters">
+          <button class="chip active" data-genre="all">전체</button>
+          {genres.map((g) => (
+            <button class="chip" data-genre={g}>{g}</button>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {cities.length > 0 && (
+      <div class="filter-group">
+        <p class="filter-caption">지역</p>
+        <div class="filters" id="city-filters">
+          <button class="chip active" data-city="all">전체 지역</button>
+          {cities.map((c) => (
+            <button class="chip" data-city={c}>{c}</button>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="search-row">
+      <input
+        type="search"
+        id="artist-search"
+        class="search-input"
+        placeholder="아티스트 검색 (초성 가능: 예) ㅂㄴㅂ, ㅂㄷ)"
+        autocomplete="off"
+      />
+      <button class="chip fav-toggle" id="fav-toggle" type="button">🤍 찜한 공연만</button>
+    </div>
+  </section>
 
   <AdSlot slot="home-top" />
 
-  {groups.map((group) => (
-    <section class="month-group">
-      <h2>{group.label}</h2>
-      {group.items.map((e) => (
-        <div class="card-wrap" data-genre={e.genre} data-city={e.city} data-id={e.id}>
-          <EventCard event={e} />
-        </div>
-      ))}
-    </section>
-  ))}
+  <section id="listing" class="listing">
+    <div class="listing-header">
+      <h2>전체 일정</h2>
+      <span class="listing-count">{events.length}건</span>
+    </div>
 
-  {events.length === 0 && <p>현재 등록된 예정 공연이 없습니다. 곧 업데이트할게요.</p>}
+    {groups.map((group) => (
+      <div class="month-group">
+        <h3>{group.label}</h3>
+        {group.items.map((e) => (
+          <div class="card-wrap" data-genre={e.genre} data-city={e.city} data-id={e.id}>
+            <EventCard event={e} />
+          </div>
+        ))}
+      </div>
+    ))}
+
+    {events.length === 0 && <p class="empty">현재 등록된 예정 공연이 없습니다. 곧 업데이트할게요.</p>}
+  </section>
 </BaseLayout>
 
 <script>
@@ -174,10 +192,53 @@ for (const e of events) {
 </script>
 
 <style>
-  .intro { padding: 1rem 0 1.5rem; }
-  .intro h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-  .intro p { color: #d8d5ef; }
-  .filter-group { margin-bottom: 1.25rem; }
+  .page-intro { padding: 1.1rem 0 1.4rem; }
+  .page-intro h1 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--muted);
+    margin: 0 0 0.3rem;
+    letter-spacing: -0.01em;
+  }
+  .page-intro p { margin: 0; color: var(--muted); font-size: 0.88rem; }
+
+  .quicknav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .quicknav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+  }
+  .quicknav a:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+
+  .finder {
+    scroll-margin-top: 5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 1.25rem 1.25rem 1.4rem;
+    margin-bottom: 2rem;
+  }
+  .finder h2 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    color: var(--fg);
+  }
+  .filter-group { margin-bottom: 1.1rem; }
+  .filter-group:last-of-type { margin-bottom: 0; }
   .filter-caption {
     font-size: 0.72rem;
     color: #7d78a0;
@@ -186,7 +247,7 @@ for (const e of events) {
     margin: 0 0 0.4rem;
   }
   .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .search-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.25rem; }
+  .search-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.1rem; }
   .search-input {
     flex: 1;
     min-width: 200px;
@@ -209,6 +270,17 @@ for (const e of events) {
     cursor: pointer;
   }
   .chip.active { background: #ff5fa2; border-color: #ff5fa2; color: #101018; font-weight: 700; }
+
+  .listing { scroll-margin-top: 5rem; }
+  .listing-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .listing-header h2 { margin: 0; font-size: 1.3rem; }
+  .listing-count { color: var(--muted); font-size: 0.85rem; }
   .month-group { margin-top: 2rem; }
-  .month-group h2 { font-size: 1.15rem; color: #a9a4c9; margin-bottom: 0.25rem; }
+  .month-group h3 { font-size: 1.05rem; font-weight: 700; color: #a9a4c9; margin-bottom: 0.25rem; }
+  .empty { color: var(--muted); }
 </style>

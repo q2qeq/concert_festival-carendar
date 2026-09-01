@@ -10,7 +10,7 @@ function fmt(iso: string) {
 }
 ---
 {picks.length > 0 && (
-  <section class="hero">
+  <section class="hero" id="picks">
     <div class="hero-intro">
       <Mascot size={104} />
       <div class="hero-bubble">
@@ -60,7 +60,7 @@ function fmt(iso: string) {
   </section>
 )}
 <style>
-  .hero { margin: 0 0 2.25rem; }
+  .hero { margin: 0 0 2.25rem; scroll-margin-top: 5rem; }
   .hero-intro {
     display: flex;
     align-items: flex-end;

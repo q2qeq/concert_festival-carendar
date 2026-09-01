@@ -1,6 +1,19 @@
 ---
 import { SITE_TITLE } from '../consts';
 import Mascot from './Mascot.astro';
+
+const { pathname } = Astro.url;
+const NAV = [
+  { href: '/', label: '전체 일정' },
+  { href: '/events/archive', label: '지난 공연' },
+  { href: '/blog', label: '이슈' },
+  { href: '/about', label: '소개' },
+  { href: '/contact', label: '문의' },
+];
+function isActive(href: string) {
+  if (href === '/') return pathname === '/';
+  return pathname.startsWith(href);
+}
 ---
 <header class="site-header">
   <nav>
@@ -9,19 +22,34 @@ import Mascot from './Mascot.astro';
       <span>{SITE_TITLE}</span>
     </a>
     <div class="links">
-      <a href="/">전체 일정</a>
-      <a href="/events/archive">지난 공연</a>
-      <a href="/blog">이슈</a>
-      <a href="/about">소개</a>
-      <a href="/contact">문의</a>
+      {NAV.map((item) => (
+        <a href={item.href} class={isActive(item.href) ? 'active' : ''} aria-current={isActive(item.href) ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
     </div>
   </nav>
 </header>
 <style>
-  .site-header { border-bottom: 1px solid rgba(255,255,255,0.08); }
-  nav { max-width: 880px; margin: 0 auto; padding: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: rgba(16, 16, 24, 0.82);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  nav { max-width: 880px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
   .brand { display: flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
-  .links { display: flex; gap: 1rem; }
-  .links a { color: #a9a4c9; text-decoration: none; font-size: 0.95rem; }
+  .links { display: flex; gap: 1.1rem; }
+  .links a {
+    color: #a9a4c9;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 2px solid transparent;
+  }
   .links a:hover { color: #fff; }
+  .links a.active { color: #fff; font-weight: 700; border-bottom-color: var(--accent, #ff5fa2); }
 </style>
