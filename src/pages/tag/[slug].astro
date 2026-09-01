@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EventCard from '../../components/EventCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { upcomingEvents, allGenres, genreSlug, monthLabel } from '../../lib/events';
+
+export function getStaticPaths() {
+  return allGenres().map((genre) => ({
+    params: { slug: genreSlug(genre) },
+    props: { genre },
+  }));
+}
+
+const { genre } = Astro.props as { genre: string };
+const events = upcomingEvents().filter((e) => e.genre === genre);
+
+const groups: { label: string; items: typeof events }[] = [];
+for (const e of events) {
+  const label = monthLabel(e.startDate);
+  let group = groups.find((g) => g.label === label);
+  if (!group) {
+    group = { label, items: [] };
+    groups.push(group);
+  }
+  group.items.push(e);
+}
+
+const otherGenres = allGenres().filter((g) => g !== genre);
+const pageTitle = `${genre} 공연 일정 모음`;
+const pageDescription = `${genre} 내한공연·페스티벌 일정을 한 곳에서 확인하세요. 예매 오픈일부터 D-day, 티켓팅 팁까지 한눈에 모아뒀어요.`;
+---
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
+
+  <section class="intro">
+    <h1>{genre} 공연 일정</h1>
+    <p>{pageDescription}</p>
+  </section>
+
+  <AdSlot slot="tag-top" />
+
+  {groups.map((group) => (
+    <section class="month-group">
+      <h2>{group.label}</h2>
+      {group.items.map((e) => <EventCard event={e} />)}
+    </section>
+  ))}
+
+  {events.length === 0 && (
+    <p class="empty">현재 예정된 {genre} 공연이 없어요. 곧 업데이트할게요.</p>
+  )}
+
+  {otherGenres.length > 0 && (
+    <section class="other-tags">
+      <p class="other-tags-label">다른 장르 보기</p>
+      <div class="other-tags-list">
+        {otherGenres.map((g) => (
+          <a class="tag-chip" href={`/tag/${genreSlug(g)}/`}>{g}</a>
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+<style>
+  .breadcrumb { margin: 0 0 1rem; font-size: 0.88rem; }
+  .breadcrumb a { color: #a9a4c9; text-decoration: none; }
+  .breadcrumb a:hover { color: #fff; }
+  .intro { padding: 0.25rem 0 1.5rem; }
+  .intro h1 { font-size: 1.7rem; margin-bottom: 0.5rem; }
+  .intro p { color: #d8d5ef; }
+  .month-group { margin-top: 2rem; }
+  .month-group h2 { font-size: 1.15rem; color: #a9a4c9; margin-bottom: 0.25rem; }
+  .empty { color: #a9a4c9; margin-top: 1.5rem; }
+  .other-tags { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+  .other-tags-label { font-size: 0.72rem; color: #7d78a0; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.6rem; }
+  .other-tags-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #d8d5ef;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+  .tag-chip:hover { background: rgba(255,255,255,0.12); color: #fff; }
+</style>

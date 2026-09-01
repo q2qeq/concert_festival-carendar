@@ -1,0 +1,83 @@
+---
+// Past events already stay live/indexable at /events/[id]/ (getStaticPaths in
+// [id].astro doesn't filter by date) - they just fall off the homepage list
+// once they end, so nothing links to them anymore. This page is the missing
+// link: an index of past shows, most recent first, so their existing SEO
+// value (setlists, "OO 페스티벌 셋리스트" style searches, etc.) stays reachable
+// instead of becoming an orphan page.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pastEvents, monthLabel } from '../../lib/events';
+
+const events = pastEvents().reverse(); // most recent first
+
+const groups: { label: string; items: typeof events }[] = [];
+for (const e of events) {
+  const label = monthLabel(e.startDate);
+  let group = groups.find((g) => g.label === label);
+  if (!group) {
+    group = { label, items: [] };
+    groups.push(group);
+  }
+  group.items.push(e);
+}
+
+function fmt(iso: string) {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()}`;
+}
+---
+<BaseLayout
+  title="지난 공연 아카이브"
+  description="이미 종료된 내한공연·페스티벌 목록이에요. 셋리스트, 라인업 등 지난 공연 정보를 다시 확인할 수 있어요."
+>
+  <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
+
+  <section class="intro">
+    <h1>지난 공연 아카이브</h1>
+    <p>종료된 공연도 페이지는 그대로 남겨뒀어요. 라인업·셋리스트·현장 정보가 궁금하면 아래에서 찾아보세요.</p>
+  </section>
+
+  {groups.map((group) => (
+    <section class="month-group">
+      <h2>{group.label}</h2>
+      <ul class="archive-list">
+        {group.items.map((e) => (
+          <li>
+            <a href={`/events/${e.id}/`}>
+              <span class="date">{fmt(e.startDate)}</span>
+              <span class="artist">{e.artist}</span>
+              <span class="venue">{e.venue}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  {events.length === 0 && <p class="empty">아직 종료된 공연이 없어요.</p>}
+</BaseLayout>
+<style>
+  .breadcrumb { margin: 0 0 1rem; font-size: 0.88rem; }
+  .breadcrumb a { color: #a9a4c9; text-decoration: none; }
+  .breadcrumb a:hover { color: #fff; }
+  .intro { padding: 0.25rem 0 1.5rem; }
+  .intro h1 { font-size: 1.7rem; margin-bottom: 0.5rem; }
+  .intro p { color: #d8d5ef; }
+  .month-group { margin-top: 2rem; }
+  .month-group h2 { font-size: 1.15rem; color: #a9a4c9; margin-bottom: 0.5rem; }
+  .archive-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .archive-list a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.6rem 0.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-decoration: none;
+    color: inherit;
+  }
+  .archive-list a:hover .artist { color: #ff5fa2; }
+  .date { flex-shrink: 0; width: 2.6rem; color: #7d78a0; font-size: 0.85rem; }
+  .artist { flex: 1; min-width: 0; font-size: 0.95rem; }
+  .venue { flex-shrink: 0; color: #a9a4c9; font-size: 0.82rem; }
+  .empty { color: #a9a4c9; margin-top: 1.5rem; }
+</style>

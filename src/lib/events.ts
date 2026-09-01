@@ -242,6 +242,32 @@ export function allGenres(): string[] {
   return Array.from(new Set(events.map((e) => e.genre))).sort();
 }
 
+// URL-safe slugs for genre tag pages (/tag/[slug]). Explicit map (rather than a
+// generic transliterator) since there are only a handful of real genres and a
+// hand-picked English slug reads better in a URL than an auto-romanized one.
+// Falls back to a lowercased/encoded version of the raw genre for anything new
+// that shows up before this map is updated, so a new KOPIS genre never 404s.
+const GENRE_SLUG_MAP: Record<string, string> = {
+  'J-POP': 'jpop',
+  '페스티벌': 'festival',
+  '가요': 'kayo',
+  '팝': 'pop',
+  '팝/락': 'pop-rock',
+  '팝/힙합': 'pop-hiphop',
+  '재즈/내한': 'jazz',
+};
+const SLUG_TO_GENRE: Record<string, string> = Object.fromEntries(
+  Object.entries(GENRE_SLUG_MAP).map(([genre, slug]) => [slug, genre])
+);
+
+export function genreSlug(genre: string): string {
+  return GENRE_SLUG_MAP[genre] ?? encodeURIComponent(genre.toLowerCase());
+}
+
+export function genreFromSlug(slug: string): string | undefined {
+  return SLUG_TO_GENRE[slug] ?? events.find((e) => genreSlug(e.genre) === slug)?.genre;
+}
+
 export function allCities(): string[] {
   const counts = new Map<string, number>();
   for (const e of events) counts.set(e.city, (counts.get(e.city) ?? 0) + 1);
