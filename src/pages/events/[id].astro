@@ -9,9 +9,10 @@ import SourceList from '../../components/SourceList.astro';
 import MerchGrid from '../../components/MerchGrid.astro';
 import PresaleInfo from '../../components/PresaleInfo.astro';
 import PreviousEditionCompare from '../../components/PreviousEditionCompare.astro';
+import AddToCalendar from '../../components/AddToCalendar.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
-import { events, festivalLineupDays, allTicketLinks } from '../../lib/events';
+import { events, festivalLineupDays, allTicketLinks, TICKETING_DIFFICULTY_LABEL } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -112,8 +113,9 @@ const jsonLd = {
 };
 ---
 <BaseLayout
-  title={`${event.artist} 내한공연 일정`}
+  title={`${event.artist} 내한공연 일정 및 예매 팁`}
   description={pageDescription}
+  image={event.posterUrl}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
@@ -162,7 +164,12 @@ const jsonLd = {
       <div><dt>장소</dt><dd>{event.venue} ({event.city})</dd></div>
       <div><dt>장르</dt><dd>{event.genre}</dd></div>
       {event.schedule && <div><dt>타임테이블</dt><dd>{event.schedule}</dd></div>}
+      {event.ticketingDifficulty && (
+        <div><dt>티켓팅 난이도</dt><dd>{TICKETING_DIFFICULTY_LABEL[event.ticketingDifficulty]}</dd></div>
+      )}
     </dl>
+
+    {status === 'scheduled' && <AddToCalendar event={event} />}
 
     {event.note && <p class="note">{event.note}</p>}
 

@@ -50,13 +50,24 @@ for (const e of events) {
     </div>
   )}
 
+  <div class="search-row">
+    <input
+      type="search"
+      id="artist-search"
+      class="search-input"
+      placeholder="아티스트 검색 (초성 가능: 예) ㅂㄴㅂ, ㅂㄷ)"
+      autocomplete="off"
+    />
+    <button class="chip fav-toggle" id="fav-toggle" type="button">🤍 찜한 공연만</button>
+  </div>
+
   <AdSlot slot="home-top" />
 
   {groups.map((group) => (
     <section class="month-group">
       <h2>{group.label}</h2>
       {group.items.map((e) => (
-        <div class="card-wrap" data-genre={e.genre} data-city={e.city}>
+        <div class="card-wrap" data-genre={e.genre} data-city={e.city} data-id={e.id}>
           <EventCard event={e} />
         </div>
       ))}
@@ -70,15 +81,51 @@ for (const e of events) {
   const genreButtons = document.querySelectorAll<HTMLButtonElement>('#genre-filters .chip');
   const cityButtons = document.querySelectorAll<HTMLButtonElement>('#city-filters .chip');
   const cards = document.querySelectorAll<HTMLElement>('.card-wrap');
+  const searchInput = document.querySelector<HTMLInputElement>('#artist-search');
+  const favToggle = document.querySelector<HTMLButtonElement>('#fav-toggle');
 
   let activeGenre = 'all';
   let activeCity = 'all';
+  let activeSearch = '';
+  let favoritesOnly = false;
+
+  // Hangul 초성(initial-consonant) search, e.g. "ㅂㄴㅂ" should match "back number".
+  const CHOSUNG = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+  function getChosung(str: string) {
+    let out = '';
+    for (const ch of str) {
+      const code = ch.charCodeAt(0) - 0xac00;
+      out += code >= 0 && code <= 11171 ? CHOSUNG[Math.floor(code / 588)] : ch;
+    }
+    return out;
+  }
+  function isChosungQuery(q: string) {
+    return /^[ㄱ-ㅎ]+$/.test(q.replace(/\s/g, ''));
+  }
+  function matchesSearch(artistText: string, query: string) {
+    if (!query) return true;
+    const q = query.trim();
+    if (isChosungQuery(q)) return getChosung(artistText).includes(q);
+    return artistText.toLowerCase().includes(q.toLowerCase());
+  }
+  function getBookmarkSet() {
+    try {
+      const raw = localStorage.getItem('krconcerts:bookmarks');
+      return new Set<string>(raw ? JSON.parse(raw) : []);
+    } catch {
+      return new Set<string>();
+    }
+  }
 
   function applyFilters() {
+    const bookmarks = favoritesOnly ? getBookmarkSet() : null;
     cards.forEach((card) => {
       const genreMatch = activeGenre === 'all' || card.dataset.genre === activeGenre;
       const cityMatch = activeCity === 'all' || card.dataset.city === activeCity;
-      card.style.display = genreMatch && cityMatch ? '' : 'none';
+      const artistText = card.querySelector('h3')?.textContent ?? '';
+      const searchMatch = matchesSearch(artistText, activeSearch);
+      const favMatch = !bookmarks || bookmarks.has(card.dataset.id ?? '');
+      card.style.display = genreMatch && cityMatch && searchMatch && favMatch ? '' : 'none';
     });
     document.querySelectorAll<HTMLElement>('.month-group').forEach((section) => {
       const anyVisible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).some(
@@ -87,6 +134,23 @@ for (const e of events) {
       section.style.display = anyVisible ? '' : 'none';
     });
   }
+
+  searchInput?.addEventListener('input', () => {
+    activeSearch = searchInput.value;
+    applyFilters();
+  });
+
+  favToggle?.addEventListener('click', () => {
+    favoritesOnly = !favoritesOnly;
+    favToggle.classList.toggle('active', favoritesOnly);
+    favToggle.textContent = favoritesOnly ? '❤️ 찜한 공연만' : '🤍 찜한 공연만';
+    applyFilters();
+  });
+
+  // A heart toggled from a card re-runs the favorites-only filter live.
+  window.addEventListener('bookmarks:changed', () => {
+    if (favoritesOnly) applyFilters();
+  });
 
   genreButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -120,6 +184,19 @@ for (const e of events) {
     margin: 0 0 0.4rem;
   }
   .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .search-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.25rem; }
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #f5f3ff;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+  }
+  .search-input::placeholder { color: #7d78a0; }
+  .fav-toggle.active { background: #ff5fa2; border-color: #ff5fa2; color: #101018; font-weight: 700; }
   .chip {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);

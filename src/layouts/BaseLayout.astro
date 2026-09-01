@@ -7,10 +7,12 @@ import Analytics from '@vercel/analytics/astro';
 interface Props {
   title?: string;
   description?: string;
+  image?: string; // absolute or site-relative URL for og:image / twitter:image (e.g. event poster)
 }
-const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, image } = Astro.props;
 const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = image ? new URL(image, Astro.site).toString() : undefined;
 const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
 ---
 <!doctype html>
@@ -25,7 +27,9 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta name="twitter:card" content="summary" />
+    {imageURL && <meta property="og:image" content={imageURL} />}
+    <meta name="twitter:card" content={imageURL ? 'summary_large_image' : 'summary'} />
+    {imageURL && <meta name="twitter:image" content={imageURL} />}
     {adsenseEnabled && (
       <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER_ID}`} crossorigin="anonymous"></script>
     )}
@@ -78,6 +82,55 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
         });
       }
       updateDday();
+
+      // Local, login-free '찜하기' (bookmark) - stored client-side only, per
+      // browser. Any element with [data-bookmark-id] anywhere on the site
+      // becomes a toggle button; state syncs across every button for the same
+      // id (e.g. if the same event ever appears twice on a page) and a
+      // 'bookmarks:changed' event fires so a listing page (index.astro) can
+      // re-filter a '찜한 공연만' view without a full reload.
+      const BOOKMARK_KEY = 'krconcerts:bookmarks';
+      function getBookmarks() {
+        try {
+          const raw = localStorage.getItem(BOOKMARK_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch {
+          return [];
+        }
+      }
+      function setBookmarks(ids) {
+        try {
+          localStorage.setItem(BOOKMARK_KEY, JSON.stringify(ids));
+        } catch {
+          // Storage unavailable (private mode, disabled cookies, etc.) - bookmark
+          // buttons just won't persist between visits; not worth surfacing an error.
+        }
+      }
+      function syncBookmarkButtons() {
+        const ids = new Set(getBookmarks());
+        document.querySelectorAll('[data-bookmark-id]').forEach((btn) => {
+          const id = btn.getAttribute('data-bookmark-id') || '';
+          const active = ids.has(id);
+          btn.classList.toggle('is-bookmarked', active);
+          btn.setAttribute('aria-pressed', String(active));
+          btn.textContent = active ? '♥' : '♡';
+        });
+      }
+      document.querySelectorAll('[data-bookmark-id]').forEach((btn) => {
+        btn.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          const id = btn.getAttribute('data-bookmark-id') || '';
+          const ids = getBookmarks();
+          const idx = ids.indexOf(id);
+          if (idx >= 0) ids.splice(idx, 1);
+          else ids.push(id);
+          setBookmarks(ids);
+          syncBookmarkButtons();
+          window.dispatchEvent(new CustomEvent('bookmarks:changed'));
+        });
+      });
+      syncBookmarkButtons();
     </script>
   </body>
 </html>
@@ -113,4 +166,14 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
   .dday-badge.is-past { background: rgba(255,255,255,0.08); color: var(--muted); }
   .dday-badge.is-postponed { background: rgba(255, 184, 76, 0.18); color: #ffb84c; }
   .dday-badge.is-cancelled { background: rgba(255, 95, 95, 0.18); color: #ff6b6b; }
+  .bookmark-btn {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.15rem;
+    line-height: 1;
+    color: var(--muted);
+    padding: 0.15rem 0.3rem;
+  }
+  .bookmark-btn.is-bookmarked { color: var(--accent); }
+  .bookmark-btn:hover { color: var(--accent); }
 </style>

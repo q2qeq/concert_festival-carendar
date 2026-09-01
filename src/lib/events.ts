@@ -200,6 +200,14 @@ export interface ConcertEvent {
   // Human-readable ticket-open date/time when known ahead of the actual open
   // (e.g. "2026-09-01 오후 8시 (예정)"). Only for shows with ticketingAnnounced.
   ticketOpenDate?: string;
+  // Editorial judgment on how hard tickets are to get, grounded in a real,
+  // citable signal (e.g. a past/this-year sale selling out immediately, a
+  // small venue vs a huge-demand artist). This is commentary, like
+  // crowdOutlook - never a guess dressed up as fact. Leave unset (the badge
+  // just doesn't render) unless there's a real basis; most shows should stay
+  // unset. 'hard' = 피켓팅 (brutal), 'normal' = 무난, 'easy' = 현장에서도
+  // 구할 수 있을 정도로 여유 있음.
+  ticketingDifficulty?: 'hard' | 'normal' | 'easy';
   // Official/known shuttle bus services to the venue. Mostly relevant for festivals
   // at remote or hard-to-reach venues (자라섬, KINTEX, 파라다이스시티 등) - see
   // ShuttleBusInfo for sourcing rules. Rendered next to VenueInfoBox.
@@ -287,6 +295,12 @@ export function allTicketLinks(event: ConcertEvent): TicketLink[] {
 
 // Whether an event has at least one working way to buy tickets right now (used by
 // EventCard's "예매 가능" tag and anywhere else that used to just check ticketUrl).
+export const TICKETING_DIFFICULTY_LABEL: Record<'hard' | 'normal' | 'easy', string> = {
+  hard: '피켓팅 🔥',
+  normal: '무난 🟢',
+  easy: '현장발권 가능 🟡',
+};
+
 export function hasTicketsOnSale(event: ConcertEvent): boolean {
   return allTicketLinks(event).length > 0;
 }

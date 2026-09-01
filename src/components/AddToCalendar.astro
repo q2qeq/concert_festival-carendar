@@ -1,0 +1,97 @@
+---
+// "캘린더에 추가" button - Google Calendar link (opens calendar.google.com with
+// prefilled fields) + a static-generated .ics file link (data: URI, no backend
+// needed - Apple Calendar/Outlook understand this format). All-day event only
+// (ConcertEvent doesn't reliably carry start times), so DTEND/dates use the
+// exclusive-end-date convention (end date + 1 day).
+interface Props {
+  event: {
+    id: string;
+    artist: string;
+    startDate: string;
+    endDate: string;
+    venue: string;
+    city: string;
+    description?: string;
+  };
+}
+const { event } = Astro.props;
+
+function toYYYYMMDD(iso: string) {
+  return iso.replaceAll('-', '');
+}
+function addDays(iso: string, days: number) {
+  const d = new Date(iso + 'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+
+const startYmd = toYYYYMMDD(event.startDate);
+const endExclusiveYmd = toYYYYMMDD(addDays(event.endDate, 1));
+
+const title = `${event.artist} (${event.venue})`;
+const location = `${event.venue}, ${event.city}`;
+const details = event.description ?? `${event.artist} - ${event.venue}, ${event.city}`;
+
+const googleUrl =
+  `https://calendar.google.com/calendar/render?action=TEMPLATE` +
+  `&text=${encodeURIComponent(title)}` +
+  `&dates=${startYmd}/${endExclusiveYmd}` +
+  `&details=${encodeURIComponent(details)}` +
+  `&location=${encodeURIComponent(location)}`;
+
+function escIcs(s: string) {
+  return s.replace(/\\/g, '\\\\').replace(/,/g, '\\,').replace(/;/g, '\\;').replace(/\n/g, '\\n');
+}
+
+const icsLines = [
+  'BEGIN:VCALENDAR',
+  'VERSION:2.0',
+  'PRODID:-//공연캘린더//KO',
+  'CALSCALE:GREGORIAN',
+  'BEGIN:VEVENT',
+  `UID:${event.id}@krconcerts`,
+  `DTSTAMP:${startYmd}T000000Z`,
+  `DTSTART;VALUE=DATE:${startYmd}`,
+  `DTEND;VALUE=DATE:${endExclusiveYmd}`,
+  `SUMMARY:${escIcs(title)}`,
+  `LOCATION:${escIcs(location)}`,
+  `DESCRIPTION:${escIcs(details)}`,
+  'END:VEVENT',
+  'END:VCALENDAR',
+].join('\r\n');
+
+const icsDataUrl = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines)}`;
+---
+<div class="add-to-calendar">
+  <span class="atc-label">📌 캘린더에 추가</span>
+  <div class="atc-buttons">
+    <a class="atc-btn" href={googleUrl} target="_blank" rel="noopener noreferrer">Google 캘린더</a>
+    <a class="atc-btn" href={icsDataUrl} download={`${event.id}.ics`}>Apple·Outlook (.ics)</a>
+  </div>
+</div>
+<style>
+  .add-to-calendar {
+    margin: 1.1rem 0;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .atc-label { font-size: 0.85rem; color: #d8d5ef; flex-shrink: 0; font-weight: 600; }
+  .atc-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .atc-btn {
+    font-size: 0.85rem;
+    color: #d8d5ef;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .atc-btn:hover { background: rgba(255,95,162,0.16); border-color: rgba(255,95,162,0.4); }
+</style>
