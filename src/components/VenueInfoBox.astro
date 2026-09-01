@@ -1,5 +1,5 @@
 ---
-import { getVenueInfo } from '../lib/venues';
+import { getVenueInfo, venueSlug } from '../lib/venues';
 interface Props { venue: string }
 const { venue } = Astro.props;
 const info = getVenueInfo(venue);
@@ -35,6 +35,10 @@ const info = getVenueInfo(venue);
     )}
 
     {info.tip && <p class="venue-tip">{info.tip}</p>}
+
+    <a class="venue-full-link" href={`/venues/${venueSlug(venue)}/`}>
+      {venue} 공연장 페이지 전체보기 (예정된 공연 목록 포함) →
+    </a>
   </section>
 )}
 <style>
@@ -52,4 +56,6 @@ const info = getVenueInfo(venue);
   .food-list strong { color: #f5f3ff; font-size: 0.92rem; }
   .food-list span { color: #a9a4c9; font-size: 0.82rem; }
   .venue-tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(110,231,255,0.08); border-radius: 8px; color: #bdeeff; font-size: 0.85rem; }
+  .venue-full-link { display: inline-block; margin-top: 1rem; font-size: 0.85rem; color: #6ee7ff; text-decoration: none; }
+  .venue-full-link:hover { text-decoration: underline; }
 </style>

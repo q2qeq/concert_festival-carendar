@@ -1,0 +1,131 @@
+---
+// Standalone per-venue page: address/transit/parking/food (already researched,
+// same source as VenueInfoBox) plus every upcoming show at that venue and a
+// generic "시야/후기 검색" deep link to X search (no scraping, no fabricated
+// per-section seat data - just a search query built from the venue's own name).
+// Two or more event.venue spellings can point at the same physical place (e.g.
+// "파주 임진각 평화누리" vs "임진각 평화누리") - matching is done by venueSlug()
+// on both sides so an alias never produces a duplicate page or a missed event.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EventCard from '../../components/EventCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { getVenueInfo, allVenueNames, venueSlug, venueFromSlug } from '../../lib/venues';
+import { upcomingEvents } from '../../lib/events';
+
+export function getStaticPaths() {
+  const uniqueSlugs = Array.from(new Set(allVenueNames().map(venueSlug)));
+  return uniqueSlugs.map((slug) => ({
+    params: { slug },
+    props: { venueName: venueFromSlug(slug)! },
+  }));
+}
+
+const { venueName } = Astro.props as { venueName: string };
+const info = getVenueInfo(venueName);
+const slug = venueSlug(venueName);
+const venueEvents = upcomingEvents().filter((e) => venueSlug(e.venue) === slug);
+const city = venueEvents[0]?.city;
+
+const pageTitle = `${venueName} 좌석·주차·교통 정보`;
+const pageDescription = `${venueName} 공연 관람 전 알아두면 좋은 오시는 길, 주차, 주변 편의시설 정보와 예정된 공연 목록이에요.`;
+const xSearchUrl = `https://x.com/search?q=${encodeURIComponent(`${venueName} 시야`)}`;
+---
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
+
+  <section class="intro">
+    <h1>{venueName}</h1>
+    {city && <p class="city-tag">{city}</p>}
+    {info?.address && <p class="address">{info.address}</p>}
+  </section>
+
+  <a class="x-search-btn" href={xSearchUrl} target="_blank" rel="noopener noreferrer">
+    𝕏에서 "{venueName} 시야" 실시간 검색 →
+  </a>
+
+  <AdSlot slot="venue-top" />
+
+  {info ? (
+    <>
+      {info.transit && info.transit.length > 0 && (
+        <section class="info-block">
+          <h2>오시는 길</h2>
+          <ul>{info.transit.map((t) => <li>{t}</li>)}</ul>
+        </section>
+      )}
+
+      {info.parking && (
+        <section class="info-block">
+          <h2>주차</h2>
+          <p>{info.parking}</p>
+        </section>
+      )}
+
+      {info.nearbyFood && info.nearbyFood.length > 0 && (
+        <section class="info-block">
+          <h2>주변 맛집</h2>
+          <ul class="food-list">
+            {info.nearbyFood.map((f) => (
+              <li><strong>{f.name}</strong><span>{f.desc}</span></li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {info.tip && <p class="tip">{info.tip}</p>}
+    </>
+  ) : (
+    <p class="empty">아직 이 공연장의 상세 정보를 정리하지 못했어요. 공식 채널에서 최신 정보를 확인해주세요.</p>
+  )}
+
+  <section class="info-block">
+    <h2>{venueName}의 예정된 공연{venueEvents.length > 0 ? ` (${venueEvents.length}건)` : ''}</h2>
+    {venueEvents.length > 0 ? (
+      <div class="event-list">
+        {venueEvents.map((e) => <EventCard event={e} />)}
+      </div>
+    ) : (
+      <p class="empty">현재 예정된 공연이 없어요.</p>
+    )}
+  </section>
+</BaseLayout>
+<style>
+  .breadcrumb { margin: 0 0 1rem; font-size: 0.88rem; }
+  .breadcrumb a { color: #a9a4c9; text-decoration: none; }
+  .breadcrumb a:hover { color: #fff; }
+  .intro { padding: 0.25rem 0 0.75rem; }
+  .intro h1 { font-size: 1.7rem; margin-bottom: 0.35rem; }
+  .city-tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: #6ee7ff;
+    border: 1px solid rgba(110,231,255,0.4);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+  .address { color: #a9a4c9; margin: 0; }
+  .x-search-btn {
+    display: inline-block;
+    margin: 1rem 0 1.5rem;
+    padding: 0.6rem 1.1rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 999px;
+    color: #d8d5ef;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .x-search-btn:hover { background: rgba(255,95,162,0.16); border-color: rgba(255,95,162,0.4); color: #fff; }
+  .info-block { margin: 1.75rem 0; }
+  .info-block h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #e5e2f7; }
+  .info-block ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .info-block p, .info-block li { color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; margin: 0; }
+  .food-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem 1rem; padding-left: 0 !important; list-style: none; }
+  .food-list li { display: flex; flex-direction: column; gap: 0.1rem; }
+  .food-list strong { color: #f5f3ff; font-size: 0.92rem; }
+  .food-list span { color: #a9a4c9; font-size: 0.82rem; }
+  .tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(110,231,255,0.08); border-radius: 8px; color: #bdeeff; font-size: 0.85rem; }
+  .event-list { display: flex; flex-direction: column; }
+  .empty { color: #a9a4c9; }
+</style>
