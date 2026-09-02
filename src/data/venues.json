@@ -90,7 +90,10 @@
         "desc": "원테이블 레스토랑, 수비드 삼겹살·로제떡볶이"
       }
     ],
-    "tip": "공연 있는 날은 올림픽공원역 3번 출구가 특히 붐벼요. 조금 여유 있게 도착하는 걸 추천."
+    "tip": "공연 있는 날은 올림픽공원역 3번 출구가 특히 붐벼요. 조금 여유 있게 도착하는 걸 추천.",
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/올림픽체조.jpg?width=640",
+    "imageCredit": "Moonhayun, Wikimedia Commons (CC BY-SA 4.0)",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:올림픽체조.jpg"
   },
   "올림픽공원": {
     "address": "서울 송파구 올림픽로 424",
