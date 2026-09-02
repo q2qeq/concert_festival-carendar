@@ -16,6 +16,13 @@ export interface VenueInfo {
   smokingArea?: string;
   nearbyFood?: VenueFood[];
   tip?: string;
+  // 공연장 공식/현장 사진 - 출처가 명확한(라이선스 확인된) 사진이 있을 때만 채운다.
+  // 저작권 문제를 피하려고 자체 리호스팅 없이 원본(Wikimedia Commons 등)을 그대로
+  // 링크한다 - posterUrl과 동일한 원칙. imageCredit/imageSourceUrl은 CC 라이선스
+  // 사진의 출처 표기용(퍼블릭 도메인 사진도 검증 가능하도록 함께 채워둔다).
+  imageUrl?: string;
+  imageCredit?: string;
+  imageSourceUrl?: string;
 }
 
 const venues = raw as Record<string, VenueInfo>;
@@ -65,6 +72,45 @@ export function venueFromSlug(slug: string): string | undefined {
   if (SLUG_TO_VENUE[slug]) return SLUG_TO_VENUE[slug];
   return allVenueNames().find((v) => venueSlug(v) === slug);
 }
+
+// 주소 앞부분(시/도)으로 지역을 묶어서 /venues 페이지를 지역별로 볼 수 있게 하는
+// 헬퍼. 좌표 데이터 없이도 이미 모든 공연장에 있는 address 필드만으로 동작한다 -
+// 새 공연장이 추가돼도 주소만 있으면 자동으로 올바른 지역에 들어간다. 목록에 없는
+// 접두어(주소 누락 등)는 '기타'로 묶는다.
+const REGION_PREFIXES: Array<[string, string]> = [
+  ['서울', '서울'],
+  ['경기', '경기'],
+  ['인천', '인천'],
+  ['강원', '강원'],
+  ['충북', '충북'],
+  ['충남', '충남'],
+  ['대전', '대전'],
+  ['세종', '세종'],
+  ['전북', '전북'],
+  ['전남', '전남'],
+  ['광주', '광주'],
+  ['대구', '대구'],
+  ['경북', '경북'],
+  ['경남', '경남'],
+  ['부산', '부산'],
+  ['울산', '울산'],
+  ['제주', '제주'],
+];
+
+export function regionOf(address?: string): string {
+  if (!address) return '기타';
+  const hit = REGION_PREFIXES.find(([prefix]) => address.startsWith(prefix));
+  return hit ? hit[1] : '기타';
+}
+
+// 수도권부터 남쪽으로 대략 훑는 순서 - 지역 섹션을 나열할 때 이 순서를 쓴다.
+export const REGION_ORDER = [
+  '서울', '경기', '인천', '강원',
+  '대전', '세종', '충북', '충남',
+  '광주', '전북', '전남',
+  '대구', '경북', '부산', '울산', '경남', '제주',
+  '기타',
+];
 
 // Venues where a shuttle bus (official free venue shuttle, or a promoter/third-
 // party charter) is plausible enough that a reader should always be pointed at

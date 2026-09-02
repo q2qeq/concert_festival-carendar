@@ -5,9 +5,17 @@
 // to the full venue page and also carries a one-click sightline search
 // (X + YouTube) right here, for the common case of "I just want to know
 // what the view looks like from this venue."
+//
+// Grouped by region (서울/경기/인천/...) instead of one flat list, since a
+// reader almost always cares about "공연장이 어디에 있는지" first - derived
+// from each venue's own address via regionOf(), so a new venue with an
+// address is placed automatically. Cards also show a real venue photo when
+// one has been sourced (Wikimedia Commons, license-checked) - hotlinked
+// straight to the original file rather than rehosted, same never-fabricate/
+// no-rehost principle as event posters: no photo entry, no guessed image.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
-import { allVenueNames, getVenueInfo, venueSlug } from '../../lib/venues';
+import { allVenueNames, getVenueInfo, venueSlug, regionOf, REGION_ORDER } from '../../lib/venues';
 import { upcomingEvents } from '../../lib/events';
 
 const events = upcomingEvents();
@@ -15,12 +23,17 @@ const events = upcomingEvents();
 const venues = allVenueNames()
   .map((name) => {
     const slug = venueSlug(name);
+    const info = getVenueInfo(name);
     const venueEvents = events.filter((e) => venueSlug(e.venue) === slug);
     return {
       name,
       slug,
       city: venueEvents[0]?.city,
-      address: getVenueInfo(name)?.address,
+      address: info?.address,
+      region: regionOf(info?.address),
+      imageUrl: info?.imageUrl,
+      imageCredit: info?.imageCredit,
+      imageSourceUrl: info?.imageSourceUrl,
       upcomingCount: venueEvents.length,
     };
   })
@@ -28,37 +41,66 @@ const venues = allVenueNames()
   .filter((v, i, arr) => arr.findIndex((x) => x.slug === v.slug) === i)
   .sort((a, b) => b.upcomingCount - a.upcomingCount || a.name.localeCompare(b.name, 'ko'));
 
+const regionGroups = REGION_ORDER
+  .map((region) => ({ region, venues: venues.filter((v) => v.region === region) }))
+  .filter((g) => g.venues.length > 0);
+
 const pageTitle = '공연장 정보 모음';
-const pageDescription = '내한공연·페스티벌이 열리는 공연장의 오시는 길, 주차, 시야 확인 방법을 한 곳에 모았어요.';
+const pageDescription = '내한공연·페스티벌이 열리는 공연장을 지역별로 모아, 오시는 길·주차·시야 확인 방법을 한 곳에서 볼 수 있어요.';
 ---
 <BaseLayout title={pageTitle} description={pageDescription}>
   <section class="page-intro">
     <h1>공연장 정보</h1>
-    <p>공연 보러 가기 전, 자리에서 무대가 어떻게 보일지부터 확인하세요. 공연장을 고르면 오시는 길·주차·주변 맛집 정보와 예정된 공연 목록도 볼 수 있어요.</p>
+    <p>공연 보러 가기 전, 자리에서 무대가 어떻게 보일지부터 확인하세요. 지역별로 공연장을 모아뒀어요 - 공연장을 고르면 오시는 길·주차·주변 맛집 정보와 예정된 공연 목록도 볼 수 있어요.</p>
   </section>
+
+  {regionGroups.length > 1 && (
+    <nav class="region-nav" aria-label="지역 바로가기">
+      {regionGroups.map((g) => (
+        <a href={`#region-${g.region}`}>{g.region} <span>{g.venues.length}</span></a>
+      ))}
+    </nav>
+  )}
 
   <AdSlot slot="venues-top" />
 
-  <div class="venue-grid">
-    {venues.map((v) => (
-      <div class="venue-card">
-        <a class="venue-card-main" href={`/venues/${v.slug}/`}>
-          <h2>{v.name}</h2>
-          {v.city && <p class="venue-city">{v.city}</p>}
-          {v.address && <p class="venue-address">{v.address}</p>}
-          {v.upcomingCount > 0 && <p class="venue-count">예정된 공연 {v.upcomingCount}건</p>}
-        </a>
-        <div class="venue-card-links">
-          <a href={`https://x.com/search?q=${encodeURIComponent(`${v.name} 시야`)}`} target="_blank" rel="noopener noreferrer">
-            𝕏 시야 검색
-          </a>
-          <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(`${v.name} 시야`)}`} target="_blank" rel="noopener noreferrer">
-            유튜브 시야 검색
-          </a>
-        </div>
+  {regionGroups.map((g) => (
+    <section class="region-section" id={`region-${g.region}`}>
+      <h2 class="region-heading">{g.region} <span class="region-count">공연장 {g.venues.length}곳</span></h2>
+      <div class="venue-grid">
+        {g.venues.map((v) => (
+          <div class="venue-card">
+            <a class="venue-card-main" href={`/venues/${v.slug}/`}>
+              {v.imageUrl ? (
+                <img class="venue-thumb" src={v.imageUrl} alt={`${v.name} 전경`} loading="lazy" width="640" height="360" />
+              ) : (
+                <div class="venue-thumb venue-thumb-placeholder" aria-hidden="true">{v.name.slice(0, 1)}</div>
+              )}
+              <div class="venue-card-body">
+                <h3>{v.name}</h3>
+                {v.city && <p class="venue-city">{v.city}</p>}
+                {v.address && <p class="venue-address">{v.address}</p>}
+                {v.upcomingCount > 0 && <p class="venue-count">예정된 공연 {v.upcomingCount}건</p>}
+              </div>
+            </a>
+            {v.imageUrl && v.imageCredit && (
+              <p class="venue-photo-credit">
+                사진: {v.imageSourceUrl ? <a href={v.imageSourceUrl} target="_blank" rel="noopener noreferrer">{v.imageCredit}</a> : v.imageCredit}
+              </p>
+            )}
+            <div class="venue-card-links">
+              <a href={`https://x.com/search?q=${encodeURIComponent(`${v.name} 시야`)}`} target="_blank" rel="noopener noreferrer">
+                𝕏 시야 검색
+              </a>
+              <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(`${v.name} 시야`)}`} target="_blank" rel="noopener noreferrer">
+                유튜브 시야 검색
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
+    </section>
+  ))}
 
   {venues.length === 0 && <p class="empty">아직 정리된 공연장 정보가 없어요.</p>}
 </BaseLayout>
@@ -66,24 +108,69 @@ const pageDescription = '내한공연·페스티벌이 열리는 공연장의 �
   .page-intro { padding: 1.1rem 0 1.4rem; }
   .page-intro h1 { font-size: 1.4rem; margin: 0 0 0.4rem; }
   .page-intro p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+  .region-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0 0 1.2rem;
+  }
+  .region-nav a {
+    font-size: 0.82rem;
+    color: #d8d5ef;
+    text-decoration: none;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+  .region-nav a span { color: #6ee7ff; margin-left: 0.15rem; }
+  .region-nav a:hover { background: rgba(255,95,162,0.14); border-color: rgba(255,95,162,0.4); color: #fff; }
+  .region-section { margin-top: 2.1rem; scroll-margin-top: 5rem; }
+  .region-heading {
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    color: #f5f3ff;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+  }
+  .region-count { font-size: 0.78rem; color: var(--muted); font-weight: normal; }
   .venue-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1rem;
-    margin-top: 1.5rem;
   }
   .venue-card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 14px;
-    padding: 1.1rem 1.15rem;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.65rem;
+    padding-bottom: 1.1rem;
   }
   .venue-card-main { text-decoration: none; color: inherit; display: block; }
-  .venue-card-main h2 { margin: 0 0 0.3rem; font-size: 1.05rem; color: #f5f3ff; }
-  .venue-card-main:hover h2 { color: #ff5fa2; }
+  .venue-thumb {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: rgba(255,255,255,0.06);
+  }
+  .venue-thumb-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: rgba(245,243,255,0.35);
+    background: linear-gradient(135deg, rgba(255,95,162,0.12), rgba(110,231,255,0.1));
+  }
+  .venue-card-body { padding: 1rem 1.15rem 0; }
+  .venue-card-body h3 { margin: 0 0 0.3rem; font-size: 1.05rem; color: #f5f3ff; }
+  .venue-card-main:hover h3 { color: #ff5fa2; }
   .venue-city {
     display: inline-block;
     font-size: 0.74rem;
@@ -95,10 +182,18 @@ const pageDescription = '내한공연·페스티벌이 열리는 공연장의 �
   }
   .venue-address { margin: 0 0 0.3rem; color: #a9a4c9; font-size: 0.85rem; }
   .venue-count { margin: 0; color: #d8d5ef; font-size: 0.82rem; }
+  .venue-photo-credit {
+    margin: -0.35rem 1.15rem 0;
+    font-size: 0.68rem;
+    color: rgba(169,164,201,0.7);
+  }
+  .venue-photo-credit a { color: inherit; }
+  .venue-photo-credit a:hover { color: #6ee7ff; }
   .venue-card-links {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin: 0 1.15rem 0;
     padding-top: 0.65rem;
     border-top: 1px dashed rgba(255,255,255,0.1);
   }

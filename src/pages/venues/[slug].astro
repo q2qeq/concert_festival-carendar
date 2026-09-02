@@ -35,6 +35,16 @@ const pageDescription = `${venueName} 공연 관람 전 알아두면 좋은 오�
   <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
 
   <section class="intro">
+    {info?.imageUrl && (
+      <>
+        <img class="venue-hero" src={info.imageUrl} alt={`${venueName} 전경`} loading="lazy" width="960" height="540" />
+        {info.imageCredit && (
+          <p class="venue-hero-credit">
+            사진: {info.imageSourceUrl ? <a href={info.imageSourceUrl} target="_blank" rel="noopener noreferrer">{info.imageCredit}</a> : info.imageCredit}
+          </p>
+        )}
+      </>
+    )}
     <h1>{venueName}</h1>
     {city && <p class="city-tag">{city}</p>}
     {info?.address && <p class="address">{info.address}</p>}
@@ -119,6 +129,17 @@ const pageDescription = `${venueName} 공연 관람 전 알아두면 좋은 오�
   .breadcrumb a { color: #a9a4c9; text-decoration: none; }
   .breadcrumb a:hover { color: #fff; }
   .intro { padding: 0.25rem 0 0.75rem; }
+  .venue-hero {
+    display: block;
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 0.4rem;
+  }
+  .venue-hero-credit { margin: 0 0 0.9rem; font-size: 0.72rem; color: rgba(169,164,201,0.7); }
+  .venue-hero-credit a { color: inherit; }
+  .venue-hero-credit a:hover { color: #6ee7ff; }
   .intro h1 { font-size: 1.7rem; margin-bottom: 0.35rem; }
   .city-tag {
     display: inline-block;

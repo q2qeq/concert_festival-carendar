@@ -28,7 +28,10 @@
         "desc": "커피·마늘빵, 약 230m"
       }
     ],
-    "tip": "야외 잔디밭 행사가 많은 곳이라 해가 지면 기온이 뚝 떨어져요. 9~10월이라도 얇은 겉옷은 챙기는 걸 추천."
+    "tip": "야외 잔디밭 행사가 많은 곳이라 해가 지면 기온이 뚝 떨어져요. 9~10월이라도 얇은 겉옷은 챙기는 걸 추천.",
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Imjingak_001.jpg?width=640",
+    "imageCredit": "Rbtjd0201, Wikimedia Commons (Public domain)",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Imjingak_001.jpg"
   },
   "킨텍스 제2전시장": {
     "address": "경기 고양시 일산서구 킨텍스로 217-59",
@@ -114,7 +117,10 @@
         "name": "YUP",
         "desc": "원테이블 레스토랑, 수비드 삼겹살·로제떡볶이"
       }
-    ]
+    ],
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Seoul_Olympic_Park_from_Lotte_World_Tower.jpg?width=640",
+    "imageCredit": "Tristan Surtel, Wikimedia Commons (CC BY-SA 4.0)",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul_Olympic_Park_from_Lotte_World_Tower.jpg"
   },
   "KINTEX": {
     "address": "경기 고양시 일산서구 킨텍스로 217-6",
@@ -145,7 +151,10 @@
         "desc": "불향 매운 쭈꾸미 볶음"
       }
     ],
-    "tip": "홀 번호(1전시장/2전시장, 9홀 등)를 미리 확인하세요 — 같은 KINTEX라도 건물 간 이동에 시간이 꽤 걸립니다."
+    "tip": "홀 번호(1전시장/2전시장, 9홀 등)를 미리 확인하세요 — 같은 KINTEX라도 건물 간 이동에 시간이 꽤 걸립니다.",
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%ED%82%A8%ED%85%8D%EC%8A%A4.jpg?width=640",
+    "imageCredit": "Wikimedia Commons 기여자 (CC BY-SA 4.0)",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:%ED%82%A8%ED%85%8D%EC%8A%A4.jpg"
   },
   "인스파이어 아레나": {
     "address": "인천 영종구 공항문화로 127",
@@ -191,7 +200,10 @@
         "name": "모퉁이주방 일산점",
         "desc": "파스타, 브런치 느낌"
       }
-    ]
+    ],
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Goyang_sta_1.JPG?width=640",
+    "imageCredit": "WAKA77, Wikimedia Commons (Public domain)",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Goyang_sta_1.JPG"
   },
   "파라다이스시티": {
     "address": "인천 영종구 영종해안남로321번길 186",
@@ -230,7 +242,10 @@
         "desc": "커피·마늘빵, 약 230m"
       }
     ],
-    "tip": "야외 잔디밭 행사가 많은 곳이라 해가 지면 기온이 뚝 떨어져요. 9~10월이라도 얇은 겉옷은 챙기는 걸 추천."
+    "tip": "야외 잔디밭 행사가 많은 곳이라 해가 지면 기온이 뚝 떨어져요. 9~10월이라도 얇은 겉옷은 챙기는 걸 추천.",
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Imjingak_001.jpg?width=640",
+    "imageCredit": "Rbtjd0201, Wikimedia Commons (Public domain)",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Imjingak_001.jpg"
   },
   "강릉아트센터": {
     "address": "강원 강릉시 종합운동장길 84 (교동)",
@@ -238,7 +253,10 @@
   },
   "한국소리문화의전당": {
     "address": "전북 전주시 덕진구 소리로 31 (덕진동1가)",
-    "tip": "전주역·전주고속버스터미널에서 거리가 있는 편이라 버스보다 택시가 편해요. 지방 공연장이라 셔틀버스가 따로 있는 경우가 많으니 예매처 공지사항을 꼭 확인하세요."
+    "tip": "전주역·전주고속버스터미널에서 거리가 있는 편이라 버스보다 택시가 편해요. 지방 공연장이라 셔틀버스가 따로 있는 경우가 많으니 예매처 공지사항을 꼭 확인하세요.",
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moak_Hall_of_the_Sori_Arts_Center_of_Jeollabuk-do.jpg?width=640",
+    "imageCredit": "Judahdavis, Wikimedia Commons (Public domain)",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Moak_Hall_of_the_Sori_Arts_Center_of_Jeollabuk-do.jpg"
   },
   "소향씨어터": {
     "address": "부산 해운대구 센텀중앙로 55 (동서대학교 센텀캠퍼스 내)",
@@ -256,6 +274,9 @@
   },
   "엑스코(EXCO)": {
     "address": "대구 북구 엑스코로 10 (산격동)",
-    "tip": "대형 전시장이라 홀 번호를 미리 확인해두는 게 좋아요."
+    "tip": "대형 전시장이라 홀 번호를 미리 확인해두는 게 좋아요.",
+    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Daegu_EXCO_4.jpg?width=640",
+    "imageCredit": "Wikimedia Commons (Public domain)",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Daegu_EXCO_4.jpg"
   }
 }
