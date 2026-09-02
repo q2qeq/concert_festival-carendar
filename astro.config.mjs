@@ -2,8 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
-// TODO: replace with your real domain once purchased
-export const SITE_URL = 'https://example.com';
+export const SITE_URL = 'https://jikgwannyang.com';
 
 export default defineConfig({
   site: SITE_URL,
