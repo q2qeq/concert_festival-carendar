@@ -153,6 +153,14 @@ export interface ConcertEvent {
   ticketLinks?: TicketLink[];
   officialUrl?: string; // artist/tour official site or promoter's official event page
   mdUrl?: string; // official merch/goods store, only when a real one was found
+  // Known official promoter/artist SNS account(s) for this show - only set
+  // when a specific account was actually found and verified (e.g. while
+  // researching a ticket-open or operating-hours notice). Used to scope the
+  // bounded, on-demand MD/운영공지 SNS check to "the one known account for this
+  // event", never a general sweep - see the "Standing policy: on-demand
+  // social-media checks" note in project memory. Do not add an unverified
+  // guess just to populate this field.
+  officialSns?: { label: string; url: string }[];
   fanclubUrl?: string; // official fan club page, mostly relevant for K-pop/J-pop acts
   // Official poster image URL. For KOPIS-sourced domestic events this can be filled
   // automatically (scripts/fetch-kopis.mjs calls KOPIS's detail API, a legit gov
@@ -235,6 +243,13 @@ export interface ConcertEvent {
   // Leave unset for the vast majority of events; FanChantGuide.astro always
   // renders its own generic search links regardless of whether this is set.
   fanChantGuide?: FanChantGuideEntry[];
+  // ISO date (yyyy-mm-dd) of the last time MD/굿즈 info was actively checked
+  // for this event (notice page + web search, and the known SNS account if
+  // within the D-30 window) - set by the merch-watch routine. Lets it skip
+  // re-checking the same event same-day and shows how stale the last check
+  // is. Only meaningful while `merch` is still empty; stop updating once
+  // `merch` has real data.
+  merchCheckedAt?: string;
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();
