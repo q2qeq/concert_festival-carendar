@@ -9,6 +9,11 @@ export interface VenueInfo {
   address?: string;
   transit?: string[];
   parking?: string;
+  // 코인락커/화장실/흡연장 위치 - 셋 다 선택 필드. 다른 필드들과 같은 원칙으로,
+  // 실제 확인된 정보만 채운다(추측·일반화 금지) - 확인 전까지는 비워둔다.
+  coinLocker?: string;
+  restroom?: string;
+  smokingArea?: string;
   nearbyFood?: VenueFood[];
   tip?: string;
 }
@@ -128,3 +133,11 @@ export function transitDirectionsUrl(destination: string, origin?: string): stri
 export function kakaoMapSearchUrl(query: string): string {
   return `https://map.kakao.com/?q=${encodeURIComponent(query)}`;
 }
+
+// 콘서트 셔틀버스 시장 대부분을 차지하는 3대 업체 - 예매/노선 확인은 전부 각 사
+// 앱(또는 앱과 연동된 자체 플랫폼)에서 이뤄지고, 범용 지도·포털 검색으로는 잘 안
+// 걸린다. 그래서 셔틀 섹션에는 항상 이 3사를 먼저 눈에 띄게 링크해둔다 - 공식
+// 홈페이지가 곧 앱 다운로드/예약 안내로 이어지는 실제 존재하는 링크만 사용
+// (앱스토어 ID는 버전이 바뀔 수 있어 안정적인 공식 사이트를 링크).
+export const GGOGGAMA_URL = 'https://www.ggoggama.com/';
+export const QUEENS_SMILE_URL = 'https://queenssmile.co.kr/';

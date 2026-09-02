@@ -7,12 +7,12 @@ import VenueInfoBox from '../../components/VenueInfoBox.astro';
 import ShuttleInfo from '../../components/ShuttleInfo.astro';
 import SourceList from '../../components/SourceList.astro';
 import MerchGrid from '../../components/MerchGrid.astro';
-import PresaleInfo from '../../components/PresaleInfo.astro';
 import PreviousEditionCompare from '../../components/PreviousEditionCompare.astro';
 import AddToCalendar from '../../components/AddToCalendar.astro';
+import TicketBooking from '../../components/TicketBooking.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
-import { events, festivalLineupDays, allTicketLinks, TICKETING_DIFFICULTY_LABEL } from '../../lib/events';
+import { events, festivalLineupDays, allTicketLinks } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -39,40 +39,41 @@ const pageDescription = event.description
   : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`;
 
 // 한 공연을 여러 사이트에서 판매하는 경우(예: 인터파크 + NOL티켓) 벤더별로
-// 버튼을 각각 만든다 - 하나만 대표로 골라 보여주지 않는다.
+// 링크를 전부 모은다 - 액션바의 "티켓 예매" 버튼은 캘린더 추가와 같은
+// 토글+팝오버 방식으로, 예매 가능한 모든 사이트를 검색해서 한 번에 목록으로
+// 보여준다(사이트 개수만큼 버튼을 늘어놓지 않는다).
 const ticketLinks = allTicketLinks(event);
-const links = [
-  ...ticketLinks.map((t, i) => ({
-    label: t.note ? `${t.vendor} 예매 (${t.note})` : `${t.vendor} 예매`,
+const ticketPopoverLinks = [
+  ...ticketLinks.map((t) => ({
+    // 레거시 ticketUrl 필드는 vendor가 이미 "티켓 예매"로 채워져 있어(allTicketLinks
+    // 참고) 뒤에 "예매"를 또 붙이면 "티켓 예매 예매"처럼 중복된다 - vendor가 이미
+    // "예매"로 끝나면 그대로 쓴다.
+    label: t.note
+      ? `${t.vendor} 예매 (${t.note})`
+      : t.vendor.endsWith('예매') ? t.vendor : `${t.vendor} 예매`,
     url: t.url,
-    primary: i === 0,
   })),
-  // 공식 홈페이지는 원래도 항상 노출되지만, 페스티벌은 라인업 공지 등 최신 정보가
-  // 공식 채널에서만 확인 가능한 경우가 많아 primary(강조) 처리한다.
-  event.officialUrl && {
-    label: '공식 홈페이지·공지',
-    url: event.officialUrl,
-    primary: ticketLinks.length === 0 && event.genre === '페스티벌',
-  },
-  event.mdUrl && { label: 'MD·굿즈 스토어', url: event.mdUrl },
-  event.fanclubUrl && { label: '팬클럽', url: event.fanclubUrl },
-].filter(Boolean) as { label: string; url: string; primary?: boolean }[];
+  // 실제 URL이 있는 선예매(presale)는 별도의 "예매·티켓팅" 텍스트 섹션 대신
+  // 이 팝오버 안에 함께 보여준다 - 예매 관련 액션을 한 곳에 모아둔다.
+  ...(event.presale ?? [])
+    .filter((p) => p.url)
+    .map((p) => ({ label: `${p.title} (선예매)`, url: p.url as string })),
+];
 
-// 페이지 상단 고정 액션바에 노출할 대표 링크 하나 - 예매 링크가 있으면 그게
-// 최우선, 없으면 공식 홈페이지 등 links[0]이 이미 그 순서로 정렬돼 있다.
-const primaryLink = links.find((l) => l.primary) ?? links[0];
+// MD·팬클럽은 "예매"는 아니지만 자주 같이 필요한 액션이라, 있을 때만 액션바에
+// 각자 작은 버튼으로 노출한다.
+const mdActionUrl = event.mdUrl ?? null;
+const fanclubActionUrl = event.fanclubUrl ?? null;
 
-// 공식 홈페이지는 액션바에서 예매 링크와 별개로 항상 눌러볼 수 있게 노출한다 -
-// primaryLink로 이미 뽑힌 것과 같은 URL이면 중복 버튼을 만들지 않는다.
+// 예매 가능한 링크가 하나도 없을 때(티켓 오픈 전 페스티벌 등)는 공식
+// 홈페이지를 대표 액션으로 쓴다.
+const fallbackPrimaryUrl =
+  ticketPopoverLinks.length === 0 && event.officialUrl ? event.officialUrl : null;
+
+// 공식 홈페이지는, 이미 대표 액션(fallbackPrimaryUrl)으로 쓰인 게 아니라면
+// 티켓 팝오버와 별개로 항상 눌러볼 수 있게 노출한다.
 const officialActionUrl =
-  event.officialUrl && event.officialUrl !== primaryLink?.url ? event.officialUrl : null;
-
-// 액션바에 이미 실제 버튼(예매 대표 링크·공식 홈페이지)으로 떠 있는 URL은
-// 아래 예매·티켓팅 섹션에서 또 보여주지 않는다 - 같은 버튼이 화면 안에 두 번
-// 뜨는 걸 막기 위함. MD·팬클럽이나 대표가 아닌 다른 예매처 링크는 액션바에
-// 없으니 여기서만 보인다.
-const actionBarUrls = new Set([primaryLink?.url, officialActionUrl].filter(Boolean));
-const ticketSectionLinks = links.filter((l) => !actionBarUrls.has(l.url));
+  event.officialUrl && event.officialUrl !== fallbackPrimaryUrl ? event.officialUrl : null;
 
 // 셔틀버스 섹션은 모든 공연 페이지에 항상 노출한다 - 확정된 shuttleBus 데이터가
 // 없어도 카카오 T 셔틀(카카오모빌리티)이 별도로 콘서트 셔틀을 운영하는 경우가
@@ -91,14 +92,14 @@ const isFestival = event.genre === '페스티벌';
 
 // 이 공연 페이지에 실제로 존재하는 섹션만 골라 오른쪽 목차(TOC)를 만든다 -
 // 이벤트마다 보유 정보가 달라서 하드코딩된 고정 목록을 쓰면 빈 링크가 생긴다.
+// 흥미도 높은 걸 위로: 라인업·셋리스트를 먼저, 직관냥 포인트 같은 부가 정보는
+// 뒤로 두는 순서가 실제 페이지 본문 순서와 맞춰져 있다.
 const tocItems = [
-  { id: 'overview', label: '공연 정보' },
-  (links.length > 0 || (event.presale && event.presale.length > 0)) && { id: 'tickets', label: '예매·티켓팅' },
   isFestival && { id: 'lineup', label: '라인업' },
-  event.previousEditions && event.previousEditions.length > 0 && { id: 'compare', label: '이전 회차 비교' },
-  event.funFacts && event.funFacts.length > 0 && { id: 'notes', label: '직관냥 포인트' },
-  event.merch && event.merch.length > 0 && { id: 'merch', label: '굿즈' },
   event.setlists && event.setlists.length > 0 && { id: 'setlist', label: '셋리스트' },
+  event.previousEditions && event.previousEditions.length > 0 && { id: 'compare', label: '이전 회차 비교' },
+  event.merch && event.merch.length > 0 && { id: 'merch', label: '굿즈' },
+  event.funFacts && event.funFacts.length > 0 && { id: 'notes', label: '직관냥 포인트' },
   event.youtubeVideos && event.youtubeVideos.length > 0 && { id: 'videos', label: '영상' },
   event.updates && event.updates.length > 0 && { id: 'updates', label: '업데이트' },
   showShuttleSection && { id: 'shuttle', label: '셔틀버스' },
@@ -207,13 +208,33 @@ const jsonLd = {
     )}
 
     <div class="action-bar" aria-label="빠른 이용">
-      {primaryLink && (
-        <a class="ab-btn ab-primary" href={primaryLink.url} target="_blank" rel="noopener noreferrer">
-          {primaryLink.label}
+      {ticketPopoverLinks.length > 0 ? (
+        <div class="ab-ticket">
+          <button
+            class="ab-btn ab-primary"
+            type="button"
+            id="ticket-toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="ticket-popover"
+          >
+            티켓 예매{ticketPopoverLinks.length > 1 ? ` (${ticketPopoverLinks.length}곳)` : ''}
+          </button>
+          <TicketBooking links={ticketPopoverLinks} />
+        </div>
+      ) : fallbackPrimaryUrl && (
+        <a class="ab-btn ab-primary" href={fallbackPrimaryUrl} target="_blank" rel="noopener noreferrer">
+          공식 홈페이지·공지
         </a>
       )}
       {officialActionUrl && (
         <a class="ab-btn" href={officialActionUrl} target="_blank" rel="noopener noreferrer">공식 홈페이지</a>
+      )}
+      {mdActionUrl && (
+        <a class="ab-btn" href={mdActionUrl} target="_blank" rel="noopener noreferrer">MD·굿즈</a>
+      )}
+      {fanclubActionUrl && (
+        <a class="ab-btn" href={fanclubActionUrl} target="_blank" rel="noopener noreferrer">팬클럽</a>
       )}
       {status === 'scheduled' && (
         <div class="ab-calendar">
@@ -230,7 +251,7 @@ const jsonLd = {
           <AddToCalendar event={event} />
         </div>
       )}
-      <a class="ab-btn" href="#sightline">공연장 시야</a>
+      <a class="ab-btn" href="#sightline">구역별 시야</a>
       {showShuttleSection && (
         <a class="ab-btn" href="#shuttle">셔틀버스</a>
       )}
@@ -244,43 +265,6 @@ const jsonLd = {
     </div>
 
     <AdSlot slot="event-top" />
-
-    <section id="overview">
-      <h2 class="section-h2">공연 정보</h2>
-      {event.description && <p class="lead">{event.description}</p>}
-      {/* 일정·장소는 바로 위 헤더(D-day 배지 + {dateLabel} · {event.venue})에 이미
-          크게 나와 있으므로 여기서 또 나열하지 않는다 - 헤더에는 없는 정보
-          (장르·타임테이블·난이도)만 보여준다. */}
-      <dl class="facts">
-        <div><dt>장르</dt><dd>{event.genre}</dd></div>
-        {event.schedule && <div><dt>타임테이블</dt><dd>{event.schedule}</dd></div>}
-        {event.ticketingDifficulty && (
-          <div><dt>티켓팅 난이도</dt><dd>{TICKETING_DIFFICULTY_LABEL[event.ticketingDifficulty]}</dd></div>
-        )}
-      </dl>
-      {event.note && <p class="note">{event.note}</p>}
-    </section>
-
-    {(links.length > 0 || (event.presale && event.presale.length > 0) || status === 'scheduled') && (
-      <section id="tickets">
-        <h2 class="section-h2">예매·티켓팅</h2>
-        {event.presale && event.presale.length > 0 && <PresaleInfo presale={event.presale} />}
-        {ticketSectionLinks.length > 0 && (
-          <div class="links">
-            {ticketSectionLinks.map((l) => (
-              <a
-                class={`link-btn ${l.primary ? 'primary' : ''}`}
-                href={l.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {l.label} ↗
-              </a>
-            ))}
-          </div>
-        )}
-      </section>
-    )}
 
     {isFestival && (
       <section class="lineup-section" id="lineup">
@@ -318,17 +302,17 @@ const jsonLd = {
       </section>
     )}
 
+    {event.setlists && event.setlists.length > 0 && (
+      <div class="info-block" id="setlist">
+        <SetlistBox setlists={event.setlists} />
+      </div>
+    )}
+
     <div class="info-divider" aria-hidden="true"><span>더 알아보기</span></div>
 
     {event.previousEditions && event.previousEditions.length > 0 && (
       <div class="info-block" id="compare">
         <PreviousEditionCompare editions={event.previousEditions} crowdOutlook={event.crowdOutlook} />
-      </div>
-    )}
-
-    {event.funFacts && event.funFacts.length > 0 && (
-      <div class="info-block" id="notes">
-        <CharacterNote facts={event.funFacts} />
       </div>
     )}
 
@@ -340,9 +324,9 @@ const jsonLd = {
 
     <AdSlot slot="event-mid" />
 
-    {event.setlists && event.setlists.length > 0 && (
-      <div class="info-block" id="setlist">
-        <SetlistBox setlists={event.setlists} />
+    {event.funFacts && event.funFacts.length > 0 && (
+      <div class="info-block" id="notes">
+        <CharacterNote facts={event.funFacts} />
       </div>
     )}
 
@@ -415,33 +399,37 @@ const jsonLd = {
     sections.forEach((el) => observer.observe(el));
   }
 
-  // "캘린더 추가" popover in the sticky action bar - opens on click, closes on
-  // outside click, Escape, or re-toggling.
-  const calendarToggle = document.getElementById('calendar-toggle');
-  const calendarPopover = document.getElementById('calendar-popover');
-  if (calendarToggle && calendarPopover) {
-    const closeCalendarPopover = () => {
-      calendarPopover.hidden = true;
-      calendarToggle.setAttribute('aria-expanded', 'false');
+  // Toggle-button + popover behaviour shared by "캘린더 추가" and "티켓 예매" in
+  // the sticky action bar - opens on click, closes on outside click, Escape, or
+  // re-toggling. Set up once per (toggle id, popover id) pair.
+  function setupActionPopover(toggleId: string, popoverId: string) {
+    const toggle = document.getElementById(toggleId);
+    const popover = document.getElementById(popoverId);
+    if (!toggle || !popover) return;
+    const close = () => {
+      popover.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
     };
-    calendarToggle.addEventListener('click', (ev) => {
+    toggle.addEventListener('click', (ev) => {
       ev.stopPropagation();
-      if (calendarPopover.hidden) {
-        calendarPopover.hidden = false;
-        calendarToggle.setAttribute('aria-expanded', 'true');
+      if (popover.hidden) {
+        popover.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
       } else {
-        closeCalendarPopover();
+        close();
       }
     });
     document.addEventListener('click', (ev) => {
-      if (!calendarPopover.hidden && !calendarPopover.contains(ev.target as Node) && ev.target !== calendarToggle) {
-        closeCalendarPopover();
+      if (!popover.hidden && !popover.contains(ev.target as Node) && ev.target !== toggle) {
+        close();
       }
     });
     document.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Escape') closeCalendarPopover();
+      if (ev.key === 'Escape') close();
     });
   }
+  setupActionPopover('calendar-toggle', 'calendar-popover');
+  setupActionPopover('ticket-toggle', 'ticket-popover');
 </script>
 
 <style>
@@ -450,26 +438,6 @@ const jsonLd = {
   .dday-badge.big { font-size: 0.95rem; padding: 0.4rem 0.75rem; min-width: 3.75rem; }
   h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
   .meta { margin: 0; color: #f5f3ff; font-weight: 600; font-size: 1.02rem; }
-  .lead { font-size: 1.05rem; color: #e5e2f7; }
-  .facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.5rem; margin: 1.5rem 0; }
-  .facts dt { color: #a9a4c9; }
-  .facts dd { margin: 0; }
-  .links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0; }
-  .link-btn {
-    display: inline-block;
-    padding: 0.65rem 1.1rem;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.08);
-    color: #f5f3ff;
-    text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 600;
-    transition: background 0.15s, transform 0.15s;
-  }
-  .link-btn:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
-  .link-btn.primary { background: #ff5fa2; color: #101018; }
-  .link-btn.primary:hover { background: #ff7bb2; }
-  .note { color: #d8d5ef; background: rgba(255,255,255,0.04); padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem; margin-top: 1rem; }
   .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.85rem; }
   .status-banner {
     margin: 1rem 0;
@@ -530,6 +498,7 @@ const jsonLd = {
   .ab-bookmark { font-size: 1.05rem; padding: 0.4rem 0.7rem; margin-left: auto; }
   .ab-bookmark.is-bookmarked { color: #ff5fa2; border-color: rgba(255,95,162,0.5); }
   .ab-calendar { position: relative; }
+  .ab-ticket { position: relative; }
 
   /* Visual break between the primary content (공연 정보/예매) and the
      secondary info sections that follow, so the page doesn't read as one

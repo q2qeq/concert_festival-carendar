@@ -1,0 +1,111 @@
+---
+// 구역별 시야 (View Guide) - "아웃링크 키워드 자동화" 방식. 운영자가 좌석별 실물
+// 사진을 직접 촬영/수집해서 저장하는 방식은 저작권·초상권 문제와 관리 부담 때문에
+// 사실상 불가능하다 - 대신 실제 관람객이 이미 X/네이버 블로그/유튜브에 올린
+// "가장 최신" 시야 후기로 바로 연결(딥링크)해준다. 사진을 우리 서버에 저장하지
+//않으므로 저작권 리스크가 0이고, 매 공연(돌출무대 유무·시야제한석 해제 등)마다
+// 달라지는 시야를 항상 최신 게시물로 확인할 수 있다.
+//
+// 구역/좌석 입력창은 선택사항 - 비워두면 공연장 이름만으로 검색하고, "3층
+// 305구역"처럼 입력하면 그 구역으로 검색어를 좁힌다. 공연장마다 구역 명칭을
+// 수작업으로 미리 입력해둘 필요가 없어 모든 공연장에 곧바로 적용된다.
+interface Props { venue: string }
+const { venue } = Astro.props;
+
+function sightlineQuery(venue: string, section?: string) {
+  return section ? `${venue} ${section} 시야` : `${venue} 시야`;
+}
+function sightlineLinks(query: string) {
+  const q = encodeURIComponent(query);
+  return {
+    x: `https://x.com/search?q=${q}&f=live`,
+    naverBlog: `https://search.naver.com/search.naver?where=blog&query=${q}`,
+    youtube: `https://www.youtube.com/results?search_query=${q}`,
+  };
+}
+const defaultQuery = sightlineQuery(venue);
+const links = sightlineLinks(defaultQuery);
+---
+<div class="sightline-search" data-venue={venue}>
+  <p class="sightline-desc">
+    구역·좌석 번호를 입력하면 실제 관람객이 올린 시야 후기를 검색해서 보여드려요. 사진을 직접
+    저장하지 않고 최신 게시물로 바로 연결하니, 언제나 가장 따끈한 후기를 볼 수 있어요.
+  </p>
+  <div class="sightline-row">
+    <input
+      type="text"
+      class="sightline-input"
+      placeholder="예: 3층 305구역, VIP석 (비워두면 공연장 전체로 검색)"
+      autocomplete="off"
+    />
+  </div>
+  <div class="sightline-links">
+    <a class="sl-link sl-x" href={links.x} target="_blank" rel="noopener noreferrer">
+      𝕏에서 "{defaultQuery}" 검색 →
+    </a>
+    <a class="sl-link sl-naver" href={links.naverBlog} target="_blank" rel="noopener noreferrer">
+      네이버 블로그에서 "{defaultQuery}" 검색 →
+    </a>
+    <a class="sl-link sl-yt" href={links.youtube} target="_blank" rel="noopener noreferrer">
+      유튜브에서 "{defaultQuery}" 검색 →
+    </a>
+  </div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('.sightline-search').forEach((box) => {
+    const venue = box.dataset.venue || '';
+    const input = box.querySelector<HTMLInputElement>('.sightline-input');
+    const xLink = box.querySelector<HTMLAnchorElement>('.sl-x');
+    const naverLink = box.querySelector<HTMLAnchorElement>('.sl-naver');
+    const ytLink = box.querySelector<HTMLAnchorElement>('.sl-yt');
+
+    const update = () => {
+      const section = input?.value.trim();
+      const query = section ? `${venue} ${section} 시야` : `${venue} 시야`;
+      const q = encodeURIComponent(query);
+      if (xLink) {
+        xLink.href = `https://x.com/search?q=${q}&f=live`;
+        xLink.textContent = `𝕏에서 "${query}" 검색 →`;
+      }
+      if (naverLink) {
+        naverLink.href = `https://search.naver.com/search.naver?where=blog&query=${q}`;
+        naverLink.textContent = `네이버 블로그에서 "${query}" 검색 →`;
+      }
+      if (ytLink) {
+        ytLink.href = `https://www.youtube.com/results?search_query=${q}`;
+        ytLink.textContent = `유튜브에서 "${query}" 검색 →`;
+      }
+    };
+    input?.addEventListener('input', update);
+    input?.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter') ev.preventDefault();
+    });
+  });
+</script>
+<style>
+  .sightline-search { display: flex; flex-direction: column; gap: 0.65rem; }
+  .sightline-desc { margin: 0; color: #a9a4c9; font-size: 0.85rem; line-height: 1.55; }
+  .sightline-row { display: flex; }
+  .sightline-input {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    color: #f5f3ff;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+  }
+  .sightline-input::placeholder { color: #7d78a0; }
+  .sightline-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .sl-link {
+    font-size: 0.85rem;
+    color: #6ee7ff;
+    text-decoration: none;
+    background: rgba(110,231,255,0.08);
+    border: 1px solid rgba(110,231,255,0.3);
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+  }
+  .sl-link:hover { background: rgba(110,231,255,0.16); }
+</style>

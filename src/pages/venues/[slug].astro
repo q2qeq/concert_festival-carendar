@@ -11,6 +11,7 @@ import EventCard from '../../components/EventCard.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import { getVenueInfo, allVenueNames, venueSlug, venueFromSlug, mapLinks } from '../../lib/venues';
 import RouteFinder from '../../components/RouteFinder.astro';
+import SightlineSearch from '../../components/SightlineSearch.astro';
 import { upcomingEvents } from '../../lib/events';
 
 export function getStaticPaths() {
@@ -29,8 +30,6 @@ const city = venueEvents[0]?.city;
 
 const pageTitle = `${venueName} 좌석·주차·교통 정보`;
 const pageDescription = `${venueName} 공연 관람 전 알아두면 좋은 오시는 길, 주차, 주변 편의시설 정보와 예정된 공연 목록이에요.`;
-const xSearchUrl = `https://x.com/search?q=${encodeURIComponent(`${venueName} 시야`)}`;
-const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(`${venueName} 시야`)}`;
 ---
 <BaseLayout title={pageTitle} description={pageDescription}>
   <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
@@ -43,14 +42,10 @@ const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURICom
 
   <RouteFinder venue={venueName} address={info?.address} />
 
-  <div class="sightline-links">
-    <a class="x-search-btn" href={xSearchUrl} target="_blank" rel="noopener noreferrer">
-      𝕏에서 "{venueName} 시야" 실시간 검색 →
-    </a>
-    <a class="x-search-btn" href={ytSearchUrl} target="_blank" rel="noopener noreferrer">
-      유튜브에서 "{venueName} 시야" 영상 검색 →
-    </a>
-  </div>
+  <section class="venue-sightline-section" id="sightline">
+    <h2>구역별 시야 (View Guide)</h2>
+    <SightlineSearch venue={venueName} />
+  </section>
 
   <AdSlot slot="venue-top" />
 
@@ -67,6 +62,17 @@ const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURICom
         <section class="info-block">
           <h2>주차</h2>
           <p>{info.parking}</p>
+        </section>
+      )}
+
+      {(info.coinLocker || info.restroom || info.smokingArea) && (
+        <section class="info-block">
+          <h2>편의시설</h2>
+          <ul>
+            {info.coinLocker && <li><strong>코인락커</strong> — {info.coinLocker}</li>}
+            {info.restroom && <li><strong>화장실</strong> — {info.restroom}</li>}
+            {info.smokingArea && <li><strong>흡연장</strong> — {info.smokingArea}</li>}
+          </ul>
         </section>
       )}
 
@@ -124,23 +130,13 @@ const ytSearchUrl = `https://www.youtube.com/results?search_query=${encodeURICom
     margin-bottom: 0.5rem;
   }
   .address { color: #a9a4c9; margin: 0; }
-  .sightline-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 1.5rem; }
-  .x-search-btn {
-    display: inline-block;
-    margin: 0;
-    padding: 0.6rem 1.1rem;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.16);
-    border-radius: 999px;
-    color: #d8d5ef;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-  .x-search-btn:hover { background: rgba(255,95,162,0.16); border-color: rgba(255,95,162,0.4); color: #fff; }
+  .venue-sightline-section { margin: 1.5rem 0; scroll-margin-top: 5rem; }
+  .venue-sightline-section h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #e5e2f7; }
   .info-block { margin: 1.75rem 0; }
   .info-block h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #e5e2f7; }
   .info-block ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
   .info-block p, .info-block li { color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; margin: 0; }
+  .info-block li strong { color: #f5f3ff; }
   .food-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem 1rem; padding-left: 0 !important; list-style: none; }
   .food-list li { display: flex; flex-direction: column; gap: 0.1rem; }
   .food-list strong { color: #f5f3ff; font-size: 0.92rem; }

@@ -90,6 +90,13 @@ const icsDataUrl = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLin
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
+  /* .atc-popover sets display:flex unconditionally above, which - once Astro
+     scopes both selectors with the same data-astro-cid attribute - has *higher*
+     specificity than the browser's default `[hidden] { display: none }` rule
+     (compound class+attribute selector beats a lone attribute selector). Without
+     this override, toggling the `hidden` attribute in JS has no visual effect at
+     all and the popover never actually disappears once shown. */
+  .atc-popover[hidden] { display: none; }
   .atc-option {
     display: block;
     font-size: 0.85rem;

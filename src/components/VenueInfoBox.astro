@@ -1,6 +1,7 @@
 ---
 import { getVenueInfo, venueSlug, mapLinks } from '../lib/venues';
 import RouteFinder from './RouteFinder.astro';
+import SightlineSearch from './SightlineSearch.astro';
 interface Props { venue: string }
 const { venue } = Astro.props;
 const info = getVenueInfo(venue);
@@ -12,15 +13,8 @@ const info = getVenueInfo(venue);
   <RouteFinder venue={venue} address={info?.address} />
 
   <div class="venue-block venue-sightline" id="sightline">
-    <h3>시야 후기 찾아보기</h3>
-    <div class="sightline-links">
-      <a href={`https://x.com/search?q=${encodeURIComponent(`${venue} 시야`)}`} target="_blank" rel="noopener noreferrer">
-        𝕏에서 "{venue} 시야" 검색 →
-      </a>
-      <a href={`https://www.youtube.com/results?search_query=${encodeURIComponent(`${venue} 시야`)}`} target="_blank" rel="noopener noreferrer">
-        유튜브에서 "{venue} 시야" 검색 →
-      </a>
-    </div>
+    <h3>구역별 시야 (View Guide)</h3>
+    <SightlineSearch venue={venue} />
   </div>
 
   {info?.transit && info.transit.length > 0 && (
@@ -34,6 +28,17 @@ const info = getVenueInfo(venue);
     <div class="venue-block">
       <h3>주차</h3>
       <p>{info.parking}</p>
+    </div>
+  )}
+
+  {(info?.coinLocker || info?.restroom || info?.smokingArea) && (
+    <div class="venue-block">
+      <h3>편의시설</h3>
+      <ul>
+        {info?.coinLocker && <li><strong>코인락커</strong> — {info.coinLocker}</li>}
+        {info?.restroom && <li><strong>화장실</strong> — {info.restroom}</li>}
+        {info?.smokingArea && <li><strong>흡연장</strong> — {info.smokingArea}</li>}
+      </ul>
     </div>
   )}
 
@@ -69,23 +74,13 @@ const info = getVenueInfo(venue);
   .venue-box h2 { font-size: 1.05rem; margin: 0 0 0.5rem; color: #e5e2f7; }
   .venue-address { margin: 0 0 1rem; color: #a9a4c9; font-size: 0.9rem; }
   .venue-sightline { scroll-margin-top: 7rem; }
-  .sightline-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-  .venue-sightline a {
-    font-size: 0.85rem;
-    color: #6ee7ff;
-    text-decoration: none;
-    background: rgba(110,231,255,0.08);
-    border: 1px solid rgba(110,231,255,0.3);
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
-  }
-  .venue-sightline a:hover { background: rgba(110,231,255,0.16); }
   .venue-block { margin: 0 0 1.1rem; }
   .venue-block:last-of-type { margin-bottom: 0; }
   .venue-block h3 { font-size: 0.88rem; margin: 0 0 0.4rem; color: #ff8fbe; text-transform: uppercase; letter-spacing: 0.03em; }
   .venue-block ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
   .venue-block p { margin: 0; color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; }
   .venue-block li { color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; }
+  .venue-block li strong { color: #f5f3ff; }
   .food-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem 1rem; padding-left: 0 !important; list-style: none; }
   .food-list li { display: flex; flex-direction: column; gap: 0.1rem; }
   .food-list strong { color: #f5f3ff; font-size: 0.92rem; }

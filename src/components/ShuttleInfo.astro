@@ -1,17 +1,18 @@
 ---
-// Shuttle bus info for a venue. Two modes:
-// 1) shuttleBus.length > 0 - real, sourced bookable/free service (see
-//    ShuttleBusInfo in lib/events.ts for sourcing rules). Still shows a
-//    "카카오 T 셔틀도 확인" link alongside, since a promoter shuttle and a
-//    separate Kakao T Shuttle listing often run at the same time.
-// 2) No confirmed shuttleBus data - render an actionable "go check yourself"
-//    box instead of nothing. Kakao T 셔틀(카카오모빌리티) runs shuttle
-//    reservations for a large share of concerts that don't officially
-//    announce one (confirmed for 세븐틴/TWICE/오피셜히게단디즘 등), so it's
-//    always checked first, before the generic 예매처/포털 검색 links.
-//    Never a guessed shuttle - only pointers to where readers actually find one.
+// Shuttle bus info for a venue.
+//
+// 콘서트 셔틀버스는 대부분 카카오 T 셔틀·꽃가마·퀸즈스마일 3사가 운영하고,
+// 예매는 셋 다 사실상 앱(또는 앱 연동 플랫폼) 안에서만 이뤄진다 - 그래서 이
+// 3사는 확정된 셔틀 정보 유무와 무관하게 "먼저 확인해볼 곳"으로 항상 눈에 띄게
+// 링크해둔다(shuttle-major-apps 블록). 이후는 두 모드로 나뉜다:
+// 1) shuttleBus.length > 0 - 위 3사 중 하나거나 그 외 실제 확인된 전세버스 등
+//    구체적으로 sourced된 서비스(ShuttleBusInfo, lib/events.ts 참고)를 그대로
+//    보여준다.
+// 2) 확정된 shuttleBus 데이터가 없음 - 그래도 빈 화면 대신 "직접 확인해보라"는
+//    행동 유도 박스를 보여준다. 절대 추측한 셔틀 정보를 만들어내지 않고, 실제
+//    확인 가능한 곳(3사 앱 + 예매처 공지 + 포털 검색)으로만 안내한다.
 import type { ShuttleBusInfo } from '../lib/events';
-import { kakaoShuttleSearchUrl } from '../lib/venues';
+import { kakaoShuttleSearchUrl, GGOGGAMA_URL, QUEENS_SMILE_URL } from '../lib/venues';
 interface Props {
   shuttleBus: ShuttleBusInfo[];
   venue?: string;
@@ -27,6 +28,16 @@ const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`
 ---
 <section class="shuttle-box">
   <h2>셔틀버스 정보</h2>
+
+  <div class="shuttle-major-apps">
+    <p class="shuttle-major-caption">국내 콘서트 셔틀버스는 대부분 이 3개 업체가 운영해요. 예약은 각 사 앱(또는 앱 연동 페이지)에서 진행돼요 - 이 공연을 실제로 운행하는지는 아래에서 직접 확인해보세요.</p>
+    <div class="shuttle-major-links">
+      <a class="shuttle-major-link" href={kakaoUrl} target="_blank" rel="noopener noreferrer">카카오 T 셔틀 확인 ↗</a>
+      <a class="shuttle-major-link" href={GGOGGAMA_URL} target="_blank" rel="noopener noreferrer">꽃가마 확인 ↗</a>
+      <a class="shuttle-major-link" href={QUEENS_SMILE_URL} target="_blank" rel="noopener noreferrer">퀸즈스마일 확인 ↗</a>
+    </div>
+  </div>
+
   {shuttleBus.length > 0 ? (
     <div class="shuttle-list">
       {shuttleBus.map((s) => (
@@ -45,20 +56,15 @@ const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`
           )}
         </article>
       ))}
-      <p class="shuttle-also-check">
-        이 외에도 <a href={kakaoUrl} target="_blank" rel="noopener noreferrer">카카오 T 셔틀</a>에
-        별도 노선이 올라오는 경우가 있으니 한 번 더 확인해보세요.
-      </p>
     </div>
   ) : (
     <div class="shuttle-fallback">
       <p>
-        아직 이 공연의 셔틀버스 정보를 확인하지 못했어요. 콘서트 셔틀은 요즘
-        <strong>카카오 T 셔틀</strong>로 운영되는 경우가 많으니 먼저 확인해보시고,
-        {venue ? <> <strong>{venue}</strong>은(는) 공연마다 셔틀버스가 운영되는 경우가 많은 곳이기도 하니</> : ''} 아래 링크도 참고해보세요.
+        아직 이 공연의 확정된 셔틀버스 정보는 찾지 못했어요. 위 3개 업체 앱에서 먼저
+        "{artist ?? '이 공연'}" 또는 {venue ?? '공연장'}으로 검색해보시고, 무료 셔틀이나 그 외
+        업체가 있을 수도 있으니 아래 링크도 참고해보세요.
       </p>
       <div class="shuttle-fallback-links">
-        <a class="shuttle-kakao-link" href={kakaoUrl} target="_blank" rel="noopener noreferrer">카카오 T 셔틀에서 "{artist ?? '이 공연'}" 검색 ↗</a>
         {ticketUrl && (
           <a href={ticketUrl} target="_blank" rel="noopener noreferrer">예매처 공지사항에서 확인 ↗</a>
         )}
@@ -79,8 +85,20 @@ const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`
   .shuttle-note { margin: 0 0 0.5rem; color: #d8d5ef; font-size: 0.88rem; line-height: 1.6; }
   .shuttle-link { display: inline-block; font-size: 0.86rem; font-weight: 600; color: #ffcb6e; text-decoration: none; }
   .shuttle-link:hover { text-decoration: underline; }
-  .shuttle-also-check { margin: 0; padding-top: 0.85rem; border-top: 1px dashed rgba(255,255,255,0.1); color: #a9a4c9; font-size: 0.85rem; line-height: 1.6; }
-  .shuttle-also-check a { color: #ffcb6e; }
+  .shuttle-major-apps { margin: 0 0 1.2rem; padding-bottom: 1.1rem; border-bottom: 1px dashed rgba(255,255,255,0.14); }
+  .shuttle-major-caption { margin: 0 0 0.65rem; color: #d8d5ef; font-size: 0.86rem; line-height: 1.55; }
+  .shuttle-major-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .shuttle-major-link {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #101018;
+    text-decoration: none;
+    background: #ffcb6e;
+    border: 1px solid #ffcb6e;
+    padding: 0.42rem 0.85rem;
+    border-radius: 999px;
+  }
+  .shuttle-major-link:hover { background: #ffd98d; border-color: #ffd98d; }
   .shuttle-fallback p { margin: 0 0 0.9rem; color: #d8d5ef; font-size: 0.9rem; line-height: 1.6; }
   .shuttle-fallback-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .shuttle-fallback-links a {
@@ -93,5 +111,4 @@ const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`
     border-radius: 999px;
   }
   .shuttle-fallback-links a:hover { background: rgba(255,200,110,0.16); }
-  .shuttle-kakao-link { font-weight: 700; background: rgba(255,200,110,0.16) !important; border-color: rgba(255,200,110,0.5) !important; }
 </style>

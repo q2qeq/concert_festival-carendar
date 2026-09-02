@@ -1,0 +1,57 @@
+---
+// Ticket-booking popover for the sticky action bar - same interaction pattern
+// as AddToCalendar.astro (toggle button + popover, opened/closed by the shared
+// script in [id].astro). A single show is often sold through more than one
+// vendor at once (e.g. 인터파크 + NOL티켓), so instead of picking one "main"
+// link to send readers to, this lists every real vendor link found and lets
+// the reader pick. Only ever populated from allTicketLinks(event) - never a
+// guessed/fabricated vendor.
+interface TicketBookingLink {
+  label: string;
+  url: string;
+}
+interface Props {
+  links: TicketBookingLink[];
+}
+const { links } = Astro.props;
+---
+<div class="tkt-popover" id="ticket-popover" role="menu" aria-label="예매 사이트 목록" hidden>
+  {links.map((l) => (
+    <a class="tkt-option" href={l.url} target="_blank" rel="noopener noreferrer" role="menuitem">
+      {l.label} ↗
+    </a>
+  ))}
+</div>
+<style>
+  .tkt-popover {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    z-index: 35;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 210px;
+    padding: 0.5rem;
+    background: rgba(20, 20, 30, 0.97);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  /* Same [hidden] specificity fix as AddToCalendar.astro's .atc-popover - see
+     that file's comment for why this override is required. */
+  .tkt-popover[hidden] { display: none; }
+  .tkt-option {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #f5f3ff;
+    text-decoration: none;
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .tkt-option:hover { background: rgba(255,95,162,0.16); }
+</style>
