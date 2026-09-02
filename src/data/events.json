@@ -1504,5 +1504,83 @@
         "url": "https://isplus.com/article/view/isp202609010216"
       }
     ]
+  },
+  {
+    "id": "shuttle-maroon5-seoul-2027-01",
+    "artist": "Maroon 5 (마룬5)",
+    "genre": "팝/락",
+    "venue": "킨텍스 제1전시장 4,5홀",
+    "city": "고양",
+    "startDate": "2027-01-27",
+    "endDate": "2027-01-27",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26011315",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+  },
+  {
+    "id": "shuttle-jx-core-incheon-2026-10",
+    "artist": "JX (김재중 & 김준수)",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-11",
+    "officialUrl": "https://x.com/JX_identity",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+  },
+  {
+    "id": "shuttle-busan-rock-festival-2026-10",
+    "artist": "2026 부산국제록페스티벌 (Busan International Rock Festival)",
+    "genre": "페스티벌",
+    "venue": "삼락생태공원",
+    "city": "부산",
+    "startDate": "2026-10-02",
+    "endDate": "2026-10-04",
+    "ticketUrl": "https://ticket.yes24.com/Perf/58933",
+    "officialUrl": "https://busanrockfestival.com/",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+  },
+  {
+    "id": "shuttle-yuuri-live-seoul-2026-12",
+    "artist": "YUURI (유우리)",
+    "genre": "J-POP",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-06",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26010352",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+  },
+  {
+    "id": "shuttle-khalid-2026-12",
+    "artist": "Khalid (칼리드)",
+    "genre": "팝",
+    "venue": "킨텍스 제2전시장 10홀",
+    "city": "고양",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-05",
+    "ticketUrl": "https://mobileticket.interpark.com/goods/18010432",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+  },
+  {
+    "id": "shuttle-isul-live-festival-2026-09",
+    "artist": "2026 이슬라이브 페스티벌 (테라와 함께하는)",
+    "genre": "페스티벌",
+    "venue": "송도달빛축제공원",
+    "city": "인천",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-12",
+    "ticketUrl": "https://tickets.interpark.com/goods/26010722",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+  },
+  {
+    "id": "shuttle-teddy-swims-2026-11",
+    "artist": "Teddy Swims (테디 스윔스)",
+    "genre": "팝",
+    "venue": "KBS스포츠월드(아레나)",
+    "city": "서울",
+    "startDate": "2026-11-15",
+    "endDate": "2026-11-15",
+    "officialUrl": "https://www.livenation.kr/teddy-swims-tickets-adp1300113",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
   }
 ]

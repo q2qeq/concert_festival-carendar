@@ -52,5 +52,68 @@
       "https://edckorea.frontgatetickets.com/"
     ],
     "note": "퀸즈스마일에 셔틀버스 서비스로 등록됨. events.json에 이미 있는 XMF 2026(파라다이스시티)과는 별개 행사 — EDC 코리아는 인접한 인스파이어 엔터테인먼트 리조트에서 같은 주말(10/3-4) 개최. 마틴 개릭스, 일레니엄 등 라인업으로 공식 사이트·티켓사에서 교차 확인."
+  },
+  {
+    "id": "shuttle-fkj-2026-12",
+    "artist": "FKJ - Tyber Tour in Korea (프렌치 키위 주스)",
+    "venue": "킨텍스 제2전시장 10홀",
+    "city": "고양",
+    "startDate": "2026-12-06",
+    "endDate": "2026-12-06",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14462",
+    "discoveredFrom": "카카오 T 셔틀",
+    "sources": [
+      "https://shuttle.kakaomobility.com/shuttles",
+      "https://tickets.interpark.com/contents/notice/detail/14462",
+      "https://v.daum.net/v/20260703140141207"
+    ],
+    "note": "카카오 T 셔틀에서 발견, 인터파크 NOL 공지·뉴스로 날짜(12/6)·장소 교차 확인. genre 판단 애매(프렌치 하우스+재즈+R&B+펑크+소울+힙합을 넘나드는 아티스트라 기존 genre 값 중 하나로 확정하기 어려움)해서 직접 게시 조건 미충족."
+  },
+  {
+    "id": "shuttle-tma-busan-2026-09",
+    "artist": "2026 더팩트 뮤직 어워즈 (TMA)",
+    "venue": "부산 아시아드 주경기장",
+    "city": "부산",
+    "startDate": "2026-09-19",
+    "endDate": "2026-09-19",
+    "officialUrl": "https://x.com/thefact_TMA",
+    "discoveredFrom": "카카오 T 셔틀",
+    "sources": [
+      "https://shuttle.kakaomobility.com/shuttles",
+      "https://news.tf.co.kr/read/entertain/2331510.htm",
+      "https://kr.trip.com/blog/tma-2026-busan/"
+    ],
+    "note": "카카오 T 셔틀에서 발견(수요조사 단계), 더팩트 공식 보도·트립닷컴 정리글로 날짜(9/19)·장소 교차 확인. K팝 다수 아티스트가 출연하는 시상식이라 콘서트가 아니고 기존 genre 값 중 하나로 확정하기 애매해서 직접 게시 조건 미충족."
+  },
+  {
+    "id": "shuttle-jimff-onesummernight-kpop-2026-09",
+    "artist": "제천국제음악영화제: 원 썸머 나잇 위드 케이팝 시즌2 (FTISLAND·Crush·MONSTA X·LE SSERAFIM 출연)",
+    "venue": "제천예술의전당(여름광장)",
+    "city": "제천",
+    "startDate": "2026-09-04",
+    "endDate": "2026-09-05",
+    "discoveredFrom": "카카오 T 셔틀",
+    "sources": [
+      "https://shuttle.kakaomobility.com/shuttles",
+      "https://www.newscj.com/news/articleView.html?idxno=3422260",
+      "https://biz.heraldcorp.com/article/10814345"
+    ],
+    "note": "카카오 T 셔틀에서 실제 운영 확인, 천지일보·헤럴드경제 보도로 날짜·출연진 교차 확인(9/4 FTISLAND·Crush, 9/5 MONSTA X·LE SSERAFIM). K팝/밴드/인디/EDM이 섞인 음악영화제 부속 공연이라 genre를 기존 값 중 하나로 단정하기 애매해서 직접 게시 조건 미충족. 공연일이 임박(9/4~5)해 정보 가치가 낮을 수 있음."
+  },
+  {
+    "id": "shuttle-grateful-camp-2026-09",
+    "artist": "THE GRATEFUL CAMP 2026 (더 그레이트풀 캠프, Shintaro Sakamoto·Your Song Is Good·장기하·강산에 등 출연)",
+    "venue": "짱뚱어해수욕장 (신안군 증도)",
+    "city": "신안",
+    "startDate": "2026-09-03",
+    "endDate": "2026-09-06",
+    "officialUrl": "https://thegratefulcamp.com/",
+    "discoveredFrom": "카카오 T 셔틀",
+    "sources": [
+      "https://shuttle.kakaomobility.com/shuttles",
+      "https://thegratefulcamp.com/",
+      "https://www.jeonmae.co.kr/news/articleView.html?idxno=1288087"
+    ],
+    "note": "카카오 T 셔틀에서 실제 운영 확인, 공식 사이트·전남매일 보도로 날짜·장소·라인업 교차 확인. 다만 주최측이 스스로 \"대형 페스티벌과 다른\" 소규모 캠핑·체류형 부티크 페스티벌로 소개하고 있어 이 사이트의 \"대형 공연\" 기준에 맞는지 애매해서 직접 게시 조건 미충족."
   }
 ]
