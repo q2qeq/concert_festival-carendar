@@ -164,7 +164,7 @@
       }
     ],
     "mdUrl": "https://backnumber.info/feature/goods",
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-03"
   },
   {
     "id": "vaundy-2026-09",
@@ -271,6 +271,11 @@
         "date": "2026-09-02",
         "text": "티켓 부스·스탠딩 부스 운영시간 변경 공지 (주최 측 typecommunication.official 인스타그램): 부스 운영 12:00, 스탠딩 입장 대기 14:00, 공연장 입장 15:00, 공연 시작 17:00.",
         "sourceUrl": "https://www.instagram.com/p/DcxwjRNCXQb/"
+      },
+      {
+        "date": "2026-09-03",
+        "text": "공식 MD 온라인 사전판매(NOL MD SHOP, 8/28~9/13, NOL티켓 예매자 한정) 상품 목록과 가격을 확인했어요. 사전판매 종료 후 남은 재고에 한해 9/19~20 공연장 현장에서도 판매 예정입니다. 일부 상품(투어 티셔츠, 버킷햇 등)은 이미 품절이에요.",
+        "sourceUrl": "https://tickets.interpark.com/contents/notice/detail/15047"
       }
     ],
     "officialSns": [
@@ -279,8 +284,40 @@
         "url": "https://x.com/vaundy_engawa"
       }
     ],
-    "mdUrl": "https://store.plusmember.jp/vaundy/",
-    "merchCheckedAt": "2026-09-02"
+    "mdUrl": "https://nolmdshop.com/category/vaundy/172/",
+    "merchCheckedAt": "2026-09-03",
+    "merch": [
+      {
+        "label": "Drawcord T-shirt \"HORO\" (Charcoal)",
+        "url": "https://nolmdshop.com/product/vaundy-drawcord-t-shirt-horo-charcoal/2606/category/172/display/1/",
+        "note": "66,000원"
+      },
+      {
+        "label": "Brush Logo T-shirt \"HORO\" (Gray)",
+        "url": "https://nolmdshop.com/product/vaundy-brush-logo-t-shirt-horo-gray/2607/category/172/display/1/",
+        "note": "85,000원"
+      },
+      {
+        "label": "Long Sleeve Tour T-shirt \"HORO\" (Orange)",
+        "url": "https://nolmdshop.com/product/vaundy-long-sleeve-tour-t-shirt-horo-orange/2608/category/172/display/1/",
+        "note": "105,000원"
+      },
+      {
+        "label": "Logo Jacquard Towel \"HORO\"",
+        "url": "https://nolmdshop.com/category/vaundy/172/",
+        "note": "37,000원 (오렌지/블루 2色)"
+      },
+      {
+        "label": "Large Tote Bag \"HORO\"",
+        "url": "https://nolmdshop.com/category/vaundy/172/",
+        "note": "85,000원"
+      },
+      {
+        "label": "[SEOUL limited] Rubber Band \"HORO\" (Light Green×Red)",
+        "url": "https://nolmdshop.com/product/vaundy-seoul-limited-rubber-band-horo-light-green×red/2621/category/172/display/1/",
+        "note": "15,000원 · 서울 공연 한정 상품"
+      }
+    ]
   },
   {
     "id": "kopis-pyeonghwanuri-picnic-2026-09",
@@ -399,7 +436,8 @@
     "crowdOutlook": {
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
-    }
+    },
+    "merchCheckedAt": "2026-09-03"
   },
   {
     "id": "kopis-onewe-live-2026-09",
@@ -444,7 +482,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-03"
   },
   {
     "id": "post-malone-2026-10",
@@ -1491,7 +1529,26 @@
       }
     ],
     "mdUrl": "https://www.spyair.net/goods/",
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-03",
+    "merch": [
+      {
+        "label": "VIP A석 특전 티셔츠",
+        "url": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887",
+        "note": "VIP A석(187,000원) 티켓에 포함된 특전이에요. 별도 판매 상품이 아니라 좌석 등급별 굿즈 포함 구성입니다."
+      },
+      {
+        "label": "VIP B석 특전 타월",
+        "url": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887",
+        "note": "VIP B석(172,000원) 티켓에 포함된 특전이에요."
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-09-03",
+        "text": "예스24 공지에서 VIP 티켓 등급별 특전(A석 티셔츠 포함/B석 타월 포함)을 확인했어요. 별도 구매하는 굿즈숍 상품 목록은 아직 공개되지 않았습니다.",
+        "sourceUrl": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887"
+      }
+    ]
   },
   {
     "id": "iu-goyang-2026-09",
@@ -1694,7 +1751,8 @@
     "startDate": "2026-09-12",
     "endDate": "2026-09-12",
     "ticketUrl": "https://tickets.interpark.com/goods/26010722",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "merchCheckedAt": "2026-09-03"
   },
   {
     "id": "shuttle-teddy-swims-2026-11",
@@ -1800,7 +1858,7 @@
       }
     ],
     "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/151",
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-03"
   },
   {
     "id": "takuya-kimura-live-tour-checkpoint-seoul-2026-09",
@@ -1896,7 +1954,8 @@
         "label": "헤럴드경제 보도",
         "url": "https://biz.heraldcorp.com/article/10814345"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-03"
   },
   {
     "id": "the-grateful-camp-2026-09",
@@ -1917,6 +1976,7 @@
         "label": "전남매일 보도",
         "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1288087"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-03"
   }
 ]
