@@ -1,0 +1,56 @@
+[
+  {
+    "id": "shuttle-riize-3rd-anniversary-fanmeeting-2026-09",
+    "artist": "RIIZE 3RD ANNIVERSARY FANMEETING - Ch. RIIZE : ON AIR",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-13",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14634",
+    "officialUrl": "https://world.nol.com/en/ticket/places/26000846/products/26010045",
+    "posterUrl": "",
+    "discoveredFrom": "퀸즈스마일",
+    "sources": [
+      "https://queenssmile.co.kr/",
+      "https://tickets.interpark.com/contents/notice/detail/14634",
+      "https://x.com/RIIZE_official/status/2079068870275739694"
+    ],
+    "note": "퀸즈스마일에 셔틀버스 서비스로 등록됨. RIIZE 공식 X 계정에서 인스파이어 아레나 2026.09.12(토) 5PM, 09.13(일) 4PM 공지로 날짜·장소 교차 확인."
+  },
+  {
+    "id": "shuttle-takuya-kimura-live-tour-2026-checkpoint-seoul",
+    "artist": "TAKUYA KIMURA Live Tour 2026 Checkpoint in Seoul (기무라 타쿠야)",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-09-26",
+    "endDate": "2026-09-26",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14058",
+    "officialUrl": "https://starto.jp/s/p/live/10520?lang=en",
+    "posterUrl": "",
+    "discoveredFrom": "퀸즈스마일",
+    "sources": [
+      "https://queenssmile.co.kr/",
+      "https://tickets.interpark.com/contents/notice/detail/14058",
+      "https://world.nol.com/en/ticket/places/26000661/products/26008115"
+    ],
+    "note": "퀸즈스마일에 셔틀버스 서비스로 등록됨. 기무라 타쿠야(전 SMAP) 첫 단독 해외 공연으로 화제성 큼. 인터파크 공지·NOL World·소속사 STARTO 공식 사이트로 장소·날짜 교차 확인."
+  },
+  {
+    "id": "shuttle-edc-korea-2026",
+    "artist": "2026 EDC KOREA (Electric Daisy Carnival Korea)",
+    "venue": "인스파이어 엔터테인먼트 리조트",
+    "city": "인천",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-04",
+    "ticketUrl": "https://edckorea.frontgatetickets.com/",
+    "officialUrl": "https://korea.edc.com/en/",
+    "posterUrl": "",
+    "discoveredFrom": "퀸즈스마일",
+    "sources": [
+      "https://queenssmile.co.kr/",
+      "https://korea.edc.com/en/",
+      "https://edckorea.frontgatetickets.com/"
+    ],
+    "note": "퀸즈스마일에 셔틀버스 서비스로 등록됨. events.json에 이미 있는 XMF 2026(파라다이스시티)과는 별개 행사 — EDC 코리아는 인접한 인스파이어 엔터테인먼트 리조트에서 같은 주말(10/3-4) 개최. 마틴 개릭스, 일레니엄 등 라인업으로 공식 사이트·티켓사에서 교차 확인."
+  }
+]
