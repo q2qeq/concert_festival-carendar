@@ -89,6 +89,17 @@ export interface ShuttleBusInfo {
   note?: string; // price, schedule caveats, "선착순 마감" etc.
 }
 
+// A real, sourced fan-chant/응원법("cheer guide") reference for this show - an
+// officially published 콜 가이드/응원법 (agency/promoter PDF or image), or a
+// well-known, credited fan-made guide. Only ever added when a real link exists
+// (same sourcing bar as SetlistEntry/PresaleInfo) - the generic search links in
+// FanChantGuide.astro cover every other case without needing curated data.
+export interface FanChantGuideEntry {
+  title: string; // e.g. "위버스 공식 응원법 가이드", "이번 투어 콜 가이드 (팬 제작)"
+  url: string;
+  note?: string;
+}
+
 // A single earlier real-world edition of a recurring event (annual festival, tour
 // series, etc.), used to build a "지난 회차와 비교" section. Only include editions
 // with at least one verified real data point (attendance, lineup, or a notable
@@ -220,6 +231,10 @@ export interface ConcertEvent {
   // edition - see CrowdOutlook. Only set when previousEditions has real data to
   // ground it in.
   crowdOutlook?: CrowdOutlook;
+  // Real, sourced fan-chant/응원법 guide(s) for this show - see FanChantGuideEntry.
+  // Leave unset for the vast majority of events; FanChantGuide.astro always
+  // renders its own generic search links regardless of whether this is set.
+  fanChantGuide?: FanChantGuideEntry[];
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();

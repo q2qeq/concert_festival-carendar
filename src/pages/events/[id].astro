@@ -10,6 +10,7 @@ import MerchGrid from '../../components/MerchGrid.astro';
 import PreviousEditionCompare from '../../components/PreviousEditionCompare.astro';
 import AddToCalendar from '../../components/AddToCalendar.astro';
 import TicketBooking from '../../components/TicketBooking.astro';
+import FanChantGuide from '../../components/FanChantGuide.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import { events, festivalLineupDays, allTicketLinks } from '../../lib/events';
@@ -97,6 +98,7 @@ const isFestival = event.genre === '페스티벌';
 const tocItems = [
   isFestival && { id: 'lineup', label: '라인업' },
   event.setlists && event.setlists.length > 0 && { id: 'setlist', label: '셋리스트' },
+  { id: 'fanchant', label: '떼창·콜 가이드' },
   event.previousEditions && event.previousEditions.length > 0 && { id: 'compare', label: '이전 회차 비교' },
   event.merch && event.merch.length > 0 && { id: 'merch', label: '굿즈' },
   event.funFacts && event.funFacts.length > 0 && { id: 'notes', label: '직관냥 포인트' },
@@ -307,6 +309,10 @@ const jsonLd = {
         <SetlistBox setlists={event.setlists} />
       </div>
     )}
+
+    <div class="info-block" id="fanchant">
+      <FanChantGuide artist={event.artist} guides={event.fanChantGuide} />
+    </div>
 
     <div class="info-divider" aria-hidden="true"><span>더 알아보기</span></div>
 
