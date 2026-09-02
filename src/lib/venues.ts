@@ -103,3 +103,28 @@ export function mapLinks(query: string): { naver: string; google: string } {
     google: `https://www.google.com/maps/search/?api=1&query=${q}`,
   };
 }
+
+// Kakao T 셔틀(카카오모빌리티의 행사/콘서트 전용 셔틀버스 예약 서비스) 검색 링크.
+// 공식 홈페이지에 안 나오는 콘서트 셔틀도 실제로는 이 서비스로 많이 운영돼서
+// (세븐틴/TWICE/오피셜히게단디즘 콘서트 등 확인됨), 확정된 셔틀 정보가 없는
+// 공연이라도 항상 여기서 먼저 검색해보도록 안내한다. shuttle.kakaomobility.com의
+// 태그 검색 페이지 - 좌표/장소 ID 없이 텍스트만으로 동작한다.
+export function kakaoShuttleSearchUrl(query: string): string {
+  return `https://shuttle.kakaomobility.com/shuttles/tags?tag=${encodeURIComponent(query)}`;
+}
+
+// Google Maps 길찾기 링크. destination만 지정하면 origin은 Google이 기기 위치를
+// 기본값으로 쓰거나(가능한 경우) 빈 입력창을 띄워 직접 입력하게 한다 - 별도 API
+// 키나 지오코딩 없이도 "출발지 입력 → 경로 검색"이 그대로 동작하는 이유.
+// origin을 텍스트로 넘기면 Google이 알아서 지오코딩한다.
+export function transitDirectionsUrl(destination: string, origin?: string): string {
+  const params = new URLSearchParams({ api: '1', destination, travelmode: 'transit' });
+  if (origin && origin.trim()) params.set('origin', origin.trim());
+  return `https://www.google.com/maps/dir/?${params.toString()}`;
+}
+
+// Kakao/네이버 지도에서 이 장소를 검색해 보여주는 링크(길찾기는 지도 자체 UI에서
+// 이어서 하도록 안내). 좌표 데이터가 없어도 동작해서 모든 공연장에 바로 쓸 수 있다.
+export function kakaoMapSearchUrl(query: string): string {
+  return `https://map.kakao.com/?q=${encodeURIComponent(query)}`;
+}

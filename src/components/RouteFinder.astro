@@ -1,0 +1,105 @@
+---
+// "길찾기" widget - no directions API/key involved. Destination is fixed to
+// this venue; the visitor only has to supply a departure point.
+// - Default (no JS, no input needed): a Google Maps 길찾기 link with only
+//   `destination` set. Per Google's own Maps URLs spec, omitting `origin`
+//   makes Google fall back to device location if available, otherwise it
+//   shows a blank "출발지 입력" field inside Maps itself - so this alone
+//   already satisfies "출발지만 입력하면 길찾기" with zero setup on our side.
+// - Progressive enhancement: typing a departure here and clicking 길찾기
+//   passes it straight through as Google's `origin` param, which accepts a
+//   plain place name/address and geocodes it server-side - no API key or
+//   geocoding logic needed on our end.
+// - Kakao맵/네이버지도 검색 링크도 나란히 둬서, 대중교통 정보를 그 지도
+//   앱에서 직접 보고 싶은 사람도 바로 넘어갈 수 있게 한다.
+import { transitDirectionsUrl, kakaoMapSearchUrl, mapLinks } from '../lib/venues';
+interface Props {
+  venue: string;
+  address?: string;
+}
+const { venue, address } = Astro.props;
+const destQuery = address || venue;
+const defaultDirectionsUrl = transitDirectionsUrl(destQuery);
+const kakaoUrl = kakaoMapSearchUrl(venue);
+const naverUrl = mapLinks(venue).naver;
+---
+<section class="route-finder" data-dest={destQuery}>
+  <h2>길찾기</h2>
+  <p class="route-finder-desc">출발지만 입력하면 {venue}까지 가는 대중교통 경로를 바로 찾아드려요.</p>
+  <div class="route-finder-row">
+    <input
+      type="text"
+      class="route-finder-input"
+      placeholder="출발지 입력 (예: 강남역, 우리집 주소)"
+      autocomplete="off"
+    />
+    <button type="button" class="route-finder-btn">길찾기</button>
+  </div>
+  <div class="route-finder-links">
+    <a href={defaultDirectionsUrl} target="_blank" rel="noopener noreferrer">내 현재 위치에서 바로 찾기 ↗</a>
+    <a href={kakaoUrl} target="_blank" rel="noopener noreferrer">카카오맵에서 보기 ↗</a>
+    <a href={naverUrl} target="_blank" rel="noopener noreferrer">네이버지도에서 보기 ↗</a>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('.route-finder').forEach((box) => {
+    const input = box.querySelector<HTMLInputElement>('.route-finder-input');
+    const btn = box.querySelector<HTMLButtonElement>('.route-finder-btn');
+    const dest = box.dataset.dest || '';
+
+    const openDirections = () => {
+      const origin = input?.value.trim();
+      const params = new URLSearchParams({ api: '1', destination: dest, travelmode: 'transit' });
+      if (origin) params.set('origin', origin);
+      window.open(`https://www.google.com/maps/dir/?${params.toString()}`, '_blank', 'noopener');
+    };
+
+    btn?.addEventListener('click', openDirections);
+    input?.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter') {
+        ev.preventDefault();
+        openDirections();
+      }
+    });
+  });
+</script>
+<style>
+  .route-finder { margin: 1.5rem 0; padding: 1.1rem 1.25rem; background: rgba(110, 231, 255, 0.05); border: 1px solid rgba(110, 231, 255, 0.18); border-radius: 14px; }
+  .route-finder h2 { margin: 0 0 0.4rem; font-size: 1rem; color: #bdeeff; }
+  .route-finder-desc { margin: 0 0 0.85rem; color: #d8d5ef; font-size: 0.88rem; line-height: 1.55; }
+  .route-finder-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .route-finder-input {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.16);
+    color: #f5f3ff;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+  }
+  .route-finder-input::placeholder { color: #7d78a0; }
+  .route-finder-btn {
+    flex-shrink: 0;
+    background: #6ee7ff;
+    color: #101018;
+    border: none;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .route-finder-btn:hover { background: #8ff0ff; }
+  .route-finder-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .route-finder-links a {
+    font-size: 0.82rem;
+    color: #6ee7ff;
+    text-decoration: none;
+    background: rgba(110,231,255,0.08);
+    border: 1px solid rgba(110,231,255,0.25);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+  }
+  .route-finder-links a:hover { background: rgba(110,231,255,0.16); }
+</style>

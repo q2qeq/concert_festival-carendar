@@ -13,7 +13,6 @@ import AddToCalendar from '../../components/AddToCalendar.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import { events, festivalLineupDays, allTicketLinks, TICKETING_DIFFICULTY_LABEL } from '../../lib/events';
-import { isShuttleLikely } from '../../lib/venues';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -75,10 +74,12 @@ const officialActionUrl =
 const actionBarUrls = new Set([primaryLink?.url, officialActionUrl].filter(Boolean));
 const ticketSectionLinks = links.filter((l) => !actionBarUrls.has(l.url));
 
-// 셔틀버스 섹션은 (1) 실제 확인된 shuttleBus 데이터가 있거나, (2) 셔틀이 있을
-// 확률이 높은 공연장(lib/venues.ts의 isShuttleLikely)이면 항상 노출한다 - 못
-// 찾았다고 조용히 섹션 자체를 숨기지 않고, 확인 방법을 안내하는 대체 UI를 보여준다.
-const showShuttleSection = (event.shuttleBus && event.shuttleBus.length > 0) || isShuttleLikely(event.venue);
+// 셔틀버스 섹션은 모든 공연 페이지에 항상 노출한다 - 확정된 shuttleBus 데이터가
+// 없어도 카카오 T 셔틀(카카오모빌리티)이 별도로 콘서트 셔틀을 운영하는 경우가
+// 많아서, 공식 발표가 없다고 조용히 섹션을 숨기지 않고 항상 확인 방법을 안내한다.
+// isShuttleLikely()는 여전히 venues.ts에 남겨두되(지방/야외 공연장 판별에 계속
+// 쓰임) 섹션 노출 여부 자체는 더 이상 이걸로 좁히지 않는다.
+const showShuttleSection = true;
 
 // 페스티벌 라인업이 이 숫자를 넘으면 요약만 먼저 보여주고 <details>로 접어
 // 30팀 안팎인 대형 페스티벌 페이지가 아티스트 이름 벽으로 압도하지 않게 한다.

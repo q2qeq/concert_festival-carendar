@@ -1,5 +1,6 @@
 ---
 import { getVenueInfo, venueSlug, mapLinks } from '../lib/venues';
+import RouteFinder from './RouteFinder.astro';
 interface Props { venue: string }
 const { venue } = Astro.props;
 const info = getVenueInfo(venue);
@@ -7,6 +8,8 @@ const info = getVenueInfo(venue);
 <section class="venue-box">
   <h2>공연장 정보 · {venue}</h2>
   {info?.address && <p class="venue-address">{info.address}</p>}
+
+  <RouteFinder venue={venue} address={info?.address} />
 
   <div class="venue-sightline" id="sightline">
     <a href={`https://x.com/search?q=${encodeURIComponent(`${venue} 시야`)}`} target="_blank" rel="noopener noreferrer">

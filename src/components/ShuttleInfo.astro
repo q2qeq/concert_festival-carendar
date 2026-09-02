@@ -1,13 +1,17 @@
 ---
 // Shuttle bus info for a venue. Two modes:
 // 1) shuttleBus.length > 0 - real, sourced bookable/free service (see
-//    ShuttleBusInfo in lib/events.ts for sourcing rules).
-// 2) shuttleBus is empty but the venue is one where a shuttle is plausible
-//    (lib/venues.ts's isShuttleLikely) - render an actionable "go check
-//    yourself" box instead of nothing, so a shuttle-likely venue never goes
-//    silent just because we haven't sourced a confirmed entry yet. Never a
-//    guessed shuttle - only a pointer to where readers actually find it.
+//    ShuttleBusInfo in lib/events.ts for sourcing rules). Still shows a
+//    "카카오 T 셔틀도 확인" link alongside, since a promoter shuttle and a
+//    separate Kakao T Shuttle listing often run at the same time.
+// 2) No confirmed shuttleBus data - render an actionable "go check yourself"
+//    box instead of nothing. Kakao T 셔틀(카카오모빌리티) runs shuttle
+//    reservations for a large share of concerts that don't officially
+//    announce one (confirmed for 세븐틴/TWICE/오피셜히게단디즘 등), so it's
+//    always checked first, before the generic 예매처/포털 검색 links.
+//    Never a guessed shuttle - only pointers to where readers actually find one.
 import type { ShuttleBusInfo } from '../lib/events';
+import { kakaoShuttleSearchUrl } from '../lib/venues';
 interface Props {
   shuttleBus: ShuttleBusInfo[];
   venue?: string;
@@ -16,6 +20,8 @@ interface Props {
 }
 const { shuttleBus, venue, artist, ticketUrl } = Astro.props;
 const query = [venue, artist, '셔틀버스'].filter(Boolean).join(' ');
+const kakaoQuery = [artist, '콘서트 셔틀'].filter(Boolean).join(' ');
+const kakaoUrl = kakaoShuttleSearchUrl(kakaoQuery);
 const naverUrl = `https://search.naver.com/search.naver?query=${encodeURIComponent(query)}`;
 const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
 ---
@@ -39,14 +45,20 @@ const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`
           )}
         </article>
       ))}
+      <p class="shuttle-also-check">
+        이 외에도 <a href={kakaoUrl} target="_blank" rel="noopener noreferrer">카카오 T 셔틀</a>에
+        별도 노선이 올라오는 경우가 있으니 한 번 더 확인해보세요.
+      </p>
     </div>
   ) : (
     <div class="shuttle-fallback">
       <p>
-        아직 이 공연의 셔틀버스 정보를 확인하지 못했어요. 다만 {venue ? <strong>{venue}</strong> : '이 공연장'}은(는)
-        공연마다 셔틀버스가 운영되는 경우가 많은 곳이라, 아래에서 직접 확인해보시는 걸 추천해요.
+        아직 이 공연의 셔틀버스 정보를 확인하지 못했어요. 콘서트 셔틀은 요즘
+        <strong>카카오 T 셔틀</strong>로 운영되는 경우가 많으니 먼저 확인해보시고,
+        {venue ? <> <strong>{venue}</strong>은(는) 공연마다 셔틀버스가 운영되는 경우가 많은 곳이기도 하니</> : ''} 아래 링크도 참고해보세요.
       </p>
       <div class="shuttle-fallback-links">
+        <a class="shuttle-kakao-link" href={kakaoUrl} target="_blank" rel="noopener noreferrer">카카오 T 셔틀에서 "{artist ?? '이 공연'}" 검색 ↗</a>
         {ticketUrl && (
           <a href={ticketUrl} target="_blank" rel="noopener noreferrer">예매처 공지사항에서 확인 ↗</a>
         )}
@@ -67,6 +79,8 @@ const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`
   .shuttle-note { margin: 0 0 0.5rem; color: #d8d5ef; font-size: 0.88rem; line-height: 1.6; }
   .shuttle-link { display: inline-block; font-size: 0.86rem; font-weight: 600; color: #ffcb6e; text-decoration: none; }
   .shuttle-link:hover { text-decoration: underline; }
+  .shuttle-also-check { margin: 0; padding-top: 0.85rem; border-top: 1px dashed rgba(255,255,255,0.1); color: #a9a4c9; font-size: 0.85rem; line-height: 1.6; }
+  .shuttle-also-check a { color: #ffcb6e; }
   .shuttle-fallback p { margin: 0 0 0.9rem; color: #d8d5ef; font-size: 0.9rem; line-height: 1.6; }
   .shuttle-fallback-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .shuttle-fallback-links a {
@@ -79,4 +93,5 @@ const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`
     border-radius: 999px;
   }
   .shuttle-fallback-links a:hover { background: rgba(255,200,110,0.16); }
+  .shuttle-kakao-link { font-weight: 700; background: rgba(255,200,110,0.16) !important; border-color: rgba(255,200,110,0.5) !important; }
 </style>
