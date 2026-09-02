@@ -215,7 +215,21 @@ const jsonLd = {
       {officialActionUrl && (
         <a class="ab-btn" href={officialActionUrl} target="_blank" rel="noopener noreferrer">공식 홈페이지</a>
       )}
-      {status === 'scheduled' && <a class="ab-btn" href="#calendar">캘린더 추가</a>}
+      {status === 'scheduled' && (
+        <div class="ab-calendar">
+          <button
+            class="ab-btn"
+            type="button"
+            id="calendar-toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="calendar-popover"
+          >
+            캘린더 추가
+          </button>
+          <AddToCalendar event={event} />
+        </div>
+      )}
       <a class="ab-btn" href="#sightline">공연장 시야</a>
       {showShuttleSection && (
         <a class="ab-btn" href="#shuttle">셔틀버스</a>
@@ -265,11 +279,6 @@ const jsonLd = {
             ))}
           </div>
         )}
-        {status === 'scheduled' && (
-          <div id="calendar">
-            <AddToCalendar event={event} />
-          </div>
-        )}
       </section>
     )}
 
@@ -309,20 +318,22 @@ const jsonLd = {
       </section>
     )}
 
+    <div class="info-divider" aria-hidden="true"><span>더 알아보기</span></div>
+
     {event.previousEditions && event.previousEditions.length > 0 && (
-      <div id="compare">
+      <div class="info-block" id="compare">
         <PreviousEditionCompare editions={event.previousEditions} crowdOutlook={event.crowdOutlook} />
       </div>
     )}
 
     {event.funFacts && event.funFacts.length > 0 && (
-      <div id="notes">
+      <div class="info-block" id="notes">
         <CharacterNote facts={event.funFacts} />
       </div>
     )}
 
     {event.merch && event.merch.length > 0 && (
-      <div id="merch">
+      <div class="info-block" id="merch">
         <MerchGrid items={event.merch} />
       </div>
     )}
@@ -330,25 +341,25 @@ const jsonLd = {
     <AdSlot slot="event-mid" />
 
     {event.setlists && event.setlists.length > 0 && (
-      <div id="setlist">
+      <div class="info-block" id="setlist">
         <SetlistBox setlists={event.setlists} />
       </div>
     )}
 
     {event.youtubeVideos && event.youtubeVideos.length > 0 && (
-      <div id="videos">
+      <div class="info-block" id="videos">
         <YoutubeEmbeds videos={event.youtubeVideos} />
       </div>
     )}
 
     {event.updates && event.updates.length > 0 && (
-      <div id="updates">
+      <div class="info-block" id="updates">
         <UpdateLog updates={event.updates} />
       </div>
     )}
 
     {showShuttleSection && (
-      <div id="shuttle">
+      <div class="info-block" id="shuttle">
         <ShuttleInfo
           shuttleBus={event.shuttleBus ?? []}
           venue={event.venue}
@@ -358,7 +369,7 @@ const jsonLd = {
       </div>
     )}
 
-    <div id="venue">
+    <div class="info-block" id="venue">
       <VenueInfoBox venue={event.venue} />
     </div>
 
@@ -368,7 +379,7 @@ const jsonLd = {
     </p>
 
     {event.sources && event.sources.length > 0 && (
-      <div id="sources">
+      <div class="info-block" id="sources">
         <SourceList sources={event.sources} />
       </div>
     )}
@@ -402,6 +413,34 @@ const jsonLd = {
       { rootMargin: '-15% 0px -70% 0px', threshold: 0 }
     );
     sections.forEach((el) => observer.observe(el));
+  }
+
+  // "캘린더 추가" popover in the sticky action bar - opens on click, closes on
+  // outside click, Escape, or re-toggling.
+  const calendarToggle = document.getElementById('calendar-toggle');
+  const calendarPopover = document.getElementById('calendar-popover');
+  if (calendarToggle && calendarPopover) {
+    const closeCalendarPopover = () => {
+      calendarPopover.hidden = true;
+      calendarToggle.setAttribute('aria-expanded', 'false');
+    };
+    calendarToggle.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      if (calendarPopover.hidden) {
+        calendarPopover.hidden = false;
+        calendarToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        closeCalendarPopover();
+      }
+    });
+    document.addEventListener('click', (ev) => {
+      if (!calendarPopover.hidden && !calendarPopover.contains(ev.target as Node) && ev.target !== calendarToggle) {
+        closeCalendarPopover();
+      }
+    });
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape') closeCalendarPopover();
+    });
   }
 </script>
 
@@ -490,6 +529,29 @@ const jsonLd = {
   .ab-primary:hover { background: #ff7bb2; }
   .ab-bookmark { font-size: 1.05rem; padding: 0.4rem 0.7rem; margin-left: auto; }
   .ab-bookmark.is-bookmarked { color: #ff5fa2; border-color: rgba(255,95,162,0.5); }
+  .ab-calendar { position: relative; }
+
+  /* Visual break between the primary content (공연 정보/예매) and the
+     secondary info sections that follow, so the page doesn't read as one
+     unbroken stack of same-weight boxes. */
+  .info-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 3rem 0 0.5rem;
+    color: #7d78a0;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .info-divider::before,
+  .info-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+  .info-block { margin: 2.5rem 0 0; }
 
   [id] { scroll-margin-top: 7rem; }
 

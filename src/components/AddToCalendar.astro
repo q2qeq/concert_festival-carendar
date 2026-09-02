@@ -1,9 +1,14 @@
 ---
-// "캘린더에 추가" button - Google Calendar link (opens calendar.google.com with
-// prefilled fields) + a static-generated .ics file link (data: URI, no backend
-// needed - Apple Calendar/Outlook understand this format). All-day event only
-// (ConcertEvent doesn't reliably carry start times), so DTEND/dates use the
-// exclusive-end-date convention (end date + 1 day).
+// Calendar popover content - meant to sit next to the "캘린더 추가" trigger
+// button in the sticky action bar ([id].astro), not as a standalone block in
+// the page body. It's a quick utility action, not content, so clicking the
+// button should surface these two options immediately instead of scrolling
+// to a section.
+// Renders a Google Calendar link (prefilled fields) + a static-generated
+// .ics file link (data: URI, no backend needed - Apple Calendar/Outlook
+// understand this format). All-day event only (ConcertEvent doesn't
+// reliably carry start times), so DTEND/dates use the exclusive-end-date
+// convention (end date + 1 day).
 interface Props {
   event: {
     id: string;
@@ -63,35 +68,36 @@ const icsLines = [
 
 const icsDataUrl = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsLines)}`;
 ---
-<div class="add-to-calendar">
-  <span class="atc-label">캘린더에 추가</span>
-  <div class="atc-buttons">
-    <a class="atc-btn" href={googleUrl} target="_blank" rel="noopener noreferrer">Google 캘린더</a>
-    <a class="atc-btn" href={icsDataUrl} download={`${event.id}.ics`}>Apple·Outlook (.ics)</a>
-  </div>
+<div class="atc-popover" id="calendar-popover" role="menu" aria-label="캘린더에 추가" hidden>
+  <a class="atc-option" href={googleUrl} target="_blank" rel="noopener noreferrer" role="menuitem">Google 캘린더</a>
+  <a class="atc-option" href={icsDataUrl} download={`${event.id}.ics`} role="menuitem">Apple·Outlook (.ics)</a>
 </div>
 <style>
-  .add-to-calendar {
-    margin: 1.1rem 0;
-    padding: 0.85rem 1rem;
-    background: rgba(255,255,255,0.04);
-    border-radius: 12px;
+  .atc-popover {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    z-index: 35;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 190px;
+    padding: 0.5rem;
+    background: rgba(20, 20, 30, 0.97);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
-  .atc-label { font-size: 0.85rem; color: #d8d5ef; flex-shrink: 0; font-weight: 600; }
-  .atc-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .atc-btn {
+  .atc-option {
+    display: block;
     font-size: 0.85rem;
-    color: #d8d5ef;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.16);
-    padding: 0.4rem 0.85rem;
-    border-radius: 999px;
+    color: #f5f3ff;
     text-decoration: none;
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
     white-space: nowrap;
   }
-  .atc-btn:hover { background: rgba(255,95,162,0.16); border-color: rgba(255,95,162,0.4); }
+  .atc-option:hover { background: rgba(255,95,162,0.16); }
 </style>
