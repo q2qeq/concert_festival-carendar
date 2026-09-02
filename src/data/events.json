@@ -79,7 +79,15 @@
         "videoId": "bzWVJa9Nmec",
         "note": "대표곡 3연속 메들리 라이브. 처음 보는 사람에게 가장 추천하는 입문 영상이에요."
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/officialhige"
+      }
+    ],
+    "mdUrl": "https://higedan-store.jp/en",
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "back-number-2026-09",
@@ -154,7 +162,9 @@
         "videoId": "tHMFOcdITL8",
         "note": "발라드 밴드 특유의 라이브 보컬을 제대로 느낄 수 있는 곡이에요."
       }
-    ]
+    ],
+    "mdUrl": "https://backnumber.info/feature/goods",
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "vaundy-2026-09",
@@ -262,7 +272,15 @@
         "text": "티켓 부스·스탠딩 부스 운영시간 변경 공지 (주최 측 typecommunication.official 인스타그램): 부스 운영 12:00, 스탠딩 입장 대기 14:00, 공연장 입장 15:00, 공연 시작 17:00.",
         "sourceUrl": "https://www.instagram.com/p/DcxwjRNCXQb/"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/vaundy_engawa"
+      }
+    ],
+    "mdUrl": "https://store.plusmember.jp/vaundy/",
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "kopis-pyeonghwanuri-picnic-2026-09",
@@ -450,7 +468,14 @@
         "label": "포스트 말론 아시아 투어 후반부 취소·연기 - 스포츠경향",
         "url": "https://sports.khan.co.kr/article/202608271723003/"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/postmalone/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "lany-2026-10",
@@ -473,7 +498,14 @@
         "label": "LANY: soft world tour at KINTEX Hall 9 - Live Nation",
         "url": "https://www.livenation.com/event/intl_1663105/lany"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/thisislany"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "xmf-2026-10",
@@ -932,7 +964,14 @@
         "label": "찰리 푸스 내한공연 - StageLink",
         "url": "https://www.stagelink.kr/blog/charlie-puth-whatevers-clever-world-tour-seoul"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/charlieputh/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "kopis-PF295821",
@@ -1113,7 +1152,14 @@
         "label": "제이슨 므라즈, 7년 만에 내한 - 롤링스톤코리아",
         "url": "https://rollingstone.co.kr/music/music-news/24447"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/jason_mraz/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "5-seconds-of-summer-2026-11",
@@ -1145,7 +1191,14 @@
         "label": "2027학년도 대학수학능력시험은 2026년 11월 19일 시행 - 대한민국 정책브리핑",
         "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156646031"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/5sos"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "wonderlivet-2026-11",
@@ -1379,7 +1432,15 @@
         "text": "2027년 1월 9일 고척스카이돔 공연이 확정되고 멜론티켓에서 티켓이 오픈됐어요.",
         "sourceUrl": "https://www.ggilbo.com/news/articleView.html?idxno=1162989"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/fujiikazestaff"
+      }
+    ],
+    "mdUrl": "https://fujiikaze.com/store/",
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "spyair-2026-09",
@@ -1407,7 +1468,16 @@
         "label": "스파이에어, \"새 보컬 요스케와 함께\"...9월 5일 한국 단독 공연 - YTN",
         "url": "https://www.ytn.co.kr/_ln/0117_202605261027303802"
       }
-    ]
+    ],
+    "officialUrl": "https://www.spyair.net/",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/SPYAIRSTAFF"
+      }
+    ],
+    "mdUrl": "https://www.spyair.net/goods/",
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "iu-goyang-2026-09",
@@ -1474,7 +1544,14 @@
         "label": "JO1, '올공 시위' 장기화로 콘서트 취소 - 일간스포츠",
         "url": "https://isplus.com/article/view/isp202608030156"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/official_jo1"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "kim-yongbin-serenade-2026-09",
@@ -1519,7 +1596,14 @@
     "startDate": "2027-01-27",
     "endDate": "2027-01-27",
     "ticketUrl": "https://nol.yanolja.com/ticket/products/26011315",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/maroon5/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "shuttle-jx-core-incheon-2026-10",
@@ -1564,7 +1648,14 @@
     "startDate": "2026-12-05",
     "endDate": "2026-12-05",
     "ticketUrl": "https://mobileticket.interpark.com/goods/18010432",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/thegreatkhalid"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "shuttle-isul-live-festival-2026-09",
@@ -1586,7 +1677,14 @@
     "startDate": "2026-11-15",
     "endDate": "2026-11-15",
     "officialUrl": "https://www.livenation.kr/teddy-swims-tickets-adp1300113",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/teddyswims/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "nct127-neocity-redline-seoul-2026-09",
@@ -1607,7 +1705,15 @@
         "label": "NCT 127 Central - 260725 PRESS, KSPO Dome 콘서트 전석 매진 공지 (X)",
         "url": "https://x.com/127CENTRAL/status/2080846520019005527"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/NCTsmtown_127"
+      }
+    ],
+    "mdUrl": "https://smtownandstore.com",
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "andteam-blaze-the-way-encore-2026-10",
@@ -1628,7 +1734,15 @@
         "label": "&TEAM 2nd Mini Album·KSPO Dome 콘서트 동시 발표 - 스포츠경향",
         "url": "https://sports.khan.co.kr/en/article/202607061916007/"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/andTEAMofficial"
+      }
+    ],
+    "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/75",
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "riize-3rd-anniversary-fanmeeting-2026-09",
@@ -1650,7 +1764,15 @@
         "label": "인터파크 공연 공지",
         "url": "https://tickets.interpark.com/contents/notice/detail/14634"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/RIIZE_official"
+      }
+    ],
+    "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/151",
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "takuya-kimura-live-tour-checkpoint-seoul-2026-09",
