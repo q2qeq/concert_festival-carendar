@@ -1582,5 +1582,47 @@
     "endDate": "2026-11-15",
     "officialUrl": "https://www.livenation.kr/teddy-swims-tickets-adp1300113",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+  },
+  {
+    "id": "nct127-neocity-redline-seoul-2026-09",
+    "artist": "NCT 127",
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-09-18",
+    "endDate": "2026-09-20",
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213585",
+    "note": "5번째 월드투어 'NEO CITY: SEOUL - THE REDLINE'의 서울 공연으로, 약 1년 8개월 만의 단독 내한 공연입니다. 3회차 전석 매진. 셔틀 스캔 자동화가 &TEAM·EXO의 KSPO DOME 표기와 '동일 공연'으로 잘못 판단해 누락했던 건을 재조사해 직접 추가했습니다 (날짜가 서로 다른 별개 공연으로 확인됨: NCT127 9/18~20, &TEAM 10/3~4, EXO는 이미 지난 4/10~12).",
+    "sources": [
+      {
+        "label": "NCT 127 sells out Seoul concerts for fifth world tour - allkpop",
+        "url": "https://www.allkpop.com/article/2026/07/nct-127-sells-out-seoul-concerts-for-fifth-world-tour"
+      },
+      {
+        "label": "NCT 127 Central - 260725 PRESS, KSPO Dome 콘서트 전석 매진 공지 (X)",
+        "url": "https://x.com/127CENTRAL/status/2080846520019005527"
+      }
+    ]
+  },
+  {
+    "id": "andteam-blaze-the-way-encore-2026-10",
+    "artist": "&TEAM",
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-04",
+    "ticketUrl": "https://world.nol.com/en/ticket/places/26000892/products/26011092",
+    "note": "'2026 &TEAM CONCERT TOUR BLAZE THE WAY' 앙코르 공연. 예매 시 본인인증 계정 필요(양도 방지). 셔틀 스캔 자동화가 NCT127·EXO의 KSPO DOME 표기와 '동일 공연'으로 잘못 판단해 누락했던 건을 재조사해 직접 추가했습니다 (날짜가 서로 다른 별개 공연으로 확인됨: &TEAM 10/3~4, NCT127 9/18~20, EXO는 이미 지난 4/10~12).",
+    "sources": [
+      {
+        "label": "2026 &TEAM Concert Tour Encore at KSPO DOME - NOL World",
+        "url": "https://world.nol.com/en/content/articles/5c238bea-c186-41ae-843d-bafde5727cd1"
+      },
+      {
+        "label": "&TEAM 2nd Mini Album·KSPO Dome 콘서트 동시 발표 - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202607061916007/"
+      }
+    ]
   }
 ]
