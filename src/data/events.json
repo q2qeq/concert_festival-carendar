@@ -437,7 +437,14 @@
         "label": "ONEWE to hold sixth live concert - allkpop",
         "url": "https://www.allkpop.com/article/2026/08/onewe-to-hold-sixth-live-concert-o-new-evolution-vi-in-september"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/official_onewe"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "post-malone-2026-10",
@@ -925,7 +932,14 @@
         "label": "10CM to hold a special-concept fan concert in October - 스포츠경향(영문)",
         "url": "https://sports.khan.co.kr/en/article/202608192303007/"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/10cm_official/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "kopis-PF297586",
@@ -1614,7 +1628,14 @@
     "startDate": "2026-10-09",
     "endDate": "2026-10-11",
     "officialUrl": "https://x.com/JX_identity",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/JX_identity"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "shuttle-busan-rock-festival-2026-10",
@@ -1626,7 +1647,14 @@
     "endDate": "2026-10-04",
     "ticketUrl": "https://ticket.yes24.com/Perf/58933",
     "officialUrl": "https://busanrockfestival.com/",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/busan_rock"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "shuttle-yuuri-live-seoul-2026-12",
@@ -1812,7 +1840,14 @@
         "label": "EDC Korea 공식 사이트",
         "url": "https://korea.edc.com/en/"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/edc_korea/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "fkj-tyber-tour-korea-2026-12",
@@ -1833,7 +1868,15 @@
         "label": "관련 보도 - 다음뉴스",
         "url": "https://v.daum.net/v/20260703140141207"
       }
-    ]
+    ],
+    "officialUrl": "https://frenchkiwijuice.com/",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/frenchkiwijuice/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
   },
   {
     "id": "jimff-onesummernight-kpop-season2-2026-09",
