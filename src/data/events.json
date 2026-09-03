@@ -2094,7 +2094,43 @@
       "일본 아레나 투어에서 시작해 한국·대만·홍콩·태국·싱가포르로 확장하는 동선이라, HYBE가 아시아 시장을 겨냥해 키우는 그룹이라는 평가를 받고 있어요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262"
+    "posterUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262",
+    "setlists": [
+      {
+        "label": "2026 &TEAM CONCERT TOUR 'BLAZE THE WAY' - 요코하마 공연",
+        "date": "2026-05-13",
+        "venue": "K-Arena Yokohama, Yokohama, Japan",
+        "songs": [
+          "Back to Life",
+          "Lunatic",
+          "War Cry",
+          "Rush",
+          "Road Not Taken",
+          "W.O.L.F. (Win Or Lose Fight)",
+          "Under the Skin",
+          "Deer Hunter",
+          "Go in Blind (Getsurou)",
+          "Bewitched",
+          "HOTLINE",
+          "Aoarashi",
+          "Ookami-kei Danshi",
+          "Mismatch",
+          "Samidare",
+          "Heartbreak Time Machine",
+          "Jyuugoya",
+          "Yukiakari",
+          "We on Fire",
+          "Run Wild",
+          "Himawari (Imprinted)",
+          "Sakura-iro Yell",
+          "FIREWORK",
+          "Feel the Pulse",
+          "Chincha Okashii"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/andteam/2026/k-arena-yokohama-yokohama-japan-4b4b53a6.html",
+        "note": "같은 투어의 다른 공연(요코하마) 세트리스트예요. 인천 앙코르 공연은 세트리스트가 달라질 수 있어요."
+      }
+    ]
   },
   {
     "id": "riize-3rd-anniversary-fanmeeting-2026-09",
@@ -2410,7 +2446,57 @@
       "이틀(10/7·10/8) 연속 공연이라, 하루만 볼지 이틀 다 볼지 고민하는 팬들도 많아요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png"
+    "posterUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png",
+    "setlists": [
+      {
+        "label": "2026 애프터 아워스 투 오픈 에어 투어 - 런던 웸블리 스타디움 공연",
+        "date": "2026-08-14",
+        "venue": "Wembley Stadium, London",
+        "songs": [
+          "Baptized in Fear",
+          "Open Hearts",
+          "Wake Me Up",
+          "After Hours",
+          "Starboy",
+          "Heartless",
+          "Faith",
+          "Cry for Me",
+          "São Paulo",
+          "Until We're Skin & Bones",
+          "Take My Breath",
+          "Sacrifice",
+          "How Do I Make You Love Me?",
+          "Eva",
+          "Can't Feel My Face",
+          "Lost in the Fire",
+          "Often",
+          "Given Up on Me",
+          "I Was Never There",
+          "The Hills",
+          "Timeless",
+          "RATHER LIE",
+          "Creepin'",
+          "Niagara Falls",
+          "One of the Girls",
+          "Stargirl Interlude",
+          "Out of Time",
+          "I Feel It Coming",
+          "Die for You",
+          "Is There Someone Else?",
+          "Wicked Games",
+          "Call Out My Name",
+          "The Abyss",
+          "Save Your Tears",
+          "Less Than Zero",
+          "Blinding Lights",
+          "Without a Warning",
+          "House of Balloons",
+          "Moth to a Flame"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/the-weeknd/2026/wembley-stadium-london-england-73403ef9.html",
+        "note": "같은 월드투어의 다른 공연(런던) 세트리스트예요. 실제 서울 공연 세트리스트는 조금씩 달라질 수 있어요."
+      }
+    ]
   },
   {
     "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
@@ -2444,7 +2530,49 @@
       "선예매가 EXO-L 멤버십 국내(8/27)→글로벌(8/28)→일반(8/31) 순으로 3단계로 진행됐어요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg"
+    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg",
+    "setlists": [
+      {
+        "label": "EXO PLANET #6 - EXhOrizon 서울 원 공연 (4월)",
+        "date": "2026-04-10",
+        "venue": "KSPO DOME, Seoul",
+        "songs": [
+          "MAMA",
+          "Monster",
+          "Total Eclipse",
+          "Overdose",
+          "Moonlight Shadows",
+          "Gravity",
+          "Jekyll",
+          "Crazy",
+          "PLAYBOY",
+          "Artificial Love",
+          "The Eve",
+          "Love Shot",
+          "Power",
+          "Don't fight the feeling",
+          "Run",
+          "Tempo",
+          "Ko Ko Bop",
+          "CALL ME BABY",
+          "LOVE ME RIGHT",
+          "Growl",
+          "Baby, Don't Cry",
+          "Walk On Memories",
+          "Don't Go",
+          "EL DORADO",
+          "Back It Up",
+          "Forever",
+          "Crown",
+          "Back Pocket",
+          "Paradise",
+          "Flatline",
+          "Angel"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/exo/2026/kspo-dome-seoul-south-korea-434a5bf7.html",
+        "note": "같은 KSPO DOME에서 열린 올해 4월 원 공연 세트리스트예요. 11월 앙코르 공연은 세트리스트가 달라질 수 있어요."
+      }
+    ]
   },
   {
     "id": "plave-world-tour-keep-it-manic-incheon-2026-09",
