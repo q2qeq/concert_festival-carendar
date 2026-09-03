@@ -2329,6 +2329,10 @@
       {
         "label": "bandwagon.asia - EDC Korea unveils 2026 lineup",
         "url": "https://www.bandwagon.asia/articles/edc-korea-unveils-2026-lineup-dj-snake-ti-sto-fisher-alok-illenium-b2b-dabin-sara-landry-more"
+      },
+      {
+        "label": "EDC Korea 2026 공식 사이트",
+        "url": "https://korea.edc.com/en/"
       }
     ],
     "officialSns": [
@@ -2356,7 +2360,8 @@
       "Sara Landry",
       "홍중 (NOWON)"
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/73/2026/07/28164448/edck_2026_mk_lu_lubd_fest_site_seo_1200x630_r01.jpg"
   },
   {
     "id": "fkj-tyber-tour-korea-2026-12",
