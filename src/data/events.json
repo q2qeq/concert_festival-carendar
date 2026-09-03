@@ -1978,5 +1978,89 @@
       }
     ],
     "merchCheckedAt": "2026-09-03"
+  },
+  {
+    "id": "lim-youngwoong-im-hero-stadium2-2026-09",
+    "artist": "임영웅 (Lim Young-woong)",
+    "genre": "가요",
+    "venue": "고양종합운동장",
+    "city": "고양",
+    "startDate": "2026-09-04",
+    "endDate": "2026-09-06",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14497",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). 트로트 가수 최초로 고양종합운동장에 입성한 스타디움 콘서트.",
+    "sources": [
+      {
+        "label": "임영웅, 9월 고양종합운동장 입성…'아임 히어로 - 더 스타디움 2' 개최 - 데일리안",
+        "url": "https://www.dailian.co.kr/news/view/1656754/%EC%9E%84%EC%98%81%EC%9B%85-9%EC%9B%94-%EA%B3%A0%EC%96%91%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5-%EC%9E%85%EC%84%B1%E2%80%98%EC%95%84%EC%9E%84-2026"
+      },
+      {
+        "label": "임영웅, 9월 고양서 두 번째 스타디움 콘서트…사흘간 무대 - CBC뉴스",
+        "url": "https://www.cbci.co.kr/news/articleView.html?idxno=593942"
+      }
+    ]
+  },
+  {
+    "id": "weeknd-hyundaicard-superconcert28-2026-10",
+    "artist": "The Weeknd (위켄드)",
+    "genre": "팝",
+    "venue": "고양종합운동장",
+    "city": "고양",
+    "startDate": "2026-10-07",
+    "endDate": "2026-10-08",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13790",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). 현대카드 슈퍼콘서트 28, 8년 만의 내한 공연.",
+    "sources": [
+      {
+        "label": "현대카드, 28번째 슈퍼콘서트 주인공 '위켄드(The Weeknd)' - 중앙이코노미뉴스",
+        "url": "https://www.joongangenews.com/news/articleView.html?idxno=518387"
+      },
+      {
+        "label": "더 위켄드가 돌아온다, 8년 만의 내한 공연 개최 - 마리끌레르 코리아",
+        "url": "https://www.marieclairekorea.com/culture/music/2026/05/the-weeknd/"
+      }
+    ]
+  },
+  {
+    "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
+    "artist": "EXO",
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213773",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). EXO PLANET #6 - EXhOrizon [dot], 월드투어를 마무리하는 앙콜 콘서트 (4/10~12 본공연과는 별개 회차).",
+    "sources": [
+      {
+        "label": "EXO Announces Dates For Encore Concerts EXO PLANET #6 'EXhOrizon [dot]' In Seoul - Soompi",
+        "url": "https://www.soompi.com/article/1864228wpp/exo-announces-dates-for-encore-concert-exo-planet-6-exhorizon-dot"
+      },
+      {
+        "label": "EXO to hold three encore concerts in Seoul, wrapping up its world tour - Korea JoongAng Daily",
+        "url": "https://www.koreajoongangdaily.com/entertainment/exo-to-hold-three-encore-concerts-in-seoul-wrapping-up-its-world-tour/12835218"
+      }
+    ]
+  },
+  {
+    "id": "plave-world-tour-keep-it-manic-incheon-2026-09",
+    "artist": "PLAVE (플레이브)",
+    "genre": "가요",
+    "venue": "인천문학경기장",
+    "city": "인천",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-13",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14162",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). PLAVE 첫 월드투어 'KEEP IT MANIC' 인천 개최.",
+    "sources": [
+      {
+        "label": "PLAVE(플레이브) OFFICIAL 공식 X - 2026 PLAVE World Tour [KEEP IT MANIC] in Incheon",
+        "url": "https://x.com/plave_official/status/2066385213215711650"
+      },
+      {
+        "label": "플레이브, 첫 월드투어 간다..고척돔 이어 인천문학경기장 입성 - 스타뉴스",
+        "url": "https://www.starnewskorea.com/music/2026/06/15/2026061514220927038"
+      }
+    ]
   }
 ]
