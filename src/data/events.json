@@ -2869,5 +2869,105 @@
         "note": "같은 투어의 다른 공연(리마) 세트리스트예요. 서울 공연은 조금씩 달라질 수 있어요."
       }
     ]
+  },
+  {
+    "id": "humpback-seoul-2027-01",
+    "artist": "Hump Back (험프백)",
+    "genre": "J-POP",
+    "venue": "예스24 라이브홀",
+    "city": "서울",
+    "startDate": "2027-01-23",
+    "endDate": "2027-01-23",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 3인조 록밴드 Hump Back(험프백)의 단독 내한공연 'HELLO ANEW TOUR SEOUL 2027'. 티켓 오픈은 2026-10-07 낮 12시부터, 공연 시간은 오후 6시, 전석 132,000원이에요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-07 낮 12시",
+    "ticketOpenAt": "2026-10-07T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "Hump Back “HELLO ANEW TOUR SEOUL 2027” 티켓 오픈 안내 - YES24 티켓 공지사항",
+        "url": "https://ticket.yes24.com/Notice#id=18427"
+      }
+    ]
+  },
+  {
+    "id": "raintree-seoul-2026-12",
+    "artist": "Rain Tree (레인 트리)",
+    "genre": "J-POP",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2026-12-20",
+    "endDate": "2026-12-20",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "아키모토 야스시(AKB48 총괄 프로듀서)가 기획한 일본 걸그룹 Rain Tree(레인 트리)의 'Rain Tree Concert 2026 in Seoul'. 'IDOL3.0 PROJECT' 오디션 출신으로 2025년 1월 킹레코드를 통해 메이저 데뷔했어요. 팬클럽 선예매는 2026-09-03 저녁 8시, 일반예매는 2026-09-07 저녁 8시부터, 공연 시간은 오후 5시, 일반석 99,000원/VIP 110,000원이에요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-07 저녁 8시 (일반예매)",
+    "ticketOpenAt": "2026-09-07T20:00:00+09:00",
+    "sources": [
+      {
+        "label": "Rain Tree Concert 2026 in Seoul 티켓 오픈 안내 - YES24 티켓 공지사항",
+        "url": "https://ticket.yes24.com/Notice?#id=18347&Gcode=009_208_001"
+      }
+    ]
+  },
+  {
+    "id": "chippendales-seoul-2026-10",
+    "artist": "치펜데일스 (Chippendales)",
+    "genre": "버라이어티",
+    "venue": "에스팩토리 성수",
+    "city": "서울",
+    "startDate": "2026-10-31",
+    "endDate": "2026-11-02",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 관람등급 만 19세 이상 여성이에요.",
+    "description": "미국 라스베이거스발 남성 댄스 퍼포먼스 브랜드 치펜데일스(Chippendales)의 '치펜데일 라이브 인 서울 2026'. 디즈니+ 시리즈 'Welcome to Chippendales'로 다시 화제가 됐고, 약 7년 만의 내한이에요. 티켓 오픈은 2026-09-08 오전 11시부터, 관람등급 만 19세 이상 여성, VIP 160,000원/R석 140,000원이에요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-08 오전 11시",
+    "ticketOpenAt": "2026-09-08T11:00:00+09:00",
+    "sources": [
+      {
+        "label": "치펜데일 라이브 인 서울 2026 티켓 오픈 안내 - 멜론티켓 공지사항",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12797"
+      }
+    ]
+  },
+  {
+    "id": "euregio-klassika-laboheme-donghae-2026-10",
+    "artist": "이탈리아 Euregio Klassika - 콘서트오페라 라보엠",
+    "genre": "클래식",
+    "venue": "동해문화예술회관 대공연장",
+    "city": "동해",
+    "startDate": "2026-10-14",
+    "endDate": "2026-10-14",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 단독판매(티켓링크) 공연이에요.",
+    "description": "이탈리아 Euregio Klassika의 내한 콘서트오페라 '라보엠'. 지휘 마우리치오 콜라잔티 외 출연. 티켓 오픈은 2026-09-10 오후 2시부터, 공연 시간은 오후 7시 30분, 전석 20,000원, 관람등급 초등학생 이상이에요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-10 오후 2시",
+    "ticketOpenAt": "2026-09-10T14:00:00+09:00",
+    "sources": [
+      {
+        "label": "[단독판매] 이탈리아 Euregio Klassika 내한공연 콘서트오페라 라보엠 - 동해 티켓오픈 안내 - 티켓링크 공지사항",
+        "url": "https://www.ticketlink.co.kr/help/notice/65821"
+      }
+    ]
+  },
+  {
+    "id": "bluenote-tokyo-lisaono-iksan-2026-11",
+    "artist": "블루노트 도쿄 올스타 재즈 오케스트라 & 리사 오노",
+    "genre": "재즈/내한",
+    "venue": "익산예술의전당 대공연장",
+    "city": "익산",
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-28",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 단독판매(티켓링크) 공연이에요.",
+    "description": "일본 Blue Note Tokyo 올스타 재즈 오케스트라와 보사노바 가수 리사 오노(Lisa Ono, 일본-브라질)의 익산 공연. 티켓 오픈은 2026-09-04 오후 3시부터, 공연 시간은 오후 4시, R석 30,000원/S석 20,000원이에요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-04 오후 3시",
+    "ticketOpenAt": "2026-09-04T15:00:00+09:00",
+    "sources": [
+      {
+        "label": "[단독판매] 블루노트 도쿄 올스타 재즈 오케스트라 & 리사오노 - 익산 티켓오픈 안내 - 티켓링크 공지사항",
+        "url": "https://www.ticketlink.co.kr/help/notice/65824"
+      }
+    ]
   }
 ]
