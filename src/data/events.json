@@ -1760,9 +1760,14 @@
       {
         "label": "스포츠경향(영문) - Legend Kim Jaejoong and Kim Junsu to hold second JX tour concert",
         "url": "https://sports.khan.co.kr/en/article/202608242212007/"
+      },
+      {
+        "label": "김재중x김준수, 10월 합동콘서트 개최…6개 도시 투어 - 문화일보",
+        "url": "https://www.munhwa.com/article/11611579"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://wimg.munhwa.com/news/cms/2026/08/24/news-p.v1.20260824.23d11ba781d44f8f89b78098c8bb0989_R.jpg"
   },
   {
     "id": "shuttle-busan-rock-festival-2026-10",
@@ -1840,7 +1845,8 @@
         "url": "https://busanrockfestival.com/notice/2026notice_08/"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png"
   },
   {
     "id": "shuttle-yuuri-live-seoul-2026-12",
@@ -2046,6 +2052,10 @@
       {
         "label": "K-POP Ticket Navi - &TEAM Live 2026 | BLAZE THE WAY Tour 전체 가이드",
         "url": "https://kpop-ticket.com/en/articles/andteam-concert-guide-2026"
+      },
+      {
+        "label": "&TEAM BLAZE THE WAY Encore KSPO DOME - NOL World",
+        "url": "https://world.nol.com/en/content/articles/5c238bea-c186-41ae-843d-bafde5727cd1"
       }
     ],
     "officialSns": [
@@ -2063,7 +2073,8 @@
       "'앙코르(Encore)' 공연이라는 이름 그대로, 원래 잡혀있던 인천 인스파이어 공연 외에 추가로 편성된 무대예요 - 그만큼 수요가 컸다는 뜻이죠.",
       "일본 아레나 투어에서 시작해 한국·대만·홍콩·태국·싱가포르로 확장하는 동선이라, HYBE가 아시아 시장을 겨냥해 키우는 그룹이라는 평가를 받고 있어요."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262"
   },
   {
     "id": "riize-3rd-anniversary-fanmeeting-2026-09",
@@ -2358,6 +2369,10 @@
       {
         "label": "스타뉴스 - 위켄드, 10월 내한 확정..10만 명 규모 '슈퍼콘서트' 출격",
         "url": "https://www.starnewskorea.com/star/2026/05/11/2026051112293239131"
+      },
+      {
+        "label": "현대카드, 역대급 공연 펼친다…슈퍼콘서트28 주인공 위켄드 - 한국일보",
+        "url": "https://www.hankooki.com/news/articleView.html?idxno=332548"
       }
     ],
     "officialUrl": "https://www.theweeknd.com/",
@@ -2367,7 +2382,8 @@
       "위켄드가 한국에서 공연하는 건 8년 만이에요. 그만큼 오래 기다린 팬들이 많아 스탠딩석 기준 최대 46만9천원까지 가격대가 형성돼 있어요.",
       "이틀(10/7·10/8) 연속 공연이라, 하루만 볼지 이틀 다 볼지 고민하는 팬들도 많아요."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png"
   },
   {
     "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
