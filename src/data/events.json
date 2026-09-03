@@ -2225,6 +2225,13 @@
         "sourceUrl": "https://www.setlist.fm/setlist/andteam/2026/k-arena-yokohama-yokohama-japan-4b4b53a6.html",
         "note": "같은 투어의 다른 공연(요코하마) 세트리스트예요. 인천 앙코르 공연은 세트리스트가 달라질 수 있어요."
       }
+    ],
+    "fanChantGuide": [
+      {
+        "title": "&TEAM 응원법 정리 - 나무위키",
+        "url": "https://namu.wiki/w/&TEAM/%EC%9D%91%EC%9B%90%EB%B2%95",
+        "note": "팬덤이 정리한 곡별 응원법 위키 문서"
+      }
     ]
   },
   {
@@ -2667,6 +2674,13 @@
         "sourceUrl": "https://www.setlist.fm/setlist/exo/2026/kspo-dome-seoul-south-korea-434a5bf7.html",
         "note": "같은 KSPO DOME에서 열린 올해 4월 원 공연 세트리스트예요. 11월 앙코르 공연은 세트리스트가 달라질 수 있어요."
       }
+    ],
+    "fanChantGuide": [
+      {
+        "title": "EXO 응원법 정리 - 나무위키",
+        "url": "https://namu.wiki/w/EXO/%EC%9D%91%EC%9B%90%EB%B2%95",
+        "note": "팬덤이 정리한 곡별 응원법 위키 문서"
+      }
     ]
   },
   {
@@ -2701,6 +2715,13 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg"
+    "posterUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg",
+    "fanChantGuide": [
+      {
+        "title": "PLAVE 'WAY 4 LUV' 응원법 가이드 (Fanchants Guide) 공식 영상",
+        "url": "https://www.youtube.com/watch?v=tRSvtYMjsxw",
+        "note": "특정 곡(WAY 4 LUV) 공식 응원법 안내 영상. 투어 전체 세트리스트 응원법 가이드는 아님"
+      }
+    ]
   }
 ]
