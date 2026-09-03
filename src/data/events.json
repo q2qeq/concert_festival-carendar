@@ -209,7 +209,14 @@
     ],
     "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213646",
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.newscj.com/news/photo/202608/3422260_3532965_5915.jpg"
+    "posterUrl": "https://cdn.newscj.com/news/photo/202608/3422260_3532965_5915.jpg",
+    "festivalHighlight": [
+      {
+        "act": "리센느(RESCENE)",
+        "reason": "'LOVE ATTACK' 역주행으로 화제를 모으며 2차 라인업에 합류한 '대세돌' 신인 걸그룹이에요.",
+        "sourceUrl": "https://biz.heraldcorp.com/article/10814345"
+      }
+    ]
   },
   {
     "id": "lim-youngwoong-im-hero-stadium2-2026-09",
@@ -1141,7 +1148,19 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png"
+    "posterUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png",
+    "festivalHighlight": [
+      {
+        "act": "Avenged Sevenfold",
+        "reason": "메가데스와 나란히 헤드라이너로 서는 세계적인 메탈 밴드 - 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않아요.",
+        "sourceUrl": "https://busanrockfestival.com/notice/2026notice_08/"
+      },
+      {
+        "act": "메가데스",
+        "reason": "Avenged Sevenfold와 나란히 선 또 하나의 헤드라이너 - 결성 40년이 넘은 스래시 메탈의 거장이에요.",
+        "sourceUrl": "https://busanrockfestival.com/notice/2026notice_08/"
+      }
+    ]
   },
   {
     "id": "lany-2026-10",
@@ -1333,7 +1352,14 @@
         "note": "유료 셔틀버스. 노선/운행시간/요금/탑승장소 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
-    "ticketingDifficulty": "hard"
+    "ticketingDifficulty": "hard",
+    "festivalHighlight": [
+      {
+        "act": "Ado",
+        "reason": "'아도 온다'라는 제목의 단독 기사가 나올 정도로 이번 페스티벌의 가장 큰 화제를 모은 헤드라이너예요.",
+        "sourceUrl": "https://sports.khan.co.kr/en/article/202607311953007/"
+      }
+    ]
   },
   {
     "id": "andteam-blaze-the-way-encore-2026-10",
@@ -2539,7 +2565,14 @@
     "crowdOutlook": {
       "text": "2025년은 '역대급 라인업'이라는 평가 속에 관객 수가 전년 대비 93% 급증했지만, 2026년 라인업은 나무위키 등에서 '전년보다 헤드라이너 무게감이 떨어진다'는 반응이 우세해요. 대신 쿠로미·하츠네 미쿠·MyGO!!!!! 등 버튜버·리듬게임 계열 서브컬처 라인업 비중이 크게 늘어서, 대중적으로 폭발적인 증가보다는 마니아층 중심의 탄탄한 흥행에 가까울 가능성이 있어요.",
       "basis": "2025년 관객 22,578명(KOPIS, 전년 대비 +93%) 대비 2026년 라인업 평가 - 대중적 헤드라이너 약화, 버튜버/리듬게임 등 서브컬처 비중 확대(나무위키 반응 종합)"
-    }
+    },
+    "festivalHighlight": [
+      {
+        "act": "쿠로미(Kuromi)",
+        "reason": "산리오 캐릭터의 국내 최초 라이브 무대 - 기존 음악 페스티벌에서 보기 힘든 조합이에요.",
+        "sourceUrl": "https://www.starnewskorea.com/music/2026/08/28/2026082811013161926"
+      }
+    ]
   },
   {
     "id": "kopis-PF299935",

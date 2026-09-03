@@ -1,15 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const PLATFORMS = [
+  { id: 'yes24', name: 'YES24 티켓', url: 'https://ticket.yes24.com' },
+  { id: 'melon', name: '멜론티켓', url: 'https://ticket.melon.com' },
+  { id: 'nol', name: 'NOL(인터파크)', url: 'https://nol.interpark.com/ticket' },
+  { id: 'ticketlink', name: '티켓링크', url: 'https://www.ticketlink.co.kr' },
+];
+
+// FAQ 구조화 데이터 - "nol 티켓팅 시계"처럼 특정 예매 사이트 이름 + "티켓팅 시계"로
+// 검색해도 이 페이지가 어떤 사이트에나 쓸 수 있는 범용 도구라는 걸 검색엔진이
+// 바로 이해하도록. 실제로 페이지에 보이는 문구와 동일한 내용만 담는다.
+const faq = [
+  {
+    q: 'YES24·멜론티켓·NOL·티켓링크 아무 사이트에나 써도 되나요?',
+    a: '네. 특정 예매처 전용이 아니라 표준시에 맞춘 범용 정밀 시계예요. 원하는 예매 사이트를 아래에서 선택해두면 그 사이트 탭을 바로 열 수 있어요.',
+  },
+  {
+    q: '자동 예매(매크로)인가요?',
+    a: '아니에요. 자동으로 클릭하거나 새로고침하지 않아요. 정확한 시각을 보여줘서 수동 클릭 타이밍을 맞추는 데만 도움을 줘요.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 <BaseLayout
-  title="티켓팅 시계"
-  description="YES24·멜론티켓·인터파크·티켓링크 예매 전에 켜두는 정밀 동기화 시계. 내 기기 시계가 실제 시간과 얼마나 다른지 보정해서 밀리초 단위로 보여줘요."
+  title="티켓팅 시계 - YES24·멜론티켓·NOL·티켓링크"
+  description="YES24·멜론티켓·NOL(인터파크)·티켓링크 예매 전에 켜두는 정밀 동기화 시계. 내 기기 시계 오차를 보정해 밀리초 단위로 보여줘요."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
   <h1>티켓팅 시계</h1>
   <p class="intro">
-    내 PC·폰의 시계는 몇백 ms에서 몇 초까지 실제 시간과 어긋나 있을 수 있어요. 이 페이지는
-    인터넷 표준시 서버와 동기화한 정밀 시계를 보여줘서, 예매 오픈 순간에 맞춰 클릭할 수 있게
-    도와드려요. <strong>자동 예매·매크로가 아니라 수동 클릭을 도와주는 시계</strong>예요.
+    표준시 서버와 동기화한 정밀 시계로, 예매 오픈 순간에 맞춰 클릭하도록 도와드려요.
+    <strong>자동 예매·매크로가 아니라 수동 클릭을 돕는 시계</strong>예요.
   </p>
 
   <div id="countdown-banner" class="countdown-banner" hidden>
@@ -25,31 +57,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <details class="calibrate">
     <summary>수동 보정 (동기화가 안 될 때)</summary>
-    <p class="calibrate-help">
-      아래에 정확하다고 믿는 시각(예: 폰 기본 시계 앱의 초 단위 시간)을 입력하고 그 순간에
-      바로 버튼을 누르면, 그 시각 기준으로 다시 맞춰요.
-    </p>
     <div class="calibrate-row">
       <input type="time" id="calibrate-input" step="1" />
       <button type="button" id="calibrate-btn">지금 이 시각으로 맞추기</button>
     </div>
   </details>
 
-  <h2>바로 이동</h2>
-  <div class="platform-grid">
-    <a class="platform-btn" href="https://ticket.yes24.com" target="_blank" rel="noopener noreferrer">YES24 티켓 ↗</a>
-    <a class="platform-btn" href="https://ticket.melon.com" target="_blank" rel="noopener noreferrer">멜론티켓 ↗</a>
-    <a class="platform-btn" href="https://nol.interpark.com/ticket" target="_blank" rel="noopener noreferrer">인터파크(NOL) 티켓 ↗</a>
-    <a class="platform-btn" href="https://www.ticketlink.co.kr" target="_blank" rel="noopener noreferrer">티켓링크 ↗</a>
+  <h2>예매 사이트 선택</h2>
+  <p class="platform-help">예매하는 사이트를 골라두면 바로가기 버튼이 그 사이트를 기억해요.</p>
+  <div class="platform-grid" id="platform-grid">
+    {PLATFORMS.map((p) => (
+      <div class="platform-item" data-platform={p.id}>
+        <button type="button" class="platform-select" data-platform-select={p.id} aria-pressed="false">
+          <span class="platform-check" aria-hidden="true">✓</span> {p.name}
+        </button>
+        <a class="platform-open" href={p.url} target="_blank" rel="noopener noreferrer">열기 ↗</a>
+      </div>
+    ))}
+  </div>
+  <p id="platform-active-note" class="platform-active-note" hidden></p>
+
+  <h2>자주 묻는 질문</h2>
+  <div class="faq">
+    {faq.map((f) => (
+      <details class="faq-item">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
   </div>
 
   <p class="disclaimer">
-    시간은 공개 표준시 서버(timeapi.io)와 동기화해요. 동기화 요청도 네트워크를 거치는
-    이상 수십~수백 ms의 오차는 자연히 있을 수 있고, 각 예매 사이트 서버 자체의 시계가
-    표준시와 정확히 일치한다는 보장도 없어요(사이트별 오차를 저희가 직접 측정한 적은
-    없어요) — 그래서 이 시계는 "확실한 성공"이 아니라 "내 기기 시계보다는 믿을 만한
-    기준"으로 봐주세요. 동기화에 실패하면 이 기기 자체 시계로 표시되며 화면에 그렇게
-    안내돼요.
+    동기화도 네트워크를 거치는 이상 수십~수백 ms 오차가 있을 수 있고, 예매 사이트 서버
+    시계와의 오차는 저희가 직접 측정하지 않았어요 - "내 기기 시계보다는 믿을 만한 기준"
+    정도로 봐주세요. 동기화 실패 시 기기 자체 시계로 표시돼요.
   </p>
 </BaseLayout>
 
@@ -87,8 +128,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .sync-status.is-error { color: #ffb84c; }
   .calibrate { margin: 1rem 0; padding: 0.9rem 1.1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
   .calibrate summary { cursor: pointer; font-weight: 700; color: #f5f3ff; }
-  .calibrate-help { margin: 0.6rem 0; color: #a9a4c9; font-size: 0.85rem; }
-  .calibrate-row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+  .calibrate-row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-top: 0.7rem; }
   .calibrate-row input {
     padding: 0.5rem 0.7rem;
     border-radius: 8px;
@@ -106,20 +146,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-weight: 700;
     cursor: pointer;
   }
-  .platform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1rem 0 1.5rem; }
+  .platform-help { margin: 0 0 0.8rem; color: #a9a4c9; font-size: 0.88rem; }
+  .platform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 0 0 0.5rem; }
   @media (max-width: 480px) { .platform-grid { grid-template-columns: 1fr; } }
-  .platform-btn {
-    display: block;
+  .platform-item {
+    display: flex;
+    align-items: stretch;
+    gap: 0.4rem;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .platform-select {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: 0.8rem 1rem;
     border-radius: 10px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
     color: #f5f3ff;
-    text-decoration: none;
     font-weight: 700;
-    text-align: center;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: left;
   }
-  .platform-btn:hover { background: rgba(255,95,162,0.16); border-color: rgba(255,95,162,0.4); }
+  .platform-select .platform-check { opacity: 0; color: #101018; }
+  .platform-select[aria-pressed="true"] {
+    background: linear-gradient(120deg, #ff5fa2, #ff8fbe);
+    border-color: transparent;
+    color: #101018;
+  }
+  .platform-select[aria-pressed="true"] .platform-check { opacity: 1; }
+  .platform-open {
+    display: flex;
+    align-items: center;
+    padding: 0 0.85rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #a9a4c9;
+    text-decoration: none;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+  .platform-open:hover { color: #6ee7ff; border-color: rgba(110,231,255,0.4); }
+  .platform-active-note {
+    margin: 0 0 1.5rem;
+    font-size: 0.85rem;
+    color: #ff8fbe;
+    font-weight: 600;
+  }
+  .faq { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .faq-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
+  .faq-item p { margin: 0.6rem 0 0; color: #a9a4c9; font-size: 0.88rem; line-height: 1.6; }
   .disclaimer { margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.82rem; line-height: 1.6; }
 </style>
 
@@ -130,7 +211,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   // to correct drift. Manual calibration is the fallback when the network sync
   // fails or the user trusts a different clock more.
   let offsetMs = 0; // serverTime - Date.now() at time of last sync
-  let synced = false;
 
   function nowSynced() {
     return Date.now() + offsetMs;
@@ -153,13 +233,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const roundTrip = t1 - t0;
       const estServerNow = serverMs + roundTrip / 2;
       offsetMs = estServerNow - t1;
-      synced = true;
       if (statusEl) {
         statusEl.textContent = `표준시 서버와 동기화됨 · 오차 범위 약 ±${Math.round(roundTrip / 2)}ms · 방금 확인`;
         statusEl.classList.remove('is-error');
       }
     } catch (e) {
-      synced = false;
       offsetMs = 0;
       if (statusEl) {
         statusEl.textContent = '동기화 실패 - 이 기기 자체 시계로 표시 중입니다. 아래 수동 보정을 이용해보세요.';
@@ -225,13 +303,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const now = new Date();
     now.setHours(h || 0, m || 0, s || 0, 0);
     offsetMs = now.getTime() - Date.now();
-    synced = true;
     const statusEl = document.getElementById('sync-status');
     if (statusEl) {
       statusEl.textContent = '수동 보정된 시각으로 표시 중';
       statusEl.classList.remove('is-error');
     }
   });
+
+  // 예매 사이트 선택 - 누르면 그 사이트를 "내가 쓰는 사이트"로 저장하고(다음
+  // 방문에도 기억), 버튼 스타일이 활성화된다. 실제 예매창 이동은 별도의
+  // "열기" 링크가 담당 - 선택 버튼 자체는 페이지를 벗어나지 않는다.
+  const PLATFORM_KEY = 'krconcerts:ticketing-clock-platform';
+  const PLATFORM_NAMES: Record<string, string> = {
+    yes24: 'YES24 티켓',
+    melon: '멜론티켓',
+    nol: 'NOL(인터파크)',
+    ticketlink: '티켓링크',
+  };
+
+  function applyPlatformSelection(id: string | null) {
+    document.querySelectorAll<HTMLButtonElement>('[data-platform-select]').forEach((btn) => {
+      const active = btn.dataset.platformSelect === id;
+      btn.setAttribute('aria-pressed', String(active));
+    });
+    const note = document.getElementById('platform-active-note');
+    if (note) {
+      if (id && PLATFORM_NAMES[id]) {
+        note.hidden = false;
+        note.textContent = `✓ ${PLATFORM_NAMES[id]} 기준으로 설정했어요. 다음에 다시 와도 기억해요.`;
+      } else {
+        note.hidden = true;
+      }
+    }
+  }
+
+  function getSavedPlatform() {
+    try {
+      return localStorage.getItem(PLATFORM_KEY);
+    } catch {
+      return null;
+    }
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-platform-select]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.platformSelect ?? null;
+      const current = getSavedPlatform();
+      const next = current === id ? null : id; // 다시 누르면 선택 해제
+      try {
+        if (next) localStorage.setItem(PLATFORM_KEY, next);
+        else localStorage.removeItem(PLATFORM_KEY);
+      } catch {
+        // storage unavailable - selection just won't persist, no need to surface an error
+      }
+      applyPlatformSelection(next);
+    });
+  });
+  applyPlatformSelection(getSavedPlatform());
 
   syncClock();
   setInterval(syncClock, 60000);

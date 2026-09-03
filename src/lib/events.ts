@@ -106,6 +106,19 @@ export interface FanChantGuideEntry {
   note?: string;
 }
 
+// Editorial call on which lineup act is generating the most buzz right now for a
+// festival - grounded in a real, citable signal (a promoter's own "메인
+// 헤드라이너" billing, a genuine news/화제성 spike, a sold-out previous stop),
+// never a guess dressed up as fact. `act` should match a string in
+// `lineup`/`lineupByDay` exactly so the lineup list can visually flag it.
+// Leave unset for most festivals - most should stay unset until a real signal
+// is found (same convention as ticketingDifficulty/crowdOutlook).
+export interface FestivalHighlightAct {
+  act: string;
+  reason: string; // short, sourced note on why this act is the pick
+  sourceUrl?: string;
+}
+
 // A single earlier real-world edition of a recurring event (annual festival, tour
 // series, etc.), used to build a "지난 회차와 비교" section. Only include editions
 // with at least one verified real data point (attendance, lineup, or a notable
@@ -258,6 +271,16 @@ export interface ConcertEvent {
   // Leave unset for the vast majority of events; FanChantGuide.astro always
   // renders its own generic search links regardless of whether this is set.
   fanChantGuide?: FanChantGuideEntry[];
+  // ISO date (yyyy-mm-dd) of the last time a real fan-chant/응원법 guide was
+  // actively searched for this event - set by the fanchant-watch routine (see
+  // scripts/fanchant-watch-list.mjs). Only meaningful while `fanChantGuide` is
+  // still empty; stop updating once it has real data. Mirrors merchCheckedAt/
+  // enrichmentCheckedAt.
+  fanChantGuideCheckedAt?: string;
+  // Real, sourced picks for "지금 가장 화제인" acts in this festival's lineup -
+  // see FestivalHighlightAct for sourcing rules. Leave unset for the vast
+  // majority of festivals.
+  festivalHighlight?: FestivalHighlightAct[];
   // ISO date (yyyy-mm-dd) of the last time MD/굿즈 info was actively checked
   // for this event (notice page + web search, and the known SNS account if
   // within the D-30 window) - set by the merch-watch routine. Lets it skip
@@ -384,6 +407,23 @@ export const TICKETING_DIFFICULTY_LABEL: Record<'hard' | 'normal' | 'easy', stri
 
 export function hasTicketsOnSale(event: ConcertEvent): boolean {
   return allTicketLinks(event).length > 0;
+}
+
+// Which lineup acts (if any) are flagged as this festival's real, sourced
+// "지금 화제인" pick(s) - see FestivalHighlightAct. Returns a Set for O(1)
+// lookup while rendering the lineup list.
+export function festivalHighlightSet(event: ConcertEvent): Set<string> {
+  return new Set((event.festivalHighlight ?? []).map((h) => h.act));
+}
+
+// Whether this show is "화제" (buzzing) enough to earn extra visual emphasis on
+// cards/rails. Deliberately reuses signals that are already editorially
+// grounded elsewhere on the page (a real 피케팅-difficulty call, or a sourced
+// festivalHighlight pick) instead of introducing a brand-new unsourced flag -
+// see ticketingDifficulty/FestivalHighlightAct for the sourcing bar each one
+// has to clear before it's ever set.
+export function isBuzzing(event: ConcertEvent): boolean {
+  return event.ticketingDifficulty === 'hard' || (event.festivalHighlight?.length ?? 0) > 0;
 }
 
 // True when we have at least one verified prior edition to compare against.

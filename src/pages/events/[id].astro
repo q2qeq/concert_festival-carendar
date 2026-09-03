@@ -13,7 +13,7 @@ import TicketBooking from '../../components/TicketBooking.astro';
 import FanChantGuide from '../../components/FanChantGuide.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
-import { events, festivalLineupDays, allTicketLinks } from '../../lib/events';
+import { events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -90,6 +90,8 @@ const LINEUP_PREVIEW_COUNT = 6;
 const lineupDays = festivalLineupDays(event);
 const lineupTotal = lineupDays.reduce((sum, d) => sum + d.acts.length, 0);
 const isFestival = event.genre === '페스티벌';
+const highlightSet = festivalHighlightSet(event);
+const buzzing = isBuzzing(event);
 
 // 이 공연 페이지에 실제로 존재하는 섹션만 골라 오른쪽 목차(TOC)를 만든다 -
 // 이벤트마다 보유 정보가 달라서 하드코딩된 고정 목록을 쓰면 빈 링크가 생긴다.
@@ -187,7 +189,8 @@ const jsonLd = {
       />
     )}
 
-    <header class="event-header">
+    <header class={`event-header${buzzing ? ' is-buzzing' : ''}`}>
+      {buzzing && <span class="buzz-ribbon">🔥 화제의 공연</span>}
       <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
       <div>
         <h1>{event.artist}</h1>
@@ -282,6 +285,17 @@ const jsonLd = {
     {isFestival && (
       <section class="lineup-section" id="lineup">
         <h2>라인업{lineupTotal > 0 ? ` (${lineupTotal}팀)` : ''}</h2>
+        {event.festivalHighlight && event.festivalHighlight.length > 0 && (
+          <div class="lineup-highlight-strip">
+            <p class="lineup-highlight-kicker">🔥 지금 가장 화제인 라인업</p>
+            {event.festivalHighlight.map((h) => (
+              <div class="lineup-highlight-item">
+                <span class="lineup-highlight-act">{h.act}</span>
+                <span class="lineup-highlight-reason">{h.reason}</span>
+              </div>
+            ))}
+          </div>
+        )}
         {lineupDays.length > 0 ? (
           <div class="lineup-days">
             {lineupDays.map((day) => (
@@ -296,12 +310,22 @@ const jsonLd = {
                       <span class="lineup-toggle-hint">전체 라인업 보기</span>
                     </summary>
                     <ul class="lineup-list">
-                      {day.acts.map((artist) => <li>{artist}</li>)}
+                      {day.acts.map((artist) => (
+                        <li class={highlightSet.has(artist) ? 'is-highlight' : ''}>
+                          {highlightSet.has(artist) && <span class="lineup-star" aria-hidden="true">★</span>}
+                          {artist}
+                        </li>
+                      ))}
                     </ul>
                   </details>
                 ) : (
                   <ul class="lineup-list">
-                    {day.acts.map((artist) => <li>{artist}</li>)}
+                    {day.acts.map((artist) => (
+                      <li class={highlightSet.has(artist) ? 'is-highlight' : ''}>
+                        {highlightSet.has(artist) && <span class="lineup-star" aria-hidden="true">★</span>}
+                        {artist}
+                      </li>
+                    ))}
                   </ul>
                 )}
               </div>
@@ -453,6 +477,25 @@ const jsonLd = {
   .breadcrumb a { color: #a9a4c9; font-size: 0.9rem; text-decoration: none; }
   .event-header { display: flex; align-items: center; gap: 1.25rem; margin: 1.5rem 0; }
   .dday-badge.big { font-size: 0.95rem; padding: 0.4rem 0.75rem; min-width: 3.75rem; }
+  .event-header { position: relative; flex-wrap: wrap; }
+  .event-header.is-buzzing {
+    padding: 1rem 1.1rem 0.85rem;
+    background: linear-gradient(120deg, rgba(255, 95, 162, 0.16), rgba(255, 209, 102, 0.08));
+    border: 1px solid rgba(255, 95, 162, 0.35);
+    border-radius: 16px;
+  }
+  .buzz-ribbon {
+    position: absolute;
+    top: -0.7rem;
+    left: 1rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #101018;
+    background: linear-gradient(120deg, #ffd166, #ff5fa2);
+    padding: 0.28rem 0.75rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(255, 95, 162, 0.35);
+  }
   h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
   .meta { margin: 0; color: #f5f3ff; font-weight: 600; font-size: 1.02rem; }
   .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.85rem; }
@@ -596,6 +639,29 @@ const jsonLd = {
   .lineup-details[open] summary { border-radius: 8px 8px 0 0; margin-bottom: 0.75rem; }
   .lineup-details .lineup-list { padding: 0 0.25rem; }
   .lineup-pending { color: #a9a4c9; font-size: 0.9rem; margin: 0; }
+  .lineup-highlight-strip {
+    margin: 0 0 1rem;
+    padding: 0.85rem 1rem;
+    background: linear-gradient(120deg, rgba(255, 95, 162, 0.14), rgba(255, 209, 102, 0.07));
+    border: 1px solid rgba(255, 95, 162, 0.3);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .lineup-highlight-kicker { margin: 0; font-size: 0.8rem; font-weight: 800; color: #ffd166; }
+  .lineup-highlight-item { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+  .lineup-highlight-act {
+    font-weight: 800;
+    font-size: 1.02rem;
+    color: #fff;
+    background: rgba(255, 95, 162, 0.25);
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+  }
+  .lineup-highlight-reason { color: #e5e2f7; font-size: 0.88rem; }
+  .lineup-list li.is-highlight { color: #ffd7e9; font-weight: 700; }
+  .lineup-star { color: #ffd166; margin-right: 0.15rem; }
 
   /* Right-side page TOC - desktop only; on narrower viewports the article
      column plus its margins don't leave safe space for a fixed rail. */

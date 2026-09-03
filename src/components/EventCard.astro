@@ -1,6 +1,6 @@
 ---
 import type { ConcertEvent } from '../lib/events';
-import { hasRecentUpdate, hasTicketsOnSale, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+import { hasRecentUpdate, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -19,8 +19,9 @@ const STATUS_LABEL: Record<string, string> = {
 };
 const isFresh = hasRecentUpdate(event);
 const onSale = hasTicketsOnSale(event);
+const buzzing = isBuzzing(event);
 ---
-<a class={`event-card${status !== 'scheduled' ? ' is-' + status : ''}`} href={`/events/${event.id}/`}>
+<a class={`event-card${status !== 'scheduled' ? ' is-' + status : ''}${buzzing ? ' is-buzzing' : ''}`} href={`/events/${event.id}/`}>
   {event.posterUrl && (
     <img class="thumb" src={event.posterUrl} alt="" loading="lazy" width="60" height="82" />
   )}
@@ -30,6 +31,7 @@ const onSale = hasTicketsOnSale(event);
     <p class="meta"><strong class="meta-date">{dateLabel}</strong> · <strong class="meta-venue">{event.venue}</strong> ({event.city}) · {event.genre}</p>
   </div>
   <div class="tags">
+    {buzzing && <span class="buzz-tag">🔥 화제</span>}
     {isFresh && <span class="fresh-tag">새 소식</span>}
     {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
     {status === 'scheduled' && onSale && <span class="ticket-tag">예매 가능</span>}
@@ -86,6 +88,20 @@ const onSale = hasTicketsOnSale(event);
   }
   @media (max-width: 420px) {
     .thumb { width: 48px; height: 66px; }
+  }
+  .event-card.is-buzzing {
+    background: linear-gradient(100deg, rgba(255, 95, 162, 0.1), rgba(255, 209, 102, 0.05));
+    border-bottom-color: rgba(255, 95, 162, 0.35);
+  }
+  .event-card.is-buzzing:hover { background: linear-gradient(100deg, rgba(255, 95, 162, 0.16), rgba(255, 209, 102, 0.08)); }
+  .buzz-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #101018;
+    background: linear-gradient(120deg, #ffd166, #ff5fa2);
+    padding: 0.22rem 0.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
   }
   .event-card.is-postponed,
   .event-card.is-cancelled { opacity: 0.6; }

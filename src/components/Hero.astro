@@ -1,28 +1,60 @@
 ---
-import { spotlightEvents, hasTicketsOnSale, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+import { spotlightEvents, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
 import Mascot from './Mascot.astro';
 
 const picks = spotlightEvents(6);
+
+// 랜딩 화면에서 처음 들어온 사람이 "이 사이트가 뭘 해주는지" 바로 알 수 있도록,
+// 직관냥이 말하는 말풍선 안에서 기능을 소개한다 (기존에 말풍선 아래 따로 있던
+// FeatureHighlights 박스 그리드를 대체 - 상세 페이지에서 실제로 렌더링되는
+// 기능만 나열한다. 과장하거나 아직 데이터가 안 채워진 기능은 넣지 않는다).
+const features = [
+  { tag: '예매', text: '여러 판매처를 한 곳에' },
+  { tag: '시야', text: '구역별 실제 시야 검색' },
+  { tag: '셔틀', text: '3사 셔틀 정보 항상 확인' },
+  { tag: '공연장', text: '오시는 길·주차·맛집' },
+  { tag: '캘린더', text: '버튼 하나로 일정 등록' },
+  { tag: '셋리스트', text: '지난 투어 셋리스트 미리보기' },
+  { tag: '떼창·콜', text: '가이드 영상 바로 검색' },
+  { tag: '업데이트', text: '취소·연기·변경 타임라인' },
+];
 
 function fmt(iso: string) {
   const d = new Date(iso + 'T00:00:00');
   return `${d.getMonth() + 1}.${d.getDate()}`;
 }
 ---
+<section class="hero-intro-section">
+  <div class="hero-intro">
+    <Mascot size={104} />
+    <div class="hero-bubble">
+      <p class="hero-bubble-kicker">직관냥이 알려주는 이 사이트 사용법</p>
+      <p class="hero-bubble-text">공연 하나만 눌러도 예매·시야·셔틀·캘린더·셋리스트·떼창가이드까지 다 나온다냥. 뭐가 있는지 한눈에 보자면 —</p>
+      <div class="hero-feature-chips">
+        {features.map((f) => (
+          <span class="hero-feature-chip">
+            <strong>{f.tag}</strong>
+            <span>{f.text}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
 {picks.length > 0 && (
   <section class="hero" id="picks">
-    <div class="hero-intro">
-      <Mascot size={104} />
-      <div class="hero-bubble">
-        <p class="hero-bubble-kicker">직관냥이 오늘 물어온 소식</p>
-        <p class="hero-bubble-text">티켓오픈 임박했거나 화제인 공연부터 모아봤다냥. 놓치면 피눈물!</p>
-      </div>
+    <div class="hero-rail-head">
+      <h2>🔥 티켓오픈 임박 · 화제 공연</h2>
+      <p>놓치면 피눈물! 직관냥이 오늘 물어온 소식부터 모아봤다냥.</p>
     </div>
     <div class="hero-rail">
       {picks.map((e, i) => {
         const onSale = hasTicketsOnSale(e);
+        const buzzing = isBuzzing(e);
         return (
-          <a class="hero-card" href={`/events/${e.id}/`}>
+          <a class={`hero-card${buzzing ? ' is-buzzing' : ''}`} href={`/events/${e.id}/`}>
+            {buzzing && <span class="hero-buzz-ribbon">🔥 화제</span>}
             <div class="hero-card-poster-wrap">
               <div class="hero-card-glow" style={`background-image:url(${e.posterUrl})`}></div>
               <img
@@ -60,28 +92,58 @@ function fmt(iso: string) {
   </section>
 )}
 <style>
-  .hero { margin: 0 0 2.25rem; scroll-margin-top: 5rem; }
+  .hero-intro-section { margin: 0 0 1.75rem; }
   .hero-intro {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 0.85rem;
-    margin-bottom: 1rem;
   }
   .hero-bubble {
     position: relative;
-    background: var(--card);
+    flex: 1;
+    min-width: 0;
+    background: linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255, 95, 162, 0.05));
     border: 1px solid rgba(255, 95, 162, 0.25);
-    border-radius: 16px 16px 16px 4px;
-    padding: 0.7rem 1rem;
+    border-radius: 18px 18px 18px 4px;
+    padding: 0.9rem 1.1rem 1rem;
   }
   .hero-bubble-kicker {
-    margin: 0 0 0.15rem;
-    font-size: 0.78rem;
-    font-weight: 700;
+    margin: 0 0 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 800;
     color: #ff8fbe;
     letter-spacing: -0.01em;
   }
-  .hero-bubble-text { margin: 0; font-size: 0.95rem; color: var(--fg); }
+  .hero-bubble-text { margin: 0 0 0.75rem; font-size: 0.96rem; color: var(--fg); line-height: 1.55; }
+  .hero-feature-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .hero-feature-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    color: #d8d5ef;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .hero-feature-chip strong { color: #6ee7ff; font-weight: 800; }
+  @media (max-width: 560px) {
+    .hero-intro { align-items: flex-start; }
+    .hero-bubble { border-radius: 16px; }
+    .hero-feature-chips { gap: 0.35rem; }
+    .hero-feature-chip { font-size: 0.72rem; padding: 0.26rem 0.55rem; }
+  }
+
+  .hero { margin: 0 0 2.25rem; scroll-margin-top: 5rem; }
+  .hero-rail-head { margin-bottom: 0.9rem; }
+  .hero-rail-head h2 { margin: 0 0 0.2rem; font-size: 1.1rem; letter-spacing: -0.01em; }
+  .hero-rail-head p { margin: 0; color: var(--muted); font-size: 0.88rem; }
   .hero-rail {
     display: flex;
     gap: 0.9rem;
@@ -101,9 +163,28 @@ function fmt(iso: string) {
     overflow: hidden;
     background: var(--card);
     box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    transition: transform 0.15s;
+    transition: transform 0.18s, box-shadow 0.18s;
   }
-  .hero-card:hover { transform: translateY(-3px); }
+  .hero-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.45); }
+  .hero-card.is-buzzing {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 1.5px rgba(255, 95, 162, 0.55);
+  }
+  .hero-card.is-buzzing:hover {
+    box-shadow: 0 14px 32px rgba(0,0,0,0.45), 0 0 0 1.5px rgba(255, 95, 162, 0.75);
+  }
+  .hero-buzz-ribbon {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #101018;
+    background: linear-gradient(120deg, #ffd166, #ff5fa2);
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(255, 95, 162, 0.4);
+  }
   .hero-card-poster-wrap {
     position: relative;
     aspect-ratio: 1 / 1;

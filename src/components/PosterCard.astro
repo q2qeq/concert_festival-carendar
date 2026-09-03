@@ -1,0 +1,161 @@
+---
+// 인스타그램 감성의 세로형 포스터 카드 - 홈 화면 "전체 일정" 리스팅용.
+// 가로 한 줄짜리 EventCard 대신 포스터를 크게 보여줘서 보는 재미를 준다.
+// 포스터가 아직 없는 공연은 "준비중" 플레이스홀더를 항상 같은 자리에 보여준다
+// (조용히 숨기지 않음 - 나중에 포스터가 채워지면 자동으로 바뀐다).
+import type { ConcertEvent } from '../lib/events';
+import { hasRecentUpdate, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+interface Props { event: ConcertEvent }
+const { event } = Astro.props;
+
+function fmt(iso: string) {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()}`;
+}
+const dateLabel = event.startDate === event.endDate
+  ? fmt(event.startDate)
+  : `${fmt(event.startDate)} - ${fmt(event.endDate)}`;
+
+const status = event.status ?? 'scheduled';
+const STATUS_LABEL: Record<string, string> = {
+  postponed: '연기',
+  cancelled: '취소',
+};
+const isFresh = hasRecentUpdate(event);
+const onSale = hasTicketsOnSale(event);
+const buzzing = isBuzzing(event);
+---
+<a
+  class={`poster-card${status !== 'scheduled' ? ' is-' + status : ''}${buzzing ? ' is-buzzing' : ''}`}
+  href={`/events/${event.id}/`}
+>
+  <div class="poster-card-frame">
+    {event.posterUrl ? (
+      <img class="poster-card-img" src={event.posterUrl} alt="" loading="lazy" width="300" height="420" />
+    ) : (
+      <div class="poster-card-placeholder">
+        <span class="poster-card-placeholder-icon" aria-hidden="true">🎫</span>
+        <span>포스터 준비중</span>
+      </div>
+    )}
+    <div class="dday-badge poster-dday" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
+    {buzzing && <span class="poster-buzz-tag">🔥 화제</span>}
+    <button
+      class="bookmark-btn poster-bookmark"
+      data-bookmark-id={event.id}
+      aria-label={`${event.artist} 찜하기`}
+      aria-pressed="false"
+    >♡</button>
+  </div>
+  <div class="poster-card-body">
+    <h3>{event.artist}</h3>
+    <p class="poster-card-meta">{dateLabel} · {event.venue}</p>
+    <div class="poster-card-tags">
+      {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
+      {status === 'scheduled' && onSale && <span class="ticket-tag">예매 가능</span>}
+      {status === 'scheduled' && !onSale && event.ticketingAnnounced && <span class="announced-tag">티켓오픈 예정</span>}
+      {isFresh && <span class="fresh-tag">새 소식</span>}
+      {event.ticketingDifficulty && (
+        <span class={`difficulty-tag difficulty-${event.ticketingDifficulty}`}>{DIFFICULTY_LABEL[event.ticketingDifficulty]}</span>
+      )}
+    </div>
+  </div>
+</a>
+<style>
+  .poster-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--card);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .poster-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,0.4); }
+  .poster-card:hover h3 { color: #ff5fa2; }
+  .poster-card.is-buzzing { box-shadow: 0 6px 18px rgba(0,0,0,0.3), 0 0 0 1.5px rgba(255,95,162,0.5); }
+  .poster-card.is-buzzing:hover { box-shadow: 0 12px 26px rgba(0,0,0,0.4), 0 0 0 1.5px rgba(255,95,162,0.7); }
+  .poster-card-frame {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    background: rgba(255,255,255,0.04);
+  }
+  .poster-card-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .poster-card-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    height: 100%;
+    color: #7d78a0;
+    font-size: 0.82rem;
+    font-weight: 600;
+    background: repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 10px, rgba(255,255,255,0.015) 10px 20px);
+  }
+  .poster-card-placeholder-icon { font-size: 1.8rem; opacity: 0.6; }
+  .poster-dday {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: rgba(16, 16, 24, 0.78);
+    backdrop-filter: blur(2px);
+  }
+  .poster-buzz-tag {
+    position: absolute;
+    top: 0.5rem;
+    right: 2.4rem;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #101018;
+    background: linear-gradient(120deg, #ffd166, #ff5fa2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .poster-bookmark {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.35rem;
+    background: rgba(16,16,24,0.55);
+    border-radius: 50%;
+    width: 1.9rem;
+    height: 1.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .poster-card.is-postponed .poster-card-frame,
+  .poster-card.is-cancelled .poster-card-frame { opacity: 0.55; }
+  .poster-card.is-cancelled h3 { text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.6); }
+  .poster-card-body { padding: 0.65rem 0.15rem 0.2rem; }
+  .poster-card-body h3 {
+    margin: 0 0 0.2rem;
+    font-size: 0.94rem;
+    line-height: 1.3;
+    transition: color 0.15s;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .poster-card-meta { margin: 0 0 0.4rem; color: #a9a4c9; font-size: 0.8rem; }
+  .poster-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .ticket-tag, .announced-tag, .fresh-tag, .status-tag, .difficulty-tag {
+    font-size: 0.65rem;
+    padding: 0.16rem 0.45rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .ticket-tag { color: #6ee7ff; border: 1px solid rgba(110,231,255,0.4); }
+  .announced-tag { color: #6ee7ff; border: 1px dashed rgba(110,231,255,0.5); }
+  .fresh-tag { font-weight: 700; color: #101018; background: linear-gradient(120deg, #ff5fa2, #ff8fbe); }
+  .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); }
+  .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); }
+  .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); }
+  .difficulty-normal { color: #7ed957; border: 1px solid rgba(126,217,87,0.4); }
+  .difficulty-easy { color: #ffd166; border: 1px solid rgba(255,209,102,0.4); }
+</style>

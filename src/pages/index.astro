@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import EventCard from '../components/EventCard.astro';
+import PosterCard from '../components/PosterCard.astro';
 import Hero from '../components/Hero.astro';
-import FeatureHighlights from '../components/FeatureHighlights.astro';
 import AdSlot from '../components/AdSlot.astro';
 import { upcomingEvents, allGenres, allCities, monthLabel } from '../lib/events';
 import { SITE_TITLE } from '../consts';
@@ -26,8 +25,6 @@ for (const e of events) {
   <h1 class="visually-hidden">{SITE_TITLE}</h1>
 
   <Hero />
-
-  <FeatureHighlights />
 
   <nav class="quicknav" aria-label="바로가기">
     <a href="#find">공연 찾기</a>
@@ -85,11 +82,13 @@ for (const e of events) {
     {groups.map((group) => (
       <div class="month-group">
         <h3>{group.label}</h3>
-        {group.items.map((e) => (
-          <div class="card-wrap" data-genre={e.genre} data-city={e.city} data-id={e.id}>
-            <EventCard event={e} />
-          </div>
-        ))}
+        <div class="poster-grid">
+          {group.items.map((e) => (
+            <div class="card-wrap" data-genre={e.genre} data-city={e.city} data-id={e.id}>
+              <PosterCard event={e} />
+            </div>
+          ))}
+        </div>
       </div>
     ))}
 
@@ -228,35 +227,35 @@ for (const e of events) {
     scroll-margin-top: 5rem;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
-    padding: 1.25rem 1.25rem 1.4rem;
-    margin-bottom: 2rem;
+    border-radius: 14px;
+    padding: 0.85rem 0.95rem 0.95rem;
+    margin-bottom: 1.5rem;
   }
   .finder h2 {
-    margin: 0 0 1rem;
-    font-size: 1rem;
+    margin: 0 0 0.65rem;
+    font-size: 0.85rem;
     color: var(--fg);
   }
-  .filter-group { margin-bottom: 1.1rem; }
+  .filter-group { margin-bottom: 0.65rem; }
   .filter-group:last-of-type { margin-bottom: 0; }
   .filter-caption {
-    font-size: 0.72rem;
+    font-size: 0.66rem;
     color: #7d78a0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    margin: 0 0 0.4rem;
+    margin: 0 0 0.3rem;
   }
-  .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .search-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.1rem; }
+  .filters { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .search-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.75rem; }
   .search-input {
     flex: 1;
-    min-width: 200px;
+    min-width: 180px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.14);
     color: #f5f3ff;
-    padding: 0.55rem 0.9rem;
+    padding: 0.4rem 0.75rem;
     border-radius: 999px;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
   }
   .search-input::placeholder { color: #7d78a0; }
   .fav-toggle.active { background: #ff5fa2; border-color: #ff5fa2; color: #101018; font-weight: 700; }
@@ -264,9 +263,9 @@ for (const e of events) {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
     color: #d8d5ef;
-    padding: 0.4rem 0.9rem;
+    padding: 0.3rem 0.7rem;
     border-radius: 999px;
-    font-size: 0.85rem;
+    font-size: 0.76rem;
     cursor: pointer;
   }
   .chip.active { background: #ff5fa2; border-color: #ff5fa2; color: #101018; font-weight: 700; }
@@ -281,6 +280,13 @@ for (const e of events) {
   .listing-header h2 { margin: 0; font-size: 1.3rem; }
   .listing-count { color: var(--muted); font-size: 0.85rem; }
   .month-group { margin-top: 2rem; }
-  .month-group h3 { font-size: 1.05rem; font-weight: 700; color: #a9a4c9; margin-bottom: 0.25rem; }
+  .month-group h3 { font-size: 1.05rem; font-weight: 700; color: #a9a4c9; margin-bottom: 0.7rem; }
+  .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem 0.85rem;
+  }
+  @media (min-width: 640px) { .poster-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 900px) { .poster-grid { grid-template-columns: repeat(4, 1fr); gap: 1.3rem 1rem; } }
   .empty { color: var(--muted); }
 </style>
