@@ -1711,7 +1711,66 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
+    "funFacts": [
+      "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
+      "CNBLUE·송골매 같은 국내 대형 밴드부터 WOODZ·Xdinary Heroes 같은 아이돌 밴드까지, 1·2차 합쳐 39팀이 확정됐어요.",
+      "일본의 Suchmos·Hitsujibungaku, 인도네시아의 Ardhito Pramono 등 아시아권 아티스트도 다수 포함돼 있어요."
+    ],
+    "lineup": [
+      "Avenged Sevenfold",
+      "메가데스",
+      "Suchmos",
+      "Hitsujibungaku",
+      "CNBLUE",
+      "송골매",
+      "이승윤",
+      "잔나비",
+      "터치드",
+      "한로로",
+      "DYGL",
+      "Xdinary Heroes",
+      "WOODZ",
+      "너드커넥션",
+      "카더가든",
+      "Dragon Pony",
+      "Ardhito Pramono",
+      "스카웨이커스",
+      "고고학",
+      "오월오일",
+      "극동아시아타이거즈",
+      "김뜻돌",
+      "오이스터즈",
+      "까치산",
+      "공원",
+      "김성규",
+      "다다다",
+      "레이지본",
+      "로맨틱펀치",
+      "Redoor",
+      "밴드기린",
+      "Spacey Jane",
+      "양치기소년단",
+      "이츠",
+      "KARDI",
+      "캔트비블루",
+      "페퍼톤스",
+      "프랭클리",
+      "한요한",
+      "hathaw9y"
+    ],
+    "sources": [
+      {
+        "label": "부산국제록페스티벌 공식 - 1차 라인업 공지",
+        "url": "https://busanrockfestival.com/notice/2026notice_05/"
+      },
+      {
+        "label": "부산국제록페스티벌 공식 - 2차 라인업 공지",
+        "url": "https://busanrockfestival.com/notice/2026notice_08/"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "shuttle-yuuri-live-seoul-2026-12",
@@ -1855,12 +1914,8 @@
     "note": "'2026 &TEAM CONCERT TOUR BLAZE THE WAY' 앙코르 공연. 예매 시 본인인증 계정 필요(양도 방지). 셔틀 스캔 자동화가 NCT127·EXO의 KSPO DOME 표기와 '동일 공연'으로 잘못 판단해 누락했던 건을 재조사해 직접 추가했습니다 (날짜가 서로 다른 별개 공연으로 확인됨: &TEAM 10/3~4, NCT127 9/18~20, EXO는 이미 지난 4/10~12).",
     "sources": [
       {
-        "label": "2026 &TEAM Concert Tour Encore at KSPO DOME - NOL World",
-        "url": "https://world.nol.com/en/content/articles/5c238bea-c186-41ae-843d-bafde5727cd1"
-      },
-      {
-        "label": "&TEAM 2nd Mini Album·KSPO Dome 콘서트 동시 발표 - 스포츠경향",
-        "url": "https://sports.khan.co.kr/en/article/202607061916007/"
+        "label": "K-POP Ticket Navi - &TEAM Live 2026 | BLAZE THE WAY Tour 전체 가이드",
+        "url": "https://kpop-ticket.com/en/articles/andteam-concert-guide-2026"
       }
     ],
     "officialSns": [
@@ -1870,7 +1925,15 @@
       }
     ],
     "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/75",
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "officialUrl": "https://weverse.io/andteam",
+    "description": "&TEAM의 첫 대형 아시아 투어 'BLAZE THE WAY'의 서울 앙코르 공연. 원래 투어 일정(인천 인스파이어)에 이어 수요에 따라 KSPO DOME 공연이 추가됐다.",
+    "funFacts": [
+      "이번 투어는 &TEAM 데뷔(2023년) 이후 최대 규모예요 - 일본 9개 도시를 포함해 아시아 주요 도시를 도는 17회 공연입니다.",
+      "'앙코르(Encore)' 공연이라는 이름 그대로, 원래 잡혀있던 인천 인스파이어 공연 외에 추가로 편성된 무대예요 - 그만큼 수요가 컸다는 뜻이죠.",
+      "일본 아레나 투어에서 시작해 한국·대만·홍콩·태국·싱가포르로 확장하는 동선이라, HYBE가 아시아 시장을 겨냥해 키우는 그룹이라는 평가를 받고 있어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "riize-3rd-anniversary-fanmeeting-2026-09",
@@ -1951,8 +2014,12 @@
     "note": "마틴 개릭스, 일레니엄 등 라인업이 확정됐습니다. 같은 주말 파라다이스시티에서 열리는 XMF 2026과는 별개 행사입니다.",
     "sources": [
       {
-        "label": "EDC Korea 공식 사이트",
-        "url": "https://korea.edc.com/en/"
+        "label": "CBC뉴스 - 'EDC 코리아 2026', 전체 라인업 최초 공개…에이티즈 홍중 솔로 출격",
+        "url": "https://www.cbci.co.kr/news/articleView.html?idxno=582559"
+      },
+      {
+        "label": "bandwagon.asia - EDC Korea unveils 2026 lineup",
+        "url": "https://www.bandwagon.asia/articles/edc-korea-unveils-2026-lineup-dj-snake-ti-sto-fisher-alok-illenium-b2b-dabin-sara-landry-more"
       }
     ],
     "officialSns": [
@@ -1961,7 +2028,26 @@
         "url": "https://www.instagram.com/edc_korea/"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
+    "funFacts": [
+      "에이티즈의 홍중이 'NOWON'이라는 솔로 아티스트 이름으로 처음 페스티벌 무대에 올라요 - K팝 아이돌이 EDM 페스티벌 라인업에 서는 흔치 않은 사례예요.",
+      "3회째를 맞으며 개최 시기를 4월에서 10월로 옮겼어요. 개천절 연휴와 중국 황금연휴 기간에 맞춰 해외 관객 접근성을 높이려는 전략으로 보여요.",
+      "티에스토·DJ 스네이크·일리네어(ILLENIUM) b2b DABIN·피셔(FISHER)·알록(Alok) 등 4개 스테이지에 세계적 DJ들이 나눠 오릅니다."
+    ],
+    "lineup": [
+      "Tiësto",
+      "DJ Snake",
+      "ILLENIUM b2b DABIN",
+      "FISHER",
+      "Alok",
+      "Subtronics",
+      "R3HAB",
+      "Kayzo",
+      "Sara Landry",
+      "홍중 (NOWON)"
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "fkj-tyber-tour-korea-2026-12",
@@ -2123,14 +2209,22 @@
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). 현대카드 슈퍼콘서트 28, 8년 만의 내한 공연.",
     "sources": [
       {
-        "label": "현대카드, 28번째 슈퍼콘서트 주인공 '위켄드(The Weeknd)' - 중앙이코노미뉴스",
-        "url": "https://www.joongangenews.com/news/articleView.html?idxno=518387"
+        "label": "한국연예스포츠신문 - 2026 현대카드 슈퍼콘서트 주인공 '위켄드'...8년만의 한국 내한",
+        "url": "https://www.koreaes.com/news/articleView.html?idxno=404202"
       },
       {
-        "label": "더 위켄드가 돌아온다, 8년 만의 내한 공연 개최 - 마리끌레르 코리아",
-        "url": "https://www.marieclairekorea.com/culture/music/2026/05/the-weeknd/"
+        "label": "스타뉴스 - 위켄드, 10월 내한 확정..10만 명 규모 '슈퍼콘서트' 출격",
+        "url": "https://www.starnewskorea.com/star/2026/05/11/2026051112293239131"
       }
-    ]
+    ],
+    "officialUrl": "https://www.theweeknd.com/",
+    "description": "8년 만에 한국을 찾는 위켄드(The Weeknd)의 현대카드 슈퍼콘서트28. 고양종합운동장에서 10만 명 규모로 열린다.",
+    "funFacts": [
+      "현대카드 슈퍼콘서트 역사상 10만 명 규모로 열리는 건 이번이 세 번째예요 - 2017년 콜드플레이, 2023년 브루노 마스에 이어서요.",
+      "위켄드가 한국에서 공연하는 건 8년 만이에요. 그만큼 오래 기다린 팬들이 많아 스탠딩석 기준 최대 46만9천원까지 가격대가 형성돼 있어요.",
+      "이틀(10/7·10/8) 연속 공연이라, 하루만 볼지 이틀 다 볼지 고민하는 팬들도 많아요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
