@@ -2157,6 +2157,10 @@
       {
         "label": "싱글리스트 - 기무라 타쿠야, 첫 내한 공연 29일 티켓 오픈",
         "url": "https://www.slist.kr/news/articleView.html?idxno=742814"
+      },
+      {
+        "label": "기무라 타쿠야, 오는 9월 단독 내한 공연 - ABC뉴스",
+        "url": "https://www.abcn.kr/news/articleView.html?idxno=88470"
       }
     ],
     "description": "'일본 원빈'이라 불리는 기무라 타쿠야의 데뷔 38년 만의 첫 공식 내한 공연. 솔로 전향 후 첫 아시아 투어의 핵심 거점이다.",
@@ -2165,7 +2169,8 @@
       "38년 경력에 이번이 첫 공식 내한이에요. 그만큼 오랜 팬들에게는 놓칠 수 없는 자리라, 온라인 단독 예매인데도 피켓팅이 예상돼요.",
       "유재석이 그의 드라마를 '홀린 듯이 전편을 클리어했다'고 언급했을 만큼, 팬층이 세대를 넘나들어요."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg"
   },
   {
     "id": "edc-korea-2026",
@@ -2299,7 +2304,8 @@
       }
     ],
     "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213646",
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.newscj.com/news/photo/202608/3422260_3532965_5915.jpg"
   },
   {
     "id": "the-grateful-camp-2026-09",
@@ -2332,7 +2338,8 @@
       "올해로 5회째를 맞는 신안군의 관광 활성화 연계 행사예요. 대형 페스티벌과는 결이 다른, 소규모 부티크 캠핑 축제를 지향한다고 주최측이 직접 밝히고 있어요.",
       "사카모토 신타로(일본 사이키델릭 음악가)·Your Song Is Good 같은 해외 라인업과 장기하·강산에 같은 국내 뮤지션이 한 무대에 서요."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://www.jeonmae.co.kr/news/photo/202608/1288087_1014812_5457.jpg"
   },
   {
     "id": "lim-youngwoong-im-hero-stadium2-2026-09",
