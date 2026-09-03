@@ -228,6 +228,12 @@ export interface ConcertEvent {
   // Human-readable ticket-open date/time when known ahead of the actual open
   // (e.g. "2026-09-01 오후 8시 (예정)"). Only for shows with ticketingAnnounced.
   ticketOpenDate?: string;
+  // Machine-readable ISO 8601 version of the same ticket-open moment (e.g.
+  // "2026-10-07T12:00:00+09:00"), only set when the source notice states an exact
+  // time. Powers the "티켓팅 시계로 준비하기" link on the event page (links to
+  // /ticketing-clock?open=...&artist=... for a synced countdown) - purely
+  // additive, ticketOpenDate above still carries the human-readable label.
+  ticketOpenAt?: string;
   // Editorial judgment on how hard tickets are to get, grounded in a real,
   // citable signal (e.g. a past/this-year sale selling out immediately, a
   // small venue vs a huge-demand artist). This is commentary, like
@@ -302,6 +308,8 @@ const GENRE_SLUG_MAP: Record<string, string> = {
   '팝/락': 'pop-rock',
   '팝/힙합': 'pop-hiphop',
   '재즈/내한': 'jazz',
+  '클래식': 'classical',
+  '버라이어티': 'variety',
 };
 const SLUG_TO_GENRE: Record<string, string> = Object.fromEntries(
   Object.entries(GENRE_SLUG_MAP).map(([genre, slug]) => [slug, genre])

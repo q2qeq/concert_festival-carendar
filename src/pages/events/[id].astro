@@ -206,6 +206,17 @@ const jsonLd = {
     {event.ticketingAnnounced && ticketLinks.length === 0 && (
       <p class="status-banner status-announced">
         티켓 오픈 예정 공연이에요{event.ticketOpenDate ? ` — 오픈: ${event.ticketOpenDate}` : ''}. 오픈되면 이 페이지에 바로 예매 링크를 추가할게요.
+        {event.ticketOpenAt && (
+          <>
+            {' '}
+            <a
+              class="clock-link"
+              href={`/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}`}
+            >
+              티켓팅 시계로 준비하기 →
+            </a>
+          </>
+        )}
       </p>
     )}
 
@@ -455,6 +466,8 @@ const jsonLd = {
   .status-postponed { background: rgba(255, 184, 76, 0.14); color: #ffb84c; }
   .status-cancelled { background: rgba(255, 95, 95, 0.14); color: #ff6b6b; }
   .status-announced { background: rgba(110, 231, 255, 0.14); color: #6ee7ff; }
+  .status-announced .clock-link { color: #ff5fa2; font-weight: 800; text-decoration: none; white-space: nowrap; }
+  .status-announced .clock-link:hover { text-decoration: underline; }
   .poster {
     display: block;
     width: 100%;

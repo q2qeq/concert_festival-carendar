@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="티켓팅 시계"
+  description="YES24·멜론티켓·인터파크·티켓링크 예매 전에 켜두는 정밀 동기화 시계. 내 기기 시계가 실제 시간과 얼마나 다른지 보정해서 밀리초 단위로 보여줘요."
+>
+  <h1>티켓팅 시계</h1>
+  <p class="intro">
+    내 PC·폰의 시계는 몇백 ms에서 몇 초까지 실제 시간과 어긋나 있을 수 있어요. 이 페이지는
+    인터넷 표준시 서버와 동기화한 정밀 시계를 보여줘서, 예매 오픈 순간에 맞춰 클릭할 수 있게
+    도와드려요. <strong>자동 예매·매크로가 아니라 수동 클릭을 도와주는 시계</strong>예요.
+  </p>
+
+  <div id="countdown-banner" class="countdown-banner" hidden>
+    <span id="cd-artist"></span> 티켓 오픈까지
+    <span id="cd-time" class="cd-time">--:--:--</span>
+  </div>
+
+  <div class="clock-card">
+    <div id="clock-display" class="clock-display" aria-live="off">--:--:--.---</div>
+    <div id="clock-date" class="clock-date"></div>
+    <div id="sync-status" class="sync-status">동기화하는 중...</div>
+  </div>
+
+  <details class="calibrate">
+    <summary>수동 보정 (동기화가 안 될 때)</summary>
+    <p class="calibrate-help">
+      아래에 정확하다고 믿는 시각(예: 폰 기본 시계 앱의 초 단위 시간)을 입력하고 그 순간에
+      바로 버튼을 누르면, 그 시각 기준으로 다시 맞춰요.
+    </p>
+    <div class="calibrate-row">
+      <input type="time" id="calibrate-input" step="1" />
+      <button type="button" id="calibrate-btn">지금 이 시각으로 맞추기</button>
+    </div>
+  </details>
+
+  <h2>바로 이동</h2>
+  <div class="platform-grid">
+    <a class="platform-btn" href="https://ticket.yes24.com" target="_blank" rel="noopener noreferrer">YES24 티켓 ↗</a>
+    <a class="platform-btn" href="https://ticket.melon.com" target="_blank" rel="noopener noreferrer">멜론티켓 ↗</a>
+    <a class="platform-btn" href="https://nol.interpark.com/ticket" target="_blank" rel="noopener noreferrer">인터파크(NOL) 티켓 ↗</a>
+    <a class="platform-btn" href="https://www.ticketlink.co.kr" target="_blank" rel="noopener noreferrer">티켓링크 ↗</a>
+  </div>
+
+  <p class="disclaimer">
+    시간은 공개 표준시 서버(timeapi.io)와 동기화해요. 동기화 요청도 네트워크를 거치는
+    이상 수십~수백 ms의 오차는 자연히 있을 수 있고, 각 예매 사이트 서버 자체의 시계가
+    표준시와 정확히 일치한다는 보장도 없어요(사이트별 오차를 저희가 직접 측정한 적은
+    없어요) — 그래서 이 시계는 "확실한 성공"이 아니라 "내 기기 시계보다는 믿을 만한
+    기준"으로 봐주세요. 동기화에 실패하면 이 기기 자체 시계로 표시되며 화면에 그렇게
+    안내돼요.
+  </p>
+</BaseLayout>
+
+<style>
+  .intro { color: #d9d6ee; line-height: 1.7; }
+  .countdown-banner {
+    margin: 1rem 0;
+    padding: 0.85rem 1.1rem;
+    border-radius: 10px;
+    background: rgba(255, 95, 162, 0.14);
+    color: #ff8fc0;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .cd-time { font-variant-numeric: tabular-nums; font-size: 1.15rem; margin-left: 0.35rem; }
+  .clock-card {
+    margin: 1.5rem 0;
+    padding: 2rem 1.5rem;
+    background: rgba(20, 20, 30, 0.9);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    text-align: center;
+  }
+  .clock-display {
+    font-family: 'SF Mono', 'Menlo', 'Consolas', ui-monospace, monospace;
+    font-size: clamp(2.4rem, 10vw, 4.2rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  .clock-date { margin-top: 0.4rem; color: #a9a4c9; font-size: 0.95rem; }
+  .sync-status { margin-top: 0.9rem; font-size: 0.85rem; color: #6ee7ff; }
+  .sync-status.is-error { color: #ffb84c; }
+  .calibrate { margin: 1rem 0; padding: 0.9rem 1.1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .calibrate summary { cursor: pointer; font-weight: 700; color: #f5f3ff; }
+  .calibrate-help { margin: 0.6rem 0; color: #a9a4c9; font-size: 0.85rem; }
+  .calibrate-row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; }
+  .calibrate-row input {
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    font-size: 0.95rem;
+  }
+  .calibrate-row button {
+    padding: 0.55rem 0.9rem;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent, #ff5fa2);
+    color: #1a1424;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .platform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 1rem 0 1.5rem; }
+  @media (max-width: 480px) { .platform-grid { grid-template-columns: 1fr; } }
+  .platform-btn {
+    display: block;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #f5f3ff;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+  }
+  .platform-btn:hover { background: rgba(255,95,162,0.16); border-color: rgba(255,95,162,0.4); }
+  .disclaimer { margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.82rem; line-height: 1.6; }
+</style>
+
+<script>
+  // Precision synced clock: fetch an accurate KST time once, derive an offset
+  // from this device's Date.now(), then keep the display moving locally
+  // (no repeated network calls needed for smoothness) and re-sync periodically
+  // to correct drift. Manual calibration is the fallback when the network sync
+  // fails or the user trusts a different clock more.
+  let offsetMs = 0; // serverTime - Date.now() at time of last sync
+  let synced = false;
+
+  function nowSynced() {
+    return Date.now() + offsetMs;
+  }
+
+  async function syncClock() {
+    const statusEl = document.getElementById('sync-status');
+    const t0 = Date.now();
+    try {
+      const res = await fetch('https://timeapi.io/api/Time/current/zone?timeZone=Asia/Seoul', {
+        cache: 'no-store',
+      });
+      const t1 = Date.now();
+      if (!res.ok) throw new Error('bad status');
+      const data = await res.json();
+      // data.dateTime is a local (KST) ISO string without timezone offset - treat
+      // it as Asia/Seoul explicitly rather than trusting the browser's default tz.
+      const serverMs = new Date(`${data.dateTime}+09:00`).getTime();
+      // Roughly correct for one-way network latency using half the round trip.
+      const roundTrip = t1 - t0;
+      const estServerNow = serverMs + roundTrip / 2;
+      offsetMs = estServerNow - t1;
+      synced = true;
+      if (statusEl) {
+        statusEl.textContent = `표준시 서버와 동기화됨 · 오차 범위 약 ±${Math.round(roundTrip / 2)}ms · 방금 확인`;
+        statusEl.classList.remove('is-error');
+      }
+    } catch (e) {
+      synced = false;
+      offsetMs = 0;
+      if (statusEl) {
+        statusEl.textContent = '동기화 실패 - 이 기기 자체 시계로 표시 중입니다. 아래 수동 보정을 이용해보세요.';
+        statusEl.classList.add('is-error');
+      }
+    }
+  }
+
+  function pad(n: number, len = 2) {
+    return String(n).padStart(len, '0');
+  }
+
+  function tick() {
+    const d = new Date(nowSynced());
+    const display = document.getElementById('clock-display');
+    const dateEl = document.getElementById('clock-date');
+    if (display) {
+      display.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}.${pad(d.getMilliseconds(), 3)}`;
+    }
+    if (dateEl) {
+      const days = ['일', '월', '화', '수', '목', '금', '토'];
+      dateEl.textContent = `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} (${days[d.getDay()]})`;
+    }
+    updateCountdown(d);
+    requestAnimationFrame(tick);
+  }
+
+  function updateCountdown(now: Date) {
+    const params = new URLSearchParams(window.location.search);
+    const openParam = params.get('open');
+    if (!openParam) return;
+    const target = new Date(openParam);
+    if (isNaN(target.getTime())) return;
+    const banner = document.getElementById('countdown-banner');
+    const artistEl = document.getElementById('cd-artist');
+    const timeEl = document.getElementById('cd-time');
+    if (!banner || !timeEl) return;
+    banner.hidden = false;
+    if (artistEl) {
+      const artist = params.get('artist');
+      artistEl.textContent = artist ? decodeURIComponent(artist) : '이 공연';
+    }
+    const diff = target.getTime() - now.getTime();
+    if (diff <= 0) {
+      timeEl.textContent = '오픈 시각이 지났어요';
+      return;
+    }
+    const totalSec = Math.floor(diff / 1000);
+    const days = Math.floor(totalSec / 86400);
+    const hours = Math.floor((totalSec % 86400) / 3600);
+    const minutes = Math.floor((totalSec % 3600) / 60);
+    const seconds = totalSec % 60;
+    const ms = diff % 1000;
+    timeEl.textContent = days > 0
+      ? `${days}일 ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+      : `${pad(hours)}:${pad(minutes)}:${pad(seconds)}.${pad(ms, 3)}`;
+  }
+
+  document.getElementById('calibrate-btn')?.addEventListener('click', () => {
+    const input = document.getElementById('calibrate-input') as HTMLInputElement | null;
+    if (!input || !input.value) return;
+    const [h, m, s] = input.value.split(':').map(Number);
+    const now = new Date();
+    now.setHours(h || 0, m || 0, s || 0, 0);
+    offsetMs = now.getTime() - Date.now();
+    synced = true;
+    const statusEl = document.getElementById('sync-status');
+    if (statusEl) {
+      statusEl.textContent = '수동 보정된 시각으로 표시 중';
+      statusEl.classList.remove('is-error');
+    }
+  });
+
+  syncClock();
+  setInterval(syncClock, 60000);
+  requestAnimationFrame(tick);
+</script>
