@@ -277,6 +277,10 @@
       {
         "label": "SPYAIR JUST LIKE THIS 2026 in KOREA - 예스24 티켓",
         "url": "https://m.ticket.yes24.com/Perf/58592"
+      },
+      {
+        "label": "SPYAIR Setlist - Pyrkon 2026 (setlist.fm)",
+        "url": "https://www.setlist.fm/setlist/spyair/2026/sala-ziemi-pozna-poland-6372f257.html"
       }
     ],
     "officialUrl": "https://www.spyair.net/",
@@ -307,7 +311,31 @@
         "sourceUrl": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887"
       }
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260522/20260522-58592.jpg"
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260522/20260522-58592.jpg",
+    "setlists": [
+      {
+        "label": "JUST LIKE THIS 2026 - Pyrkon(폴란드) 페스티벌 공연",
+        "date": "2026-06-19",
+        "venue": "Sala Ziemi, Poznań, Poland (Pyrkon 2026)",
+        "songs": [
+          "Genjou Destruction",
+          "Imagination",
+          "I'm a Believer",
+          "Wadachi",
+          "One Day",
+          "Last Moment",
+          "Sakura Mitsutsuki",
+          "RE-BIRTH",
+          "Chase the Shine",
+          "RAGE OF DUST",
+          "Kill the Noise",
+          "Orange",
+          "Samurai Heart (Some Like It Hot!!)"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/spyair/2026/sala-ziemi-pozna-poland-6372f257.html",
+        "note": "새 보컬 요스케 합류 후 같은 시기 다른 공연(폴란드 페스티벌) 세트리스트예요. 서울 단독 공연은 곡 구성이 달라질 수 있어요."
+      }
+    ]
   },
   {
     "id": "back-number-2026-09",
@@ -2238,6 +2266,10 @@
       {
         "label": "제이슨 므라즈, 7년 만에 내한 - 롤링스톤코리아",
         "url": "https://rollingstone.co.kr/music/music-news/24447"
+      },
+      {
+        "label": "Jason Mraz Setlist - Brooklyn Paramount (setlist.fm)",
+        "url": "https://www.setlist.fm/setlist/jason-mraz/2026/brooklyn-paramount-brooklyn-ny-1377c571.html"
       }
     ],
     "officialSns": [
@@ -2246,7 +2278,37 @@
         "url": "https://www.instagram.com/jason_mraz/"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "setlists": [
+      {
+        "label": "2026 투어 - 브루클린 파라마운트 공연",
+        "date": "2026-06-10",
+        "venue": "Brooklyn Paramount, Brooklyn, NY, USA",
+        "songs": [
+          "Living in the Moment",
+          "Long Drive",
+          "You and I Both",
+          "DJ FM AM JJASON",
+          "Song for a Friend",
+          "Love Someone",
+          "Unlonely",
+          "Have It All",
+          "Unfold",
+          "The Remedy (I Won't Worry) / 3 Things",
+          "Peach Pie",
+          "Hearing Double",
+          "Look for the Good / Life Is Wonderful / Bella Luna / Lucky",
+          "I Feel Like Dancing / Butterfly",
+          "You Matter to Me (Sara Bareilles cover)",
+          "I'm Yours",
+          "93 Million Miles / The Galaxy Song",
+          "I Won't Give Up",
+          "One Hell of a Memory (Gregory Page cover)"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/jason-mraz/2026/brooklyn-paramount-brooklyn-ny-1377c571.html",
+        "note": "같은 해 다른 공연(브루클린) 세트리스트예요. 서울 공연은 곡 구성이 달라질 수 있어요."
+      }
+    ]
   },
   {
     "id": "shuttle-teddy-swims-2026-11",
@@ -2312,6 +2374,10 @@
       {
         "label": "2027학년도 대학수학능력시험은 2026년 11월 19일 시행 - 대한민국 정책브리핑",
         "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156646031"
+      },
+      {
+        "label": "5SOS Setlist - Viejas Arena (setlist.fm)",
+        "url": "https://www.setlist.fm/setlist/5-seconds-of-summer/2026/viejas-arena-san-diego-ca-1b4e0d10.html"
       }
     ],
     "officialSns": [
@@ -2320,7 +2386,45 @@
         "url": "https://x.com/5sos"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "setlists": [
+      {
+        "label": "EVERYONE'S A STAR! World Tour - 비에하스 아레나 공연",
+        "date": "2026-07-09",
+        "venue": "Viejas Arena, San Diego, CA, USA",
+        "songs": [
+          "NOT OK",
+          "No. 1 Obsession",
+          "Teeth",
+          "Easier",
+          "More",
+          "istillfeelthesame",
+          "No Shame",
+          "She's Kinda Hot",
+          "Boyband",
+          "Telephone Busy",
+          "Evolve",
+          "Bad Omens",
+          "Ghost of You",
+          "I'm Scared I'll Never Sleep Again",
+          "Starting Line (Luke Hemmings cover)",
+          "Don't Forget You Love Me (Calum Hood cover)",
+          "Have U Found What Ur Looking For? (Ashton Irwin cover)",
+          "enough (Michael Clifford cover)",
+          "Amnesia",
+          "Don't Stop (fan-voted)",
+          "English Love Affair",
+          "Voodoo Doll",
+          "Waste the Night",
+          "Jet Black Heart",
+          "She Looks So Perfect",
+          "Everyone's a Star!",
+          "Youngblood"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/5-seconds-of-summer/2026/viejas-arena-san-diego-ca-1b4e0d10.html",
+        "note": "같은 투어의 다른 공연(샌디에이고) 세트리스트예요. 서울 공연은 곡 구성이 달라질 수 있어요."
+      }
+    ]
   },
   {
     "id": "wonderlivet-2026-11",
@@ -2473,9 +2577,14 @@
       {
         "label": "APPLEWOOD 공식 X - YUURI LIVE 2026 IN SEOUL 공지",
         "url": "https://x.com/applewood_kr/status/2077679637350785467"
+      },
+      {
+        "label": "YUURI LIVE 2026 IN SEOUL - NOL World 티켓",
+        "url": "https://world.nol.com/en/ticket/genre/CONCERT/products/26010352?placeCode=26000847"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26010352_p.gif"
   },
   {
     "id": "shuttle-khalid-2026-12",
@@ -2522,6 +2631,10 @@
       {
         "label": "Time Out Bangkok - FKJ brings his live show to Asia in 2026",
         "url": "https://www.timeout.com/bangkok/news/fkj-brings-his-live-show-to-asia-in-2026-070626"
+      },
+      {
+        "label": "Tyber Tour, Seoul - Live Nation Korea",
+        "url": "https://www.livenation.kr/event/tyber-tour-seoul-tickets-edp1685045"
       }
     ],
     "officialUrl": "https://frenchkiwijuice.com/",
@@ -2538,7 +2651,8 @@
       "재즈·소울·펑크·힙합·록·클래식·일렉트로닉을 넘나드는 장르 융합이 특징이에요. 코첼라·레드락스 같은 대형 페스티벌 출연 경력도 있고요.",
       "이번 투어는 9월 11일 발매되는 세 번째 정규앨범 'Tyber'를 지원하는 자리예요 - 신보 발매 직후 곧바로 아시아 투어에 나서는 셈이죠."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://dynamicmedia.livenationinternational.com/n/w/g/516eb28f-9953-4d1c-b117-c51437896f7c.jpg?format=webp&width=1920&quality=75"
   },
   {
     "id": "kopis-domi-jdbeck-2026-12",
@@ -2660,6 +2774,10 @@
       {
         "label": "Fujii Kaze 후지이 카제 내한공연 - 내한공연 정보",
         "url": "https://festivallife.kr/concert_k/?bmode=view&idx=171742329"
+      },
+      {
+        "label": "Fujii Kaze Prema World Tour - 공식 투어 페이지",
+        "url": "https://hehn.fujiikaze.com/pwt/en/"
       }
     ],
     "updates": [
@@ -2676,7 +2794,8 @@
       }
     ],
     "mdUrl": "https://fujiikaze.com/store/",
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "posterUrl": "https://hehn.fujiikaze.com/pwt/ogp_new.jpg"
   },
   {
     "id": "shuttle-maroon5-seoul-2027-01",
