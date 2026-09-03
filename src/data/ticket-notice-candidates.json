@@ -1,0 +1,101 @@
+[
+  {
+    "artist": "Hump Back",
+    "source": ["yes24-notice"],
+    "sourceUrl": ["https://ticket.yes24.com/Notice#id=18427"],
+    "noticeTitle": "Hump Back “HELLO ANEW TOUR SEOUL 2027” 티켓 오픈 안내",
+    "ticketOpenAt": "2026-10-07T12:00:00+09:00",
+    "venue": "예스24 라이브홀",
+    "showDate": "2027-01-23",
+    "discoveredAt": "2026-09-03",
+    "note": "일본 록밴드 Hump Back(험프백, JPOP_ARTISTS 등록됨). KOPIS 미등록 상태에서 YES24 공지사항에 먼저 게시됨 (이 Routine을 만든 계기가 된 실제 사례). 공연 시간 6PM(KST), 전석 132,000원. 주최/주관: 러브칩스인터내셔널, 고엔터테인먼트. events.json으로 옮길 때 보강 필요."
+  },
+  {
+    "artist": "Rain Tree",
+    "source": ["yes24-notice"],
+    "sourceUrl": ["https://ticket.yes24.com/Notice?#id=18347&Gcode=009_208_001"],
+    "noticeTitle": "Rain Tree Concert 2026 in Seoul 티켓 오픈 안내",
+    "ticketOpenAt": "2026-09-07T20:00:00+09:00",
+    "venue": "예스24 원더로크홀",
+    "showDate": "2026-12-20",
+    "discoveredAt": "2026-09-03",
+    "note": "아키모토 야스시(AKB48 총괄 프로듀서)가 프로듀싱한 일본 걸그룹 Rain Tree(레인 트리). 'IDOL3.0 PROJECT' 오디션 출신, 2025.01.29 킹레코드로 메이저 데뷔. 팬클럽 선예매 2026.09.03(목) 20:00, 일반예매(위 ticketOpenAt) 2026.09.07(월) 20:00. 공연시간 17시, 일반석 99,000원/VIP 110,000원. 주최: LIVET, 주관: 주식회사 원더로크. JPOP_ARTISTS 목록에는 없는 신규 아티스트 - 추가 검토 필요. events.json으로 옮길 때 보강 필요."
+  },
+  {
+    "artist": "치펜데일 (Chippendales)",
+    "source": ["melon-notice"],
+    "sourceUrl": ["https://ticket.melon.com/csoon/detail.htm?csoonId=12797"],
+    "noticeTitle": "치펜데일 라이브 인 서울 2026 티켓 오픈 안내",
+    "ticketOpenAt": "2026-09-08T11:00:00+09:00",
+    "venue": "에스팩토리 성수",
+    "showDate": "2026-10-31",
+    "discoveredAt": "2026-09-03",
+    "note": "미국 라스베이거스 발 남성 댄스 퍼포먼스 브랜드 치펜데일스(Chippendales), 디즈니+ 시리즈 'Welcome to Chippendales'로 재조명. 약 7년 만의 내한. 공연기간 2026.10.31~11.02, 관람등급 만19세이상 여성, VIP 160,000원/R석 140,000원. 주최/주관: (주)쇼앤이엔티. events.json으로 옮길 때 보강 필요."
+  },
+  {
+    "artist": "이탈리아 Euregio Klassika (콘서트오페라 라보엠)",
+    "source": ["ticketlink-notice"],
+    "sourceUrl": ["https://www.ticketlink.co.kr/help/notice/65821"],
+    "noticeTitle": "[단독판매]이탈리아 Euregio Klassika 내한공연 콘서트오페라 라보엠 - 동해 티켓오픈 안내",
+    "ticketOpenAt": "2026-09-10T14:00:00+09:00",
+    "venue": "동해문화예술회관 대공연장",
+    "showDate": "2026-10-14",
+    "discoveredAt": "2026-09-03",
+    "note": "이탈리아 Euregio Klassika 내한, 콘서트오페라 라보엠. 공연시간 19시30분, 전석 20,000원, 관람등급 초등학생 이상. 출연: 마우리치오 콜라잔티(지휘) 외. 주최: 동해시, 강원영동CBS. events.json으로 옮길 때 보강 필요."
+  },
+  {
+    "artist": "케니 지 (Kenny G)",
+    "source": ["ticketlink-notice"],
+    "sourceUrl": ["https://www.ticketlink.co.kr/help/notice/65818"],
+    "noticeTitle": "[단독판매] 케니 지 내한 공연 (Kenny G Live in Seoul) 티켓오픈 안내",
+    "ticketOpenAt": "2026-09-10T12:00:00+09:00",
+    "venue": "광운대학교 동해문화예술관 대극장",
+    "showDate": "2026-10-20",
+    "discoveredAt": "2026-09-03",
+    "note": "색소포니스트 케니 지(Kenny G) 내한 공연. 공연기간 2026.10.20~10.21, 20시, Seat P(2층) 157,000원/Seat R(3층) 135,000원, 13세 이상 관람가. 주최/주관: 주식회사 위얼라이브. 공지 원문의 장소 표기가 '광운대학교 동해문화예술관 대극장'으로 되어 있는데 이는 대학교명과 강원 동해시 시설명이 섞인 것처럼 보임 - 공지 원문 오탈자 가능성 있음, events.json으로 옮길 때 정확한 장소 재확인 필요."
+  },
+  {
+    "artist": "블루노트 도쿄 올스타 재즈 오케스트라 & 리사오노",
+    "source": ["ticketlink-notice"],
+    "sourceUrl": ["https://www.ticketlink.co.kr/help/notice/65824"],
+    "noticeTitle": "[단독판매] 블루노트 도쿄 올스타 재즈 오케스트라 & 리사오노 - 익산 티켓오픈 안내",
+    "ticketOpenAt": "2026-09-04T15:00:00+09:00",
+    "venue": "익산예술의전당 대공연장",
+    "showDate": "2026-11-28",
+    "discoveredAt": "2026-09-03",
+    "note": "일본 Blue Note Tokyo 올스타 재즈 오케스트라 & 보사노바 가수 리사 오노(Lisa Ono, 일본-브라질). 공연시간 16시, R석 30,000원/S석 20,000원. 주최: 익산시, 주관: 익산예술의전당. events.json으로 옮길 때 보강 필요."
+  },
+  {
+    "artist": "브루노 마스 (Bruno Mars)",
+    "source": ["interpark-websearch"],
+    "sourceUrl": [],
+    "noticeTitle": "브루노 마스 내한공연 (The Romantic Tour) - NOL 티켓 오픈예정 공지",
+    "ticketOpenAt": "2026-09-11T12:00:00+09:00",
+    "venue": "고양종합운동장 주경기장",
+    "showDate": "2027-05-21",
+    "discoveredAt": "2026-09-03",
+    "note": "인터파크(NOL) 원문 미확인 - 검색 스니펫 기반. WebSearch 결과에 따르면 The Romantic Tour, 2027.05.21/22/25/26 오후 7시45분, 고양종합운동장 주경기장. 아티스트/라이브네이션 선예매 2026.09.11(금) 12:00~14:59 (위 ticketOpenAt), 일반예매 2026.09.14(월) 12:00. 단독 예매처 NOL(인터파크). events.json에 아직 없음 (기존에는 2023년 내한을 언급한 다른 글에서만 언급됨) - 반드시 인터파크 외 출처(공식 SNS, 기사 등)로 교차 확인 후 events.json에 반영할 것."
+  },
+  {
+    "artist": "에즈라 콜렉티브 (Ezra Collective)",
+    "source": ["yes24-genre-foreign"],
+    "sourceUrl": ["https://ticket.yes24.com/New/Genre/GenreList.aspx?genretype=2&genre=15463"],
+    "noticeTitle": "에즈라 콜렉티브 첫 단독 내한공연 Ezra Collective Live in Seoul",
+    "ticketOpenAt": "",
+    "venue": "YES24 LIVE HALL",
+    "showDate": "2026-10-08",
+    "discoveredAt": "2026-09-03",
+    "note": "공지사항 게시판이 아니라 YES24 '콘서트 > 해외뮤지션' 카테고리(이미 예매 가능 상태)에서 발견 - 정확한 티켓오픈 일시 미확인. 영국 재즈 밴드 Ezra Collective의 첫 단독 내한공연. events.json으로 옮길 때 정확한 오픈일시/공연시간/가격 등 보강 필요."
+  },
+  {
+    "artist": "레이첼 야마가타 (Rachael Yamagata)",
+    "source": ["yes24-genre-foreign"],
+    "sourceUrl": ["https://ticket.yes24.com/New/Genre/GenreList.aspx?genretype=2&genre=15463"],
+    "noticeTitle": "2026 레이첼 야마가타(Rachael Yamagata) 내한공연",
+    "ticketOpenAt": "",
+    "venue": "예스24 원더로크홀",
+    "showDate": "2026-09-20",
+    "discoveredAt": "2026-09-03",
+    "note": "공지사항 게시판이 아니라 YES24 '콘서트 > 해외뮤지션' 카테고리(이미 예매 가능 상태)에서 발견 - 정확한 티켓오픈 일시 미확인. 미국 싱어송라이터 Rachael Yamagata (이름과 달리 미국 국적) 내한공연. 공연일이 임박(9/20)했으므로 우선 확인 필요. events.json으로 옮길 때 정확한 오픈일시/공연시간/가격 등 보강 필요."
+  }
+]
