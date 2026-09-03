@@ -90,6 +90,226 @@
     "merchCheckedAt": "2026-09-02"
   },
   {
+    "id": "iu-goyang-2026-09",
+    "artist": "아이유 (IU)",
+    "genre": "가요",
+    "venue": "고양종합운동장 주경기장",
+    "city": "고양",
+    "startDate": "2026-09-01",
+    "endDate": "2026-09-30",
+    "note": "2026년 9월 고양종합운동장 단독 콘서트가 예정되어 있었으나, 티켓 예매가 시작되기도 전인 7월 20일 아이유 측이 이관개방증 악화를 이유로 공연 취소와 정규 6집 앨범 발매 연기를 함께 발표했습니다. 구체적인 공연 날짜는 취소 전까지 공식적으로 확정·발표되지 않아, 여기서는 예정 월(9월) 전체로 표기합니다. 예매가 열리지 않았던 만큼 별도 환불 대상도 없습니다.",
+    "description": "가수 아이유의 단독 콘서트로 2026년 9월 고양종합운동장에서 열릴 예정이었다.",
+    "status": "cancelled",
+    "funFacts": [
+      "정규 6집 발매와 맞물려 준비되던 투어였는데, 앨범 자체가 콘서트와 함께 연기되면서 이번 취소는 단순 일정 변경이 아니라 컴백 전체 스케줄에 영향을 준 결정이었어요.",
+      "아이유는 오래전부터 이관개방증을 앓아온 것으로 알려져 있는데, 이번엔 '밤낮으로 증상이 이어졌다'고 밝힐 만큼 상태가 심각했다고 해요."
+    ],
+    "updates": [
+      {
+        "date": "2026-07-20",
+        "text": "아이유 측이 이관개방증 악화로 9월 고양 콘서트 취소와 정규 6집 발매 연기를 공식 발표했어요. 티켓 예매 전이라 환불 절차는 발생하지 않았습니다.",
+        "sourceUrl": "https://www.khan.co.kr/article/202607201937001"
+      }
+    ],
+    "sources": [
+      {
+        "label": "'고질병 악화' 아이유, 콘서트·앨범 잠정 연기 - 경향신문",
+        "url": "https://www.khan.co.kr/article/202607201937001"
+      },
+      {
+        "label": "아이유, 이관개방증으로 고양 콘서트 취소·앨범 발매 연기 - 파이낸셜뉴스",
+        "url": "https://www.fnnews.com/news/202607202044452666"
+      }
+    ]
+  },
+  {
+    "id": "the-grateful-camp-2026-09",
+    "artist": "THE GRATEFUL CAMP 2026 (Shintaro Sakamoto·Your Song Is Good·장기하·강산에 등)",
+    "genre": "페스티벌",
+    "venue": "짱뚱어해수욕장 (신안군 증도)",
+    "city": "신안",
+    "startDate": "2026-09-03",
+    "endDate": "2026-09-06",
+    "officialUrl": "https://thegratefulcamp.com/",
+    "note": "캠핑·체류형 부티크 뮤직 페스티벌입니다. 주최측이 스스로 대형 페스티벌과는 다른 소규모 형태임을 강조하고 있습니다.",
+    "sources": [
+      {
+        "label": "공식 사이트",
+        "url": "https://thegratefulcamp.com/"
+      },
+      {
+        "label": "전남매일 보도",
+        "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1288087"
+      },
+      {
+        "label": "중앙이코노미뉴스 - 신안 증도서 3박4일 음악·캠핑 축제",
+        "url": "https://www.joongangenews.com/news/articleView.html?idxno=543842"
+      }
+    ],
+    "merchCheckedAt": "2026-09-03",
+    "description": "일본 사이키델릭 뮤지션 사카모토 신타로, Your Song Is Good부터 장기하·강산에까지 함께 서는 신안 증도의 3박4일 캠핑형 뮤직 페스티벌. 올해로 5회째를 맞는다.",
+    "funFacts": [
+      "그냥 공연만 보는 축제가 아니에요. 요가·에어로빅 세션, 포트럭 파티, 운동회 같은 웰니스 프로그램이 함께 짜여 있어서, 하루 보고 가는 게 아니라 3박4일 내내 머무는 걸 전제로 설계됐어요.",
+      "올해로 5회째를 맞는 신안군의 관광 활성화 연계 행사예요. 대형 페스티벌과는 결이 다른, 소규모 부티크 캠핑 축제를 지향한다고 주최측이 직접 밝히고 있어요.",
+      "사카모토 신타로(일본 사이키델릭 음악가)·Your Song Is Good 같은 해외 라인업과 장기하·강산에 같은 국내 뮤지션이 한 무대에 서요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://www.jeonmae.co.kr/news/photo/202608/1288087_1014812_5457.jpg"
+  },
+  {
+    "id": "jimff-onesummernight-kpop-season2-2026-09",
+    "artist": "제천국제음악영화제: 원 썸머 나잇 위드 케이팝 시즌2 (FTISLAND·Crush·MONSTA X·리센느 외)",
+    "genre": "페스티벌",
+    "venue": "제천예술의전당(여름광장)",
+    "city": "제천",
+    "startDate": "2026-09-04",
+    "endDate": "2026-09-05",
+    "note": "제천국제음악영화제 부속 K팝 공연입니다. 9/4 FT아일랜드·크러쉬·이승윤·새소년, 9/5 몬스타엑스·리센느·신인류·소란·레이든이 출연합니다.",
+    "sources": [
+      {
+        "label": "천지일보 - JIMFF '원 썸머 나잇 위드 케이팝 시즌2' 이승윤·새소년 등 합류",
+        "url": "https://www.newscj.com/news/articleView.html?idxno=3422260"
+      },
+      {
+        "label": "헤럴드경제 - '대세돌' 리센느가 제천에 뜬다",
+        "url": "https://biz.heraldcorp.com/article/10814345"
+      },
+      {
+        "label": "퍼블릭뉴스통신 - 얼리버드 전량 매진...2차 라인업 공개",
+        "url": "http://www.ttlnews.com/news/articleView.html?idxno=3131237"
+      }
+    ],
+    "merchCheckedAt": "2026-09-03",
+    "description": "제22회 제천국제음악영화제(9/3~9/8)의 시그니처 K팝 프로그램. 이틀간 9팀이 나눠 서는 여름밤 야외 공연이다.",
+    "funFacts": [
+      "'대세돌'로 불리는 리센느(RESCENE)가 'LOVE ATTACK' 역주행으로 화제를 모으며 2차 라인업에 합류했어요. 최근 뜨는 신인 걸그룹을 영화제 무대에서 먼저 볼 수 있는 셈이죠.",
+      "얼리버드 티켓이 조기 매진될 정도로 반응이 뜨거웠어요. 1차 라인업(FT아일랜드·크러쉬·몬스타엑스) 발표 후 이승윤·새소년·신인류·소란·레이든까지 2차로 추가되면서 라인업이 9팀으로 늘었습니다.",
+      "장르가 꽤 넓어요. FT아일랜드·몬스타엑스 같은 아이돌부터 이승윤·새소년처럼 인디/포크 색이 짙은 아티스트까지 하루씩 나눠 섭니다."
+    ],
+    "lineupByDay": [
+      {
+        "date": "2026-09-04",
+        "acts": [
+          "FT아일랜드",
+          "크러쉬",
+          "이승윤",
+          "새소년"
+        ]
+      },
+      {
+        "date": "2026-09-05",
+        "acts": [
+          "몬스타엑스",
+          "리센느(RESCENE)",
+          "신인류",
+          "소란",
+          "레이든"
+        ]
+      }
+    ],
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213646",
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.newscj.com/news/photo/202608/3422260_3532965_5915.jpg"
+  },
+  {
+    "id": "lim-youngwoong-im-hero-stadium2-2026-09",
+    "artist": "임영웅 (Lim Young-woong)",
+    "genre": "가요",
+    "venue": "고양종합운동장",
+    "city": "고양",
+    "startDate": "2026-09-04",
+    "endDate": "2026-09-06",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14497",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). 트로트 가수 최초로 고양종합운동장에 입성한 스타디움 콘서트.",
+    "sources": [
+      {
+        "label": "데일리안 - 임영웅, 9월 고양종합운동장 입성",
+        "url": "https://www.dailian.co.kr/news/view/1656754/%EC%9E%84%EC%98%81%EC%9B%85-9%EC%9B%94-%EA%B3%A0%EC%96%91%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5-%EC%9E%85%EC%84%B1%E2%80%98%EC%95%84%EC%9E%84-2026"
+      },
+      {
+        "label": "CBC뉴스 - 임영웅, 9월 고양서 두 번째 스타디움 콘서트",
+        "url": "https://www.cbci.co.kr/news/articleView.html?idxno=593942"
+      },
+      {
+        "label": "청년일보 - 임영웅 '고양 스타디움 콘서트' 개최, 16일 티켓 오픈",
+        "url": "https://www.youthdaily.co.kr/news/article.html?no=222463"
+      },
+      {
+        "label": "[영웅신문] 임영웅 'IM HERO THE STADIUM 2' 포스터 공개 - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16126629"
+      }
+    ],
+    "description": "트로트 스타 임영웅의 생애 두 번째 스타디움 단독 콘서트. 2024년 서울월드컵경기장 공연에 이어, 트로트 가수 최초로 고양종합운동장에 입성한다.",
+    "funFacts": [
+      "2024년 서울월드컵경기장에서 첫 스타디움 콘서트를 성황리에 마친 뒤 여는 두 번째 스타디움 단독 공연이에요. 규모를 키워가는 중이라는 뜻이죠.",
+      "그동안 임영웅의 단독 공연은 예매 시작과 동시에 전 회차 전석 매진을 기록해왔어요 - 이번에도 치열한 피켓팅이 예상돼요.",
+      "소속사(물고기뮤직)는 가창력·무대 연출·전반적인 스케일 모든 면에서 이전보다 한층 진화한 무대를 예고했어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16126629_1956720_2742.jpg"
+  },
+  {
+    "id": "spyair-2026-09",
+    "artist": "SPYAIR (스파이에어)",
+    "genre": "J-POP",
+    "venue": "킨텍스 제2전시장",
+    "city": "고양",
+    "startDate": "2026-09-05",
+    "endDate": "2026-09-05",
+    "schedule": "오후 6시 시작",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://m.ticket.yes24.com/Perf/58592"
+      }
+    ],
+    "note": "킨텍스 제2전시장 후면광장(야외) 공연이에요.",
+    "description": "새 보컬 요스케(YOSUKE) 합류 후 첫 단독 내한 공연 'SPYAIR JUST LIKE THIS 2026 in KOREA'.",
+    "funFacts": [
+      "전 보컬 이케가 건강상의 이유로 탈퇴한 뒤, 오디션을 거쳐 합류한 새 보컬 요스케와 함께하는 첫 단독 내한이에요. 달라진 라인업으로 라이브가 어떻게 바뀌었을지 지켜볼 만해요.",
+      "작년 원더리벳 2025 헤드라이너로 내한한 지 약 1년 만의 단독 공연이라, 그때 못 본 팬이라면 이번이 좋은 기회예요."
+    ],
+    "sources": [
+      {
+        "label": "스파이에어, \"새 보컬 요스케와 함께\"...9월 5일 한국 단독 공연 - YTN",
+        "url": "https://www.ytn.co.kr/_ln/0117_202605261027303802"
+      },
+      {
+        "label": "SPYAIR JUST LIKE THIS 2026 in KOREA - 예스24 티켓",
+        "url": "https://m.ticket.yes24.com/Perf/58592"
+      }
+    ],
+    "officialUrl": "https://www.spyair.net/",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/SPYAIRSTAFF"
+      }
+    ],
+    "mdUrl": "https://www.spyair.net/goods/",
+    "merchCheckedAt": "2026-09-03",
+    "merch": [
+      {
+        "label": "VIP A석 특전 티셔츠",
+        "url": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887",
+        "note": "VIP A석(187,000원) 티켓에 포함된 특전이에요. 별도 판매 상품이 아니라 좌석 등급별 굿즈 포함 구성입니다."
+      },
+      {
+        "label": "VIP B석 특전 타월",
+        "url": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887",
+        "note": "VIP B석(172,000원) 티켓에 포함된 특전이에요."
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-09-03",
+        "text": "예스24 공지에서 VIP 티켓 등급별 특전(A석 티셔츠 포함/B석 타월 포함)을 확인했어요. 별도 구매하는 굿즈숍 상품 목록은 아직 공개되지 않았습니다.",
+        "sourceUrl": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887"
+      }
+    ],
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260522/20260522-58592.jpg"
+  },
+  {
     "id": "back-number-2026-09",
     "artist": "back number (백넘버)",
     "genre": "J-POP",
@@ -165,6 +385,189 @@
     ],
     "mdUrl": "https://backnumber.info/feature/goods",
     "merchCheckedAt": "2026-09-03"
+  },
+  {
+    "id": "shuttle-isul-live-festival-2026-09",
+    "artist": "2026 이슬라이브 페스티벌 (테라와 함께하는)",
+    "genre": "페스티벌",
+    "venue": "송도달빛축제공원",
+    "city": "인천",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-12",
+    "ticketUrl": "https://tickets.interpark.com/goods/26010722",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "merchCheckedAt": "2026-09-03",
+    "description": "하이트진로가 여는 '테라와 함께하는 2026 이슬라이브 페스티벌'. 2024년 이후 2년 만에 재개되며 인천 송도 달빛축제공원에서 열린다.",
+    "funFacts": [
+      "2년 만의 재개작이라 규모부터 키웠어요. 수용 인원을 기존 대비 약 1만 명 늘린 2만 5천 명으로 확대했고, 지난 회차(1만 8천 명) 대비 몸집이 훨씬 커졌어요.",
+      "라인업이 10팀이나 돼요 - 다이나믹 듀오·이영지·멜로망스·우즈·딘딘 등 힙합부터 발라드까지 장르가 다양해서 취향 갈리는 사람들이 함께 가기 좋아요.",
+      "얼리버드 1,000장이 먼저 매진됐고, 공식 티켓은 NOL티켓에서 판매돼요."
+    ],
+    "lineup": [
+      "다이나믹 듀오",
+      "터치드",
+      "이영지",
+      "멜로망스",
+      "우즈",
+      "윤마치",
+      "딘딘",
+      "마이티마우스",
+      "조째즈",
+      "싸이버거"
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26010722"
+      },
+      {
+        "vendor": "인터파크",
+        "url": "https://tickets.interpark.com/goods/26010722"
+      }
+    ],
+    "sources": [
+      {
+        "label": "위키트리 - 우즈, 이영지, 다듀까지... 역대급 규모로 돌아온 '이슬라이브 페스티벌'",
+        "url": "https://www.wikitree.co.kr/articles/1151084"
+      },
+      {
+        "label": "이투데이 - 하이트진로, 내달 12일 '이슬라이브 페스티벌'...수용인원 1만명 확대",
+        "url": "https://www.etoday.co.kr/news/view/2612105"
+      },
+      {
+        "label": "\"갓 만든 참이슬·테라\"…하이트진로 '이슬라이브 페스티벌' 개최 - 뉴스1",
+        "url": "https://www.news1.kr/industry/distribution/6251912"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://i3n.news1.kr/system/photos/2026/8/7/8045229/high.jpg"
+  },
+  {
+    "id": "riize-3rd-anniversary-fanmeeting-2026-09",
+    "artist": "RIIZE 3RD ANNIVERSARY FANMEETING - Ch. RIIZE : ON AIR",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-13",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14634",
+    "officialUrl": "https://world.nol.com/en/ticket/places/26000846/products/26010045",
+    "note": "RIIZE 데뷔 3주년 기념 팬미팅. 공식 X 계정 공지로 9/12(토) 5PM, 9/13(일) 4PM 확인.",
+    "sources": [
+      {
+        "label": "RIIZE 공식 X - 팬미팅 일정 공지",
+        "url": "https://x.com/RIIZE_official/status/2079068870275739694"
+      },
+      {
+        "label": "타임스프레드 - RIIZE 3RD ANNIVERSARY FANMEETING 정보",
+        "url": "https://www.timespread.co.kr/subscription-event/riize-3rd-anniversary-fanmeeting-ch-riize-on-air-2026-09-12"
+      },
+      {
+        "label": "라이즈 데뷔 3주년 기념 팬미팅 'Ch. RIIZE : ON AIR' 국내 선예매 오픈 - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16146898"
+      }
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/RIIZE_official"
+      }
+    ],
+    "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/151",
+    "merchCheckedAt": "2026-09-03",
+    "description": "RIIZE의 데뷔 3주년을 기념하는 공식 팬미팅. 'Ch. RIIZE : ON AIR'라는 제목처럼 방송 컨셉으로 꾸며지며, 이틀간 인천 인스파이어 아레나에서 열린다.",
+    "funFacts": [
+      "2026년 9월 12일(토)·13일(일) 이틀간 열려요. RIIZE 데뷔(2023년 9월) 3주년에 맞춰 기획된 공식 행사예요.",
+      "글로벌 선행 인증이 7월 20~28일 별도로 진행됐을 만큼 해외 팬 비중도 큰 행사예요.",
+      "공연장이 인천 인스파이어 아레나라, 같은 시기 다른 대형 페스티벌들과 이동 동선이 겹칠 수 있어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16146898_1972132_130.jpg"
+  },
+  {
+    "id": "plave-world-tour-keep-it-manic-incheon-2026-09",
+    "artist": "PLAVE (플레이브)",
+    "genre": "가요",
+    "venue": "인천문학경기장",
+    "city": "인천",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-13",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14162",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). PLAVE 첫 월드투어 'KEEP IT MANIC' 인천 개최.",
+    "sources": [
+      {
+        "label": "싱글리스트 - 플레이브, 9월 인천문학경기장서 월드투어 첫 공연 돌입",
+        "url": "https://www.slist.kr/news/articleView.html?idxno=745389"
+      }
+    ],
+    "officialUrl": "https://www.vlast.co.kr/plave",
+    "description": "버추얼 K팝 아이돌 PLAVE의 첫 월드투어 '[KEEP IT MANIC]'을 여는 개막 공연. 인천문학경기장에서 이틀간 열린다.",
+    "funFacts": [
+      "PLAVE는 실제 사람이 아니라 버추얼(가상) 아이돌이에요. 그런 팀이 첫 월드투어를 여는 자리라 더 상징적이죠.",
+      "인천 공연이 이번 월드투어의 첫 무대예요. 이후 타이베이 등 해외 도시로 이어지는 투어의 출발점입니다.",
+      "공개된 메인 포스터는 화이트 제복을 입은 멤버들의 신비로운 이미지로, 이번 투어의 스케일을 예고했어요."
+    ],
+    "youtubeVideos": [
+      {
+        "title": "2026 PLAVE World Tour [KEEP IT MANIC] Teaser",
+        "videoId": "JLCDhKKKIiE",
+        "note": "월드투어 티저 영상",
+        "sourceUrl": "https://www.youtube.com/watch?v=JLCDhKKKIiE"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg",
+    "fanChantGuide": [
+      {
+        "title": "PLAVE 'WAY 4 LUV' 응원법 가이드 (Fanchants Guide) 공식 영상",
+        "url": "https://www.youtube.com/watch?v=tRSvtYMjsxw",
+        "note": "특정 곡(WAY 4 LUV) 공식 응원법 안내 영상. 투어 전체 세트리스트 응원법 가이드는 아님"
+      }
+    ]
+  },
+  {
+    "id": "nct127-neocity-redline-seoul-2026-09",
+    "artist": "NCT 127",
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-09-18",
+    "endDate": "2026-09-20",
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213585",
+    "note": "5번째 월드투어 'NEO CITY: SEOUL - THE REDLINE'의 서울 공연으로, 약 1년 8개월 만의 단독 내한 공연입니다. 3회차 전석 매진. 셔틀 스캔 자동화가 &TEAM·EXO의 KSPO DOME 표기와 '동일 공연'으로 잘못 판단해 누락했던 건을 재조사해 직접 추가했습니다 (날짜가 서로 다른 별개 공연으로 확인됨: NCT127 9/18~20, &TEAM 10/3~4, EXO는 이미 지난 4/10~12).",
+    "sources": [
+      {
+        "label": "NCT 127 공식 X - 5TH TOUR 'NEO CITY - THE REDLINE' 전체 일정 공지",
+        "url": "https://x.com/NCTsmtown_127/status/2074357784880218507"
+      },
+      {
+        "label": "NCT 127 Announces Stops For 5th Tour \"NEO CITY - THE REDLINE\" - Soompi",
+        "url": "https://www.soompi.com/article/1852873wpp/nct-127-announces-stops-for-5th-tour-neo-city-the-redline"
+      }
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/NCTsmtown_127"
+      }
+    ],
+    "mdUrl": "https://smtownandstore.com",
+    "merchCheckedAt": "2026-09-02",
+    "officialUrl": "https://weverse.io/nct127",
+    "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
+    "funFacts": [
+      "서울(9/18~20)을 시작으로 자카르타(10/3)·홍콩(10/10~11)·싱가포르(10/18)·방콕(10/31~11/1)·타이베이(2027.01.02)까지 6개 도시를 도는 대형 월드투어예요. 서울이 개막 무대인 셈이죠.",
+      "이번 투어명 'THE REDLINE'은 공식 계정이 '#NCT127 #THE_REDLINE'과 함께 예고했어요 - 구체적인 컨셉은 공연이 가까워지며 추가로 공개될 걸로 보여요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/07/06232541/nct-127.jpeg",
+    "fanChantGuide": [
+      {
+        "title": "NCT 127 'Blingy' 응원법(Cheering Guide) 영상",
+        "url": "https://www.youtube.com/watch?v=oW-GEYgZJDE",
+        "note": "특정 곡(Blingy) 응원법 안내 영상 - 투어 전체 곡 가이드는 아님"
+      }
+    ]
   },
   {
     "id": "vaundy-2026-09",
@@ -487,6 +890,115 @@
     "merchCheckedAt": "2026-09-03"
   },
   {
+    "id": "kim-yongbin-serenade-2026-09",
+    "artist": "김용빈",
+    "genre": "가요",
+    "venue": "티켓링크 라이브 아레나 (올림픽공원)",
+    "city": "서울",
+    "startDate": "2026-09-19",
+    "endDate": "2026-09-20",
+    "ticketUrl": "http://www.ticketlink.co.kr/product/64771",
+    "posterUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_1/kim-pst0804.jpg",
+    "note": "올림픽공원 핸드볼경기장 일대에서 석 달 넘게 이어진 시위 여파로, 공연기획사가 9월 1일 안전한 진행이 어렵다고 판단해 취소를 공식 발표했습니다. 예매된 티켓은 별도 신청 없이 수수료 없이 순차적으로 전액 환불됩니다.",
+    "description": "가수 김용빈의 단독 콘서트 '2026 김용빈 콘서트 세레나데'로, 티켓링크 라이브 아레나에서 이틀간 열릴 예정이었다.",
+    "status": "cancelled",
+    "funFacts": [
+      "같은 장소(티켓링크 라이브 아레나)에서 6월 이후로만 취소·장소변경된 공연이 15건, 환불액이 10억 원을 훌쩍 넘는다고 하니 이 시위가 공연업계에 준 파장이 꽤 컸어요."
+    ],
+    "updates": [
+      {
+        "date": "2026-09-01",
+        "text": "공연기획사가 '올공 시위' 여파로 9월 19~20일 서울 콘서트 취소를 공식 발표했어요. 예매 티켓은 전액 자동 환불됩니다.",
+        "sourceUrl": "https://tvreport.co.kr/entertainment/article/1072564/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "김용빈, '올공 시위' 여파로 서울 콘서트 취소 - TV리포트",
+        "url": "https://tvreport.co.kr/entertainment/article/1072564/"
+      },
+      {
+        "label": "김용빈, 시위 여파로 서울 단독 콘서트 취소 - 일간스포츠",
+        "url": "https://isplus.com/article/view/isp202609010216"
+      }
+    ]
+  },
+  {
+    "id": "jo1-seoul-2026-09",
+    "artist": "JO1",
+    "genre": "J-POP",
+    "venue": "티켓링크 라이브 아레나 (구 올림픽공원 핸드볼경기장)",
+    "city": "서울",
+    "startDate": "2026-09-26",
+    "endDate": "2026-09-27",
+    "officialUrl": "https://jo1.jp/feature/jo1dershow2026_eien?lang=en",
+    "note": "6월 지방선거 개표소 부족 사태에 항의하는 시위가 올림픽공원 핸드볼경기장 일대에서 3개월 넘게 이어지면서, 소속사가 8월 3일 안전 문제를 이유로 서울 공연을 취소했습니다. 티켓 예매가 시작되기 전 취소돼 있어, 별도 환불 절차는 발생하지 않았습니다.",
+    "description": "일본 9인조 보이그룹 JO1의 월드투어 'JO1DER SHOW 2026 EIEN 永縁' 서울 공연으로, 티켓링크 라이브 아레나에서 이틀간 열릴 예정이었다.",
+    "status": "cancelled",
+    "funFacts": [
+      "이 공연은 예매가 열리기도 전에 취소돼서, 팬들이 티켓 구하는 걱정 대신 '언제 다시 서울에 오나'를 걱정하게 만든 케이스예요.",
+      "취소 이유가 아티스트나 주최 측 사정이 아니라 공연장 인근 시위라는 점에서, 같은 장소를 예약한 다른 공연들에도 줄줄이 영향을 준 사례 중 하나예요."
+    ],
+    "updates": [
+      {
+        "date": "2026-08-03",
+        "text": "소속사가 '올공 시위' 장기화에 따른 안전 문제로 9월 26~27일 서울 공연 취소를 공식 발표했어요.",
+        "sourceUrl": "https://www.edaily.co.kr/News/Read?newsId=04250886645543712"
+      }
+    ],
+    "sources": [
+      {
+        "label": "JO1, 핸드볼경기장 콘서트 취소…개표소 시위 장기화 여파 - 이데일리",
+        "url": "https://www.edaily.co.kr/News/Read?newsId=04250886645543712"
+      },
+      {
+        "label": "JO1, '올공 시위' 장기화로 콘서트 취소 - 일간스포츠",
+        "url": "https://isplus.com/article/view/isp202608030156"
+      }
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/official_jo1"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02"
+  },
+  {
+    "id": "takuya-kimura-live-tour-checkpoint-seoul-2026-09",
+    "artist": "TAKUYA KIMURA (기무라 타쿠야) - Live Tour 2026 Checkpoint",
+    "genre": "J-POP",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-09-26",
+    "endDate": "2026-09-26",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14058",
+    "officialUrl": "https://starto.jp/s/p/live/10520?lang=en",
+    "note": "전 SMAP 멤버 기무라 타쿠야의 첫 단독 해외 공연입니다.",
+    "sources": [
+      {
+        "label": "한국경제 - 유재석도 반한 김탁구...기무라 타쿠야, 데뷔 38년 만의 내한 공연",
+        "url": "https://www.hankyung.com/article/2026060229997"
+      },
+      {
+        "label": "싱글리스트 - 기무라 타쿠야, 첫 내한 공연 29일 티켓 오픈",
+        "url": "https://www.slist.kr/news/articleView.html?idxno=742814"
+      },
+      {
+        "label": "기무라 타쿠야, 오는 9월 단독 내한 공연 - ABC뉴스",
+        "url": "https://www.abcn.kr/news/articleView.html?idxno=88470"
+      }
+    ],
+    "description": "'일본 원빈'이라 불리는 기무라 타쿠야의 데뷔 38년 만의 첫 공식 내한 공연. 솔로 전향 후 첫 아시아 투어의 핵심 거점이다.",
+    "funFacts": [
+      "1988년 SMAP으로 데뷔해 '론리 베케이션', '러브 제너레이션' 등으로 한류 드라마 붐을 이끈 주역이에요. 국내에선 드라마 속 이름을 딴 '김탁구'라는 애칭으로 더 친숙하죠.",
+      "38년 경력에 이번이 첫 공식 내한이에요. 그만큼 오랜 팬들에게는 놓칠 수 없는 자리라, 온라인 단독 예매인데도 피켓팅이 예상돼요.",
+      "유재석이 그의 드라마를 '홀린 듯이 전편을 클리어했다'고 언급했을 만큼, 팬층이 세대를 넘나들어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg"
+  },
+  {
     "id": "post-malone-2026-10",
     "artist": "Post Malone (포스트 말론)",
     "genre": "팝/힙합",
@@ -523,6 +1035,85 @@
       }
     ],
     "merchCheckedAt": "2026-09-02"
+  },
+  {
+    "id": "shuttle-busan-rock-festival-2026-10",
+    "artist": "2026 부산국제록페스티벌 (Busan International Rock Festival)",
+    "genre": "페스티벌",
+    "venue": "삼락생태공원",
+    "city": "부산",
+    "startDate": "2026-10-02",
+    "endDate": "2026-10-04",
+    "ticketUrl": "https://ticket.yes24.com/Perf/58933",
+    "officialUrl": "https://busanrockfestival.com/",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/busan_rock"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02",
+    "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
+    "funFacts": [
+      "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
+      "CNBLUE·송골매 같은 국내 대형 밴드부터 WOODZ·Xdinary Heroes 같은 아이돌 밴드까지, 1·2차 합쳐 39팀이 확정됐어요.",
+      "일본의 Suchmos·Hitsujibungaku, 인도네시아의 Ardhito Pramono 등 아시아권 아티스트도 다수 포함돼 있어요."
+    ],
+    "lineup": [
+      "Avenged Sevenfold",
+      "메가데스",
+      "Suchmos",
+      "Hitsujibungaku",
+      "CNBLUE",
+      "송골매",
+      "이승윤",
+      "잔나비",
+      "터치드",
+      "한로로",
+      "DYGL",
+      "Xdinary Heroes",
+      "WOODZ",
+      "너드커넥션",
+      "카더가든",
+      "Dragon Pony",
+      "Ardhito Pramono",
+      "스카웨이커스",
+      "고고학",
+      "오월오일",
+      "극동아시아타이거즈",
+      "김뜻돌",
+      "오이스터즈",
+      "까치산",
+      "공원",
+      "김성규",
+      "다다다",
+      "레이지본",
+      "로맨틱펀치",
+      "Redoor",
+      "밴드기린",
+      "Spacey Jane",
+      "양치기소년단",
+      "이츠",
+      "KARDI",
+      "캔트비블루",
+      "페퍼톤스",
+      "프랭클리",
+      "한요한",
+      "hathaw9y"
+    ],
+    "sources": [
+      {
+        "label": "부산국제록페스티벌 공식 - 1차 라인업 공지",
+        "url": "https://busanrockfestival.com/notice/2026notice_05/"
+      },
+      {
+        "label": "부산국제록페스티벌 공식 - 2차 라인업 공지",
+        "url": "https://busanrockfestival.com/notice/2026notice_08/"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png"
   },
   {
     "id": "lany-2026-10",
@@ -717,6 +1308,224 @@
     "ticketingDifficulty": "hard"
   },
   {
+    "id": "andteam-blaze-the-way-encore-2026-10",
+    "artist": "&TEAM",
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-04",
+    "ticketUrl": "https://world.nol.com/en/ticket/places/26000892/products/26011092",
+    "note": "'2026 &TEAM CONCERT TOUR BLAZE THE WAY' 앙코르 공연. 예매 시 본인인증 계정 필요(양도 방지). 셔틀 스캔 자동화가 NCT127·EXO의 KSPO DOME 표기와 '동일 공연'으로 잘못 판단해 누락했던 건을 재조사해 직접 추가했습니다 (날짜가 서로 다른 별개 공연으로 확인됨: &TEAM 10/3~4, NCT127 9/18~20, EXO는 이미 지난 4/10~12).",
+    "sources": [
+      {
+        "label": "K-POP Ticket Navi - &TEAM Live 2026 | BLAZE THE WAY Tour 전체 가이드",
+        "url": "https://kpop-ticket.com/en/articles/andteam-concert-guide-2026"
+      },
+      {
+        "label": "&TEAM BLAZE THE WAY Encore KSPO DOME - NOL World",
+        "url": "https://world.nol.com/en/content/articles/5c238bea-c186-41ae-843d-bafde5727cd1"
+      }
+    ],
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/andTEAMofficial"
+      }
+    ],
+    "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/75",
+    "merchCheckedAt": "2026-09-02",
+    "officialUrl": "https://weverse.io/andteam",
+    "description": "&TEAM의 첫 대형 아시아 투어 'BLAZE THE WAY'의 서울 앙코르 공연. 원래 투어 일정(인천 인스파이어)에 이어 수요에 따라 KSPO DOME 공연이 추가됐다.",
+    "funFacts": [
+      "이번 투어는 &TEAM 데뷔(2023년) 이후 최대 규모예요 - 일본 9개 도시를 포함해 아시아 주요 도시를 도는 17회 공연입니다.",
+      "'앙코르(Encore)' 공연이라는 이름 그대로, 원래 잡혀있던 인천 인스파이어 공연 외에 추가로 편성된 무대예요 - 그만큼 수요가 컸다는 뜻이죠.",
+      "일본 아레나 투어에서 시작해 한국·대만·홍콩·태국·싱가포르로 확장하는 동선이라, HYBE가 아시아 시장을 겨냥해 키우는 그룹이라는 평가를 받고 있어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262",
+    "setlists": [
+      {
+        "label": "2026 &TEAM CONCERT TOUR 'BLAZE THE WAY' - 요코하마 공연",
+        "date": "2026-05-13",
+        "venue": "K-Arena Yokohama, Yokohama, Japan",
+        "songs": [
+          "Back to Life",
+          "Lunatic",
+          "War Cry",
+          "Rush",
+          "Road Not Taken",
+          "W.O.L.F. (Win Or Lose Fight)",
+          "Under the Skin",
+          "Deer Hunter",
+          "Go in Blind (Getsurou)",
+          "Bewitched",
+          "HOTLINE",
+          "Aoarashi",
+          "Ookami-kei Danshi",
+          "Mismatch",
+          "Samidare",
+          "Heartbreak Time Machine",
+          "Jyuugoya",
+          "Yukiakari",
+          "We on Fire",
+          "Run Wild",
+          "Himawari (Imprinted)",
+          "Sakura-iro Yell",
+          "FIREWORK",
+          "Feel the Pulse",
+          "Chincha Okashii"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/andteam/2026/k-arena-yokohama-yokohama-japan-4b4b53a6.html",
+        "note": "같은 투어의 다른 공연(요코하마) 세트리스트예요. 인천 앙코르 공연은 세트리스트가 달라질 수 있어요."
+      }
+    ],
+    "fanChantGuide": [
+      {
+        "title": "&TEAM 응원법 정리 - 나무위키",
+        "url": "https://namu.wiki/w/&TEAM/%EC%9D%91%EC%9B%90%EB%B2%95",
+        "note": "팬덤이 정리한 곡별 응원법 위키 문서"
+      }
+    ]
+  },
+  {
+    "id": "edc-korea-2026",
+    "artist": "2026 EDC KOREA (Electric Daisy Carnival Korea)",
+    "genre": "페스티벌",
+    "venue": "인스파이어 엔터테인먼트 리조트",
+    "city": "인천",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-04",
+    "ticketUrl": "https://edckorea.frontgatetickets.com/",
+    "officialUrl": "https://korea.edc.com/en/",
+    "note": "마틴 개릭스, 일레니엄 등 라인업이 확정됐습니다. 같은 주말 파라다이스시티에서 열리는 XMF 2026과는 별개 행사입니다.",
+    "sources": [
+      {
+        "label": "CBC뉴스 - 'EDC 코리아 2026', 전체 라인업 최초 공개…에이티즈 홍중 솔로 출격",
+        "url": "https://www.cbci.co.kr/news/articleView.html?idxno=582559"
+      },
+      {
+        "label": "bandwagon.asia - EDC Korea unveils 2026 lineup",
+        "url": "https://www.bandwagon.asia/articles/edc-korea-unveils-2026-lineup-dj-snake-ti-sto-fisher-alok-illenium-b2b-dabin-sara-landry-more"
+      },
+      {
+        "label": "EDC Korea 2026 공식 사이트",
+        "url": "https://korea.edc.com/en/"
+      }
+    ],
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/edc_korea/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02",
+    "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
+    "funFacts": [
+      "에이티즈의 홍중이 'NOWON'이라는 솔로 아티스트 이름으로 처음 페스티벌 무대에 올라요 - K팝 아이돌이 EDM 페스티벌 라인업에 서는 흔치 않은 사례예요.",
+      "3회째를 맞으며 개최 시기를 4월에서 10월로 옮겼어요. 개천절 연휴와 중국 황금연휴 기간에 맞춰 해외 관객 접근성을 높이려는 전략으로 보여요.",
+      "티에스토·DJ 스네이크·일리네어(ILLENIUM) b2b DABIN·피셔(FISHER)·알록(Alok) 등 4개 스테이지에 세계적 DJ들이 나눠 오릅니다."
+    ],
+    "lineup": [
+      "Tiësto",
+      "DJ Snake",
+      "ILLENIUM b2b DABIN",
+      "FISHER",
+      "Alok",
+      "Subtronics",
+      "R3HAB",
+      "Kayzo",
+      "Sara Landry",
+      "홍중 (NOWON)"
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/73/2026/07/28164448/edck_2026_mk_lu_lubd_fest_site_seo_1200x630_r01.jpg"
+  },
+  {
+    "id": "weeknd-hyundaicard-superconcert28-2026-10",
+    "artist": "The Weeknd (위켄드)",
+    "genre": "팝",
+    "venue": "고양종합운동장",
+    "city": "고양",
+    "startDate": "2026-10-07",
+    "endDate": "2026-10-08",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13790",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). 현대카드 슈퍼콘서트 28, 8년 만의 내한 공연.",
+    "sources": [
+      {
+        "label": "한국연예스포츠신문 - 2026 현대카드 슈퍼콘서트 주인공 '위켄드'...8년만의 한국 내한",
+        "url": "https://www.koreaes.com/news/articleView.html?idxno=404202"
+      },
+      {
+        "label": "스타뉴스 - 위켄드, 10월 내한 확정..10만 명 규모 '슈퍼콘서트' 출격",
+        "url": "https://www.starnewskorea.com/star/2026/05/11/2026051112293239131"
+      },
+      {
+        "label": "현대카드, 역대급 공연 펼친다…슈퍼콘서트28 주인공 위켄드 - 한국일보",
+        "url": "https://www.hankooki.com/news/articleView.html?idxno=332548"
+      }
+    ],
+    "officialUrl": "https://www.theweeknd.com/",
+    "description": "8년 만에 한국을 찾는 위켄드(The Weeknd)의 현대카드 슈퍼콘서트28. 고양종합운동장에서 10만 명 규모로 열린다.",
+    "funFacts": [
+      "현대카드 슈퍼콘서트 역사상 10만 명 규모로 열리는 건 이번이 세 번째예요 - 2017년 콜드플레이, 2023년 브루노 마스에 이어서요.",
+      "위켄드가 한국에서 공연하는 건 8년 만이에요. 그만큼 오래 기다린 팬들이 많아 스탠딩석 기준 최대 46만9천원까지 가격대가 형성돼 있어요.",
+      "이틀(10/7·10/8) 연속 공연이라, 하루만 볼지 이틀 다 볼지 고민하는 팬들도 많아요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png",
+    "setlists": [
+      {
+        "label": "2026 애프터 아워스 투 오픈 에어 투어 - 런던 웸블리 스타디움 공연",
+        "date": "2026-08-14",
+        "venue": "Wembley Stadium, London",
+        "songs": [
+          "Baptized in Fear",
+          "Open Hearts",
+          "Wake Me Up",
+          "After Hours",
+          "Starboy",
+          "Heartless",
+          "Faith",
+          "Cry for Me",
+          "São Paulo",
+          "Until We're Skin & Bones",
+          "Take My Breath",
+          "Sacrifice",
+          "How Do I Make You Love Me?",
+          "Eva",
+          "Can't Feel My Face",
+          "Lost in the Fire",
+          "Often",
+          "Given Up on Me",
+          "I Was Never There",
+          "The Hills",
+          "Timeless",
+          "RATHER LIE",
+          "Creepin'",
+          "Niagara Falls",
+          "One of the Girls",
+          "Stargirl Interlude",
+          "Out of Time",
+          "I Feel It Coming",
+          "Die for You",
+          "Is There Someone Else?",
+          "Wicked Games",
+          "Call Out My Name",
+          "The Abyss",
+          "Save Your Tears",
+          "Less Than Zero",
+          "Blinding Lights",
+          "Without a Warning",
+          "House of Balloons",
+          "Moth to a Flame"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/the-weeknd/2026/wembley-stadium-london-england-73403ef9.html",
+        "note": "같은 월드투어의 다른 공연(런던) 세트리스트예요. 실제 서울 공연 세트리스트는 조금씩 달라질 수 있어요."
+      }
+    ]
+  },
+  {
     "id": "ghost-festival-2026-10",
     "artist": "2026 GHOST Festival (경기 한류 OST 페스티벌)",
     "genre": "페스티벌",
@@ -870,75 +1679,44 @@
     ]
   },
   {
-    "id": "nol-festival-2026-10",
-    "artist": "NOL FESTIVAL 2026 (NOL 페스티벌)",
-    "genre": "페스티벌",
-    "venue": "킨텍스 제2전시장",
-    "city": "고양",
-    "startDate": "2026-10-17",
-    "endDate": "2026-10-18",
-    "officialUrl": "https://events.interpark.com/exhibition?exhibitionCode=260519007",
-    "note": "야놀자(NOL)가 여는 제1회 페스티벌. 지금은 정식 예매가 아니라 무료 응모 접수 기간이고, 선예매·일반예매는 9/15(화)부터 별도로 열려요.",
-    "description": "야놀자(NOL)가 처음 여는 종합 페스티벌로, 슈퍼라이브·K-POP·EDM 3개 스테이지에서 진행돼요. god·YB·아이브(IVE)·엔시티 위시·알렌 워커 등 세대와 장르를 넘나드는 라인업이 확정됐어요.",
-    "posterUrl": "https://image6.yanolja.com/cx-ydm/Rh5bzfQdWklZJxZd",
-    "lineup": [
-      "god (지오디)",
-      "YB",
-      "자우림",
-      "넬(NELL)",
-      "김준수",
-      "빈지노",
-      "규현",
-      "아이브(IVE)",
-      "엔시티 위시(NCT WISH)",
-      "코르티스(CORTIS)",
-      "트레저(TREASURE)",
-      "엔믹스(NMIXX)",
-      "크래비티(CRAVITY)",
-      "케플러(Kep1er)",
-      "키스오브라이프(KISS OF LIFE)",
-      "이무진",
-      "WOODZ",
-      "하성운",
-      "Hearts2Hearts",
-      "Alan Walker (알렌 워커)",
-      "Don Diablo (돈 디아블로)"
-    ],
-    "funFacts": [
-      "티켓을 파는 대신 NOL 앱/홈페이지에서 미션을 완료하거나 상품을 구매하면 응모권을 주는 '무료 초청' 방식으로 시작했다가, 9/15부터는 일반 선예매·예매도 별도로 열려요. 유료 콘서트도 완전한 무료 행사도 아닌 하이브리드 구조인 셈이에요.",
-      "K팝·슈퍼라이브·EDM 3개 스테이지를 동시에 운영하는 종합 축제라 god와 알렌 워커, 아이브가 한 행사 안에 다 모이는, 세대와 장르를 가리지 않는 라인업이 특징이에요."
-    ],
-    "ticketingAnnounced": true,
-    "ticketOpenDate": "2026-09-15",
-    "updates": [
+    "id": "shuttle-jx-core-incheon-2026-10",
+    "artist": "JX (김재중 & 김준수)",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-11",
+    "officialUrl": "https://x.com/JX_identity",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
       {
-        "date": "2026-08-14",
-        "text": "최종 라인업이 공개됐어요. 아이브, 엔시티 위시, 코르티스 등이 새로 확정되며 총 20팀 이상 규모가 됐습니다.",
-        "sourceUrl": "https://www.hankyung.com/article/202608140669P"
+        "label": "X (Twitter)",
+        "url": "https://x.com/JX_identity"
       }
+    ],
+    "merchCheckedAt": "2026-09-02",
+    "description": "동방신기·JYJ 출신 김재중·김준수의 유닛 JX, 데뷔 20주년을 맞아 여는 두 번째 투어 'CORE'의 개막 공연. 인천을 시작으로 고베·마카오·오사카·타이베이·요코하마까지 6개 도시를 돈다.",
+    "funFacts": [
+      "둘 다 동방신기로 데뷔해 JYJ로도 활동한 K팝 레전드급 듀오예요. 데뷔 20주년에 맞춰 JX라는 유닛으로 다시 뭉쳤어요.",
+      "2024년 첫 단독 투어 'IDENTITY' 이후 2년 만의 두 번째 JX 투어예요. 이번 투어명은 'CORE'.",
+      "인천이 이번 투어의 첫 도시예요 - 고베·마카오·오사카·타이베이·요코하마로 이어집니다."
     ],
     "sources": [
       {
-        "label": "놀유니버스, NOL FESTIVAL 최종 라인업 공개 - 한국경제",
-        "url": "https://www.hankyung.com/article/202608140669P"
+        "label": "브릿지경제 - 김재중·김준수, JX 2026 투어 개최…10월 인천서 포문",
+        "url": "https://www.viva100.com/article/20260824501026"
       },
       {
-        "label": "세상을 행복한 놀이터로, NOL FESTIVAL 개최 소식 - 야놀자그룹 공식 블로그",
-        "url": "https://www.yanoljagroup.com/ko/blog/view?id=128"
+        "label": "스포츠경향(영문) - Legend Kim Jaejoong and Kim Junsu to hold second JX tour concert",
+        "url": "https://sports.khan.co.kr/en/article/202608242212007/"
       },
       {
-        "label": "NOL 페스티벌 정보 총정리 (라인업, 일정, 예매방법) - NOL 트렌드",
-        "url": "https://trends.yanolja.com/trends/%EB%86%80%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-%EB%9D%BC%EC%9D%B8%EC%97%85-%EC%98%88%EB%A7%A4%EB%B0%A9%EB%B2%95-%EC%9D%BC%EC%A0%95/"
-      },
-      {
-        "label": "NOL 페스티벌 - 나무위키",
-        "url": "https://namu.wiki/w/NOL%20%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C"
-      },
-      {
-        "label": "NOL 페스티벌을 소개합니다 - 인터파크 공식 안내 페이지",
-        "url": "https://events.interpark.com/exhibition?exhibitionCode=260519007"
+        "label": "김재중x김준수, 10월 합동콘서트 개최…6개 도시 투어 - 문화일보",
+        "url": "https://www.munhwa.com/article/11611579"
       }
-    ]
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://wimg.munhwa.com/news/cms/2026/08/24/news-p.v1.20260824.23d11ba781d44f8f89b78098c8bb0989_R.jpg"
   },
   {
     "id": "kopis-jarasum-jazz-2026-10",
@@ -1134,6 +1912,77 @@
     "enrichmentCheckedAt": "2026-09-03"
   },
   {
+    "id": "nol-festival-2026-10",
+    "artist": "NOL FESTIVAL 2026 (NOL 페스티벌)",
+    "genre": "페스티벌",
+    "venue": "킨텍스 제2전시장",
+    "city": "고양",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-18",
+    "officialUrl": "https://events.interpark.com/exhibition?exhibitionCode=260519007",
+    "note": "야놀자(NOL)가 여는 제1회 페스티벌. 지금은 정식 예매가 아니라 무료 응모 접수 기간이고, 선예매·일반예매는 9/15(화)부터 별도로 열려요.",
+    "description": "야놀자(NOL)가 처음 여는 종합 페스티벌로, 슈퍼라이브·K-POP·EDM 3개 스테이지에서 진행돼요. god·YB·아이브(IVE)·엔시티 위시·알렌 워커 등 세대와 장르를 넘나드는 라인업이 확정됐어요.",
+    "posterUrl": "https://image6.yanolja.com/cx-ydm/Rh5bzfQdWklZJxZd",
+    "lineup": [
+      "god (지오디)",
+      "YB",
+      "자우림",
+      "넬(NELL)",
+      "김준수",
+      "빈지노",
+      "규현",
+      "아이브(IVE)",
+      "엔시티 위시(NCT WISH)",
+      "코르티스(CORTIS)",
+      "트레저(TREASURE)",
+      "엔믹스(NMIXX)",
+      "크래비티(CRAVITY)",
+      "케플러(Kep1er)",
+      "키스오브라이프(KISS OF LIFE)",
+      "이무진",
+      "WOODZ",
+      "하성운",
+      "Hearts2Hearts",
+      "Alan Walker (알렌 워커)",
+      "Don Diablo (돈 디아블로)"
+    ],
+    "funFacts": [
+      "티켓을 파는 대신 NOL 앱/홈페이지에서 미션을 완료하거나 상품을 구매하면 응모권을 주는 '무료 초청' 방식으로 시작했다가, 9/15부터는 일반 선예매·예매도 별도로 열려요. 유료 콘서트도 완전한 무료 행사도 아닌 하이브리드 구조인 셈이에요.",
+      "K팝·슈퍼라이브·EDM 3개 스테이지를 동시에 운영하는 종합 축제라 god와 알렌 워커, 아이브가 한 행사 안에 다 모이는, 세대와 장르를 가리지 않는 라인업이 특징이에요."
+    ],
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-15",
+    "updates": [
+      {
+        "date": "2026-08-14",
+        "text": "최종 라인업이 공개됐어요. 아이브, 엔시티 위시, 코르티스 등이 새로 확정되며 총 20팀 이상 규모가 됐습니다.",
+        "sourceUrl": "https://www.hankyung.com/article/202608140669P"
+      }
+    ],
+    "sources": [
+      {
+        "label": "놀유니버스, NOL FESTIVAL 최종 라인업 공개 - 한국경제",
+        "url": "https://www.hankyung.com/article/202608140669P"
+      },
+      {
+        "label": "세상을 행복한 놀이터로, NOL FESTIVAL 개최 소식 - 야놀자그룹 공식 블로그",
+        "url": "https://www.yanoljagroup.com/ko/blog/view?id=128"
+      },
+      {
+        "label": "NOL 페스티벌 정보 총정리 (라인업, 일정, 예매방법) - NOL 트렌드",
+        "url": "https://trends.yanolja.com/trends/%EB%86%80%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-%EB%9D%BC%EC%9D%B8%EC%97%85-%EC%98%88%EB%A7%A4%EB%B0%A9%EB%B2%95-%EC%9D%BC%EC%A0%95/"
+      },
+      {
+        "label": "NOL 페스티벌 - 나무위키",
+        "url": "https://namu.wiki/w/NOL%20%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C"
+      },
+      {
+        "label": "NOL 페스티벌을 소개합니다 - 인터파크 공식 안내 페이지",
+        "url": "https://events.interpark.com/exhibition?exhibitionCode=260519007"
+      }
+    ]
+  },
+  {
     "id": "kopis-ska-festival-2026-10",
     "artist": "스카 페스티벌 10주년 기념공연: Super-Swag",
     "genre": "페스티벌",
@@ -1252,6 +2101,89 @@
     ]
   },
   {
+    "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
+    "artist": "EXO",
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213773",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). EXO PLANET #6 - EXhOrizon [dot], 월드투어를 마무리하는 앙콜 콘서트 (4/10~12 본공연과는 별개 회차).",
+    "sources": [
+      {
+        "label": "OSEN - '한층 업그레이드 된 버전'..엑소, 11월 앙코르 콘서트 개최",
+        "url": "https://www.osen.co.kr/article/G1112860692"
+      },
+      {
+        "label": "헤럴드뮤즈 - 엑소 'EXhOrizon' 서울 앙코르 콘서트 11월 6-8일 개최",
+        "url": "https://www.heraldmuse.com/article/10847079"
+      },
+      {
+        "label": "EXO Announces Dates For Encore Concert EXO PLANET #6 \"EXhOrizon [dot]\" In Seoul - Soompi",
+        "url": "https://www.soompi.com/article/1864228wpp/exo-announces-dates-for-encore-concert-exo-planet-6-exhorizon-dot"
+      }
+    ],
+    "officialUrl": "https://weverse.io/exo",
+    "description": "EXO의 여섯 번째 단독 투어 'EXhOrizon'의 서울 앙코르 콘서트. 4~7월 전 세계 14개 지역 27회 투어를 마무리하는 자리다.",
+    "funFacts": [
+      "4월부터 7월까지 전 세계 14개 지역에서 27회나 열린 대형 투어였어요. 이번 11월 서울 공연이 그 투어의 최종 마무리예요.",
+      "'한층 업그레이드된 버전'으로 다시 만날 수 있다고 예고돼서, 이미 투어를 본 팬들도 다시 찾을 만한 이유가 있어요.",
+      "선예매가 EXO-L 멤버십 국내(8/27)→글로벌(8/28)→일반(8/31) 순으로 3단계로 진행됐어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg",
+    "setlists": [
+      {
+        "label": "EXO PLANET #6 - EXhOrizon 서울 원 공연 (4월)",
+        "date": "2026-04-10",
+        "venue": "KSPO DOME, Seoul",
+        "songs": [
+          "MAMA",
+          "Monster",
+          "Total Eclipse",
+          "Overdose",
+          "Moonlight Shadows",
+          "Gravity",
+          "Jekyll",
+          "Crazy",
+          "PLAYBOY",
+          "Artificial Love",
+          "The Eve",
+          "Love Shot",
+          "Power",
+          "Don't fight the feeling",
+          "Run",
+          "Tempo",
+          "Ko Ko Bop",
+          "CALL ME BABY",
+          "LOVE ME RIGHT",
+          "Growl",
+          "Baby, Don't Cry",
+          "Walk On Memories",
+          "Don't Go",
+          "EL DORADO",
+          "Back It Up",
+          "Forever",
+          "Crown",
+          "Back Pocket",
+          "Paradise",
+          "Flatline",
+          "Angel"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/exo/2026/kspo-dome-seoul-south-korea-434a5bf7.html",
+        "note": "같은 KSPO DOME에서 열린 올해 4월 원 공연 세트리스트예요. 11월 앙코르 공연은 세트리스트가 달라질 수 있어요."
+      }
+    ],
+    "fanChantGuide": [
+      {
+        "title": "EXO 응원법 정리 - 나무위키",
+        "url": "https://namu.wiki/w/EXO/%EC%9D%91%EC%9B%90%EB%B2%95",
+        "note": "팬덤이 정리한 곡별 응원법 위키 문서"
+      }
+    ]
+  },
+  {
     "id": "kopis-kimjanghun-miryang-2026-11",
     "artist": "김장훈 전국투어 콘서트: 원맨쇼 [밀양]",
     "genre": "가요",
@@ -1315,6 +2247,41 @@
       }
     ],
     "merchCheckedAt": "2026-09-02"
+  },
+  {
+    "id": "shuttle-teddy-swims-2026-11",
+    "artist": "Teddy Swims (테디 스윔스)",
+    "genre": "팝",
+    "venue": "KBS스포츠월드(아레나)",
+    "city": "서울",
+    "startDate": "2026-11-15",
+    "endDate": "2026-11-15",
+    "officialUrl": "https://www.livenation.kr/teddy-swims-tickets-adp1300113",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/teddyswims/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02",
+    "description": "커버 가수에서 시작해 'Lose Control'로 빌보드 역사를 새로 쓴 테디 스윔스의 첫 단독 내한공연. 투어명은 'I've Tried Everything But Therapy'.",
+    "funFacts": [
+      "대표곡 'Lose Control'이 빌보드 핫100에 112주간 머물며 2024년 연말결산 1위에 올랐고, 2025 그래미 최우수 신인상 후보에도 올랐어요.",
+      "유튜브 커버 영상으로 이름을 알린 뮤지션이에요 - 조지아에서 자라며 힙합·R&B·컨트리를 두루 접했고, 오티스 레딩 같은 소울 거장의 영향을 받았대요.",
+      "투어명(이자 앨범명)인 'I've Tried Everything But Therapy'는 내면의 상처를 치유하는 과정을 담은 제목이에요 - 테디 스윔스는 이 취약함을 약점이 아니라 사람들과 연결되는 수단으로 본다고 말했어요."
+    ],
+    "sources": [
+      {
+        "label": "다음 - 커버 가수에서 빌보드 역사 바꾼 스타로... 테디 스윔스 인터뷰",
+        "url": "https://v.daum.net/v/4J9CWb3G3I"
+      },
+      {
+        "label": "빌보드 코리아 - 올해 연말·내년 초를 화려하게 수놓을 내한 공연 총정리",
+        "url": "https://www.billboard.co.kr/editorial/music/article/korea-tour/"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "5-seconds-of-summer-2026-11",
@@ -1471,6 +2438,109 @@
     }
   },
   {
+    "id": "kopis-PF299935",
+    "artist": "ELLEGARDEN, Bad For Education Tour Ⅱ",
+    "genre": "J-POP",
+    "venue": "예스24 라이브홀 (구. 악스코리아)",
+    "city": "서울",
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-29",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+  },
+  {
+    "id": "shuttle-yuuri-live-seoul-2026-12",
+    "artist": "YUURI (유우리)",
+    "genre": "J-POP",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-06",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26010352",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialUrl": "https://www.yuuriweb.com/",
+    "description": "'드라이플라워'로 빌보드 재팬 연간 1위에 오른 일본 싱어송라이터 유우리(優里/YUURI)의 단독 내한 콘서트. 인천 인스파이어 아레나에서 이틀간 열린다.",
+    "funFacts": [
+      "대표곡 '드라이플라워(ドライフラワー)'가 빌보드 재팬 톱100 연간 차트 1위에 올랐고, THE FIRST TAKE 영상 등 스트리밍 합산 1억 뷰를 넘겼어요.",
+      "원래는 밴드 멤버였다가 2019년 탈퇴 후 길거리 버스킹을 시작했어요. 우연히 만난 다른 밴드 보컬의 도움으로 사이타마 슈퍼 아레나 무대에 서게 된 게 전환점이었대요.",
+      "데뷔곡 '숨바꼭질(かくれんぼ)'이 틱톡에서 먼저 화제가 됐고, '드라이플라워'는 그 곡 속 여성 캐릭터의 후속 이야기를 담고 있어요."
+    ],
+    "sources": [
+      {
+        "label": "나무위키 - 유우리(가수)",
+        "url": "https://namu.wiki/w/%EC%9C%A0%EC%9A%B0%EB%A6%AC(%EA%B0%80%EC%88%98)"
+      },
+      {
+        "label": "APPLEWOOD 공식 X - YUURI LIVE 2026 IN SEOUL 공지",
+        "url": "https://x.com/applewood_kr/status/2077679637350785467"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
+  },
+  {
+    "id": "shuttle-khalid-2026-12",
+    "artist": "Khalid (칼리드)",
+    "genre": "팝",
+    "venue": "킨텍스 제2전시장 10홀",
+    "city": "고양",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-05",
+    "ticketUrl": "https://mobileticket.interpark.com/goods/18010432",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/thegreatkhalid"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02",
+    "officialUrl": "https://khalidtour2026.com/",
+    "description": "칼리드(Khalid)의 2018년 첫 내한 이후 8년 만의 단독 내한공연. 지난 5월 라스베이거스에서 시작한 월드투어 'It's Always Summer Somewhere'의 아시아 일정이다.",
+    "funFacts": [
+      "2018년 첫 내한 이후 8년 만이에요 - 오래 기다린 팬들에게는 반가운 재방문이죠.",
+      "이번 투어는 지난 5월 미국 라스베이거스에서 막을 올린 월드투어의 일부로, 서울은 그 아시아 구간에 포함돼요."
+    ],
+    "sources": [
+      {
+        "label": "한국경제매거진 - 돌아온 칼리드…8년 만에 단독 내한, 월드투어 서울 공연 개최",
+        "url": "https://magazine.hankyung.com/money/article/202607070138c"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
+  },
+  {
+    "id": "fkj-tyber-tour-korea-2026-12",
+    "artist": "FKJ (French Kiwi Juice) - Tyber Tour in Korea",
+    "genre": "팝",
+    "venue": "킨텍스 제2전시장 10홀",
+    "city": "고양",
+    "startDate": "2026-12-06",
+    "endDate": "2026-12-06",
+    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14462",
+    "note": "프렌치 하우스·재즈·소울·힙합을 넘나드는 프로듀서 FKJ의 내한 공연입니다.",
+    "sources": [
+      {
+        "label": "Time Out Bangkok - FKJ brings his live show to Asia in 2026",
+        "url": "https://www.timeout.com/bangkok/news/fkj-brings-his-live-show-to-asia-in-2026-070626"
+      }
+    ],
+    "officialUrl": "https://frenchkiwijuice.com/",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/frenchkiwijuice/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-02",
+    "description": "프랑스 멀티 인스트루멘탈리스트 FKJ의 세 번째 정규앨범 'Tyber'를 지원하는 아시아 7개 도시 투어 서울 공연.",
+    "funFacts": [
+      "라이브가 독특해요 - 반주 없이 색소폰·키보드·기타를 오가며 루프 페달로 쌓아 올려서, 혼자서 풀 밴드 사운드를 만들어내요.",
+      "재즈·소울·펑크·힙합·록·클래식·일렉트로닉을 넘나드는 장르 융합이 특징이에요. 코첼라·레드락스 같은 대형 페스티벌 출연 경력도 있고요.",
+      "이번 투어는 9월 11일 발매되는 세 번째 정규앨범 'Tyber'를 지원하는 자리예요 - 신보 발매 직후 곧바로 아시아 투어에 나서는 셈이죠."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
+  },
+  {
     "id": "kopis-domi-jdbeck-2026-12",
     "artist": "DOMi & JD BECK - WHO ASKED? TOUR [서울]",
     "genre": "재즈/내한",
@@ -1507,6 +2577,17 @@
         "url": "https://www.etnews.com/20260812000409"
       }
     ]
+  },
+  {
+    "id": "kopis-PF299848",
+    "artist": "홈커밍스 내한 공연: You are you, even if no one fill in about you.",
+    "genre": "J-POP",
+    "venue": "무신사 개러지 (구. 왓챠홀)",
+    "city": "서울",
+    "startDate": "2026-12-13",
+    "endDate": "2026-12-13",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299848_260901_141354.png",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
   },
   {
     "id": "fujii-kaze-2027-01",
@@ -1598,175 +2679,6 @@
     "merchCheckedAt": "2026-09-02"
   },
   {
-    "id": "spyair-2026-09",
-    "artist": "SPYAIR (스파이에어)",
-    "genre": "J-POP",
-    "venue": "킨텍스 제2전시장",
-    "city": "고양",
-    "startDate": "2026-09-05",
-    "endDate": "2026-09-05",
-    "schedule": "오후 6시 시작",
-    "ticketLinks": [
-      {
-        "vendor": "예스24",
-        "url": "https://m.ticket.yes24.com/Perf/58592"
-      }
-    ],
-    "note": "킨텍스 제2전시장 후면광장(야외) 공연이에요.",
-    "description": "새 보컬 요스케(YOSUKE) 합류 후 첫 단독 내한 공연 'SPYAIR JUST LIKE THIS 2026 in KOREA'.",
-    "funFacts": [
-      "전 보컬 이케가 건강상의 이유로 탈퇴한 뒤, 오디션을 거쳐 합류한 새 보컬 요스케와 함께하는 첫 단독 내한이에요. 달라진 라인업으로 라이브가 어떻게 바뀌었을지 지켜볼 만해요.",
-      "작년 원더리벳 2025 헤드라이너로 내한한 지 약 1년 만의 단독 공연이라, 그때 못 본 팬이라면 이번이 좋은 기회예요."
-    ],
-    "sources": [
-      {
-        "label": "스파이에어, \"새 보컬 요스케와 함께\"...9월 5일 한국 단독 공연 - YTN",
-        "url": "https://www.ytn.co.kr/_ln/0117_202605261027303802"
-      },
-      {
-        "label": "SPYAIR JUST LIKE THIS 2026 in KOREA - 예스24 티켓",
-        "url": "https://m.ticket.yes24.com/Perf/58592"
-      }
-    ],
-    "officialUrl": "https://www.spyair.net/",
-    "officialSns": [
-      {
-        "label": "X (Twitter)",
-        "url": "https://x.com/SPYAIRSTAFF"
-      }
-    ],
-    "mdUrl": "https://www.spyair.net/goods/",
-    "merchCheckedAt": "2026-09-03",
-    "merch": [
-      {
-        "label": "VIP A석 특전 티셔츠",
-        "url": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887",
-        "note": "VIP A석(187,000원) 티켓에 포함된 특전이에요. 별도 판매 상품이 아니라 좌석 등급별 굿즈 포함 구성입니다."
-      },
-      {
-        "label": "VIP B석 특전 타월",
-        "url": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887",
-        "note": "VIP B석(172,000원) 티켓에 포함된 특전이에요."
-      }
-    ],
-    "updates": [
-      {
-        "date": "2026-09-03",
-        "text": "예스24 공지에서 VIP 티켓 등급별 특전(A석 티셔츠 포함/B석 타월 포함)을 확인했어요. 별도 구매하는 굿즈숍 상품 목록은 아직 공개되지 않았습니다.",
-        "sourceUrl": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887"
-      }
-    ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260522/20260522-58592.jpg"
-  },
-  {
-    "id": "iu-goyang-2026-09",
-    "artist": "아이유 (IU)",
-    "genre": "가요",
-    "venue": "고양종합운동장 주경기장",
-    "city": "고양",
-    "startDate": "2026-09-01",
-    "endDate": "2026-09-30",
-    "note": "2026년 9월 고양종합운동장 단독 콘서트가 예정되어 있었으나, 티켓 예매가 시작되기도 전인 7월 20일 아이유 측이 이관개방증 악화를 이유로 공연 취소와 정규 6집 앨범 발매 연기를 함께 발표했습니다. 구체적인 공연 날짜는 취소 전까지 공식적으로 확정·발표되지 않아, 여기서는 예정 월(9월) 전체로 표기합니다. 예매가 열리지 않았던 만큼 별도 환불 대상도 없습니다.",
-    "description": "가수 아이유의 단독 콘서트로 2026년 9월 고양종합운동장에서 열릴 예정이었다.",
-    "status": "cancelled",
-    "funFacts": [
-      "정규 6집 발매와 맞물려 준비되던 투어였는데, 앨범 자체가 콘서트와 함께 연기되면서 이번 취소는 단순 일정 변경이 아니라 컴백 전체 스케줄에 영향을 준 결정이었어요.",
-      "아이유는 오래전부터 이관개방증을 앓아온 것으로 알려져 있는데, 이번엔 '밤낮으로 증상이 이어졌다'고 밝힐 만큼 상태가 심각했다고 해요."
-    ],
-    "updates": [
-      {
-        "date": "2026-07-20",
-        "text": "아이유 측이 이관개방증 악화로 9월 고양 콘서트 취소와 정규 6집 발매 연기를 공식 발표했어요. 티켓 예매 전이라 환불 절차는 발생하지 않았습니다.",
-        "sourceUrl": "https://www.khan.co.kr/article/202607201937001"
-      }
-    ],
-    "sources": [
-      {
-        "label": "'고질병 악화' 아이유, 콘서트·앨범 잠정 연기 - 경향신문",
-        "url": "https://www.khan.co.kr/article/202607201937001"
-      },
-      {
-        "label": "아이유, 이관개방증으로 고양 콘서트 취소·앨범 발매 연기 - 파이낸셜뉴스",
-        "url": "https://www.fnnews.com/news/202607202044452666"
-      }
-    ]
-  },
-  {
-    "id": "jo1-seoul-2026-09",
-    "artist": "JO1",
-    "genre": "J-POP",
-    "venue": "티켓링크 라이브 아레나 (구 올림픽공원 핸드볼경기장)",
-    "city": "서울",
-    "startDate": "2026-09-26",
-    "endDate": "2026-09-27",
-    "officialUrl": "https://jo1.jp/feature/jo1dershow2026_eien?lang=en",
-    "note": "6월 지방선거 개표소 부족 사태에 항의하는 시위가 올림픽공원 핸드볼경기장 일대에서 3개월 넘게 이어지면서, 소속사가 8월 3일 안전 문제를 이유로 서울 공연을 취소했습니다. 티켓 예매가 시작되기 전 취소돼 있어, 별도 환불 절차는 발생하지 않았습니다.",
-    "description": "일본 9인조 보이그룹 JO1의 월드투어 'JO1DER SHOW 2026 EIEN 永縁' 서울 공연으로, 티켓링크 라이브 아레나에서 이틀간 열릴 예정이었다.",
-    "status": "cancelled",
-    "funFacts": [
-      "이 공연은 예매가 열리기도 전에 취소돼서, 팬들이 티켓 구하는 걱정 대신 '언제 다시 서울에 오나'를 걱정하게 만든 케이스예요.",
-      "취소 이유가 아티스트나 주최 측 사정이 아니라 공연장 인근 시위라는 점에서, 같은 장소를 예약한 다른 공연들에도 줄줄이 영향을 준 사례 중 하나예요."
-    ],
-    "updates": [
-      {
-        "date": "2026-08-03",
-        "text": "소속사가 '올공 시위' 장기화에 따른 안전 문제로 9월 26~27일 서울 공연 취소를 공식 발표했어요.",
-        "sourceUrl": "https://www.edaily.co.kr/News/Read?newsId=04250886645543712"
-      }
-    ],
-    "sources": [
-      {
-        "label": "JO1, 핸드볼경기장 콘서트 취소…개표소 시위 장기화 여파 - 이데일리",
-        "url": "https://www.edaily.co.kr/News/Read?newsId=04250886645543712"
-      },
-      {
-        "label": "JO1, '올공 시위' 장기화로 콘서트 취소 - 일간스포츠",
-        "url": "https://isplus.com/article/view/isp202608030156"
-      }
-    ],
-    "officialSns": [
-      {
-        "label": "X (Twitter)",
-        "url": "https://x.com/official_jo1"
-      }
-    ],
-    "merchCheckedAt": "2026-09-02"
-  },
-  {
-    "id": "kim-yongbin-serenade-2026-09",
-    "artist": "김용빈",
-    "genre": "가요",
-    "venue": "티켓링크 라이브 아레나 (올림픽공원)",
-    "city": "서울",
-    "startDate": "2026-09-19",
-    "endDate": "2026-09-20",
-    "ticketUrl": "http://www.ticketlink.co.kr/product/64771",
-    "posterUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_1/kim-pst0804.jpg",
-    "note": "올림픽공원 핸드볼경기장 일대에서 석 달 넘게 이어진 시위 여파로, 공연기획사가 9월 1일 안전한 진행이 어렵다고 판단해 취소를 공식 발표했습니다. 예매된 티켓은 별도 신청 없이 수수료 없이 순차적으로 전액 환불됩니다.",
-    "description": "가수 김용빈의 단독 콘서트 '2026 김용빈 콘서트 세레나데'로, 티켓링크 라이브 아레나에서 이틀간 열릴 예정이었다.",
-    "status": "cancelled",
-    "funFacts": [
-      "같은 장소(티켓링크 라이브 아레나)에서 6월 이후로만 취소·장소변경된 공연이 15건, 환불액이 10억 원을 훌쩍 넘는다고 하니 이 시위가 공연업계에 준 파장이 꽤 컸어요."
-    ],
-    "updates": [
-      {
-        "date": "2026-09-01",
-        "text": "공연기획사가 '올공 시위' 여파로 9월 19~20일 서울 콘서트 취소를 공식 발표했어요. 예매 티켓은 전액 자동 환불됩니다.",
-        "sourceUrl": "https://tvreport.co.kr/entertainment/article/1072564/"
-      }
-    ],
-    "sources": [
-      {
-        "label": "김용빈, '올공 시위' 여파로 서울 콘서트 취소 - TV리포트",
-        "url": "https://tvreport.co.kr/entertainment/article/1072564/"
-      },
-      {
-        "label": "김용빈, 시위 여파로 서울 단독 콘서트 취소 - 일간스포츠",
-        "url": "https://isplus.com/article/view/isp202609010216"
-      }
-    ]
-  },
-  {
     "id": "shuttle-maroon5-seoul-2027-01",
     "artist": "Maroon 5 (마룬5)",
     "genre": "팝/락",
@@ -1836,896 +2748,6 @@
         ],
         "sourceUrl": "https://www.setlist.fm/setlist/maroon-5/2026/estadio-nacional-lima-peru-6b76523e.html",
         "note": "같은 투어의 다른 공연(리마) 세트리스트예요. 서울 공연은 조금씩 달라질 수 있어요."
-      }
-    ]
-  },
-  {
-    "id": "shuttle-jx-core-incheon-2026-10",
-    "artist": "JX (김재중 & 김준수)",
-    "genre": "가요",
-    "venue": "인스파이어 아레나",
-    "city": "인천",
-    "startDate": "2026-10-09",
-    "endDate": "2026-10-11",
-    "officialUrl": "https://x.com/JX_identity",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "officialSns": [
-      {
-        "label": "X (Twitter)",
-        "url": "https://x.com/JX_identity"
-      }
-    ],
-    "merchCheckedAt": "2026-09-02",
-    "description": "동방신기·JYJ 출신 김재중·김준수의 유닛 JX, 데뷔 20주년을 맞아 여는 두 번째 투어 'CORE'의 개막 공연. 인천을 시작으로 고베·마카오·오사카·타이베이·요코하마까지 6개 도시를 돈다.",
-    "funFacts": [
-      "둘 다 동방신기로 데뷔해 JYJ로도 활동한 K팝 레전드급 듀오예요. 데뷔 20주년에 맞춰 JX라는 유닛으로 다시 뭉쳤어요.",
-      "2024년 첫 단독 투어 'IDENTITY' 이후 2년 만의 두 번째 JX 투어예요. 이번 투어명은 'CORE'.",
-      "인천이 이번 투어의 첫 도시예요 - 고베·마카오·오사카·타이베이·요코하마로 이어집니다."
-    ],
-    "sources": [
-      {
-        "label": "브릿지경제 - 김재중·김준수, JX 2026 투어 개최…10월 인천서 포문",
-        "url": "https://www.viva100.com/article/20260824501026"
-      },
-      {
-        "label": "스포츠경향(영문) - Legend Kim Jaejoong and Kim Junsu to hold second JX tour concert",
-        "url": "https://sports.khan.co.kr/en/article/202608242212007/"
-      },
-      {
-        "label": "김재중x김준수, 10월 합동콘서트 개최…6개 도시 투어 - 문화일보",
-        "url": "https://www.munhwa.com/article/11611579"
-      }
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://wimg.munhwa.com/news/cms/2026/08/24/news-p.v1.20260824.23d11ba781d44f8f89b78098c8bb0989_R.jpg"
-  },
-  {
-    "id": "shuttle-busan-rock-festival-2026-10",
-    "artist": "2026 부산국제록페스티벌 (Busan International Rock Festival)",
-    "genre": "페스티벌",
-    "venue": "삼락생태공원",
-    "city": "부산",
-    "startDate": "2026-10-02",
-    "endDate": "2026-10-04",
-    "ticketUrl": "https://ticket.yes24.com/Perf/58933",
-    "officialUrl": "https://busanrockfestival.com/",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "officialSns": [
-      {
-        "label": "X (Twitter)",
-        "url": "https://x.com/busan_rock"
-      }
-    ],
-    "merchCheckedAt": "2026-09-02",
-    "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
-    "funFacts": [
-      "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
-      "CNBLUE·송골매 같은 국내 대형 밴드부터 WOODZ·Xdinary Heroes 같은 아이돌 밴드까지, 1·2차 합쳐 39팀이 확정됐어요.",
-      "일본의 Suchmos·Hitsujibungaku, 인도네시아의 Ardhito Pramono 등 아시아권 아티스트도 다수 포함돼 있어요."
-    ],
-    "lineup": [
-      "Avenged Sevenfold",
-      "메가데스",
-      "Suchmos",
-      "Hitsujibungaku",
-      "CNBLUE",
-      "송골매",
-      "이승윤",
-      "잔나비",
-      "터치드",
-      "한로로",
-      "DYGL",
-      "Xdinary Heroes",
-      "WOODZ",
-      "너드커넥션",
-      "카더가든",
-      "Dragon Pony",
-      "Ardhito Pramono",
-      "스카웨이커스",
-      "고고학",
-      "오월오일",
-      "극동아시아타이거즈",
-      "김뜻돌",
-      "오이스터즈",
-      "까치산",
-      "공원",
-      "김성규",
-      "다다다",
-      "레이지본",
-      "로맨틱펀치",
-      "Redoor",
-      "밴드기린",
-      "Spacey Jane",
-      "양치기소년단",
-      "이츠",
-      "KARDI",
-      "캔트비블루",
-      "페퍼톤스",
-      "프랭클리",
-      "한요한",
-      "hathaw9y"
-    ],
-    "sources": [
-      {
-        "label": "부산국제록페스티벌 공식 - 1차 라인업 공지",
-        "url": "https://busanrockfestival.com/notice/2026notice_05/"
-      },
-      {
-        "label": "부산국제록페스티벌 공식 - 2차 라인업 공지",
-        "url": "https://busanrockfestival.com/notice/2026notice_08/"
-      }
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png"
-  },
-  {
-    "id": "shuttle-yuuri-live-seoul-2026-12",
-    "artist": "YUURI (유우리)",
-    "genre": "J-POP",
-    "venue": "인스파이어 아레나",
-    "city": "인천",
-    "startDate": "2026-12-05",
-    "endDate": "2026-12-06",
-    "ticketUrl": "https://nol.yanolja.com/ticket/products/26010352",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "officialUrl": "https://www.yuuriweb.com/",
-    "description": "'드라이플라워'로 빌보드 재팬 연간 1위에 오른 일본 싱어송라이터 유우리(優里/YUURI)의 단독 내한 콘서트. 인천 인스파이어 아레나에서 이틀간 열린다.",
-    "funFacts": [
-      "대표곡 '드라이플라워(ドライフラワー)'가 빌보드 재팬 톱100 연간 차트 1위에 올랐고, THE FIRST TAKE 영상 등 스트리밍 합산 1억 뷰를 넘겼어요.",
-      "원래는 밴드 멤버였다가 2019년 탈퇴 후 길거리 버스킹을 시작했어요. 우연히 만난 다른 밴드 보컬의 도움으로 사이타마 슈퍼 아레나 무대에 서게 된 게 전환점이었대요.",
-      "데뷔곡 '숨바꼭질(かくれんぼ)'이 틱톡에서 먼저 화제가 됐고, '드라이플라워'는 그 곡 속 여성 캐릭터의 후속 이야기를 담고 있어요."
-    ],
-    "sources": [
-      {
-        "label": "나무위키 - 유우리(가수)",
-        "url": "https://namu.wiki/w/%EC%9C%A0%EC%9A%B0%EB%A6%AC(%EA%B0%80%EC%88%98)"
-      },
-      {
-        "label": "APPLEWOOD 공식 X - YUURI LIVE 2026 IN SEOUL 공지",
-        "url": "https://x.com/applewood_kr/status/2077679637350785467"
-      }
-    ],
-    "enrichmentCheckedAt": "2026-09-03"
-  },
-  {
-    "id": "shuttle-khalid-2026-12",
-    "artist": "Khalid (칼리드)",
-    "genre": "팝",
-    "venue": "킨텍스 제2전시장 10홀",
-    "city": "고양",
-    "startDate": "2026-12-05",
-    "endDate": "2026-12-05",
-    "ticketUrl": "https://mobileticket.interpark.com/goods/18010432",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "officialSns": [
-      {
-        "label": "X (Twitter)",
-        "url": "https://x.com/thegreatkhalid"
-      }
-    ],
-    "merchCheckedAt": "2026-09-02",
-    "officialUrl": "https://khalidtour2026.com/",
-    "description": "칼리드(Khalid)의 2018년 첫 내한 이후 8년 만의 단독 내한공연. 지난 5월 라스베이거스에서 시작한 월드투어 'It's Always Summer Somewhere'의 아시아 일정이다.",
-    "funFacts": [
-      "2018년 첫 내한 이후 8년 만이에요 - 오래 기다린 팬들에게는 반가운 재방문이죠.",
-      "이번 투어는 지난 5월 미국 라스베이거스에서 막을 올린 월드투어의 일부로, 서울은 그 아시아 구간에 포함돼요."
-    ],
-    "sources": [
-      {
-        "label": "한국경제매거진 - 돌아온 칼리드…8년 만에 단독 내한, 월드투어 서울 공연 개최",
-        "url": "https://magazine.hankyung.com/money/article/202607070138c"
-      }
-    ],
-    "enrichmentCheckedAt": "2026-09-03"
-  },
-  {
-    "id": "shuttle-isul-live-festival-2026-09",
-    "artist": "2026 이슬라이브 페스티벌 (테라와 함께하는)",
-    "genre": "페스티벌",
-    "venue": "송도달빛축제공원",
-    "city": "인천",
-    "startDate": "2026-09-12",
-    "endDate": "2026-09-12",
-    "ticketUrl": "https://tickets.interpark.com/goods/26010722",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "merchCheckedAt": "2026-09-03",
-    "description": "하이트진로가 여는 '테라와 함께하는 2026 이슬라이브 페스티벌'. 2024년 이후 2년 만에 재개되며 인천 송도 달빛축제공원에서 열린다.",
-    "funFacts": [
-      "2년 만의 재개작이라 규모부터 키웠어요. 수용 인원을 기존 대비 약 1만 명 늘린 2만 5천 명으로 확대했고, 지난 회차(1만 8천 명) 대비 몸집이 훨씬 커졌어요.",
-      "라인업이 10팀이나 돼요 - 다이나믹 듀오·이영지·멜로망스·우즈·딘딘 등 힙합부터 발라드까지 장르가 다양해서 취향 갈리는 사람들이 함께 가기 좋아요.",
-      "얼리버드 1,000장이 먼저 매진됐고, 공식 티켓은 NOL티켓에서 판매돼요."
-    ],
-    "lineup": [
-      "다이나믹 듀오",
-      "터치드",
-      "이영지",
-      "멜로망스",
-      "우즈",
-      "윤마치",
-      "딘딘",
-      "마이티마우스",
-      "조째즈",
-      "싸이버거"
-    ],
-    "ticketLinks": [
-      {
-        "vendor": "NOL티켓",
-        "url": "https://nol.yanolja.com/ticket/products/26010722"
-      },
-      {
-        "vendor": "인터파크",
-        "url": "https://tickets.interpark.com/goods/26010722"
-      }
-    ],
-    "sources": [
-      {
-        "label": "위키트리 - 우즈, 이영지, 다듀까지... 역대급 규모로 돌아온 '이슬라이브 페스티벌'",
-        "url": "https://www.wikitree.co.kr/articles/1151084"
-      },
-      {
-        "label": "이투데이 - 하이트진로, 내달 12일 '이슬라이브 페스티벌'...수용인원 1만명 확대",
-        "url": "https://www.etoday.co.kr/news/view/2612105"
-      },
-      {
-        "label": "\"갓 만든 참이슬·테라\"…하이트진로 '이슬라이브 페스티벌' 개최 - 뉴스1",
-        "url": "https://www.news1.kr/industry/distribution/6251912"
-      }
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://i3n.news1.kr/system/photos/2026/8/7/8045229/high.jpg"
-  },
-  {
-    "id": "shuttle-teddy-swims-2026-11",
-    "artist": "Teddy Swims (테디 스윔스)",
-    "genre": "팝",
-    "venue": "KBS스포츠월드(아레나)",
-    "city": "서울",
-    "startDate": "2026-11-15",
-    "endDate": "2026-11-15",
-    "officialUrl": "https://www.livenation.kr/teddy-swims-tickets-adp1300113",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "officialSns": [
-      {
-        "label": "Instagram",
-        "url": "https://www.instagram.com/teddyswims/"
-      }
-    ],
-    "merchCheckedAt": "2026-09-02",
-    "description": "커버 가수에서 시작해 'Lose Control'로 빌보드 역사를 새로 쓴 테디 스윔스의 첫 단독 내한공연. 투어명은 'I've Tried Everything But Therapy'.",
-    "funFacts": [
-      "대표곡 'Lose Control'이 빌보드 핫100에 112주간 머물며 2024년 연말결산 1위에 올랐고, 2025 그래미 최우수 신인상 후보에도 올랐어요.",
-      "유튜브 커버 영상으로 이름을 알린 뮤지션이에요 - 조지아에서 자라며 힙합·R&B·컨트리를 두루 접했고, 오티스 레딩 같은 소울 거장의 영향을 받았대요.",
-      "투어명(이자 앨범명)인 'I've Tried Everything But Therapy'는 내면의 상처를 치유하는 과정을 담은 제목이에요 - 테디 스윔스는 이 취약함을 약점이 아니라 사람들과 연결되는 수단으로 본다고 말했어요."
-    ],
-    "sources": [
-      {
-        "label": "다음 - 커버 가수에서 빌보드 역사 바꾼 스타로... 테디 스윔스 인터뷰",
-        "url": "https://v.daum.net/v/4J9CWb3G3I"
-      },
-      {
-        "label": "빌보드 코리아 - 올해 연말·내년 초를 화려하게 수놓을 내한 공연 총정리",
-        "url": "https://www.billboard.co.kr/editorial/music/article/korea-tour/"
-      }
-    ],
-    "enrichmentCheckedAt": "2026-09-03"
-  },
-  {
-    "id": "nct127-neocity-redline-seoul-2026-09",
-    "artist": "NCT 127",
-    "genre": "가요",
-    "venue": "KSPO DOME",
-    "city": "서울",
-    "startDate": "2026-09-18",
-    "endDate": "2026-09-20",
-    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213585",
-    "note": "5번째 월드투어 'NEO CITY: SEOUL - THE REDLINE'의 서울 공연으로, 약 1년 8개월 만의 단독 내한 공연입니다. 3회차 전석 매진. 셔틀 스캔 자동화가 &TEAM·EXO의 KSPO DOME 표기와 '동일 공연'으로 잘못 판단해 누락했던 건을 재조사해 직접 추가했습니다 (날짜가 서로 다른 별개 공연으로 확인됨: NCT127 9/18~20, &TEAM 10/3~4, EXO는 이미 지난 4/10~12).",
-    "sources": [
-      {
-        "label": "NCT 127 공식 X - 5TH TOUR 'NEO CITY - THE REDLINE' 전체 일정 공지",
-        "url": "https://x.com/NCTsmtown_127/status/2074357784880218507"
-      },
-      {
-        "label": "NCT 127 Announces Stops For 5th Tour \"NEO CITY - THE REDLINE\" - Soompi",
-        "url": "https://www.soompi.com/article/1852873wpp/nct-127-announces-stops-for-5th-tour-neo-city-the-redline"
-      }
-    ],
-    "officialSns": [
-      {
-        "label": "X (Twitter)",
-        "url": "https://x.com/NCTsmtown_127"
-      }
-    ],
-    "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-02",
-    "officialUrl": "https://weverse.io/nct127",
-    "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
-    "funFacts": [
-      "서울(9/18~20)을 시작으로 자카르타(10/3)·홍콩(10/10~11)·싱가포르(10/18)·방콕(10/31~11/1)·타이베이(2027.01.02)까지 6개 도시를 도는 대형 월드투어예요. 서울이 개막 무대인 셈이죠.",
-      "이번 투어명 'THE REDLINE'은 공식 계정이 '#NCT127 #THE_REDLINE'과 함께 예고했어요 - 구체적인 컨셉은 공연이 가까워지며 추가로 공개될 걸로 보여요."
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/07/06232541/nct-127.jpeg",
-    "fanChantGuide": [
-      {
-        "title": "NCT 127 'Blingy' 응원법(Cheering Guide) 영상",
-        "url": "https://www.youtube.com/watch?v=oW-GEYgZJDE",
-        "note": "특정 곡(Blingy) 응원법 안내 영상 - 투어 전체 곡 가이드는 아님"
-      }
-    ]
-  },
-  {
-    "id": "andteam-blaze-the-way-encore-2026-10",
-    "artist": "&TEAM",
-    "genre": "가요",
-    "venue": "KSPO DOME",
-    "city": "서울",
-    "startDate": "2026-10-03",
-    "endDate": "2026-10-04",
-    "ticketUrl": "https://world.nol.com/en/ticket/places/26000892/products/26011092",
-    "note": "'2026 &TEAM CONCERT TOUR BLAZE THE WAY' 앙코르 공연. 예매 시 본인인증 계정 필요(양도 방지). 셔틀 스캔 자동화가 NCT127·EXO의 KSPO DOME 표기와 '동일 공연'으로 잘못 판단해 누락했던 건을 재조사해 직접 추가했습니다 (날짜가 서로 다른 별개 공연으로 확인됨: &TEAM 10/3~4, NCT127 9/18~20, EXO는 이미 지난 4/10~12).",
-    "sources": [
-      {
-        "label": "K-POP Ticket Navi - &TEAM Live 2026 | BLAZE THE WAY Tour 전체 가이드",
-        "url": "https://kpop-ticket.com/en/articles/andteam-concert-guide-2026"
-      },
-      {
-        "label": "&TEAM BLAZE THE WAY Encore KSPO DOME - NOL World",
-        "url": "https://world.nol.com/en/content/articles/5c238bea-c186-41ae-843d-bafde5727cd1"
-      }
-    ],
-    "officialSns": [
-      {
-        "label": "X (Twitter)",
-        "url": "https://x.com/andTEAMofficial"
-      }
-    ],
-    "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/75",
-    "merchCheckedAt": "2026-09-02",
-    "officialUrl": "https://weverse.io/andteam",
-    "description": "&TEAM의 첫 대형 아시아 투어 'BLAZE THE WAY'의 서울 앙코르 공연. 원래 투어 일정(인천 인스파이어)에 이어 수요에 따라 KSPO DOME 공연이 추가됐다.",
-    "funFacts": [
-      "이번 투어는 &TEAM 데뷔(2023년) 이후 최대 규모예요 - 일본 9개 도시를 포함해 아시아 주요 도시를 도는 17회 공연입니다.",
-      "'앙코르(Encore)' 공연이라는 이름 그대로, 원래 잡혀있던 인천 인스파이어 공연 외에 추가로 편성된 무대예요 - 그만큼 수요가 컸다는 뜻이죠.",
-      "일본 아레나 투어에서 시작해 한국·대만·홍콩·태국·싱가포르로 확장하는 동선이라, HYBE가 아시아 시장을 겨냥해 키우는 그룹이라는 평가를 받고 있어요."
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262",
-    "setlists": [
-      {
-        "label": "2026 &TEAM CONCERT TOUR 'BLAZE THE WAY' - 요코하마 공연",
-        "date": "2026-05-13",
-        "venue": "K-Arena Yokohama, Yokohama, Japan",
-        "songs": [
-          "Back to Life",
-          "Lunatic",
-          "War Cry",
-          "Rush",
-          "Road Not Taken",
-          "W.O.L.F. (Win Or Lose Fight)",
-          "Under the Skin",
-          "Deer Hunter",
-          "Go in Blind (Getsurou)",
-          "Bewitched",
-          "HOTLINE",
-          "Aoarashi",
-          "Ookami-kei Danshi",
-          "Mismatch",
-          "Samidare",
-          "Heartbreak Time Machine",
-          "Jyuugoya",
-          "Yukiakari",
-          "We on Fire",
-          "Run Wild",
-          "Himawari (Imprinted)",
-          "Sakura-iro Yell",
-          "FIREWORK",
-          "Feel the Pulse",
-          "Chincha Okashii"
-        ],
-        "sourceUrl": "https://www.setlist.fm/setlist/andteam/2026/k-arena-yokohama-yokohama-japan-4b4b53a6.html",
-        "note": "같은 투어의 다른 공연(요코하마) 세트리스트예요. 인천 앙코르 공연은 세트리스트가 달라질 수 있어요."
-      }
-    ],
-    "fanChantGuide": [
-      {
-        "title": "&TEAM 응원법 정리 - 나무위키",
-        "url": "https://namu.wiki/w/&TEAM/%EC%9D%91%EC%9B%90%EB%B2%95",
-        "note": "팬덤이 정리한 곡별 응원법 위키 문서"
-      }
-    ]
-  },
-  {
-    "id": "riize-3rd-anniversary-fanmeeting-2026-09",
-    "artist": "RIIZE 3RD ANNIVERSARY FANMEETING - Ch. RIIZE : ON AIR",
-    "genre": "가요",
-    "venue": "인스파이어 아레나",
-    "city": "인천",
-    "startDate": "2026-09-12",
-    "endDate": "2026-09-13",
-    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14634",
-    "officialUrl": "https://world.nol.com/en/ticket/places/26000846/products/26010045",
-    "note": "RIIZE 데뷔 3주년 기념 팬미팅. 공식 X 계정 공지로 9/12(토) 5PM, 9/13(일) 4PM 확인.",
-    "sources": [
-      {
-        "label": "RIIZE 공식 X - 팬미팅 일정 공지",
-        "url": "https://x.com/RIIZE_official/status/2079068870275739694"
-      },
-      {
-        "label": "타임스프레드 - RIIZE 3RD ANNIVERSARY FANMEETING 정보",
-        "url": "https://www.timespread.co.kr/subscription-event/riize-3rd-anniversary-fanmeeting-ch-riize-on-air-2026-09-12"
-      },
-      {
-        "label": "라이즈 데뷔 3주년 기념 팬미팅 'Ch. RIIZE : ON AIR' 국내 선예매 오픈 - 톱스타뉴스",
-        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16146898"
-      }
-    ],
-    "officialSns": [
-      {
-        "label": "X (Twitter)",
-        "url": "https://x.com/RIIZE_official"
-      }
-    ],
-    "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/151",
-    "merchCheckedAt": "2026-09-03",
-    "description": "RIIZE의 데뷔 3주년을 기념하는 공식 팬미팅. 'Ch. RIIZE : ON AIR'라는 제목처럼 방송 컨셉으로 꾸며지며, 이틀간 인천 인스파이어 아레나에서 열린다.",
-    "funFacts": [
-      "2026년 9월 12일(토)·13일(일) 이틀간 열려요. RIIZE 데뷔(2023년 9월) 3주년에 맞춰 기획된 공식 행사예요.",
-      "글로벌 선행 인증이 7월 20~28일 별도로 진행됐을 만큼 해외 팬 비중도 큰 행사예요.",
-      "공연장이 인천 인스파이어 아레나라, 같은 시기 다른 대형 페스티벌들과 이동 동선이 겹칠 수 있어요."
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16146898_1972132_130.jpg"
-  },
-  {
-    "id": "takuya-kimura-live-tour-checkpoint-seoul-2026-09",
-    "artist": "TAKUYA KIMURA (기무라 타쿠야) - Live Tour 2026 Checkpoint",
-    "genre": "J-POP",
-    "venue": "인스파이어 아레나",
-    "city": "인천",
-    "startDate": "2026-09-26",
-    "endDate": "2026-09-26",
-    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14058",
-    "officialUrl": "https://starto.jp/s/p/live/10520?lang=en",
-    "note": "전 SMAP 멤버 기무라 타쿠야의 첫 단독 해외 공연입니다.",
-    "sources": [
-      {
-        "label": "한국경제 - 유재석도 반한 김탁구...기무라 타쿠야, 데뷔 38년 만의 내한 공연",
-        "url": "https://www.hankyung.com/article/2026060229997"
-      },
-      {
-        "label": "싱글리스트 - 기무라 타쿠야, 첫 내한 공연 29일 티켓 오픈",
-        "url": "https://www.slist.kr/news/articleView.html?idxno=742814"
-      },
-      {
-        "label": "기무라 타쿠야, 오는 9월 단독 내한 공연 - ABC뉴스",
-        "url": "https://www.abcn.kr/news/articleView.html?idxno=88470"
-      }
-    ],
-    "description": "'일본 원빈'이라 불리는 기무라 타쿠야의 데뷔 38년 만의 첫 공식 내한 공연. 솔로 전향 후 첫 아시아 투어의 핵심 거점이다.",
-    "funFacts": [
-      "1988년 SMAP으로 데뷔해 '론리 베케이션', '러브 제너레이션' 등으로 한류 드라마 붐을 이끈 주역이에요. 국내에선 드라마 속 이름을 딴 '김탁구'라는 애칭으로 더 친숙하죠.",
-      "38년 경력에 이번이 첫 공식 내한이에요. 그만큼 오랜 팬들에게는 놓칠 수 없는 자리라, 온라인 단독 예매인데도 피켓팅이 예상돼요.",
-      "유재석이 그의 드라마를 '홀린 듯이 전편을 클리어했다'고 언급했을 만큼, 팬층이 세대를 넘나들어요."
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg"
-  },
-  {
-    "id": "edc-korea-2026",
-    "artist": "2026 EDC KOREA (Electric Daisy Carnival Korea)",
-    "genre": "페스티벌",
-    "venue": "인스파이어 엔터테인먼트 리조트",
-    "city": "인천",
-    "startDate": "2026-10-03",
-    "endDate": "2026-10-04",
-    "ticketUrl": "https://edckorea.frontgatetickets.com/",
-    "officialUrl": "https://korea.edc.com/en/",
-    "note": "마틴 개릭스, 일레니엄 등 라인업이 확정됐습니다. 같은 주말 파라다이스시티에서 열리는 XMF 2026과는 별개 행사입니다.",
-    "sources": [
-      {
-        "label": "CBC뉴스 - 'EDC 코리아 2026', 전체 라인업 최초 공개…에이티즈 홍중 솔로 출격",
-        "url": "https://www.cbci.co.kr/news/articleView.html?idxno=582559"
-      },
-      {
-        "label": "bandwagon.asia - EDC Korea unveils 2026 lineup",
-        "url": "https://www.bandwagon.asia/articles/edc-korea-unveils-2026-lineup-dj-snake-ti-sto-fisher-alok-illenium-b2b-dabin-sara-landry-more"
-      },
-      {
-        "label": "EDC Korea 2026 공식 사이트",
-        "url": "https://korea.edc.com/en/"
-      }
-    ],
-    "officialSns": [
-      {
-        "label": "Instagram",
-        "url": "https://www.instagram.com/edc_korea/"
-      }
-    ],
-    "merchCheckedAt": "2026-09-02",
-    "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
-    "funFacts": [
-      "에이티즈의 홍중이 'NOWON'이라는 솔로 아티스트 이름으로 처음 페스티벌 무대에 올라요 - K팝 아이돌이 EDM 페스티벌 라인업에 서는 흔치 않은 사례예요.",
-      "3회째를 맞으며 개최 시기를 4월에서 10월로 옮겼어요. 개천절 연휴와 중국 황금연휴 기간에 맞춰 해외 관객 접근성을 높이려는 전략으로 보여요.",
-      "티에스토·DJ 스네이크·일리네어(ILLENIUM) b2b DABIN·피셔(FISHER)·알록(Alok) 등 4개 스테이지에 세계적 DJ들이 나눠 오릅니다."
-    ],
-    "lineup": [
-      "Tiësto",
-      "DJ Snake",
-      "ILLENIUM b2b DABIN",
-      "FISHER",
-      "Alok",
-      "Subtronics",
-      "R3HAB",
-      "Kayzo",
-      "Sara Landry",
-      "홍중 (NOWON)"
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/73/2026/07/28164448/edck_2026_mk_lu_lubd_fest_site_seo_1200x630_r01.jpg"
-  },
-  {
-    "id": "fkj-tyber-tour-korea-2026-12",
-    "artist": "FKJ (French Kiwi Juice) - Tyber Tour in Korea",
-    "genre": "팝",
-    "venue": "킨텍스 제2전시장 10홀",
-    "city": "고양",
-    "startDate": "2026-12-06",
-    "endDate": "2026-12-06",
-    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14462",
-    "note": "프렌치 하우스·재즈·소울·힙합을 넘나드는 프로듀서 FKJ의 내한 공연입니다.",
-    "sources": [
-      {
-        "label": "Time Out Bangkok - FKJ brings his live show to Asia in 2026",
-        "url": "https://www.timeout.com/bangkok/news/fkj-brings-his-live-show-to-asia-in-2026-070626"
-      }
-    ],
-    "officialUrl": "https://frenchkiwijuice.com/",
-    "officialSns": [
-      {
-        "label": "Instagram",
-        "url": "https://www.instagram.com/frenchkiwijuice/"
-      }
-    ],
-    "merchCheckedAt": "2026-09-02",
-    "description": "프랑스 멀티 인스트루멘탈리스트 FKJ의 세 번째 정규앨범 'Tyber'를 지원하는 아시아 7개 도시 투어 서울 공연.",
-    "funFacts": [
-      "라이브가 독특해요 - 반주 없이 색소폰·키보드·기타를 오가며 루프 페달로 쌓아 올려서, 혼자서 풀 밴드 사운드를 만들어내요.",
-      "재즈·소울·펑크·힙합·록·클래식·일렉트로닉을 넘나드는 장르 융합이 특징이에요. 코첼라·레드락스 같은 대형 페스티벌 출연 경력도 있고요.",
-      "이번 투어는 9월 11일 발매되는 세 번째 정규앨범 'Tyber'를 지원하는 자리예요 - 신보 발매 직후 곧바로 아시아 투어에 나서는 셈이죠."
-    ],
-    "enrichmentCheckedAt": "2026-09-03"
-  },
-  {
-    "id": "jimff-onesummernight-kpop-season2-2026-09",
-    "artist": "제천국제음악영화제: 원 썸머 나잇 위드 케이팝 시즌2 (FTISLAND·Crush·MONSTA X·리센느 외)",
-    "genre": "페스티벌",
-    "venue": "제천예술의전당(여름광장)",
-    "city": "제천",
-    "startDate": "2026-09-04",
-    "endDate": "2026-09-05",
-    "note": "제천국제음악영화제 부속 K팝 공연입니다. 9/4 FT아일랜드·크러쉬·이승윤·새소년, 9/5 몬스타엑스·리센느·신인류·소란·레이든이 출연합니다.",
-    "sources": [
-      {
-        "label": "천지일보 - JIMFF '원 썸머 나잇 위드 케이팝 시즌2' 이승윤·새소년 등 합류",
-        "url": "https://www.newscj.com/news/articleView.html?idxno=3422260"
-      },
-      {
-        "label": "헤럴드경제 - '대세돌' 리센느가 제천에 뜬다",
-        "url": "https://biz.heraldcorp.com/article/10814345"
-      },
-      {
-        "label": "퍼블릭뉴스통신 - 얼리버드 전량 매진...2차 라인업 공개",
-        "url": "http://www.ttlnews.com/news/articleView.html?idxno=3131237"
-      }
-    ],
-    "merchCheckedAt": "2026-09-03",
-    "description": "제22회 제천국제음악영화제(9/3~9/8)의 시그니처 K팝 프로그램. 이틀간 9팀이 나눠 서는 여름밤 야외 공연이다.",
-    "funFacts": [
-      "'대세돌'로 불리는 리센느(RESCENE)가 'LOVE ATTACK' 역주행으로 화제를 모으며 2차 라인업에 합류했어요. 최근 뜨는 신인 걸그룹을 영화제 무대에서 먼저 볼 수 있는 셈이죠.",
-      "얼리버드 티켓이 조기 매진될 정도로 반응이 뜨거웠어요. 1차 라인업(FT아일랜드·크러쉬·몬스타엑스) 발표 후 이승윤·새소년·신인류·소란·레이든까지 2차로 추가되면서 라인업이 9팀으로 늘었습니다.",
-      "장르가 꽤 넓어요. FT아일랜드·몬스타엑스 같은 아이돌부터 이승윤·새소년처럼 인디/포크 색이 짙은 아티스트까지 하루씩 나눠 섭니다."
-    ],
-    "lineupByDay": [
-      {
-        "date": "2026-09-04",
-        "acts": [
-          "FT아일랜드",
-          "크러쉬",
-          "이승윤",
-          "새소년"
-        ]
-      },
-      {
-        "date": "2026-09-05",
-        "acts": [
-          "몬스타엑스",
-          "리센느(RESCENE)",
-          "신인류",
-          "소란",
-          "레이든"
-        ]
-      }
-    ],
-    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213646",
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.newscj.com/news/photo/202608/3422260_3532965_5915.jpg"
-  },
-  {
-    "id": "the-grateful-camp-2026-09",
-    "artist": "THE GRATEFUL CAMP 2026 (Shintaro Sakamoto·Your Song Is Good·장기하·강산에 등)",
-    "genre": "페스티벌",
-    "venue": "짱뚱어해수욕장 (신안군 증도)",
-    "city": "신안",
-    "startDate": "2026-09-03",
-    "endDate": "2026-09-06",
-    "officialUrl": "https://thegratefulcamp.com/",
-    "note": "캠핑·체류형 부티크 뮤직 페스티벌입니다. 주최측이 스스로 대형 페스티벌과는 다른 소규모 형태임을 강조하고 있습니다.",
-    "sources": [
-      {
-        "label": "공식 사이트",
-        "url": "https://thegratefulcamp.com/"
-      },
-      {
-        "label": "전남매일 보도",
-        "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1288087"
-      },
-      {
-        "label": "중앙이코노미뉴스 - 신안 증도서 3박4일 음악·캠핑 축제",
-        "url": "https://www.joongangenews.com/news/articleView.html?idxno=543842"
-      }
-    ],
-    "merchCheckedAt": "2026-09-03",
-    "description": "일본 사이키델릭 뮤지션 사카모토 신타로, Your Song Is Good부터 장기하·강산에까지 함께 서는 신안 증도의 3박4일 캠핑형 뮤직 페스티벌. 올해로 5회째를 맞는다.",
-    "funFacts": [
-      "그냥 공연만 보는 축제가 아니에요. 요가·에어로빅 세션, 포트럭 파티, 운동회 같은 웰니스 프로그램이 함께 짜여 있어서, 하루 보고 가는 게 아니라 3박4일 내내 머무는 걸 전제로 설계됐어요.",
-      "올해로 5회째를 맞는 신안군의 관광 활성화 연계 행사예요. 대형 페스티벌과는 결이 다른, 소규모 부티크 캠핑 축제를 지향한다고 주최측이 직접 밝히고 있어요.",
-      "사카모토 신타로(일본 사이키델릭 음악가)·Your Song Is Good 같은 해외 라인업과 장기하·강산에 같은 국내 뮤지션이 한 무대에 서요."
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://www.jeonmae.co.kr/news/photo/202608/1288087_1014812_5457.jpg"
-  },
-  {
-    "id": "lim-youngwoong-im-hero-stadium2-2026-09",
-    "artist": "임영웅 (Lim Young-woong)",
-    "genre": "가요",
-    "venue": "고양종합운동장",
-    "city": "고양",
-    "startDate": "2026-09-04",
-    "endDate": "2026-09-06",
-    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14497",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). 트로트 가수 최초로 고양종합운동장에 입성한 스타디움 콘서트.",
-    "sources": [
-      {
-        "label": "데일리안 - 임영웅, 9월 고양종합운동장 입성",
-        "url": "https://www.dailian.co.kr/news/view/1656754/%EC%9E%84%EC%98%81%EC%9B%85-9%EC%9B%94-%EA%B3%A0%EC%96%91%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5-%EC%9E%85%EC%84%B1%E2%80%98%EC%95%84%EC%9E%84-2026"
-      },
-      {
-        "label": "CBC뉴스 - 임영웅, 9월 고양서 두 번째 스타디움 콘서트",
-        "url": "https://www.cbci.co.kr/news/articleView.html?idxno=593942"
-      },
-      {
-        "label": "청년일보 - 임영웅 '고양 스타디움 콘서트' 개최, 16일 티켓 오픈",
-        "url": "https://www.youthdaily.co.kr/news/article.html?no=222463"
-      },
-      {
-        "label": "[영웅신문] 임영웅 'IM HERO THE STADIUM 2' 포스터 공개 - 톱스타뉴스",
-        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16126629"
-      }
-    ],
-    "description": "트로트 스타 임영웅의 생애 두 번째 스타디움 단독 콘서트. 2024년 서울월드컵경기장 공연에 이어, 트로트 가수 최초로 고양종합운동장에 입성한다.",
-    "funFacts": [
-      "2024년 서울월드컵경기장에서 첫 스타디움 콘서트를 성황리에 마친 뒤 여는 두 번째 스타디움 단독 공연이에요. 규모를 키워가는 중이라는 뜻이죠.",
-      "그동안 임영웅의 단독 공연은 예매 시작과 동시에 전 회차 전석 매진을 기록해왔어요 - 이번에도 치열한 피켓팅이 예상돼요.",
-      "소속사(물고기뮤직)는 가창력·무대 연출·전반적인 스케일 모든 면에서 이전보다 한층 진화한 무대를 예고했어요."
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16126629_1956720_2742.jpg"
-  },
-  {
-    "id": "weeknd-hyundaicard-superconcert28-2026-10",
-    "artist": "The Weeknd (위켄드)",
-    "genre": "팝",
-    "venue": "고양종합운동장",
-    "city": "고양",
-    "startDate": "2026-10-07",
-    "endDate": "2026-10-08",
-    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13790",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). 현대카드 슈퍼콘서트 28, 8년 만의 내한 공연.",
-    "sources": [
-      {
-        "label": "한국연예스포츠신문 - 2026 현대카드 슈퍼콘서트 주인공 '위켄드'...8년만의 한국 내한",
-        "url": "https://www.koreaes.com/news/articleView.html?idxno=404202"
-      },
-      {
-        "label": "스타뉴스 - 위켄드, 10월 내한 확정..10만 명 규모 '슈퍼콘서트' 출격",
-        "url": "https://www.starnewskorea.com/star/2026/05/11/2026051112293239131"
-      },
-      {
-        "label": "현대카드, 역대급 공연 펼친다…슈퍼콘서트28 주인공 위켄드 - 한국일보",
-        "url": "https://www.hankooki.com/news/articleView.html?idxno=332548"
-      }
-    ],
-    "officialUrl": "https://www.theweeknd.com/",
-    "description": "8년 만에 한국을 찾는 위켄드(The Weeknd)의 현대카드 슈퍼콘서트28. 고양종합운동장에서 10만 명 규모로 열린다.",
-    "funFacts": [
-      "현대카드 슈퍼콘서트 역사상 10만 명 규모로 열리는 건 이번이 세 번째예요 - 2017년 콜드플레이, 2023년 브루노 마스에 이어서요.",
-      "위켄드가 한국에서 공연하는 건 8년 만이에요. 그만큼 오래 기다린 팬들이 많아 스탠딩석 기준 최대 46만9천원까지 가격대가 형성돼 있어요.",
-      "이틀(10/7·10/8) 연속 공연이라, 하루만 볼지 이틀 다 볼지 고민하는 팬들도 많아요."
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png",
-    "setlists": [
-      {
-        "label": "2026 애프터 아워스 투 오픈 에어 투어 - 런던 웸블리 스타디움 공연",
-        "date": "2026-08-14",
-        "venue": "Wembley Stadium, London",
-        "songs": [
-          "Baptized in Fear",
-          "Open Hearts",
-          "Wake Me Up",
-          "After Hours",
-          "Starboy",
-          "Heartless",
-          "Faith",
-          "Cry for Me",
-          "São Paulo",
-          "Until We're Skin & Bones",
-          "Take My Breath",
-          "Sacrifice",
-          "How Do I Make You Love Me?",
-          "Eva",
-          "Can't Feel My Face",
-          "Lost in the Fire",
-          "Often",
-          "Given Up on Me",
-          "I Was Never There",
-          "The Hills",
-          "Timeless",
-          "RATHER LIE",
-          "Creepin'",
-          "Niagara Falls",
-          "One of the Girls",
-          "Stargirl Interlude",
-          "Out of Time",
-          "I Feel It Coming",
-          "Die for You",
-          "Is There Someone Else?",
-          "Wicked Games",
-          "Call Out My Name",
-          "The Abyss",
-          "Save Your Tears",
-          "Less Than Zero",
-          "Blinding Lights",
-          "Without a Warning",
-          "House of Balloons",
-          "Moth to a Flame"
-        ],
-        "sourceUrl": "https://www.setlist.fm/setlist/the-weeknd/2026/wembley-stadium-london-england-73403ef9.html",
-        "note": "같은 월드투어의 다른 공연(런던) 세트리스트예요. 실제 서울 공연 세트리스트는 조금씩 달라질 수 있어요."
-      }
-    ]
-  },
-  {
-    "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
-    "artist": "EXO",
-    "genre": "가요",
-    "venue": "KSPO DOME",
-    "city": "서울",
-    "startDate": "2026-11-06",
-    "endDate": "2026-11-08",
-    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213773",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). EXO PLANET #6 - EXhOrizon [dot], 월드투어를 마무리하는 앙콜 콘서트 (4/10~12 본공연과는 별개 회차).",
-    "sources": [
-      {
-        "label": "OSEN - '한층 업그레이드 된 버전'..엑소, 11월 앙코르 콘서트 개최",
-        "url": "https://www.osen.co.kr/article/G1112860692"
-      },
-      {
-        "label": "헤럴드뮤즈 - 엑소 'EXhOrizon' 서울 앙코르 콘서트 11월 6-8일 개최",
-        "url": "https://www.heraldmuse.com/article/10847079"
-      },
-      {
-        "label": "EXO Announces Dates For Encore Concert EXO PLANET #6 \"EXhOrizon [dot]\" In Seoul - Soompi",
-        "url": "https://www.soompi.com/article/1864228wpp/exo-announces-dates-for-encore-concert-exo-planet-6-exhorizon-dot"
-      }
-    ],
-    "officialUrl": "https://weverse.io/exo",
-    "description": "EXO의 여섯 번째 단독 투어 'EXhOrizon'의 서울 앙코르 콘서트. 4~7월 전 세계 14개 지역 27회 투어를 마무리하는 자리다.",
-    "funFacts": [
-      "4월부터 7월까지 전 세계 14개 지역에서 27회나 열린 대형 투어였어요. 이번 11월 서울 공연이 그 투어의 최종 마무리예요.",
-      "'한층 업그레이드된 버전'으로 다시 만날 수 있다고 예고돼서, 이미 투어를 본 팬들도 다시 찾을 만한 이유가 있어요.",
-      "선예매가 EXO-L 멤버십 국내(8/27)→글로벌(8/28)→일반(8/31) 순으로 3단계로 진행됐어요."
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg",
-    "setlists": [
-      {
-        "label": "EXO PLANET #6 - EXhOrizon 서울 원 공연 (4월)",
-        "date": "2026-04-10",
-        "venue": "KSPO DOME, Seoul",
-        "songs": [
-          "MAMA",
-          "Monster",
-          "Total Eclipse",
-          "Overdose",
-          "Moonlight Shadows",
-          "Gravity",
-          "Jekyll",
-          "Crazy",
-          "PLAYBOY",
-          "Artificial Love",
-          "The Eve",
-          "Love Shot",
-          "Power",
-          "Don't fight the feeling",
-          "Run",
-          "Tempo",
-          "Ko Ko Bop",
-          "CALL ME BABY",
-          "LOVE ME RIGHT",
-          "Growl",
-          "Baby, Don't Cry",
-          "Walk On Memories",
-          "Don't Go",
-          "EL DORADO",
-          "Back It Up",
-          "Forever",
-          "Crown",
-          "Back Pocket",
-          "Paradise",
-          "Flatline",
-          "Angel"
-        ],
-        "sourceUrl": "https://www.setlist.fm/setlist/exo/2026/kspo-dome-seoul-south-korea-434a5bf7.html",
-        "note": "같은 KSPO DOME에서 열린 올해 4월 원 공연 세트리스트예요. 11월 앙코르 공연은 세트리스트가 달라질 수 있어요."
-      }
-    ],
-    "fanChantGuide": [
-      {
-        "title": "EXO 응원법 정리 - 나무위키",
-        "url": "https://namu.wiki/w/EXO/%EC%9D%91%EC%9B%90%EB%B2%95",
-        "note": "팬덤이 정리한 곡별 응원법 위키 문서"
-      }
-    ]
-  },
-  {
-    "id": "plave-world-tour-keep-it-manic-incheon-2026-09",
-    "artist": "PLAVE (플레이브)",
-    "genre": "가요",
-    "venue": "인천문학경기장",
-    "city": "인천",
-    "startDate": "2026-09-12",
-    "endDate": "2026-09-13",
-    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14162",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). PLAVE 첫 월드투어 'KEEP IT MANIC' 인천 개최.",
-    "sources": [
-      {
-        "label": "싱글리스트 - 플레이브, 9월 인천문학경기장서 월드투어 첫 공연 돌입",
-        "url": "https://www.slist.kr/news/articleView.html?idxno=745389"
-      }
-    ],
-    "officialUrl": "https://www.vlast.co.kr/plave",
-    "description": "버추얼 K팝 아이돌 PLAVE의 첫 월드투어 '[KEEP IT MANIC]'을 여는 개막 공연. 인천문학경기장에서 이틀간 열린다.",
-    "funFacts": [
-      "PLAVE는 실제 사람이 아니라 버추얼(가상) 아이돌이에요. 그런 팀이 첫 월드투어를 여는 자리라 더 상징적이죠.",
-      "인천 공연이 이번 월드투어의 첫 무대예요. 이후 타이베이 등 해외 도시로 이어지는 투어의 출발점입니다.",
-      "공개된 메인 포스터는 화이트 제복을 입은 멤버들의 신비로운 이미지로, 이번 투어의 스케일을 예고했어요."
-    ],
-    "youtubeVideos": [
-      {
-        "title": "2026 PLAVE World Tour [KEEP IT MANIC] Teaser",
-        "videoId": "JLCDhKKKIiE",
-        "note": "월드투어 티저 영상",
-        "sourceUrl": "https://www.youtube.com/watch?v=JLCDhKKKIiE"
-      }
-    ],
-    "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg",
-    "fanChantGuide": [
-      {
-        "title": "PLAVE 'WAY 4 LUV' 응원법 가이드 (Fanchants Guide) 공식 영상",
-        "url": "https://www.youtube.com/watch?v=tRSvtYMjsxw",
-        "note": "특정 곡(WAY 4 LUV) 공식 응원법 안내 영상. 투어 전체 세트리스트 응원법 가이드는 아님"
       }
     ]
   }
