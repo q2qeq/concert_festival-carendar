@@ -1549,6 +1549,10 @@
       {
         "label": "스파이에어, \"새 보컬 요스케와 함께\"...9월 5일 한국 단독 공연 - YTN",
         "url": "https://www.ytn.co.kr/_ln/0117_202605261027303802"
+      },
+      {
+        "label": "SPYAIR JUST LIKE THIS 2026 in KOREA - 예스24 티켓",
+        "url": "https://m.ticket.yes24.com/Perf/58592"
       }
     ],
     "officialUrl": "https://www.spyair.net/",
@@ -1578,7 +1582,8 @@
         "text": "예스24 공지에서 VIP 티켓 등급별 특전(A석 티셔츠 포함/B석 타월 포함)을 확인했어요. 별도 구매하는 굿즈숍 상품 목록은 아직 공개되지 않았습니다.",
         "sourceUrl": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887"
       }
-    ]
+    ],
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260522/20260522-58592.jpg"
   },
   {
     "id": "iu-goyang-2026-09",
@@ -1997,6 +2002,10 @@
       {
         "label": "NCT 127 공식 X - 5TH TOUR 'NEO CITY - THE REDLINE' 전체 일정 공지",
         "url": "https://x.com/NCTsmtown_127/status/2074357784880218507"
+      },
+      {
+        "label": "NCT 127 Announces Stops For 5th Tour \"NEO CITY - THE REDLINE\" - Soompi",
+        "url": "https://www.soompi.com/article/1852873wpp/nct-127-announces-stops-for-5th-tour-neo-city-the-redline"
       }
     ],
     "officialSns": [
@@ -2013,7 +2022,8 @@
       "서울(9/18~20)을 시작으로 자카르타(10/3)·홍콩(10/10~11)·싱가포르(10/18)·방콕(10/31~11/1)·타이베이(2027.01.02)까지 6개 도시를 도는 대형 월드투어예요. 서울이 개막 무대인 셈이죠.",
       "이번 투어명 'THE REDLINE'은 공식 계정이 '#NCT127 #THE_REDLINE'과 함께 예고했어요 - 구체적인 컨셉은 공연이 가까워지며 추가로 공개될 걸로 보여요."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/07/06232541/nct-127.jpeg"
   },
   {
     "id": "andteam-blaze-the-way-encore-2026-10",
@@ -2067,6 +2077,10 @@
       {
         "label": "타임스프레드 - RIIZE 3RD ANNIVERSARY FANMEETING 정보",
         "url": "https://www.timespread.co.kr/subscription-event/riize-3rd-anniversary-fanmeeting-ch-riize-on-air-2026-09-12"
+      },
+      {
+        "label": "라이즈 데뷔 3주년 기념 팬미팅 'Ch. RIIZE : ON AIR' 국내 선예매 오픈 - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16146898"
       }
     ],
     "officialSns": [
@@ -2083,7 +2097,8 @@
       "글로벌 선행 인증이 7월 20~28일 별도로 진행됐을 만큼 해외 팬 비중도 큰 행사예요.",
       "공연장이 인천 인스파이어 아레나라, 같은 시기 다른 대형 페스티벌들과 이동 동선이 겹칠 수 있어요."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16146898_1972132_130.jpg"
   },
   {
     "id": "takuya-kimura-live-tour-checkpoint-seoul-2026-09",
@@ -2303,6 +2318,10 @@
       {
         "label": "청년일보 - 임영웅 '고양 스타디움 콘서트' 개최, 16일 티켓 오픈",
         "url": "https://www.youthdaily.co.kr/news/article.html?no=222463"
+      },
+      {
+        "label": "[영웅신문] 임영웅 'IM HERO THE STADIUM 2' 포스터 공개 - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16126629"
       }
     ],
     "description": "트로트 스타 임영웅의 생애 두 번째 스타디움 단독 콘서트. 2024년 서울월드컵경기장 공연에 이어, 트로트 가수 최초로 고양종합운동장에 입성한다.",
@@ -2311,7 +2330,8 @@
       "그동안 임영웅의 단독 공연은 예매 시작과 동시에 전 회차 전석 매진을 기록해왔어요 - 이번에도 치열한 피켓팅이 예상돼요.",
       "소속사(물고기뮤직)는 가창력·무대 연출·전반적인 스케일 모든 면에서 이전보다 한층 진화한 무대를 예고했어요."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16126629_1956720_2742.jpg"
   },
   {
     "id": "weeknd-hyundaicard-superconcert28-2026-10",
@@ -2402,6 +2422,7 @@
         "sourceUrl": "https://www.youtube.com/watch?v=JLCDhKKKIiE"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg"
   }
 ]
