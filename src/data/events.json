@@ -939,8 +939,13 @@
       {
         "label": "자라섬국제재즈페스티벌 - 위키백과",
         "url": "https://ko.wikipedia.org/wiki/%EC%9E%90%EB%9D%BC%EC%84%AC%EA%B5%AD%EC%A0%9C%EC%9E%AC%EC%A6%88%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C"
+      },
+      {
+        "label": "제23회 자라섬재즈페스티벌 - 예스24 티켓",
+        "url": "https://ticket.yes24.com/Perf/58947"
       }
-    ]
+    ],
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260629/20260629-58947.jpg"
   },
   {
     "id": "kopis-10cm-fanconcert-2026-10",
@@ -1955,9 +1960,14 @@
       {
         "label": "이투데이 - 하이트진로, 내달 12일 '이슬라이브 페스티벌'...수용인원 1만명 확대",
         "url": "https://www.etoday.co.kr/news/view/2612105"
+      },
+      {
+        "label": "\"갓 만든 참이슬·테라\"…하이트진로 '이슬라이브 페스티벌' 개최 - 뉴스1",
+        "url": "https://www.news1.kr/industry/distribution/6251912"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://i3n.news1.kr/system/photos/2026/8/7/8045229/high.jpg"
   },
   {
     "id": "shuttle-teddy-swims-2026-11",
@@ -2403,6 +2413,10 @@
       {
         "label": "헤럴드뮤즈 - 엑소 'EXhOrizon' 서울 앙코르 콘서트 11월 6-8일 개최",
         "url": "https://www.heraldmuse.com/article/10847079"
+      },
+      {
+        "label": "EXO Announces Dates For Encore Concert EXO PLANET #6 \"EXhOrizon [dot]\" In Seoul - Soompi",
+        "url": "https://www.soompi.com/article/1864228wpp/exo-announces-dates-for-encore-concert-exo-planet-6-exhorizon-dot"
       }
     ],
     "officialUrl": "https://weverse.io/exo",
@@ -2412,7 +2426,8 @@
       "'한층 업그레이드된 버전'으로 다시 만날 수 있다고 예고돼서, 이미 투어를 본 팬들도 다시 찾을 만한 이유가 있어요.",
       "선예매가 EXO-L 멤버십 국내(8/27)→글로벌(8/28)→일반(8/31) 순으로 3단계로 진행됐어요."
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg"
   },
   {
     "id": "plave-world-tour-keep-it-manic-incheon-2026-09",
