@@ -988,7 +988,20 @@
     "startDate": "2026-10-10",
     "endDate": "2026-10-10",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297586_260804_102420.jpg",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
+    "officialUrl": "https://cero-web.jp/2026/",
+    "description": "일본 밴드 cero의 8년 만의 한국 공연 'Contemporary Seoul Cruise'. 2018년 'POLY LIFE MULTI SOUL' 아시아투어 이후 첫 내한이다.",
+    "funFacts": [
+      "cero가 한국에서 공연하는 건 2018년 'POLY LIFE MULTI SOUL' 아시아투어 이후 8년 만이에요. 오래 기다린 국내 팬들에게는 놓치기 아까운 자리죠.",
+      "공식 홈페이지에서 '오랜만의 한국 라이브가 결정됐다'며 직접 공지했을 만큼, 밴드 스스로도 특별하게 여기는 공연이에요."
+    ],
+    "sources": [
+      {
+        "label": "cero 공식 웹사이트 - 2026 라이브 공지",
+        "url": "https://cero-web.jp/2026/"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "charlie-puth-2026-10",
@@ -1034,7 +1047,21 @@
     "startDate": "2026-10-11",
     "endDate": "2026-10-11",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295821_260710_144242.gif",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
+    "officialUrl": "https://www.tsquare.jp/",
+    "description": "일본의 전설적인 퓨전 재즈 밴드 T-SQUARE의 7년 만의 단독 내한공연. 보컬 없는 인스트루멘탈 연주로 세계적인 팬층을 가진 밴드다.",
+    "funFacts": [
+      "40년 넘게 활동한 베테랑 밴드예요. 2019년 13년 만의 단독 공연 때는 '20년, 30년씩 기다려서 처음 보러 온다'는 팬들이 있었을 정도로 국내 팬층이 오래됐어요.",
+      "이번에도 지난 단독 공연(2019년) 이후 7년 만이라, 마니아층에게는 흔치 않은 기회예요.",
+      "연세대학교 대강당이라는, 대형 공연장보다는 아늑한 공간에서 열리는 것도 특징이에요."
+    ],
+    "sources": [
+      {
+        "label": "오마이스타 - 대가족이 된 41년차 밴드의 열정 \"한국 매년 오고 싶다\"",
+        "url": "https://star.ohmynews.com/NWS_Web/OhmyStar/at_pg.aspx?CNTN_CD=A0002525870"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "kopis-ska-festival-2026-10",
@@ -1692,7 +1719,24 @@
         "url": "https://x.com/JX_identity"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "description": "동방신기·JYJ 출신 김재중·김준수의 유닛 JX, 데뷔 20주년을 맞아 여는 두 번째 투어 'CORE'의 개막 공연. 인천을 시작으로 고베·마카오·오사카·타이베이·요코하마까지 6개 도시를 돈다.",
+    "funFacts": [
+      "둘 다 동방신기로 데뷔해 JYJ로도 활동한 K팝 레전드급 듀오예요. 데뷔 20주년에 맞춰 JX라는 유닛으로 다시 뭉쳤어요.",
+      "2024년 첫 단독 투어 'IDENTITY' 이후 2년 만의 두 번째 JX 투어예요. 이번 투어명은 'CORE'.",
+      "인천이 이번 투어의 첫 도시예요 - 고베·마카오·오사카·타이베이·요코하마로 이어집니다."
+    ],
+    "sources": [
+      {
+        "label": "브릿지경제 - 김재중·김준수, JX 2026 투어 개최…10월 인천서 포문",
+        "url": "https://www.viva100.com/article/20260824501026"
+      },
+      {
+        "label": "스포츠경향(영문) - Legend Kim Jaejoong and Kim Junsu to hold second JX tour concert",
+        "url": "https://sports.khan.co.kr/en/article/202608242212007/"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "shuttle-busan-rock-festival-2026-10",
