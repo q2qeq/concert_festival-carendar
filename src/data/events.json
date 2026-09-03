@@ -289,33 +289,35 @@
     "merch": [
       {
         "label": "Drawcord T-shirt \"HORO\" (Charcoal)",
-        "url": "https://nolmdshop.com/product/vaundy-drawcord-t-shirt-horo-charcoal/2606/category/172/display/1/",
-        "note": "66,000원"
+        "price": "66,000원",
+        "url": "https://nolmdshop.com/product/vaundy-drawcord-t-shirt-horo-charcoal/2606/category/172/display/1/"
       },
       {
         "label": "Brush Logo T-shirt \"HORO\" (Gray)",
-        "url": "https://nolmdshop.com/product/vaundy-brush-logo-t-shirt-horo-gray/2607/category/172/display/1/",
-        "note": "85,000원"
+        "price": "85,000원",
+        "url": "https://nolmdshop.com/product/vaundy-brush-logo-t-shirt-horo-gray/2607/category/172/display/1/"
       },
       {
         "label": "Long Sleeve Tour T-shirt \"HORO\" (Orange)",
-        "url": "https://nolmdshop.com/product/vaundy-long-sleeve-tour-t-shirt-horo-orange/2608/category/172/display/1/",
-        "note": "105,000원"
+        "price": "105,000원",
+        "url": "https://nolmdshop.com/product/vaundy-long-sleeve-tour-t-shirt-horo-orange/2608/category/172/display/1/"
       },
       {
         "label": "Logo Jacquard Towel \"HORO\"",
-        "url": "https://nolmdshop.com/category/vaundy/172/",
-        "note": "37,000원 (오렌지/블루 2色)"
+        "price": "37,000원",
+        "variants": "오렌지/블루 2色",
+        "url": "https://nolmdshop.com/category/vaundy/172/"
       },
       {
         "label": "Large Tote Bag \"HORO\"",
-        "url": "https://nolmdshop.com/category/vaundy/172/",
-        "note": "85,000원"
+        "price": "85,000원",
+        "url": "https://nolmdshop.com/category/vaundy/172/"
       },
       {
         "label": "[SEOUL limited] Rubber Band \"HORO\" (Light Green×Red)",
-        "url": "https://nolmdshop.com/product/vaundy-seoul-limited-rubber-band-horo-light-green×red/2621/category/172/display/1/",
-        "note": "15,000원 · 서울 공연 한정 상품"
+        "price": "15,000원",
+        "note": "서울 공연 한정 상품",
+        "url": "https://nolmdshop.com/product/vaundy-seoul-limited-rubber-band-horo-light-green×red/2621/category/172/display/1/"
       }
     ]
   },

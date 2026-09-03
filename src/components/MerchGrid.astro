@@ -1,31 +1,75 @@
 ---
+// MD·굿즈 섹션. 표시 우선순위:
+//   1) merchPhotoUrl (여러 상품이 한 번에 나온 사진) - 있으면 맨 위에 크게.
+//      개별 상품 사진은 벤더 페이지에서도 못 찾는 경우가 흔해서, 이게 있으면
+//      개별 카드에 사진이 없어도 섹션이 휑해 보이지 않는다.
+//   2) 상품별 카드 - 이름 + 가격 + 옵션(사이즈/색상) + 비고, 개별 사진이 있으면
+//      카드에도 표시.
+//   3) 공식 MD·굿즈 페이지 링크 - 액션바의 "MD·굿즈" 버튼과 같은 목적지(mdUrl).
+//      섹션 안에도 다시 노출해서, 앵커로 스크롤해 내려온 사람이 바로 구매처로
+//      갈 수 있게 한다.
+// items가 비어 있어도 mdUrl만 있으면 섹션 자체는 렌더링한다 - "정보 정리 중,
+// 공식 페이지에서 확인" 안내 + 링크만이라도 보여주는 게 아무것도 없는 것보다 낫다.
 import type { MerchItem } from '../lib/events';
-interface Props { items: MerchItem[] }
-const { items } = Astro.props;
+interface Props {
+  items: MerchItem[];
+  mdUrl?: string;
+  photoUrl?: string;
+  artist?: string;
+}
+const { items, mdUrl, photoUrl, artist } = Astro.props;
 ---
-{items.length > 0 && (
-  <section class="merch-grid-section">
+{(items.length > 0 || mdUrl) && (
+  <section class="merch-section">
     <h2>MD·굿즈</h2>
-    <div class="merch-grid">
-      {items.map((item) => {
-        const Tag = item.url ? 'a' : 'div';
-        const linkProps = item.url ? { href: item.url, target: '_blank', rel: 'noopener noreferrer' } : {};
-        return (
-          <Tag class="merch-card" {...linkProps}>
-            {item.imageUrl && <img src={item.imageUrl} alt={item.label} loading="lazy" />}
-            <div class="merch-info">
-              <p class="merch-label">{item.label}</p>
-              {item.note && <p class="merch-note">{item.note}</p>}
-            </div>
-          </Tag>
-        );
-      })}
-    </div>
+
+    {photoUrl && (
+      <img class="merch-photo" src={photoUrl} alt={`${artist ?? ''} MD·굿즈 전체 사진`} loading="lazy" />
+    )}
+
+    {items.length > 0 ? (
+      <div class="merch-grid">
+        {items.map((item) => {
+          const href = item.url ?? mdUrl;
+          const Tag = href ? 'a' : 'div';
+          const linkProps = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : {};
+          return (
+            <Tag class="merch-card" {...linkProps}>
+              {item.imageUrl && <img src={item.imageUrl} alt={item.label} loading="lazy" />}
+              <div class="merch-info">
+                <p class="merch-label">{item.label}</p>
+                <p class="merch-meta">
+                  {item.price && <span class="merch-price">{item.price}</span>}
+                  {item.variants && <span class="merch-variants">{item.variants}</span>}
+                </p>
+                {item.note && <p class="merch-note">{item.note}</p>}
+              </div>
+            </Tag>
+          );
+        })}
+      </div>
+    ) : (
+      <p class="merch-pending">개별 상품 정보는 아직 정리 중이에요. 아래 공식 페이지에서 최신 라인업을 확인하세요.</p>
+    )}
+
+    {mdUrl && (
+      <a class="merch-cta" href={mdUrl} target="_blank" rel="noopener noreferrer">
+        공식 MD·굿즈 페이지에서 전체 보기 →
+      </a>
+    )}
   </section>
 )}
 <style>
-  .merch-grid-section { margin: 1.75rem 0; }
-  .merch-grid-section h2 { font-size: 1.05rem; margin: 0 0 0.75rem; color: #e5e2f7; }
+  .merch-section { margin: 1.75rem 0; }
+  .merch-section h2 { font-size: 1.05rem; margin: 0 0 0.75rem; color: #e5e2f7; }
+  .merch-photo {
+    display: block;
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0 0 1rem;
+  }
   .merch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
   .merch-card {
     display: block;
@@ -40,5 +84,21 @@ const { items } = Astro.props;
   .merch-card img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
   .merch-info { padding: 0.6rem 0.75rem 0.8rem; }
   .merch-label { margin: 0; font-size: 0.88rem; font-weight: 600; }
+  .merch-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.3rem 0 0; }
+  .merch-price { font-size: 0.82rem; font-weight: 700; color: #ff8fbe; }
+  .merch-variants { font-size: 0.78rem; color: #a9a4c9; }
   .merch-note { margin: 0.25rem 0 0; font-size: 0.78rem; color: #a9a4c9; }
+  .merch-pending { color: #a9a4c9; font-size: 0.9rem; margin: 0 0 1rem; }
+  .merch-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #101018;
+    background: #ff5fa2;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  .merch-cta:hover { background: #ff7bb2; }
 </style>

@@ -100,7 +100,7 @@ const tocItems = [
   event.setlists && event.setlists.length > 0 && { id: 'setlist', label: '셋리스트' },
   { id: 'fanchant', label: '떼창·콜 가이드' },
   event.previousEditions && event.previousEditions.length > 0 && { id: 'compare', label: '이전 회차 비교' },
-  event.merch && event.merch.length > 0 && { id: 'merch', label: '굿즈' },
+  ((event.merch && event.merch.length > 0) || event.mdUrl) && { id: 'merch', label: 'MD·굿즈' },
   event.funFacts && event.funFacts.length > 0 && { id: 'notes', label: '직관냥 포인트' },
   event.youtubeVideos && event.youtubeVideos.length > 0 && { id: 'videos', label: '영상' },
   event.updates && event.updates.length > 0 && { id: 'updates', label: '업데이트' },
@@ -233,7 +233,7 @@ const jsonLd = {
         <a class="ab-btn" href={officialActionUrl} target="_blank" rel="noopener noreferrer">공식 홈페이지</a>
       )}
       {mdActionUrl && (
-        <a class="ab-btn" href={mdActionUrl} target="_blank" rel="noopener noreferrer">MD·굿즈</a>
+        <a class="ab-btn" href="#merch">MD·굿즈</a>
       )}
       {fanclubActionUrl && (
         <a class="ab-btn" href={fanclubActionUrl} target="_blank" rel="noopener noreferrer">팬클럽</a>
@@ -322,9 +322,9 @@ const jsonLd = {
       </div>
     )}
 
-    {event.merch && event.merch.length > 0 && (
+    {((event.merch && event.merch.length > 0) || event.mdUrl) && (
       <div class="info-block" id="merch">
-        <MerchGrid items={event.merch} />
+        <MerchGrid items={event.merch ?? []} mdUrl={event.mdUrl} photoUrl={event.merchPhotoUrl} artist={event.artist} />
       </div>
     )}
 

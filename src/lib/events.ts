@@ -14,8 +14,14 @@ export interface LineupDay {
   acts: string[];
 }
 
+// 한 상품 = label(이름) + price/variants(사이즈·색상 등 옵션) + note(추가 설명) +
+// imageUrl(있으면 개별 사진) + url(개별 구매 링크, 없으면 이벤트의 mdUrl로 대체).
+// 개별 사진은 벤더 페이지에서도 못 찾는 경우가 많다 - 그럴 땐 imageUrl을 비워두고
+// 이벤트 레벨의 merchPhotoUrl(여러 상품이 한 번에 나온 사진)으로 대신한다.
 export interface MerchItem {
   label: string;
+  price?: string; // e.g. "66,000원" - 실제 공지된 가격만, 추측 금지
+  variants?: string; // e.g. "오렌지/블루 2色", "S/M/L" - 실제 옵션만
   imageUrl?: string;
   url?: string;
   note?: string;
@@ -193,6 +199,9 @@ export interface ConcertEvent {
   // Official merch/goods info, only when a real product photo/listing was found.
   // Leave unset (not a placeholder) when nothing official has been announced yet.
   merch?: MerchItem[];
+  // 여러 굿즈가 한 번에 나온 사진(부스컷/전체 상품컷) - 개별 상품 사진 하나하나
+  // 찾기 어려울 때 이걸 우선 노출한다. 실제로 찾은 공식/보도 사진에만 채운다.
+  merchPhotoUrl?: string;
   // Promoter/fanclub/card-company presale windows, only when a real announced
   // presale process exists - never invented on the assumption "there's probably one".
   presale?: PresaleInfo[];

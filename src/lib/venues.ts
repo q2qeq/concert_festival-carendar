@@ -3,6 +3,9 @@ import raw from '../data/venues.json';
 export interface VenueFood {
   name: string;
   desc: string;
+  // 실제로 찾은 사진(가게 자체 홍보 사진, 지도 서비스 등록 사진)만 채운다 -
+  // 없으면 비워둔다. VenueInfoBox가 없을 때는 텍스트만으로 렌더링한다.
+  photoUrl?: string;
 }
 
 export interface VenueInfo {

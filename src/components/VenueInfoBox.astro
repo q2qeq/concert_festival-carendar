@@ -42,14 +42,15 @@ const info = getVenueInfo(venue);
     </div>
   )}
 
-  {info?.nearbyFood && info.nearbyFood.length > 0 && (
-    <div class="venue-block">
-      <h3>주변 맛집</h3>
+  <div class="venue-block">
+    <h3>주변 맛집</h3>
+    {info?.nearbyFood && info.nearbyFood.length > 0 ? (
       <ul class="food-list">
         {info.nearbyFood.map((f) => {
           const links = mapLinks(`${f.name} ${venue}`);
           return (
             <li>
+              {f.photoUrl && <img class="food-photo" src={f.photoUrl} alt={f.name} loading="lazy" />}
               <strong>{f.name}</strong>
               <span>{f.desc}</span>
               <span class="food-map-links">
@@ -60,8 +61,16 @@ const info = getVenueInfo(venue);
           );
         })}
       </ul>
-    </div>
-  )}
+    ) : (
+      <p class="food-pending">
+        아직 정리된 맛집 정보가 없어요. 아래에서 {venue} 근처 맛집을 바로 검색해보세요.
+        <span class="food-map-links">
+          <a href={mapLinks(`${venue} 맛집`).naver} target="_blank" rel="noopener noreferrer">네이버지도에서 검색</a>
+          <a href={mapLinks(`${venue} 맛집`).google} target="_blank" rel="noopener noreferrer">구글지도에서 검색</a>
+        </span>
+      </p>
+    )}
+  </div>
 
   {info?.tip && <p class="venue-tip">{info.tip}</p>}
 
@@ -81,10 +90,12 @@ const info = getVenueInfo(venue);
   .venue-block p { margin: 0; color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; }
   .venue-block li { color: #d8d5ef; font-size: 0.92rem; line-height: 1.55; }
   .venue-block li strong { color: #f5f3ff; }
-  .food-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem 1rem; padding-left: 0 !important; list-style: none; }
-  .food-list li { display: flex; flex-direction: column; gap: 0.1rem; }
+  .food-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.9rem 1rem; padding-left: 0 !important; list-style: none; }
+  .food-list li { display: flex; flex-direction: column; gap: 0.15rem; }
+  .food-photo { width: 100%; aspect-ratio: 16/10; object-fit: cover; border-radius: 8px; margin-bottom: 0.3rem; }
   .food-list strong { color: #f5f3ff; font-size: 0.92rem; }
   .food-list span { color: #a9a4c9; font-size: 0.82rem; }
+  .food-pending { color: #a9a4c9; font-size: 0.88rem; line-height: 1.6; display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
   .food-map-links { display: flex; gap: 0.5rem; margin-top: 0.15rem; }
   .food-map-links a {
     font-size: 0.76rem;
