@@ -368,6 +368,12 @@
     "tip": "대형 전시장이라 홀 번호를 미리 확인해두는 게 좋아요.",
     "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Daegu_EXCO_4.jpg?width=640",
     "imageCredit": "Wikimedia Commons (Public domain)",
-    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Daegu_EXCO_4.jpg"
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Daegu_EXCO_4.jpg",
+    "nearbyFood": [
+      {
+        "name": "엑스코 푸드코트",
+        "desc": "EXCO 건물 2층에 있는 푸드코트예요. 공연장 안에 있어서 이동 없이 바로 식사할 수 있어요 (운영시간 11:30~19:00, 문의 053-601-5178)."
+      }
+    ]
   }
 }
