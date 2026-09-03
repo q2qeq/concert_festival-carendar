@@ -11,7 +11,8 @@
     "astro": "astro",
     "fetch:kopis": "node scripts/fetch-kopis.mjs",
     "tweet:new": "node scripts/tweet-new-events.mjs",
-    "merch:watch": "node scripts/merch-watch-list.mjs"
+    "merch:watch": "node scripts/merch-watch-list.mjs",
+    "enrich:watch": "node scripts/enrichment-watch-list.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

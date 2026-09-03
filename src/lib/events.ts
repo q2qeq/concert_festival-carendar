@@ -250,6 +250,14 @@ export interface ConcertEvent {
   // is. Only meaningful while `merch` is still empty; stop updating once
   // `merch` has real data.
   merchCheckedAt?: string;
+  // ISO date (yyyy-mm-dd) of the last time the enrichment routine actively
+  // researched this event for the baseline narrative fields (description/
+  // funFacts/sources, and posterUrl when findable) - set by the enrichment
+  // routine (see scripts/enrichment-watch-list.mjs) whether or not it found
+  // anything, so a genuinely-empty result isn't re-researched every single
+  // pass. Only meaningful while `description` is still empty; stop updating
+  // once the baseline fields have real data.
+  enrichmentCheckedAt?: string;
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();
