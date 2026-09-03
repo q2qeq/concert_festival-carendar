@@ -1146,7 +1146,8 @@
         "date": "2026-08-30",
         "text": "EXCO 자체 2026년 일정 페이지가 7월까지만 공개돼 있고, 축제정보센터·Bandsintown 등 행사 아카이브에도 이 페스티벌이 없어요. 아직 공식 발표 전인 것으로 보입니다."
       }
-    ]
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "kopis-yoonjongshin-busan-2026-10",
@@ -1912,7 +1913,24 @@
         "url": "https://www.instagram.com/teddyswims/"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "description": "커버 가수에서 시작해 'Lose Control'로 빌보드 역사를 새로 쓴 테디 스윔스의 첫 단독 내한공연. 투어명은 'I've Tried Everything But Therapy'.",
+    "funFacts": [
+      "대표곡 'Lose Control'이 빌보드 핫100에 112주간 머물며 2024년 연말결산 1위에 올랐고, 2025 그래미 최우수 신인상 후보에도 올랐어요.",
+      "유튜브 커버 영상으로 이름을 알린 뮤지션이에요 - 조지아에서 자라며 힙합·R&B·컨트리를 두루 접했고, 오티스 레딩 같은 소울 거장의 영향을 받았대요.",
+      "투어명(이자 앨범명)인 'I've Tried Everything But Therapy'는 내면의 상처를 치유하는 과정을 담은 제목이에요 - 테디 스윔스는 이 취약함을 약점이 아니라 사람들과 연결되는 수단으로 본다고 말했어요."
+    ],
+    "sources": [
+      {
+        "label": "다음 - 커버 가수에서 빌보드 역사 바꾼 스타로... 테디 스윔스 인터뷰",
+        "url": "https://v.daum.net/v/4J9CWb3G3I"
+      },
+      {
+        "label": "빌보드 코리아 - 올해 연말·내년 초를 화려하게 수놓을 내한 공연 총정리",
+        "url": "https://www.billboard.co.kr/editorial/music/article/korea-tour/"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "nct127-neocity-redline-seoul-2026-09",
@@ -2282,14 +2300,22 @@
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). EXO PLANET #6 - EXhOrizon [dot], 월드투어를 마무리하는 앙콜 콘서트 (4/10~12 본공연과는 별개 회차).",
     "sources": [
       {
-        "label": "EXO Announces Dates For Encore Concerts EXO PLANET #6 'EXhOrizon [dot]' In Seoul - Soompi",
-        "url": "https://www.soompi.com/article/1864228wpp/exo-announces-dates-for-encore-concert-exo-planet-6-exhorizon-dot"
+        "label": "OSEN - '한층 업그레이드 된 버전'..엑소, 11월 앙코르 콘서트 개최",
+        "url": "https://www.osen.co.kr/article/G1112860692"
       },
       {
-        "label": "EXO to hold three encore concerts in Seoul, wrapping up its world tour - Korea JoongAng Daily",
-        "url": "https://www.koreajoongangdaily.com/entertainment/exo-to-hold-three-encore-concerts-in-seoul-wrapping-up-its-world-tour/12835218"
+        "label": "헤럴드뮤즈 - 엑소 'EXhOrizon' 서울 앙코르 콘서트 11월 6-8일 개최",
+        "url": "https://www.heraldmuse.com/article/10847079"
       }
-    ]
+    ],
+    "officialUrl": "https://weverse.io/exo",
+    "description": "EXO의 여섯 번째 단독 투어 'EXhOrizon'의 서울 앙코르 콘서트. 4~7월 전 세계 14개 지역 27회 투어를 마무리하는 자리다.",
+    "funFacts": [
+      "4월부터 7월까지 전 세계 14개 지역에서 27회나 열린 대형 투어였어요. 이번 11월 서울 공연이 그 투어의 최종 마무리예요.",
+      "'한층 업그레이드된 버전'으로 다시 만날 수 있다고 예고돼서, 이미 투어를 본 팬들도 다시 찾을 만한 이유가 있어요.",
+      "선예매가 EXO-L 멤버십 국내(8/27)→글로벌(8/28)→일반(8/31) 순으로 3단계로 진행됐어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "plave-world-tour-keep-it-manic-incheon-2026-09",
