@@ -1752,7 +1752,46 @@
     "endDate": "2026-09-12",
     "ticketUrl": "https://tickets.interpark.com/goods/26010722",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "merchCheckedAt": "2026-09-03"
+    "merchCheckedAt": "2026-09-03",
+    "description": "하이트진로가 여는 '테라와 함께하는 2026 이슬라이브 페스티벌'. 2024년 이후 2년 만에 재개되며 인천 송도 달빛축제공원에서 열린다.",
+    "funFacts": [
+      "2년 만의 재개작이라 규모부터 키웠어요. 수용 인원을 기존 대비 약 1만 명 늘린 2만 5천 명으로 확대했고, 지난 회차(1만 8천 명) 대비 몸집이 훨씬 커졌어요.",
+      "라인업이 10팀이나 돼요 - 다이나믹 듀오·이영지·멜로망스·우즈·딘딘 등 힙합부터 발라드까지 장르가 다양해서 취향 갈리는 사람들이 함께 가기 좋아요.",
+      "얼리버드 1,000장이 먼저 매진됐고, 공식 티켓은 NOL티켓에서 판매돼요."
+    ],
+    "lineup": [
+      "다이나믹 듀오",
+      "터치드",
+      "이영지",
+      "멜로망스",
+      "우즈",
+      "윤마치",
+      "딘딘",
+      "마이티마우스",
+      "조째즈",
+      "싸이버거"
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26010722"
+      },
+      {
+        "vendor": "인터파크",
+        "url": "https://tickets.interpark.com/goods/26010722"
+      }
+    ],
+    "sources": [
+      {
+        "label": "위키트리 - 우즈, 이영지, 다듀까지... 역대급 규모로 돌아온 '이슬라이브 페스티벌'",
+        "url": "https://www.wikitree.co.kr/articles/1151084"
+      },
+      {
+        "label": "이투데이 - 하이트진로, 내달 12일 '이슬라이브 페스티벌'...수용인원 1만명 확대",
+        "url": "https://www.etoday.co.kr/news/view/2612105"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "shuttle-teddy-swims-2026-11",
@@ -1938,24 +1977,57 @@
   },
   {
     "id": "jimff-onesummernight-kpop-season2-2026-09",
-    "artist": "제천국제음악영화제: 원 썸머 나잇 위드 케이팝 시즌2 (FTISLAND·Crush·MONSTA X·LE SSERAFIM)",
+    "artist": "제천국제음악영화제: 원 썸머 나잇 위드 케이팝 시즌2 (FTISLAND·Crush·MONSTA X·리센느 외)",
     "genre": "페스티벌",
     "venue": "제천예술의전당(여름광장)",
     "city": "제천",
     "startDate": "2026-09-04",
     "endDate": "2026-09-05",
-    "note": "제천국제음악영화제 부속 K팝 공연입니다. 9/4 FTISLAND·Crush, 9/5 MONSTA X·LE SSERAFIM이 출연합니다.",
+    "note": "제천국제음악영화제 부속 K팝 공연입니다. 9/4 FT아일랜드·크러쉬·이승윤·새소년, 9/5 몬스타엑스·리센느·신인류·소란·레이든이 출연합니다.",
     "sources": [
       {
-        "label": "천지일보 보도",
+        "label": "천지일보 - JIMFF '원 썸머 나잇 위드 케이팝 시즌2' 이승윤·새소년 등 합류",
         "url": "https://www.newscj.com/news/articleView.html?idxno=3422260"
       },
       {
-        "label": "헤럴드경제 보도",
+        "label": "헤럴드경제 - '대세돌' 리센느가 제천에 뜬다",
         "url": "https://biz.heraldcorp.com/article/10814345"
+      },
+      {
+        "label": "퍼블릭뉴스통신 - 얼리버드 전량 매진...2차 라인업 공개",
+        "url": "http://www.ttlnews.com/news/articleView.html?idxno=3131237"
       }
     ],
-    "merchCheckedAt": "2026-09-03"
+    "merchCheckedAt": "2026-09-03",
+    "description": "제22회 제천국제음악영화제(9/3~9/8)의 시그니처 K팝 프로그램. 이틀간 9팀이 나눠 서는 여름밤 야외 공연이다.",
+    "funFacts": [
+      "'대세돌'로 불리는 리센느(RESCENE)가 'LOVE ATTACK' 역주행으로 화제를 모으며 2차 라인업에 합류했어요. 최근 뜨는 신인 걸그룹을 영화제 무대에서 먼저 볼 수 있는 셈이죠.",
+      "얼리버드 티켓이 조기 매진될 정도로 반응이 뜨거웠어요. 1차 라인업(FT아일랜드·크러쉬·몬스타엑스) 발표 후 이승윤·새소년·신인류·소란·레이든까지 2차로 추가되면서 라인업이 9팀으로 늘었습니다.",
+      "장르가 꽤 넓어요. FT아일랜드·몬스타엑스 같은 아이돌부터 이승윤·새소년처럼 인디/포크 색이 짙은 아티스트까지 하루씩 나눠 섭니다."
+    ],
+    "lineupByDay": [
+      {
+        "date": "2026-09-04",
+        "acts": [
+          "FT아일랜드",
+          "크러쉬",
+          "이승윤",
+          "새소년"
+        ]
+      },
+      {
+        "date": "2026-09-05",
+        "acts": [
+          "몬스타엑스",
+          "리센느(RESCENE)",
+          "신인류",
+          "소란",
+          "레이든"
+        ]
+      }
+    ],
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213646",
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "the-grateful-camp-2026-09",
@@ -1975,9 +2047,20 @@
       {
         "label": "전남매일 보도",
         "url": "https://www.jeonmae.co.kr/news/articleView.html?idxno=1288087"
+      },
+      {
+        "label": "중앙이코노미뉴스 - 신안 증도서 3박4일 음악·캠핑 축제",
+        "url": "https://www.joongangenews.com/news/articleView.html?idxno=543842"
       }
     ],
-    "merchCheckedAt": "2026-09-03"
+    "merchCheckedAt": "2026-09-03",
+    "description": "일본 사이키델릭 뮤지션 사카모토 신타로, Your Song Is Good부터 장기하·강산에까지 함께 서는 신안 증도의 3박4일 캠핑형 뮤직 페스티벌. 올해로 5회째를 맞는다.",
+    "funFacts": [
+      "그냥 공연만 보는 축제가 아니에요. 요가·에어로빅 세션, 포트럭 파티, 운동회 같은 웰니스 프로그램이 함께 짜여 있어서, 하루 보고 가는 게 아니라 3박4일 내내 머무는 걸 전제로 설계됐어요.",
+      "올해로 5회째를 맞는 신안군의 관광 활성화 연계 행사예요. 대형 페스티벌과는 결이 다른, 소규모 부티크 캠핑 축제를 지향한다고 주최측이 직접 밝히고 있어요.",
+      "사카모토 신타로(일본 사이키델릭 음악가)·Your Song Is Good 같은 해외 라인업과 장기하·강산에 같은 국내 뮤지션이 한 무대에 서요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "lim-youngwoong-im-hero-stadium2-2026-09",
@@ -1991,14 +2074,25 @@
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). 트로트 가수 최초로 고양종합운동장에 입성한 스타디움 콘서트.",
     "sources": [
       {
-        "label": "임영웅, 9월 고양종합운동장 입성…'아임 히어로 - 더 스타디움 2' 개최 - 데일리안",
+        "label": "데일리안 - 임영웅, 9월 고양종합운동장 입성",
         "url": "https://www.dailian.co.kr/news/view/1656754/%EC%9E%84%EC%98%81%EC%9B%85-9%EC%9B%94-%EA%B3%A0%EC%96%91%EC%A2%85%ED%95%A9%EC%9A%B4%EB%8F%99%EC%9E%A5-%EC%9E%85%EC%84%B1%E2%80%98%EC%95%84%EC%9E%84-2026"
       },
       {
-        "label": "임영웅, 9월 고양서 두 번째 스타디움 콘서트…사흘간 무대 - CBC뉴스",
+        "label": "CBC뉴스 - 임영웅, 9월 고양서 두 번째 스타디움 콘서트",
         "url": "https://www.cbci.co.kr/news/articleView.html?idxno=593942"
+      },
+      {
+        "label": "청년일보 - 임영웅 '고양 스타디움 콘서트' 개최, 16일 티켓 오픈",
+        "url": "https://www.youthdaily.co.kr/news/article.html?no=222463"
       }
-    ]
+    ],
+    "description": "트로트 스타 임영웅의 생애 두 번째 스타디움 단독 콘서트. 2024년 서울월드컵경기장 공연에 이어, 트로트 가수 최초로 고양종합운동장에 입성한다.",
+    "funFacts": [
+      "2024년 서울월드컵경기장에서 첫 스타디움 콘서트를 성황리에 마친 뒤 여는 두 번째 스타디움 단독 공연이에요. 규모를 키워가는 중이라는 뜻이죠.",
+      "그동안 임영웅의 단독 공연은 예매 시작과 동시에 전 회차 전석 매진을 기록해왔어요 - 이번에도 치열한 피켓팅이 예상돼요.",
+      "소속사(물고기뮤직)는 가창력·무대 연출·전반적인 스케일 모든 면에서 이전보다 한층 진화한 무대를 예고했어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "weeknd-hyundaicard-superconcert28-2026-10",
