@@ -1702,7 +1702,25 @@
         "url": "https://www.instagram.com/maroon5/"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "officialUrl": "https://www.maroon5.com/",
+    "description": "2024년 공연 이후 3년 만에 다시 찾는 마룬5의 내한 콘서트. 2025년 발매한 정규 8집 'Love Is Like'를 기념하는 아시아 투어의 일환이다.",
+    "funFacts": [
+      "2024년 내한 이후 3년 만의 재방문이에요 - 마룬5 특유의 짧은 재방문 주기가 이어지고 있는 셈이죠.",
+      "2025년 발매한 정규 8집 'Love Is Like'를 알리는 아시아 투어의 한 정거장으로 열려요.",
+      "장소가 킨텍스 제1전시장이라, 같은 킨텍스 제2전시장에서 열리는 다른 공연들과 헷갈리지 않게 주의가 필요해요."
+    ],
+    "sources": [
+      {
+        "label": "마이데일리 - [공식] 마룬5, 3년 만의 내한공연 확정",
+        "url": "https://www.mydaily.co.kr/page/view/2026080412071153353"
+      },
+      {
+        "label": "이투데이(엠뉴스) - 마룬5, 3년 만에 내한 콘서트…\"2027년 킨텍스서 개최\"",
+        "url": "https://enews.imbc.com/News/ViewAmp/513648"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "shuttle-jx-core-incheon-2026-10",
@@ -1826,7 +1844,25 @@
     "startDate": "2026-12-05",
     "endDate": "2026-12-06",
     "ticketUrl": "https://nol.yanolja.com/ticket/products/26010352",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)"
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "officialUrl": "https://www.yuuriweb.com/",
+    "description": "'드라이플라워'로 빌보드 재팬 연간 1위에 오른 일본 싱어송라이터 유우리(優里/YUURI)의 단독 내한 콘서트. 인천 인스파이어 아레나에서 이틀간 열린다.",
+    "funFacts": [
+      "대표곡 '드라이플라워(ドライフラワー)'가 빌보드 재팬 톱100 연간 차트 1위에 올랐고, THE FIRST TAKE 영상 등 스트리밍 합산 1억 뷰를 넘겼어요.",
+      "원래는 밴드 멤버였다가 2019년 탈퇴 후 길거리 버스킹을 시작했어요. 우연히 만난 다른 밴드 보컬의 도움으로 사이타마 슈퍼 아레나 무대에 서게 된 게 전환점이었대요.",
+      "데뷔곡 '숨바꼭질(かくれんぼ)'이 틱톡에서 먼저 화제가 됐고, '드라이플라워'는 그 곡 속 여성 캐릭터의 후속 이야기를 담고 있어요."
+    ],
+    "sources": [
+      {
+        "label": "나무위키 - 유우리(가수)",
+        "url": "https://namu.wiki/w/%EC%9C%A0%EC%9A%B0%EB%A6%AC(%EA%B0%80%EC%88%98)"
+      },
+      {
+        "label": "APPLEWOOD 공식 X - YUURI LIVE 2026 IN SEOUL 공지",
+        "url": "https://x.com/applewood_kr/status/2077679637350785467"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "shuttle-khalid-2026-12",
@@ -1844,7 +1880,20 @@
         "url": "https://x.com/thegreatkhalid"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "officialUrl": "https://khalidtour2026.com/",
+    "description": "칼리드(Khalid)의 2018년 첫 내한 이후 8년 만의 단독 내한공연. 지난 5월 라스베이거스에서 시작한 월드투어 'It's Always Summer Somewhere'의 아시아 일정이다.",
+    "funFacts": [
+      "2018년 첫 내한 이후 8년 만이에요 - 오래 기다린 팬들에게는 반가운 재방문이죠.",
+      "이번 투어는 지난 5월 미국 라스베이거스에서 막을 올린 월드투어의 일부로, 서울은 그 아시아 구간에 포함돼요."
+    ],
+    "sources": [
+      {
+        "label": "한국경제매거진 - 돌아온 칼리드…8년 만에 단독 내한, 월드투어 서울 공연 개최",
+        "url": "https://magazine.hankyung.com/money/article/202607070138c"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "shuttle-isul-live-festival-2026-09",
@@ -2123,12 +2172,8 @@
     "note": "프렌치 하우스·재즈·소울·힙합을 넘나드는 프로듀서 FKJ의 내한 공연입니다.",
     "sources": [
       {
-        "label": "인터파크 공연 공지",
-        "url": "https://tickets.interpark.com/contents/notice/detail/14462"
-      },
-      {
-        "label": "관련 보도 - 다음뉴스",
-        "url": "https://v.daum.net/v/20260703140141207"
+        "label": "Time Out Bangkok - FKJ brings his live show to Asia in 2026",
+        "url": "https://www.timeout.com/bangkok/news/fkj-brings-his-live-show-to-asia-in-2026-070626"
       }
     ],
     "officialUrl": "https://frenchkiwijuice.com/",
@@ -2138,7 +2183,14 @@
         "url": "https://www.instagram.com/frenchkiwijuice/"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "description": "프랑스 멀티 인스트루멘탈리스트 FKJ의 세 번째 정규앨범 'Tyber'를 지원하는 아시아 7개 도시 투어 서울 공연.",
+    "funFacts": [
+      "라이브가 독특해요 - 반주 없이 색소폰·키보드·기타를 오가며 루프 페달로 쌓아 올려서, 혼자서 풀 밴드 사운드를 만들어내요.",
+      "재즈·소울·펑크·힙합·록·클래식·일렉트로닉을 넘나드는 장르 융합이 특징이에요. 코첼라·레드락스 같은 대형 페스티벌 출연 경력도 있고요.",
+      "이번 투어는 9월 11일 발매되는 세 번째 정규앨범 'Tyber'를 지원하는 자리예요 - 신보 발매 직후 곧바로 아시아 투어에 나서는 셈이죠."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "jimff-onesummernight-kpop-season2-2026-09",
