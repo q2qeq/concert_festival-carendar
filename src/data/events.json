@@ -1215,8 +1215,13 @@
       {
         "label": "[공연] 2026 김장훈 전국투어 콘서트: 원맨쇼(수원) - 타임티켓",
         "url": "https://timeticket.co.kr/product/7057"
+      },
+      {
+        "label": "2026 김장훈 전국투어 콘서트 : 원맨쇼 - 예스24 티켓",
+        "url": "https://ticket.yes24.com/Perf/58980"
       }
-    ]
+    ],
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260618/20260618-58980.jpg"
   },
   {
     "id": "jason-mraz-2026-11",
@@ -1730,9 +1735,14 @@
       {
         "label": "이투데이(엠뉴스) - 마룬5, 3년 만에 내한 콘서트…\"2027년 킨텍스서 개최\"",
         "url": "https://enews.imbc.com/News/ViewAmp/513648"
+      },
+      {
+        "label": "마룬5 내한 콘서트, 아티스트 선예매 시작 - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16161356"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "https://cdn.topstarnews.net/news/photo/202608/16161356_1989358_2038_crop.jpg"
   },
   {
     "id": "shuttle-jx-core-incheon-2026-10",
