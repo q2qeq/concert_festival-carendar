@@ -165,4 +165,11 @@ export const JPOP_ARTISTS = [
   { name: 'nano.RIPE', aliases: ['나노.라이프', 'nano.RIPE'] },
   { name: 'MYTH & ROID', aliases: ['미스앤로이드', 'MYTH & ROID'] },
   { name: 'ReoNa', aliases: ['레오나', 'ReoNa'] },
+
+  // --- Added 2026-09-03: small-scale/livehouse-tier touring acts test case ---
+  // Hump Back (Japanese rock band, humpback.jp) - Seoul show confirmed for
+  // 2027-01-23 at YES24 LIVE HALL (a livehouse, not in VENUE_CITY_MAP), ticket
+  // sale opens 2026-10-07. Added as the test case for whether the KOPIS pipeline
+  // can catch a small-scale J-rock act that a major-venue-only filter would miss.
+  { name: 'Hump Back', aliases: ['험프백', 'Hump Back', 'HUMP BACK', 'humpback'] },
 ];

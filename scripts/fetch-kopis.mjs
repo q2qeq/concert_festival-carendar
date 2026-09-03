@@ -120,6 +120,14 @@ const EVENTS_PATH = path.join(__dirname, '..', 'src', 'data', 'events.json');
 const CANDIDATES_PATH = path.join(__dirname, '..', 'src', 'data', 'kopis-candidates.json');
 
 const SERVICE_KEY = process.env.KOPIS_SERVICE_KEY;
+// Added 2026-09-03 for testing the livehouse-venue-whitelist + artist-match
+// expansion without risking a real auto-publish to events.json (the J-pop path
+// below writes there with zero human review by design - see J-POP AUTO-PUBLISH
+// PIPELINE header comment). --dry-run runs the full fetch/match/dedupe pipeline
+// exactly as normal but skips every writeFile call, so events.json and
+// kopis-candidates.json are left untouched - only stdout shows what WOULD have
+// happened. Always use this flag for a one-off/manual test run.
+const DRY_RUN = process.argv.includes('--dry-run');
 // Verified live on 2026-08-27 by actually calling the API: CCCD returned real
 // concert/festival entries (윤종신, 10CM, 자라섬재즈페스티벌, etc). An earlier guess,
 // BBBF, returned zero results for the same date range and was wrong - don't reuse it.
@@ -165,6 +173,32 @@ const VENUE_CITY_MAP = {
   '김대중컨벤션센터': '광주',
   '한밭종합운동장': '대전',
   '파라다이스시티': '인천', // added 2026-08-27 after manually curating XMF 2026
+
+  // --- Added 2026-09-03: Hongdae/Itaewon-tier livehouses (approach: catch small-
+  // scale but real international tours, e.g. Hump Back's 2027-01-23 YES24 LIVE
+  // HALL show, which the old arena/dome/stadium-only whitelist would drop). Names
+  // are best-effort common spellings - substring-matched against KOPIS's fcltynm,
+  // so confirm/adjust against real KOPIS venue strings once a live run surfaces
+  // them. This reopens some domestic-indie noise on the NON-J-pop path, but that
+  // path only ever writes to kopis-candidates.json (staged for hand review, never
+  // auto-published) - see the file header - so noise there is a review cost, not
+  // a live-site risk.
+  'YES24 LIVE HALL': '서울',
+  '예스24 라이브홀': '서울',
+  'KT&G 상상마당': '서울',
+  '무브홀': '서울',
+  '롤링홀': '서울',
+  'V-HALL': '서울',
+  '브이홀': '서울',
+  '클럽 FF': '서울',
+  '벨로주': '서울',
+  'DGBD': '서울',
+  '프리즘홀': '서울',
+  '라이즈홀': '서울',
+  '웨스트브릿지': '서울',
+  '무대륙': '서울',
+  '클럽 빵': '서울',
+  '언플러그드': '서울',
 };
 
 function resolveCity(venue) {
@@ -576,11 +610,30 @@ async function main() {
   }
 
   candidates.sort((a, b) => a.startDate.localeCompare(b.startDate));
-  await writeFile(CANDIDATES_PATH, JSON.stringify(candidates, null, 2) + '\n');
+  if (DRY_RUN) {
+    // Dry-run diagnostic dump goes OUTSIDE the repo (home dir, not mnt/) so it's
+    // never mistaken for a real repo change and never touched by git.
+    const dryRunOut = path.join(process.env.HOME, 'kopis-dry-run-candidates.json');
+    await writeFile(dryRunOut, JSON.stringify({ jpopAdded, candidates }, null, 2) + '\n');
+    console.log(`--dry-run: NOT writing kopis-candidates.json or events.json. Full preview written to ${dryRunOut} instead.`);
+  } else {
+    await writeFile(CANDIDATES_PATH, JSON.stringify(candidates, null, 2) + '\n');
+    if (jpopAdded.length > 0) {
+      const merged = [...existing, ...jpopAdded].sort((a, b) => a.startDate.localeCompare(b.startDate));
+      await writeFile(EVENTS_PATH, JSON.stringify(merged, null, 2) + '\n');
+    }
+  }
 
-  if (jpopAdded.length > 0) {
-    const merged = [...existing, ...jpopAdded].sort((a, b) => a.startDate.localeCompare(b.startDate));
-    await writeFile(EVENTS_PATH, JSON.stringify(merged, null, 2) + '\n');
+  // Added 2026-09-03: keyword sanity-scan independent of VENUE_CITY_MAP/JPOP_ARTISTS
+  // matching, so a test run can see whether KOPIS has the listing AT ALL even if
+  // the whitelist/alias logic above has a gap. Not artist-specific by design -
+  // reuses TEST_KEYWORDS so this doubles as a general "did my new match/venue entry
+  // actually show up in raw KOPIS data" debug tool for future tests too.
+  const TEST_KEYWORDS = [/hump\s*back/i, /험프백/];
+  const keywordHits = raw.filter((r) => TEST_KEYWORDS.some((re) => re.test(r.artist)));
+  console.log(`Keyword sanity-scan (${TEST_KEYWORDS.map(String).join(', ')}): ${keywordHits.length} raw KOPIS hit(s)`);
+  for (const h of keywordHits) {
+    console.log(`  raw: "${h.artist}" @ ${h.venue} (${h.area}) ${h.startDate} [kopisId=${h.kopisId}]`);
   }
 
   console.log(`KOPIS raw results: ${raw.length} (concerts: ${concertRaw.length}, festivals: ${festivalRaw.length}, after cross-endpoint dedupe: ${raw.length})`);
