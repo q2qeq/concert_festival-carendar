@@ -1823,12 +1823,8 @@
     "note": "5번째 월드투어 'NEO CITY: SEOUL - THE REDLINE'의 서울 공연으로, 약 1년 8개월 만의 단독 내한 공연입니다. 3회차 전석 매진. 셔틀 스캔 자동화가 &TEAM·EXO의 KSPO DOME 표기와 '동일 공연'으로 잘못 판단해 누락했던 건을 재조사해 직접 추가했습니다 (날짜가 서로 다른 별개 공연으로 확인됨: NCT127 9/18~20, &TEAM 10/3~4, EXO는 이미 지난 4/10~12).",
     "sources": [
       {
-        "label": "NCT 127 sells out Seoul concerts for fifth world tour - allkpop",
-        "url": "https://www.allkpop.com/article/2026/07/nct-127-sells-out-seoul-concerts-for-fifth-world-tour"
-      },
-      {
-        "label": "NCT 127 Central - 260725 PRESS, KSPO Dome 콘서트 전석 매진 공지 (X)",
-        "url": "https://x.com/127CENTRAL/status/2080846520019005527"
+        "label": "NCT 127 공식 X - 5TH TOUR 'NEO CITY - THE REDLINE' 전체 일정 공지",
+        "url": "https://x.com/NCTsmtown_127/status/2074357784880218507"
       }
     ],
     "officialSns": [
@@ -1838,7 +1834,14 @@
       }
     ],
     "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "officialUrl": "https://weverse.io/nct127",
+    "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
+    "funFacts": [
+      "서울(9/18~20)을 시작으로 자카르타(10/3)·홍콩(10/10~11)·싱가포르(10/18)·방콕(10/31~11/1)·타이베이(2027.01.02)까지 6개 도시를 도는 대형 월드투어예요. 서울이 개막 무대인 셈이죠.",
+      "이번 투어명 'THE REDLINE'은 공식 계정이 '#NCT127 #THE_REDLINE'과 함께 예고했어요 - 구체적인 컨셉은 공연이 가까워지며 추가로 공개될 걸로 보여요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "andteam-blaze-the-way-encore-2026-10",
@@ -1882,12 +1885,12 @@
     "note": "RIIZE 데뷔 3주년 기념 팬미팅. 공식 X 계정 공지로 9/12(토) 5PM, 9/13(일) 4PM 확인.",
     "sources": [
       {
-        "label": "RIIZE 공식 X 공지",
+        "label": "RIIZE 공식 X - 팬미팅 일정 공지",
         "url": "https://x.com/RIIZE_official/status/2079068870275739694"
       },
       {
-        "label": "인터파크 공연 공지",
-        "url": "https://tickets.interpark.com/contents/notice/detail/14634"
+        "label": "타임스프레드 - RIIZE 3RD ANNIVERSARY FANMEETING 정보",
+        "url": "https://www.timespread.co.kr/subscription-event/riize-3rd-anniversary-fanmeeting-ch-riize-on-air-2026-09-12"
       }
     ],
     "officialSns": [
@@ -1897,7 +1900,14 @@
       }
     ],
     "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/151",
-    "merchCheckedAt": "2026-09-03"
+    "merchCheckedAt": "2026-09-03",
+    "description": "RIIZE의 데뷔 3주년을 기념하는 공식 팬미팅. 'Ch. RIIZE : ON AIR'라는 제목처럼 방송 컨셉으로 꾸며지며, 이틀간 인천 인스파이어 아레나에서 열린다.",
+    "funFacts": [
+      "2026년 9월 12일(토)·13일(일) 이틀간 열려요. RIIZE 데뷔(2023년 9월) 3주년에 맞춰 기획된 공식 행사예요.",
+      "글로벌 선행 인증이 7월 20~28일 별도로 진행됐을 만큼 해외 팬 비중도 큰 행사예요.",
+      "공연장이 인천 인스파이어 아레나라, 같은 시기 다른 대형 페스티벌들과 이동 동선이 겹칠 수 있어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "takuya-kimura-live-tour-checkpoint-seoul-2026-09",
@@ -1912,14 +1922,21 @@
     "note": "전 SMAP 멤버 기무라 타쿠야의 첫 단독 해외 공연입니다.",
     "sources": [
       {
-        "label": "STARTO 공식 사이트",
-        "url": "https://starto.jp/s/p/live/10520?lang=en"
+        "label": "한국경제 - 유재석도 반한 김탁구...기무라 타쿠야, 데뷔 38년 만의 내한 공연",
+        "url": "https://www.hankyung.com/article/2026060229997"
       },
       {
-        "label": "인터파크 공연 공지",
-        "url": "https://tickets.interpark.com/contents/notice/detail/14058"
+        "label": "싱글리스트 - 기무라 타쿠야, 첫 내한 공연 29일 티켓 오픈",
+        "url": "https://www.slist.kr/news/articleView.html?idxno=742814"
       }
-    ]
+    ],
+    "description": "'일본 원빈'이라 불리는 기무라 타쿠야의 데뷔 38년 만의 첫 공식 내한 공연. 솔로 전향 후 첫 아시아 투어의 핵심 거점이다.",
+    "funFacts": [
+      "1988년 SMAP으로 데뷔해 '론리 베케이션', '러브 제너레이션' 등으로 한류 드라마 붐을 이끈 주역이에요. 국내에선 드라마 속 이름을 딴 '김탁구'라는 애칭으로 더 친숙하죠.",
+      "38년 경력에 이번이 첫 공식 내한이에요. 그만큼 오랜 팬들에게는 놓칠 수 없는 자리라, 온라인 단독 예매인데도 피켓팅이 예상돼요.",
+      "유재석이 그의 드라마를 '홀린 듯이 전편을 클리어했다'고 언급했을 만큼, 팬층이 세대를 넘나들어요."
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   },
   {
     "id": "edc-korea-2026",
@@ -2148,13 +2165,25 @@
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-03). PLAVE 첫 월드투어 'KEEP IT MANIC' 인천 개최.",
     "sources": [
       {
-        "label": "PLAVE(플레이브) OFFICIAL 공식 X - 2026 PLAVE World Tour [KEEP IT MANIC] in Incheon",
-        "url": "https://x.com/plave_official/status/2066385213215711650"
-      },
-      {
-        "label": "플레이브, 첫 월드투어 간다..고척돔 이어 인천문학경기장 입성 - 스타뉴스",
-        "url": "https://www.starnewskorea.com/music/2026/06/15/2026061514220927038"
+        "label": "싱글리스트 - 플레이브, 9월 인천문학경기장서 월드투어 첫 공연 돌입",
+        "url": "https://www.slist.kr/news/articleView.html?idxno=745389"
       }
-    ]
+    ],
+    "officialUrl": "https://www.vlast.co.kr/plave",
+    "description": "버추얼 K팝 아이돌 PLAVE의 첫 월드투어 '[KEEP IT MANIC]'을 여는 개막 공연. 인천문학경기장에서 이틀간 열린다.",
+    "funFacts": [
+      "PLAVE는 실제 사람이 아니라 버추얼(가상) 아이돌이에요. 그런 팀이 첫 월드투어를 여는 자리라 더 상징적이죠.",
+      "인천 공연이 이번 월드투어의 첫 무대예요. 이후 타이베이 등 해외 도시로 이어지는 투어의 출발점입니다.",
+      "공개된 메인 포스터는 화이트 제복을 입은 멤버들의 신비로운 이미지로, 이번 투어의 스케일을 예고했어요."
+    ],
+    "youtubeVideos": [
+      {
+        "title": "2026 PLAVE World Tour [KEEP IT MANIC] Teaser",
+        "videoId": "JLCDhKKKIiE",
+        "note": "월드투어 티저 영상",
+        "sourceUrl": "https://www.youtube.com/watch?v=JLCDhKKKIiE"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-03"
   }
 ]
