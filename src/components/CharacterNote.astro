@@ -1,8 +1,12 @@
 ---
-// A recurring "column" box voiced by the site's mascot, 직관냥 - a cat that
+// A recurring "column" voiced by the site's mascot, 직관냥 - a cat that
 // supposedly shows up to every show. Used to carry researched trivia/context
-// (funFacts) so event pages read like something a person actually dug into,
-// not a bare data dump.
+// (funFacts) so event pages read like an actual blog-style column someone
+// wrote after digging into the artist/show, not a bare bullet-point data
+// dump. Each string in `facts` renders as its own paragraph (blog-post
+// pacing) rather than a compact <li> - write them long and entertaining,
+// not just factual one-liners, while still only ever containing real,
+// sourced material (see sources.ts / SourceList for citations).
 interface Props {
   facts: string[];
   title?: string;
@@ -36,11 +40,14 @@ function linkify(text: string) {
           <path fill="none" stroke="#101018" stroke-width="1.6" stroke-linecap="round" d="M22 31 q2 2 4 0" />
         </svg>
       </span>
-      <h2>{title}</h2>
+      <div>
+        <h2>{title}</h2>
+        <p class="character-note-kicker">직관냥이 파본 뒷이야기</p>
+      </div>
     </div>
-    <ul class="character-note-list">
-      {facts.map((fact) => <li set:html={linkify(fact)} />)}
-    </ul>
+    <div class="character-note-body">
+      {facts.map((fact) => <p set:html={linkify(fact)} />)}
+    </div>
   </aside>
 )}
 <style>
@@ -55,7 +62,7 @@ function linkify(text: string) {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.85rem;
   }
   .character-avatar {
     display: inline-flex;
@@ -67,17 +74,21 @@ function linkify(text: string) {
     font-size: 1rem;
     color: #ffd7e9;
   }
-  .character-note-list {
-    margin: 0;
-    padding-left: 1.1rem;
+  .character-note-kicker {
+    margin: 0.1rem 0 0;
+    font-size: 0.72rem;
+    color: #a9a4c9;
+  }
+  .character-note-body {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.9rem;
   }
-  .character-note-list li {
+  .character-note-body p {
+    margin: 0;
     color: #e5e2f7;
-    font-size: 0.94rem;
-    line-height: 1.6;
+    font-size: 0.96rem;
+    line-height: 1.75;
   }
-  .character-note-list :global(a) { color: #6ee7ff; }
+  .character-note-body :global(a) { color: #6ee7ff; }
 </style>

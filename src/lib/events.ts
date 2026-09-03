@@ -296,6 +296,14 @@ export interface ConcertEvent {
   // pass. Only meaningful while `description` is still empty; stop updating
   // once the baseline fields have real data.
   enrichmentCheckedAt?: string;
+  // ISO date (yyyy-mm-dd) of the last time this show was actively checked for
+  // additional real ticket vendors beyond what's already listed (ticketLinks/
+  // ticketUrl) - set by the ticket-vendor-watch routine (see
+  // scripts/ticket-vendor-watch-list.mjs). This is a periodic re-check, not a
+  // one-time gap fill: a show can go from one vendor to several as ticketing
+  // rolls out over time, so keep updating this even after ticketLinks has
+  // data - never invent a vendor that wasn't actually found selling the show.
+  ticketLinksCheckedAt?: string;
 }
 
 export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();

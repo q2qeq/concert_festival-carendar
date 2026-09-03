@@ -1,0 +1,137 @@
+---
+// Right-side sticky mini-calendar so a visitor can tell at a glance which
+// week of the month upcoming shows fall in, instead of scanning a long list.
+// Days with an event are clickable and scroll the matching poster card
+// (matched via .card-wrap[data-date]) into view.
+import type { ConcertEvent } from '../lib/events';
+interface Props {
+  events: ConcertEvent[];
+}
+const { events } = Astro.props;
+
+const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
+
+type CalDay = { day: number; date: string; hasEvent: boolean };
+type MonthCal = { key: string; label: string; leadingBlanks: number; days: CalDay[] };
+
+const monthsMap = new Map<string, MonthCal>();
+for (const e of events) {
+  const d = new Date(`${e.startDate}T00:00:00`);
+  if (isNaN(d.getTime())) continue;
+  const y = d.getFullYear();
+  const m = d.getMonth();
+  const key = `${y}-${String(m + 1).padStart(2, '0')}`;
+  if (!monthsMap.has(key)) {
+    const first = new Date(y, m, 1);
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    const days: CalDay[] = Array.from({ length: daysInMonth }, (_, i) => {
+      const dayNum = i + 1;
+      const dateStr = `${y}-${String(m + 1).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
+      return { day: dayNum, date: dateStr, hasEvent: false };
+    });
+    monthsMap.set(key, { key, label: `${y}년 ${m + 1}월`, leadingBlanks: first.getDay(), days });
+  }
+  const cal = monthsMap.get(key)!;
+  const cell = cal.days[d.getDate() - 1];
+  if (cell) cell.hasEvent = true;
+}
+const months = Array.from(monthsMap.values()).sort((a, b) => a.key.localeCompare(b.key));
+---
+{months.length > 0 && (
+  <nav class="calendar-nav" aria-label="공연 일정 캘린더">
+    <p class="calendar-nav-title">📅 몇째 주인지 한눈에</p>
+    <div class="calendar-nav-scroll">
+      {months.map((cal) => (
+        <div class="cal-month">
+          <p class="cal-month-label">{cal.label}</p>
+          <div class="cal-grid">
+            {WEEKDAYS.map((w) => (
+              <span class="cal-weekday">{w}</span>
+            ))}
+            {Array.from({ length: cal.leadingBlanks }).map(() => (
+              <span class="cal-blank" />
+            ))}
+            {cal.days.map((d) =>
+              d.hasEvent ? (
+                <button type="button" class="cal-day has-event" data-date={d.date}>
+                  {d.day}
+                </button>
+              ) : (
+                <span class="cal-day">{d.day}</span>
+              )
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </nav>
+)}
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.cal-day.has-event').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const date = btn.dataset.date;
+      if (!date) return;
+      const target = document.querySelector<HTMLElement>(`.card-wrap[data-date="${date}"]`);
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      target.style.outline = '3px solid #ff5fa2';
+      target.style.outlineOffset = '4px';
+      target.style.borderRadius = '14px';
+      window.setTimeout(() => {
+        target.style.outline = '';
+      }, 1600);
+    });
+  });
+</script>
+<style>
+  .calendar-nav { display: none; }
+  @media (min-width: 1180px) {
+    .calendar-nav {
+      display: block;
+      position: fixed;
+      top: 6.5rem;
+      right: max(1rem, calc((100vw - 880px) / 2 - 250px));
+      width: 216px;
+      max-height: calc(100vh - 9rem);
+      overflow-y: auto;
+      background: rgba(24, 24, 38, 0.75);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 0.85rem 0.9rem;
+      z-index: 15;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+  }
+  .calendar-nav-title { margin: 0 0 0.65rem; font-size: 0.8rem; font-weight: 700; color: #f5f3ff; }
+  .cal-month { margin-bottom: 0.9rem; }
+  .cal-month:last-child { margin-bottom: 0; }
+  .cal-month-label { margin: 0 0 0.35rem; font-size: 0.72rem; font-weight: 700; color: #a9a4c9; }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+  .cal-weekday { font-size: 0.6rem; color: #7d78a0; text-align: center; padding-bottom: 2px; }
+  .cal-blank { display: block; }
+  .cal-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    font-size: 0.66rem;
+    color: #5c5878;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 0;
+    font-family: inherit;
+  }
+  button.cal-day.has-event {
+    color: #101018;
+    background: #ff5fa2;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  button.cal-day.has-event:hover { background: #ffd166; }
+</style>

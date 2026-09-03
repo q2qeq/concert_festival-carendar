@@ -13,7 +13,8 @@
     "tweet:new": "node scripts/tweet-new-events.mjs",
     "merch:watch": "node scripts/merch-watch-list.mjs",
     "enrich:watch": "node scripts/enrichment-watch-list.mjs",
-    "fanchant:watch": "node scripts/fanchant-watch-list.mjs"
+    "fanchant:watch": "node scripts/fanchant-watch-list.mjs",
+    "ticketvendor:watch": "node scripts/ticket-vendor-watch-list.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

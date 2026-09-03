@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PosterCard from '../components/PosterCard.astro';
 import Hero from '../components/Hero.astro';
+import Mascot from '../components/Mascot.astro';
+import CalendarNav from '../components/CalendarNav.astro';
 import AdSlot from '../components/AdSlot.astro';
 import { upcomingEvents, allGenres, allCities, monthLabel } from '../lib/events';
 import { SITE_TITLE } from '../consts';
@@ -26,65 +28,49 @@ for (const e of events) {
 
   <Hero />
 
-  <nav class="quicknav" aria-label="바로가기">
-    <a href="#find">공연 찾기</a>
-    <a href="#listing">전체 일정 ({events.length})</a>
-    <a href="/blog">이슈</a>
-  </nav>
+  <CalendarNav events={events} />
 
   <section id="find" class="finder">
-    <h2>공연 찾기</h2>
-
-    {genres.length > 0 && (
-      <div class="filter-group">
-        <p class="filter-caption">장르</p>
-        <div class="filters" id="genre-filters">
-          <button class="chip active" data-genre="all">전체</button>
+    <div class="filter-row">
+      {genres.length > 0 && (
+        <select class="filter-select" id="genre-select" aria-label="장르 선택">
+          <option value="all">전체 장르</option>
           {genres.map((g) => (
-            <button class="chip" data-genre={g}>{g}</button>
+            <option value={g}>{g}</option>
           ))}
-        </div>
-      </div>
-    )}
+        </select>
+      )}
 
-    {cities.length > 0 && (
-      <div class="filter-group">
-        <p class="filter-caption">지역</p>
-        <div class="filters" id="city-filters">
-          <button class="chip active" data-city="all">전체 지역</button>
+      {cities.length > 0 && (
+        <select class="filter-select" id="city-select" aria-label="지역 선택">
+          <option value="all">전체 지역</option>
           {cities.map((c) => (
-            <button class="chip" data-city={c}>{c}</button>
+            <option value={c}>{c}</option>
           ))}
-        </div>
-      </div>
-    )}
+        </select>
+      )}
 
-    <div class="search-row">
-      <input
-        type="search"
-        id="artist-search"
-        class="search-input"
-        placeholder="아티스트 검색 (초성 가능: 예) ㅂㄴㅂ, ㅂㄷ)"
-        autocomplete="off"
-      />
       <button class="chip fav-toggle" id="fav-toggle" type="button">♡ 찜한 공연만</button>
     </div>
+
+    <input
+      type="search"
+      id="artist-search"
+      class="search-input"
+      placeholder="아티스트 검색 (초성 가능: 예) ㅂㄴㅂ, ㅂㄷ)"
+      autocomplete="off"
+    />
   </section>
 
   <AdSlot slot="home-top" />
 
   <section id="listing" class="listing">
-    <div class="listing-header">
-      <h2>전체 일정</h2>
-      <span class="listing-count">{events.length}건</span>
-    </div>
-
     {groups.map((group) => (
       <div class="month-group">
         <h3>{group.label}</h3>
         <div class="poster-grid">
           {group.items.map((e) => (
-            <div class="card-wrap" data-genre={e.genre} data-city={e.city} data-id={e.id}>
+            <div class="card-wrap" data-genre={e.genre} data-city={e.city} data-id={e.id} data-date={e.startDate}>
               <PosterCard event={e} />
             </div>
           ))}
@@ -92,13 +78,18 @@ for (const e of events) {
       </div>
     ))}
 
-    {events.length === 0 && <p class="empty">현재 등록된 예정 공연이 없습니다. 곧 업데이트할게요.</p>}
+    {events.length === 0 && (
+      <p class="empty">
+        <Mascot size={40} pose="wave" />
+        현재 등록된 예정 공연이 없습니다. 곧 업데이트할게요.
+      </p>
+    )}
   </section>
 </BaseLayout>
 
 <script>
-  const genreButtons = document.querySelectorAll<HTMLButtonElement>('#genre-filters .chip');
-  const cityButtons = document.querySelectorAll<HTMLButtonElement>('#city-filters .chip');
+  const genreSelect = document.querySelector<HTMLSelectElement>('#genre-select');
+  const citySelect = document.querySelector<HTMLSelectElement>('#city-select');
   const cards = document.querySelectorAll<HTMLElement>('.card-wrap');
   const searchInput = document.querySelector<HTMLInputElement>('#artist-search');
   const favToggle = document.querySelector<HTMLButtonElement>('#fav-toggle');
@@ -171,22 +162,14 @@ for (const e of events) {
     if (favoritesOnly) applyFilters();
   });
 
-  genreButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      genreButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeGenre = btn.dataset.genre ?? 'all';
-      applyFilters();
-    });
+  genreSelect?.addEventListener('change', () => {
+    activeGenre = genreSelect.value || 'all';
+    applyFilters();
   });
 
-  cityButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      cityButtons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeCity = btn.dataset.city ?? 'all';
-      applyFilters();
-    });
+  citySelect?.addEventListener('change', () => {
+    activeCity = citySelect.value || 'all';
+    applyFilters();
   });
 </script>
 
@@ -201,28 +184,6 @@ for (const e of events) {
     border: 0;
   }
 
-  .quicknav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0 0 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .quicknav a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 0.4rem 0.85rem;
-    border-radius: 999px;
-  }
-  .quicknav a:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
-
   .finder {
     scroll-margin-top: 5rem;
     background: rgba(255,255,255,0.03);
@@ -231,22 +192,22 @@ for (const e of events) {
     padding: 0.85rem 0.95rem 0.95rem;
     margin-bottom: 1.5rem;
   }
-  .finder h2 {
-    margin: 0 0 0.65rem;
-    font-size: 0.85rem;
-    color: var(--fg);
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.65rem;
   }
-  .filter-group { margin-bottom: 0.65rem; }
-  .filter-group:last-of-type { margin-bottom: 0; }
-  .filter-caption {
-    font-size: 0.66rem;
-    color: #7d78a0;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin: 0 0 0.3rem;
+  .filter-select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #f5f3ff;
+    padding: 0.4rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    cursor: pointer;
   }
-  .filters { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .search-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.75rem; }
   .search-input {
     flex: 1;
     min-width: 180px;
@@ -271,14 +232,6 @@ for (const e of events) {
   .chip.active { background: #ff5fa2; border-color: #ff5fa2; color: #101018; font-weight: 700; }
 
   .listing { scroll-margin-top: 5rem; }
-  .listing-header {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .listing-header h2 { margin: 0; font-size: 1.3rem; }
-  .listing-count { color: var(--muted); font-size: 0.85rem; }
   .month-group { margin-top: 2rem; }
   .month-group h3 { font-size: 1.05rem; font-weight: 700; color: #a9a4c9; margin-bottom: 0.7rem; }
   .poster-grid {
@@ -288,5 +241,5 @@ for (const e of events) {
   }
   @media (min-width: 640px) { .poster-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (min-width: 900px) { .poster-grid { grid-template-columns: repeat(4, 1fr); gap: 1.3rem 1rem; } }
-  .empty { color: var(--muted); }
+  .empty { color: var(--muted); display: flex; align-items: center; gap: 0.6rem; }
 </style>

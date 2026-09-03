@@ -24,6 +24,7 @@ const STATUS_LABEL: Record<string, string> = {
 const isFresh = hasRecentUpdate(event);
 const onSale = hasTicketsOnSale(event);
 const buzzing = isBuzzing(event);
+const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
 ---
 <a
   class={`poster-card${status !== 'scheduled' ? ' is-' + status : ''}${buzzing ? ' is-buzzing' : ''}`}
@@ -39,20 +40,22 @@ const buzzing = isBuzzing(event);
       </div>
     )}
     <div class="dday-badge poster-dday" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
-    {buzzing && <span class="poster-buzz-tag">🔥 화제</span>}
     <button
       class="bookmark-btn poster-bookmark"
       data-bookmark-id={event.id}
       aria-label={`${event.artist} 찜하기`}
       aria-pressed="false"
     >♡</button>
+    {buzzing && (
+      <div class="poster-buzz-banner">🔥 {buzzAct ? `${buzzAct} 화제` : '지금 화제'}</div>
+    )}
   </div>
   <div class="poster-card-body">
     <h3>{event.artist}</h3>
     <p class="poster-card-meta">{dateLabel} · {event.venue}</p>
     <div class="poster-card-tags">
       {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
-      {status === 'scheduled' && onSale && <span class="ticket-tag">예매 가능</span>}
+      {status === 'scheduled' && onSale && <span class="ticket-tag">예매 오픈중</span>}
       {status === 'scheduled' && !onSale && event.ticketingAnnounced && <span class="announced-tag">티켓오픈 예정</span>}
       {isFresh && <span class="fresh-tag">새 소식</span>}
       {event.ticketingDifficulty && (
@@ -104,17 +107,19 @@ const buzzing = isBuzzing(event);
     background: rgba(16, 16, 24, 0.78);
     backdrop-filter: blur(2px);
   }
-  .poster-buzz-tag {
+  .poster-buzz-banner {
     position: absolute;
-    top: 0.5rem;
-    right: 2.4rem;
-    font-size: 0.68rem;
-    font-weight: 800;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 900;
     color: #101018;
-    background: linear-gradient(120deg, #ffd166, #ff5fa2);
-    padding: 0.2rem 0.5rem;
-    border-radius: 999px;
-    white-space: nowrap;
+    background: linear-gradient(90deg, #ffd166, #ff5fa2);
+    padding: 0.3rem 0.35rem;
+    line-height: 1.2;
   }
   .poster-bookmark {
     position: absolute;

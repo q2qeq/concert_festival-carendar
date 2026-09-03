@@ -34,7 +34,7 @@ const buzzing = isBuzzing(event);
     {buzzing && <span class="buzz-tag">🔥 화제</span>}
     {isFresh && <span class="fresh-tag">새 소식</span>}
     {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
-    {status === 'scheduled' && onSale && <span class="ticket-tag">예매 가능</span>}
+    {status === 'scheduled' && onSale && <span class="ticket-tag">예매 오픈중</span>}
     {status === 'scheduled' && !onSale && event.ticketingAnnounced && <span class="announced-tag">티켓오픈 예정</span>}
     {event.ticketingDifficulty && (
       <span class={`difficulty-tag difficulty-${event.ticketingDifficulty}`}>{DIFFICULTY_LABEL[event.ticketingDifficulty]}</span>

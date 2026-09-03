@@ -3,16 +3,16 @@
 //
 // 콘서트 셔틀버스는 대부분 카카오 T 셔틀·꽃가마·퀸즈스마일 3사가 운영한다.
 // 이 3사는 확정된 셔틀 정보 유무와 무관하게 항상 눈에 띄게 노출한다
-// (shuttle-major-apps 블록) - 단, "직접 확인해보세요"식 설명 문단 대신 각
-// 업체마다 실제로 클릭해서 확인할 수 있는 두 가지 액션을 준다:
-//   1) 검색 - X(트위터)에서 "{업체명} {아티스트}"를 실시간 검색해, 이 공연에
-//      실제로 그 업체 셔틀이 올라왔는지 바로 확인할 수 있게 한다(카카오 T
-//      셔틀은 자체 태그 검색 페이지가 있어 그걸 그대로 쓴다).
-//   2) 앱·사이트 - 데스크톱에서는 공식 사이트로, 모바일(iOS/Android)에서는
-//      스크립트가 각 스토어 링크로 자동 전환한다. 앱이 이미 설치돼 있으면
-//      스토어가 "열기"를, 없으면 "설치"를 보여주므로 - 우리가 알지 못하는
-//      커스텀 URL 스킴을 추측해서 딥링크를 거는 것보다 훨씬 안전하게 "설치돼
-//      있으면 열기, 없으면 스토어로" 동작을 얻을 수 있다.
+// (shuttle-major-apps 블록). 예전에는 업체마다 X(트위터) 실시간 검색 버튼을
+// 따로 뒀지만, 카카오 T 셔틀은 검색·사이트 버튼이 사실상 같은 페이지로
+// 중복 연결되고 꽃가마·퀸즈스마일은 X 검색 결과가 신뢰하기 어려워 전부
+// 제거했다. 대신 업체별 앱/사이트로 가는 버튼 하나 + 그 안에서 셔틀을
+// 어떻게 찾는지 간단한 사용법 문구만 보여준다.
+//   - 앱·사이트 버튼 - 데스크톱에서는 공식 사이트로, 모바일(iOS/Android)에서는
+//     스크립트가 각 스토어 링크로 자동 전환한다. 앱이 이미 설치돼 있으면
+//     스토어가 "열기"를, 없으면 "설치"를 보여주므로 - 우리가 알지 못하는
+//     커스텀 URL 스킴을 추측해서 딥링크를 거는 것보다 훨씬 안전하게 "설치돼
+//     있으면 열기, 없으면 스토어로" 동작을 얻을 수 있다.
 // 스토어 링크는 전부 실제 존재 확인 + 승객용 앱인지 확인(퀸즈스마일은 기사용
 // 앱이 별도로 있어 잘못 연결하면 안 됨 - id6446111931/kr.co.queenssmile.qz2023
 // 가 승객용, id6745771299/com.queenssmile.driver는 기사 전용이라 제외).
@@ -21,9 +21,10 @@
 // 1) shuttleBus.length > 0 - 위 3사 중 하나거나 그 외 실제 확인된 전세버스 등
 //    구체적으로 sourced된 서비스(ShuttleBusInfo, lib/events.ts 참고)를 그대로
 //    보여준다.
-// 2) 확정된 shuttleBus 데이터가 없음 - 그래도 빈 화면 대신 "직접 확인해보라"는
-//    행동 유도 박스를 보여준다. 절대 추측한 셔틀 정보를 만들어내지 않고, 실제
-//    확인 가능한 곳(3사 검색/앱 + 예매처 공지 + 포털 검색)으로만 안내한다.
+// 2) 확정된 shuttleBus 데이터가 없음 - 그래도 빈 화면 대신 위 3사 안내 + 예매처
+//    공지 확인 안내를 보여준다. 절대 추측한 셔틀 정보를 만들어내지 않는다.
+//    (네이버/구글 일반 검색 링크는 실제로 셔틀 정보를 찾아준다는 보장이 없어
+//    제거했다.)
 import type { ShuttleBusInfo } from '../lib/events';
 import { kakaoShuttleSearchUrl, GGOGGAMA_URL, QUEENS_SMILE_URL } from '../lib/venues';
 interface Props {
@@ -32,42 +33,31 @@ interface Props {
   artist?: string;
   ticketUrl?: string;
 }
-const { shuttleBus, venue, artist, ticketUrl } = Astro.props;
-const query = [venue, artist, '셔틀버스'].filter(Boolean).join(' ');
+const { shuttleBus, artist, ticketUrl } = Astro.props;
 const kakaoQuery = [artist, '콘서트 셔틀'].filter(Boolean).join(' ');
 const kakaoUrl = kakaoShuttleSearchUrl(kakaoQuery);
-const naverUrl = `https://search.naver.com/search.naver?query=${encodeURIComponent(query)}`;
-const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-
-function xSearchUrl(terms: string) {
-  return `https://x.com/search?q=${encodeURIComponent(terms)}&f=live`;
-}
-const target = artist ?? venue ?? '';
 
 const MAJOR_SHUTTLE_OPERATORS = [
   {
     name: '카카오 T 셔틀',
-    searchUrl: kakaoUrl,
-    searchLabel: '이 공연 검색',
     siteUrl: kakaoUrl,
     iosUrl: 'https://apps.apple.com/kr/app/id981110422',
     androidUrl: 'https://play.google.com/store/apps/details?id=com.kakao.taxi',
+    howTo: `사이트 접속 시 "${artist ?? '아티스트'}" 태그로 자동 검색돼요. 앱에서는 셔틀 탭에서 같은 태그로 찾아보세요.`,
   },
   {
     name: '꽃가마',
-    searchUrl: xSearchUrl(['꽃가마', target].filter(Boolean).join(' ')),
-    searchLabel: '이 공연 검색',
     siteUrl: GGOGGAMA_URL,
     iosUrl: 'https://apps.apple.com/kr/app/id6450586451',
     androidUrl: 'https://play.google.com/store/apps/details?id=com.ggoggama.app',
+    howTo: '앱 또는 사이트에서 이 공연/행사 셔틀이 등록돼 있는지 목록에서 확인해보세요.',
   },
   {
     name: '퀸즈스마일',
-    searchUrl: xSearchUrl(['퀸즈스마일', target].filter(Boolean).join(' ')),
-    searchLabel: '이 공연 검색',
     siteUrl: QUEENS_SMILE_URL,
     iosUrl: 'https://apps.apple.com/kr/app/id6446111931',
     androidUrl: 'https://play.google.com/store/apps/details?id=kr.co.queenssmile.qz2023',
+    howTo: '앱 또는 사이트에서 이 공연/행사 셔틀이 등록돼 있는지 목록에서 확인해보세요.',
   },
 ];
 ---
@@ -77,18 +67,20 @@ const MAJOR_SHUTTLE_OPERATORS = [
   <div class="shuttle-major-apps">
     {MAJOR_SHUTTLE_OPERATORS.map((op) => (
       <div class="shuttle-op">
-        <span class="shuttle-op-name">{op.name}</span>
-        <a class="shuttle-op-search" href={op.searchUrl} target="_blank" rel="noopener noreferrer">{op.searchLabel} ↗</a>
-        <a
-          class="shuttle-op-app"
-          href={op.siteUrl}
-          data-ios={op.iosUrl}
-          data-android={op.androidUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          공식 사이트 ↗
-        </a>
+        <div class="shuttle-op-head">
+          <span class="shuttle-op-name">{op.name}</span>
+          <a
+            class="shuttle-op-app"
+            href={op.siteUrl}
+            data-ios={op.iosUrl}
+            data-android={op.androidUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            앱/사이트 열기 ↗
+          </a>
+        </div>
+        <p class="shuttle-op-howto">{op.howTo}</p>
       </div>
     ))}
   </div>
@@ -115,22 +107,20 @@ const MAJOR_SHUTTLE_OPERATORS = [
   ) : (
     <div class="shuttle-fallback">
       <p>
-        아직 이 공연의 확정된 셔틀버스 정보는 찾지 못했어요. 위 3개 업체에서 먼저
-        "{artist ?? '이 공연'}" 검색 결과를 확인해보시고, 무료 셔틀이나 그 외
-        업체가 있을 수도 있으니 아래 링크도 참고해보세요.
+        아직 이 공연의 확정된 셔틀버스 정보는 찾지 못했어요. 위 3개 업체 앱/사이트에서
+        "{artist ?? '이 공연'}" 셔틀이 등록돼 있는지 먼저 확인해보시고, 예매처 공지사항도
+        함께 살펴보세요.
       </p>
-      <div class="shuttle-fallback-links">
-        {ticketUrl && (
+      {ticketUrl && (
+        <div class="shuttle-fallback-links">
           <a href={ticketUrl} target="_blank" rel="noopener noreferrer">예매처 공지사항에서 확인 ↗</a>
-        )}
-        <a href={naverUrl} target="_blank" rel="noopener noreferrer">네이버에서 "{query}" 검색 →</a>
-        <a href={googleUrl} target="_blank" rel="noopener noreferrer">구글에서 "{query}" 검색 →</a>
-      </div>
+        </div>
+      )}
     </div>
   )}
 </section>
 <script>
-  // 모바일(iOS/Android)에서는 "공식 사이트" 링크를 해당 스토어 링크로 바꿔치기
+  // 모바일(iOS/Android)에서는 "앱/사이트 열기" 링크를 해당 스토어 링크로 바꿔치기
   // 한다 - 앱이 이미 설치돼 있으면 스토어가 자체적으로 "열기"를 보여주고,
   // 없으면 "설치"를 보여주므로 커스텀 URL 스킴을 추측하지 않고도 "설치돼
   // 있으면 앱으로, 없으면 스토어로" 동작을 안전하게 얻을 수 있다.
@@ -161,32 +151,26 @@ const MAJOR_SHUTTLE_OPERATORS = [
   .shuttle-major-apps {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.75rem;
     margin: 0 0 1.2rem;
     padding-bottom: 1.1rem;
     border-bottom: 1px dashed rgba(255,255,255,0.14);
   }
-  .shuttle-op {
+  .shuttle-op { display: flex; flex-direction: column; gap: 0.3rem; }
+  .shuttle-op-head {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 0.55rem;
   }
   .shuttle-op-name { font-size: 0.9rem; font-weight: 700; color: #f5f3ff; min-width: 6.5em; }
-  .shuttle-op-search, .shuttle-op-app {
+  .shuttle-op-howto { margin: 0; font-size: 0.82rem; color: #d8d5ef; line-height: 1.5; }
+  .shuttle-op-app {
     font-size: 0.82rem;
     font-weight: 600;
     text-decoration: none;
     padding: 0.35rem 0.75rem;
     border-radius: 999px;
-  }
-  .shuttle-op-search {
-    color: #101018;
-    background: #ffcb6e;
-    border: 1px solid #ffcb6e;
-  }
-  .shuttle-op-search:hover { background: #ffd98d; border-color: #ffd98d; }
-  .shuttle-op-app {
     color: #ffcb6e;
     background: rgba(255,200,110,0.08);
     border: 1px solid rgba(255,200,110,0.3);

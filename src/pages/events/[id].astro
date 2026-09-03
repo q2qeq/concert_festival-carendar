@@ -13,6 +13,7 @@ import TicketBooking from '../../components/TicketBooking.astro';
 import FanChantGuide from '../../components/FanChantGuide.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
+import Mascot from '../../components/Mascot.astro';
 import { events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing } from '../../lib/events';
 
 export function getStaticPaths() {
@@ -92,6 +93,7 @@ const lineupTotal = lineupDays.reduce((sum, d) => sum + d.acts.length, 0);
 const isFestival = event.genre === '페스티벌';
 const highlightSet = festivalHighlightSet(event);
 const buzzing = isBuzzing(event);
+const buzzHeadlineAct = event.festivalHighlight?.[0]?.act ?? null;
 
 // 이 공연 페이지에 실제로 존재하는 섹션만 골라 오른쪽 목차(TOC)를 만든다 -
 // 이벤트마다 보유 정보가 달라서 하드코딩된 고정 목록을 쓰면 빈 링크가 생긴다.
@@ -100,7 +102,7 @@ const buzzing = isBuzzing(event);
 const tocItems = [
   isFestival && { id: 'lineup', label: '라인업' },
   event.setlists && event.setlists.length > 0 && { id: 'setlist', label: '셋리스트' },
-  { id: 'fanchant', label: '떼창·콜 가이드' },
+  !isFestival && { id: 'fanchant', label: '떼창·콜 가이드' },
   event.previousEditions && event.previousEditions.length > 0 && { id: 'compare', label: '이전 회차 비교' },
   ((event.merch && event.merch.length > 0) || event.mdUrl) && { id: 'merch', label: 'MD·굿즈' },
   event.funFacts && event.funFacts.length > 0 && { id: 'notes', label: '직관냥 포인트' },
@@ -178,6 +180,20 @@ const jsonLd = {
   <article>
     <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
 
+    <header class={`event-header${buzzing ? ' is-buzzing' : ''}`}>
+      {buzzing && (
+        <span class="buzz-ribbon">
+          🔥 {buzzHeadlineAct ? `${buzzHeadlineAct} 화제` : '화제의 공연'}
+        </span>
+      )}
+      <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
+      <div>
+        <h1>{event.artist}</h1>
+        <p class="meta">{dateLabel} · {event.venue} ({event.city})</p>
+        {event.description && <p class="event-description">{event.description}</p>}
+      </div>
+    </header>
+
     {event.posterUrl && (
       <img
         class="poster"
@@ -188,15 +204,6 @@ const jsonLd = {
         height="560"
       />
     )}
-
-    <header class={`event-header${buzzing ? ' is-buzzing' : ''}`}>
-      {buzzing && <span class="buzz-ribbon">🔥 화제의 공연</span>}
-      <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
-      <div>
-        <h1>{event.artist}</h1>
-        <p class="meta">{dateLabel} · {event.venue} ({event.city})</p>
-      </div>
-    </header>
 
     {status === 'postponed' && (
       <p class="status-banner status-postponed">
@@ -287,7 +294,7 @@ const jsonLd = {
         <h2>라인업{lineupTotal > 0 ? ` (${lineupTotal}팀)` : ''}</h2>
         {event.festivalHighlight && event.festivalHighlight.length > 0 && (
           <div class="lineup-highlight-strip">
-            <p class="lineup-highlight-kicker">🔥 지금 가장 화제인 라인업</p>
+            <p class="lineup-highlight-kicker"><Mascot size={26} pose="cheer" class="lineup-highlight-mascot" />🔥 지금 가장 화제인 라인업</p>
             {event.festivalHighlight.map((h) => (
               <div class="lineup-highlight-item">
                 <span class="lineup-highlight-act">{h.act}</span>
@@ -345,9 +352,11 @@ const jsonLd = {
       </div>
     )}
 
-    <div class="info-block" id="fanchant">
-      <FanChantGuide artist={event.artist} guides={event.fanChantGuide} />
-    </div>
+    {!isFestival && (
+      <div class="info-block" id="fanchant">
+        <FanChantGuide artist={event.artist} guides={event.fanChantGuide} />
+      </div>
+    )}
 
     <div class="info-divider" aria-hidden="true"><span>더 알아보기</span></div>
 
@@ -498,6 +507,7 @@ const jsonLd = {
   }
   h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
   .meta { margin: 0; color: #f5f3ff; font-weight: 600; font-size: 1.02rem; }
+  .event-description { margin: 0.5rem 0 0; color: #d8d5ef; font-size: 0.95rem; line-height: 1.6; }
   .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.85rem; }
   .status-banner {
     margin: 1rem 0;
@@ -649,7 +659,8 @@ const jsonLd = {
     flex-direction: column;
     gap: 0.5rem;
   }
-  .lineup-highlight-kicker { margin: 0; font-size: 0.8rem; font-weight: 800; color: #ffd166; }
+  .lineup-highlight-kicker { margin: 0; font-size: 0.8rem; font-weight: 800; color: #ffd166; display: flex; align-items: center; gap: 0.35rem; }
+  .lineup-highlight-mascot { display: inline-flex; }
   .lineup-highlight-item { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
   .lineup-highlight-act {
     font-weight: 800;
