@@ -45,9 +45,12 @@ function missingBaselineFields(e) {
 // Which pipeline published this event originally - purely informational, so a
 // human (or the routine's own log) can see whether the gap tracks the known
 // thin tiers (shuttle-scan, kopis auto-fetch) or is a one-off from elsewhere.
-function sourceTier(id) {
-  if (id.startsWith('shuttle-')) return 'shuttle-scan';
-  if (id.startsWith('kopis-')) return 'kopis-fetch';
+// Not every shuttle-scan event got a `shuttle-` id prefix (some early ones were
+// given a descriptive id instead) - the `note` field is the reliable signal, so
+// check both.
+function sourceTier(e) {
+  if (e.id.startsWith('shuttle-') || (e.note ?? '').includes('셔틀 스캔')) return 'shuttle-scan';
+  if (e.id.startsWith('kopis-')) return 'kopis-fetch';
   return 'other';
 }
 
@@ -59,7 +62,7 @@ const watchList = events
   .map(({ e, missing, daysUntilShow }) => ({
     id: e.id,
     artist: e.artist,
-    sourceTier: sourceTier(e.id),
+    sourceTier: sourceTier(e),
     daysUntilShow,
     missingFields: missing,
     hasPosterUrl: Boolean(e.posterUrl),
