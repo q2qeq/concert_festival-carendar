@@ -146,7 +146,7 @@
         "url": "https://www.joongangenews.com/news/articleView.html?idxno=543842"
       }
     ],
-    "merchCheckedAt": "2026-09-03",
+    "merchCheckedAt": "2026-09-04",
     "description": "일본 사이키델릭 뮤지션 사카모토 신타로, Your Song Is Good부터 장기하·강산에까지 함께 서는 신안 증도의 3박4일 캠핑형 뮤직 페스티벌. 올해로 5회째를 맞는다.",
     "funFacts": [
       "그냥 공연만 보는 축제가 아니에요. 요가·에어로빅 세션, 포트럭 파티, 운동회 같은 웰니스 프로그램이 함께 짜여 있어서, 하루 보고 가는 게 아니라 3박4일 내내 머무는 걸 전제로 설계됐어요.",
@@ -179,7 +179,7 @@
         "url": "http://www.ttlnews.com/news/articleView.html?idxno=3131237"
       }
     ],
-    "merchCheckedAt": "2026-09-03",
+    "merchCheckedAt": "2026-09-04",
     "description": "제22회 제천국제음악영화제(9/3~9/8)의 시그니처 K팝 프로그램. 이틀간 9팀이 나눠 서는 여름밤 야외 공연이다.",
     "funFacts": [
       "원래 JIMFF(제천국제음악영화제)는 영화제인데, '원 썸머 나잇 위드 케이팝'이라는 이름으로 케이팝 무대를 함께 여는 게 특이해요. 영화제 안에 있는 콘서트라 그런지 라인업 색깔이 꽤 다채롭습니다.",
@@ -254,7 +254,60 @@
       "소속사(물고기뮤직)는 가창력·무대 연출·전반적인 스케일 모든 면에서 이전보다 한층 진화한 무대를 예고했어요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16126629_1956720_2742.jpg"
+    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16126629_1956720_2742.jpg",
+    "mdUrl": "https://imheromall.com/",
+    "merch": [
+      {
+        "label": "[IM HERO] THE STADIUM 2 반팔 티셔츠 화이트 Ver.",
+        "price": "37,000원",
+        "variants": "M/L/XL",
+        "imageUrl": "https://imheromall.com/web/product/big/202607/44f8f6fc6af6e66a3e10d86d839e49a1.jpg",
+        "url": "https://imheromall.com/product/im-hero-the-stadium-2-%EB%B0%98%ED%8C%94-%ED%8B%B0%EC%85%94%EC%B8%A0-%ED%99%94%EC%9D%B4%ED%8A%B8-ver/333/",
+        "note": "현재 품절"
+      },
+      {
+        "label": "[IM HERO] THE STADIUM 2 비스코스 반다나",
+        "price": "17,000원",
+        "imageUrl": "https://imheromall.com/web/product/big/202607/29a0b09f98c2bc317fa3b2196de5786f.jpg",
+        "url": "https://imheromall.com/product/im-hero-the-stadium-2-%EB%B9%84%EC%8A%A4%EC%BD%94%EC%8A%A4-%EB%B0%98%EB%8B%A4%EB%82%98/335/",
+        "note": "현재 품절"
+      },
+      {
+        "label": "[IM HERO] THE STADIUM 2 핸드폰 스트랩",
+        "price": "23,000원",
+        "imageUrl": "https://imheromall.com/web/product/big/202607/e381494b4814992ae935446f90028f70.jpg",
+        "url": "https://imheromall.com/product/im-hero-the-stadium-2-%ED%95%B8%EB%93%9C%ED%8F%B0-%EC%8A%A4%ED%8A%B8%EB%9E%A9/337/",
+        "note": "현재 품절"
+      },
+      {
+        "label": "[IM HERO] THE STADIUM 2 키캡",
+        "price": "15,000원",
+        "url": "https://imheromall.com/product/im-hero-the-stadium-2-%ED%82%A4%EC%BA%A1/336/"
+      },
+      {
+        "label": "[IM HERO] THE STADIUM 2 이미지 피켓",
+        "price": "10,000원",
+        "url": "https://imheromall.com/product/im-hero-the-stadium-2-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%94%BC%EC%BC%93/338/"
+      },
+      {
+        "label": "[IM HERO] THE STADIUM 2 와펜 배지",
+        "price": "7,000원",
+        "url": "https://imheromall.com/product/im-hero-the-stadium-2-%EC%99%80%ED%8E%9C-%EB%B0%B0%EC%A7%80/340/"
+      },
+      {
+        "label": "[IM HERO] THE STADIUM 2 엽서 세트",
+        "price": "5,000원",
+        "url": "https://imheromall.com/product/im-hero-the-stadium-2-%EC%97%BD%EC%84%9C-%EC%84%B8%ED%8A%B8/341/"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-09-04",
+        "text": "공식 MD가 아임히어로 몰(imheromall.com)에서 이미 판매 중인 걸 확인했어요 (판매 시작 7/21, 배송은 8/21부터 순차). 반팔 티셔츠·반다나·핸드폰 스트랩 등은 현재 품절이고, 키캡·이미지 피켓·와펜 배지·엽서 세트는 구매 가능해요.",
+        "sourceUrl": "https://x.com/limyoungwoong/status/2077169545031319657"
+      }
+    ],
+    "merchCheckedAt": "2026-09-04"
   },
   {
     "id": "spyair-2026-09",
@@ -420,7 +473,50 @@
       }
     ],
     "mdUrl": "https://backnumber.info/feature/goods",
-    "merchCheckedAt": "2026-09-03"
+    "merchCheckedAt": "2026-09-04",
+    "merch": [
+      {
+        "label": "Grateful Yesterdays Tour 2026 ロゴTシャツ (WHT)",
+        "price": "¥4,000",
+        "imageUrl": "https://storage-store.plusmember.jp/upload/save_image/2512_bn_logotee_wh_i3Qmh9SC_00.jpg",
+        "url": "https://store.plusmember.jp/backnumberonlinestore/products/detail.php?product_id=102115"
+      },
+      {
+        "label": "Grateful Yesterdays Tour 2026 ロゴTシャツ (D.GRN)",
+        "price": "¥4,000",
+        "url": "https://store.plusmember.jp/backnumberonlinestore/products/detail.php?product_id=102116"
+      },
+      {
+        "label": "NEW ERA®コラボ ベースボールキャップ (D.GRN)",
+        "price": "¥5,200",
+        "imageUrl": "https://storage-store.plusmember.jp/upload/save_image/2512_bn_newera_grn_i3Qmh9SC_00.jpg",
+        "url": "https://store.plusmember.jp/backnumberonlinestore/products/detail.php?product_id=102130"
+      },
+      {
+        "label": "NEW ERA®コラボ ベースボールキャップ (L.BEG)",
+        "price": "¥5,200",
+        "url": "https://store.plusmember.jp/backnumberonlinestore/products/detail.php?product_id=102131"
+      },
+      {
+        "label": "いよペイズリー大判バンダナ (BLU/GRN)",
+        "price": "¥3,000",
+        "url": "https://store.plusmember.jp/backnumberonlinestore/products/detail.php?product_id=102136",
+        "note": "BLU/GRN 2色"
+      },
+      {
+        "label": "ターポリンポーチ (BLU/N.GRN)",
+        "price": "¥2,500",
+        "url": "https://store.plusmember.jp/backnumberonlinestore/products/detail.php?product_id=102133",
+        "note": "전체 상품(티셔츠·타월·양말·우산 등)은 공식 온라인 스토어에서 확인 가능"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-09-04",
+        "text": "공식 온라인 스토어(store.plusmember.jp)에서 Grateful Yesterdays Tour 2026 굿즈 실물 판매 페이지를 확인했어요. 티셔츠·모자·반다나·파우치 등 25종 이상, ¥800~¥8,500 가격대예요. 다만 일본 사이트라 배송 범위(한국 직배송 가능 여부)는 별도 확인이 필요해요.",
+        "sourceUrl": "https://store.plusmember.jp/backnumberonlinestore/products/list.php?category_id=4926"
+      }
+    ]
   },
   {
     "id": "shuttle-isul-live-festival-2026-09",
@@ -432,7 +528,7 @@
     "endDate": "2026-09-12",
     "ticketUrl": "https://tickets.interpark.com/goods/26010722",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "merchCheckedAt": "2026-09-03",
+    "merchCheckedAt": "2026-09-04",
     "description": "하이트진로가 여는 '테라와 함께하는 2026 이슬라이브 페스티벌'. 2024년 이후 2년 만에 재개되며 인천 송도 달빛축제공원에서 열린다.",
     "funFacts": [
       "2년 만의 재개작이라 규모부터 키웠어요. 수용 인원을 기존 대비 약 1만 명 늘린 2만 5천 명으로 확대했고, 지난 회차(1만 8천 명) 대비 몸집이 훨씬 커졌어요.",
@@ -510,7 +606,7 @@
       }
     ],
     "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/151",
-    "merchCheckedAt": "2026-09-03",
+    "merchCheckedAt": "2026-09-04",
     "description": "RIIZE의 데뷔 3주년을 기념하는 공식 팬미팅. 'Ch. RIIZE : ON AIR'라는 제목처럼 방송 컨셉으로 꾸며지며, 이틀간 인천 인스파이어 아레나에서 열린다.",
     "funFacts": [
       "2026년 9월 12일(토)·13일(일) 이틀간 열려요. RIIZE 데뷔(2023년 9월) 3주년에 맞춰 기획된 공식 행사예요.",
@@ -559,7 +655,8 @@
         "url": "https://www.youtube.com/watch?v=tRSvtYMjsxw",
         "note": "특정 곡(WAY 4 LUV) 공식 응원법 안내 영상. 투어 전체 세트리스트 응원법 가이드는 아님"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-04"
   },
   {
     "id": "nct127-neocity-redline-seoul-2026-09",
@@ -878,7 +975,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-03"
+    "merchCheckedAt": "2026-09-04"
   },
   {
     "id": "kopis-onewe-live-2026-09",
@@ -923,7 +1020,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-03"
+    "merchCheckedAt": "2026-09-04"
   },
   {
     "id": "kim-yongbin-serenade-2026-09",
@@ -3142,6 +3239,7 @@
         "label": "예스24 티켓 / 2026 레이첼 야마가타(Rachael Yamagata) 내한공연",
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-04"
   }
 ]
