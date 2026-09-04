@@ -489,3 +489,32 @@ export function spotlightEvents(limit = 4, fromISO?: string): ConcertEvent[] {
     .sort((a, b) => score(a) - score(b))
     .slice(0, limit);
 }
+
+// "관련 공연" cross-links for the event detail page - same venue first (fans
+// going to that venue often want to know what else is on), then same genre,
+// then same city, then everything else, deprioritizing shows that have
+// already happened. This exists for two reasons at once: it's genuinely
+// useful to a reader deciding what else to see, AND it gives Googlebot/other
+// crawlers a real link path into every event page instead of relying solely
+// on the sitemap for discovery (added 2026-09-04, see project memory).
+export function relatedEvents(event: ConcertEvent, limit = 4, fromISO?: string): ConcertEvent[] {
+  const from = fromISO ?? new Date().toISOString().slice(0, 10);
+  const pool = events.filter((e) => e.id !== event.id && (e.status ?? 'scheduled') !== 'cancelled');
+  function score(e: ConcertEvent): number {
+    let s = 0;
+    if (e.venue === event.venue) s -= 100;
+    if (e.genre === event.genre) s -= 40;
+    if (e.city === event.city) s -= 10;
+    if (e.startDate < from) s += 1000; // heavily deprioritize (but don't exclude) past shows
+    const daysDiff =
+      Math.abs(
+        new Date(e.startDate + 'T00:00:00').getTime() - new Date(event.startDate + 'T00:00:00').getTime()
+      ) / 86400000;
+    s += daysDiff * 0.01;
+    return s;
+  }
+  return pool
+    .slice()
+    .sort((a, b) => score(a) - score(b))
+    .slice(0, limit);
+}

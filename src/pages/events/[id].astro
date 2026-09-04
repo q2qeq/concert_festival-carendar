@@ -14,7 +14,8 @@ import FanChantGuide from '../../components/FanChantGuide.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import Mascot from '../../components/Mascot.astro';
-import { events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing } from '../../lib/events';
+import EventCard from '../../components/EventCard.astro';
+import { events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -94,6 +95,7 @@ const isFestival = event.genre === '페스티벌';
 const highlightSet = festivalHighlightSet(event);
 const buzzing = isBuzzing(event);
 const buzzHeadlineAct = event.festivalHighlight?.[0]?.act ?? null;
+const related = relatedEvents(event);
 
 // 이 공연 페이지에 실제로 존재하는 섹션만 골라 오른쪽 목차(TOC)를 만든다 -
 // 이벤트마다 보유 정보가 달라서 하드코딩된 고정 목록을 쓰면 빈 링크가 생긴다.
@@ -110,6 +112,7 @@ const tocItems = [
   event.updates && event.updates.length > 0 && { id: 'updates', label: '업데이트' },
   showShuttleSection && { id: 'shuttle', label: '셔틀버스' },
   { id: 'venue', label: '공연장 정보' },
+  related.length > 0 && { id: 'related', label: '관련 공연' },
   event.sources && event.sources.length > 0 && { id: 'sources', label: '출처' },
 ].filter(Boolean) as { id: string; label: string }[];
 
@@ -418,6 +421,15 @@ const jsonLd = {
       </div>
     )}
 
+    {related.length > 0 && (
+      <div class="info-block" id="related">
+        <h2>관련 공연</h2>
+        <div class="event-list">
+          {related.map((e) => <EventCard event={e} />)}
+        </div>
+      </div>
+    )}
+
     <AdSlot slot="event-bottom" />
   </article>
 </BaseLayout>
@@ -713,4 +725,5 @@ const jsonLd = {
   @media (min-width: 1180px) {
     .event-toc { display: block; }
   }
+  .event-list { display: flex; flex-direction: column; }
 </style>
