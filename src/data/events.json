@@ -3028,7 +3028,7 @@
     "city": "서울",
     "startDate": "2027-01-23",
     "endDate": "2027-01-23",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 셋리스트 등 일부 정보는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
     "description": "일본 3인조 록밴드 Hump Back(험프백)의 단독 내한공연 'HELLO ANEW TOUR SEOUL 2027'. 티켓 오픈은 2026-10-07 낮 12시부터, 공연 시간은 오후 6시, 전석 132,000원이에요.",
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-10-07 낮 12시",
@@ -3037,8 +3037,13 @@
       {
         "label": "Hump Back “HELLO ANEW TOUR SEOUL 2027” 티켓 오픈 안내 - YES24 티켓 공지사항",
         "url": "https://ticket.yes24.com/Notice#id=18427"
+      },
+      {
+        "label": "Hump Back pre. \"HELLO ANEW TOUR\" 2026-2027 - Hump Back Official site (KOREA/SEOUL)",
+        "url": "https://humpback.jp/contents/1073598"
       }
-    ]
+    ],
+    "posterUrl": "https://humpback.jp/s3/skiyaki/uploads/ckeditor/pictures/873700/content_IMG_4062.jpeg"
   },
   {
     "id": "raintree-seoul-2026-12",
@@ -3218,7 +3223,7 @@
     "city": "서울",
     "startDate": "2026-09-20",
     "endDate": "2026-09-20",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 공연일이 가까우니 예매를 서두르는 게 좋아요.",
+    "note": "공연일이 가까우니 예매를 서두르는 게 좋아요. 셋리스트 등 일부 정보는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
     "description": "미국 싱어송라이터 레이첼 야마가타(Rachael Yamagata)의 'Starlit Alchemy Tour' 내한공연. 2019년 이후 약 7년 만이에요. 2026-09-20(일) 오후 6시, 예스24 원더로크홀, 스탠딩석·지정석 110,000원. 새 정규앨범 'Starlit Alchemy' 발매를 기념하는 투어예요. 주최/기획 (주)엑세스엑스.",
     "ticketLinks": [
       {
@@ -3240,7 +3245,8 @@
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
     ],
-    "merchCheckedAt": "2026-09-04"
+    "merchCheckedAt": "2026-09-04",
+    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg"
   },
   {
     "id": "penthouse-seoul-2026-12",
