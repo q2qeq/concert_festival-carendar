@@ -3241,5 +3241,235 @@
       }
     ],
     "merchCheckedAt": "2026-09-04"
+  },
+  {
+    "id": "penthouse-seoul-2026-12",
+    "artist": "Penthouse (펜트하우스)",
+    "genre": "J-POP",
+    "venue": "YES24 LIVE HALL",
+    "city": "서울",
+    "startDate": "2026-12-19",
+    "endDate": "2026-12-19",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 시티팝/소울 밴드 Penthouse(펜트하우스)의 단독 내한공연 'Penthouse ONE MAN LIVE TOUR 2026 「Neon Garden」 in Seoul'.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59886"
+      }
+    ],
+    "sources": [
+      {
+        "label": "펜트하우스 내한공연 Penthouse ONE MAN LIVE TOUR 2026 「Neon Garden」 in Seoul - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59886"
+      }
+    ]
+  },
+  {
+    "id": "akane-yonezawa-seoul-2026-11",
+    "artist": "AKANE YONEZAWA (요네자와 아카네)",
+    "genre": "J-POP",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 아티스트 AKANE YONEZAWA(요네자와 아카네)의 단독 내한공연 '“Black Pasta” TOUR in Seoul'.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59781"
+      }
+    ],
+    "sources": [
+      {
+        "label": "AKANE YONEZAWA “Black Pasta” TOUR in Seoul - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59781"
+      }
+    ]
+  },
+  {
+    "id": "blu-swing-seoul-2026-11",
+    "artist": "BLU-SWING (블루스윙)",
+    "genre": "재즈/내한",
+    "venue": "홍대 롤링홀",
+    "city": "서울",
+    "startDate": "2026-11-15",
+    "endDate": "2026-11-15",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 애시드재즈 밴드 BLU-SWING의 단독 내한공연 '“Across the Blue” in Seoul'.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59831"
+      }
+    ],
+    "sources": [
+      {
+        "label": "BLU-SWING “Across the Blue” in Seoul - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59831"
+      }
+    ]
+  },
+  {
+    "id": "shi-shi-seoul-2026-10",
+    "artist": "Shi Shi (시시)",
+    "genre": "팝",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2026-10-11",
+    "endDate": "2026-10-11",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "대만을 기반으로 활동하는 한중 아티스트 시시(Shi Shi)의 월드투어 '〈Shi Shi [The Taste Of…] World Tour〉' 서울 공연.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59681"
+      }
+    ],
+    "sources": [
+      {
+        "label": "〈Shi Shi [ The Taste Of… ] World Tour in Seoul〉 - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59681"
+      }
+    ]
+  },
+  {
+    "id": "kawasaki-takaya-seoul-2026-12",
+    "artist": "Kawasaki Takaya (카와사키 타카야)",
+    "genre": "J-POP",
+    "venue": "YES24 LIVE HALL",
+    "city": "서울",
+    "startDate": "2026-12-20",
+    "endDate": "2026-12-20",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 아티스트 카와사키 타카야(Kawasaki Takaya)의 단독 내한공연 'KAWASAKI TAKAYA LIVE IN SEOUL 2026'.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59669"
+      }
+    ],
+    "sources": [
+      {
+        "label": "카와사키 타카야 내한공연 KAWASAKI TAKAYA LIVE IN SEOUL 2026 - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59669"
+      }
+    ]
+  },
+  {
+    "id": "kanho-yakushiji-seoul-2026-10",
+    "artist": "칸호 야쿠시지 (Kanho Yakushiji)",
+    "genre": "팝",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2026-10-30",
+    "endDate": "2026-10-30",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 승려 뮤지션 칸호 야쿠시지의 데뷔 10주년 기념 월드투어 'Circle of Harmony'의 첫 내한공연.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59642"
+      }
+    ],
+    "sources": [
+      {
+        "label": "칸호 야쿠시지 첫 내한공연 - 10주년 월드투어 “Circle of Harmony” - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59642"
+      }
+    ]
+  },
+  {
+    "id": "andromeda-mega-express-orchestra-seoul-2026-10",
+    "artist": "Andromeda Mega Express Orchestra",
+    "genre": "재즈/내한",
+    "venue": "CJ아지트 광흥창",
+    "city": "서울",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-17",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "독일 베를린을 기반으로 활동하는 18인조 재즈 오케스트라 Andromeda Mega Express Orchestra의 내한공연.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59894"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Andromeda Mega Express Orchestra - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59894"
+      }
+    ]
+  },
+  {
+    "id": "coaltar-of-the-deepers-seoul-2026-10",
+    "artist": "Coaltar of the Deepers (콜타르 오브 더 디퍼스)",
+    "genre": "J-POP",
+    "venue": "홍대 롤링홀",
+    "city": "서울",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-24",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 슈게이즈 밴드 Coaltar of the Deepers의 데뷔 35주년 기념 내한공연 'Coaltar of the Deepers 35th Anniversary Live in Seoul'.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59686"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Coaltar of the Deepers 35th Anniversary Live in Seoul - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59686"
+      }
+    ]
+  },
+  {
+    "id": "flow-naruto-rock-seoul-2026-10",
+    "artist": "FLOW (플로우)",
+    "genre": "J-POP",
+    "venue": "YES24 LIVE HALL",
+    "city": "서울",
+    "startDate": "2026-10-28",
+    "endDate": "2026-10-28",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "'나루토' 주제가로 잘 알려진 일본 록밴드 FLOW의 월드투어 'NARUTO THE ROCK WORLD TOUR 2026' 서울 공연.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59986"
+      }
+    ],
+    "sources": [
+      {
+        "label": "FLOW NARUTO THE ROCK WORLD TOUR 2026 - SEOUL - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59986"
+      }
+    ]
+  },
+  {
+    "id": "hag-seoul-2026-10",
+    "artist": "H△G (하그)",
+    "genre": "J-POP",
+    "venue": "웨스트브릿지",
+    "city": "서울",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-17",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 아티스트 H△G(하그)의 첫 단독 내한공연 '1st One Man Live in Seoul 夏の在りか'.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59841"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Ｈ△Ｇ 1st One Man Live in Seoul 夏の在りか - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59841"
+      }
+    ]
   }
 ]
