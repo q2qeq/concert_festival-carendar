@@ -3477,5 +3477,38 @@
         "url": "https://ticket.yes24.com/Perf/59841"
       }
     ]
+  },
+  {
+    "id": "sound-planet-festival-2026-09",
+    "artist": "사운드 플래닛 페스티벌 2026 (Young K·YB·UVERworld·ZUTOMAYO 등)",
+    "genre": "페스티벌",
+    "venue": "파라다이스시티",
+    "city": "인천",
+    "startDate": "2026-09-05",
+    "endDate": "2026-09-06",
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213174",
+    "officialUrl": "https://x.com/soundplanetfest",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF287381_260721_104952.gif",
+    "note": "한일 합동 록/제이팝 페스티벌. 일본 SUMMER SONIC과 공식 협력해 2028년까지 파라다이스시티에서 3개년 개최 예정. KOPIS에 정식 등록된 공연으로 자동수집 후보(kopis-candidates.json)에는 이미 잡혀 있었으나 events.json 반영이 늦어졌던 건.",
+    "description": "인천 파라다이스시티에서 열리는 한일 합동 록·제이팝 페스티벌. 토요일(9/5)은 Young K(DAY6)·YB·UVERworld, 일요일(9/6)은 ZUTOMAYO가 헤드라이너로 나서며 PompadollS·Gaku·ASTERISM 등 일본 아티스트도 다수 출연한다.",
+    "sources": [
+      {
+        "label": "KOPIS 공연예술통합전산망 공식 등록 정보",
+        "url": "https://kopis.or.kr/mob/db/pblprfrView.do?mt20Id=PF287381"
+      },
+      {
+        "label": "사운드 플래닛 페스티벌 2026 - 3차 라인업 (festivallife)",
+        "url": "https://festivallife.kr/festival/?bmode=view&idx=171495218"
+      },
+      {
+        "label": "나무위키 - 사운드 플래닛 페스티벌",
+        "url": "https://namu.wiki/w/%EC%82%AC%EC%9A%B4%EB%93%9C%20%ED%94%8C%EB%9E%98%EB%8B%9B%20%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C"
+      },
+      {
+        "label": "멜론티켓 - 사운드 플래닛 페스티벌 2026 일반 티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213174"
+      }
+    ],
+    "enrichmentCheckedAt": "2026-09-04"
   }
 ]
