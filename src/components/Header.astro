@@ -23,7 +23,10 @@ function isActive(href: string) {
       <Mascot size={30} />
       <span>{SITE_TITLE}</span>
     </a>
-    <div class="links">
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="links" id="nav-links">
       {NAV.map((item) => (
         <a href={item.href} class={isActive(item.href) ? 'active' : ''} aria-current={isActive(item.href) ? 'page' : undefined}>
           {item.label}
@@ -32,6 +35,23 @@ function isActive(href: string) {
     </div>
   </nav>
 </header>
+<script>
+  // Mobile nav: on narrow screens the full link list collapses behind a
+  // hamburger toggle (see @media rule below) instead of wrapping into
+  // 2-3 lines under the sticky header on every page.
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  toggle?.addEventListener('click', () => {
+    const isOpen = links?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  });
+  links?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      links.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 <style>
   .site-header {
     position: sticky;
@@ -42,7 +62,7 @@ function isActive(href: string) {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
-  nav { max-width: 880px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+  nav { position: relative; max-width: 880px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
   .brand { display: flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
   .links { display: flex; gap: 1.1rem; }
   .links a {
@@ -54,4 +74,49 @@ function isActive(href: string) {
   }
   .links a:hover { color: #fff; }
   .links a.active { color: #fff; font-weight: 700; border-bottom-color: var(--accent, #ff5fa2); }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #f5f3ff;
+    border-radius: 2px;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  @media (max-width: 720px) {
+    .nav-toggle { display: flex; }
+    .links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: #14141f;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+    }
+    .links.is-open { display: flex; }
+    .links a {
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .links a.active { border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,95,162,0.08); }
+  }
 </style>

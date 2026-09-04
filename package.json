@@ -15,7 +15,8 @@
     "enrich:watch": "node scripts/enrichment-watch-list.mjs",
     "fanchant:watch": "node scripts/fanchant-watch-list.mjs",
     "ticketvendor:watch": "node scripts/ticket-vendor-watch-list.mjs",
-    "indexnow:ping": "node scripts/indexnow-ping.mjs"
+    "indexnow:ping": "node scripts/indexnow-ping.mjs",
+    "posters:cache": "node scripts/cache-posters.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {
@@ -25,6 +26,7 @@
     "astro": "^7.2.8"
   },
   "devDependencies": {
-    "vercel": "^59.7.0"
+    "vercel": "^59.7.0",
+    "sharp": "^0.35.4"
   }
 }

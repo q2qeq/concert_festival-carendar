@@ -36,8 +36,9 @@ function fmt(iso: string) {
               <img
                 class="hero-card-poster"
                 src={e.posterUrl}
-                alt=""
+                alt={`${e.artist} 포스터`}
                 loading={i === 0 ? 'eager' : 'lazy'}
+                onerror="this.style.display='none';"
               />
               <div
                 class="dday-badge hero-dday"

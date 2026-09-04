@@ -187,6 +187,10 @@ export interface ConcertEvent {
   // real official source and prefer linking over rehosting — never generated,
   // scraped from an unofficial site, or fabricated.
   posterUrl?: string;
+  // Original remote URL the poster was downloaded from (ticket vendor /
+  // news CDN), kept for provenance after scripts/cache-posters.mjs
+  // rewrites posterUrl to a self-hosted /posters/<id>.webp path.
+  posterSourceUrl?: string;
   // Headliner/confirmed-artist list, flat (no per-day breakdown known/needed).
   // Prefer `lineupByDay` when the festival spans multiple days with different
   // acts each day - events/[id].astro falls back to this field wrapped as a

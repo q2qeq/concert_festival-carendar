@@ -32,7 +32,21 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
 >
   <div class="poster-card-frame">
     {event.posterUrl ? (
-      <img class="poster-card-img" src={event.posterUrl} alt="" loading="lazy" width="300" height="420" />
+      <>
+        <img
+          class="poster-card-img"
+          src={event.posterUrl}
+          alt={`${event.artist} 포스터`}
+          loading="lazy"
+          width="300"
+          height="420"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="poster-card-placeholder" style="display:none">
+          <span class="poster-card-placeholder-icon" aria-hidden="true">🎫</span>
+          <span>포스터 준비중</span>
+        </div>
+      </>
     ) : (
       <div class="poster-card-placeholder">
         <span class="poster-card-placeholder-icon" aria-hidden="true">🎫</span>

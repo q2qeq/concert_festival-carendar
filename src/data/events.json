@@ -10,7 +10,7 @@
     "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13341",
     "note": "일본 밴드 오피셜히게단디즘 내한 공연.",
     "description": "일본 4인조 밴드 오피셜히게단디즘의 내한 공연. 'Pretender', 'Subtitle' 같은 히트곡은 물론 애니메이션 주제가로도 국내에 팬이 많다.",
-    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26005670_p.gif",
+    "posterUrl": "/posters/official-hige-dandism-2026-08.webp",
     "officialUrl": "https://higedan.com/?lang=en",
     "funFacts": [
       "2016년 현대카드 언더스테이지 → 2024년 킨텍스 → 이번엔 KSPO DOME까지, 내한할 때마다 공연장을 한 단계씩 키워온 밴드예요. 다음엔 어디로 갈지가 팬들 사이 떡밥이죠.",
@@ -87,7 +87,8 @@
       }
     ],
     "mdUrl": "https://higedan-store.jp/en",
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26005670_p.gif"
   },
   {
     "id": "iu-goyang-2026-09",
@@ -154,7 +155,8 @@
       "사카모토 신타로(일본 사이키델릭 음악가)·Your Song Is Good 같은 해외 라인업과 장기하·강산에 같은 국내 뮤지션이 한 무대에 서요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://www.jeonmae.co.kr/news/photo/202608/1288087_1014812_5457.jpg"
+    "posterUrl": "/posters/the-grateful-camp-2026-09.webp",
+    "posterSourceUrl": "https://www.jeonmae.co.kr/news/photo/202608/1288087_1014812_5457.jpg"
   },
   {
     "id": "jimff-onesummernight-kpop-season2-2026-09",
@@ -210,14 +212,15 @@
     ],
     "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213646",
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.newscj.com/news/photo/202608/3422260_3532965_5915.jpg",
+    "posterUrl": "/posters/jimff-onesummernight-kpop-season2-2026-09.webp",
     "festivalHighlight": [
       {
         "act": "리센느(RESCENE)",
         "reason": "'LOVE ATTACK' 역주행으로 화제를 모으며 2차 라인업에 합류한 '대세돌' 신인 걸그룹이에요.",
         "sourceUrl": "https://biz.heraldcorp.com/article/10814345"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://cdn.newscj.com/news/photo/202608/3422260_3532965_5915.jpg"
   },
   {
     "id": "lim-youngwoong-im-hero-stadium2-2026-09",
@@ -254,7 +257,7 @@
       "소속사(물고기뮤직)는 가창력·무대 연출·전반적인 스케일 모든 면에서 이전보다 한층 진화한 무대를 예고했어요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16126629_1956720_2742.jpg",
+    "posterUrl": "/posters/lim-youngwoong-im-hero-stadium2-2026-09.webp",
     "mdUrl": "https://imheromall.com/",
     "merch": [
       {
@@ -307,7 +310,8 @@
         "sourceUrl": "https://x.com/limyoungwoong/status/2077169545031319657"
       }
     ],
-    "merchCheckedAt": "2026-09-04"
+    "merchCheckedAt": "2026-09-04",
+    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202607/16126629_1956720_2742.jpg"
   },
   {
     "id": "spyair-2026-09",
@@ -372,7 +376,7 @@
         "sourceUrl": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=17887"
       }
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260522/20260522-58592.jpg",
+    "posterUrl": "/posters/spyair-2026-09.webp",
     "setlists": [
       {
         "label": "JUST LIKE THIS 2026 - Pyrkon(폴란드) 페스티벌 공연",
@@ -396,7 +400,8 @@
         "sourceUrl": "https://www.setlist.fm/setlist/spyair/2026/sala-ziemi-pozna-poland-6372f257.html",
         "note": "새 보컬 요스케 합류 후 같은 시기 다른 공연(폴란드 페스티벌) 세트리스트예요. 서울 단독 공연은 곡 구성이 달라질 수 있어요."
       }
-    ]
+    ],
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260522/20260522-58592.jpg"
   },
   {
     "id": "back-number-2026-09",
@@ -409,7 +414,7 @@
     "ticketUrl": "https://m.ticket.yes24.com/English/Perf/Detail/FnPerfInfo.aspx?IdPerf=58079",
     "note": "일본 밴드 백넘버 내한 공연.",
     "description": "일본 3인조 록밴드 백넘버(back number)의 내한 공연. 서정적인 가사와 미디엄 템포 발라드가 시그니처다.",
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202604/20260416/20260416-58079.jpg",
+    "posterUrl": "/posters/back-number-2026-09.webp",
     "officialUrl": "https://backnumber.info/?lang=en",
     "funFacts": [
       "2004년 결성, 2011년 데뷔한 3인조 밴드로 일본에서는 이미 '국민밴드'급 인지도예요. 그런데 이번이 밴드 인생 첫 해외 투어이자 첫 내한이에요. 데뷔 15년 만의 첫 외출인 셈이죠.",
@@ -516,7 +521,8 @@
         "text": "공식 온라인 스토어(store.plusmember.jp)에서 Grateful Yesterdays Tour 2026 굿즈 실물 판매 페이지를 확인했어요. 티셔츠·모자·반다나·파우치 등 25종 이상, ¥800~¥8,500 가격대예요. 다만 일본 사이트라 배송 범위(한국 직배송 가능 여부)는 별도 확인이 필요해요.",
         "sourceUrl": "https://store.plusmember.jp/backnumberonlinestore/products/list.php?category_id=4926"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202604/20260416/20260416-58079.jpg"
   },
   {
     "id": "shuttle-isul-live-festival-2026-09",
@@ -572,7 +578,8 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://i3n.news1.kr/system/photos/2026/8/7/8045229/high.jpg"
+    "posterUrl": "/posters/shuttle-isul-live-festival-2026-09.webp",
+    "posterSourceUrl": "https://i3n.news1.kr/system/photos/2026/8/7/8045229/high.jpg"
   },
   {
     "id": "riize-3rd-anniversary-fanmeeting-2026-09",
@@ -614,7 +621,8 @@
       "공연장이 인천 인스파이어 아레나라, 같은 시기 다른 대형 페스티벌들과 이동 동선이 겹칠 수 있어요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.topstarnews.net/news/photo/202607/16146898_1972132_130.jpg"
+    "posterUrl": "/posters/riize-3rd-anniversary-fanmeeting-2026-09.webp",
+    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202607/16146898_1972132_130.jpg"
   },
   {
     "id": "plave-world-tour-keep-it-manic-incheon-2026-09",
@@ -648,7 +656,7 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg",
+    "posterUrl": "/posters/plave-world-tour-keep-it-manic-incheon-2026-09.webp",
     "fanChantGuide": [
       {
         "title": "PLAVE 'WAY 4 LUV' 응원법 가이드 (Fanchants Guide) 공식 영상",
@@ -656,7 +664,8 @@
         "note": "특정 곡(WAY 4 LUV) 공식 응원법 안내 영상. 투어 전체 세트리스트 응원법 가이드는 아님"
       }
     ],
-    "merchCheckedAt": "2026-09-04"
+    "merchCheckedAt": "2026-09-04",
+    "posterSourceUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg"
   },
   {
     "id": "nct127-neocity-redline-seoul-2026-09",
@@ -693,14 +702,15 @@
       "이번 투어명 'THE REDLINE'은 공식 계정이 '#NCT127 #THE_REDLINE'과 함께 예고했어요 - 구체적인 컨셉은 공연이 가까워지며 추가로 공개될 걸로 보여요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/07/06232541/nct-127.jpeg",
+    "posterUrl": "/posters/nct127-neocity-redline-seoul-2026-09.webp",
     "fanChantGuide": [
       {
         "title": "NCT 127 'Blingy' 응원법(Cheering Guide) 영상",
         "url": "https://www.youtube.com/watch?v=oW-GEYgZJDE",
         "note": "특정 곡(Blingy) 응원법 안내 영상 - 투어 전체 곡 가이드는 아님"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://0.soompi.io/wp-content/uploads/2026/07/06232541/nct-127.jpeg"
   },
   {
     "id": "vaundy-2026-09",
@@ -713,7 +723,7 @@
     "ticketUrl": "https://nol.yanolja.com/ticket/places/26000240/products/26003199",
     "note": "일본 싱어송라이터 Vaundy 내한 공연. 예매: NOL티켓.",
     "description": "일본 싱어송라이터 Vaundy의 내한 공연. 장르를 넘나드는 사운드로 일본 젊은 세대에게 지지가 두텁다.",
-    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26003199_p.gif",
+    "posterUrl": "/posters/vaundy-2026-09.webp",
     "officialUrl": "https://vaundy.jp/?lang=en",
     "funFacts": [
       "'괴물 천재'라는 별명이 괜히 붙은 게 아니에요. 작사·작곡·편곡은 물론 뮤직비디오 감독까지 혼자 다 하거든요. 이번이 데뷔 후 첫 단독 내한 콘서트예요.",
@@ -855,7 +865,8 @@
         "note": "서울 공연 한정 상품",
         "url": "https://nolmdshop.com/product/vaundy-seoul-limited-rubber-band-horo-light-green×red/2621/category/172/display/1/"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26003199_p.gif"
   },
   {
     "id": "kopis-pyeonghwanuri-picnic-2026-09",
@@ -876,7 +887,7 @@
       "서도밴드",
       "더픽스"
     ],
-    "posterUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png",
+    "posterUrl": "/posters/kopis-pyeonghwanuri-picnic-2026-09.webp",
     "schedule": "9월 19일(토) 16:30 시작, 관람 시간 약 270분(4시간 30분)",
     "funFacts": [
       "티켓 가격이 3,000원(예매수수료 2,000원 별도)이에요. 넬·10CM·선우정아 조합을 이 가격에 볼 수 있는 건 경기관광공사가 여는 공공 페스티벌이라 가능한 일이에요. 라인업은 민간 페스티벌급인데 가격은 공공요금인 셈이죠.",
@@ -975,7 +986,8 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-04"
+    "merchCheckedAt": "2026-09-04",
+    "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
     "id": "kopis-onewe-live-2026-09",
@@ -988,7 +1000,7 @@
     "note": "포스터는 2026-08-21 공개 보도(중앙이코노미뉴스) 기준 공식 이미지입니다.",
     "description": "밴드 ONEWE의 단독 라이브 콘서트 'O! NEW E!volution VI'.",
     "officialUrl": "https://onewe.co.kr/",
-    "posterUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg",
+    "posterUrl": "/posters/kopis-onewe-live-2026-09.webp",
     "funFacts": [
       "벌써 6번째 시즌을 맞는 단독 콘서트 시리즈예요. 'O! NEW E!volution' 이름을 달고 해마다 진행돼왔어요.",
       "이번 포스터는 5인 멤버가 각자 다른 색의 제복을 입은 '5인 5색' 컨셉으로 공개됐어요."
@@ -1020,7 +1032,8 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-04"
+    "merchCheckedAt": "2026-09-04",
+    "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
   },
   {
     "id": "kim-yongbin-serenade-2026-09",
@@ -1031,7 +1044,7 @@
     "startDate": "2026-09-19",
     "endDate": "2026-09-20",
     "ticketUrl": "http://www.ticketlink.co.kr/product/64771",
-    "posterUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_1/kim-pst0804.jpg",
+    "posterUrl": "/posters/kim-yongbin-serenade-2026-09.webp",
     "note": "올림픽공원 핸드볼경기장 일대에서 석 달 넘게 이어진 시위 여파로, 공연기획사가 9월 1일 안전한 진행이 어렵다고 판단해 취소를 공식 발표했습니다. 예매된 티켓은 별도 신청 없이 수수료 없이 순차적으로 전액 환불됩니다.",
     "description": "가수 김용빈의 단독 콘서트 '2026 김용빈 콘서트 세레나데'로, 티켓링크 라이브 아레나에서 이틀간 열릴 예정이었다.",
     "status": "cancelled",
@@ -1054,7 +1067,8 @@
         "label": "김용빈, 시위 여파로 서울 단독 콘서트 취소 - 일간스포츠",
         "url": "https://isplus.com/article/view/isp202609010216"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_1/kim-pst0804.jpg"
   },
   {
     "id": "jo1-seoul-2026-09",
@@ -1104,7 +1118,8 @@
       }
     ],
     "merchCheckedAt": "2026-09-02",
-    "posterUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_8/JO1_200_247.jpg"
+    "posterUrl": "/posters/jo1-seoul-2026-09.webp",
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_8/JO1_200_247.jpg"
   },
   {
     "id": "takuya-kimura-live-tour-checkpoint-seoul-2026-09",
@@ -1138,7 +1153,8 @@
       "유재석이 그의 드라마를 '홀린 듯이 전편을 클리어했다'고 언급했을 만큼, 팬층이 세대를 넘나들어요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg"
+    "posterUrl": "/posters/takuya-kimura-live-tour-checkpoint-seoul-2026-09.webp",
+    "posterSourceUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg"
   },
   {
     "id": "post-malone-2026-10",
@@ -1153,7 +1169,7 @@
     "description": "미국 싱어송라이터 포스트 말론의 내한 공연. 'Circles', 'Sunflower' 등 글로벌 히트곡이 많다.",
     "officialUrl": "https://www.livenation.kr/event/post-malone-presents-the-big-stadium-world-tour-seoul-tickets-edp1664856",
     "status": "cancelled",
-    "posterUrl": "https://dynamicmedia.livenationinternational.com/f/t/x/6399af39-367b-43ff-b8e1-00ad2d67eaf2.jpg",
+    "posterUrl": "/posters/post-malone-2026-10.webp",
     "funFacts": [
       "10월 2일 고양종합운동장에서 열릴 예정이었지만, 2026년 8월 27일 라이브네이션코리아가 전면 취소를 발표했어요. 티켓을 예매해뒀던 팬들 입장에서는 꽤 갑작스러운 소식이었을 거예요.",
       "같은 시기 쿠알라룸푸르 공연도 취소되고 일본 공연은 연기로 처리되면서, 아시아 투어 후반부 일정 자체가 통째로 흔들린 모습이었어요. 이렇게 취소·연기된 다른 내한공연들과 함께 정리한 이야기는 [블로그 글](/blog/post1/)에서 더 볼 수 있어요."
@@ -1177,7 +1193,8 @@
         "url": "https://www.instagram.com/postmalone/"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/f/t/x/6399af39-367b-43ff-b8e1-00ad2d67eaf2.jpg"
   },
   {
     "id": "shuttle-busan-rock-festival-2026-10",
@@ -1256,7 +1273,7 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png",
+    "posterUrl": "/posters/shuttle-busan-rock-festival-2026-10.webp",
     "festivalHighlight": [
       {
         "act": "Avenged Sevenfold",
@@ -1268,7 +1285,8 @@
         "reason": "Avenged Sevenfold와 나란히 선 또 하나의 헤드라이너 - 결성 40년이 넘은 스래시 메탈의 거장이에요.",
         "sourceUrl": "https://busanrockfestival.com/notice/2026notice_08/"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png"
   },
   {
     "id": "lany-2026-10",
@@ -1282,7 +1300,7 @@
     "note": "",
     "description": "미국 밴드 LANY의 내한 공연. 감성적인 신스팝 사운드로 국내에도 팬이 많다.",
     "officialUrl": "https://www.livenation.kr/event/lany-soft-world-tour-seoul-tickets-edp1663105",
-    "posterUrl": "https://dynamicmedia.livenationinternational.com/j/d/r/e3791d3d-c82d-4fbe-9a93-928a15bd8691.jpg",
+    "posterUrl": "/posters/lany-2026-10.webp",
     "funFacts": [
       "'Soft World Tour'의 서울 공연으로, 킨텍스 9홀에서 하루만 열려요."
     ],
@@ -1335,7 +1353,8 @@
         "sourceUrl": "https://www.setlist.fm/setlist/lany/2026/credit-union-1-arena-chicago-il-634bfaff.html",
         "note": "같은 투어의 다른 공연(시카고) 세트리스트예요. 서울 공연은 조금씩 달라질 수 있어요."
       }
-    ]
+    ],
+    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/j/d/r/e3791d3d-c82d-4fbe-9a93-928a15bd8691.jpg"
   },
   {
     "id": "xmf-2026-10",
@@ -1371,7 +1390,7 @@
       "DAY6(데이식스)",
       "ONE OK ROCK(원오크록)"
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg",
+    "posterUrl": "/posters/xmf-2026-10.webp",
     "lineupByDay": [
       {
         "date": "2026-10-03",
@@ -1467,7 +1486,8 @@
         "reason": "'아도 온다'라는 제목의 단독 기사가 나올 정도로 이번 페스티벌의 가장 큰 화제를 모은 헤드라이너예요.",
         "sourceUrl": "https://sports.khan.co.kr/en/article/202607311953007/"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg"
   },
   {
     "id": "andteam-blaze-the-way-encore-2026-10",
@@ -1505,7 +1525,7 @@
       "일본 아레나 투어에서 시작해 한국·대만·홍콩·태국·싱가포르로 확장하는 동선이라, HYBE가 아시아 시장을 겨냥해 키우는 그룹이라는 평가를 받고 있어요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262",
+    "posterUrl": "/posters/andteam-blaze-the-way-encore-2026-10.webp",
     "setlists": [
       {
         "label": "2026 &TEAM CONCERT TOUR 'BLAZE THE WAY' - 요코하마 공연",
@@ -1548,7 +1568,8 @@
         "url": "https://namu.wiki/w/&TEAM/%EC%9D%91%EC%9B%90%EB%B2%95",
         "note": "팬덤이 정리한 곡별 응원법 위키 문서"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262"
   },
   {
     "id": "edc-korea-2026",
@@ -1601,7 +1622,8 @@
       "홍중 (NOWON)"
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/73/2026/07/28164448/edck_2026_mk_lu_lubd_fest_site_seo_1200x630_r01.jpg"
+    "posterUrl": "/posters/edc-korea-2026.webp",
+    "posterSourceUrl": "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/73/2026/07/28164448/edck_2026_mk_lu_lubd_fest_site_seo_1200x630_r01.jpg"
   },
   {
     "id": "weeknd-hyundaicard-superconcert28-2026-10",
@@ -1639,7 +1661,7 @@
       "10월 7일과 8일, 이틀 연속으로 열려요. 하루만 갈지 이틀 다 갈지 고민하는 팬들도 꽤 있더라고요. 위켄드 특유의 화려한 조명·영상 연출을 생각하면, 이틀 다 챙겨서 다른 각도로 즐겨보는 것도 나쁘지 않은 선택일 것 같아요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png",
+    "posterUrl": "/posters/weeknd-hyundaicard-superconcert28-2026-10.webp",
     "setlists": [
       {
         "label": "2026 애프터 아워스 투 오픈 에어 투어 - 런던 웸블리 스타디움 공연",
@@ -1689,7 +1711,8 @@
         "sourceUrl": "https://www.setlist.fm/setlist/the-weeknd/2026/wembley-stadium-london-england-73403ef9.html",
         "note": "같은 월드투어의 다른 공연(런던) 세트리스트예요. 실제 서울 공연 세트리스트는 조금씩 달라질 수 있어요."
       }
-    ]
+    ],
+    "posterSourceUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png"
   },
   {
     "id": "ghost-festival-2026-10",
@@ -1735,7 +1758,7 @@
       "TEI(테이)",
       "2am(투에이엠)"
     ],
-    "posterUrl": "https://static.luck-d.com/ticket/performance/902/poster_1784872819559.webp",
+    "posterUrl": "/posters/ghost-festival-2026-10.webp",
     "funFacts": [
       "페스티벌 이름의 '고스트(GHOST)'는 무서운 얘기가 아니라 'K-드라마·영화 OST'에서 따온 말장난이에요. 정식 부제도 '경기 한류 OST 페스티벌'이고요.",
       "최종 라인업이 30팀까지 확정됐지만, 날짜별 출연진은 아직 절반도 공개되지 않았어요. 지금까지 확인된 건 9일 멜로망스, 10일 웬디, 11일 이영지·모그·윤일상&WE필하모닉 정도고 나머지는 공식 채널에서 순차 공개될 예정입니다.",
@@ -1842,7 +1865,8 @@
         ],
         "note": "예매 기간 8/11~10/1. 문의: 카카오톡 채널 또는 02-6952-0321"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://static.luck-d.com/ticket/performance/902/poster_1784872819559.webp"
   },
   {
     "id": "shuttle-jx-core-incheon-2026-10",
@@ -1882,7 +1906,8 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://wimg.munhwa.com/news/cms/2026/08/24/news-p.v1.20260824.23d11ba781d44f8f89b78098c8bb0989_R.jpg"
+    "posterUrl": "/posters/shuttle-jx-core-incheon-2026-10.webp",
+    "posterSourceUrl": "https://wimg.munhwa.com/news/cms/2026/08/24/news-p.v1.20260824.23d11ba781d44f8f89b78098c8bb0989_R.jpg"
   },
   {
     "id": "kopis-jarasum-jazz-2026-10",
@@ -1926,7 +1951,8 @@
         "url": "https://ticket.yes24.com/Perf/58947"
       }
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260629/20260629-58947.jpg"
+    "posterUrl": "/posters/kopis-jarasum-jazz-2026-10.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260629/20260629-58947.jpg"
   },
   {
     "id": "kopis-10cm-fanconcert-2026-10",
@@ -1939,7 +1965,7 @@
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준.",
     "description": "인디 듀오 10CM의 팬 콘서트 'THE MISSING TRACKS' 시리즈.",
     "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14951",
-    "posterUrl": "https://images.khan.co.kr/article/2026/08/19/news-p.v1.20260819.8832c2932e994b868d6a6b37bfd0e0a8_P1.jpeg",
+    "posterUrl": "/posters/kopis-10cm-fanconcert-2026-10.webp",
     "officialUrl": "https://camwus.com/",
     "schedule": "10CM 콘서트는 10/9~11 사흘간 매일 오후 6시 진행되며, 이 페이지는 그중 10/10 공연을 다룹니다.",
     "funFacts": [
@@ -1965,7 +1991,8 @@
         "url": "https://www.instagram.com/10cm_official/"
       }
     ],
-    "merchCheckedAt": "2026-09-02"
+    "merchCheckedAt": "2026-09-02",
+    "posterSourceUrl": "https://images.khan.co.kr/article/2026/08/19/news-p.v1.20260819.8832c2932e994b868d6a6b37bfd0e0a8_P1.jpeg"
   },
   {
     "id": "kopis-PF297586",
@@ -1975,7 +2002,7 @@
     "city": "서울",
     "startDate": "2026-10-10",
     "endDate": "2026-10-10",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297586_260804_102420.jpg",
+    "posterUrl": "/posters/kopis-PF297586.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
     "officialUrl": "https://cero-web.jp/2026/",
     "description": "일본 밴드 cero의 8년 만의 한국 공연 'Contemporary Seoul Cruise'. 2018년 'POLY LIFE MULTI SOUL' 아시아투어 이후 첫 내한이다.",
@@ -1989,7 +2016,8 @@
         "url": "https://cero-web.jp/2026/"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297586_260804_102420.jpg"
   },
   {
     "id": "charlie-puth-2026-10",
@@ -2003,7 +2031,7 @@
     "note": "",
     "description": "미국 싱어송라이터 겸 프로듀서 찰리 푸스의 내한 공연. 'See You Again', 'Attention' 등을 히트시켰다.",
     "officialUrl": "https://www.livenation.kr/event/charlie-puth-whatever-s-clever-world-tour-seoul-tickets-edp1668245",
-    "posterUrl": "https://dynamicmedia.livenationinternational.com/x/c/e/35bab8b3-6480-41f3-940b-6b575dc007e0.jpg",
+    "posterUrl": "/posters/charlie-puth-2026-10.webp",
     "schedule": "10월 11일(일) 오후 7시",
     "funFacts": [
       "'Whatever's Clever!' 월드투어의 서울 공연으로, 10월 11일 저녁 7시 고양종합운동장 주경기장에서 열려요. 이번이 찰리 푸스 내한공연 역사상 첫 스타디움 단독 공연이라, 규모 자체가 이전과는 다른 급이에요.",
@@ -2056,7 +2084,8 @@
         "sourceUrl": "https://www.setlist.fm/setlist/charlie-puth/2026/iveagh-gardens-dublin-ireland-234a8857.html",
         "note": "같은 투어의 다른 공연(더블린) 세트리스트예요. 서울 공연은 조금씩 달라질 수 있어요."
       }
-    ]
+    ],
+    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/x/c/e/35bab8b3-6480-41f3-940b-6b575dc007e0.jpg"
   },
   {
     "id": "kopis-PF295821",
@@ -2066,7 +2095,7 @@
     "city": "서울",
     "startDate": "2026-10-11",
     "endDate": "2026-10-11",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295821_260710_144242.gif",
+    "posterUrl": "/posters/kopis-PF295821.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
     "officialUrl": "https://www.tsquare.jp/",
     "description": "일본의 전설적인 퓨전 재즈 밴드 T-SQUARE의 7년 만의 단독 내한공연. 보컬 없는 인스트루멘탈 연주로 세계적인 팬층을 가진 밴드다.",
@@ -2081,7 +2110,8 @@
         "url": "https://star.ohmynews.com/NWS_Web/OhmyStar/at_pg.aspx?CNTN_CD=A0002525870"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295821_260710_144242.gif"
   },
   {
     "id": "nol-festival-2026-10",
@@ -2094,7 +2124,7 @@
     "officialUrl": "https://events.interpark.com/exhibition?exhibitionCode=260519007",
     "note": "야놀자(NOL)가 여는 제1회 페스티벌. 지금은 정식 예매가 아니라 무료 응모 접수 기간이고, 선예매·일반예매는 9/15(화)부터 별도로 열려요.",
     "description": "야놀자(NOL)가 처음 여는 종합 페스티벌로, 슈퍼라이브·K-POP·EDM 3개 스테이지에서 진행돼요. god·YB·아이브(IVE)·엔시티 위시·알렌 워커 등 세대와 장르를 넘나드는 라인업이 확정됐어요.",
-    "posterUrl": "https://image6.yanolja.com/cx-ydm/Rh5bzfQdWklZJxZd",
+    "posterUrl": "/posters/nol-festival-2026-10.webp",
     "lineup": [
       "god (지오디)",
       "YB",
@@ -2152,7 +2182,8 @@
         "label": "NOL 페스티벌을 소개합니다 - 인터파크 공식 안내 페이지",
         "url": "https://events.interpark.com/exhibition?exhibitionCode=260519007"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://image6.yanolja.com/cx-ydm/Rh5bzfQdWklZJxZd"
   },
   {
     "id": "kopis-ska-festival-2026-10",
@@ -2195,7 +2226,7 @@
     "endDate": "2026-10-25",
     "note": "전주 전용 포스터·개별 예매 링크는 아직 공개 전입니다. 예매 전 공식 채널을 확인하세요.",
     "description": "트로트 가수 영탁의 단독 콘서트 'TAK SHOW5' 전주 공연.",
-    "posterUrl": "https://cdn.topstarnews.net/news/photo/202608/16156505_1983393_618.jpg",
+    "posterUrl": "/posters/kopis-yeotak-jeonju-2026-10.webp",
     "funFacts": [
       "TAK SHOW는 2022년 시작된 영탁의 단독 콘서트 브랜드로, 이번이 벌써 5번째 시즌이에요. 시즌마다 공연장을 키워왔는데 KSPO DOME(1~3회)→잠실실내체육관(4회)→고려대 화정체육관(5회, 10/3~5 서울 공연)으로 이어졌습니다.",
       "전주 공연(10/24~25)은 서울 공연을 시작으로 한 전국투어의 한 스탑이에요."
@@ -2216,7 +2247,8 @@
         "label": "영탁, 브랜드 콘서트 'TAK SHOW5' 10월 개최 - 비바100",
         "url": "https://www.viva100.com/article/20260806500968"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202608/16156505_1983393_618.jpg"
   },
   {
     "id": "kopis-everblue-daegu-2026-10",
@@ -2250,7 +2282,7 @@
     "endDate": "2026-10-31",
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 인천·수원 등 다른 도시 공연도 별도 진행. 재검증(2026-08-29): 포스터는 확보했으나, 보도(2026-08-21) 시점에는 서울·고양 공연 예매처만 공개되어 부산 공연 개별 예매 링크는 아직 찾지 못했습니다.",
     "description": "싱어송라이터 윤종신의 전국투어 콘서트 '가을냄새' 부산 공연.",
-    "posterUrl": "https://cdn.mhns.co.kr/news/thumbnail/202608/757137_890861_5055_v150.jpg",
+    "posterUrl": "/posters/kopis-yoonjongshin-busan-2026-10.webp",
     "funFacts": [
       "'가을냄새'는 서울·인천·수원·고양·부산·경주·대전 7개 도시를 도는 전국투어예요. 서울 공연(10/2~4, NOL씨어터 대학로 우리카드홀)을 시작으로 부산까지 이어집니다."
     ],
@@ -2270,7 +2302,8 @@
         "label": "윤종신, 10월 전국투어 콘서트 가을냄새 개최 - 한국경제",
         "url": "https://www.hankyung.com/article/202608214261H"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://cdn.mhns.co.kr/news/thumbnail/202608/757137_890861_5055_v150.jpg"
   },
   {
     "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
@@ -2304,7 +2337,7 @@
       "선예매가 EXO-L 멤버십 국내(8/27)→글로벌(8/28)→일반(8/31) 순으로 3단계로 진행됐어요."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg",
+    "posterUrl": "/posters/exo-planet6-exhorizon-encore-seoul-2026-11.webp",
     "setlists": [
       {
         "label": "EXO PLANET #6 - EXhOrizon 서울 원 공연 (4월)",
@@ -2353,7 +2386,8 @@
         "url": "https://namu.wiki/w/EXO/%EC%9D%91%EC%9B%90%EB%B2%95",
         "note": "팬덤이 정리한 곡별 응원법 위키 문서"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg"
   },
   {
     "id": "kopis-kimjanghun-miryang-2026-11",
@@ -2388,7 +2422,8 @@
         "url": "https://ticket.yes24.com/Perf/58980"
       }
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260618/20260618-58980.jpg"
+    "posterUrl": "/posters/kopis-kimjanghun-miryang-2026-11.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260618/20260618-58980.jpg"
   },
   {
     "id": "jason-mraz-2026-11",
@@ -2402,7 +2437,7 @@
     "note": "",
     "description": "미국 어쿠스틱·포크팝 싱어송라이터 제이슨 므라즈의 내한 공연. 'I'm Yours'로 잘 알려져 있다.",
     "officialUrl": "https://jasonmraz.com/seoul-kr/",
-    "posterUrl": "https://7lgigmttrjuyfehsudec15072.edge.naverncp.com/news/photo/202604/813454_1329482_2429.jpg",
+    "posterUrl": "/posters/jason-mraz-2026-11.webp",
     "funFacts": [
       "2019년 이후 7년 만의 내한이에요. 'I'm Yours'로 유명한 싱어송라이터답게 팝·록·포크·재즈를 넘나드는 무대를 예고하고 있습니다."
     ],
@@ -2452,7 +2487,8 @@
         "sourceUrl": "https://www.setlist.fm/setlist/jason-mraz/2026/brooklyn-paramount-brooklyn-ny-1377c571.html",
         "note": "같은 해 다른 공연(브루클린) 세트리스트예요. 서울 공연은 곡 구성이 달라질 수 있어요."
       }
-    ]
+    ],
+    "posterSourceUrl": "https://7lgigmttrjuyfehsudec15072.edge.naverncp.com/news/photo/202604/813454_1329482_2429.jpg"
   },
   {
     "id": "shuttle-teddy-swims-2026-11",
@@ -2502,7 +2538,7 @@
     "description": "호주 팝록 밴드 5 Seconds of Summer의 내한 공연. 국내에도 팬덤이 두텁다.",
     "mdUrl": "https://5sos.com/",
     "officialUrl": "https://5sos.com/",
-    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26006756_p.gif",
+    "posterUrl": "/posters/5-seconds-of-summer-2026-11.webp",
     "funFacts": [
       "공연일(11/19)이 2027학년도 대학수학능력시험일과 정확히 겹쳐요. 수능을 막 마친 수험생 팬이라면 그날 저녁 바로 콘서트장으로 향할 수도 있겠네요.",
       "목요일 저녁 7시 30분 공연이라 평일 퇴근·하교 시간대 교통 혼잡을 고려해서 움직이는 걸 추천해요."
@@ -2568,7 +2604,8 @@
         "sourceUrl": "https://www.setlist.fm/setlist/5-seconds-of-summer/2026/viejas-arena-san-diego-ca-1b4e0d10.html",
         "note": "같은 투어의 다른 공연(샌디에이고) 세트리스트예요. 서울 공연은 곡 구성이 달라질 수 있어요."
       }
-    ]
+    ],
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26006756_p.gif"
   },
   {
     "id": "wonderlivet-2026-11",
@@ -2604,7 +2641,7 @@
       "송소희",
       "쿠로미(Kuromi)"
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png",
+    "posterUrl": "/posters/wonderlivet-2026-11.webp",
     "funFacts": [
       "쿠로미(Kuromi)가 라인업에 이름을 올렸어요. 산리오 캐릭터의 '국내 최초 라이브 무대'라고 하니, 기존 음악 페스티벌에서는 보기 힘든 조합이죠. 호시마치 스이세이·하츠네 미쿠 같은 버추얼 아티스트가 TAK과 협업해 3D 버추얼 무대를 선보이고, 여기에 BanG Dream! 프로젝트(MyGO!!!!!·Roselia)까지 더하면 서브컬처 라인업만으로도 하루 스케줄이 꽉 차요.",
       "2025년 관객 수는 22,578명으로 전년(11,697명) 대비 93% 늘었어요. KOPIS 집계 기준으로는 2025년 국내 뮤직 페스티벌 중 8위 규모였고요. 2년차 만에 이 정도로 몸집을 키운 페스티벌은 흔치 않아요.",
@@ -2689,7 +2726,8 @@
         "reason": "산리오 캐릭터의 국내 최초 라이브 무대 - 기존 음악 페스티벌에서 보기 힘든 조합이에요.",
         "sourceUrl": "https://www.starnewskorea.com/music/2026/08/28/2026082811013161926"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png"
   },
   {
     "id": "kopis-PF299935",
@@ -2699,8 +2737,9 @@
     "city": "서울",
     "startDate": "2026-11-28",
     "endDate": "2026-11-29",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+    "posterUrl": "/posters/kopis-PF299935.webp",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg"
   },
   {
     "id": "shuttle-yuuri-live-seoul-2026-12",
@@ -2734,7 +2773,8 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://ticketimage.interpark.com/Play/image/large/26/26010352_p.gif"
+    "posterUrl": "/posters/shuttle-yuuri-live-seoul-2026-12.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26010352_p.gif"
   },
   {
     "id": "shuttle-khalid-2026-12",
@@ -2802,7 +2842,8 @@
       "이번 투어는 9월 11일 발매되는 세 번째 정규앨범 'Tyber'를 지원하는 자리예요 - 신보 발매 직후 곧바로 아시아 투어에 나서는 셈이죠."
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://dynamicmedia.livenationinternational.com/n/w/g/516eb28f-9953-4d1c-b117-c51437896f7c.jpg?format=webp&width=1920&quality=75"
+    "posterUrl": "/posters/fkj-tyber-tour-korea-2026-12.webp",
+    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/n/w/g/516eb28f-9953-4d1c-b117-c51437896f7c.jpg?format=webp&width=1920&quality=75"
   },
   {
     "id": "kopis-domi-jdbeck-2026-12",
@@ -2815,7 +2856,7 @@
     "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연. 포스터는 2026-08-12 내한 발표 보도(더팩트) 이미지. 국내 주최는 엠피엠지뮤직·민트페이퍼로 확인되나, 구체적 예매처 URL은 아직 공개되지 않았습니다(2026-08-30 확인). 공식 투어 페이지도 'Bandsintown RSVP'로만 안내하고 있어요.",
     "description": "미국 재즈·퓨전 듀오 DOMi & JD BECK의 내한 공연. 그래미 수상 프로듀서들과의 협업으로 주목받았다.",
     "officialUrl": "https://www.domiandjdbeck.com/tour/",
-    "posterUrl": "https://img.tf.co.kr/article/home/2026/08/12/202640161786503048.jpg",
+    "posterUrl": "/posters/kopis-domi-jdbeck-2026-12.webp",
     "funFacts": [
       "BTS RM의 2024년 솔로 앨범 수록곡 '?(Interlude)'에 참여한 재즈 듀오예요. 프랑스 출신 키보디스트 DOMi와 텍사스 출신 드러머 JD Beck 조합이에요.",
       "2022년 데뷔 앨범으로 제65회 그래미 어워즈 2개 부문(신인상 포함)에 노미네이트됐을 만큼 실력파로 꼽혀요."
@@ -2840,7 +2881,8 @@
         "label": "DOMi & JD BECK, 12월 첫 韓 공연 개최 - 전자신문",
         "url": "https://www.etnews.com/20260812000409"
       }
-    ]
+    ],
+    "posterSourceUrl": "https://img.tf.co.kr/article/home/2026/08/12/202640161786503048.jpg"
   },
   {
     "id": "kopis-PF299848",
@@ -2850,8 +2892,9 @@
     "city": "서울",
     "startDate": "2026-12-13",
     "endDate": "2026-12-13",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299848_260901_141354.png",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+    "posterUrl": "/posters/kopis-PF299848.webp",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299848_260901_141354.png"
   },
   {
     "id": "fujii-kaze-2027-01",
@@ -2945,7 +2988,8 @@
     ],
     "mdUrl": "https://fujiikaze.com/store/",
     "merchCheckedAt": "2026-09-02",
-    "posterUrl": "https://hehn.fujiikaze.com/pwt/ogp_new.jpg"
+    "posterUrl": "/posters/fujii-kaze-2027-01.webp",
+    "posterSourceUrl": "https://hehn.fujiikaze.com/pwt/ogp_new.jpg"
   },
   {
     "id": "shuttle-maroon5-seoul-2027-01",
@@ -2986,7 +3030,7 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterUrl": "https://cdn.topstarnews.net/news/photo/202608/16161356_1989358_2038_crop.jpg",
+    "posterUrl": "/posters/shuttle-maroon5-seoul-2027-01.webp",
     "setlists": [
       {
         "label": "2026 월드투어 - 리마(페루) 공연",
@@ -3018,7 +3062,8 @@
         "sourceUrl": "https://www.setlist.fm/setlist/maroon-5/2026/estadio-nacional-lima-peru-6b76523e.html",
         "note": "같은 투어의 다른 공연(리마) 세트리스트예요. 서울 공연은 조금씩 달라질 수 있어요."
       }
-    ]
+    ],
+    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202608/16161356_1989358_2038_crop.jpg"
   },
   {
     "id": "humpback-seoul-2027-01",
@@ -3043,7 +3088,8 @@
         "url": "https://humpback.jp/contents/1073598"
       }
     ],
-    "posterUrl": "https://humpback.jp/s3/skiyaki/uploads/ckeditor/pictures/873700/content_IMG_4062.jpeg"
+    "posterUrl": "/posters/humpback-seoul-2027-01.webp",
+    "posterSourceUrl": "https://humpback.jp/s3/skiyaki/uploads/ckeditor/pictures/873700/content_IMG_4062.jpeg"
   },
   {
     "id": "raintree-seoul-2026-12",
@@ -3156,7 +3202,8 @@
         "url": "https://www.cbci.co.kr/news/articleView.html?idxno=603525"
       }
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202001/20200103/20200103-36005_11.jpg"
+    "posterUrl": "/posters/kenny-g-seoul-2026-10.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202001/20200103/20200103-36005_11.jpg"
   },
   {
     "id": "bruno-mars-goyang-2027-05",
@@ -3181,7 +3228,8 @@
         "url": "https://sports.khan.co.kr/article/202608271202003"
       }
     ],
-    "posterUrl": "https://images.khan.co.kr/article/2026/08/27/news-p.v1.20260827.16e149a7d6ba4fb09dfa376a85069a52_P1.jpg"
+    "posterUrl": "/posters/bruno-mars-goyang-2027-05.webp",
+    "posterSourceUrl": "https://images.khan.co.kr/article/2026/08/27/news-p.v1.20260827.16e149a7d6ba4fb09dfa376a85069a52_P1.jpg"
   },
   {
     "id": "ezra-collective-seoul-2026-10",
@@ -3213,7 +3261,8 @@
         "url": "https://m.view.nate.com/enter/view/380128/"
       }
     ],
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260519/20260519-58534.jpg"
+    "posterUrl": "/posters/ezra-collective-seoul-2026-10.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260519/20260519-58534.jpg"
   },
   {
     "id": "rachael-yamagata-seoul-2026-09",
@@ -3246,7 +3295,8 @@
       }
     ],
     "merchCheckedAt": "2026-09-04",
-    "posterUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg"
+    "posterUrl": "/posters/rachael-yamagata-seoul-2026-09.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg"
   },
   {
     "id": "penthouse-seoul-2026-12",
@@ -3488,7 +3538,7 @@
     "endDate": "2026-09-06",
     "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213174",
     "officialUrl": "https://x.com/soundplanetfest",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF287381_260721_104952.gif",
+    "posterUrl": "/posters/sound-planet-festival-2026-09.webp",
     "note": "한일 합동 록/제이팝 페스티벌. 일본 SUMMER SONIC과 공식 협력해 2028년까지 파라다이스시티에서 3개년 개최 예정. KOPIS에 정식 등록된 공연으로 자동수집 후보(kopis-candidates.json)에는 이미 잡혀 있었으나 events.json 반영이 늦어졌던 건.",
     "description": "인천 파라다이스시티에서 열리는 한일 합동 록·제이팝 페스티벌. 토요일(9/5)은 Young K(DAY6)·YB·UVERworld, 일요일(9/6)은 ZUTOMAYO가 헤드라이너로 나서며 PompadollS·Gaku·ASTERISM 등 일본 아티스트도 다수 출연한다.",
     "sources": [
@@ -3509,6 +3559,7 @@
         "url": "https://ticket.melon.com/performance/index.htm?prodId=213174"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-04"
+    "enrichmentCheckedAt": "2026-09-04",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF287381_260721_104952.gif"
   }
 ]
