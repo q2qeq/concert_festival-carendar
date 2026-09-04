@@ -1,0 +1,52 @@
+name: IndexNow ping
+
+# Pings the IndexNow aggregator (fans out to Bing/Naver/Yandex/Seznam - not
+# Google, which doesn't participate in IndexNow) with every URL currently in
+# the site's sitemap, whenever content that would change the sitemap is
+# pushed to main. This exists because waiting for each engine's own
+# discovery crawl is slow for a brand-new domain, and there's no way to
+# force Google's crawler on demand (its Indexing API is restricted to
+# job-posting/livestream pages only) - IndexNow is the legitimate
+# automatable lever for the other engines, Naver especially.
+#
+# Set up 2026-09-04. No secrets needed - the IndexNow key is not sensitive
+# (it's meant to be publicly readable at /<key>.txt as the ownership-proof
+# mechanism), so it's hardcoded in scripts/indexnow-ping.mjs the same way
+# SITE_URL is hardcoded elsewhere in this repo.
+#
+# Runs `astro build` itself (this workflow does NOT depend on Vercel's
+# deploy having finished first) purely to regenerate dist/sitemap-index.xml
+# as the ground-truth URL list - see scripts/indexnow-ping.mjs for why that
+# file is read instead of re-deriving routes by hand.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/data/events.json'
+      - 'src/data/venues.json'
+      - 'src/content/posts/**'
+      - 'src/pages/**'
+  workflow_dispatch: {} # manual "Run workflow" for testing
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (regenerates dist/sitemap-index.xml)
+        run: npm run build
+
+      - name: Ping IndexNow
+        run: node scripts/indexnow-ping.mjs

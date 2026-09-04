@@ -14,7 +14,8 @@
     "merch:watch": "node scripts/merch-watch-list.mjs",
     "enrich:watch": "node scripts/enrichment-watch-list.mjs",
     "fanchant:watch": "node scripts/fanchant-watch-list.mjs",
-    "ticketvendor:watch": "node scripts/ticket-vendor-watch-list.mjs"
+    "ticketvendor:watch": "node scripts/ticket-vendor-watch-list.mjs",
+    "indexnow:ping": "node scripts/indexnow-ping.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {
