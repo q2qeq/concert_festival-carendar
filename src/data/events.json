@@ -1,5 +1,25 @@
 [
   {
+    "id": "mass-of-the-fermenting-dregs-seoul-2026-12",
+    "artist": "Mass Of The Fermenting Dregs (마스도레, with Dabda)",
+    "genre": "J-POP",
+    "venue": "KT&G 상상마당 홍대 라이브홀",
+    "city": "서울",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-04",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-11 저녁 6시",
+    "ticketOpenAt": "2026-09-11T18:00:00+09:00",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 록 밴드 Mass Of The Fermenting Dregs(마스도레)가 'World Tour'로 서울을 찾는다. Dabda와 함께하는 공연.",
+    "sources": [
+      {
+        "label": "멜론티켓 - Mass Of The Fermenting Dregs 'World Tour' - Live in Seoul (with Dabda) 티켓 오픈 안내",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12819"
+      }
+    ]
+  },
+  {
     "id": "official-hige-dandism-2026-08",
     "artist": "Official髭男dism (오피셜히게단디즘)",
     "genre": "J-POP",
