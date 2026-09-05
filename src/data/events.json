@@ -167,7 +167,7 @@
         "url": "https://www.joongangenews.com/news/articleView.html?idxno=543842"
       }
     ],
-    "merchCheckedAt": "2026-09-04",
+    "merchCheckedAt": "2026-09-05",
     "description": "일본 사이키델릭 뮤지션 사카모토 신타로, Your Song Is Good부터 장기하·강산에까지 함께 서는 신안 증도의 3박4일 캠핑형 뮤직 페스티벌. 올해로 5회째를 맞는다.",
     "funFacts": [
       "그냥 공연만 보는 축제가 아니에요. 요가·에어로빅 세션, 포트럭 파티, 운동회 같은 웰니스 프로그램이 함께 짜여 있어서, 하루 보고 가는 게 아니라 3박4일 내내 머무는 걸 전제로 설계됐어요.",
@@ -201,7 +201,7 @@
         "url": "http://www.ttlnews.com/news/articleView.html?idxno=3131237"
       }
     ],
-    "merchCheckedAt": "2026-09-04",
+    "merchCheckedAt": "2026-09-05",
     "description": "제22회 제천국제음악영화제(9/3~9/8)의 시그니처 K팝 프로그램. 이틀간 9팀이 나눠 서는 여름밤 야외 공연이다.",
     "funFacts": [
       "원래 JIMFF(제천국제음악영화제)는 영화제인데, '원 썸머 나잇 위드 케이팝'이라는 이름으로 케이팝 무대를 함께 여는 게 특이해요. 영화제 안에 있는 콘서트라 그런지 라인업 색깔이 꽤 다채롭습니다.",
@@ -554,7 +554,7 @@
     "endDate": "2026-09-12",
     "ticketUrl": "https://tickets.interpark.com/goods/26010722",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "merchCheckedAt": "2026-09-04",
+    "merchCheckedAt": "2026-09-05",
     "description": "하이트진로가 여는 '테라와 함께하는 2026 이슬라이브 페스티벌'. 2024년 이후 2년 만에 재개되며 인천 송도 달빛축제공원에서 열린다.",
     "funFacts": [
       "2년 만의 재개작이라 규모부터 키웠어요. 수용 인원을 기존 대비 약 1만 명 늘린 2만 5천 명으로 확대했고, 지난 회차(1만 8천 명) 대비 몸집이 훨씬 커졌어요.",
@@ -632,8 +632,8 @@
         "url": "https://x.com/RIIZE_official"
       }
     ],
-    "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/151",
-    "merchCheckedAt": "2026-09-04",
+    "mdUrl": "https://m.smtownandstore.com/product/list_thumb.html?cate_no=3117",
+    "merchCheckedAt": "2026-09-05",
     "description": "RIIZE의 데뷔 3주년을 기념하는 공식 팬미팅. 'Ch. RIIZE : ON AIR'라는 제목처럼 방송 컨셉으로 꾸며지며, 이틀간 인천 인스파이어 아레나에서 열린다.",
     "funFacts": [
       "2026년 9월 12일(토)·13일(일) 이틀간 열려요. RIIZE 데뷔(2023년 9월) 3주년에 맞춰 기획된 공식 행사예요.",
@@ -642,7 +642,32 @@
     ],
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/riize-3rd-anniversary-fanmeeting-2026-09.webp",
-    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202607/16146898_1972132_130.jpg"
+    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202607/16146898_1972132_130.jpg",
+    "merch": [
+      {
+        "label": "[PRE-ORDER] REEL HOLDER SET",
+        "price": "25,000원"
+      },
+      {
+        "label": "[PRE-ORDER] MULTI POUCH",
+        "price": "43,000원"
+      },
+      {
+        "label": "[PRE-ORDER] WORRY STONE",
+        "price": "16,000원"
+      },
+      {
+        "label": "[PRE-ORDER] CD PLAYER SET",
+        "price": "130,000원"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-09-05",
+        "text": "공식 X 계정 공지로 3주년 MD 판매 일정을 확인했어요. 오프라인은 KWANGYA@SEOUL에서 9/4(금)부터 소진 시까지(10:30~20:00), 온라인은 SMTOWN &STORE·Berriz X SMTOWN &STORE에서 9/4(금) 10:00~9/8(화) 23:59까지 판매합니다. 실제 상품은 REEL HOLDER SET·MULTI POUCH·WORRY STONE·CD PLAYER SET 4종(전부 PRE-ORDER)으로 확인됐어요.",
+        "sourceUrl": "https://x.com/RIIZE_official"
+      }
+    ]
   },
   {
     "id": "plave-world-tour-keep-it-manic-incheon-2026-09",
@@ -684,8 +709,22 @@
         "note": "특정 곡(WAY 4 LUV) 공식 응원법 안내 영상. 투어 전체 세트리스트 응원법 가이드는 아님"
       }
     ],
-    "merchCheckedAt": "2026-09-04",
-    "posterSourceUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg"
+    "merchCheckedAt": "2026-09-05",
+    "posterSourceUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/plave_official"
+      }
+    ],
+    "mdUrl": "https://vlastshop.com/",
+    "updates": [
+      {
+        "date": "2026-09-05",
+        "text": "Weverse 공지(VLAST)로 투어 MD 판매 일정을 확인했어요. 온라인 판매는 8/31(월) 14:00부터 재고 소진 시까지(VLAST SHOP·WEVERSE SHOP(JP)), 현장 PICK UP은 9/9(수) 16:00~9/13(일) 18:00까지 인천문학경기장 현장 부스(WEVERSE SHOP(GL))에서 진행됩니다 (현장 즉석판매는 없음, PICK UP만 진행). 이후 2026 TOUR TRADING CAN BADGE 제조 불량으로 배송 지연(9/28 이후 발송) 공지와, 구매 이벤트 증정품 리유저블백의 문구 오탈자(\"WORLD TOUR\"→\"WORD TOUR\") 정정 공지가 추가로 올라왔어요 - 새 계정 @plave_official을 이번에 공식 계정으로 확인해 officialSns에 등록했습니다.",
+        "sourceUrl": "https://weverse.io/plave/notice/38743"
+      }
+    ]
   },
   {
     "id": "nct127-neocity-redline-seoul-2026-09",
@@ -714,7 +753,7 @@
       }
     ],
     "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-02",
+    "merchCheckedAt": "2026-09-05",
     "officialUrl": "https://weverse.io/nct127",
     "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
     "funFacts": [
@@ -1006,7 +1045,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-04",
+    "merchCheckedAt": "2026-09-05",
     "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
@@ -1052,7 +1091,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-04",
+    "merchCheckedAt": "2026-09-05",
     "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
   },
   {
@@ -3580,7 +3619,31 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-04",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF287381_260721_104952.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF287381_260721_104952.gif",
+    "merch": [
+      {
+        "label": "라인업 티셔츠 (Line-up T-Shirt)",
+        "price": "35,000원",
+        "variants": "Black/White, M·L·XL·XXL",
+        "note": "공식 MD. 구매 채널은 트윗에 명시되지 않음."
+      },
+      {
+        "label": "슬로건 타월 (Slogan Towel)",
+        "price": "18,000원"
+      },
+      {
+        "label": "손목 아대 (Wrist Band)",
+        "price": "12,000원"
+      }
+    ],
+    "merchCheckedAt": "2026-09-05",
+    "updates": [
+      {
+        "date": "2026-09-05",
+        "text": "공식 X 계정에서 오피셜 MD 품목(라인업 티셔츠 35,000원, 슬로건 타월 18,000원, 손목 아대 12,000원)을 공개한 걸 확인했어요. 구매 채널(현장/온라인 여부)은 해당 공지에 명시되지 않았습니다.",
+        "sourceUrl": "https://x.com/soundplanetfest/status/1958786218176713048"
+      }
+    ]
   },
   {
     "id": "gyechon-hu-book-music-festival-2026-09",
