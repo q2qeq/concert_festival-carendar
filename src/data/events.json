@@ -3581,5 +3581,34 @@
     ],
     "enrichmentCheckedAt": "2026-09-04",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF287381_260721_104952.gif"
+  },
+  {
+    "id": "gyechon-hu-book-music-festival-2026-09",
+    "artist": "계촌 휴[休] 북&뮤직 페스티벌 (계촌낭만클래식오케스트라·KBS교향악단·정재형·루시드폴·나윤선 등)",
+    "genre": "페스티벌",
+    "venue": "계촌클래식공원 일대",
+    "city": "평창",
+    "startDate": "2026-09-12",
+    "endDate": "2026-09-13",
+    "officialUrl": "https://gchf.kr/",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-05). 평창 계촌마을에서 열리는 책·음악·자연 결합 무료 관람 축제. 첫날은 계촌낭만클래식오케스트라와 피아니스트 손민수, 피에타리 잉키넨 지휘의 KBS교향악단이, 둘째 날은 정재형·루시드폴·나윤선 등이 출연해 클래식·K-팝·재즈를 아우른다.",
+    "sources": [
+      {
+        "label": "정재형·루시드폴·박정민 총출동…'계촌 휴[休] 북&뮤직 페스티벌' 개최 - 한국경제",
+        "url": "https://www.hankyung.com/article/2026080327287"
+      },
+      {
+        "label": "평창 계촌마을서 책·음악·자연이 만난다…'계촌 휴[休] 북&뮤직 페스티벌' 개최 - 청년개발자신문",
+        "url": "https://www.devtimes.co.kr/news/512081"
+      },
+      {
+        "label": "축제 공식 사이트 (GCHF2026)",
+        "url": "https://gchf.kr/"
+      },
+      {
+        "label": "꽃가마 - 휴[休] 정찬: Beautiful Farm Party (공식 셔틀 안내 포함)",
+        "url": "https://ggoggama.com/beautifulfarmparty"
+      }
+    ]
   }
 ]
