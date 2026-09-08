@@ -554,7 +554,7 @@
     "endDate": "2026-09-12",
     "ticketUrl": "https://tickets.interpark.com/goods/26010722",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "merchCheckedAt": "2026-09-05",
+    "merchCheckedAt": "2026-09-08",
     "description": "하이트진로가 여는 '테라와 함께하는 2026 이슬라이브 페스티벌'. 2024년 이후 2년 만에 재개되며 인천 송도 달빛축제공원에서 열린다.",
     "funFacts": [
       "2년 만의 재개작이라 규모부터 키웠어요. 수용 인원을 기존 대비 약 1만 명 늘린 2만 5천 명으로 확대했고, 지난 회차(1만 8천 명) 대비 몸집이 훨씬 커졌어요.",
@@ -709,7 +709,7 @@
         "note": "특정 곡(WAY 4 LUV) 공식 응원법 안내 영상. 투어 전체 세트리스트 응원법 가이드는 아님"
       }
     ],
-    "merchCheckedAt": "2026-09-05",
+    "merchCheckedAt": "2026-09-08",
     "posterSourceUrl": "https://cdn.slist.kr/news/photo/202606/745389_1144063_2112.jpg",
     "officialSns": [
       {
@@ -723,6 +723,55 @@
         "date": "2026-09-05",
         "text": "Weverse 공지(VLAST)로 투어 MD 판매 일정을 확인했어요. 온라인 판매는 8/31(월) 14:00부터 재고 소진 시까지(VLAST SHOP·WEVERSE SHOP(JP)), 현장 PICK UP은 9/9(수) 16:00~9/13(일) 18:00까지 인천문학경기장 현장 부스(WEVERSE SHOP(GL))에서 진행됩니다 (현장 즉석판매는 없음, PICK UP만 진행). 이후 2026 TOUR TRADING CAN BADGE 제조 불량으로 배송 지연(9/28 이후 발송) 공지와, 구매 이벤트 증정품 리유저블백의 문구 오탈자(\"WORLD TOUR\"→\"WORD TOUR\") 정정 공지가 추가로 올라왔어요 - 새 계정 @plave_official을 이번에 공식 계정으로 확인해 officialSns에 등록했습니다.",
         "sourceUrl": "https://weverse.io/plave/notice/38743"
+      },
+      {
+        "date": "2026-09-08",
+        "text": "VLAST SHOP 상품 페이지를 다시 확인했어요. TRADING CAN BADGE(5,000원)를 제외한 나머지 투어 MD(포토카드팩·아크릴 스탠드·스티커팩·메탈뱃지·체인 키링·이어링)는 모두 온라인 품절 상태였습니다. 캔뱃지는 이전 공지대로 제조 불량으로 인한 배송 지연이 계속되고 있어요.",
+        "sourceUrl": "https://vlastshop.com/"
+      }
+    ],
+    "merch": [
+      {
+        "label": "2026 TOUR PHOTOCARD PACK",
+        "price": "7,000원",
+        "url": "https://vlastshop.com/product/2026-tour-photocard-pack/438/",
+        "note": "온라인 품절 (2026-09-08 확인)"
+      },
+      {
+        "label": "2026 TOUR TRADING CAN BADGE",
+        "price": "5,000원",
+        "url": "https://vlastshop.com/product/2026-tour-trading-can-badge/437/",
+        "note": "온라인 구매 가능 (2026-09-08 확인). 제조 불량으로 배송 지연 - 9/28 이후 순차 발송 공지"
+      },
+      {
+        "label": "2026 TOUR SITTING ACRYLIC STAND",
+        "price": "18,000원",
+        "url": "https://vlastshop.com/product/2026-tour-sitting-acrylic-stand/436/",
+        "note": "온라인 품절 (2026-09-08 확인)"
+      },
+      {
+        "label": "2026 TOUR STICKER PACK_INCHEON",
+        "price": "10,000원",
+        "url": "https://vlastshop.com/product/2026-tour-sticker-packincheon/435/",
+        "note": "온라인 품절 (2026-09-08 확인)"
+      },
+      {
+        "label": "2026 TOUR METAL BADGE",
+        "price": "8,000원",
+        "url": "https://vlastshop.com/product/2026-tour-metal-badge/434/",
+        "note": "온라인 품절 (2026-09-08 확인)"
+      },
+      {
+        "label": "2026 TOUR CHAIN KEYRING",
+        "price": "22,000원",
+        "url": "https://vlastshop.com/product/2026-tour-chain-keyring/433/",
+        "note": "온라인 품절 (2026-09-08 확인)"
+      },
+      {
+        "label": "2026 TOUR EARRING",
+        "price": "36,000원",
+        "url": "https://vlastshop.com/product/2026-tour-earring/432/",
+        "note": "온라인 품절 (2026-09-08 확인)"
       }
     ]
   },
@@ -753,7 +802,7 @@
       }
     ],
     "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-05",
+    "merchCheckedAt": "2026-09-08",
     "officialUrl": "https://weverse.io/nct127",
     "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
     "funFacts": [
@@ -1045,7 +1094,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-05",
+    "merchCheckedAt": "2026-09-08",
     "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
@@ -1091,7 +1140,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-05",
+    "merchCheckedAt": "2026-09-08",
     "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
   },
   {
@@ -1213,7 +1262,8 @@
     ],
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/takuya-kimura-live-tour-checkpoint-seoul-2026-09.webp",
-    "posterSourceUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg"
+    "posterSourceUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg",
+    "merchCheckedAt": "2026-09-08"
   },
   {
     "id": "post-malone-2026-10",
@@ -1375,7 +1425,7 @@
         "url": "https://x.com/thisislany"
       }
     ],
-    "merchCheckedAt": "2026-09-02",
+    "merchCheckedAt": "2026-09-08",
     "setlists": [
       {
         "label": "2026 SOFT WORLD TOUR - 시카고 공연",
@@ -1413,7 +1463,35 @@
         "note": "같은 투어의 다른 공연(시카고) 세트리스트예요. 서울 공연은 조금씩 달라질 수 있어요."
       }
     ],
-    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/j/d/r/e3791d3d-c82d-4fbe-9a93-928a15bd8691.jpg"
+    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/j/d/r/e3791d3d-c82d-4fbe-9a93-928a15bd8691.jpg",
+    "merch": [
+      {
+        "label": "\"Soft World Tour\" Crewneck (Washed Black)",
+        "price": "$75.00",
+        "url": "https://thisislany.com/products/soft-world-tour-crewneck-washed-black",
+        "note": "공식 온라인 스토어(전 세계 배송, USD 결제) 상품. 서울 현장 판매 여부는 확인되지 않음"
+      },
+      {
+        "label": "\"Soft World Tour\" T-Shirt (Black)",
+        "price": "$45.00",
+        "url": "https://thisislany.com/products/2026-soft-world-tour-t-shirt-black-1",
+        "note": "공식 온라인 스토어(전 세계 배송, USD 결제) 상품. 서울 현장 판매 여부는 확인되지 않음"
+      },
+      {
+        "label": "\"Soft World Tour\" T-Shirt (White)",
+        "price": "$45.00",
+        "url": "https://thisislany.com/products/2026-soft-world-tour-t-shirt-white-1",
+        "note": "공식 온라인 스토어(전 세계 배송, USD 결제) 상품. 서울 현장 판매 여부는 확인되지 않음"
+      }
+    ],
+    "mdUrl": "https://lanymerch.com",
+    "updates": [
+      {
+        "date": "2026-09-08",
+        "text": "LANY 공식 X(@thisisLANY)에서 투어 굿즈 재입고 공지를 확인했어요. \"투어 중 품절됐던 상품 대부분을 lanymerch.com에 재입고했고, 24시간 한정 전체 20% 할인\" 안내였습니다. 다만 이건 전 세계 공통 온라인 스토어(USD 결제) 상품이고, 서울 공연장 현장 판매 부스 운영 여부는 별도로 확인되지 않았어요.",
+        "sourceUrl": "https://x.com/thisislany"
+      }
+    ]
   },
   {
     "id": "xmf-2026-10",
@@ -3353,7 +3431,7 @@
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
     ],
-    "merchCheckedAt": "2026-09-04",
+    "merchCheckedAt": "2026-09-08",
     "posterUrl": "/posters/rachael-yamagata-seoul-2026-09.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg"
   },
@@ -3671,6 +3749,73 @@
       {
         "label": "꽃가마 - 휴[休] 정찬: Beautiful Farm Party (공식 셔틀 안내 포함)",
         "url": "https://ggoggama.com/beautifulfarmparty"
+      }
+    ],
+    "merchCheckedAt": "2026-09-08"
+  },
+  {
+    "id": "bbc-philharmonic-seoul-2026-12",
+    "artist": "욘 스토르고르스 & BBC 필하모닉 (협연 김봄소리)",
+    "genre": "클래식",
+    "venue": "예술의전당 콘서트홀",
+    "city": "서울",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-12",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "지휘 욘 스토르고르스(John Storgårds), 협연 김봄소리, 연주 BBC 필하모닉의 내한 공연. 파니 멘델스존 서곡 C장조, 차이콥스키 바이올린 협주곡, 베토벤 교향곡 7번을 연주한다. 티켓 오픈은 2026-09-10 오후 2시부터, 공연 시간은 오후 5시, R석 24만원/S석 18만원/A석 12만원/B석 8만원, 관람연령 초등학생 이상이에요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-10 오후 2시",
+    "ticketOpenAt": "2026-09-10T14:00:00+09:00",
+    "sources": [
+      {
+        "label": "욘 스토르고르스 & BBC 필하모닉 티켓오픈 안내 - 예스24티켓 공지사항",
+        "url": "https://ticket.yes24.com/Notice#id=18452"
+      }
+    ]
+  },
+  {
+    "id": "ron-braunton-jazz-christmas-incheon-2026-12",
+    "artist": "론 브랜튼 (Ron Braunton) - 재즈 크리스마스",
+    "genre": "재즈/내한",
+    "venue": "아트센터인천 콘서트홀",
+    "city": "인천",
+    "startDate": "2026-12-26",
+    "endDate": "2026-12-26",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "재즈 보컬리스트 론 브랜튼(Ron Braunton)의 '재즈 크리스마스' 내한 공연. 공연 시간은 오후 5시, R석 69,000원/S석 59,000원/A석 49,000원, 관람등급 7세 이상이에요.",
+    "ticketLinks": [
+      {
+        "vendor": "예스24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59997"
+      }
+    ],
+    "sources": [
+      {
+        "label": "[인천] 2026 론 브랜튼의 [재즈 크리스마스!] - 예스24티켓",
+        "url": "https://ticket.yes24.com/Perf/59997"
+      }
+    ]
+  },
+  {
+    "id": "ron-braunton-jazz-christmas-suwon-2026-12",
+    "artist": "론 브랜튼 (Ron Braunton) - 재즈 크리스마스",
+    "genre": "재즈/내한",
+    "venue": "경기아트센터 소극장",
+    "city": "수원",
+    "startDate": "2026-12-19",
+    "endDate": "2026-12-19",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "재즈 보컬리스트 론 브랜튼(Ron Braunton)의 '재즈 크리스마스' 내한 공연.",
+    "ticketLinks": [
+      {
+        "vendor": "예스24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59993"
+      }
+    ],
+    "sources": [
+      {
+        "label": "2026 론 브랜튼의 [재즈 크리스마스!] - 예스24티켓",
+        "url": "https://ticket.yes24.com/Perf/59993"
       }
     ]
   }
