@@ -554,7 +554,7 @@
     "endDate": "2026-09-12",
     "ticketUrl": "https://tickets.interpark.com/goods/26010722",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "merchCheckedAt": "2026-09-08",
+    "merchCheckedAt": "2026-09-09",
     "description": "하이트진로가 여는 '테라와 함께하는 2026 이슬라이브 페스티벌'. 2024년 이후 2년 만에 재개되며 인천 송도 달빛축제공원에서 열린다.",
     "funFacts": [
       "2년 만의 재개작이라 규모부터 키웠어요. 수용 인원을 기존 대비 약 1만 명 늘린 2만 5천 명으로 확대했고, 지난 회차(1만 8천 명) 대비 몸집이 훨씬 커졌어요.",
@@ -802,7 +802,7 @@
       }
     ],
     "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-08",
+    "merchCheckedAt": "2026-09-09",
     "officialUrl": "https://weverse.io/nct127",
     "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
     "funFacts": [
@@ -1033,6 +1033,11 @@
       {
         "date": "2026-08-30",
         "text": "예매 링크를 다시 확인했는데, 검색되는 기사 상당수가 2025년 에디션(9/5~7) 관련이라 2026년 개별 예매 페이지 URL은 아직 특정하지 못했어요. 티켓링크에서 '평화누리 피크닉'으로 직접 검색하는 걸 추천합니다."
+      },
+      {
+        "date": "2026-09-09",
+        "text": "MD(유료 굿즈)는 확인되지 않았지만, 티켓 구매자 전원에게 LED 팔찌를 증정한다는 보도를 확인했어요. 판매 상품이 아니라 무료 증정품이라 event.merch에는 넣지 않았습니다.",
+        "sourceUrl": "https://biz.heraldcorp.com/article/10858544"
       }
     ],
     "sources": [
@@ -1094,7 +1099,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-08",
+    "merchCheckedAt": "2026-09-09",
     "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
@@ -1140,7 +1145,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-08",
+    "merchCheckedAt": "2026-09-09",
     "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
   },
   {
@@ -1263,7 +1268,7 @@
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/takuya-kimura-live-tour-checkpoint-seoul-2026-09.webp",
     "posterSourceUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg",
-    "merchCheckedAt": "2026-09-08"
+    "merchCheckedAt": "2026-09-09"
   },
   {
     "id": "post-malone-2026-10",
@@ -1322,7 +1327,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-02",
+    "merchCheckedAt": "2026-09-09",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1624,7 +1629,8 @@
         "sourceUrl": "https://sports.khan.co.kr/en/article/202607311953007/"
       }
     ],
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg",
+    "merchCheckedAt": "2026-09-09"
   },
   {
     "id": "andteam-blaze-the-way-encore-2026-10",
@@ -1653,7 +1659,7 @@
       }
     ],
     "mdUrl": "https://shop.weverse.io/en/shop/USD/artists/75",
-    "merchCheckedAt": "2026-09-02",
+    "merchCheckedAt": "2026-09-09",
     "officialUrl": "https://weverse.io/andteam",
     "description": "&TEAM의 첫 대형 아시아 투어 'BLAZE THE WAY'의 서울 앙코르 공연. 원래 투어 일정(인천 인스파이어)에 이어 수요에 따라 KSPO DOME 공연이 추가됐다.",
     "funFacts": [
@@ -1706,7 +1712,46 @@
         "note": "팬덤이 정리한 곡별 응원법 위키 문서"
       }
     ],
-    "posterSourceUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262"
+    "posterSourceUrl": "https://media.triple.guide/triple-cms/q_auto%2Cf_auto/dd09b93f-3184-48a6-b6c1-8f293e1e1262",
+    "merch": [
+      {
+        "label": "반팔 티셔츠 (S/S T-SHIRT_ENCORE VER)",
+        "note": "예약판매 기간: 2026-06-22~06-29(KST). 앙코르 공연 기념 한정 상품 - &TEAM 글로벌/재팬 공식 팬클럽 LUNÉ 멤버십 전용 판매였고, 예약판매는 이미 종료됨(위버스샵 공식 발표 기준). 정가는 공식 발표에 명시되지 않아 비워둠.",
+        "url": "https://x.com/weverseshop/status/2068983652533375212"
+      },
+      {
+        "label": "라이브 포토카드 (LIVE PHOTO CARD)",
+        "note": "예약판매 기간: 2026-07-29~08-02(KST). 앙코르 공연 기념 한정 상품 - &TEAM 글로벌/재팬 공식 팬클럽 LUNÉ 멤버십 전용 판매였고, 예약판매는 이미 종료됨(위버스샵 공식 발표 기준). 정가는 공식 발표에 명시되지 않아 비워둠.",
+        "url": "https://x.com/weverseshop/status/2082300125209035001"
+      },
+      {
+        "label": "라이브 포토카드 10종 세트 (LIVE PHOTO CARD 10SET)",
+        "note": "예약판매 기간: 2026-07-29~08-02(KST). 앙코르 공연 기념 한정 상품 - &TEAM 글로벌/재팬 공식 팬클럽 LUNÉ 멤버십 전용 판매였고, 예약판매는 이미 종료됨(위버스샵 공식 발표 기준). 정가는 공식 발표에 명시되지 않아 비워둠.",
+        "url": "https://x.com/weverseshop/status/2082300125209035001"
+      },
+      {
+        "label": "즉석 포토카드 ver.2 (INSTANT PHOTO CARD ver.2)",
+        "note": "예약판매 기간: 2026-07-29~08-02(KST). 앙코르 공연 기념 한정 상품 - &TEAM 글로벌/재팬 공식 팬클럽 LUNÉ 멤버십 전용 판매였고, 예약판매는 이미 종료됨(위버스샵 공식 발표 기준). 정가는 공식 발표에 명시되지 않아 비워둠.",
+        "url": "https://x.com/weverseshop/status/2082300125209035001"
+      },
+      {
+        "label": "유니폼 셔츠 (UNIFORM SHIRT)",
+        "note": "예약판매 기간: 2026-07-29~08-02(KST). 앙코르 공연 기념 한정 상품 - &TEAM 글로벌/재팬 공식 팬클럽 LUNÉ 멤버십 전용 판매였고, 예약판매는 이미 종료됨(위버스샵 공식 발표 기준). 정가는 공식 발표에 명시되지 않아 비워둠.",
+        "url": "https://x.com/weverseshop/status/2082300125209035001"
+      },
+      {
+        "label": "후드 타월 (HOOD TOWEL)",
+        "note": "예약판매 기간: 2026-07-29~08-02(KST). 앙코르 공연 기념 한정 상품 - &TEAM 글로벌/재팬 공식 팬클럽 LUNÉ 멤버십 전용 판매였고, 예약판매는 이미 종료됨(위버스샵 공식 발표 기준). 정가는 공식 발표에 명시되지 않아 비워둠.",
+        "url": "https://x.com/weverseshop/status/2082300125209035001"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-09-09",
+        "text": "위버스샵 공식 계정에서 앙코르 공연 기념 MD 예약판매 공지 2건을 확인했어요. 1차: 반팔 티셔츠(6/22~29), 2차: 라이브 포토카드·10종 세트·즉석 포토카드 ver.2·유니폼 셔츠·후드 타월(7/29~8/2). 모두 LUNÉ 멤버십 전용이었고 예약판매는 이미 종료됐습니다. 위버스샵에 일반 재고가 남아있는지는 event.mdUrl에서 별도 확인이 필요해요.",
+        "sourceUrl": "https://x.com/weverseshop/status/2082300125209035001"
+      }
+    ]
   },
   {
     "id": "edc-korea-2026",
@@ -3431,7 +3476,7 @@
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
     ],
-    "merchCheckedAt": "2026-09-08",
+    "merchCheckedAt": "2026-09-09",
     "posterUrl": "/posters/rachael-yamagata-seoul-2026-09.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg"
   },
@@ -3751,7 +3796,7 @@
         "url": "https://ggoggama.com/beautifulfarmparty"
       }
     ],
-    "merchCheckedAt": "2026-09-08"
+    "merchCheckedAt": "2026-09-09"
   },
   {
     "id": "bbc-philharmonic-seoul-2026-12",
@@ -3816,6 +3861,35 @@
       {
         "label": "2026 론 브랜튼의 [재즈 크리스마스!] - 예스24티켓",
         "url": "https://ticket.yes24.com/Perf/59993"
+      }
+    ]
+  },
+  {
+    "id": "day6-5th-fanmeeting-2026-10",
+    "artist": "DAY6 5TH FANMEETING <EVERY DAY6, EVERY My Day>",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-25",
+    "officialUrl": "https://x.com/day6official",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-09). DAY6의 다섯 번째 공식 팬미팅으로 인스파이어 아레나에서 3회(10/23~25) 진행되며, 마지막 날인 10/25는 비욘드라이브 온라인 유료 생중계도 병행. 티켓 예매 일정은 아직 공개 전(추후 공식 SNS 공지 예정).",
+    "sources": [
+      {
+        "label": "데이식스, 인스파이어 아레나 뜬다⋯5번째 공식 팬미팅 개최 - 이투데이",
+        "url": "https://www.etoday.co.kr/news/view/2622926"
+      },
+      {
+        "label": "JYP 데이식스, 10월 23~25일 공식 팬미팅 개최… 온·오프라인 동시 진행 - 머니투데이",
+        "url": "https://www.mt.co.kr/stock/2026/09/08/2026090816200452026"
+      },
+      {
+        "label": "DAY6, 10월 인스파이어 아레나서 팬미팅…My Day와 3일간 만난다 - 프레임리스",
+        "url": "https://www.frame-less.co.kr/news/articleView.html?idxno=4677"
+      },
+      {
+        "label": "Day6 to host fan meetups in October - The Korea Herald",
+        "url": "https://www.koreaherald.com/article/10866143"
       }
     ]
   }
