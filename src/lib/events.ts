@@ -345,6 +345,7 @@ const GENRE_SLUG_MAP: Record<string, string> = {
   '재즈/내한': 'jazz',
   '클래식': 'classical',
   '버라이어티': 'variety',
+  '애니메이션': 'anime',
 };
 const SLUG_TO_GENRE: Record<string, string> = Object.fromEntries(
   Object.entries(GENRE_SLUG_MAP).map(([genre, slug]) => [slug, genre])

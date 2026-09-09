@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "artist": "카키 (Khaki) ONE-MAN Live in Seoul",
+    "source": ["interpark-websearch"],
+    "sourceUrl": [],
+    "noticeTitle": "Khaki ONE-MAN Live in Seoul",
+    "ticketOpenAt": "",
+    "venue": "KT&G 상상마당 홍대 라이브홀 (검색 스니펫 기준, 미확인)",
+    "showDate": "2026-09-16 (검색 스니펫 기준, 미확인)",
+    "discoveredAt": "2026-09-09",
+    "note": "인터파크(NOL 티켓) - 검색 스니펫 기반, 원문 미확인. 스니펫끼리도 오픈일시가 서로 달라(한쪽은 선예매 09.09/일반예매 09.11, 다른 쪽은 09.16 20:00) 신뢰도가 낮음 - 원문 교차 확인 필요."
+  },
+  {
+    "artist": "조나 마레·잭 헤론·잭 에이버리 내한공연 \"Why Can't We?\"",
+    "source": ["interpark-websearch"],
+    "sourceUrl": [],
+    "noticeTitle": "조나 마레 잭 헤론 잭 에이버리 내한공연 Why Can't We?",
+    "ticketOpenAt": "2026-09-09T10:00:00+09:00",
+    "venue": "가빈아트홀 (검색 스니펫 기준, 미확인)",
+    "showDate": "",
+    "discoveredAt": "2026-09-09",
+    "note": "인터파크(NOL 티켓) - 검색 스니펫 기반, 원문 미확인. Why Don't We 출신 멤버들의 유닛 공연으로 추정. 아티스트 선예매로 진행된다는 스니펫 정보 외 공연일 등 상세 미확인."
+  }
+]

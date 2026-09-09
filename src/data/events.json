@@ -3892,5 +3892,48 @@
         "url": "https://www.koreaherald.com/article/10866143"
       }
     ]
+  },
+  {
+    "id": "barbican-quartet-seoul-2026-10",
+    "artist": "바비칸 콰르텟 (Barbican Quartet)",
+    "genre": "클래식",
+    "venue": "예술의전당 IBK기업은행챔버홀",
+    "city": "서울",
+    "startDate": "2026-10-25",
+    "endDate": "2026-10-25",
+    "description": "국제 실내악계에서 주목받는 현악 4중주단 바비칸 콰르텟의 첫 내한 공연. 모차르트, 브리튼, 슈만의 작품과 조이 리즈니가 이들을 위해 작곡한 신작을 연주한다.",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-16 오후 3시",
+    "ticketOpenAt": "2026-09-16T15:00:00+09:00",
+    "sources": [
+      {
+        "label": "바비칸 콰르텟 티켓오픈 안내 - 예스24티켓 공지사항",
+        "url": "https://ticket.yes24.com/Notice#id=18464"
+      }
+    ]
+  },
+  {
+    "id": "jujutsu-kaisen-in-concert-seoul-2026-11",
+    "artist": "주술회전 인 콘서트",
+    "genre": "애니메이션",
+    "venue": "경희대학교 평화의전당",
+    "city": "서울",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-08",
+    "description": "애니메이션 '주술회전'의 오리지널 스코어를 라이브로 연주하는 인 콘서트 공연.",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/59468"
+      }
+    ],
+    "sources": [
+      {
+        "label": "주술회전 인 콘서트 - 예스24티켓 콘서트 해외뮤지션 카테고리",
+        "url": "https://ticket.yes24.com/Perf/59468"
+      }
+    ]
   }
 ]
