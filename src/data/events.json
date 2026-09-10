@@ -3935,5 +3935,94 @@
         "url": "https://ticket.yes24.com/Perf/59468"
       }
     ]
+  },
+  {
+    "id": "pm-kenobi-seoul-2026-11",
+    "artist": "PM Kenobi (피엠 케노비)",
+    "genre": "팝/힙합",
+    "venue": "홍대 롤링홀",
+    "city": "서울",
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-28",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-18 저녁 6시",
+    "ticketOpenAt": "2026-09-18T18:00:00+09:00",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "재일교포 래퍼 PM Kenobi의 첫 내한 공연. Luci Gang과 함께 홍대 롤링홀에서 열린다.",
+    "sources": [
+      {
+        "label": "멜론티켓 - PM Kenobi(피엠 케노비) Live in Seoul 티켓 오픈 안내",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12845"
+      }
+    ]
+  },
+  {
+    "id": "zazen-boys-seoul-2026-12",
+    "artist": "Zazen Boys (자젠보이즈)",
+    "genre": "J-POP",
+    "venue": "무신사 개러지 (musinsa garage)",
+    "city": "서울",
+    "startDate": "2026-12-06",
+    "endDate": "2026-12-06",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "무카이 슈토쿠(전 넘버걸)가 이끄는 일본 록밴드 Zazen Boys의 'MATSURI SESSION IN SEOUL 2026' 단독 내한공연.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59963"
+      }
+    ],
+    "sources": [
+      {
+        "label": "YES24 티켓 - ZAZEN BOYS MATSURI SESSION IN SEOUL 2026",
+        "url": "https://ticket.yes24.com/Perf/59963"
+      }
+    ]
+  },
+  {
+    "id": "nakajima-kento-seoul-2026-10",
+    "artist": "나카지마 켄토 (IDOL1ST KENTY)",
+    "genre": "J-POP",
+    "venue": "올림픽공원 內 올림픽홀",
+    "city": "서울",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-04",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 배우 겸 아티스트 나카지마 켄토의 \"IDOL1ST KENTY\" ASIA TOUR 2026 서울 공연.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/58653"
+      }
+    ],
+    "sources": [
+      {
+        "label": "YES24 티켓 - \"IDOL1ST KENTY\" ASIA TOUR 2026 in SEOUL",
+        "url": "https://ticket.yes24.com/Perf/58653"
+      }
+    ]
+  },
+  {
+    "id": "ryosuke-yamada-seoul-2026-09",
+    "artist": "야마다 료스케 (Ryosuke Yamada)",
+    "genre": "J-POP",
+    "venue": "장충체육관",
+    "city": "서울",
+    "startDate": "2026-09-13",
+    "endDate": "2026-09-13",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 배우 겸 아티스트 야마다 료스케의 ASIA TOUR 2026 \"Red.Y\" 서울 공연.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/58751"
+      }
+    ],
+    "sources": [
+      {
+        "label": "YES24 티켓 - 야마다 료스케 내한공연 (Ryosuke Yamada ASIA TOUR 2026 Red.Y in Seoul)",
+        "url": "https://ticket.yes24.com/Perf/58751"
+      }
+    ]
   }
 ]
