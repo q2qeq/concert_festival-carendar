@@ -13,19 +13,6 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
-    "id": "kopis-PF298972",
-    "artist": "세번째 그린절 [서울]",
-    "genre": "콘서트",
-    "venue": "언플러그드 서교",
-    "city": "서울",
-    "startDate": "2026-09-07",
-    "endDate": "2026-09-07",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298972_260820_140534.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
     "id": "kopis-PF298373",
     "artist": "Super Rookie Challenge. Vocal: Season 1, Round 1",
     "genre": "콘서트",
@@ -468,6 +455,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300397",
+    "artist": "라라라온 [롤링홀]",
+    "genre": "콘서트",
+    "venue": "롤링홀",
+    "city": "서울",
+    "startDate": "2026-09-21",
+    "endDate": "2026-09-21",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300397_260908_132044.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF299578",
     "artist": "DMZ PEACE TRAIN ALUMNI: KIKI Live [서울]",
     "genre": "콘서트",
@@ -520,6 +520,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300423",
+    "artist": "부산국제공연예술마켓 (BPAM) 개막작: 쿼드, 연극의 질문들: The sound of Macbeth",
+    "genre": "페스티벌",
+    "venue": "소향씨어터",
+    "city": "부산",
+    "startDate": "2026-09-30",
+    "endDate": "2026-10-01",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300423_260908_145816.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF300079",
     "artist": "최정철의 1+1",
     "genre": "콘서트",
@@ -530,6 +543,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300079_260903_142806.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300286",
+    "artist": "예빛 단독 콘서트: DEMO",
+    "genre": "콘서트",
+    "venue": "롤링홀",
+    "city": "서울",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-03",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300286_260907_142027.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -595,6 +621,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF292945_260605_101827.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300319",
+    "artist": "부산국제공연예술마켓 (BPAM) , 나를 잊지 말아요",
+    "genre": "페스티벌",
+    "venue": "소향씨어터",
+    "city": "부산",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-03",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300319_260907_153242.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -793,6 +832,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300389",
+    "artist": "HIGHLIGHT FAN CON: 18년차 아이돌인 내가 이세계에선 데뷔조 연습생?! [서울]",
+    "genre": "콘서트",
+    "venue": "장충체육관",
+    "city": "서울",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-18",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300389_260908_125817.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF298571",
     "artist": "하마노 하루키 내한 단독 콘서트 COVER GIRLs LIVE TOUR [서울]",
     "genre": "콘서트",
@@ -962,6 +1014,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300221",
+    "artist": "브로콜리너마저의 전국 인디 교류 투어 [춘천]",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 [춘천]",
+    "city": "서울",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-24",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300221_260907_110816.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF299842",
     "artist": "소수빈 단독공연: 늘 그래왔던 것처럼 앞으로도",
     "genre": "콘서트",
@@ -1037,6 +1102,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298978_260820_141742.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300457",
+    "artist": "WE",
+    "genre": "콘서트",
+    "venue": "롤링홀",
+    "city": "서울",
+    "startDate": "2026-10-31",
+    "endDate": "2026-10-31",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300457_260909_113537.gif",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
