@@ -554,7 +554,7 @@
     "endDate": "2026-09-12",
     "ticketUrl": "https://tickets.interpark.com/goods/26010722",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
-    "merchCheckedAt": "2026-09-09",
+    "merchCheckedAt": "2026-09-11",
     "description": "하이트진로가 여는 '테라와 함께하는 2026 이슬라이브 페스티벌'. 2024년 이후 2년 만에 재개되며 인천 송도 달빛축제공원에서 열린다.",
     "funFacts": [
       "2년 만의 재개작이라 규모부터 키웠어요. 수용 인원을 기존 대비 약 1만 명 늘린 2만 5천 명으로 확대했고, 지난 회차(1만 8천 명) 대비 몸집이 훨씬 커졌어요.",
@@ -802,7 +802,7 @@
       }
     ],
     "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-09",
+    "merchCheckedAt": "2026-09-11",
     "officialUrl": "https://weverse.io/nct127",
     "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
     "funFacts": [
@@ -818,7 +818,14 @@
         "note": "특정 곡(Blingy) 응원법 안내 영상 - 투어 전체 곡 가이드는 아님"
       }
     ],
-    "posterSourceUrl": "https://0.soompi.io/wp-content/uploads/2026/07/06232541/nct-127.jpeg"
+    "posterSourceUrl": "https://0.soompi.io/wp-content/uploads/2026/07/06232541/nct-127.jpeg",
+    "updates": [
+      {
+        "date": "2026-09-11",
+        "text": "THE REDLINE 투어 공식 MD가 Weverse Shop(온라인)에서 서울 공연 기간인 9/19~20에 판매된다는 걸 공식 링크트리에서 확인했어요. 다만 아직 실제 상품 목록은 올라오지 않은 상태(Weverse Shop 투어 굿즈 카테고리 비어있음)라 구체 품목·가격은 추후 확인할게요.",
+        "sourceUrl": "https://linktr.ee/NCT127_NEOCITY_THE_REDLINE"
+      }
+    ]
   },
   {
     "id": "vaundy-2026-09",
@@ -1099,7 +1106,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-09",
+    "merchCheckedAt": "2026-09-11",
     "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
@@ -1145,7 +1152,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-09",
+    "merchCheckedAt": "2026-09-11",
     "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
   },
   {
@@ -1268,7 +1275,7 @@
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/takuya-kimura-live-tour-checkpoint-seoul-2026-09.webp",
     "posterSourceUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg",
-    "merchCheckedAt": "2026-09-09"
+    "merchCheckedAt": "2026-09-11"
   },
   {
     "id": "post-malone-2026-10",
@@ -1327,7 +1334,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-09",
+    "merchCheckedAt": "2026-09-11",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1590,6 +1597,11 @@
         "date": "2026-08-04",
         "text": "양일권 리미티드 티켓이 오픈(8/3 14시) 직후 매진됐어요. 1일권 등 다른 구간의 인기도 비슷할 가능성이 높습니다.",
         "sourceUrl": "https://www.starnewskorea.com/music/2026/08/04/2026080408171190283"
+      },
+      {
+        "date": "2026-09-11",
+        "text": "XMF 2026 공식 FAQ에서 \"공식 MD 판매될 예정이며 판매 품목·구매 방법·운영 시간은 공식 홈페이지와 SNS를 통해 공개됩니다\"라는 안내를 확인했어요. 아직 구체 품목·가격은 미공개 상태예요.",
+        "sourceUrl": "https://xmfestival.com/faqs?category=300G145w21"
       }
     ],
     "sources": [
@@ -1630,7 +1642,17 @@
       }
     ],
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg",
-    "merchCheckedAt": "2026-09-09"
+    "merchCheckedAt": "2026-09-11",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/xmfestival/"
+      },
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/XMF_official"
+      }
+    ]
   },
   {
     "id": "andteam-blaze-the-way-encore-2026-10",
@@ -3476,7 +3498,7 @@
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
     ],
-    "merchCheckedAt": "2026-09-09",
+    "merchCheckedAt": "2026-09-11",
     "posterUrl": "/posters/rachael-yamagata-seoul-2026-09.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg"
   },
@@ -3796,7 +3818,7 @@
         "url": "https://ggoggama.com/beautifulfarmparty"
       }
     ],
-    "merchCheckedAt": "2026-09-09"
+    "merchCheckedAt": "2026-09-11"
   },
   {
     "id": "bbc-philharmonic-seoul-2026-12",
@@ -4023,6 +4045,7 @@
         "label": "YES24 티켓 - 야마다 료스케 내한공연 (Ryosuke Yamada ASIA TOUR 2026 Red.Y in Seoul)",
         "url": "https://ticket.yes24.com/Perf/58751"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-11"
   }
 ]
