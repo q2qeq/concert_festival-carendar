@@ -4140,5 +4140,68 @@
         "url": "https://www.edaily.co.kr/News/Read?newsId=03663766645578480"
       }
     ]
+  },
+  {
+    "id": "ata-festival-2026-09",
+    "artist": "2026 ATA 페스티벌 (Asia Top Artist Festival) - 에이티즈·씨엔블루·앤팀·잔나비·다이나믹 듀오 외",
+    "genre": "페스티벌",
+    "venue": "난지한강공원",
+    "city": "서울",
+    "startDate": "2026-09-19",
+    "endDate": "2026-09-20",
+    "ticketUrl": "https://world.nol.com/en/ticket/places/26000671/products/26009383",
+    "officialUrl": "https://www.atafestival.com/",
+    "note": "셔틀 스캔(퀸즈스마일 F&B 서비스 등록)으로 자동 발견·게시됨 (2026-09-12).",
+    "description": "서울 난지한강공원에서 이틀간 열리는 아이돌·밴드·솔로 아티스트 혼합 라인업의 가을 페스티벌. 9/19는 씨엔블루·앤팀·다이나믹 듀오·우즈 등, 9/20은 에이티즈·잔나비·데이브레이크 등이 출연한다.",
+    "lineupByDay": [
+      {
+        "date": "2026-09-19",
+        "acts": ["씨엔블루", "앤팀(&TEAM)", "다이나믹 듀오", "우즈", "루시", "카더가든", "이오욱", "김수영", "하이파이유니콘"]
+      },
+      {
+        "date": "2026-09-20",
+        "acts": ["에이티즈", "잔나비", "데이브레이크", "드래곤포니", "최예나", "알파드라이브원", "킥플립", "어반자카파", "이무진"]
+      }
+    ],
+    "sources": [
+      {
+        "label": "에이티즈부터 잔나비까지…ATA 페스티벌 최종 라인업 공개 - 한국경제",
+        "url": "https://www.hankyung.com/article/2026070192597"
+      },
+      {
+        "label": "잔나비부터 에이티즈까지…9월 한강에 밴드·K팝 총출동 - 한국경제",
+        "url": "https://www.hankyung.com/article/202608104458H"
+      },
+      {
+        "label": "데이브레이크, 난지한강공원 뜬다…20일 'ATA 페스티벌' 출격 - 텐아시아",
+        "url": "https://www.tenasia.co.kr/article/2026091065914"
+      }
+    ]
+  },
+  {
+    "id": "illit-press-start-encore-incheon-2026-10",
+    "artist": "ILLIT (아일릿) - LIVE 'PRESS START♥︎' ENCORE in KOREA",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-18",
+    "officialUrl": "https://weverse.io/illit",
+    "note": "셔틀 스캔(퀸즈스마일 셔틀버스 서비스 등록)으로 자동 발견·게시됨 (2026-09-12). 첫 월드투어 'PRESS START♥︎'가 전석 매진되며 추가된 한국·일본 앙코르 공연 중 한국 일정.",
+    "description": "아일릿(ILLIT)의 첫 월드투어 'PRESS START♥︎'가 전석 매진을 기록하며 추가된 앙코르 공연. 인천 인스파이어 아레나에서 이틀간 열리며, 이후 12월 일본 지바 라라 아레나 도쿄베이 공연으로 이어진다.",
+    "sources": [
+      {
+        "label": "아일릿, 전석 매진 열기 잇는다…첫 월드투어 앙코르 개최 - 텐아시아",
+        "url": "https://www.tenasia.co.kr/article/2026072782324"
+      },
+      {
+        "label": "ILLIT announces 'Press Start' encore tour in Korea and Japan for 2026 - Korea JoongAng Daily",
+        "url": "https://www.koreajoongangdaily.com/entertainment/illit-to-embark-on-korea-japan-encore-of-its-first-tour/12793882"
+      },
+      {
+        "label": "illit to hold encore shows for first tour 'press start♥' in korea and japan - allkpop",
+        "url": "https://www.allkpop.com/article/2026/07/illit-to-hold-encore-shows-for-first-tour-press-start-in-korea-and-japan"
+      }
+    ]
   }
 ]

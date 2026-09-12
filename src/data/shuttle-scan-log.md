@@ -169,3 +169,26 @@ JX 콘서트, SMTOWN RUN CLUB 26, 2026 이슬라이브 페스티벌, 마룬5 내
 - 백넘버 내한공연 (킨텍스 제2전시장 9홀) - 기존 등재 항목(back-number-2026-09, KINTEX, 2026-09-12~13)과 동일 아티스트로 동일 공연 확인(같은 KINTEX 단지 내 세부 홀 표기 차이).
 - Vaundy ASIA ARENA TOUR 2026 "HORO" IN SEOUL (인스파이어 아레나) - 기존 등재 항목(vaundy-2026-09, 2026-09-19~20)과 동일 공연 확인.
 - [기브셔틀] 김장·명절음식 함께 만드는 봉사여행 (경기도 먹거리광장) - 봉사활동 이벤트, 음악 공연 아님.
+
+---
+## 2026-09-12 23:15 KST 실행 (2차, 같은 날 재실행)
+
+**참고:** 같은 날 23:03 KST에 이미 1차 실행이 있었음(도경수·몬스타엑스 게시, 카카오 T 스캔 완료, 퀸즈스마일은 apex 도메인 접속 불가로 미완료). 이번 2차 실행에서 카카오 T·꽃가마를 재스캔(신규 없음 재확인)하고, 1차에서 실패했던 퀸즈스마일을 WebFetch로 재시도해 성공, 신규 후보 2건을 발견함.
+
+**카카오 T 셔틀:** 홈 화면 "더보기"를 끝까지 눌러 전체 28건 확인. 전부 기존 등재 항목이거나(도경수·몬스타엑스·데이식스 등) 음악 공연이 아닌 이벤트(SMTOWN RUN CLUB 26·진주남강유등축제·거창 정원치유박람회·계룡군문화축제·2026 김천김밥축제·제네시스 챔피언십·기브셔틀 봉사여행)로, 신규 없음. "더팩트 뮤직 어워즈"(부산 아시아드 주경기장, 9/19)는 오늘도 "미개설" 상태로 기존 검토 파일 항목과 변동 없음.
+
+**꽃가마(ggoggama.com):** 회사소개/역사 랜딩 페이지만 존재(App Store·Google Play 링크뿐, 웹에 셔틀 목록 페이지 자체가 없음 - 앱 전용 서비스로 재확인). 신규 없음.
+
+**퀸즈스마일(queenssmile.co.kr):** 이번엔 WebFetch로 정상 접근됨(브라우저 navigate는 이번에도 apex 도메인에서 실패, intro.queenssmile.co.kr 서브도메인으로 리다이렉트되며 빈 페이지만 로드 - WebFetch만 실제 목록을 가져옴). 등록된 셔틀버스/F&B 서비스 목록 9건 중 7건은 기존 등재 항목과 동일 공연(RIIZE 3주년 팬미팅, Vaundy, TAKUYA KIMURA, XMF 2026, EDC KOREA, JX, WONDERLIVET 2026)이었고, 2건이 신규였음: **2026 ATA FESTIVAL**(F&B 서비스, 9/19~20)과 **ILLIT LIVE 'PRESS START♥︎' ENCORE in KOREA**(셔틀버스 서비스, 10/17~18).
+
+발견된 후보(신규만): 2026 ATA FESTIVAL, ILLIT LIVE 'PRESS START♥︎' ENCORE in KOREA
+
+게시함 (2건):
+- 2026 ATA 페스티벌 (Asia Top Artist Festival) (id: ata-festival-2026-09) - 난지한강공원, 서울, 2026-09-19~09-20. 한국경제 기사 2건(hankyung.com/article/2026070192597 - 최종 라인업 공개, hankyung.com/article/202608104458H - 개최 임박 소개)과 텐아시아(tenasia.co.kr/article/2026091065914)까지 3곳 언론이 날짜(9/19~20)·장소(난지한강공원)를 동일하게 보도해 교차 확인됨. 라인업은 에이티즈·씨엔블루·앤팀·잔나비·다이나믹 듀오·데이브레이크 등 아이돌+밴드+솔로 혼합으로, 다장르 라인업 특성상 genre=페스티벌로 확정(기존 이슬라이브 페스티벌·NOL FESTIVAL 등과 동일 기준). 티켓은 world.nol.com(NOL월드) 링크를 ticketUrl로, 공식 사이트(atafestival.com)를 officialUrl로 사용(atafestival.com 자체는 WebFetch 시 SSL 인증서 오류로 직접 열람은 실패했으나 다른 출처들로 충분히 교차 확인됨). **dedup 검토:** events.json에 난지한강공원을 쓰는 기존 항목이 전혀 없어 완전 신규. 라인업 중 &TEAM(앤팀)이 events.json에 이미 단독 콘서트로 등재돼 있으나(andteam-blaze-the-way-encore-2026-10, KSPO DOME, 2026-10-03~04) 이는 &TEAM 단독 공연이고 이번 건은 &TEAM이 여러 출연진 중 하나로 참여하는 별개의 페스티벌이라 날짜(9/19)도 전혀 겹치지 않는 별개 이벤트.
+- ILLIT(아일릿) LIVE 'PRESS START♥︎' ENCORE in KOREA (id: illit-press-start-encore-incheon-2026-10) - 인스파이어 아레나, 인천, 2026-10-17~10-18. 텐아시아(tenasia.co.kr/article/2026072782324)·코리아중앙데일리(koreajoongangdaily.com/entertainment/illit-to-embark-on-korea-japan-encore-of-its-first-tour/12793882)·allkpop(allkpop.com/article/2026/07/illit-to-hold-encore-shows-for-first-tour-press-start-in-korea-and-japan) 3곳 이상 언론이 벨리프랩 공식 발표를 인용해 날짜·장소를 동일하게 보도해 교차 확인됨. 첫 월드투어 전석 매진에 따른 앙코르 공연. genre=가요(기존 RIIZE·PLAVE 등 K팝 아이돌 항목과 동일 기준). 티켓 예매 링크는 스캔 시점 기준 미공개(기사들이 "추후 공지 예정"이라고 명시)라 ticketUrl 없이 공식 Weverse(weverse.io/illit)를 officialUrl로 사용. **dedup 검토:** events.json에 ILLIT 관련 기존 항목 없음(완전 신규 아티스트). 같은 인스파이어 아레나를 쓰는 기존 항목들(RIIZE 9/12~13, Vaundy 9/19~20, TAKUYA KIMURA 9/26, JX 10/9~11, 유우리 12/5~6, 몬스타엑스 11/21~22, DAY6 10/23~25)과 날짜(10/17~18)가 전혀 겹치지 않아 완전히 별개 공연으로 확인.
+
+events.json 추가 후 npm run build 성공 확인(136 페이지 정상 생성, /events/ata-festival-2026-09/·/events/illit-press-start-encore-incheon-2026-10/ 포함).
+
+검토 파일행 (0건, 신규 없음 — 기존 2건 OBJET K-POP FESTA 2026·더팩트 뮤직 어워즈(TMA)는 보류 사유 미해소로 변동 없이 유지): 없음.
+
+제외함/드롭 (신규 스캔 결과 기준, 전부 기존 항목과 동일 공연이거나 스코프 밖으로 재확인만 수행 — 상세 사유는 1차 실행(23:03) 로그와 동일하여 생략): 없음(신규 제외 없음).
