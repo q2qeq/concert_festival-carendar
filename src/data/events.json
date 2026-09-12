@@ -4047,5 +4047,53 @@
       }
     ],
     "merchCheckedAt": "2026-09-12"
+  },
+  {
+    "id": "kazumi-tateishi-trio-suwon-2026-11",
+    "artist": "카즈미 타테이시 트리오 (Kazumi Tateishi Trio)",
+    "genre": "재즈/내한",
+    "venue": "경기아트센터 소극장",
+    "city": "수원",
+    "startDate": "2026-11-22",
+    "endDate": "2026-11-22",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "2011년 첫 내한 이후 14년간 한국 투어를 이어온 일본 재즈 트리오, 카즈미 타테이시 트리오의 '지브리, 재즈를 만나다' 내한공연. 수원 공연은 2026-11-22(일) 오후 5시, 경기아트센터 소극장. 지브리 스튜디오 영화음악을 재즈로 재해석하는 프로그램이며, 광주·서울·성남·대구·부산 등 전국 6개 도시 투어의 일정 중 하나예요. 주최/기획 지누락엔터테인먼트.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-16 낮 12:00",
+    "ticketOpenAt": "2026-09-16T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "YES24 티켓 / 2026 카즈미 타테이시 트리오 내한공연-지브리, 재즈를 만나다 (수원) 티켓 오픈 안내",
+        "url": "https://ticket.yes24.com/Notice#id=18486"
+      },
+      {
+        "label": "멜론티켓 / 2026 카즈미 타테이시 트리오 내한공연-지브리, 재즈를 만나다 (수원) 티켓 오픈 안내",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12852"
+      },
+      {
+        "label": "티켓링크 공지사항 / 2026 카즈미 타테이시 트리오 내한공연-지브리, 재즈를 만나다 - (수원) 티켓오픈 안내",
+        "url": "https://www.ticketlink.co.kr/help/notice#TICKET_OPEN"
+      }
+    ]
+  },
+  {
+    "id": "nee-seoul-2026-12",
+    "artist": "NEE",
+    "genre": "J-POP",
+    "venue": "KT&G 상상마당 홍대 라이브홀",
+    "city": "서울",
+    "startDate": "2026-12-18",
+    "endDate": "2026-12-18",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 록밴드 NEE의 데뷔 이후 첫 해외 단독공연 'NEE 1st Concert in KOREA 「EXOTIC METTYA KANKOKU」'. 2026-12-18(금) 오후 8시, KT&G 상상마당 홍대 라이브홀, 스탠딩 88,000원. 주최/기획 위트.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-29 오후 8시",
+    "ticketOpenAt": "2026-09-29T20:00:00+09:00",
+    "sources": [
+      {
+        "label": "멜론티켓 / NEE 1st Concert in KOREA 「EXOTIC METTYA KANKOKU」 티켓 오픈 안내",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12855"
+      }
+    ]
   }
 ]
