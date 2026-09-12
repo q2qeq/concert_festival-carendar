@@ -4095,5 +4095,50 @@
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12855"
       }
     ]
+  },
+  {
+    "id": "shuttle-doh-kyungsoo-day-off-2026-10",
+    "artist": "도경수 (D.O.) - DOH KYUNG SOO CONCERT TOUR [DAY OFF] IN SEOUL",
+    "genre": "가요",
+    "venue": "킨텍스 제1전시장 5홀 (KINTEX)",
+    "city": "고양",
+    "startDate": "2026-10-02",
+    "endDate": "2026-10-04",
+    "ticketUrl": "https://m.ticketlink.co.kr/product/64925",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-12). 원래 서울 티켓링크 라이브 아레나(구 올림픽공원 핸드볼경기장)에서 열릴 예정이었으나, 인근 '올공 시위' 장기화로 킨텍스 제1전시장 5홀로 공연장이 변경됨 (기존 예매 전액 취소 후 재예매 진행).",
+    "sources": [
+      {
+        "label": "도경수, 서울→일산 콘서트 장소 변경…잠실 시위 여파 - 브릿지경제",
+        "url": "https://www.viva100.com/article/20260908501086"
+      },
+      {
+        "label": "'부정선거' 올공 시위 장기화…도경수 단독 콘서트 킨텍스로 변경 - 헤럴드경제",
+        "url": "https://biz.heraldcorp.com/article/10867495"
+      },
+      {
+        "label": "2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] IN SEOUL - 티켓링크",
+        "url": "https://m.ticketlink.co.kr/product/64925"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-monsta-x-world-tour-encore-2026-11",
+    "artist": "몬스타엑스 (MONSTA X) - 2026 WORLD TOUR [THE X : NEXUS] - ENCORE",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-22",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-12). 올해 초 서울 KSPO DOME에서 시작해 일본 아레나 투어, 멕시코·브라질 등 남미를 돈 월드투어의 앙코르 공연. 티켓 예매 세부 일정은 아직 공식 발표 전.",
+    "sources": [
+      {
+        "label": "몬스타엑스, 월드투어 앵콜콘 확정...11월 인스파이어 아레나 개최 - 한강타임즈",
+        "url": "https://www.hg-times.com/news/articleView.html?idxno=305119"
+      },
+      {
+        "label": "전 세계 누빈 몬스타엑스, 11월 인천서 월드투어 피날레 - 이데일리",
+        "url": "https://www.edaily.co.kr/News/Read?newsId=03663766645578480"
+      }
+    ]
   }
 ]
