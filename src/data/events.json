@@ -4203,5 +4203,25 @@
         "url": "https://www.allkpop.com/article/2026/07/illit-to-hold-encore-shows-for-first-tour-press-start-in-korea-and-japan"
       }
     ]
+  },
+  {
+    "id": "aosaka-seoul-2027-01",
+    "artist": "Aosaka: kurayamisaka & parannoul",
+    "genre": "팝/락",
+    "venue": "KT&G 상상마당 홍대 라이브홀",
+    "city": "서울",
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-09",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 슈게이즈 밴드 kurayamisaka와 한국 슈게이즈 아티스트 파란노을(parannoul)의 합동 공연 'Aosaka'. 2027-01-09(토) 오후 6시 30분, KT&G 상상마당 홍대 라이브홀. 주최/기획 하이징크스(주).",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-09-17 낮 12:00",
+    "ticketOpenAt": "2026-09-17T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "YES24 티켓 / Aosaka: kurayamisaka & parannoul",
+        "url": "https://ticket.yes24.com/Perf/60147"
+      }
+    ]
   }
 ]
