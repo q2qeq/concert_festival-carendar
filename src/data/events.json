@@ -802,7 +802,7 @@
       }
     ],
     "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-12",
+    "merchCheckedAt": "2026-09-14",
     "officialUrl": "https://weverse.io/nct127",
     "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
     "funFacts": [
@@ -1106,7 +1106,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-12",
+    "merchCheckedAt": "2026-09-14",
     "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
@@ -1134,6 +1134,10 @@
       {
         "date": "2026-08-30",
         "text": "개별 예매 페이지 URL은 아직 찾지 못했어요. 멜론티켓·티켓링크에서 'ONEWE'로 직접 검색하는 걸 추천합니다."
+      },
+      {
+        "date": "2026-09-14",
+        "text": "MD 워치 - 공식 홈페이지(onewe.co.kr)와 공식 X(@official_ONEWE) 최근 게시물, 웹 검색까지 확인했지만 6th Live Concert(VI) 전용 MD 공지는 아직 찾지 못했어요. 검색 결과에 나온 MD 상품들은 5th Live Concert(V) 때 판매된 것이라 이번 VI 공연에 그대로 적용된다고 볼 수 없어 event.merch에는 반영하지 않았습니다."
       }
     ],
     "sources": [
@@ -1152,7 +1156,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-12",
+    "merchCheckedAt": "2026-09-14",
     "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
   },
   {
@@ -1275,7 +1279,14 @@
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/takuya-kimura-live-tour-checkpoint-seoul-2026-09.webp",
     "posterSourceUrl": "https://cdn.abcn.kr/news/photo/202606/88470_45400_115.jpg",
-    "merchCheckedAt": "2026-09-12"
+    "updates": [
+      {
+        "date": "2026-09-14",
+        "text": "공식 투어 페이지(starto.jp)에서 MD 판매가 확정된 걸 확인했어요. 오리지널 펜라이트(5,000엔)·에코백(2,500엔)·티셔츠(4,500엔) 등 투어 공통 상품 목록과, 티켓 없이도 이용 가능한 현장 판매 + 온라인 스토어(MERCH MARKET) 판매 방식이 안내돼 있어요. 다만 이 페이지는 투어 전체(일본 국내+해외) 공통 안내라서, 서울(인천) 공연에 현장 판매가 실제로 적용되는지·해외 배송이 되는지는 명시돼 있지 않았어요. 서울 공연 전용 MD 안내는 아직 별도로 공개되지 않은 것으로 보여 event.merch에는 반영하지 않았습니다.",
+        "sourceUrl": "https://starto.jp/s/p/live/10520?lang=en"
+      }
+    ],
+    "merchCheckedAt": "2026-09-14"
   },
   {
     "id": "post-malone-2026-10",
@@ -1334,7 +1345,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-12",
+    "merchCheckedAt": "2026-09-14",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1642,7 +1653,7 @@
       }
     ],
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg",
-    "merchCheckedAt": "2026-09-12",
+    "merchCheckedAt": "2026-09-14",
     "officialSns": [
       {
         "label": "Instagram",
@@ -1806,7 +1817,7 @@
         "url": "https://www.instagram.com/edc_korea/"
       }
     ],
-    "merchCheckedAt": "2026-09-02",
+    "merchCheckedAt": "2026-09-14",
     "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
     "funFacts": [
       "EDC(Electric Daisy Carnival)는 미국 라스베이거스에서 시작된 세계적인 EDM 페스티벌 브랜드예요. 코리아 에디션이 3회째를 맞으면서 개최 시기를 4월에서 10월로 옮겼는데, 개천절 연휴와 중국 황금연휴 기간에 맞춘 걸 보면 해외 관객 접근성을 높이려는 전략으로 보여요.",
@@ -3498,7 +3509,7 @@
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
     ],
-    "merchCheckedAt": "2026-09-12",
+    "merchCheckedAt": "2026-09-14",
     "posterUrl": "/posters/rachael-yamagata-seoul-2026-09.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg"
   },
@@ -4021,8 +4032,20 @@
       {
         "label": "YES24 티켓 - \"IDOL1ST KENTY\" ASIA TOUR 2026 in SEOUL",
         "url": "https://ticket.yes24.com/Perf/58653"
+      },
+      {
+        "label": "나카지마 켄토, 오늘(4일) 첫 내한 공연 티켓 오픈 - 싱글리스트",
+        "url": "https://www.slist.kr/news/articleView.html?idxno=743244"
       }
-    ]
+    ],
+    "merch": [
+      {
+        "label": "투어 한정 티셔츠 (VIP석 특전)",
+        "url": "https://www.slist.kr/news/articleView.html?idxno=743244",
+        "note": "VIP석 예매 시 포함된 특전입니다. 별도 판매 상품이 아니라 좌석 등급별 굿즈 포함 구성이며, 친필 한글 메시지 카드·하이바이 이벤트도 함께 제공됩니다."
+      }
+    ],
+    "merchCheckedAt": "2026-09-14"
   },
   {
     "id": "ryosuke-yamada-seoul-2026-09",
@@ -4175,8 +4198,38 @@
       {
         "label": "데이브레이크, 난지한강공원 뜬다…20일 'ATA 페스티벌' 출격 - 텐아시아",
         "url": "https://www.tenasia.co.kr/article/2026091065914"
+      },
+      {
+        "label": "ATA 페스티벌 공식 인스타그램 - 2026 ATA FESTIVAL [OFFICIAL MD] 공지",
+        "url": "https://www.instagram.com/p/DdGkoYZCeE8/"
       }
-    ]
+    ],
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/ata_festival_official/"
+      }
+    ],
+    "merch": [
+      {
+        "label": "2026 ATA X depound Slogan",
+        "price": "18,000원",
+        "note": "현장 판매 전용(한경미디어그룹 부스, 11:00~19:00). 온라인 판매는 확인되지 않음."
+      },
+      {
+        "label": "2026 ATA X depound Eco Bag",
+        "price": "32,000원",
+        "variants": "IVORY/BLUE/NAVY",
+        "note": "현장 판매 전용(한경미디어그룹 부스, 11:00~19:00). 온라인 판매는 확인되지 않음."
+      },
+      {
+        "label": "2026 ATA X depound Ball Cap",
+        "price": "35,000원",
+        "variants": "IVORY/NAVY",
+        "note": "현장 판매 전용(한경미디어그룹 부스, 11:00~19:00). 온라인 판매는 확인되지 않음. 부스 선착순 300명에게 닥터포헤어 제품(샴푸 또는 트리트먼트 랜덤 1종) 증정 이벤트도 진행."
+      }
+    ],
+    "merchCheckedAt": "2026-09-14"
   },
   {
     "id": "illit-press-start-encore-incheon-2026-10",
