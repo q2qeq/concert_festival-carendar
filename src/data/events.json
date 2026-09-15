@@ -802,7 +802,7 @@
       }
     ],
     "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-14",
+    "merchCheckedAt": "2026-09-15",
     "officialUrl": "https://weverse.io/nct127",
     "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
     "funFacts": [
@@ -824,6 +824,10 @@
         "date": "2026-09-11",
         "text": "THE REDLINE 투어 공식 MD가 Weverse Shop(온라인)에서 서울 공연 기간인 9/19~20에 판매된다는 걸 공식 링크트리에서 확인했어요. 다만 아직 실제 상품 목록은 올라오지 않은 상태(Weverse Shop 투어 굿즈 카테고리 비어있음)라 구체 품목·가격은 추후 확인할게요.",
         "sourceUrl": "https://linktr.ee/NCT127_NEOCITY_THE_REDLINE"
+      },
+      {
+        "date": "2026-09-15",
+        "text": "SMTOWN&STORE, Weverse Shop(NCT 127 Tour Merch 카테고리), 공식 X 계정을 확인했지만 이번 5TH TOUR NEO CITY - THE REDLINE 투어 관련 MD는 아직 확인되지 않았어요. X에서 검색된 \"OFFICIAL MD SALES OPEN\" 공지는 2025년 7월 9주년 기념 MD로, 이번 투어와는 무관한 과거 상품이었습니다."
       }
     ]
   },
@@ -1106,7 +1110,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-14",
+    "merchCheckedAt": "2026-09-15",
     "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
@@ -1138,6 +1142,11 @@
       {
         "date": "2026-09-14",
         "text": "MD 워치 - 공식 홈페이지(onewe.co.kr)와 공식 X(@official_ONEWE) 최근 게시물, 웹 검색까지 확인했지만 6th Live Concert(VI) 전용 MD 공지는 아직 찾지 못했어요. 검색 결과에 나온 MD 상품들은 5th Live Concert(V) 때 판매된 것이라 이번 VI 공연에 그대로 적용된다고 볼 수 없어 event.merch에는 반영하지 않았습니다."
+      },
+      {
+        "date": "2026-09-15",
+        "text": "공식 X(@official_ONEWE)를 확인했지만 이번 6th Live Concert \"O! NEW E!volution VI\" 관련 MD 판매 공지는 아직 없었어요. 검색된 \"OFFICIAL MD 일반 판매 안내\" 게시물은 2026년 2월 5th Live Concert 때의 공지였습니다.",
+        "sourceUrl": "https://x.com/official_ONEWE"
       }
     ],
     "sources": [
@@ -1156,7 +1165,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-14",
+    "merchCheckedAt": "2026-09-15",
     "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
   },
   {
@@ -1286,7 +1295,7 @@
         "sourceUrl": "https://starto.jp/s/p/live/10520?lang=en"
       }
     ],
-    "merchCheckedAt": "2026-09-14"
+    "merchCheckedAt": "2026-09-15"
   },
   {
     "id": "post-malone-2026-10",
@@ -1345,7 +1354,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-14",
+    "merchCheckedAt": "2026-09-15",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1418,7 +1427,14 @@
         "sourceUrl": "https://busanrockfestival.com/notice/2026notice_08/"
       }
     ],
-    "posterSourceUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png"
+    "posterSourceUrl": "https://busanrockfestival.com/wp-content/uploads/2026/07/★26BIRF-2nd-LINEUP-RELEASEKOR-1-819x1024.png",
+    "updates": [
+      {
+        "date": "2026-09-15",
+        "text": "공식 X(@busan_rock)에서 \"MD\" 언급 게시물을 검색했지만, 본 페스티벌(10월) 자체의 MD 공지는 아직 없었고 6월에 있었던 별도 사전 행사 \"Road to BU-ROCK Gwangju\"의 MD 판매 안내만 확인됐어요.",
+        "sourceUrl": "https://x.com/busan_rock"
+      }
+    ]
   },
   {
     "id": "lany-2026-10",
@@ -1613,6 +1629,11 @@
         "date": "2026-09-11",
         "text": "XMF 2026 공식 FAQ에서 \"공식 MD 판매될 예정이며 판매 품목·구매 방법·운영 시간은 공식 홈페이지와 SNS를 통해 공개됩니다\"라는 안내를 확인했어요. 아직 구체 품목·가격은 미공개 상태예요.",
         "sourceUrl": "https://xmfestival.com/faqs?category=300G145w21"
+      },
+      {
+        "date": "2026-09-15",
+        "text": "공식 X(@XMF_official)에 8/24 \"XMF 2026 OFFICIAL MD PRE-ORDER NOTICE\" 게시물이 있었고 판매처는 사운드웨이브(sound-wave.co.kr)였어요. 다만 오늘(9/15) 해당 카테고리 페이지를 직접 확인해보니 등록된 상품이 0개라, 사전판매가 이미 종료된 것으로 보입니다. 구체적인 상품명·가격은 확인하지 못했어요.",
+        "sourceUrl": "https://x.com/XMF_official"
       }
     ],
     "sources": [
@@ -1653,7 +1674,7 @@
       }
     ],
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg",
-    "merchCheckedAt": "2026-09-14",
+    "merchCheckedAt": "2026-09-15",
     "officialSns": [
       {
         "label": "Instagram",
@@ -1817,7 +1838,7 @@
         "url": "https://www.instagram.com/edc_korea/"
       }
     ],
-    "merchCheckedAt": "2026-09-14",
+    "merchCheckedAt": "2026-09-15",
     "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
     "funFacts": [
       "EDC(Electric Daisy Carnival)는 미국 라스베이거스에서 시작된 세계적인 EDM 페스티벌 브랜드예요. 코리아 에디션이 3회째를 맞으면서 개최 시기를 4월에서 10월로 옮겼는데, 개천절 연휴와 중국 황금연휴 기간에 맞춘 걸 보면 해외 관객 접근성을 높이려는 전략으로 보여요.",
@@ -1927,7 +1948,15 @@
         "note": "같은 월드투어의 다른 공연(런던) 세트리스트예요. 실제 서울 공연 세트리스트는 조금씩 달라질 수 있어요."
       }
     ],
-    "posterSourceUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png"
+    "posterSourceUrl": "https://cdn.hankooki.com/news/photo/202605/332548_467443_1778545034.png",
+    "updates": [
+      {
+        "date": "2026-09-15",
+        "text": "NOL 티켓(nol.yanolja.com) 판매 페이지에서 \"스탠딩 EARLY ENTRY PACKAGE\"(469,000원) 티켓 등급을 확인했어요. 얼리입장 혜택이 포함된 것으로 보이나, 정확히 어떤 굿즈/구성품이 동봉되는지는 페이지에 명시돼 있지 않아 event.merch에는 아직 반영하지 않았습니다.",
+        "sourceUrl": "https://nol.yanolja.com/ticket/products/26011315"
+      }
+    ],
+    "merchCheckedAt": "2026-09-15"
   },
   {
     "id": "ghost-festival-2026-10",
@@ -3509,9 +3538,15 @@
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
     ],
-    "merchCheckedAt": "2026-09-14",
+    "merchCheckedAt": "2026-09-15",
     "posterUrl": "/posters/rachael-yamagata-seoul-2026-09.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/rachaelyamagata/"
+      }
+    ]
   },
   {
     "id": "penthouse-seoul-2026-12",
@@ -4142,7 +4177,15 @@
         "label": "2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] IN SEOUL - 티켓링크",
         "url": "https://m.ticketlink.co.kr/product/64925"
       }
-    ]
+    ],
+    "officialUrl": "https://companysoosoo.com/notice",
+    "updates": [
+      {
+        "date": "2026-09-15",
+        "text": "소속사 컴퍼니수수 공식 홈페이지(companysoosoo.com)와 도경수 공식 bstage 페이지를 확인했지만, \"DAY OFF\" 서울 콘서트 전용 MD 판매 공지는 아직 못 찾았어요. 검색 중 나온 \"라이트 스트랩 키링\" 관련 언급은 출처가 불분명해(다른 투어의 상품과 혼동됐을 가능성) event.merch에는 반영하지 않았습니다."
+      }
+    ],
+    "merchCheckedAt": "2026-09-15"
   },
   {
     "id": "shuttle-monsta-x-world-tour-encore-2026-11",
@@ -4179,11 +4222,31 @@
     "lineupByDay": [
       {
         "date": "2026-09-19",
-        "acts": ["씨엔블루", "앤팀(&TEAM)", "다이나믹 듀오", "우즈", "루시", "카더가든", "이오욱", "김수영", "하이파이유니콘"]
+        "acts": [
+          "씨엔블루",
+          "앤팀(&TEAM)",
+          "다이나믹 듀오",
+          "우즈",
+          "루시",
+          "카더가든",
+          "이오욱",
+          "김수영",
+          "하이파이유니콘"
+        ]
       },
       {
         "date": "2026-09-20",
-        "acts": ["에이티즈", "잔나비", "데이브레이크", "드래곤포니", "최예나", "알파드라이브원", "킥플립", "어반자카파", "이무진"]
+        "acts": [
+          "에이티즈",
+          "잔나비",
+          "데이브레이크",
+          "드래곤포니",
+          "최예나",
+          "알파드라이브원",
+          "킥플립",
+          "어반자카파",
+          "이무진"
+        ]
       }
     ],
     "sources": [
