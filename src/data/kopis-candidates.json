@@ -13,19 +13,6 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
-    "id": "kopis-PF299610",
-    "artist": "먼데이프로젝트 시즌9: LIFE IS NOISE, 서울전자음악단 단독 콘서트",
-    "genre": "콘서트",
-    "venue": "KT&G 상상마당 라이브홀 [마포]",
-    "city": "서울",
-    "startDate": "2026-09-14",
-    "endDate": "2026-09-14",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299610_260828_130828.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
     "id": "kopis-PF300064",
     "artist": "idol wave vol.28",
     "genre": "콘서트",
@@ -312,19 +299,6 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
-    "id": "kopis-PF295410",
-    "artist": "OBJET K-POP FESTA",
-    "genre": "콘서트",
-    "venue": "인천문학경기장",
-    "city": "인천",
-    "startDate": "2026-09-26",
-    "endDate": "2026-09-27",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295410_260706_143211.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
     "id": "kopis-PF293136",
     "artist": "Silica Gel Asia Tour, Syn.THE.Size: Ballad of You [서울]",
     "genre": "콘서트",
@@ -335,6 +309,32 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF293136_260608_154813.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF301010",
+    "artist": "라라라온 [프리즘홀]",
+    "genre": "콘서트",
+    "venue": "프리즘홀 (프리즘플러스)",
+    "city": "서울",
+    "startDate": "2026-09-28",
+    "endDate": "2026-09-28",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301010_260915_150851.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300867",
+    "artist": "먼데이프로젝트 시즌9, 폴리아모리 정규 앨범 발매 공연: 균의 만연",
+    "genre": "콘서트",
+    "venue": "Vel.R 벨르 (구. 벨로주 [홍대])",
+    "city": "서울",
+    "startDate": "2026-09-30",
+    "endDate": "2026-09-30",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300867_260914_153154.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -364,6 +364,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300988",
+    "artist": "라라라온 [춘천 KT&G 상상마당]",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 [춘천]",
+    "city": "서울",
+    "startDate": "2026-10-02",
+    "endDate": "2026-10-02",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300988_260915_135436.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF300079",
     "artist": "최정철의 1+1",
     "genre": "콘서트",
@@ -374,6 +387,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300079_260903_142806.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF301057",
+    "artist": "다브다 정규 2집 온 발매 콘서트",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 라이브홀 [마포]",
+    "city": "서울",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-03",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301057_260916_133019.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -533,6 +559,32 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300959",
+    "artist": "윤수일 BAND 전국투어 콘서트 [부산]",
+    "genre": "콘서트",
+    "venue": "벡스코 (BEXCO)",
+    "city": "부산",
+    "startDate": "2026-10-08",
+    "endDate": "2026-10-08",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300959_260915_114242.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300789",
+    "artist": "FIREWORKS",
+    "genre": "콘서트",
+    "venue": "롤링홀",
+    "city": "서울",
+    "startDate": "2026-10-08",
+    "endDate": "2026-10-08",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300789_260914_121206.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF292331",
     "artist": "에즈라 콜렉티브 첫 단독 내한공연 Ezra Collective Live [서울]",
     "genre": "콘서트",
@@ -543,6 +595,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF292331_260527_130919.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300904",
+    "artist": "유유상종 Vol.2: 퇴근길 with Bendersea",
+    "genre": "콘서트",
+    "venue": "카페 언플러그드",
+    "city": "서울",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-09",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300904_260914_165759.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -650,6 +715,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300971",
+    "artist": "신촌블루스 40+1 그리고 부산, [부산]",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 라이브홀 [부산]",
+    "city": "서울",
+    "startDate": "2026-10-11",
+    "endDate": "2026-10-11",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300971_260915_131621.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF300093",
     "artist": "OurR Concert: Utopia",
     "genre": "콘서트",
@@ -673,6 +751,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299563_260827_155224.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF301082",
+    "artist": "Re.may 2nd Solo Concert: Road to Rockstar Vol.2",
+    "genre": "콘서트",
+    "venue": "롤링홀",
+    "city": "서울",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-16",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301082_260916_143028.png",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -712,6 +803,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298998_260820_145448.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF301107",
+    "artist": "NEXZ 1ST ASIA TOUR: SAUCIN’ THE WORLD [서울]",
+    "genre": "콘서트",
+    "venue": "올림픽공원",
+    "city": "서울",
+    "startDate": "2026-10-17",
+    "endDate": "2026-10-18",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301107_260916_153552.gif",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -793,6 +897,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300927",
+    "artist": "KT&G 상상마당 부산 루프탑 공연: 낭만도심",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 라이브홀 [부산]",
+    "city": "서울",
+    "startDate": "2026-10-18",
+    "endDate": "2026-10-18",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300927_260915_101618.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF298974",
     "artist": "하슬라국제예술제, 내면의 저편",
     "genre": "페스티벌",
@@ -855,6 +972,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299007_260820_153014.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF301012",
+    "artist": "82MAJOR 6th CONCERT, 82CLUB: out of control",
+    "genre": "콘서트",
+    "venue": "예스24 라이브홀 (구. 악스코리아)",
+    "city": "서울",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-25",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301012_260915_152002.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -949,6 +1079,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF301027",
+    "artist": "스웨덴세탁소 단독 콘서트: 우리 다시 만나",
+    "genre": "콘서트",
+    "venue": "Vel.R 벨르 (구. 벨로주 [홍대])",
+    "city": "서울",
+    "startDate": "2026-10-25",
+    "endDate": "2026-10-25",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301027_260916_104438.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF297088",
     "artist": "WALPURGISNACHT",
     "genre": "콘서트",
@@ -985,6 +1128,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300665_260911_110435.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF301089",
+    "artist": "ONEW CONCERT: ONEW THE LIVE: Q [서울]",
+    "genre": "콘서트",
+    "venue": "올림픽공원",
+    "city": "서울",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-01",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301089_260916_144800.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -1092,6 +1248,32 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300804",
+    "artist": "사토시 고고 내한 공연",
+    "genre": "콘서트",
+    "venue": "웨스트브릿지 라이브홀",
+    "city": "서울",
+    "startDate": "2026-11-08",
+    "endDate": "2026-11-08",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300804_260914_125945.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF301093",
+    "artist": "더 보컬 [서울 중구]",
+    "genre": "콘서트",
+    "venue": "공감센터",
+    "city": "서울",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-14",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301093_260916_145903.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF300706",
     "artist": "Awesome Stage, N.Flying x Hi-Fi Un!corn",
     "genre": "콘서트",
@@ -1144,6 +1326,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300854",
+    "artist": "AKMU CONCERT: 소문의 낙원 (Paradise of Rumors) [대구]",
+    "genre": "콘서트",
+    "venue": "엑스코(exco)",
+    "city": "대구",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-22",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300854_260914_145607.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF299840",
     "artist": "허각 전국투어 콘서트, 공연각: 사이 [부산]",
     "genre": "콘서트",
@@ -1180,6 +1375,32 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298491_260813_160812.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300972",
+    "artist": "정승환 10주년 콘서트: 발라드 좋아하세요?",
+    "genre": "콘서트",
+    "venue": "올림픽공원",
+    "city": "서울",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-06",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300972_260915_131845.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300875",
+    "artist": "Mass Of The Fermenting Dregs World Tour: Iwaou with Dabda [서울]",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 라이브홀 [마포]",
+    "city": "서울",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-04",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300875_260914_154630.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -1222,6 +1443,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF300887",
+    "artist": "AKMU CONCERT: 소문의 낙원 (Paradise of Rumors) [부산]",
+    "genre": "콘서트",
+    "venue": "벡스코 (BEXCO)",
+    "city": "부산",
+    "startDate": "2026-12-19",
+    "endDate": "2026-12-20",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300887_260914_161938.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF299887",
     "artist": "펜트하우스 내한 공연: Penthouse ONE MAN LIVE TOUR Neon Garden in Seoul",
     "genre": "콘서트",
@@ -1258,6 +1492,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298473_260813_151514.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF300915",
+    "artist": "AKMU CONCERT: 소문의 낙원 (Paradise of Rumors) [전남 광주]",
+    "genre": "콘서트",
+    "venue": "김대중컨벤션센터",
+    "city": "광주",
+    "startDate": "2026-12-25",
+    "endDate": "2026-12-25",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300915_260914_172748.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
