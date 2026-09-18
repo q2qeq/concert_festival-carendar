@@ -1177,7 +1177,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-18",
+    "merchCheckedAt": "2026-09-19",
     "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
@@ -1214,6 +1214,11 @@
         "date": "2026-09-15",
         "text": "공식 X(@official_ONEWE)를 확인했지만 이번 6th Live Concert \"O! NEW E!volution VI\" 관련 MD 판매 공지는 아직 없었어요. 검색된 \"OFFICIAL MD 일반 판매 안내\" 게시물은 2026년 2월 5th Live Concert 때의 공지였습니다.",
         "sourceUrl": "https://x.com/official_ONEWE"
+      },
+      {
+        "date": "2026-09-19",
+        "text": "공식 X(@official_ONEWE)에서 9/13자 \"OFFICIAL MD 안내\" 게시물을 확인했어요. 이번 6th Live Concert 현장 판매 일정은 9/19(토) 14:00~17:30, 9/20(일) 13:00~16:30(KST)이고, 트레이딩 카드·엽서북·키링·티셔츠·응원봉 등 8종의 상품명과 가격이 공개돼 있어 event.merch에 실 데이터로 반영했습니다. 이전(9/14, 9/15) 체크에서는 이 게시물을 놓쳤어요. 공지 이미지에 '현장 판매는 회차별 한정 수량이라 조기 품절될 수 있다'는 안내가 있습니다. 온라인 판매 링크는 확인되지 않아 mdUrl은 비워뒀어요.",
+        "sourceUrl": "https://x.com/official_ONEWE"
       }
     ],
     "sources": [
@@ -1232,8 +1237,52 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-18",
-    "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
+    "merchCheckedAt": "2026-09-19",
+    "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg",
+    "merch": [
+      {
+        "label": "랜덤 트레이딩 카드",
+        "price": "6,000원",
+        "variants": "A/B ver.",
+        "note": "랜덤 3장. 현장 판매 (부스 운영 9/19 14:00~17:30, 9/20 13:00~16:30 KST)"
+      },
+      {
+        "label": "엽서북",
+        "price": "17,000원",
+        "note": "엽서 12장. 현장 판매 (부스 운영 9/19 14:00~17:30, 9/20 13:00~16:30 KST)"
+      },
+      {
+        "label": "랜덤 럭키참 키링",
+        "price": "11,000원",
+        "note": "랜덤 1개. 현장 판매 (부스 운영 9/19 14:00~17:30, 9/20 13:00~16:30 KST)"
+      },
+      {
+        "label": "마그넷 카드 케이스 세트",
+        "price": "17,000원",
+        "variants": "Black / Sky Blue",
+        "note": "현장 판매 (부스 운영 9/19 14:00~17:30, 9/20 13:00~16:30 KST)"
+      },
+      {
+        "label": "피그먼트 티셔츠",
+        "price": "47,000원",
+        "note": "포토카드 5장 포함. 현장 판매 (부스 운영 9/19 14:00~17:30, 9/20 13:00~16:30 KST)"
+      },
+      {
+        "label": "마이 플레이리스트 티셔츠",
+        "price": "48,000원",
+        "note": "포토카드 5장 포함. 현장 판매 (부스 운영 9/19 14:00~17:30, 9/20 13:00~16:30 KST)"
+      },
+      {
+        "label": "스크런치",
+        "price": "19,000원",
+        "note": "포토카드 1장 포함. 현장 판매 (부스 운영 9/19 14:00~17:30, 9/20 13:00~16:30 KST)"
+      },
+      {
+        "label": "공식 응원봉",
+        "price": "45,000원",
+        "note": "건전지 별도(2,000원). 현장 판매 (부스 운영 9/19 14:00~17:30, 9/20 13:00~16:30 KST)"
+      }
+    ]
   },
   {
     "id": "kim-yongbin-serenade-2026-09",
@@ -1362,7 +1411,7 @@
         "sourceUrl": "https://starto.jp/s/p/live/10520?lang=en"
       }
     ],
-    "merchCheckedAt": "2026-09-18"
+    "merchCheckedAt": "2026-09-19"
   },
   {
     "id": "post-malone-2026-10",
@@ -1421,7 +1470,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-18",
+    "merchCheckedAt": "2026-09-19",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1504,6 +1553,11 @@
       {
         "date": "2026-09-18",
         "text": "공식 사이트 MD 공지(2026notice_15, 2026notice_16)에서 디스이즈네버댓·송월타올·엄브로 콜라보 공식 MD가 나온다는 걸 확인했어요. 사전예약은 9/18(금) 15:00~9/23(수) 18:00 KST, 현장 QR 수령은 10/2(금)~10/4(일) 공연 기간 중, 판매처는 퀸즈스마일(queenssmile.co.kr/shop/festival/NDM2/)이에요. 다만 개별 상품명·가격은 아직 공지에 없고(예시 이미지만 있음), 실제 퀸즈스마일 페이지는 오늘 트래픽 초과로 접속이 막혀 있어 event.merch에는 아직 반영하지 않았습니다.",
+        "sourceUrl": "https://busanrockfestival.com/notice/2026notice_16/"
+      },
+      {
+        "date": "2026-09-19",
+        "text": "MD 워치 재확인 - 공식 공지 목록(2026notice_15/16)에 9/16 이후 새 MD 공지는 없었고, 판매처 퀸즈스마일(queenssmile.co.kr/shop/festival/NDM2/)은 오늘도 '트래픽 초과' 안내로 차단돼 개별 상품명·가격은 확인하지 못했어요. 사전예약은 9/23(수) 18:00 KST 마감이라 상품 정보가 열리면 그때 반영합니다.",
         "sourceUrl": "https://busanrockfestival.com/notice/2026notice_16/"
       }
     ]
@@ -1706,6 +1760,11 @@
         "date": "2026-09-15",
         "text": "공식 X(@XMF_official)에 8/24 \"XMF 2026 OFFICIAL MD PRE-ORDER NOTICE\" 게시물이 있었고 판매처는 사운드웨이브(sound-wave.co.kr)였어요. 다만 오늘(9/15) 해당 카테고리 페이지를 직접 확인해보니 등록된 상품이 0개라, 사전판매가 이미 종료된 것으로 보입니다. 구체적인 상품명·가격은 확인하지 못했어요.",
         "sourceUrl": "https://x.com/XMF_official"
+      },
+      {
+        "date": "2026-09-19",
+        "text": "사운드웨이브 공식 MD 공지(8/24)의 이미지를 직접 열어 상품 6종(패스포트·반다나·사코슈 백&카라비너·스마트폰 스트랩·티셔츠·볼캡)과 가격을 확인해 event.merch에 반영했어요. 온라인 사전판매는 8/28에 종료됐지만, XMF 공식 FAQ 기준으로 현장 구매는 사전 구매 없이 가능해요: ①영등포 타임스퀘어 B1F 사운드웨이브 오프라인 팝업 9/25(금)~10/1(목) 매일 10:30~22:00(사전구매 수령도 가능), ②행사장 내 공식 MD 부스 10/3(토)~10/4(일). 품목별 재고에 따라 일부 품절·조기 종료될 수 있고, 추가 온라인 판매가 확정되면 공식 홈페이지/SNS로 안내한다고 해요. 현장 판매가가 사전판매가와 같은지는 명시돼 있지 않았어요.",
+        "sourceUrl": "https://sound-wave.co.kr/board/free/read.html?board_no=1&no=242584"
       }
     ],
     "sources": [
@@ -1746,7 +1805,7 @@
       }
     ],
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg",
-    "merchCheckedAt": "2026-09-18",
+    "merchCheckedAt": "2026-09-19",
     "officialSns": [
       {
         "label": "Instagram",
@@ -1755,6 +1814,40 @@
       {
         "label": "X (Twitter)",
         "url": "https://x.com/XMF_official"
+      }
+    ],
+    "mdUrl": "https://sound-wave.co.kr/board/free/read.html?board_no=1&no=242584",
+    "merch": [
+      {
+        "label": "패스포트 (PASSPORT)",
+        "price": "12,000원",
+        "note": "종이 재질, 88×125mm. 가격은 사운드웨이브 사전판매 공지 기준"
+      },
+      {
+        "label": "반다나 (BANDANA)",
+        "price": "15,000원",
+        "note": "면, 600×600mm. 가격은 사운드웨이브 사전판매 공지 기준"
+      },
+      {
+        "label": "사코슈 백 & 카라비너",
+        "price": "35,000원",
+        "note": "가격은 사운드웨이브 사전판매 공지 기준"
+      },
+      {
+        "label": "스마트폰 스트랩",
+        "price": "25,000원",
+        "note": "아크릴 참 포함. 가격은 사운드웨이브 사전판매 공지 기준"
+      },
+      {
+        "label": "티셔츠 (T-SHIRT)",
+        "price": "42,000원",
+        "variants": "White / Black / Compass Gray",
+        "note": "가격은 사운드웨이브 사전판매 공지 기준"
+      },
+      {
+        "label": "볼캡 (BALL CAP)",
+        "price": "38,000원",
+        "note": "가격은 사운드웨이브 사전판매 공지 기준"
       }
     ]
   },
@@ -1910,7 +2003,7 @@
         "url": "https://www.instagram.com/edc_korea/"
       }
     ],
-    "merchCheckedAt": "2026-09-18",
+    "merchCheckedAt": "2026-09-19",
     "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
     "funFacts": [
       "EDC(Electric Daisy Carnival)는 미국 라스베이거스에서 시작된 세계적인 EDM 페스티벌 브랜드예요. 코리아 에디션이 3회째를 맞으면서 개최 시기를 4월에서 10월로 옮겼는데, 개천절 연휴와 중국 황금연휴 기간에 맞춘 걸 보면 해외 관객 접근성을 높이려는 전략으로 보여요.",
@@ -2028,7 +2121,7 @@
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26011315"
       }
     ],
-    "merchCheckedAt": "2026-09-18"
+    "merchCheckedAt": "2026-09-19"
   },
   {
     "id": "ghost-festival-2026-10",
@@ -3578,7 +3671,8 @@
       }
     ],
     "posterUrl": "/posters/ezra-collective-seoul-2026-10.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260519/20260519-58534.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260519/20260519-58534.jpg",
+    "merchCheckedAt": "2026-09-19"
   },
   {
     "id": "rachael-yamagata-seoul-2026-09",
@@ -3610,7 +3704,7 @@
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
     ],
-    "merchCheckedAt": "2026-09-18",
+    "merchCheckedAt": "2026-09-19",
     "posterUrl": "/posters/rachael-yamagata-seoul-2026-09.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg",
     "officialSns": [
@@ -4262,7 +4356,7 @@
         "sourceUrl": "https://www.instagram.com/dohkyungsoo_offcl/"
       }
     ],
-    "merchCheckedAt": "2026-09-18",
+    "merchCheckedAt": "2026-09-19",
     "officialSns": [
       {
         "label": "Instagram",
