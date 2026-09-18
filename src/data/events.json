@@ -4422,5 +4422,28 @@
         "url": "https://ticket.yes24.com/Perf/60147"
       }
     ]
+  },
+  {
+    "id": "takase-toya-seoul-2026-10",
+    "artist": "Takase Toya (타카세 토야)",
+    "genre": "J-POP",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2026-10-18",
+    "endDate": "2026-10-18",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 아티스트 타카세 토야(Takase Toya)의 아시아 투어 'TAKASE TOYA ASIA TOUR 2026 \"∞\"' 서울 공연. 게스트 EMI NODA(노다 에미), 오프닝 액트 Fumiya Sato(사토 후미야).",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/60065"
+      }
+    ],
+    "sources": [
+      {
+        "label": "TAKASE TOYA ASIA TOUR 2026 \"∞\" SEOUL - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/60065"
+      }
+    ]
   }
 ]
