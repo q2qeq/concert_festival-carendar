@@ -801,8 +801,8 @@
         "url": "https://x.com/NCTsmtown_127"
       }
     ],
-    "mdUrl": "https://smtownandstore.com",
-    "merchCheckedAt": "2026-09-15",
+    "mdUrl": "https://shop.weverse.io/shop/artists/127",
+    "merchCheckedAt": "2026-09-18",
     "officialUrl": "https://weverse.io/nct127",
     "description": "NCT 127의 5번째 월드투어 'NEO CITY - THE REDLINE'을 여는 서울 공연. 이후 자카르타·홍콩·싱가포르·방콕·타이베이로 이어지는 대장정의 출발점이다.",
     "funFacts": [
@@ -828,6 +828,73 @@
       {
         "date": "2026-09-15",
         "text": "SMTOWN&STORE, Weverse Shop(NCT 127 Tour Merch 카테고리), 공식 X 계정을 확인했지만 이번 5TH TOUR NEO CITY - THE REDLINE 투어 관련 MD는 아직 확인되지 않았어요. X에서 검색된 \"OFFICIAL MD SALES OPEN\" 공지는 2025년 7월 9주년 기념 MD로, 이번 투어와는 무관한 과거 상품이었습니다."
+      },
+      {
+        "date": "2026-09-18",
+        "text": "Weverse Shop(shop.weverse.io/shop/artists/127)에서 <NEO CITY SEOUL : THE REDLINE> 콘서트 공식 상품 예약판매 공지(2026.09.17자)를 확인했어요. 티셔츠(47,000원)·토트백(69,000원)·슬로건(23,000원)·포토세트(13,000원) 등 총 12종이 실제로 예약판매 중이라 event.merch에 실 데이터로 반영했습니다. 이전(9/11, 9/15) 체크 때는 카테고리가 비어 있었는데 이번에 처음 상품이 채워진 걸 확인했어요.",
+        "sourceUrl": "https://shop.weverse.io/shop/artists/127"
+      }
+    ],
+    "merch": [
+      {
+        "label": "THE REDLINE T-SHIRT",
+        "price": "47,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68349"
+      },
+      {
+        "label": "BIG TOTE BAG SET",
+        "price": "69,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68354"
+      },
+      {
+        "label": "SLOGAN",
+        "price": "23,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68348"
+      },
+      {
+        "label": "IMAGE PICKET SET",
+        "price": "20,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68350"
+      },
+      {
+        "label": "SOM-MOONG-CHILL FANLIGHT CAPE",
+        "price": "22,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68357"
+      },
+      {
+        "label": "FANLIGHT STRAP SET",
+        "price": "19,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68353"
+      },
+      {
+        "label": "SOM-MOONG-CHILL FANLIGHT CAP CHARM",
+        "price": "17,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68355"
+      },
+      {
+        "label": "SOM-MOONG-CHILL GOOD LUCK DOLL KEYRING",
+        "price": "17,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68356"
+      },
+      {
+        "label": "PIN BUTTON SET",
+        "price": "15,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68351"
+      },
+      {
+        "label": "SOM-MOONG-CHILL SCRUNCHIE",
+        "price": "15,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68358"
+      },
+      {
+        "label": "PHOTO SET",
+        "price": "13,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68352"
+      },
+      {
+        "label": "RANDOM TRADING CARD",
+        "price": "6,000원",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/127/sales/68347"
       }
     ]
   },
@@ -1110,7 +1177,7 @@
       "text": "3년 연속 관객이 뚜렷하게 늘어온 행사예요 (2023년 약 1만 2천명 → 2024년 약 2만명 → 2025년 약 3만명). 2026년에도 넬·10CM·선우정아라는 대중적 인지도가 확실한 라인업을 유지하면서 티켓 가격도 3천원으로 그대로라, 이 성장세가 한 번 더 이어질 가능성이 높아 보여요.",
       "basis": "3개년 연속 관객 증가 추세(연평균 대략 +50~65%) + 대중적 헤드라이너 유지 + 저가 티켓 정책 지속"
     },
-    "merchCheckedAt": "2026-09-15",
+    "merchCheckedAt": "2026-09-18",
     "posterSourceUrl": "https://hbnpress.com/news/data/20260824/p1065585620847167_609.png"
   },
   {
@@ -1165,7 +1232,7 @@
         "url": "https://x.com/official_onewe"
       }
     ],
-    "merchCheckedAt": "2026-09-15",
+    "merchCheckedAt": "2026-09-18",
     "posterSourceUrl": "https://cdn.joongangenews.com/news/photo/202608/542297_348294_2755.jpg"
   },
   {
@@ -1295,7 +1362,7 @@
         "sourceUrl": "https://starto.jp/s/p/live/10520?lang=en"
       }
     ],
-    "merchCheckedAt": "2026-09-15"
+    "merchCheckedAt": "2026-09-18"
   },
   {
     "id": "post-malone-2026-10",
@@ -1354,7 +1421,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-15",
+    "merchCheckedAt": "2026-09-18",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1433,6 +1500,11 @@
         "date": "2026-09-15",
         "text": "공식 X(@busan_rock)에서 \"MD\" 언급 게시물을 검색했지만, 본 페스티벌(10월) 자체의 MD 공지는 아직 없었고 6월에 있었던 별도 사전 행사 \"Road to BU-ROCK Gwangju\"의 MD 판매 안내만 확인됐어요.",
         "sourceUrl": "https://x.com/busan_rock"
+      },
+      {
+        "date": "2026-09-18",
+        "text": "공식 사이트 MD 공지(2026notice_15, 2026notice_16)에서 디스이즈네버댓·송월타올·엄브로 콜라보 공식 MD가 나온다는 걸 확인했어요. 사전예약은 9/18(금) 15:00~9/23(수) 18:00 KST, 현장 QR 수령은 10/2(금)~10/4(일) 공연 기간 중, 판매처는 퀸즈스마일(queenssmile.co.kr/shop/festival/NDM2/)이에요. 다만 개별 상품명·가격은 아직 공지에 없고(예시 이미지만 있음), 실제 퀸즈스마일 페이지는 오늘 트래픽 초과로 접속이 막혀 있어 event.merch에는 아직 반영하지 않았습니다.",
+        "sourceUrl": "https://busanrockfestival.com/notice/2026notice_16/"
       }
     ]
   },
@@ -1674,7 +1746,7 @@
       }
     ],
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260731/20260731-59422.jpg",
-    "merchCheckedAt": "2026-09-15",
+    "merchCheckedAt": "2026-09-18",
     "officialSns": [
       {
         "label": "Instagram",
@@ -1838,7 +1910,7 @@
         "url": "https://www.instagram.com/edc_korea/"
       }
     ],
-    "merchCheckedAt": "2026-09-15",
+    "merchCheckedAt": "2026-09-18",
     "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
     "funFacts": [
       "EDC(Electric Daisy Carnival)는 미국 라스베이거스에서 시작된 세계적인 EDM 페스티벌 브랜드예요. 코리아 에디션이 3회째를 맞으면서 개최 시기를 4월에서 10월로 옮겼는데, 개천절 연휴와 중국 황금연휴 기간에 맞춘 걸 보면 해외 관객 접근성을 높이려는 전략으로 보여요.",
@@ -1956,7 +2028,7 @@
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26011315"
       }
     ],
-    "merchCheckedAt": "2026-09-15"
+    "merchCheckedAt": "2026-09-18"
   },
   {
     "id": "ghost-festival-2026-10",
@@ -3538,7 +3610,7 @@
         "url": "https://ticket.yes24.com/New/Perf/Detail/Detail.aspx?IdPerf=59004"
       }
     ],
-    "merchCheckedAt": "2026-09-15",
+    "merchCheckedAt": "2026-09-18",
     "posterUrl": "/posters/rachael-yamagata-seoul-2026-09.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260622/20260622-59004.jpg",
     "officialSns": [
@@ -4183,9 +4255,20 @@
       {
         "date": "2026-09-15",
         "text": "소속사 컴퍼니수수 공식 홈페이지(companysoosoo.com)와 도경수 공식 bstage 페이지를 확인했지만, \"DAY OFF\" 서울 콘서트 전용 MD 판매 공지는 아직 못 찾았어요. 검색 중 나온 \"라이트 스트랩 키링\" 관련 언급은 출처가 불분명해(다른 투어의 상품과 혼동됐을 가능성) event.merch에는 반영하지 않았습니다."
+      },
+      {
+        "date": "2026-09-18",
+        "text": "검증된 공식 SNS가 없던 상태였는데, 본인 게시물(구계정 @d.o.hkyungsoo에서 이전 공지)로 확인되는 신규 공식 인스타그램 @dohkyungsoo_offcl(팔로워 35.6만, 바이오에 'DOH KYUNG SOO Official Instagram' 명시)을 발견해 event.officialSns에 등록했어요. 최근 게시물을 훑어봤지만 DAY OFF 콘서트 MD 관련 공지는 아직 없었습니다.",
+        "sourceUrl": "https://www.instagram.com/dohkyungsoo_offcl/"
       }
     ],
-    "merchCheckedAt": "2026-09-15"
+    "merchCheckedAt": "2026-09-18",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/dohkyungsoo_offcl/"
+      }
+    ]
   },
   {
     "id": "shuttle-monsta-x-world-tour-encore-2026-11",
