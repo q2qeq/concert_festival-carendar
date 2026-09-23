@@ -1,5 +1,25 @@
 [
   {
+    "id": "luck-life-seoul-2026-12",
+    "artist": "LUCK LIFE (럭라이프)",
+    "genre": "J-POP",
+    "venue": "무신사 개러지",
+    "city": "서울",
+    "startDate": "2026-12-19",
+    "endDate": "2026-12-20",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-01 낮 12시",
+    "ticketOpenAt": "2026-10-01T12:00:00+09:00",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "결성 18주년을 맞은 일본 록 밴드 럭라이프(LUCK LIFE)의 첫 단독 내한 투어 'TOUR 2026 「Hanashi no Tsuzuki」 in Korea'. 무신사 개러지에서 이틀간(12/19~20) 진행된다.",
+    "sources": [
+      {
+        "label": "멜론티켓 / LUCK LIFE TOUR 2026 「Hanashi no Tsuzuki」 in Korea 티켓 오픈 안내",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12884"
+      }
+    ]
+  },
+  {
     "id": "benson-boone-seoul-2026-10",
     "artist": "Benson Boone (벤슨 분)",
     "genre": "팝",
