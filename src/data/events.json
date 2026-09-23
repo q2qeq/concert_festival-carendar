@@ -1,5 +1,31 @@
 [
   {
+    "id": "benson-boone-seoul-2026-10",
+    "artist": "Benson Boone (벤슨 분)",
+    "genre": "팝",
+    "venue": "킨텍스 제2전시장 10홀",
+    "city": "고양",
+    "startDate": "2026-10-26",
+    "endDate": "2026-10-26",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26010154",
+    "officialUrl": "https://www.livenation.kr/en/event/benson-boone-wanted-man-tour-seoul-tickets-edp1686561",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-24). 'Beautiful Things'로 유명한 미국 싱어송라이터 벤슨 분의 'Wanted Man Tour' 서울 공연(두 번째 내한).",
+    "sources": [
+      {
+        "label": "Benson Boone: Wanted Man Tour, Seoul - Live Nation Korea",
+        "url": "https://www.livenation.kr/en/event/benson-boone-wanted-man-tour-seoul-tickets-edp1686561"
+      },
+      {
+        "label": "'Beautiful Things' singer Benson Boone to return to Korea in October - The Korea Times",
+        "url": "https://www.koreatimes.co.kr/lifestyle/people-events/20260713/beautiful-things-singer-benson-boone-to-return-to-korea-in-october"
+      },
+      {
+        "label": "벤슨 분, 10월 내한 공연 개최 - 보그 코리아",
+        "url": "https://www.vogue.co.kr/2026/07/13/%EB%B2%A4%EC%8A%A8-%EB%B6%84-10%EC%9B%94-%EB%82%B4%ED%95%9C-%EA%B3%B5%EC%97%B0-%EA%B0%9C%EC%B5%9C"
+      }
+    ]
+  },
+  {
     "id": "mass-of-the-fermenting-dregs-seoul-2026-12",
     "artist": "Mass Of The Fermenting Dregs (마스도레, with Dabda)",
     "genre": "J-POP",
