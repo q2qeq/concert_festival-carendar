@@ -1455,9 +1455,14 @@
         "date": "2026-09-14",
         "text": "공식 투어 페이지(starto.jp)에서 MD 판매가 확정된 걸 확인했어요. 오리지널 펜라이트(5,000엔)·에코백(2,500엔)·티셔츠(4,500엔) 등 투어 공통 상품 목록과, 티켓 없이도 이용 가능한 현장 판매 + 온라인 스토어(MERCH MARKET) 판매 방식이 안내돼 있어요. 다만 이 페이지는 투어 전체(일본 국내+해외) 공통 안내라서, 서울(인천) 공연에 현장 판매가 실제로 적용되는지·해외 배송이 되는지는 명시돼 있지 않았어요. 서울 공연 전용 MD 안내는 아직 별도로 공개되지 않은 것으로 보여 event.merch에는 반영하지 않았습니다.",
         "sourceUrl": "https://starto.jp/s/p/live/10520?lang=en"
+      },
+      {
+        "date": "2026-09-24",
+        "text": "공연 이틀 전 재확인: 공식 투어 페이지(starto.jp)와 인터파크 공지, 웹 검색을 다시 확인했지만 서울(인천) 공연 전용 MD 안내는 여전히 없었어요. 지난 확인(9/14) 때와 동일하게 투어 공통 상품(펜라이트·에코백·티셔츠 등) 안내만 있고, 서울 현장 판매 여부는 명시돼 있지 않아 event.merch에는 반영하지 않았습니다.",
+        "sourceUrl": "https://starto.jp/s/p/live/10520?lang=en"
       }
     ],
-    "merchCheckedAt": "2026-09-19"
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "post-malone-2026-10",
@@ -1516,7 +1521,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-19",
+    "merchCheckedAt": "2026-09-24",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1605,6 +1610,11 @@
         "date": "2026-09-19",
         "text": "MD 워치 재확인 - 공식 공지 목록(2026notice_15/16)에 9/16 이후 새 MD 공지는 없었고, 판매처 퀸즈스마일(queenssmile.co.kr/shop/festival/NDM2/)은 오늘도 '트래픽 초과' 안내로 차단돼 개별 상품명·가격은 확인하지 못했어요. 사전예약은 9/23(수) 18:00 KST 마감이라 상품 정보가 열리면 그때 반영합니다.",
         "sourceUrl": "https://busanrockfestival.com/notice/2026notice_16/"
+      },
+      {
+        "date": "2026-09-24",
+        "text": "지난 확인 때 트래픽 초과로 막혀있던 공식 MD 페이지(busanrockfestival.com/md)에 오늘은 정상 접속해 확인했어요. 사전예약 9/18(금) 15:00~9/23(수) 18:00 KST는 이미 마감됐고, 현장 QR 수령은 10/2(금)~10/4(일) 공연 기간 중이에요. 판매처는 퀸즈스마일(queenssmile.co.kr/shop/festival/NDM2/). 다만 페이지에는 상품 이미지 13장만 있고 개별 상품명·가격은 여전히 공개되지 않아(카카오톡 채널 문의 안내만 있음) event.merch에는 반영하지 않았습니다. 사전예약이 마감된 상태라 이번 워치 사이클에서는 실행 가능한 정보가 아니라고 판단했어요.",
+        "sourceUrl": "https://busanrockfestival.com/md"
       }
     ]
   },
@@ -2049,7 +2059,7 @@
         "url": "https://www.instagram.com/edc_korea/"
       }
     ],
-    "merchCheckedAt": "2026-09-19",
+    "merchCheckedAt": "2026-09-24",
     "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
     "funFacts": [
       "EDC(Electric Daisy Carnival)는 미국 라스베이거스에서 시작된 세계적인 EDM 페스티벌 브랜드예요. 코리아 에디션이 3회째를 맞으면서 개최 시기를 4월에서 10월로 옮겼는데, 개천절 연휴와 중국 황금연휴 기간에 맞춘 걸 보면 해외 관객 접근성을 높이려는 전략으로 보여요.",
@@ -2070,7 +2080,14 @@
     ],
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/edc-korea-2026.webp",
-    "posterSourceUrl": "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/73/2026/07/28164448/edck_2026_mk_lu_lubd_fest_site_seo_1200x630_r01.jpg"
+    "posterSourceUrl": "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/sites/73/2026/07/28164448/edck_2026_mk_lu_lubd_fest_site_seo_1200x630_r01.jpg",
+    "updates": [
+      {
+        "date": "2026-09-24",
+        "text": "공식 사이트(korea.edc.com)에 별도 MD/굿즈 섹션이 없고, 웹 검색에서도 EDC Korea 전용 공식 굿즈 스토어를 찾지 못했어요. 공식 인스타그램(@edc_korea)의 최근 게시물(D-30 표시 시점까지 스크롤)도 라인업 공개·카운트다운·셔틀버스 안내 위주였고 MD 관련 게시물은 없었습니다.",
+        "sourceUrl": "https://www.instagram.com/edc_korea/"
+      }
+    ]
   },
   {
     "id": "weeknd-hyundaicard-superconcert28-2026-10",
@@ -2165,9 +2182,13 @@
         "date": "2026-09-15",
         "text": "NOL 티켓(nol.yanolja.com) 판매 페이지에서 \"스탠딩 EARLY ENTRY PACKAGE\"(469,000원) 티켓 등급을 확인했어요. 얼리입장 혜택이 포함된 것으로 보이나, 정확히 어떤 굿즈/구성품이 동봉되는지는 페이지에 명시돼 있지 않아 event.merch에는 아직 반영하지 않았습니다.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26011315"
+      },
+      {
+        "date": "2026-09-24",
+        "text": "인터파크 공지 링크(13790)가 만료되어 NOL 티켓 \"오픈 예정\" 일반 목록으로 리다이렉트됐어요. 웹 검색에서도 MD 굿즈 사전판매 관련 정보는 찾지 못했습니다 (지난 확인 때 발견한 \"스탠딩 EARLY ENTRY PACKAGE\" 티켓 등급 외에는 새 정보 없음). 공식 SNS 계정이 확인되지 않아 3단계는 건너뛰었습니다."
       }
     ],
-    "merchCheckedAt": "2026-09-19"
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "ghost-festival-2026-10",
@@ -2282,6 +2303,11 @@
         "date": "2026-08-30",
         "text": "무료 셔틀(문산역·운정중앙역)과 페어플레이 유료 셔틀(사당·서울역·합정·종합운동장·노원) 정보 추가",
         "sourceUrl": "https://www.ghostfestival.kr/"
+      },
+      {
+        "date": "2026-09-24",
+        "text": "공식 홈페이지(ghostfestival.kr)에서 검증된 공식 인스타그램 @ghostfestival.official(팔로워 3,554명, 홈페이지에 직접 연결된 계정)을 새로 발견해 event.officialSns에 등록했어요. 최근 게시물(라인업 Day1~3 공지, FAQ 티켓/운영/교통 4종 등)을 확인했지만 MD·굿즈 관련 게시물은 없었고, 웹 검색에서도 관련 정보를 찾지 못했습니다.",
+        "sourceUrl": "https://www.instagram.com/ghostfestival.official/"
       }
     ],
     "sources": [
@@ -2321,7 +2347,14 @@
         "note": "예매 기간 8/11~10/1. 문의: 카카오톡 채널 또는 02-6952-0321"
       }
     ],
-    "posterSourceUrl": "https://static.luck-d.com/ticket/performance/902/poster_1784872819559.webp"
+    "posterSourceUrl": "https://static.luck-d.com/ticket/performance/902/poster_1784872819559.webp",
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/ghostfestival.official/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "shuttle-jx-core-incheon-2026-10",
@@ -2339,7 +2372,7 @@
         "url": "https://x.com/JX_identity"
       }
     ],
-    "merchCheckedAt": "2026-09-02",
+    "merchCheckedAt": "2026-09-24",
     "description": "동방신기·JYJ 출신 김재중·김준수의 유닛 JX, 데뷔 20주년을 맞아 여는 두 번째 투어 'CORE'의 개막 공연. 인천을 시작으로 고베·마카오·오사카·타이베이·요코하마까지 6개 도시를 돈다.",
     "funFacts": [
       "둘 다 동방신기로 데뷔해 JYJ로도 활동한 K팝 레전드급 듀오예요. 데뷔 20주년에 맞춰 JX라는 유닛으로 다시 뭉쳤어요.",
@@ -2362,7 +2395,14 @@
     ],
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/shuttle-jx-core-incheon-2026-10.webp",
-    "posterSourceUrl": "https://wimg.munhwa.com/news/cms/2026/08/24/news-p.v1.20260824.23d11ba781d44f8f89b78098c8bb0989_R.jpg"
+    "posterSourceUrl": "https://wimg.munhwa.com/news/cms/2026/08/24/news-p.v1.20260824.23d11ba781d44f8f89b78098c8bb0989_R.jpg",
+    "updates": [
+      {
+        "date": "2026-09-24",
+        "text": "공식 X(@JX_identity) 타임라인을 9/21부터 9/11(인천 일반예매 오픈 공지)까지 재확인했어요. 대부분 일본 투어(FC 선행예매, 공연 상세 안내) 및 인천 티켓 오픈 공지였고 MD 관련 게시물은 없었습니다. 웹 검색에서도 \"JX CORE 인천 MD/굿즈\" 관련 정보는 찾지 못했습니다.",
+        "sourceUrl": "https://x.com/JX_identity"
+      }
+    ]
   },
   {
     "id": "kopis-jarasum-jazz-2026-10",
@@ -2432,6 +2472,11 @@
         "date": "2026-08-19",
         "text": "공연 콘셉트와 3일간(10/9~11) 일정이 공개됐어요.",
         "sourceUrl": "https://sports.khan.co.kr/en/article/202608192303007/"
+      },
+      {
+        "date": "2026-09-24",
+        "text": "인터파크 공지 링크(14951)가 만료되어 NOL 티켓 일반 목록으로 리다이렉트됐어요. 웹 검색에서도 \"THE MISSING TRACKS\" MD 관련 정보는 나오지 않았습니다. 공식 인스타그램(@10cm_official)도 최근 게시물을 확인했지만(ELLE 화보, 크리스마스 콘텐츠, \"Everything\" 라이브 클립 등) 팬콘서트 MD 관련 게시물은 찾지 못했어요.",
+        "sourceUrl": "https://www.instagram.com/10cm_official/"
       }
     ],
     "sources": [
@@ -2446,7 +2491,7 @@
         "url": "https://www.instagram.com/10cm_official/"
       }
     ],
-    "merchCheckedAt": "2026-09-02",
+    "merchCheckedAt": "2026-09-24",
     "posterSourceUrl": "https://images.khan.co.kr/article/2026/08/19/news-p.v1.20260819.8832c2932e994b868d6a6b37bfd0e0a8_P1.jpeg"
   },
   {
@@ -2472,7 +2517,15 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297586_260804_102420.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297586_260804_102420.jpg",
+    "updates": [
+      {
+        "date": "2026-09-24",
+        "text": "공식 사이트(cero-web.jp/2026/)에는 현재 도쿄·고베·오사카·아이치 등 일본 내 공연만 안내되어 있고 서울 공연이나 MD 관련 언급은 없었어요. 웹 검색으로도 관련 정보를 찾지 못했습니다. 공식 SNS 계정이 확인되지 않아 3단계는 건너뛰었습니다.",
+        "sourceUrl": "https://cero-web.jp/2026/"
+      }
+    ],
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "charlie-puth-2026-10",
@@ -3718,7 +3771,13 @@
     ],
     "posterUrl": "/posters/ezra-collective-seoul-2026-10.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260519/20260519-58534.jpg",
-    "merchCheckedAt": "2026-09-19"
+    "merchCheckedAt": "2026-09-24",
+    "updates": [
+      {
+        "date": "2026-09-24",
+        "text": "YES24 티켓 공연 페이지에는 MD 관련 언급이 없었어요. 웹 검색으로 Ezra Collective의 글로벌 공식 온라인 스토어(ezracollective.com/shop.ezracollective.com)는 확인했지만, 서울 공연장 현장 판매나 이 공연에 특정된 사전예약 정보는 아니라서 event.merch에는 반영하지 않았습니다. 공식 SNS 계정이 확인되지 않아 3단계는 건너뛰었습니다."
+      }
+    ]
   },
   {
     "id": "rachael-yamagata-seoul-2026-09",
@@ -4400,9 +4459,14 @@
         "date": "2026-09-18",
         "text": "검증된 공식 SNS가 없던 상태였는데, 본인 게시물(구계정 @d.o.hkyungsoo에서 이전 공지)로 확인되는 신규 공식 인스타그램 @dohkyungsoo_offcl(팔로워 35.6만, 바이오에 'DOH KYUNG SOO Official Instagram' 명시)을 발견해 event.officialSns에 등록했어요. 최근 게시물을 훑어봤지만 DAY OFF 콘서트 MD 관련 공지는 아직 없었습니다.",
         "sourceUrl": "https://www.instagram.com/dohkyungsoo_offcl/"
+      },
+      {
+        "date": "2026-09-24",
+        "text": "공식 링크트리(linktr.ee/DOHKYUNGSOO_DOPAMINE)를 확인했지만 이건 음반 \"DOPAMINE\" 예약판매(Ktown4u/MAKESTAR 등) 링크 모음이라 콘서트 MD와는 무관했어요. 소속사 컴퍼니수수 공지 게시판(companysoosoo.com/notice)도 다시 확인했는데, \"DAY OFF\" 투어 관련 공지 자체가 아직 없고(직전 투어 \"DO it! THE FINAL\"의 MD 공지만 있음) 웹 검색에서도 DAY OFF MD 정보는 나오지 않았습니다.",
+        "sourceUrl": "https://companysoosoo.com/notice"
       }
     ],
-    "merchCheckedAt": "2026-09-19",
+    "merchCheckedAt": "2026-09-24",
     "officialSns": [
       {
         "label": "Instagram",
