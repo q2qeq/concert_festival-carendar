@@ -2447,7 +2447,8 @@
       }
     ],
     "posterUrl": "/posters/kopis-jarasum-jazz-2026-10.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260629/20260629-58947.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260629/20260629-58947.jpg",
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "kopis-10cm-fanconcert-2026-10",
@@ -2619,7 +2620,8 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295821_260710_144242.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295821_260710_144242.gif",
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "nol-festival-2026-10",
@@ -2722,7 +2724,8 @@
         "label": "결성 20주년을 맞은 '국가대표 스카밴드'의 잔치 같은 무대 - 인천광역시",
         "url": "https://incheon.go.kr/IC010205/view?beginDt=2022-05-15&curPage=211&endDt=&repSeq=DOM_0000000010669252&srchMainManagerDeptNm=&srchRepContents=&srchRepTitle="
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "kopis-yeotak-jeonju-2026-10",
@@ -2756,7 +2759,8 @@
         "url": "https://www.viva100.com/article/20260806500968"
       }
     ],
-    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202608/16156505_1983393_618.jpg"
+    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202608/16156505_1983393_618.jpg",
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "kopis-everblue-daegu-2026-10",
@@ -3909,7 +3913,8 @@
         "label": "〈Shi Shi [ The Taste Of… ] World Tour in Seoul〉 - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf/59681"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "kawasaki-takaya-seoul-2026-12",
@@ -3978,7 +3983,8 @@
         "label": "Andromeda Mega Express Orchestra - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf/59894"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "coaltar-of-the-deepers-seoul-2026-10",
@@ -4001,7 +4007,8 @@
         "label": "Coaltar of the Deepers 35th Anniversary Live in Seoul - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf/59686"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "flow-naruto-rock-seoul-2026-10",
@@ -4047,7 +4054,8 @@
         "label": "Ｈ△Ｇ 1st One Man Live in Seoul 夏の在りか - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf/59841"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "sound-planet-festival-2026-09",
@@ -4605,7 +4613,8 @@
         "label": "illit to hold encore shows for first tour 'press start♥' in korea and japan - allkpop",
         "url": "https://www.allkpop.com/article/2026/07/illit-to-hold-encore-shows-for-first-tour-press-start-in-korea-and-japan"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-24"
   },
   {
     "id": "aosaka-seoul-2027-01",
@@ -4648,6 +4657,7 @@
         "label": "TAKASE TOYA ASIA TOUR 2026 \"∞\" SEOUL - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf/60065"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-24"
   }
 ]
