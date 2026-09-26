@@ -1,7 +1,9 @@
 [
   {
     "artist": "카키 (Khaki) ONE-MAN Live in Seoul",
-    "source": ["interpark-websearch"],
+    "source": [
+      "interpark-websearch"
+    ],
     "sourceUrl": [],
     "noticeTitle": "Khaki ONE-MAN Live in Seoul",
     "ticketOpenAt": "",
@@ -12,7 +14,9 @@
   },
   {
     "artist": "조나 마레·잭 헤론·잭 에이버리 내한공연 \"Why Can't We?\"",
-    "source": ["interpark-websearch"],
+    "source": [
+      "interpark-websearch"
+    ],
     "sourceUrl": [],
     "noticeTitle": "조나 마레 잭 헤론 잭 에이버리 내한공연 Why Can't We?",
     "ticketOpenAt": "2026-09-09T10:00:00+09:00",
@@ -23,7 +27,9 @@
   },
   {
     "artist": "프레야 스카이 (Freya Skye) 첫 내한공연 \"Stars Align Tour\"",
-    "source": ["interpark-websearch"],
+    "source": [
+      "interpark-websearch"
+    ],
     "sourceUrl": [],
     "noticeTitle": "프레야 스카이, 내년 2월 첫 내한공연…'Stars Align Tour' 서울 개최",
     "ticketOpenAt": "2026-09-30T12:00:00+09:00",
@@ -31,5 +37,31 @@
     "showDate": "2027-02-20",
     "discoveredAt": "2026-09-24",
     "note": "인터파크(NOL 티켓) - 검색 스니펫 기반, 원문 미확인. 뉴스 보도(싱글리스트·문화뉴스·스포츠경향 영문판 등 다수)로 교차 확인됨 - 영국 팝스타 프레야 스카이가 'Stars Align Tour' 일환으로 2027-02-20 첫 내한, NOL 단독판매(9/29 12:00 아티스트 선예매 → 9/30 12:00 일반오픈)라는 내용은 여러 매체에서 일관되게 보도. 다만 공연장명(명화라이브홀)은 생소한 표기라 오탈자 가능성 있어 원문/다른 출처로 재확인 필요."
+  },
+  {
+    "artist": "Freddie Gibbs (프레디 깁스)",
+    "source": [
+      "interpark-websearch"
+    ],
+    "sourceUrl": [],
+    "noticeTitle": "Freddie Gibbs 프레디 깁스 첫 내한공연",
+    "ticketOpenAt": "",
+    "venue": "현대카드 언더스테이지",
+    "showDate": "2026-10-13",
+    "discoveredAt": "2026-09-26",
+    "note": "인터파크 - 검색 스니펫 기반, 원문 미확인. 정확한 티켓오픈 시각 미확인 - 다른 출처로 교차 확인 후 게시 필요."
+  },
+  {
+    "artist": "Nujabes Metaphorical Ensemble",
+    "source": [
+      "interpark-websearch"
+    ],
+    "sourceUrl": [],
+    "noticeTitle": "Nujabes Metaphorical Ensemble Live in Seoul",
+    "ticketOpenAt": "",
+    "venue": "NOL 씨어터 합정 동양생명홀",
+    "showDate": "2026-10-31",
+    "discoveredAt": "2026-09-26",
+    "note": "인터파크 - 검색 스니펫 기반, 원문 미확인. 정확한 티켓오픈 시각 미확인 - 다른 출처로 교차 확인 후 게시 필요."
   }
 ]
