@@ -1522,7 +1522,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-09-24",
+    "merchCheckedAt": "2026-09-27",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1616,6 +1616,11 @@
         "date": "2026-09-24",
         "text": "지난 확인 때 트래픽 초과로 막혀있던 공식 MD 페이지(busanrockfestival.com/md)에 오늘은 정상 접속해 확인했어요. 사전예약 9/18(금) 15:00~9/23(수) 18:00 KST는 이미 마감됐고, 현장 QR 수령은 10/2(금)~10/4(일) 공연 기간 중이에요. 판매처는 퀸즈스마일(queenssmile.co.kr/shop/festival/NDM2/). 다만 페이지에는 상품 이미지 13장만 있고 개별 상품명·가격은 여전히 공개되지 않아(카카오톡 채널 문의 안내만 있음) event.merch에는 반영하지 않았습니다. 사전예약이 마감된 상태라 이번 워치 사이클에서는 실행 가능한 정보가 아니라고 판단했어요.",
         "sourceUrl": "https://busanrockfestival.com/md"
+      },
+      {
+        "date": "2026-09-27",
+        "text": "공식 MD 페이지(busanrockfestival.com/MD)와 웹 검색을 재확인했지만 9/24 이후 달라진 점이 없어요. 사전예약(9/18~9/23)은 마감됐고, 개별 상품명·가격은 여전히 공개되지 않았습니다. 현장 QR 수령은 10/2~10/4예요.",
+        "sourceUrl": "https://busanrockfestival.com/MD"
       }
     ]
   },
@@ -2060,7 +2065,7 @@
         "url": "https://www.instagram.com/edc_korea/"
       }
     ],
-    "merchCheckedAt": "2026-09-24",
+    "merchCheckedAt": "2026-09-27",
     "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
     "funFacts": [
       "EDC(Electric Daisy Carnival)는 미국 라스베이거스에서 시작된 세계적인 EDM 페스티벌 브랜드예요. 코리아 에디션이 3회째를 맞으면서 개최 시기를 4월에서 10월로 옮겼는데, 개천절 연휴와 중국 황금연휴 기간에 맞춘 걸 보면 해외 관객 접근성을 높이려는 전략으로 보여요.",
@@ -2189,7 +2194,7 @@
         "text": "인터파크 공지 링크(13790)가 만료되어 NOL 티켓 \"오픈 예정\" 일반 목록으로 리다이렉트됐어요. 웹 검색에서도 MD 굿즈 사전판매 관련 정보는 찾지 못했습니다 (지난 확인 때 발견한 \"스탠딩 EARLY ENTRY PACKAGE\" 티켓 등급 외에는 새 정보 없음). 공식 SNS 계정이 확인되지 않아 3단계는 건너뛰었습니다."
       }
     ],
-    "merchCheckedAt": "2026-09-24"
+    "merchCheckedAt": "2026-09-27"
   },
   {
     "id": "ghost-festival-2026-10",
@@ -2355,7 +2360,7 @@
         "url": "https://www.instagram.com/ghostfestival.official/"
       }
     ],
-    "merchCheckedAt": "2026-09-24"
+    "merchCheckedAt": "2026-09-27"
   },
   {
     "id": "shuttle-jx-core-incheon-2026-10",
@@ -2493,7 +2498,7 @@
         "url": "https://www.instagram.com/10cm_official/"
       }
     ],
-    "merchCheckedAt": "2026-09-24",
+    "merchCheckedAt": "2026-09-27",
     "posterSourceUrl": "https://images.khan.co.kr/article/2026/08/19/news-p.v1.20260819.8832c2932e994b868d6a6b37bfd0e0a8_P1.jpeg"
   },
   {
@@ -2527,7 +2532,7 @@
         "sourceUrl": "https://cero-web.jp/2026/"
       }
     ],
-    "merchCheckedAt": "2026-09-24"
+    "merchCheckedAt": "2026-09-27"
   },
   {
     "id": "charlie-puth-2026-10",
@@ -3782,7 +3787,7 @@
     ],
     "posterUrl": "/posters/ezra-collective-seoul-2026-10.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260519/20260519-58534.jpg",
-    "merchCheckedAt": "2026-09-24",
+    "merchCheckedAt": "2026-09-27",
     "updates": [
       {
         "date": "2026-09-24",
@@ -4502,9 +4507,14 @@
         "date": "2026-09-24",
         "text": "공식 링크트리(linktr.ee/DOHKYUNGSOO_DOPAMINE)를 확인했지만 이건 음반 \"DOPAMINE\" 예약판매(Ktown4u/MAKESTAR 등) 링크 모음이라 콘서트 MD와는 무관했어요. 소속사 컴퍼니수수 공지 게시판(companysoosoo.com/notice)도 다시 확인했는데, \"DAY OFF\" 투어 관련 공지 자체가 아직 없고(직전 투어 \"DO it! THE FINAL\"의 MD 공지만 있음) 웹 검색에서도 DAY OFF MD 정보는 나오지 않았습니다.",
         "sourceUrl": "https://companysoosoo.com/notice"
+      },
+      {
+        "date": "2026-09-27",
+        "text": "공식 bstage 공지(\"[NOTICE] 2026-2027 DOH KYUNG SOO CONCERT TOUR [DAY OFF] IN SEOUL 안내\")에 공식 MD 현장 판매 일정이 있다고 검색 결과에 나와요: 10/2(금) 14:00~19:00, 10/3(토)·10/4(일) 11:00~16:30, 킨텍스 현장. 다만 공지 페이지가 자동 열람으로는 본문이 렌더링되지 않아 상품명·가격은 확인하지 못했고, 장소 표기(E홀 등)도 직접 확인하지 못해 event.merch에는 반영하지 않았어요.",
+        "sourceUrl": "https://dohkyungsoo.bstage.in/contents/6a79241ff4a3e9602c090dcf"
       }
     ],
-    "merchCheckedAt": "2026-09-24",
+    "merchCheckedAt": "2026-09-27",
     "officialSns": [
       {
         "label": "Instagram",
