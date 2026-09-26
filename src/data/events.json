@@ -2783,7 +2783,8 @@
         "text": "EXCO 자체 2026년 일정 페이지가 7월까지만 공개돼 있고, 축제정보센터·Bandsintown 등 행사 아카이브에도 이 페스티벌이 없어요. 아직 공식 발표 전인 것으로 보입니다."
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "merchCheckedAt": "2026-09-26"
   },
   {
     "id": "kopis-yoonjongshin-busan-2026-10",
@@ -2816,7 +2817,8 @@
         "url": "https://www.hankyung.com/article/202608214261H"
       }
     ],
-    "posterSourceUrl": "https://cdn.mhns.co.kr/news/thumbnail/202608/757137_890861_5055_v150.jpg"
+    "posterSourceUrl": "https://cdn.mhns.co.kr/news/thumbnail/202608/757137_890861_5055_v150.jpg",
+    "merchCheckedAt": "2026-09-26"
   },
   {
     "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
@@ -2937,7 +2939,8 @@
       }
     ],
     "posterUrl": "/posters/kopis-kimjanghun-miryang-2026-11.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260618/20260618-58980.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260618/20260618-58980.jpg",
+    "merchCheckedAt": "2026-09-26"
   },
   {
     "id": "jason-mraz-2026-11",
@@ -3241,7 +3244,8 @@
         "sourceUrl": "https://www.starnewskorea.com/music/2026/08/28/2026082811013161926"
       }
     ],
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png",
+    "merchCheckedAt": "2026-09-26"
   },
   {
     "id": "kopis-PF299935",
@@ -3253,7 +3257,8 @@
     "endDate": "2026-11-29",
     "posterUrl": "/posters/kopis-PF299935.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
+    "merchCheckedAt": "2026-09-26"
   },
   {
     "id": "shuttle-yuuri-live-seoul-2026-12",
@@ -3893,7 +3898,8 @@
         "label": "BLU-SWING “Across the Blue” in Seoul - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf/59831"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-26"
   },
   {
     "id": "shi-shi-seoul-2026-10",
@@ -4287,6 +4293,24 @@
         "label": "주술회전 인 콘서트 - 예스24티켓 콘서트 해외뮤지션 카테고리",
         "url": "https://ticket.yes24.com/Perf/59468"
       }
+    ],
+    "merchCheckedAt": "2026-09-26",
+    "merch": [
+      {
+        "label": "스쿠나의 핑거 체인",
+        "note": "공연장 현장 독점 MD (가격·판매 기간은 미공지)",
+        "url": "https://zdnet.co.kr/view/?no=20260519004403"
+      },
+      {
+        "label": "고죠의 블라인드폴드",
+        "note": "공연장 현장 독점 MD (가격·판매 기간은 미공지)",
+        "url": "https://zdnet.co.kr/view/?no=20260519004403"
+      },
+      {
+        "label": "Know Your Place, Fool 토트백",
+        "note": "공연장 현장 독점 MD (가격·판매 기간은 미공지)",
+        "url": "https://zdnet.co.kr/view/?no=20260519004403"
+      }
     ]
   },
   {
@@ -4506,7 +4530,8 @@
         "label": "전 세계 누빈 몬스타엑스, 11월 인천서 월드투어 피날레 - 이데일리",
         "url": "https://www.edaily.co.kr/News/Read?newsId=03663766645578480"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-09-26"
   },
   {
     "id": "ata-festival-2026-09",
