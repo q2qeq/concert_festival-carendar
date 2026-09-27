@@ -4700,5 +4700,77 @@
       }
     ],
     "merchCheckedAt": "2026-09-24"
+  },
+  {
+    "id": "mulasaki-ima-seoul-2026-12",
+    "artist": "Mulasaki Ima",
+    "genre": "J-POP",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-12",
+    "ticketLinks": [
+      {
+        "vendor": "YES24",
+        "url": "https://ticket.yes24.com/Perf/60203"
+      }
+    ],
+    "schedule": "2026년 12월 12일(토) 오후 6시",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "Mulasaki Ima의 단독 내한 공연 'ONE MAN TOUR 2026 「PURPLE SHELTER -ep.1- EXTRA」 in Seoul'. 예스24 원더로크홀에서 열린다.",
+    "sources": [
+      {
+        "label": "YES24 티켓 / Mulasaki Ima ONE MAN TOUR 2026 『PURPLE SHELTER -ep.1- EXTRA』in Seoul",
+        "url": "https://ticket.yes24.com/Perf/60203"
+      }
+    ]
+  },
+  {
+    "id": "jane-remover-seoul-2026-12",
+    "artist": "Jane Remover (제인 리무버)",
+    "genre": "팝",
+    "venue": "무신사 개러지",
+    "city": "서울",
+    "startDate": "2026-12-11",
+    "endDate": "2026-12-11",
+    "ticketLinks": [
+      {
+        "vendor": "YES24",
+        "url": "https://ticket.yes24.com/Perf/60113"
+      }
+    ],
+    "schedule": "2026년 12월 11일(금) 오후 8시",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "Jane Remover(제인 리무버)의 단독 내한 공연 'Live Exhibit in Seoul'. 무신사 개러지에서 열리며 미성년자 관람불가(성인인증 필요) 공연이다.",
+    "sources": [
+      {
+        "label": "YES24 티켓 / Jane Remover: Live Exhibit in Seoul",
+        "url": "https://ticket.yes24.com/Perf/60113"
+      }
+    ]
+  },
+  {
+    "id": "christopher-seoul-2026-11",
+    "artist": "Christopher",
+    "genre": "팝",
+    "venue": "세종문화회관 대극장",
+    "city": "서울",
+    "startDate": "2026-11-19",
+    "endDate": "2026-11-20",
+    "ticketLinks": [
+      {
+        "vendor": "YES24",
+        "url": "https://ticket.yes24.com/Perf/59732"
+      }
+    ],
+    "schedule": "2026.11.19(목), 20(금) 오후 8시",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "'SJF at the Theater 2026' 시리즈로 열리는 Christopher 단독 공연. 세종문화회관 대극장에서 이틀간(11/19~20) 진행된다.",
+    "sources": [
+      {
+        "label": "YES24 티켓 / SJF at the Theater 2026 - Christopher",
+        "url": "https://ticket.yes24.com/Perf/59732"
+      }
+    ]
   }
 ]
