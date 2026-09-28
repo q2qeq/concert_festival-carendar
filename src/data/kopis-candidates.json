@@ -1,44 +1,5 @@
 [
   {
-    "id": "kopis-PF299229",
-    "artist": "ONE HOUR [부산] (9월)",
-    "genre": "콘서트",
-    "venue": "KT&G 상상마당 라이브홀 [부산]",
-    "city": "서울",
-    "startDate": "2026-09-04",
-    "endDate": "2026-09-25",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299229_260824_142620.png",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF299727",
-    "artist": "Redoor 단독콘서트: Memory",
-    "genre": "콘서트",
-    "venue": "올림픽공원",
-    "city": "서울",
-    "startDate": "2026-09-26",
-    "endDate": "2026-09-27",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299727_260831_135139.gif",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF293136",
-    "artist": "Silica Gel Asia Tour, Syn.THE.Size: Ballad of You [서울]",
-    "genre": "콘서트",
-    "venue": "올림픽공원",
-    "city": "서울",
-    "startDate": "2026-09-26",
-    "endDate": "2026-09-27",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF293136_260608_154813.gif",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
     "id": "kopis-PF301010",
     "artist": "라라라온 [프리즘홀]",
     "genre": "콘서트",
