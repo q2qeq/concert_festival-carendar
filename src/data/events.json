@@ -4893,5 +4893,65 @@
         "url": "https://nol.yanolja.com/ticket/products/26011093"
       }
     ]
+  },
+  {
+    "id": "buckshot-oscar18-seoul-2026-11",
+    "artist": "buckshot & Oscar18 (baby selects \"Buckshot\" Live in Seoul)",
+    "genre": "팝/힙합",
+    "venue": "홍대스테이지",
+    "city": "서울",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-14",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-02 낮 12시",
+    "ticketOpenAt": "2026-10-02T12:00:00+09:00",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "아일랜드 언더그라운드 씬을 대표하는 buckshot과 프로듀서 Oscar18의 아시아투어 마지막 종착지인 서울 공연. 베이비셀렉츠 단독판매로 홍대스테이지에서 열려요.",
+    "sources": [
+      {
+        "label": "단독판매 baby selects \"Buckshot\" Live in Seoul 티켓 오픈 안내 - YES24 티켓",
+        "url": "https://ticket.yes24.com/Notice#id=18582"
+      }
+    ]
+  },
+  {
+    "id": "yuki-kuramoto-daegu-2026-12",
+    "artist": "유키 구라모토 (Yuki Kuramoto) - Peacefully",
+    "genre": "재즈/내한",
+    "venue": "영남대학교 천마아트센터 그랜드홀",
+    "city": "대구",
+    "startDate": "2026-12-16",
+    "endDate": "2026-12-16",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-01 오전 10시",
+    "ticketOpenAt": "2026-10-01T10:00:00+09:00",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 피아니스트 유키 구라모토의 2026 콘서트 'Peacefully' 대구 공연. (주)원앤원엔터테인먼트 주최/주관.",
+    "sources": [
+      {
+        "label": "2026 유키 구라모토 콘서트 Peacefully - 대구 티켓오픈 안내 - 티켓링크",
+        "url": "https://www.ticketlink.co.kr/help/notice/66043"
+      }
+    ]
+  },
+  {
+    "id": "yuki-kuramoto-gimhae-2026-12",
+    "artist": "유키 구라모토 (Yuki Kuramoto) - Peacefully",
+    "genre": "재즈/내한",
+    "venue": "김해문화의전당 마루홀",
+    "city": "김해",
+    "startDate": "2026-12-15",
+    "endDate": "2026-12-15",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-01 오전 11시",
+    "ticketOpenAt": "2026-10-01T11:00:00+09:00",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 피아니스트 유키 구라모토의 2026 콘서트 'Peacefully' 김해 공연. (주)원앤원엔터테인먼트 주최/주관.",
+    "sources": [
+      {
+        "label": "2026 유키 구라모토 콘서트 Peacefully - 김해 티켓오픈 안내 - 티켓링크",
+        "url": "https://www.ticketlink.co.kr/help/notice/66042"
+      }
+    ]
   }
 ]

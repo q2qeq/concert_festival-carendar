@@ -63,5 +63,16 @@
     "showDate": "2026-10-31",
     "discoveredAt": "2026-09-26",
     "note": "인터파크 - 검색 스니펫 기반, 원문 미확인. 정확한 티켓오픈 시각 미확인 - 다른 출처로 교차 확인 후 게시 필요."
+  },
+  {
+    "artist": "KANO MIYU",
+    "source": ["melon-notice"],
+    "sourceUrl": ["https://ticket.melon.com/csoon/detail.htm?csoonId=12944"],
+    "noticeTitle": "KANO MIYU Birthday Live『1999 ep 2026』 Concert 티켓 오픈 안내",
+    "ticketOpenAt": "2026-09-28T18:00:00+09:00",
+    "venue": "플렉스 3호점",
+    "showDate": "2026-11-01",
+    "discoveredAt": "2026-09-29",
+    "note": "일본 출신이지만 MBN '한일가왕전'/'한일톱텐쇼' 출연 등으로 이미 한국에서 상시 활동 중인 크로스오버 가수라 '내한' 성격의 공연인지 애매함. 같은 시리즈로 Fan Meeting(티켓오픈 2026-09-29 20:00)도 별도 공지됨. 이 공연은 공지의 티켓오픈일시(09-28 18:00)가 발견 시점(09-29) 기준 이미 지나 있어 오픈 공지로서의 신선도도 낮음 - 사람 판단 필요."
   }
 ]
