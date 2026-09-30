@@ -396,3 +396,23 @@ events.json 추가 후 npm run build 성공 확인(136 페이지 정상 생성, 
 - 마블런·현대 N 페스티벌(인제 스피디움), SMTOWN RUN CLUB, 거창 정원치유박람회, 계룡군문화축제, 제네시스 챔피언십, 진주남강유등축제, 김천김밥축제 - 음악 공연 아님/스코프 밖(기존 로그에서 확정, 동일).
 - 나머지 카카오 T 콘서트/페스티벌 16건(부산국제록페스티벌·몬스타엑스·벤슨 분·도경수·브루노 마스·아일릿·데이식스·JX·마룬5·위켄드·찰리 푸스·&TEAM·EXO·유우리·FKJ·칼리드)은 9/28과 동일하며 events.json 등재 항목과 아티스트 동일·날짜 변동 없음 - 중복.
 - 퀸즈스마일 SHOP 목록의 나머지 7건(WONDERLIVET 2026 - 킨텍스 제2전시장 11/20~22 동일, XMF 2026 - 파라다이스시티 10/3~4 동일, 2026 EDC KOREA - 인스파이어 엔터테인먼트 리조트 10/3~4 동일, JX 2026 TOUR CONCERT in INCHEON - 인스파이어 아레나 10/9~11 동일, ILLIT PRESS START ENCORE - 인스파이어 아레나 10/17~18 동일, DAY6 5TH FANMEETING - 인스파이어 아레나 10/23~25 동일, MONSTA X WORLD TOUR ENCORE - 인스파이어 아레나 11/21~22 동일)는 모두 events.json 기존 등재 항목과 아티스트·날짜·장소가 완전히 일치해 중복 확인.
+
+---
+## 2026-09-30 09:22 KST 실행 (자동)
+**스캔 방법:** 카카오 T 셔틀은 데스크톱 뷰포트로 접속해 "더보기"를 눌러 전체 목록(콘서트/페스티벌/지역축제/기브셔틀/스포츠 통합, 25건)을 확인. 꽃가마(ggoggama.com)는 오늘도 앱스토어/구글플레이 링크뿐인 회사소개 랜딩 페이지로 신규 정보 없음(앱 전용 서비스, 이전 실행과 동일). 퀸즈스마일(queenssmile.co.kr/shop/)은 브라우저로는 오늘도 intro.queenssmile.co.kr로 리다이렉트되어 목록을 열지 못했으나 WebFetch로 우회해 SHOP 목록(총 9건)을 확보함.
+
+발견된 후보 (카카오 T 25건 + 퀸즈스마일 9건, 이미 등재/검토 중인 항목 포함): 구미 라면축제, 부산국제록페스티벌, 몬스타엑스 월드 투어, 벤슨 분, 도경수, 마블런, 현대 N 페스티벌 4라운드, 브루노 마스, 아일릿, 데이식스, JX, 마룬5, SMTOWN RUN CLUB 26, 거창 정원치유박람회, 계룡군문화축제, 위켄드, 찰리 푸스, 진주남강유등축제, 제네시스 챔피언십, &TEAM, EXO, 유우리, FKJ, 칼리드, 김천김밥축제, 2026 경기인디뮤직페스티벌(INMUFE), WONDERLIVET 2026, XMF 2026, 2026 EDC KOREA, JX 2026 TOUR CONCERT(퀸즈스마일 표기 중복), JEONGHAN X JOSHUA JOURNEY INTO [DREAMING] - INCHEON, ILLIT PRESS START ENCORE, DAY6 5TH FANMEETING, MONSTA X WORLD TOUR ENCORE
+
+**게시함 (1건):**
+- 정한 X 조슈아 (Jeonghan X Joshua) - JOURNEY INTO [DREAMING] (id: jeonghan-joshua-journey-into-dreaming-incheon-2026-10) - 인천 인스파이어 아레나, 2026-10-30~11-01. 퀸즈스마일 SHOP 목록에서 오늘 처음 확인된 신규 항목("JEONGHAN X JOSHUA JOURNEY INTO [DREAMING] - INCHEON", 10/30~11/1). 세븐틴(SEVENTEEN) 유닛 정한X조슈아(JxJ)의 첫 단독 투어 개막 공연. 문화일보(munhwa.com/article/11619942)와 스타뉴스 공식 보도(starnewskorea.com/star/2026/09/29/2026092909295959796)가 날짜(10/30~11/1)·장소(인스파이어 아레나)·아티스트를 동일하게 보도했고, NOL(야놀자) 공식 티켓 페이지(nol.yanolja.com/ticket/products/26013793)도 동일 날짜·장소로 판매 중이라 3곳 이상 독립 출처로 교차 확인됨. genre는 세븐틴 유닛(K-pop)이라 기존 RIIZE 팬미팅·DAY6 팬미팅·JX·몬스타엑스 등과 동일 기준으로 "가요" 확정. **dedup 검토:** events.json에 인스파이어 아레나를 쓰는 기존 항목이 다수 있으나(JX 10/9~11, ILLIT 10/17~18, DAY6 10/23~25, 몬스타엑스 11/21~22, YUURI 12/5~6, RIIZE 9/12~13, Vaundy 9/19~20, TAKUYA KIMURA 9/26) 모두 아티스트도 다르고 이번 신규 건(10/30~11/1)과 날짜가 겹치지 않아 별개 공연으로 확인. posterUrl은 별도 포스터 다운로드/변환 파이프라인 없이는 확인된 로컬 이미지가 없어 필드 자체를 넣지 않음(원본 포스터는 ticketimage.interpark.com/Play/image/large/26/26013793_p.gif 확인했으나 로컬 처리는 하지 않음 - 추후 포스터 워치 작업에서 처리 필요). events.json 추가 후 npm run build 성공 확인(151 페이지 정상 생성, /events/jeonghan-joshua-journey-into-dreaming-incheon-2026-10/ 포함).
+
+검토 파일행 (0건, 신규 없음 — 기존 2건 OBJET K-POP FESTA 2026·더팩트 뮤직 어워즈(TMA)는 보류 사유 미해소로 변동 없이 유지): 없음.
+- 참고: 두 항목 모두 개최일(9/26~27, 9/19)이 이미 지난 과거 행사이나 이번 스캔 범위(신규 후보 발견) 밖이라 shuttle-scan-candidates.json 항목은 수정하지 않고 유지 — 사람이 게시 없이 정리(삭제)할지 판단 필요.
+
+제외함/드롭 (1건) - 신규 발견:
+- 구미 라면축제 (구미역 일대, 카카오 T 셔틀에 오늘 처음 등장) - 라면(음식) 축제로 음악 공연이 아니라 사이트 스코프 밖. 기존에 동일 사유로 제외된 진주남강유등축제·김천김밥축제·거창 정원치유박람회와 같은 유형(음식/지역축제, 비음악) - 제외.
+
+재확인만 수행(변동 없음):
+- 마블런·현대 N 페스티벌(인제 스피디움), SMTOWN RUN CLUB, 거창 정원치유박람회, 계룡군문화축제, 제네시스 챔피언십, 진주남강유등축제, 김천김밥축제 - 음악 공연 아님/스코프 밖(기존 로그에서 확정, 동일).
+- 나머지 카카오 T 콘서트/페스티벌 16건(부산국제록페스티벌·몬스타엑스·벤슨 분·도경수·브루노 마스·아일릿·데이식스·JX·마룬5·위켄드·찰리 푸스·&TEAM·EXO·유우리·FKJ·칼리드)은 9/29와 동일하며 events.json 등재 항목과 아티스트 동일·날짜 변동 없음 - 중복.
+- 퀸즈스마일 SHOP 목록의 나머지 7건(2026 경기인디뮤직페스티벌 - 수원 서호 잔디광장 10/17~18 동일, WONDERLIVET 2026 - 킨텍스 제2전시장 11/20~22 동일, XMF 2026 - 파라다이스시티 10/3~4 동일, 2026 EDC KOREA - 인스파이어 엔터테인먼트 리조트 10/3~4 동일, JX 2026 TOUR CONCERT in INCHEON - 인스파이어 아레나 10/9~11 동일, ILLIT PRESS START ENCORE - 인스파이어 아레나 10/17~18 동일, DAY6 5TH FANMEETING - 인스파이어 아레나 10/23~25 동일, MONSTA X WORLD TOUR ENCORE - 인스파이어 아레나 11/21~22 동일)는 모두 events.json 기존 등재 항목과 아티스트·날짜·장소가 완전히 일치해 중복 확인.
