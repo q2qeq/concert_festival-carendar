@@ -5027,5 +5027,29 @@
         "url": "https://nol.yanolja.com/ticket/products/26013793"
       }
     ]
+  },
+  {
+    "id": "all-eyes-seoul-2027-01",
+    "artist": "ALL EYES -in Seoul-",
+    "genre": "팝",
+    "venue": "예스24 라이브홀",
+    "city": "서울",
+    "startDate": "2027-01-30",
+    "endDate": "2027-01-30",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-07 오후 8시",
+    "ticketOpenAt": "2026-10-07T20:00:00+09:00",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "예스24 티켓이 '콘서트 > 해외뮤지션' 카테고리로 분류한 해외 아티스트 단독판매 공연. 주최 LIVET · 주관 원더로크. 공지 원문에 아티스트 상세 소개가 없어 추가 확인이 필요해요.",
+    "sources": [
+      {
+        "label": "단독판매 ALL EYES -in Seoul- 티켓오픈 안내 - YES24 티켓",
+        "url": "https://ticket.yes24.com/Notice#id=18603"
+      },
+      {
+        "label": "콘서트 > 해외뮤지션 카테고리 - YES24 티켓",
+        "url": "https://ticket.yes24.com/New/Genre/GenreList.aspx?genretype=2&genre=15463"
+      }
+    ]
   }
 ]
