@@ -5100,5 +5100,31 @@
         "url": "https://ticket.yes24.com/New/Genre/GenreList.aspx?genretype=2&genre=15463"
       }
     ]
+  },
+  {
+    "id": "cherry-blossom-music-concert-winter-changwon-2026-11",
+    "artist": "2026 체리블라썸뮤직콘서트 인 윈터 (넬·극동아시아타이거즈·jisokuryClub·마그)",
+    "genre": "페스티벌",
+    "venue": "창원컨벤션센터(CECO) 2,3전시장",
+    "city": "창원",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-21",
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213803",
+    "officialUrl": "https://www.cbmfestival.com/",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-10-02). 넬(NELL)·극동아시아타이거즈·jisokuryClub·마그(MAG) 등이 출연하는 '겨울을 뜨겁게 채울 밴드 라이브 콘서트'.",
+    "sources": [
+      {
+        "label": "2026 체리블라썸뮤직콘서트 인 윈터 - 공식 사이트 (cbmfestival.com)",
+        "url": "https://www.cbmfestival.com/"
+      },
+      {
+        "label": "2026 체리블라썸뮤직콘서트 인 윈터 - Melon 티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213803"
+      },
+      {
+        "label": "2026 체리블라썸뮤직콘서트 인 윈터 - 창원 - 카카오 T 셔틀 수요조사",
+        "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000609"
+      }
+    ]
   }
 ]
