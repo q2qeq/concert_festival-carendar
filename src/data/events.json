@@ -5175,5 +5175,25 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000609"
       }
     ]
+  },
+  {
+    "id": "yuki-kajiura-live-seoul-2026-11",
+    "artist": "Yuki Kajiura (카지우라 유키)",
+    "genre": "애니메이션",
+    "venue": "연세대학교 대강당",
+    "city": "서울",
+    "startDate": "2026-11-22",
+    "endDate": "2026-11-22",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "'마법소녀 마도카☆마기카', '귀멸의 칼날', '소드 아트 온라인', 'Fate Zero', '기동전사 건담 SEED' 등의 음악을 맡은 일본 애니메이션 음악 프로듀서 카지우라 유키(Yuki Kajiura)의 데뷔 후 첫 내한공연 'LIVE vol.#22 ~ precious pieces~ in Seoul -SPECIAL SETLIST-'. 티켓 오픈은 2026-10-06 저녁 8시부터, 공연 시간은 오후 6시예요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-06 저녁 8시",
+    "ticketOpenAt": "2026-10-06T20:00:00+09:00",
+    "sources": [
+      {
+        "label": "[단독판매] < Yuki Kajiura LIVE vol.#22 ~ precious pieces ~ in Seoul -SPECIAL SETLIST- > 티켓오픈 안내 - 티켓링크 공지사항",
+        "url": "https://www.ticketlink.co.kr/help/notice/66093"
+      }
+    ]
   }
 ]
