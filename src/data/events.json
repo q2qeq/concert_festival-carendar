@@ -1522,7 +1522,7 @@
         "url": "https://x.com/busan_rock"
       }
     ],
-    "merchCheckedAt": "2026-10-02",
+    "merchCheckedAt": "2026-10-03",
     "description": "메가데스·어벤지드 세븐폴드 등 월드클래스 메탈 밴드가 동시에 헤드라인을 맡는 부산국제록페스티벌. 3일간 삼락생태공원에서 열린다.",
     "funFacts": [
       "메가데스와 어벤지드 세븐폴드, 두 세계적인 메탈 밴드가 나란히 헤드라이너로 서요. 메가데스는 스래시 메탈의 원조 격인 밴드고, 어벤지드 세븐폴드는 'Nightmare' 같은 곡으로 국내에도 팬이 많은 팀이라, 국내 록페스티벌에서 이 정도 급의 해외 헤드라이너가 겹치는 건 흔치 않은 일이에요.",
@@ -1646,6 +1646,11 @@
         "date": "2026-10-02",
         "text": "공연 첫날(10/2)을 맞아 공식 MD 페이지(busanrockfestival.com/MD)와 공식 X(@busan_rock)를 마지막으로 재확인했지만 10/1 이후 새 정보는 없었어요. 콜라보 MD(디스이즈네버댓 등, 퀸즈스마일 판매)와 아티스트별 개별 MD(현장 부스 전용, 10/2~10/4) 모두 개별 상품명·가격은 끝내 공개되지 않았습니다. 공연이 시작된 만큼 사전 리서치로서의 워치는 이번이 마지막 확인이에요.",
         "sourceUrl": "https://x.com/busan_rock"
+      },
+      {
+        "date": "2026-10-03",
+        "text": "공식 MD 페이지(busanrockfestival.com/MD)를 재확인했지만 10/2 이후 새 정보는 없어요. 콜라보 MD(디스이즈네버댓 등, 퀸즈스마일 판매)와 아티스트별 개별 MD(현장 부스 전용) 모두 개별 상품명·가격은 여전히 미공개입니다. 공연이 오늘(10/3)도 진행 중이라 마지막 날(10/4)까지는 계속 워치 대상으로 둡니다.",
+        "sourceUrl": "https://busanrockfestival.com/MD"
       }
     ]
   },
@@ -2090,7 +2095,7 @@
         "url": "https://www.instagram.com/edc_korea/"
       }
     ],
-    "merchCheckedAt": "2026-10-02",
+    "merchCheckedAt": "2026-10-03",
     "description": "티에스토·DJ 스네이크·피셔 등이 서는 EDC 코리아의 3번째 에디션. 올해는 4월에서 10월로 시기를 옮겨 개천절 연휴에 맞춰 열린다.",
     "funFacts": [
       "EDC(Electric Daisy Carnival)는 미국 라스베이거스에서 시작된 세계적인 EDM 페스티벌 브랜드예요. 코리아 에디션이 3회째를 맞으면서 개최 시기를 4월에서 10월로 옮겼는데, 개천절 연휴와 중국 황금연휴 기간에 맞춘 걸 보면 해외 관객 접근성을 높이려는 전략으로 보여요.",
@@ -2140,6 +2145,11 @@
         "date": "2026-10-02",
         "text": "공식 사이트(korea.edc.com)와 공식 인스타그램(@edc_korea, Claude in Chrome 정상 연결)을 재확인했어요. 최근 게시물에 페스티벌 맵이 있었는데 거기 \"MERCH\" 위치 아이콘이 표시돼 있긴 했지만, 이는 통상적인 현장 부스 안내일 뿐 구체적인 상품명·가격·사전예약 공지는 아니라서 event.merch에는 반영하지 않았어요. \"티켓 부스 운영 & 입장 안내\" 게시물도 확인했지만 MD 언급은 없었습니다.",
         "sourceUrl": "https://www.instagram.com/edc_korea/"
+      },
+      {
+        "date": "2026-10-03",
+        "text": "공식 사이트(korea.edc.com)를 재확인했지만 10/2 이후 새 정보는 없어요. 티켓·라인업·여행 정보만 있고 MD(굿즈) 사전예약이나 상품 공지는 여전히 없습니다.",
+        "sourceUrl": "https://korea.edc.com/en/"
       }
     ]
   },
@@ -2265,9 +2275,14 @@
         "date": "2026-10-02",
         "text": "공식 사이트(theweeknd.com)와 웹 검색을 재확인했지만 10/1 이후 새 정보는 없었어요. 고양 공연 전용 MD·현장 판매 안내는 여전히 없고, 공식 SNS 계정이 확인되지 않아 3단계는 건너뛰었습니다.",
         "sourceUrl": "https://www.theweeknd.com/"
+      },
+      {
+        "date": "2026-10-03",
+        "text": "공식 사이트(theweeknd.com)를 재확인했지만 10/2 이후 새 정보는 없어요. 고양 공연 전용 MD·현장 판매 안내는 여전히 없고, 공식 SNS 계정이 확인되지 않아 3단계는 건너뛰었습니다.",
+        "sourceUrl": "https://www.theweeknd.com/"
       }
     ],
-    "merchCheckedAt": "2026-10-02"
+    "merchCheckedAt": "2026-10-03"
   },
   {
     "id": "ghost-festival-2026-10",
@@ -2410,6 +2425,11 @@
         "date": "2026-10-02",
         "text": "공식 인스타그램(@ghostfestival.official, Claude in Chrome 정상 연결)에서 새 공지(9/4 게시, 피드 스크롤 중 발견)를 확인했어요: 2일권·3일권 예매자 전원에게 \"GHOST FESTIVAL 공식 MD 티셔츠\"를 무료 증정합니다 (Pre-sale·레귤러 티켓 기구매자 포함). 수령 방법은 ①티켓 부스에서 입장팔찌 및 MD 교환권 수령 → ②MD 부스 방문해 교환권 제시 후 수령. 단, 티셔츠 디자인은 \"추후 MD 안내를 통해 공개 예정\"이라고 명시돼 있어 실물 사진·개별 상품명이 없는 상태라 event.merch에는 아직 반영하지 않고 updates에만 기록했어요.",
         "sourceUrl": "https://www.instagram.com/p/Dc2loNJgSGQ/"
+      },
+      {
+        "date": "2026-10-03",
+        "text": "공식 인스타그램(@ghostfestival.official, Claude in Chrome 로그인 세션)의 최근 게시물 5건(셔틀 안내·임진각 관광 할인·TERRA 협찬·타임테이블·라인업)을 재확인했지만 MD 티셔츠 디자인 공개나 다른 굿즈 정보는 없었어요. 기존에 확인된 \"디자인 추후 공개\" 상태 그대로입니다.",
+        "sourceUrl": "https://www.instagram.com/ghostfestival.official/"
       }
     ],
     "sources": [
@@ -2456,7 +2476,7 @@
         "url": "https://www.instagram.com/ghostfestival.official/"
       }
     ],
-    "merchCheckedAt": "2026-10-02"
+    "merchCheckedAt": "2026-10-03"
   },
   {
     "id": "shuttle-jx-core-incheon-2026-10",
@@ -2474,7 +2494,7 @@
         "url": "https://x.com/JX_identity"
       }
     ],
-    "merchCheckedAt": "2026-10-02",
+    "merchCheckedAt": "2026-10-03",
     "description": "동방신기·JYJ 출신 김재중·김준수의 유닛 JX, 데뷔 20주년을 맞아 여는 두 번째 투어 'CORE'의 개막 공연. 인천을 시작으로 고베·마카오·오사카·타이베이·요코하마까지 6개 도시를 돈다.",
     "funFacts": [
       "둘 다 동방신기로 데뷔해 JYJ로도 활동한 K팝 레전드급 듀오예요. 데뷔 20주년에 맞춰 JX라는 유닛으로 다시 뭉쳤어요.",
@@ -2526,6 +2546,11 @@
         "date": "2026-10-02",
         "text": "공식 X(@JX_identity, Claude in Chrome 정상 연결)에서 새 게시물(10/1 12:44 게시)을 확인했어요: \"JX 2026 TOUR CONCERT <CORE> in INCHEON OFFICIAL MD 온라인 판매 안내\" - 판매 기간 2026.10.9(금) 12:00~10.18(일) 23:59(KST), 판매처는 프롬스토어(store.frommyarti.com/bundle/30130). 다만 해당 스토어 페이지를 직접 열어보니 아직 \"COMING SOON\" 상태로 개별 상품명·사진·가격은 공개되지 않았고, 배송비 성격의 \"[DELIVERY]\" 번들(5,000원)만 노출돼 있어 event.merch에는 반영하지 않았어요. 판매 시작일(10/9)이 가까워지면 상품 라인업이 공개될 가능성이 높습니다.",
         "sourceUrl": "https://x.com/JX_identity/status/2105504218593611904"
+      },
+      {
+        "date": "2026-10-03",
+        "text": "프롬스토어 판매 페이지와 공식 X(@JX_identity)를 재확인했지만 10/2 이후 새 정보는 없어요. 스토어 페이지는 여전히 \"COMING SOON\" 상태(배송비 번들 5,000원만 노출)이고, X 최신 게시물은 JX 2026 TOUR CONCERT <CORE> in JAPAN의 티켓 우선예매 공지라 인천 공연 MD와는 무관했습니다. 온라인 판매 시작일(10/9)이 가까워지는 중입니다.",
+        "sourceUrl": "https://store.frommyarti.com/bundle/30130"
       }
     ]
   },
@@ -2652,6 +2677,11 @@
         "date": "2026-10-02",
         "text": "소속사 공식 사이트(camwus.com), Weverse 공식 티켓 공지(10cm/notice/38421), 공식 인스타그램(@10cm_official, Claude in Chrome 정상 연결)을 재확인했지만 10/1 이후 새 정보는 없었어요. Weverse 공지는 선예매 검증·일반판매 일정·휠체어석 안내만 있었고 MD 관련 내용은 없었습니다.",
         "sourceUrl": "https://weverse.io/10cm/notice/38421"
+      },
+      {
+        "date": "2026-10-03",
+        "text": "소속사 공식 사이트(camwus.com)를 재확인했지만 10/2 이후 새 정보는 없어요. 에이전시 소개 페이지만 있고 MD 관련 공지는 없었습니다.",
+        "sourceUrl": "https://camwus.com/"
       }
     ],
     "sources": [
@@ -2666,7 +2696,7 @@
         "url": "https://www.instagram.com/10cm_official/"
       }
     ],
-    "merchCheckedAt": "2026-10-02",
+    "merchCheckedAt": "2026-10-03",
     "posterSourceUrl": "https://images.khan.co.kr/article/2026/08/19/news-p.v1.20260819.8832c2932e994b868d6a6b37bfd0e0a8_P1.jpeg"
   },
   {
@@ -2723,6 +2753,11 @@
         "date": "2026-10-02",
         "text": "공식 공연 페이지(highjinkx.com/cero)와 공식 X(@cero_info)를 재확인했지만 10/1 이후 새 정보는 없었어요. 최신 게시물은 \"10일 후에 뵙죠!\"라는 공연 카운트다운이었고 MD 관련 언급은 없었습니다.",
         "sourceUrl": "https://x.com/cero_info"
+      },
+      {
+        "date": "2026-10-03",
+        "text": "공식 사이트(cero-web.jp/2026)를 재확인했지만 10/2 이후 새 정보는 없어요. 서울 공연(Contemporary Seoul Cruise) 전용 굿즈 안내는 여전히 없습니다.",
+        "sourceUrl": "https://cero-web.jp/2026/"
       }
     ],
     "officialSns": [
@@ -2731,7 +2766,7 @@
         "url": "https://twitter.com/cero_info"
       }
     ],
-    "merchCheckedAt": "2026-10-02"
+    "merchCheckedAt": "2026-10-03"
   },
   {
     "id": "charlie-puth-2026-10",
@@ -3986,7 +4021,7 @@
     ],
     "posterUrl": "/posters/ezra-collective-seoul-2026-10.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202605/20260519/20260519-58534.jpg",
-    "merchCheckedAt": "2026-10-02",
+    "merchCheckedAt": "2026-10-03",
     "updates": [
       {
         "date": "2026-09-24",
@@ -4012,6 +4047,11 @@
       {
         "date": "2026-10-02",
         "text": "YES24 티켓 페이지와 웹 검색을 재확인했지만 10/1 이후 새 정보는 없었어요. 공식 SNS 계정이 여전히 확인되지 않아 3단계는 건너뛰었습니다."
+      },
+      {
+        "date": "2026-10-03",
+        "text": "YES24 티켓 페이지를 재확인했지만 10/2 이후 새 정보는 없어요. 상단 메뉴의 \"MD\" 링크는 YES24 전체 MD숍으로 연결되는 일반 메뉴일 뿐 이 공연 전용 굿즈 정보는 아니었습니다. 공식 SNS 계정이 여전히 확인되지 않아 3단계는 건너뛰었습니다.",
+        "sourceUrl": "https://ticket.yes24.com/Perf/58534"
       }
     ]
   },
@@ -4757,9 +4797,14 @@
         "date": "2026-10-02",
         "text": "공식 소속사 공지(companysoosoo.com/notice)와 공식 인스타그램(@dohkyungsoo_offcl, Claude in Chrome 정상 연결)을 재확인했지만 10/1 이후 새 정보는 없었어요. 소속사 공지 목록에는 이전 투어(\"DO it!\" 시리즈)의 MD 공지만 있었고 이번 \"DAY OFF\" 투어 전용 MD 공지는 없었습니다. 공연이 오늘(10/2)부터 시작돼 기존에 확인된 현장 판매 일정(10/2 14:00~19:00, 10/3·10/4 11:00~16:30, KINTEX 1·E) 외에는 변동 없습니다.",
         "sourceUrl": "https://companysoosoo.com/notice"
+      },
+      {
+        "date": "2026-10-03",
+        "text": "소속사 공지(companysoosoo.com/notice)를 재확인했지만 10/2 이후 새 정보는 없어요. 공지 목록에는 이전 투어(\"DO it!\" 시리즈)의 MD 공지만 있고 \"DAY OFF\" 투어 전용 MD 공지는 여전히 없습니다.",
+        "sourceUrl": "https://companysoosoo.com/notice"
       }
     ],
-    "merchCheckedAt": "2026-10-02",
+    "merchCheckedAt": "2026-10-03",
     "officialSns": [
       {
         "label": "Instagram",
