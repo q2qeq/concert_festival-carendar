@@ -467,3 +467,46 @@ events.json 추가 후 npm run build 성공 확인(136 페이지 정상 생성, 
 - 나머지 카카오 T 콘서트/페스티벌 18건(부산국제록페스티벌·정한X조슈아·몬스타엑스·벤슨 분·도경수·브루노 마스·아일릿·데이식스·JX·마룬5·위켄드·찰리 푸스·&TEAM·EXO·유우리·FKJ·칼리드·체리블라썸뮤직콘서트)은 10/2와 동일하며 events.json 등재 항목과 아티스트 동일·날짜 변동 없음 - 중복(각 아티스트의 events.json 등재 날짜는 위 10/2 로그 항목 참고, 오늘 재스캔으로 날짜 변동 없음을 확인).
 - 퀸즈스마일 SHOP 목록 9건(XMF 2026 - 파라다이스시티 10/3~4 동일, 2026 경기인디뮤직페스티벌 - 수원 서호 잔디광장 10/17~18 동일, WONDERLIVET 2026 - 킨텍스 제2전시장 11/20~22 동일, 2026 EDC KOREA - 인스파이어 엔터테인먼트 리조트 10/3~4 동일, JX 2026 TOUR CONCERT in INCHEON - 인스파이어 아레나 10/9~11 동일, JEONGHAN X JOSHUA JOURNEY INTO [DREAMING] - 인스파이어 아레나 10/30~11/1 동일, ILLIT PRESS START ENCORE - 인스파이어 아레나 10/17~18 동일, DAY6 5TH FANMEETING - 인스파이어 아레나 10/23~25 동일, MONSTA X WORLD TOUR ENCORE - 인스파이어 아레나 11/21~22 동일)는 모두 events.json 기존 등재 항목과 아티스트·날짜·장소가 완전히 일치해 중복 확인.
 - 꽃가마: "휴休 북&뮤직" 서브페이지(beautifulfarmparty, 계촌클래식공원, 9/12·9/13 다이닝 프로그램)는 events.json에 이미 등재된 "계촌 휴[休] 북&뮤직 페스티벌"(2026-09-12~13, 계촌클래식공원 일대, 평창)과 날짜·장소가 동일한 행사로 확인되어 중복.
+
+---
+## 2026-10-04 09:03 KST 실행
+**스캔 방법:** 카카오 T 셔틀은 브라우저로 접속해 "더보기"를 펼쳐 전체 목록(콘서트/페스티벌/지역축제/스포츠, 약 47건)을 확인. 꽃가마(ggoggama.com)는 앱 다운로드 랜딩 + "휴休 북&뮤직" 소개뿐이라 신규 정보 없음. 퀸즈스마일은 SHOP 목록 10건 확인(XMF~MONSTA X + 2026 입크 페스티벌 신규).
+
+발견된 후보 (카카오 T 47건 중 음악 공연 해당분 + 퀸즈스마일 10건): 마룬5, 브루노 마스, 2026 체리블라썸뮤직콘서트 인 윈터(창원), 구미 라면축제, 정한X조슈아, 몬스타엑스 월드 투어, 벤슨 분, 2026 마블런, 현대 N 페스티벌, 아일릿, 양양송이연어축제, 데이식스, JX, 거창 정원치유박람회, 계룡군문화축제, 위켄드, 찰리 푸스, 진주남강유등축제, 제네시스 챔피언십, &TEAM, EXO, 유우리, FKJ, 칼리드, 김천김밥축제, 부산국제록페스티벌, 도경수(DAY OFF, 10/2 로그 기준), XMF 2026, 2026 입크 페스티벌(신규), 2026 경기인디뮤직페스티벌, WONDERLIVET 2026, 2026 EDC KOREA, JX 2026 TOUR CONCERT(퀸즈스마일 표기), JEONGHAN X JOSHUA(퀸즈스마일 표기), ILLIT PRESS START ENCORE(퀸즈스마일 표기), DAY6 5TH FANMEETING(퀸즈스마일 표기), MONSTA X WORLD TOUR ENCORE(퀸즈스마일 표기).
+
+게시함 (0건): 없음.
+
+검토 파일행 (1건):
+- 2026 입크페스티벌(IBK기업은행) - 킨텍스 10/3~4, 페스티벌 장르·날짜·장소는 뉴스핌·머니투데이·한경·네이트 4개 언론으로 교차 확인되고 events.json에 중복 없음. 그러나 기업은행 고객 응모제(i-ONE Bank 앱, 8/3~31 응모, 9/8 당첨 발표)로만 참가 가능한 은행 주최 행사라 공개 티켓 페이지·공식 URL을 확인하지 못해 게시 조건 미충족(출처 부족). 종료일이 스캔일(10/4) 당일.
+
+제외함/드롭 (14건):
+- 구미 라면축제, 거창 정원치유박람회, 계룡군문화축제, 진주남강유등축제, 김천김밥축제, 양양송이연어축제 - 음악 공연 아닌 지역·음식 축제 (스코프 밖, 기존 로그와 동일 사유).
+- 2026 마블런, 현대 N 페스티벌(인제 스피디움) - 음악 공연 아님(스포츠·모터 성격), 기존 로그와 동일 사유.
+- 제네시스 챔피언십 - 골프 대회, 스코프 밖.
+- 마룬5 내한 (킨텍스 제1전시장 4,5홀) - events.json shuttle-maroon5-seoul-2027-01 와 2027-01-27 일치 → 중복.
+- 브루노 마스 (고양종합운동장) - events.json bruno-mars-goyang-2027-05 와 2027-05-21~26 일치 → 중복.
+- 2026 체리블라썸뮤직콘서트 인 윈터 (창원CECO) - events.json cherry-blossom-music-concert-winter-changwon-2026-11 와 2026-11-21 일치 → 중복.
+- 정한X조슈아 (인스파이어 아레나) - events.json jeonghan-joshua-...-incheon-2026-10 와 10/30~11/1 일치 → 중복.
+- 몬스타엑스 (인스파이어 아레나) - events.json shuttle-monsta-x-world-tour-encore-2026-11 와 11/21~22 일치 → 중복.
+- 벤슨 분 (킨텍스 제2 10홀) - events.json benson-boone-seoul-2026-10 와 10/26 일치 → 중복.
+- 아일릿 (인스파이어 아레나) - events.json illit-press-start-encore-incheon-2026-10 와 10/17~18 일치 → 중복.
+- 데이식스 (인스파이어 아레나) - events.json day6-5th-fanmeeting-2026-10 와 10/23~25 일치 → 중복.
+- JX (인스파이어 아레나) - events.json shuttle-jx-core-incheon-2026-10 와 10/9~11 일치 → 중복.
+- 위켄드 (고양종합운동장) - events.json weeknd-hyundaicard-superconcert28-2026-10 와 10/7~8 일치 → 중복.
+- 찰리 푸스 (고양종합운동장) - events.json charlie-puth-2026-10 와 10/11 일치 → 중복.
+- &TEAM (KSPO DOME) - events.json andteam-blaze-the-way-encore-2026-10 와 10/3~4 일치 → 중복.
+- EXO (KSPO DOME) - events.json exo-planet6-exhorizon-encore-seoul-2026-11 와 11/6~8 일치 → 중복.
+- 유우리 (인스파이어 아레나) - events.json shuttle-yuuri-live-seoul-2026-12 와 12/5~6 일치 → 중복.
+- FKJ (킨텍스 제2 10홀) - events.json fkj-tyber-tour-korea-2026-12 와 12/6 일치 → 중복.
+- 칼리드 (킨텍스 제2 10홀) - events.json shuttle-khalid-2026-12 와 12/5 일치 → 중복.
+- 2026 부산국제록페스티벌 (삼락생태공원) - events.json shuttle-busan-rock-festival-2026-10 와 10/2~4 일치 → 중복.
+- 도경수 DAY OFF (킨텍스 제1 5홀) - events.json shuttle-doh-kyungsoo-day-off-2026-10 와 10/2~4 일치 → 중복(이번 페이지 목록에서는 미노출).
+- XMF 2026 (파라다이스시티) - events.json xmf-2026-10 와 10/3~4 일치 → 중복.
+- 2026 경기인디뮤직페스티벌 (수원 서호) - events.json gyeonggi-indie-music-festival-2026-10 와 10/17~18 일치 → 중복.
+- WONDERLIVET 2026 (킨텍스 제2) - events.json wonderlivet-2026-11 와 11/20~22 일치 → 중복.
+- 2026 EDC KOREA (인스파이어 엔터테인먼트 리조트) - events.json edc-korea-2026 와 10/3~4 일치 → 중복.
+- JX 2026 TOUR CONCERT in INCHEON, JEONGHAN X JOSHUA, ILLIT, DAY6, MONSTA X ENCORE (퀸즈스마일 표기) - 위 카카오 항목과 동일 날짜·장소 → 중복.
+
+참고(기존 검토 파일 2건 상태 변동 없음): OBJET K-POP FESTA 2026(9/26~27, 장소 상충)과 2026 더팩트 뮤직 어워즈(TMA, 9/19)는 모두 이미 종료된 과거 행사. 파일은 수정하지 않았으며 사람이 정리 여부를 판단해야 함.
+
+꽃가마 참고: 앱 전용 서비스 랜딩 + 휴休 북&뮤직 소개만 확인. 신규 공연 없음.
