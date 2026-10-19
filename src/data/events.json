@@ -4530,6 +4530,17 @@
     ]
   },
   {
+    "id": "kopis-PF303596",
+    "artist": "블루노트 도쿄 올스타 재즈 오케스트라 with LISA ONO 내한공연",
+    "genre": "J-POP",
+    "venue": "롯데콘서트홀",
+    "city": "서울",
+    "startDate": "2026-12-02",
+    "endDate": "2026-12-03",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303596_261016_135100.jpg",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+  },
+  {
     "id": "mass-of-the-fermenting-dregs-seoul-2026-12",
     "artist": "Mass Of The Fermenting Dregs (마스도레, with Dabda)",
     "genre": "J-POP",
