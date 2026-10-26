@@ -5114,6 +5114,17 @@
     ]
   },
   {
+    "id": "kopis-PF304185",
+    "artist": "요네즈 켄시 내한공연",
+    "genre": "J-POP",
+    "venue": "인스파이어 엔터테인먼트 리조트",
+    "city": "인천",
+    "startDate": "2027-01-14",
+    "endDate": "2027-01-17",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304185_261022_135940.gif",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+  },
+  {
     "id": "humpback-seoul-2027-01",
     "artist": "Hump Back (험프백)",
     "genre": "J-POP",
