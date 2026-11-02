@@ -1,23 +1,39 @@
-// 포도알 챌린지 순위 API (Vercel Serverless Function, 의존성 없음).
-// 저장소: Upstash Redis (Vercel Marketplace에서 연결하면 환경변수가 자동 주입된다).
-//   UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN  (또는 KV_REST_API_URL / KV_REST_API_TOKEN)
-// 환경변수가 없으면 503을 돌려주고, 게임 화면은 순위 부분만 조용히 숨긴다.
+// 포도알 챌린지 순위 API (Vercel Serverless Function).
+// 저장소: Redis. 연결 방식 두 가지를 모두 지원한다.
+//   1) REDIS_URL (redis://...) - Vercel Marketplace의 Redis 연동이 넣어주는 값 (node-redis로 접속)
+//   2) UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN (또는 KV_REST_API_URL / KV_REST_API_TOKEN) - REST 방식
+// 환경변수가 하나도 없으면 503을 돌려주고, 게임 화면은 순위 부분만 조용히 숨긴다.
 //
 // 저장하는 것: 점수 구간별 인원수(히스토그램)와 전체 참가자 수뿐. 닉네임/IP/기기 정보는 저장하지 않는다.
 // (IP는 남용 방지용 카운터 키로만 쓰고 1시간 뒤 자동 삭제된다.)
+import { createClient } from 'redis';
 
-const URL_ = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
-const TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+const REST_URL = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+const REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+const REDIS_URL = process.env.REDIS_URL;
 
 const BUCKET = 200; // 점수 200점 단위로 묶어서 센다
 const MAX_SCORE = 13000;
 const TOTAL_SEATS = 12; // 3라운드 합계 (3+4+5)
 const HOURLY_LIMIT = 30;
 
+// commands: [['INCR','k'], ['HGETALL','h'], ...] -> 각 명령의 결과 배열
 async function redis(commands) {
-  const res = await fetch(`${URL_}/pipeline`, {
+  if (REDIS_URL) {
+    const client = createClient({ url: REDIS_URL, socket: { connectTimeout: 4000, reconnectStrategy: false } });
+    client.on('error', () => {});
+    await client.connect();
+    try {
+      const out = [];
+      for (const c of commands) out.push(await client.sendCommand(c.map(String)));
+      return out;
+    } finally {
+      client.disconnect().catch(() => {});
+    }
+  }
+  const res = await fetch(`${REST_URL}/pipeline`, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+    headers: { Authorization: `Bearer ${REST_TOKEN}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(commands),
   });
   if (!res.ok) throw new Error(`redis ${res.status}`);
@@ -38,6 +54,7 @@ function topPercent(hist, bucket) {
 }
 
 function toHist(flat) {
+  if (flat && !Array.isArray(flat)) return flat; // 객체로 오는 클라이언트도 지원
   const out = {};
   for (let i = 0; i < (flat || []).length; i += 2) out[flat[i]] = flat[i + 1];
   return out;
@@ -45,7 +62,7 @@ function toHist(flat) {
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-  if (!URL_ || !TOKEN) return res.status(503).json({ error: 'ranking_unavailable' });
+  if (!REDIS_URL && !(REST_URL && REST_TOKEN)) return res.status(503).json({ error: 'ranking_unavailable' });
   if (req.method !== 'POST') return res.status(405).json({ error: 'method_not_allowed' });
 
   const b = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {};
