@@ -523,3 +523,42 @@ export function relatedEvents(event: ConcertEvent, limit = 4, fromISO?: string):
     .sort((a, b) => score(a) - score(b))
     .slice(0, limit);
 }
+
+// ── 이탈률 개선용 헬퍼 (2026-11-02) ─────────────────────────────────────────
+// 티켓팅 시계 / 공연 상세 "다음 행동" / 내 찜(/my) 에서 같이 쓴다.
+
+// 아직 오픈 전(또는 오픈 직후 1시간 이내)인 티켓오픈 일정, 가까운 순.
+// ticketOpenAt이 실제로 확인된 공연만 대상 - 없는 시각을 지어내지 않는다.
+export function upcomingTicketOpens(limit = 8, nowMs = Date.now()): ConcertEvent[] {
+  return events
+    .filter((e) => e.ticketOpenAt && (e.status ?? 'scheduled') === 'scheduled' && e.endDate >= new Date(nowMs).toISOString().slice(0, 10))
+    .filter((e) => new Date(e.ticketOpenAt as string).getTime() >= nowMs - 3600_000)
+    .sort((a, b) => new Date(a.ticketOpenAt as string).getTime() - new Date(b.ticketOpenAt as string).getTime())
+    .slice(0, limit);
+}
+
+// 지금 예매 링크가 있는 공연 중 공연일이 가까운 순 (아직 안 끝난 것만).
+export function onSaleEvents(limit = 6, fromISO?: string): ConcertEvent[] {
+  const from = fromISO ?? new Date().toISOString().slice(0, 10);
+  return events
+    .filter((e) => e.endDate >= from && (e.status ?? 'scheduled') === 'scheduled' && hasTicketsOnSale(e))
+    .sort((a, b) => a.startDate.localeCompare(b.startDate))
+    .slice(0, limit);
+}
+
+// 공연 상세 하단 "다음 행동": 같은 날 열리는 다른 공연 / 같은 공연장의 다음 공연.
+export function sameDayEvents(event: ConcertEvent, limit = 3): ConcertEvent[] {
+  const from = new Date().toISOString().slice(0, 10);
+  return events
+    .filter((e) => e.id !== event.id && (e.status ?? 'scheduled') !== 'cancelled' && e.endDate >= from)
+    .filter((e) => e.startDate <= event.endDate && e.endDate >= event.startDate)
+    .slice(0, limit);
+}
+
+export function sameVenueUpcoming(event: ConcertEvent, limit = 3): ConcertEvent[] {
+  const from = new Date().toISOString().slice(0, 10);
+  return events
+    .filter((e) => e.id !== event.id && e.venue === event.venue && (e.status ?? 'scheduled') !== 'cancelled' && e.endDate >= from)
+    .sort((a, b) => a.startDate.localeCompare(b.startDate))
+    .slice(0, limit);
+}

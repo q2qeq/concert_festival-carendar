@@ -1,5 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { upcomingTicketOpens, onSaleEvents } from '../lib/events';
+
+const opens = upcomingTicketOpens(8);
+const onSale = onSaleEvents(6);
+const shortDate = (iso: string) => {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()}`;
+};
 
 const PLATFORMS = [
   { id: 'yes24', name: 'YES24 티켓', url: 'https://ticket.yes24.com' },
@@ -55,6 +63,45 @@ const jsonLd = {
     <div id="sync-status" class="sync-status">동기화하는 중...</div>
   </div>
 
+  <section class="schedule" aria-label="티켓오픈 일정">
+    <h2>곧 오픈하는 티켓</h2>
+    {opens.length > 0 ? (
+      <ul class="sched-list" id="open-list">
+        {opens.map((e) => (
+          <li data-open-at={e.ticketOpenAt}>
+            <a class="sched-main" href={`/ticketing-clock?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>
+              <strong>{e.artist}</strong>
+              <span class="sched-when">{e.ticketOpenDate ?? e.ticketOpenAt}</span>
+            </a>
+            <span class="sched-left" data-left></span>
+            <a class="sched-side" href={`/events/${e.id}/`}>상세</a>
+            <button class="bookmark-btn" type="button" data-bookmark-id={e.id} aria-label={`${e.artist} 찜하기`} aria-pressed="false">♡</button>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="sched-empty">지금 확인된 오픈 예정 티켓은 없어요. 매일 아침 티켓 사이트 공지를 확인해서 새 오픈이 보이는 대로 여기에 올려요.</p>
+    )}
+
+    {onSale.length > 0 && (
+      <>
+        <h2>지금 예매 중인 공연</h2>
+        <ul class="sched-list">
+          {onSale.map((e) => (
+            <li>
+              <a class="sched-main" href={`/events/${e.id}/`}>
+                <strong>{e.artist}</strong>
+                <span class="sched-when">{shortDate(e.startDate)} · {e.venue}</span>
+              </a>
+              <button class="bookmark-btn" type="button" data-bookmark-id={e.id} aria-label={`${e.artist} 찜하기`} aria-pressed="false">♡</button>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+    <p class="sched-more"><a href="/my/">♥ 내 찜 목록에서 한눈에 보기</a></p>
+  </section>
+
   <details class="calibrate">
     <summary>수동 보정 (동기화가 안 될 때)</summary>
     <div class="calibrate-row">
@@ -95,6 +142,18 @@ const jsonLd = {
 </BaseLayout>
 
 <style>
+  .sched-list { list-style: none; margin: 0 0 1.2rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .sched-list li { position: relative; display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 2.4rem 0.65rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .sched-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.15rem; color: inherit; text-decoration: none; }
+  .sched-main strong { font-size: 0.96rem; }
+  .sched-main:hover strong { color: #ff8fbe; }
+  .sched-when { color: #a9a4c9; font-size: 0.82rem; }
+  .sched-left { color: #6ee7ff; font-size: 0.82rem; font-weight: 700; white-space: nowrap; }
+  .sched-side { color: #a9a4c9; font-size: 0.8rem; text-decoration: none; padding: 0.2rem 0.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; }
+  .sched-list li .bookmark-btn { position: absolute; top: 50%; right: 0.5rem; transform: translateY(-50%); }
+  .sched-empty { color: #a9a4c9; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px; margin: 0 0 1.2rem; }
+  .sched-more { margin: 0 0 1.5rem; font-size: 0.9rem; }
+  .sched-more a { color: #ff8fbe; }
   .intro { color: #d9d6ee; line-height: 1.7; }
   .countdown-banner {
     margin: 1rem 0;
@@ -360,6 +419,23 @@ const jsonLd = {
     });
   });
   applyPlatformSelection(getSavedPlatform());
+
+  // 곧 오픈하는 티켓 목록: 남은 시간 표시, 이미 지난 건 숨김 (빌드 이후 시간이 흘렀을 수 있으므로).
+  function updateOpenList() {
+    document.querySelectorAll<HTMLElement>('#open-list li[data-open-at]').forEach((li) => {
+      const t = new Date(li.dataset.openAt ?? '').getTime();
+      const left = li.querySelector<HTMLElement>('[data-left]');
+      if (isNaN(t) || !left) return;
+      const diff = t - nowSynced();
+      if (diff < -3600_000) { li.style.display = 'none'; return; }
+      if (diff <= 0) { left.textContent = '오픈!'; return; }
+      const m = Math.floor(diff / 60000);
+      const d = Math.floor(m / 1440), h = Math.floor((m % 1440) / 60), mm = m % 60;
+      left.textContent = d > 0 ? `${d}일 ${h}시간 후` : h > 0 ? `${h}시간 ${mm}분 후` : `${mm}분 후`;
+    });
+  }
+  updateOpenList();
+  setInterval(updateOpenList, 30000);
 
   syncClock();
   setInterval(syncClock, 60000);

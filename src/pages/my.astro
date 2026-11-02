@@ -1,0 +1,90 @@
+---
+// "내 찜" - 사이트 어디서든 ♡로 찜해둔 공연을 한곳에 모아 보여준다.
+// 찜 목록은 이 브라우저의 localStorage('krconcerts:bookmarks')에만 있고 서버로 가지 않는다
+// (로그인 없음). 그래서 페이지는 예정된 공연 전부를 미리 렌더링해두고, 브라우저에서
+// 찜한 것만 남기고 "곧 오픈하는 티켓 → 공연일 가까운 순"으로 정렬한다.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EventCard from '../components/EventCard.astro';
+import { upcomingEvents } from '../lib/events';
+
+const list = upcomingEvents();
+---
+<BaseLayout
+  title="내 찜 - 티켓팅·공연 일정 한눈에"
+  description="♡로 찜한 공연의 D-day와 티켓오픈 일정을 한곳에서 확인하세요. 로그인 없이 이 기기에만 저장돼요."
+>
+  <h1>내 찜</h1>
+  <p class="intro">♡로 찜한 공연을 모아서, 티켓오픈이 가까운 순 → 공연일이 가까운 순으로 보여드려요. 찜 목록은 이 기기(브라우저)에만 저장되고 서버로 보내지지 않아요.</p>
+
+  <div id="my-list" class="my-list">
+    {list.map((e) => (
+      <div class="my-item" data-id={e.id} data-start={e.startDate} data-open-at={e.ticketOpenAt ?? ''} hidden>
+        {e.ticketOpenAt && (
+          <p class="my-open" data-my-open>🎫 티켓오픈 {e.ticketOpenDate ?? e.ticketOpenAt}</p>
+        )}
+        <EventCard event={e} />
+      </div>
+    ))}
+  </div>
+
+  <div id="my-empty" class="my-empty" hidden>
+    <p>아직 찜한 공연이 없어요. 공연 카드의 ♡를 눌러 담아두면 여기서 오픈 일정과 D-day를 모아볼 수 있어요.</p>
+    <p><a href="/">전체 일정 보러가기</a> · <a href="/ticketing-clock/">티켓팅 시계</a></p>
+  </div>
+</BaseLayout>
+
+<style>
+  .intro { color: #d9d6ee; line-height: 1.7; }
+  .my-list { margin-top: 1rem; }
+  .my-open { margin: 0.6rem 0 0; font-size: 0.82rem; font-weight: 700; color: #6ee7ff; }
+  .my-empty { margin-top: 1.5rem; padding: 1.2rem; background: rgba(255,255,255,0.05); border-radius: 12px; color: #d9d6ee; line-height: 1.7; }
+  .my-empty a { color: #ff8fbe; }
+</style>
+
+<script>
+  function getBookmarks(): Set<string> {
+    try {
+      const raw = localStorage.getItem('krconcerts:bookmarks');
+      return new Set<string>(raw ? JSON.parse(raw) : []);
+    } catch {
+      return new Set<string>();
+    }
+  }
+
+  function render() {
+    const ids = getBookmarks();
+    const now = Date.now();
+    const list = document.getElementById('my-list');
+    const items = Array.from(document.querySelectorAll<HTMLElement>('.my-item'));
+    const shown = items.filter((el) => ids.has(el.dataset.id ?? ''));
+
+    items.forEach((el) => {
+      el.hidden = !ids.has(el.dataset.id ?? '');
+      // 이미 지난 오픈 시각 안내는 숨긴다
+      const open = el.dataset.openAt ? new Date(el.dataset.openAt).getTime() : NaN;
+      const line = el.querySelector<HTMLElement>('[data-my-open]');
+      if (line) line.hidden = isNaN(open) || open < now - 3600_000;
+    });
+
+    // 곧 오픈하는 티켓 먼저(오픈 임박순), 그다음 공연일 가까운 순
+    const key = (el: HTMLElement) => {
+      const open = el.dataset.openAt ? new Date(el.dataset.openAt).getTime() : NaN;
+      const upcomingOpen = !isNaN(open) && open >= now - 3600_000;
+      return { upcomingOpen, open, start: el.dataset.start ?? '' };
+    };
+    shown
+      .sort((a, b) => {
+        const ka = key(a), kb = key(b);
+        if (ka.upcomingOpen !== kb.upcomingOpen) return ka.upcomingOpen ? -1 : 1;
+        if (ka.upcomingOpen && kb.upcomingOpen) return ka.open - kb.open;
+        return ka.start.localeCompare(kb.start);
+      })
+      .forEach((el) => list?.appendChild(el));
+
+    const empty = document.getElementById('my-empty');
+    if (empty) empty.hidden = shown.length > 0;
+  }
+
+  render();
+  window.addEventListener('bookmarks:changed', render);
+</script>

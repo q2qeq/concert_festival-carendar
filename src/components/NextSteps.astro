@@ -1,0 +1,58 @@
+---
+// 공연 상세 페이지 상단 "다음 행동" 블록 - 이 페이지에서 답을 얻은 사람이 바로
+// 이어서 할 만한 일(티켓팅 시계 / 같은 날·같은 공연장 공연 / 내 찜)을 한곳에 모은다.
+// 이탈률 개선용 (2026-11-02). 목록은 실제 데이터에 있는 것만 보여주고, 없으면 그 줄을 숨긴다.
+import type { ConcertEvent } from '../lib/events';
+import { sameDayEvents, sameVenueUpcoming } from '../lib/events';
+interface Props { event: ConcertEvent }
+const { event } = Astro.props;
+
+const sameDay = sameDayEvents(event);
+const sameVenue = sameVenueUpcoming(event);
+const hasOpen = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
+const clockHref = hasOpen
+  ? `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt as string)}&artist=${encodeURIComponent(event.artist)}`
+  : '/ticketing-clock';
+const shortDate = (iso: string) => {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()}`;
+};
+---
+<section class="next-steps" aria-label="다음 행동">
+  <div class="ns-actions">
+    <a class="ns-btn ns-primary" href={clockHref}>
+      ⏱ {hasOpen ? '이 공연 오픈 카운트다운' : '티켓팅 시계 켜기'}
+    </a>
+    <a class="ns-btn" href="/my/">♥ 내 찜 모아보기</a>
+  </div>
+  {sameDay.length > 0 && (
+    <div class="ns-row">
+      <span class="ns-label">같은 날 열리는 공연</span>
+      <div class="ns-links">
+        {sameDay.map((e) => <a href={`/events/${e.id}/`}>{e.artist}</a>)}
+      </div>
+    </div>
+  )}
+  {sameVenue.length > 0 && (
+    <div class="ns-row">
+      <span class="ns-label">{event.venue}의 다음 공연</span>
+      <div class="ns-links">
+        {sameVenue.map((e) => <a href={`/events/${e.id}/`}>{e.artist} <small>{shortDate(e.startDate)}</small></a>)}
+      </div>
+    </div>
+  )}
+</section>
+<style>
+  .next-steps { margin: 0.9rem 0 1.2rem; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+  .ns-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .ns-btn { padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.88rem; font-weight: 700; text-decoration: none; color: #f5f3ff; border: 1px solid rgba(255,255,255,0.18); }
+  .ns-btn:hover { border-color: #ff5fa2; color: #ff8fbe; }
+  .ns-primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
+  .ns-primary:hover { color: #101018; filter: brightness(1.05); }
+  .ns-row { margin-top: 0.7rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.7rem; }
+  .ns-label { color: #a9a4c9; font-size: 0.82rem; }
+  .ns-links { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .ns-links a { font-size: 0.86rem; color: #6ee7ff; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid rgba(110,231,255,0.3); }
+  .ns-links a:hover { background: rgba(110,231,255,0.1); }
+  .ns-links small { color: #a9a4c9; }
+</style>

@@ -14,6 +14,7 @@ import FanChantGuide from '../../components/FanChantGuide.astro';
 import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import Mascot from '../../components/Mascot.astro';
+import NextSteps from '../../components/NextSteps.astro';
 import EventCard from '../../components/EventCard.astro';
 import { events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents } from '../../lib/events';
 
@@ -290,6 +291,8 @@ const jsonLd = {
         aria-pressed="false"
       >♡</button>
     </div>
+
+    <NextSteps event={event} />
 
     <AdSlot slot="event-top" />
 
