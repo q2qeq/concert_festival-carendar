@@ -13,8 +13,9 @@ const REST_TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_A
 const REDIS_URL = process.env.REDIS_URL;
 
 const BUCKET = 200; // 점수 200점 단위로 묶어서 센다
-const MAX_SCORE = 13000;
-const TOTAL_SEATS = 12; // 3라운드 합계 (3+4+5)
+const MAX_SCORE = 15000;
+const TOTAL_SEATS = 12; // 좌석 3라운드 합계 (3+4+5)
+const BTN_MAX = 2000; // 예매 버튼 단계 최대 점수
 const HOURLY_LIMIT = 30;
 
 // commands: [['INCR','k'], ['HGETALL','h'], ...] -> 각 명령의 결과 배열
@@ -38,6 +39,28 @@ async function redis(commands) {
   });
   if (!res.ok) throw new Error(`redis ${res.status}`);
   return (await res.json()).map((r) => r.result);
+}
+
+
+// ── 초기 추정용 기준 분포 ─────────────────────────────────────────────────
+// 참가자가 아직 적을 때 "상위 몇 %"가 한두 명 때문에 널뛰지 않도록, 일반적인 반응속도 기준의
+// 정규분포(평균 4800점, 표준편차 2600점)를 가상의 150명 분량으로 함께 반영해서 추정한다.
+// 이건 실제 참가자가 아니라 "샘플 분포"이고, 실제 참가자가 PRIOR_UNTIL명 이상이 되면 쓰지 않는다.
+// 응답의 estimated=true일 때 화면은 반드시 "추정치"라고 표시한다 (참가자 수로 보여주지 않음).
+const PRIOR_MEAN = 4800, PRIOR_SD = 2600, PRIOR_WEIGHT = 150, PRIOR_UNTIL = 300;
+function erf(x) {
+  const t = 1 / (1 + 0.3275911 * Math.abs(x));
+  const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
+  return x >= 0 ? y : -y;
+}
+const cdf = (x) => 0.5 * (1 + erf((x - PRIOR_MEAN) / (PRIOR_SD * Math.SQRT2)));
+function priorHist() {
+  const out = {};
+  const lo0 = cdf(0), hi0 = cdf(MAX_SCORE);
+  for (let b = 0; b * BUCKET < MAX_SCORE; b++) {
+    out[b] = (PRIOR_WEIGHT * (cdf((b + 1) * BUCKET) - cdf(b * BUCKET))) / (hi0 - lo0);
+  }
+  return out;
 }
 
 function topPercent(hist, bucket) {
@@ -71,25 +94,35 @@ export default async function handler(req, res) {
     Number.isInteger(score) && score >= 0 && score <= MAX_SCORE &&
     Number.isInteger(got) && got >= 0 && got <= TOTAL_SEATS &&
     // 점수는 잡은 개수에 비례(1개당 최대 1000점)하고, 사람 반응속도(평균 60ms 미만)는 비현실적이다.
-    score <= got * 1000 &&
-    (got === 0 || (Number.isFinite(avg) && avg >= 60 && avg <= 3000));
+    score <= got * 1000 + BTN_MAX &&
+    (got === 0 || (Number.isFinite(avg) && avg >= 60 && avg <= 3000)) &&
+    // 예매 버튼 반응시간(ms): 놓침은 -1, 그 외에는 사람이 가능한 범위(40ms 이상)만 받는다.
+    (b.btn === undefined || b.btn === -1 || (Number.isFinite(Number(b.btn)) && Number(b.btn) >= 40 && Number(b.btn) <= 5000));
   if (!valid) return res.status(400).json({ error: 'invalid_score' });
 
   try {
     const ip = String(req.headers['x-forwarded-for'] || 'unknown').split(',')[0].trim();
     const hour = Math.floor(Date.now() / 3600000);
-    const rlKey = `grape:rl:${ip}:${hour}`;
+    const rlKey = `practice:rl:${ip}:${hour}`;
     const [count] = await redis([['INCR', rlKey], ['EXPIRE', rlKey, 3600]]);
     if (count > HOURLY_LIMIT) return res.status(429).json({ error: 'rate_limited' });
 
     const bucket = Math.floor(score / BUCKET);
     const [, , flat] = await redis([
-      ['HINCRBY', 'grape:hist', String(bucket), 1],
-      ['INCR', 'grape:total'],
-      ['HGETALL', 'grape:hist'],
+      ['HINCRBY', 'practice:hist', String(bucket), 1],
+      ['INCR', 'practice:total'],
+      ['HGETALL', 'practice:hist'],
     ]);
-    const { total, top } = topPercent(toHist(flat), bucket);
-    return res.status(200).json({ total, top });
+    const real = toHist(flat);
+    const realTotal = Object.values(real).reduce((a, v) => a + Number(v), 0);
+    const estimated = realTotal < PRIOR_UNTIL;
+    let hist = real;
+    if (estimated) {
+      hist = { ...priorHist() };
+      for (const [k, v] of Object.entries(real)) hist[k] = (hist[k] || 0) + Number(v);
+    }
+    const { top } = topPercent(hist, bucket);
+    return res.status(200).json({ total: realTotal, top, estimated });
   } catch {
     return res.status(502).json({ error: 'ranking_error' });
   }

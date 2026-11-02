@@ -7,4 +7,6 @@ export const SITE_URL = 'https://jikgwannyang.com';
 export default defineConfig({
   site: SITE_URL,
   integrations: [sitemap(), mdx()],
+  // 예전 주소(/game)로 공유된 링크가 깨지지 않도록
+  redirects: { '/game': '/practice/' },
 });
