@@ -1,0 +1,239 @@
+---
+// 티켓팅 연습 게임 "포도알 챌린지" (2026-11-02).
+// 규칙: 좌석표가 전부 매진(보라)인 상태에서 "오픈!" 신호 뒤에 몇 칸만 포도알(빈 좌석)로 깜빡 뜬다.
+// 다른 사람이 채가기 전에 눌러 잡는다. 3라운드, 갈수록 포도알은 많아지고 사라지는 속도는 빨라진다.
+// 자동 예매/매크로가 아니라 순수한 반응속도 연습 게임이다. 기록은 이 기기(localStorage)에만 저장.
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="포도알 챌린지 - 티켓팅 연습 게임"
+  description="오픈 순간 남은 포도알(빈 좌석)을 얼마나 빨리 잡을 수 있을까? 티켓팅 손풀기 연습 게임. 기록을 공유해보세요."
+>
+  <h1>🍇 포도알 챌린지</h1>
+  <p class="intro">
+    티켓팅에서 포도알은 <strong>아직 안 팔린 좌석</strong>이에요. "오픈!" 신호 뒤에 뜨는 빈 좌석을 다른 사람이 채가기 전에 눌러보세요.
+    총 3라운드, 갈수록 빨라져요.
+  </p>
+
+  <div class="hud">
+    <span>라운드 <b id="g-round">-</b>/3</span>
+    <span>점수 <b id="g-score">0</b></span>
+    <span>최고 <b id="g-best">-</b></span>
+  </div>
+
+  <div id="g-msg" class="g-msg">시작을 누르면 좌석표가 열려요</div>
+  <div id="g-grid" class="grid" role="grid" aria-label="좌석표"></div>
+
+  <div class="g-actions">
+    <button id="g-start" type="button" class="btn primary">시작</button>
+  </div>
+
+  <div id="g-result" class="result" hidden>
+    <h2 id="g-grade"></h2>
+    <p id="g-detail"></p>
+    <div class="g-actions">
+      <button id="g-share" type="button" class="btn primary">결과 공유하기</button>
+      <button id="g-retry" type="button" class="btn">다시 하기</button>
+    </div>
+    <p class="after">
+      진짜 티켓팅 전에는 <a href="/ticketing-clock/">티켓팅 시계</a>로 오픈 시각을 맞추고,
+      <a href="/my/">내 찜</a>에서 일정을 확인하세요.
+    </p>
+  </div>
+
+  <p class="disclaimer">
+    연습용 게임이에요. 자동 클릭·매크로를 제공하지 않고, 실제 예매와는 아무 관련이 없어요.
+  </p>
+</BaseLayout>
+
+<style>
+  .intro { color: #d9d6ee; line-height: 1.7; }
+  .hud { display: flex; gap: 1.2rem; margin: 1rem 0 0.4rem; color: #a9a4c9; font-size: 0.92rem; }
+  .hud b { color: #f5f3ff; }
+  .g-msg { min-height: 1.6rem; margin: 0.4rem 0 0.7rem; font-weight: 700; color: #ff8fbe; }
+  .grid { display: grid; grid-template-columns: repeat(16, 1fr); gap: 4px; padding: 0.8rem; background: rgba(255,255,255,0.05); border-radius: 12px; user-select: none; touch-action: manipulation; }
+  /* 좌석은 스크립트가 만들기 때문에 Astro 스코프 스타일이 안 붙는다 - :global로 지정 */
+  .grid :global(.seat) { aspect-ratio: 1; border-radius: 3px; border: none; padding: 0; margin: 0; min-width: 0; background: #6a4fd6; cursor: default; appearance: none; -webkit-appearance: none; }
+  .grid :global(.seat.open) { background: #7ed957; box-shadow: 0 0 8px #7ed957; cursor: pointer; animation: pulse 0.4s infinite alternate; }
+  .grid :global(.seat.got) { background: #ff5fa2; }
+  .grid :global(.seat.lost) { background: #3b2f7a; }
+  @keyframes pulse { to { transform: scale(1.15); } }
+  .g-actions { display: flex; gap: 0.6rem; margin: 1rem 0; flex-wrap: wrap; }
+  .btn { padding: 0.65rem 1.2rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #f5f3ff; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+  .btn.primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
+  .result { margin-top: 1rem; padding: 1.1rem 1.2rem; border-radius: 12px; background: rgba(255,255,255,0.06); }
+  .result h2 { margin: 0 0 0.4rem; }
+  .result p { margin: 0.3rem 0; color: #d9d6ee; line-height: 1.7; }
+  .after a { color: #ff8fbe; }
+  .disclaimer { margin-top: 1.5rem; color: #a9a4c9; font-size: 0.82rem; }
+</style>
+
+<script>
+  const COLS = 16, ROWS = 10;
+  // 라운드별: 포도알 개수, 포도알이 남아있는 시간(ms) - 갈수록 많이/빨리 사라진다.
+  const ROUNDS = [
+    { n: 3, life: 1500 },
+    { n: 4, life: 1150 },
+    { n: 5, life: 900 },
+  ];
+  const BEST_KEY = 'krconcerts:grape-best';
+
+  const grid = document.getElementById('g-grid')!;
+  const msg = document.getElementById('g-msg')!;
+  const startBtn = document.getElementById('g-start') as HTMLButtonElement;
+  const result = document.getElementById('g-result')!;
+  const roundEl = document.getElementById('g-round')!;
+  const scoreEl = document.getElementById('g-score')!;
+  const bestEl = document.getElementById('g-best')!;
+
+  const seats: HTMLButtonElement[] = [];
+  for (let i = 0; i < COLS * ROWS; i++) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'seat';
+    b.setAttribute('aria-label', '좌석');
+    b.tabIndex = -1;
+    grid.appendChild(b);
+    seats.push(b);
+  }
+
+  function getBest(): number {
+    try { return Number(localStorage.getItem(BEST_KEY)) || 0; } catch { return 0; }
+  }
+  function setBest(v: number) {
+    try { localStorage.setItem(BEST_KEY, String(v)); } catch { /* 저장 불가 환경이면 기록만 안 남는다 */ }
+  }
+  function renderBest() {
+    const b = getBest();
+    bestEl.textContent = b ? String(b) : '-';
+  }
+  renderBest();
+
+  let running = false;
+  let score = 0;
+  const reactions: number[] = [];
+  let missed = 0;
+  let early = 0;
+
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  function resetSeats() {
+    seats.forEach((s) => { s.className = 'seat'; });
+  }
+
+  async function playRound(idx: number) {
+    const cfg = ROUNDS[idx];
+    roundEl.textContent = String(idx + 1);
+    resetSeats();
+    msg.textContent = `라운드 ${idx + 1} - 곧 오픈해요. 신호 전에 누르면 감점!`;
+
+    // 신호 전 대기. 이 사이에 누르면 감점(너무 일찍 누른 것).
+    const wait = 1200 + Math.random() * 1800;
+    let signaled = false;
+    const onEarly = (e: Event) => {
+      if (signaled) return;
+      if ((e.target as HTMLElement).classList.contains('seat')) {
+        early++;
+        score = Math.max(0, score - 100);
+        scoreEl.textContent = String(score);
+        msg.textContent = '앗, 너무 일찍 눌렀어요! -100';
+      }
+    };
+    grid.addEventListener('pointerdown', onEarly);
+    await sleep(wait);
+    grid.removeEventListener('pointerdown', onEarly);
+
+    // 포도알 위치 무작위 선택
+    const pool = seats.map((_, i) => i).sort(() => Math.random() - 0.5).slice(0, cfg.n);
+    signaled = true;
+    msg.textContent = '오픈! 초록 포도알을 눌러요!';
+    const t0 = performance.now();
+
+    await new Promise<void>((resolve) => {
+      let remaining = cfg.n;
+      const finishOne = () => { remaining--; if (remaining === 0) resolve(); };
+      pool.forEach((i) => {
+        const seat = seats[i];
+        seat.classList.add('open');
+        let done = false;
+        // 사람마다 조금씩 다른 시점에 다른 사람이 채간다
+        const timer = setTimeout(() => {
+          if (done) return;
+          done = true;
+          seat.classList.remove('open');
+          seat.classList.add('lost');
+          missed++;
+          finishOne();
+        }, cfg.life * (0.7 + Math.random() * 0.6));
+        seat.onpointerdown = () => {
+          if (done || !seat.classList.contains('open')) return;
+          done = true;
+          clearTimeout(timer);
+          const rt = performance.now() - t0;
+          reactions.push(rt);
+          score += Math.max(50, Math.round(1000 - rt * 0.5));
+          scoreEl.textContent = String(score);
+          seat.classList.remove('open');
+          seat.classList.add('got');
+          finishOne();
+        };
+      });
+    });
+    seats.forEach((s) => { s.onpointerdown = null; });
+    await sleep(700);
+  }
+
+  function gradeFor(got: number, total: number, avg: number) {
+    if (got === total && avg < 450) return '🏆 피켓팅 신';
+    if (got >= total * 0.75) return '🎫 티켓팅 고수';
+    if (got >= total * 0.45) return '🍇 포도알 줍는 중';
+    return '😭 오늘은 손이 느렸어요';
+  }
+
+  async function start() {
+    if (running) return;
+    running = true;
+    score = 0; missed = 0; early = 0; reactions.length = 0;
+    scoreEl.textContent = '0';
+    result.hidden = true;
+    startBtn.disabled = true;
+    for (let i = 0; i < ROUNDS.length; i++) await playRound(i);
+
+    const total = ROUNDS.reduce((a, r) => a + r.n, 0);
+    const got = reactions.length;
+    const avg = got ? Math.round(reactions.reduce((a, b) => a + b, 0) / got) : 0;
+    const best = getBest();
+    const isBest = score > best;
+    if (isBest) setBest(score);
+    renderBest();
+    const grade = gradeFor(got, total, avg);
+    document.getElementById('g-grade')!.textContent = grade;
+    document.getElementById('g-detail')!.textContent =
+      `${total}개 중 ${got}개 잡음 · 평균 ${avg || '-'}ms · 점수 ${score}점${isBest ? ' · 🎉 최고 기록!' : ''}` +
+      (early ? ` · 일찍 누름 ${early}회` : '');
+    result.hidden = false;
+    msg.textContent = '끝! 아래에서 결과를 공유해보세요';
+    resultText = `직관냥 포도알 챌린지 ${grade} · ${total}개 중 ${got}개 · 평균 ${avg}ms · ${score}점\n나도 해보기 👉 ${location.origin}/game/`;
+    startBtn.disabled = false;
+    startBtn.textContent = '다시 시작';
+    running = false;
+  }
+
+  let resultText = '';
+  startBtn.addEventListener('click', start);
+  document.getElementById('g-retry')?.addEventListener('click', start);
+  document.getElementById('g-share')?.addEventListener('click', async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ text: resultText });
+        return;
+      }
+    } catch { /* 사용자가 공유 창을 닫은 경우 - 복사로 폴백하지 않는다 */ return; }
+    try {
+      await navigator.clipboard.writeText(resultText);
+      msg.textContent = '결과가 복사됐어요. 붙여넣어 공유하세요!';
+    } catch {
+      msg.textContent = resultText;
+    }
+  });
+</script>
