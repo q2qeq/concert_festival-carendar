@@ -3621,8 +3621,9 @@
     "city": "서울",
     "startDate": "2026-10-24",
     "endDate": "2026-10-25",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302807_261008_130806.jpg",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+    "posterUrl": "/posters/kopis-PF302807.webp",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302807_261008_130806.jpg"
   },
   {
     "id": "barbican-quartet-seoul-2026-10",
@@ -3819,7 +3820,9 @@
         "label": "치펜데일 라이브 인 서울 2026 티켓 오픈 안내 - 멜론티켓 공지사항",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12797"
       }
-    ]
+    ],
+    "posterUrl": "/posters/chippendales-seoul-2026-10.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/08/202608281659050ee5b2d3-ab59-4aac-ba53-05855b2662c7.jpg"
   },
   {
     "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
@@ -3928,7 +3931,9 @@
         "url": "https://ticket.yes24.com/Perf/59781"
       }
     ],
-    "merchCheckedAt": "2026-09-25"
+    "merchCheckedAt": "2026-09-25",
+    "posterUrl": "/posters/akane-yonezawa-seoul-2026-11.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260818/20260818-59781.jpg"
   },
   {
     "id": "jujutsu-kaisen-in-concert-seoul-2026-11",
@@ -3969,7 +3974,9 @@
         "note": "공연장 현장 독점 MD (가격·판매 기간은 미공지)",
         "url": "https://zdnet.co.kr/view/?no=20260519004403"
       }
-    ]
+    ],
+    "posterUrl": "/posters/jujutsu-kaisen-in-concert-seoul-2026-11.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202607/20260728/20260728-59468.jpg"
   },
   {
     "id": "kopis-kimjanghun-miryang-2026-11",
@@ -4091,7 +4098,9 @@
         "label": "단독판매 baby selects \"Buckshot\" Live in Seoul 티켓 오픈 안내 - YES24 티켓",
         "url": "https://ticket.yes24.com/Notice#id=18582"
       }
-    ]
+    ],
+    "posterUrl": "/posters/buckshot-oscar18-seoul-2026-11.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-60420.jpg"
   },
   {
     "id": "shuttle-teddy-swims-2026-11",
@@ -4150,7 +4159,9 @@
         "url": "https://ticket.yes24.com/Perf/59831"
       }
     ],
-    "merchCheckedAt": "2026-09-26"
+    "merchCheckedAt": "2026-09-26",
+    "posterUrl": "/posters/blu-swing-seoul-2026-11.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59831.jpg"
   },
   {
     "id": "5-seconds-of-summer-2026-11",
@@ -4256,7 +4267,9 @@
         "label": "YES24 티켓 / SJF at the Theater 2026 - Christopher",
         "url": "https://ticket.yes24.com/Perf/59732"
       }
-    ]
+    ],
+    "posterUrl": "/posters/christopher-seoul-2026-11.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260813/20260813-59732.jpg"
   },
   {
     "id": "wonderlivet-2026-11",
@@ -4426,7 +4439,9 @@
         "label": "2026 체리블라썸뮤직콘서트 인 윈터 - 창원 - 카카오 T 셔틀 수요조사",
         "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000609"
       }
-    ]
+    ],
+    "posterUrl": "/posters/cherry-blossom-music-concert-winter-changwon-2026-11.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/08/202608241326143d42ff3b-131e-4369-9ec8-5d50f6ab5c33.jpg"
   },
   {
     "id": "kazumi-tateishi-trio-suwon-2026-11",
@@ -4454,7 +4469,9 @@
         "label": "티켓링크 공지사항 / 2026 카즈미 타테이시 트리오 내한공연-지브리, 재즈를 만나다 - (수원) 티켓오픈 안내",
         "url": "https://www.ticketlink.co.kr/help/notice#TICKET_OPEN"
       }
-    ]
+    ],
+    "posterUrl": "/posters/kazumi-tateishi-trio-suwon-2026-11.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/2026091110553020329853-f4bd-4c58-a58c-d2b228850531.jpg"
   },
   {
     "id": "yuki-kajiura-live-seoul-2026-11",
@@ -4474,7 +4491,9 @@
         "label": "[단독판매] < Yuki Kajiura LIVE vol.#22 ~ precious pieces ~ in Seoul -SPECIAL SETLIST- > 티켓오픈 안내 - 티켓링크 공지사항",
         "url": "https://www.ticketlink.co.kr/help/notice/66093"
       }
-    ]
+    ],
+    "posterUrl": "/posters/yuki-kajiura-live-seoul-2026-11.webp",
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_7/Yuki_open_1002.jpg"
   },
   {
     "id": "kopis-PF299935",
@@ -4507,7 +4526,9 @@
         "label": "[단독판매] 블루노트 도쿄 올스타 재즈 오케스트라 & 리사오노 - 익산 티켓오픈 안내 - 티켓링크 공지사항",
         "url": "https://www.ticketlink.co.kr/help/notice/65824"
       }
-    ]
+    ],
+    "posterUrl": "/posters/bluenote-tokyo-lisaono-iksan-2026-11.webp",
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_8/1128_poster_0903.jpg"
   },
   {
     "id": "pm-kenobi-seoul-2026-11",
@@ -4527,7 +4548,9 @@
         "label": "멜론티켓 - PM Kenobi(피엠 케노비) Live in Seoul 티켓 오픈 안내",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12845"
       }
-    ]
+    ],
+    "posterUrl": "/posters/pm-kenobi-seoul-2026-11.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/202609091520529397865a-7ea0-4f6c-898a-2f8c0926e8a4.png"
   },
   {
     "id": "kopis-PF303596",
@@ -4537,8 +4560,9 @@
     "city": "서울",
     "startDate": "2026-12-02",
     "endDate": "2026-12-03",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303596_261016_135100.jpg",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+    "posterUrl": "/posters/kopis-PF303596.webp",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303596_261016_135100.jpg"
   },
   {
     "id": "mass-of-the-fermenting-dregs-seoul-2026-12",
@@ -4558,7 +4582,9 @@
         "label": "멜론티켓 - Mass Of The Fermenting Dregs 'World Tour' - Live in Seoul (with Dabda) 티켓 오픈 안내",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12819"
       }
-    ]
+    ],
+    "posterUrl": "/posters/mass-of-the-fermenting-dregs-seoul-2026-12.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/202609031356224e3a440b-b11b-4f48-9864-869a8b969612.jpg"
   },
   {
     "id": "shuttle-yuuri-live-seoul-2026-12",
@@ -4685,7 +4711,9 @@
         "label": "YES24 티켓 - ZAZEN BOYS MATSURI SESSION IN SEOUL 2026",
         "url": "https://ticket.yes24.com/Perf/59963"
       }
-    ]
+    ],
+    "posterUrl": "/posters/zazen-boys-seoul-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260901/20260901-59963.jpg"
   },
   {
     "id": "jane-remover-seoul-2026-12",
@@ -4709,7 +4737,9 @@
         "label": "YES24 티켓 / Jane Remover: Live Exhibit in Seoul",
         "url": "https://ticket.yes24.com/Perf/60113"
       }
-    ]
+    ],
+    "posterUrl": "/posters/jane-remover-seoul-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260914/20260914-60113.jpg"
   },
   {
     "id": "kopis-domi-jdbeck-2026-12",
@@ -4768,7 +4798,9 @@
         "label": "욘 스토르고르스 & BBC 필하모닉 티켓오픈 안내 - 예스24티켓 공지사항",
         "url": "https://ticket.yes24.com/Notice#id=18452"
       }
-    ]
+    ],
+    "posterUrl": "/posters/bbc-philharmonic-seoul-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/BoardNotice/202609/20260907/20260907-cd76222d-cac0-4b82-9563-c168d6aeff47.jpg"
   },
   {
     "id": "mulasaki-ima-seoul-2026-12",
@@ -4792,7 +4824,9 @@
         "label": "YES24 티켓 / Mulasaki Ima ONE MAN TOUR 2026 『PURPLE SHELTER -ep.1- EXTRA』in Seoul",
         "url": "https://ticket.yes24.com/Perf/60203"
       }
-    ]
+    ],
+    "posterUrl": "/posters/mulasaki-ima-seoul-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260915/20260915-60203.jpg"
   },
   {
     "id": "kopis-PF299848",
@@ -4824,7 +4858,9 @@
         "label": "2026 유키 구라모토 콘서트 Peacefully - 김해 티켓오픈 안내 - 티켓링크",
         "url": "https://www.ticketlink.co.kr/help/notice/66042"
       }
-    ]
+    ],
+    "posterUrl": "/posters/yuki-kuramoto-gimhae-2026-12.webp",
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_4/uk_open_0928.jpg"
   },
   {
     "id": "yuki-kuramoto-daegu-2026-12",
@@ -4844,7 +4880,9 @@
         "label": "2026 유키 구라모토 콘서트 Peacefully - 대구 티켓오픈 안내 - 티켓링크",
         "url": "https://www.ticketlink.co.kr/help/notice/66043"
       }
-    ]
+    ],
+    "posterUrl": "/posters/yuki-kuramoto-daegu-2026-12.webp",
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_9/uk_daegu_open_0928.jpg"
   },
   {
     "id": "nee-seoul-2026-12",
@@ -4864,7 +4902,9 @@
         "label": "멜론티켓 / NEE 1st Concert in KOREA 「EXOTIC METTYA KANKOKU」 티켓 오픈 안내",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12855"
       }
-    ]
+    ],
+    "posterUrl": "/posters/nee-seoul-2026-12.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/20260910135442edd4eff2-1cfa-4537-932a-2430a6590b1f.jpg"
   },
   {
     "id": "luck-life-seoul-2026-12",
@@ -4884,7 +4924,9 @@
         "label": "멜론티켓 / LUCK LIFE TOUR 2026 「Hanashi no Tsuzuki」 in Korea 티켓 오픈 안내",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12884"
       }
-    ]
+    ],
+    "posterUrl": "/posters/luck-life-seoul-2026-12.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/20260916093247c6e7ed22-4ef5-462f-b6b6-5d22d8ca0c8d.jpg"
   },
   {
     "id": "penthouse-seoul-2026-12",
@@ -4907,7 +4949,9 @@
         "label": "펜트하우스 내한공연 Penthouse ONE MAN LIVE TOUR 2026 「Neon Garden」 in Seoul - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf/59886"
       }
-    ]
+    ],
+    "posterUrl": "/posters/penthouse-seoul-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260825/20260825-59886.jpg"
   },
   {
     "id": "ron-braunton-jazz-christmas-suwon-2026-12",
@@ -4930,7 +4974,9 @@
         "label": "2026 론 브랜튼의 [재즈 크리스마스!] - 예스24티켓",
         "url": "https://ticket.yes24.com/Perf/59993"
       }
-    ]
+    ],
+    "posterUrl": "/posters/ron-braunton-jazz-christmas-suwon-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-59993.jpg"
   },
   {
     "id": "raintree-seoul-2026-12",
@@ -4950,7 +4996,9 @@
         "label": "Rain Tree Concert 2026 in Seoul 티켓 오픈 안내 - YES24 티켓 공지사항",
         "url": "https://ticket.yes24.com/Notice?#id=18347&Gcode=009_208_001"
       }
-    ]
+    ],
+    "posterUrl": "/posters/raintree-seoul-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260818/20260818-59777.jpg"
   },
   {
     "id": "kawasaki-takaya-seoul-2026-12",
@@ -4973,7 +5021,9 @@
         "label": "카와사키 타카야 내한공연 KAWASAKI TAKAYA LIVE IN SEOUL 2026 - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf/59669"
       }
-    ]
+    ],
+    "posterUrl": "/posters/kawasaki-takaya-seoul-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260810/20260810-59669.jpg"
   },
   {
     "id": "ron-braunton-jazz-christmas-incheon-2026-12",
@@ -4996,7 +5046,9 @@
         "label": "[인천] 2026 론 브랜튼의 [재즈 크리스마스!] - 예스24티켓",
         "url": "https://ticket.yes24.com/Perf/59997"
       }
-    ]
+    ],
+    "posterUrl": "/posters/ron-braunton-jazz-christmas-incheon-2026-12.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-59997.jpg"
   },
   {
     "id": "fujii-kaze-2027-01",
@@ -5111,7 +5163,9 @@
         "label": "YES24 티켓 / Aosaka: kurayamisaka & parannoul",
         "url": "https://ticket.yes24.com/Perf/60147"
       }
-    ]
+    ],
+    "posterUrl": "/posters/aosaka-seoul-2027-01.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260911/20260911-60147.jpg"
   },
   {
     "id": "kopis-PF304185",
@@ -5121,8 +5175,9 @@
     "city": "인천",
     "startDate": "2027-01-14",
     "endDate": "2027-01-17",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304185_261022_135940.gif",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+    "posterUrl": "/posters/kopis-PF304185.webp",
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304185_261022_135940.gif"
   },
   {
     "id": "humpback-seoul-2027-01",
