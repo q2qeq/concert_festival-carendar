@@ -5330,5 +5330,218 @@
     ],
     "posterUrl": "/posters/bruno-mars-goyang-2027-05.webp",
     "posterSourceUrl": "https://images.khan.co.kr/article/2026/08/27/news-p.v1.20260827.16e149a7d6ba4fb09dfa376a85069a52_P1.jpg"
+  },
+  {
+    "id": "shuttle-hanroro-5th-question-mark-2027-01",
+    "artist": "한로로 (HANRORO) 5th 단독콘서트 [물음표]",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2027-01-02",
+    "endDate": "2027-01-03",
+    "officialUrl": "https://www.hanroro.co.kr/schedule/6adb247a735e005ea76a2598",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 싱어송라이터 한로로가 데뷔 후 처음으로 대형 아레나에 입성하는 다섯 번째 단독 콘서트 '물음표'.",
+    "sources": [
+      {
+        "label": "한로로, 내년 1월 인스파이어 아레나서 단독 콘서트 - 연합뉴스",
+        "url": "https://www.yna.co.kr/view/AKR20261025041900005"
+      },
+      {
+        "label": "한로로, 내년 1월 단독 콘서트..데뷔 첫 아레나 입성한다 - 조선일보",
+        "url": "https://www.chosun.com/music/2026/10/25"
+      },
+      {
+        "label": "한로로 (HANRORO) 5th 단독콘서트 [물음표] - 공식 일정 (hanroro.co.kr)",
+        "url": "https://www.hanroro.co.kr/schedule/6adb247a735e005ea76a2598"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-2026-incheon-airport-sky-festival-2026-11",
+    "artist": "2026 인천공항 SKY FESTIVAL (SKF)",
+    "genre": "페스티벌",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-08",
+    "officialUrl": "https://2026skf.com",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 인천공항 인근에서 열리는 전석 무료 K-POP 페스티벌. 싸이·에픽하이·비비 등이 출연.",
+    "sources": [
+      {
+        "label": "싸이·에픽하이·비비 뜬다…인천공항 스카이 페스티벌 11월 개최 - 한국NGO신문",
+        "url": "https://www.ngonews.kr/news/articleView.html"
+      },
+      {
+        "label": "2026 인천공항 SKY FESTIVAL - StagePick",
+        "url": "https://www.stagepick.co.kr"
+      },
+      {
+        "label": "SKF SKY FESTIVAL 2026 공식 사이트",
+        "url": "https://2026skf.com"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-nmixx-world-tour-zero-frontier-finale-2026-11",
+    "artist": "NMIXX (엔믹스) 1ST WORLD TOUR [EPISODE 1: ZERO FRONTIER] FINALE IN INCHEON",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-29",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26013946",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 엔믹스의 데뷔 첫 월드투어를 마무리하는 피날레 단독 콘서트.",
+    "sources": [
+      {
+        "label": "엔믹스, 11월 인천 인스파이어 아레나 3회차 전석 매진 - JTBC",
+        "url": "https://news.jtbc.co.kr/article"
+      },
+      {
+        "label": "NMIXX 1ST WORLD TOUR 〈EPISODE 1: ZERO FRONTIER〉 FINALE IN INCHEON - NOL 티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26013946"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-ateez-world-tour-zero-to-all-2027-01",
+    "artist": "ATEEZ (에이티즈) 2027 WORLD TOUR [ZERO TO ALL]",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2027-01-22",
+    "endDate": "2027-01-24",
+    "officialUrl": "https://www.yna.co.kr/view/AKR20261011017600005",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 에이티즈의 새 월드투어 'ZERO TO ALL' 개막 공연. 인천을 시작으로 일본·유럽·북미 등으로 이어짐.",
+    "sources": [
+      {
+        "label": "[가요소식] 에이티즈, 내년 1월 새 월드투어…인천서 시작 - 연합뉴스",
+        "url": "https://www.yna.co.kr/view/AKR20261011017600005"
+      },
+      {
+        "label": "에이티즈, 2027 월드 투어 'ZERO TO ALL' 연다…인천서 출발 - 문화일보",
+        "url": "https://www.munhwa.com/article"
+      },
+      {
+        "label": "에이티즈, 新 2027 월드 투어 'ZERO TO ALL'…인천서 포문 - 전자신문",
+        "url": "https://www.etnews.com"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-xdinary-heroes-impulse-2026-11",
+    "artist": "Xdinary Heroes Concert <IMPULSE>",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-15",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26014103",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 엑스디너리 히어로즈의 단독 콘서트.",
+    "sources": [
+      {
+        "label": "IMPULSE(콘서트) - 나무위키",
+        "url": "https://namu.wiki/w/IMPULSE(%EC%BD%98%EC%84%9C%ED%8A%B8)"
+      },
+      {
+        "label": "Xdinary Heroes Concert 〈IMPULSE〉 - NOL 티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26014103"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-hero-rock-festival-incheon-2026-12",
+    "artist": "2026 히어로 락 페스티벌 - 인천",
+    "genre": "페스티벌",
+    "venue": "송도컨벤시아",
+    "city": "인천",
+    "startDate": "2026-12-18",
+    "endDate": "2026-12-20",
+    "officialUrl": "https://indistreet.com/programs/2026-%ED%9E%88%EC%96%B4%EB%A1%9C-%EB%9D%BD-%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-%EC%9D%B8%EC%B2%9C-yntyxr79guen72ibt5msl7go",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 실내 록·메탈 음악 페스티벌로 부활·쏜애플·노브레인·송소희 등 국내외 아티스트가 출연.",
+    "sources": [
+      {
+        "label": "'히어로 락 페스티벌 인천' 2차 라인업 공개 - BNT뉴스",
+        "url": "https://www.bntnews.co.kr/view/bnt202610280231"
+      },
+      {
+        "label": "'2026 히어로 락 페스티벌 - 인천' 1차 라인업 공개 - 더리더",
+        "url": "https://press.theleader.kr/newsRead"
+      },
+      {
+        "label": "2026 히어로 락 페스티벌 - 인천 | 기획공연 - 인디스트릿(공식)",
+        "url": "https://indistreet.com/programs/2026-%ED%9E%88%EC%96%B4%EB%A1%9C-%EB%9D%BD-%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-%EC%9D%B8%EC%B2%9C-yntyxr79guen72ibt5msl7go"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-lee-seung-chul-40th-concert-2026-12",
+    "artist": "이승철 40주년 콘서트 [THE VOICE: LEE SEUNG CHUL]",
+    "genre": "가요",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-12",
+    "officialUrl": "https://www.inspireresorts.com/ko/entertainment/performance/2026-lee-seung-chul-40th-concert-incheon",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 데뷔 40주년을 맞은 이승철의 단독 콘서트.",
+    "sources": [
+      {
+        "label": "2026 이승철 40주년 콘서트 [THE VOICE: LEE SEUNG CHUL] - INSPIRE Entertainment Resort 공식",
+        "url": "https://www.inspireresorts.com/ko/entertainment/performance/2026-lee-seung-chul-40th-concert-incheon"
+      },
+      {
+        "label": "[인천] 2026 이승철 40주년 콘서트 [THE VOICE: LEE SEUNG CHUL] - YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-daegu-hiphop-festival-2026-12",
+    "artist": "2026 대구힙합페스티벌",
+    "genre": "페스티벌",
+    "venue": "엑스코 (EXCO) 동관",
+    "city": "대구",
+    "startDate": "2026-12-25",
+    "endDate": "2026-12-26",
+    "ticketUrl": "https://koreagenda.com/ko/events/event-2026-8772f6",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 바비·애쉬아일랜드·콜드·던말릭 등이 출연하는 크리스마스 힙합 페스티벌.",
+    "sources": [
+      {
+        "label": "크리스마스에 힙합 어때? 2026 대구힙합페스티벌 라인업 - Naver Blog(djeon0011)",
+        "url": "https://m.blog.naver.com/djeon0011"
+      },
+      {
+        "label": "대구힙합페스티벌 공식 인스타그램",
+        "url": "https://www.instagram.com/daeguhiphopfestival"
+      },
+      {
+        "label": "대구 힙합 페스티벌 - koreagenda.com (예매/일정)",
+        "url": "https://koreagenda.com/ko/events/event-2026-8772f6"
+      }
+    ]
+  },
+  {
+    "id": "shuttle-akmu-concert-tour-gangneung-2026-11",
+    "artist": "2026 AKMU CONCERT TOUR [소문의 낙원(Paradise of Rumors)] - 강릉",
+    "genre": "가요",
+    "venue": "강릉 올림픽파크 (스피드스케이팅경기장)",
+    "city": "강릉",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "ticketUrl": "https://www.stagepick.co.kr/xhzJjESmOvpkYQ83",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 악뮤(AKMU)의 전국투어 콘서트 '소문의 낙원' 강릉 공연.",
+    "sources": [
+      {
+        "label": "2026 AKMU CONCERT [소문의 낙원(Paradise of Rumors)] - 강릉 - StagePick",
+        "url": "https://www.stagepick.co.kr/xhzJjESmOvpkYQ83"
+      },
+      {
+        "label": "AKMU CONCERT: 소문의 낙원 (Paradise of Rumors) [강릉] - HaniSeoul",
+        "url": "https://www.haniseoul.com/kpop/concerts/akmu-concert"
+      },
+      {
+        "label": "AKMU 공식 Facebook - 2026 AKMU CONCERT TOUR 일정",
+        "url": "https://www.facebook.com/AKMUsorry"
+      }
+    ]
   }
 ]
