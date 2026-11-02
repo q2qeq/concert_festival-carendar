@@ -1,18 +1,21 @@
 ---
 // 티켓팅 연습 (2026-11-02). 실제 티켓팅 순서를 그대로 연습한다.
-//   1단계) 모의 예매 사이트 - 서버 시간을 보고 오픈 시각에 맞춰 "예매하기" 버튼 누르기 (너무 빨리 누르면 감점)
-//   2단계) 좌석 선택 - 신호 뒤에 뜨는 빈 좌석을 다른 사람이 채가기 전에 잡기 (3라운드, 갈수록 빨라짐)
+//   1단계) 모의 예매 사이트 - 서버 시간을 보고 오픈 시각에 "예매하기" 버튼 누르기 (3회 시도)
+//          -> 버튼 반응속도가 "대기 순번"을 정한다 (연습용 시뮬레이션)
+//   2단계) 좌석 선택 - 대기 순번이 좋을수록 빈 좌석이 많고 오래 남는다. 신호 뒤에 뜨는 빈 좌석을 잡는다 (3라운드)
+// 클릭마다 즉시 피드백(빠름/느림/일찍/더블클릭/오클릭)을 보여주고, 끝나면 시도별 기록과 맞춤 팁을 준다.
 // 자동 예매/매크로가 아니라 순수한 반응속도 연습이다. 최고 기록은 이 기기(localStorage)에만 저장.
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="티켓팅 연습 - 서버시간 보고 예매 버튼 누르기"
-  description="서버 시간을 보고 예매하기 버튼을 누르고, 빈 좌석을 잡는 티켓팅 연습. 내 반응속도가 상위 몇 %인지 확인하고 공유해보세요."
+  description="서버 시간을 보고 예매하기 버튼을 누르면 대기 순번이 정해지고, 빈 좌석을 잡는 티켓팅 연습. 클릭마다 바로 피드백, 내 반응속도가 상위 몇 %인지 확인해보세요."
 >
   <h1>🎫 티켓팅 연습</h1>
   <p class="intro">
-    진짜 티켓팅처럼 <strong>① 서버 시간을 보고 예매하기 버튼 누르기 → ② 빈 좌석 잡기</strong> 순서로 연습해요.
-    오픈 전에 누르면 감점이니, 시계를 잘 보세요.
+    진짜 티켓팅처럼 <strong>① 서버 시간을 보고 예매하기 버튼 누르기(3회) → ② 빈 좌석 잡기</strong> 순서예요.
+    버튼을 빨리 누를수록 대기 순번이 앞서고, 좌석 단계에서 빈 좌석이 더 넉넉해요.
+    누를 때마다 바로 피드백이 나와요.
   </p>
 
   <div class="hud">
@@ -25,12 +28,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <button id="g-start" type="button" class="btn primary">연습 시작</button>
   </div>
   <div id="g-msg" class="g-msg">시작을 누르면 모의 예매 사이트가 열려요</div>
+  <div id="g-feedback" class="g-feedback" aria-live="polite"></div>
 
   <div id="g-result" class="result" hidden>
     <h2 id="g-grade"></h2>
     <p id="g-detail"></p>
     <p id="g-rank" class="rank" hidden></p>
-    <p id="g-rank-note" class="rank-note" hidden></p>
+    <ul id="g-tips" class="tips"></ul>
     <div class="g-actions">
       <button id="g-share" type="button" class="btn primary">결과 공유하기</button>
       <button id="g-retry" type="button" class="btn">다시 하기</button>
@@ -50,9 +54,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="site-body">
       <h2>직관냥 연습 콘서트 LIVE</h2>
       <p class="site-sub">2026 연습 투어 · 연습 아레나 · 전석 지정석</p>
-      <p class="site-open">예매 오픈 <b id="open-at">--:--:--</b></p>
+      <p class="site-open">예매 오픈 <b id="open-at">--:--:--</b> <span id="attempt-no" class="attempt-no"></span></p>
       <button id="book-btn" type="button" class="book is-wait">오픈 대기중</button>
       <p id="site-note" class="site-note">서버 시간이 오픈 시각이 되는 순간 버튼을 누르세요</p>
+      <div id="queue-box" class="queue-box" hidden></div>
     </div>
   </section>
 
@@ -61,17 +66,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div id="g-grid" class="grid" role="grid" aria-label="좌석표"></div>
   </section>
 
+  <section id="log-box" class="log" hidden aria-label="시도 기록">
+    <h2>시도 기록</h2>
+    <ol id="g-log"></ol>
+  </section>
+
   <p class="disclaimer">
-    연습용 게임이에요. 자동 클릭·매크로를 제공하지 않고, 실제 예매와는 아무 관련이 없어요.
-    순위를 위해 점수만 익명으로 전송하고, 닉네임·개인정보는 저장하지 않아요.
+    연습용 게임이에요. 대기 순번은 연습을 위한 시뮬레이션이고 실제 예매 사이트와는 아무 관련이 없어요.
+    자동 클릭·매크로를 제공하지 않아요. 순위를 위해 점수만 익명으로 전송하고, 닉네임·개인정보는 저장하지 않아요.
   </p>
 </BaseLayout>
 
 <style>
   .intro { color: #d9d6ee; line-height: 1.7; }
-  .hud { display: flex; gap: 1.2rem; margin: 1rem 0 0.4rem; color: #a9a4c9; font-size: 0.92rem; }
+  .hud { display: flex; gap: 1.2rem; margin: 1rem 0 0.4rem; color: #a9a4c9; font-size: 0.92rem; flex-wrap: wrap; }
   .hud b { color: #f5f3ff; }
-  .g-msg { min-height: 1.6rem; margin: 0.4rem 0 0.7rem; font-weight: 700; color: #ff8fbe; }
+  .g-msg { min-height: 1.6rem; margin: 0.4rem 0 0.3rem; font-weight: 700; color: #ff8fbe; }
+  .g-feedback { min-height: 2.1rem; margin: 0 0 0.7rem; padding: 0.35rem 0.8rem; border-radius: 8px; font-weight: 800; font-size: 1rem; background: rgba(255,255,255,0.04); color: #a9a4c9; }
+  .g-feedback.good { color: #7ed957; background: rgba(126,217,87,0.12); }
+  .g-feedback.ok { color: #6ee7ff; background: rgba(110,231,255,0.1); }
+  .g-feedback.slow { color: #ffb84c; background: rgba(255,184,76,0.12); }
+  .g-feedback.warn { color: #ff7a7a; background: rgba(255,107,107,0.13); }
   .g-actions { display: flex; gap: 0.6rem; margin: 1rem 0; flex-wrap: wrap; }
   .btn { padding: 0.65rem 1.2rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #f5f3ff; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
   .btn.primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
@@ -87,12 +102,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .site-sub { margin: 0 0 1rem; color: #667; font-size: 0.88rem; }
   .site-open { margin: 0 0 1.1rem; font-size: 1rem; }
   .site-open b { font-size: 1.5rem; color: #d62d6f; font-variant-numeric: tabular-nums; }
+  .attempt-no { display: inline-block; margin-left: 0.4rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: #e7e9f2; color: #556; font-size: 0.78rem; font-weight: 700; }
   .book { width: 100%; max-width: 360px; padding: 1rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 800; cursor: pointer; }
   .book.is-wait { background: #c9ccd6; color: #fff; }
   .book.is-open { background: #e0245e; color: #fff; box-shadow: 0 4px 14px rgba(224,36,94,0.45); }
+  .book.is-done { background: #2e7d4f; color: #fff; }
   .book.shake { animation: shake 0.3s; }
   @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
   .site-note { margin: 0.9rem 0 0; font-size: 0.84rem; color: #667; min-height: 1.2rem; }
+  .queue-box { margin: 1rem auto 0; max-width: 360px; padding: 0.9rem 1rem; border-radius: 10px; background: #1f2a44; color: #fff; line-height: 1.6; }
+  .queue-box b { color: #ffd166; font-size: 1.3rem; }
+  .queue-box small { color: #b8c4e8; display: block; margin-top: 0.3rem; }
 
   .grid { display: grid; grid-template-columns: repeat(16, 1fr); gap: 4px; padding: 0.8rem; background: rgba(255,255,255,0.05); border-radius: 12px; user-select: none; touch-action: manipulation; margin-bottom: 1rem; }
   /* 좌석은 스크립트가 만들기 때문에 Astro 스코프 스타일이 안 붙는다 - :global로 지정 */
@@ -102,30 +122,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .grid :global(.seat.lost) { background: #3b2f7a; }
   @keyframes pulse { to { transform: scale(1.15); } }
 
+  .log { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 12px; background: rgba(255,255,255,0.05); }
+  .log h2 { margin: 0 0 0.5rem; font-size: 1rem; color: #f5f3ff; }
+  .log ol { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.35rem; color: #d9d6ee; font-size: 0.9rem; line-height: 1.5; }
+  .log :global(.t-good) { color: #7ed957; font-weight: 800; }
+  .log :global(.t-ok) { color: #6ee7ff; font-weight: 800; }
+  .log :global(.t-slow) { color: #ffb84c; font-weight: 800; }
+  .log :global(.t-warn) { color: #ff7a7a; font-weight: 700; }
+
   .result { margin-top: 1rem; padding: 1.1rem 1.2rem; border-radius: 12px; background: rgba(255,255,255,0.06); }
   .result h2 { margin: 0 0 0.4rem; }
   .result p { margin: 0.3rem 0; color: #d9d6ee; line-height: 1.7; }
   .rank { font-size: 1.15rem; font-weight: 800; color: #ffd166 !important; }
-  .rank-note { font-size: 0.8rem; color: #a9a4c9 !important; }
+  .tips { margin: 0.6rem 0 0; padding-left: 1.2rem; color: #d9d6ee; line-height: 1.7; }
+  .tips :global(li) { margin: 0.2rem 0; }
   .after a { color: #ff8fbe; }
-  .disclaimer { margin-top: 1.5rem; color: #a9a4c9; font-size: 0.82rem; }
+  .disclaimer { margin-top: 1.5rem; color: #a9a4c9; font-size: 0.82rem; line-height: 1.6; }
 </style>
 
 <script>
   const COLS = 16, ROWS = 10;
-  // 좌석 라운드별: 빈 좌석 개수, 빈 좌석이 남아있는 시간(ms) - 갈수록 많이/빨리 사라진다.
-  const ROUNDS = [
+  const BTN_ATTEMPTS = 3;
+  const BTN_MAX_PER = 1333;        // 시도 1회 최대 점수 (3회 합계 약 4000)
+  const BTN_ZERO_MS = 500;         // 이 시간 이상 늦으면 0점
+  const BTN_GIVEUP_MS = 4000;      // 오픈 후 이 시간 안에 못 누르면 놓친 것
+  const DBL_WINDOW_MS = 600;       // 이 시간 안의 추가 클릭은 더블클릭으로 본다
+  const EARLY_PENALTY = 300;       // 오픈 전 클릭 감점
+  const SEAT_EARLY_PENALTY = 100;  // 신호 전 좌석 클릭 감점
+  // 좌석 라운드 기본값: 빈 좌석 개수, 빈 좌석이 남아있는 시간(ms). 대기 순번(q)에 따라 보정된다.
+  const BASE_ROUNDS = [
     { n: 3, life: 1500 },
     { n: 4, life: 1150 },
     { n: 5, life: 900 },
   ];
-  const TOTAL_SEATS = ROUNDS.reduce((a, r) => a + r.n, 0);
   const BEST_KEY = 'krconcerts:practice-best';
-  const BTN_GIVEUP_MS = 4000; // 오픈 후 이 시간 안에 못 누르면 놓친 걸로 친다
 
   const $ = (id: string) => document.getElementById(id)!;
   const grid = $('g-grid');
   const msg = $('g-msg');
+  const feedbackEl = $('g-feedback');
   const startBtn = $('g-start') as HTMLButtonElement;
   const result = $('g-result');
   const stageEl = $('g-stage');
@@ -136,7 +171,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   const bookBtn = $('book-btn') as HTMLButtonElement;
   const srvTime = $('srv-time');
   const openAtEl = $('open-at');
+  const attemptNo = $('attempt-no');
   const siteNote = $('site-note');
+  const queueBox = $('queue-box');
+  const logBox = $('log-box');
+  const logList = $('g-log');
 
   const seats: HTMLButtonElement[] = [];
   for (let i = 0; i < COLS * ROWS; i++) {
@@ -169,37 +208,74 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   };
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+  // ── 즉시 피드백 ─────────────────────────────────────────────────────────
+  type Tone = 'good' | 'ok' | 'slow' | 'warn';
+  function feedback(tone: Tone | '', text: string) {
+    feedbackEl.className = 'g-feedback' + (tone ? ' ' + tone : '');
+    feedbackEl.textContent = text;
+  }
+  // 반응속도(ms) 판정. 버튼과 좌석은 허용 시간이 달라서 기준을 따로 둔다.
+  function judgeBtn(ms: number): { tone: Tone; label: string } {
+    if (ms < 150) return { tone: 'good', label: '⚡ 번개같아요' };
+    if (ms < 300) return { tone: 'good', label: '👍 빨라요' };
+    if (ms < 600) return { tone: 'ok', label: '🙂 보통이에요' };
+    return { tone: 'slow', label: '🐢 늦었어요' };
+  }
+  function judgeSeat(ms: number): { tone: Tone; label: string } {
+    if (ms < 350) return { tone: 'good', label: '⚡ 번개같아요' };
+    if (ms < 600) return { tone: 'good', label: '👍 빨라요' };
+    if (ms < 900) return { tone: 'ok', label: '🙂 보통이에요' };
+    return { tone: 'slow', label: '🐢 늦었어요' };
+  }
+  function addLog(html: string) {
+    const li = document.createElement('li');
+    li.innerHTML = html;
+    logList.appendChild(li);
+  }
+  const tag = (tone: Tone, text: string) => `<span class="t-${tone}">${text}</span>`;
+
+  // ── 게임 상태 ───────────────────────────────────────────────────────────
   let running = false;
   let score = 0;
-  let btnMs = -1;          // 예매 버튼 반응시간 (-1 = 놓침)
-  let earlyClicks = 0;
-  const reactions: number[] = [];
-  let seatsEarly = 0;
   let resultText = '';
+  const stats = {
+    btnMs: [] as number[],     // 정상 클릭한 버튼 시도의 반응시간
+    btnMissed: 0,
+    btnEarly: 0,
+    btnDouble: 0,
+    seatRt: [] as number[],    // 잡은 좌석 반응시간
+    seatTotal: 0,
+    seatEarly: 0,
+    seatMiss: 0,
+    seatDouble: 0,
+  };
 
   function addScore(d: number) {
     score = Math.max(0, score + d);
     scoreEl.textContent = String(score);
   }
 
-  // ── 1단계: 모의 예매 사이트 ─────────────────────────────────────────────
-  async function playSite() {
-    stageEl.textContent = '1/2 예매 버튼';
-    seatsEl.hidden = true;
-    siteEl.hidden = false;
+  // ── 1단계: 모의 예매 사이트 (3회 시도) ───────────────────────────────────
+  // 반환: 이 시도의 유효 반응시간(ms), 놓쳤으면 -1
+  async function playButtonAttempt(i: number): Promise<number> {
+    stageEl.textContent = `1/2 예매 버튼 ${i + 1}/${BTN_ATTEMPTS}`;
+    attemptNo.textContent = `${i + 1}/${BTN_ATTEMPTS}회`;
     bookBtn.className = 'book is-wait';
     bookBtn.textContent = '오픈 대기중';
     siteNote.textContent = '서버 시간이 오픈 시각이 되는 순간 버튼을 누르세요';
-    msg.textContent = '서버 시간을 잘 보세요! 오픈 전에 누르면 -300';
+    msg.textContent = i === 0
+      ? '서버 시간을 잘 보세요! 오픈 전에 누르면 감점이에요'
+      : `${i + 1}번째 시도 - 이번에는 더 빠르게!`;
 
-    // 오픈 시각은 9~12초 뒤의 "정각 초"로 잡아서, 화면의 오픈 시각 숫자와 서버 시간이 정확히 맞아떨어지게 한다.
-    const openAt = Math.ceil((Date.now() + 9000 + Math.random() * 3000) / 1000) * 1000;
+    // 오픈 시각은 몇 초 뒤의 "정각 초"로 잡아서, 화면의 오픈 시각 숫자와 서버 시간이 정확히 맞아떨어지게 한다.
+    const wait = i === 0 ? 7000 + Math.random() * 2000 : 5000 + Math.random() * 2000;
+    const openAt = Math.ceil((Date.now() + wait) / 1000) * 1000;
     openAtEl.textContent = fmtClock(openAt, false);
 
     let raf = 0;
     const tick = () => {
       srvTime.textContent = fmtClock(Date.now());
-      if (Date.now() >= openAt && !bookBtn.classList.contains('is-open')) {
+      if (Date.now() >= openAt && bookBtn.classList.contains('is-wait')) {
         bookBtn.className = 'book is-open';
         bookBtn.textContent = '예매하기';
         siteNote.textContent = '지금이에요!';
@@ -208,107 +284,210 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     };
     raf = requestAnimationFrame(tick);
 
+    let ms = -1;
+    let early = 0;
+    let dbl = 0;
     await new Promise<void>((resolve) => {
+      let clicked = false;
       let finished = false;
       const finish = () => { if (finished) return; finished = true; bookBtn.onpointerdown = null; resolve(); };
       bookBtn.onpointerdown = () => {
         const now = Date.now();
-        if (now < openAt) {
-          earlyClicks++;
-          addScore(-300);
-          bookBtn.classList.remove('shake'); void bookBtn.offsetWidth; bookBtn.classList.add('shake');
-          siteNote.textContent = '아직 예매 시간이 아닙니다! (-300)';
-          return;
+        if (!clicked) {
+          if (now < openAt) {
+            early++;
+            addScore(-EARLY_PENALTY);
+            bookBtn.classList.remove('shake'); void bookBtn.offsetWidth; bookBtn.classList.add('shake');
+            const sec = ((openAt - now) / 1000).toFixed(2);
+            siteNote.textContent = '아직 예매 시간이 아닙니다!';
+            feedback('warn', `⛔ ${sec}초 일찍 눌렀어요 (-${EARLY_PENALTY}) · 서버 시간이 ${fmtClock(openAt, false)}가 되면 누르세요`);
+            return;
+          }
+          clicked = true;
+          ms = now - openAt;
+          const pts = Math.max(0, Math.round(BTN_MAX_PER * (1 - ms / BTN_ZERO_MS)));
+          addScore(pts);
+          bookBtn.className = 'book is-done';
+          bookBtn.textContent = '대기열 진입!';
+          const j = judgeBtn(ms);
+          feedback(j.tone, `${j.label} · 오픈 후 ${ms}ms (+${pts}점)`);
+          // 더블클릭 감지 창: 잠깐 더 기다리며 추가 클릭을 센다
+          setTimeout(finish, DBL_WINDOW_MS);
+        } else if (now - (openAt + ms) <= DBL_WINDOW_MS) {
+          dbl++;
+          feedback('warn', '⚠️ 더블클릭 감지! 실제 사이트에서는 중복 요청으로 대기열이 꼬일 수 있어요. 한 번만 누르세요 (감점은 없어요)');
         }
-        btnMs = now - openAt;
-        addScore(Math.max(0, Math.round(2000 - btnMs * 4)));
-        finish();
       };
-      // 오픈 후 일정 시간 안에 못 누르면 놓친 것
       const giveUp = setInterval(() => {
-        if (finished) { clearInterval(giveUp); return; }
-        if (Date.now() >= openAt + BTN_GIVEUP_MS) { clearInterval(giveUp); siteNote.textContent = '너무 늦었어요 😭'; finish(); }
+        if (finished || clicked) { if (finished) clearInterval(giveUp); return; }
+        if (Date.now() >= openAt + BTN_GIVEUP_MS) {
+          clearInterval(giveUp);
+          siteNote.textContent = '너무 늦었어요 😭';
+          feedback('slow', '🐢 놓쳤어요! 오픈 4초가 지나도록 누르지 못했어요');
+          finish();
+        }
       }, 100);
     });
     cancelAnimationFrame(raf);
-    msg.textContent = btnMs >= 0 ? `예매 버튼 반응 ${btnMs}ms! 좌석 선택으로 이동해요...` : '버튼을 놓쳤어요. 좌석 선택으로 이동해요...';
-    await sleep(1100);
+
+    stats.btnEarly += early; stats.btnDouble += dbl;
+    if (ms >= 0) stats.btnMs.push(ms); else stats.btnMissed++;
+    const j = ms >= 0 ? judgeBtn(ms) : null;
+    addLog(
+      `예매 버튼 ${i + 1}/${BTN_ATTEMPTS} · ` +
+      (j ? `${ms}ms ${tag(j.tone, j.label)}` : tag('slow', '놓침')) +
+      (early ? ` · ${tag('warn', `일찍 누름 ${early}회`)}` : '') +
+      (dbl ? ` · ${tag('warn', '더블클릭')}` : '')
+    );
+    await sleep(900);
+    return ms;
+  }
+
+  // 대기 순번 시뮬레이션: 버튼 반응이 느릴수록(놓침/일찍 누름 포함) 순번이 뒤로 간다.
+  // q는 0(최악)~1(최고) - 좌석 단계의 빈 좌석 수/지속시간을 조절한다.
+  function computeQueue(attemptMs: number[]) {
+    const eff = attemptMs.map((m) => (m < 0 ? 1500 : m));
+    const avg = eff.reduce((a, b) => a + b, 0) / eff.length + stats.btnEarly * 150;
+    const q = Math.max(0, Math.min(1, 1 - avg / 700));
+    const pos = Math.max(1, Math.round((60 + avg * 7) * (0.85 + Math.random() * 0.3)));
+    return { avg, q, pos };
+  }
+
+  async function playSite(): Promise<{ q: number; pos: number }> {
+    seatsEl.hidden = true;
+    siteEl.hidden = false;
+    queueBox.hidden = true;
+    const attempts: number[] = [];
+    for (let i = 0; i < BTN_ATTEMPTS; i++) attempts.push(await playButtonAttempt(i));
+    const { q, pos } = computeQueue(attempts);
+    stageEl.textContent = '대기열';
+    msg.textContent = '예매 버튼 반응으로 대기 순번이 정해졌어요';
+    queueBox.hidden = false;
+    const hint = q >= 0.66 ? '앞 순번이라 빈 좌석이 넉넉해요 😎'
+      : q >= 0.33 ? '중간 순번이라 빈 좌석이 보통이에요 🙂'
+      : '뒤쪽 순번이라 빈 좌석이 적고 금방 사라져요 😭';
+    queueBox.innerHTML = `내 앞에 <b>${pos.toLocaleString()}명</b><small>${hint}</small><small>(연습용 시뮬레이션이에요)</small>`;
+    addLog(`대기 순번 <b>${pos.toLocaleString()}번째</b> · ${hint}`);
+    await sleep(2200);
     siteEl.hidden = true;
+    return { q, pos };
   }
 
   // ── 2단계: 좌석 선택 ────────────────────────────────────────────────────
   function resetSeats() { seats.forEach((s) => { s.className = 'seat'; }); }
 
-  async function playSeatRound(idx: number) {
-    const cfg = ROUNDS[idx];
+  async function playSeatRound(idx: number, cfg: { n: number; life: number }) {
     stageEl.textContent = `2/2 좌석 ${idx + 1}라운드`;
     resetSeats();
     msg.textContent = `좌석 ${idx + 1}라운드 - 곧 열려요. 신호 전에 누르면 감점!`;
+    feedback('', '');
 
-    const wait = 1200 + Math.random() * 1800;
     let signaled = false;
-    const onEarly = (e: Event) => {
-      if (signaled) return;
-      if ((e.target as HTMLElement).classList.contains('seat')) {
-        seatsEarly++;
-        addScore(-100);
-        msg.textContent = '앗, 너무 일찍 눌렀어요! -100';
+    let early = 0, miss = 0, dbl = 0;
+    const gotAt = new Map<HTMLElement, number>();
+    const rts: number[] = [];
+    let t0 = 0;
+    let remaining = cfg.n;
+    let resolveRound: () => void = () => {};
+    const roundDone = new Promise<void>((r) => { resolveRound = r; });
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    grid.onpointerdown = (e) => {
+      const seat = (e.target as HTMLElement).closest?.('.seat') as HTMLButtonElement | null;
+      if (!seat) return;
+      const now = performance.now();
+      if (!signaled) {
+        early++;
+        addScore(-SEAT_EARLY_PENALTY);
+        feedback('warn', `⛔ 신호 전에 눌렀어요! (-${SEAT_EARLY_PENALTY}) · 초록색이 뜰 때까지 기다리세요`);
+        return;
+      }
+      if (seat.classList.contains('open')) {
+        const rt = now - t0;
+        rts.push(rt);
+        const pts = Math.max(50, Math.round(1000 - rt * 0.5));
+        addScore(pts);
+        seat.classList.remove('open');
+        seat.classList.add('got');
+        gotAt.set(seat, now);
+        const j = judgeSeat(rt);
+        feedback(j.tone, `${j.label} · ${Math.round(rt)}ms (+${pts}점)`);
+        if (--remaining === 0) resolveRound();
+      } else if (seat.classList.contains('got')) {
+        if (now - (gotAt.get(seat) ?? 0) <= DBL_WINDOW_MS) {
+          dbl++;
+          feedback('warn', '⚠️ 더블클릭 감지! 이미 잡은 좌석이에요. 한 번이면 충분해요 (감점은 없어요)');
+        }
+      } else {
+        miss++;
+        feedback('warn', seat.classList.contains('lost')
+          ? '😵 이미 다른 사람이 채간 좌석이에요 (오클릭)'
+          : '😵 매진된 좌석이에요 - 초록색만 누르세요 (오클릭)');
       }
     };
-    grid.addEventListener('pointerdown', onEarly);
-    await sleep(wait);
-    grid.removeEventListener('pointerdown', onEarly);
+
+    await sleep(1200 + Math.random() * 1800);
 
     const pool = seats.map((_, i) => i).sort(() => Math.random() - 0.5).slice(0, cfg.n);
     signaled = true;
     msg.textContent = '오픈! 초록 좌석을 눌러요!';
-    const t0 = performance.now();
-
-    await new Promise<void>((resolve) => {
-      let remaining = cfg.n;
-      const finishOne = () => { remaining--; if (remaining === 0) resolve(); };
-      pool.forEach((i) => {
-        const seat = seats[i];
-        seat.classList.add('open');
-        let done = false;
-        // 다른 사람이 채가는 시점은 좌석마다 조금씩 다르다
-        const timer = setTimeout(() => {
-          if (done) return;
-          done = true;
-          seat.classList.remove('open');
-          seat.classList.add('lost');
-          finishOne();
-        }, cfg.life * (0.7 + Math.random() * 0.6));
-        seat.onpointerdown = () => {
-          if (done || !seat.classList.contains('open')) return;
-          done = true;
-          clearTimeout(timer);
-          const rt = performance.now() - t0;
-          reactions.push(rt);
-          addScore(Math.max(50, Math.round(1000 - rt * 0.5)));
-          seat.classList.remove('open');
-          seat.classList.add('got');
-          finishOne();
-        };
-      });
+    t0 = performance.now();
+    pool.forEach((i) => {
+      const seat = seats[i];
+      seat.classList.add('open');
+      // 다른 사람이 채가는 시점은 좌석마다 조금씩 다르다
+      timers.push(setTimeout(() => {
+        if (!seat.classList.contains('open')) return;
+        seat.classList.remove('open');
+        seat.classList.add('lost');
+        if (--remaining === 0) resolveRound();
+      }, cfg.life * (0.7 + Math.random() * 0.6)));
     });
-    seats.forEach((s) => { s.onpointerdown = null; });
-    await sleep(700);
+
+    await roundDone;
+    timers.forEach(clearTimeout);
+    grid.onpointerdown = null;
+
+    const avg = rts.length ? Math.round(rts.reduce((a, b) => a + b, 0) / rts.length) : 0;
+    stats.seatRt.push(...rts);
+    stats.seatTotal += cfg.n;
+    stats.seatEarly += early; stats.seatMiss += miss; stats.seatDouble += dbl;
+    const j = rts.length ? judgeSeat(avg) : null;
+    addLog(
+      `좌석 ${idx + 1}라운드 · ${cfg.n}개 중 ${rts.length}개 ` +
+      (j ? `(평균 ${avg}ms ${tag(j.tone, j.label)})` : tag('slow', '(전부 놓침)')) +
+      (early ? ` · ${tag('warn', `신호 전 클릭 ${early}회`)}` : '') +
+      (miss ? ` · ${tag('warn', `오클릭 ${miss}회`)}` : '') +
+      (dbl ? ` · ${tag('warn', '더블클릭')}` : '')
+    );
+    await sleep(900);
   }
 
   function gradeFor(total: number) {
-    if (total >= 10500) return '🏆 피켓팅 신';
-    if (total >= 8000) return '🎫 티켓팅 고수';
-    if (total >= 5000) return '🙂 티켓팅 중수';
-    if (total >= 2500) return '🌱 티켓팅 초보';
+    if (total >= 13000) return '🏆 피켓팅 신';
+    if (total >= 10000) return '🎫 티켓팅 고수';
+    if (total >= 6500) return '🙂 티켓팅 중수';
+    if (total >= 3500) return '🌱 티켓팅 초보';
     return '😭 오늘은 손이 느렸어요';
+  }
+
+  // 결과 기반 맞춤 팁 (최대 2개)
+  function buildTips(btnAvg: number, seatAvg: number): string[] {
+    const tips: string[] = [];
+    if (stats.btnEarly > 0) tips.push('오픈 전에 누르는 경향이 있어요. 숫자가 바뀌는 순간을 보고 누르세요. 실제 사이트도 일찍 누르면 그냥 새로고침만 돼요.');
+    if (stats.btnMissed > 0 || btnAvg > 600) tips.push('예매 버튼이 늦은 편이에요. 오픈 0.5초 전부터 마우스를 버튼 위에 올리고 서버 시계를 보세요. 여기서 대기 순번이 갈려요.');
+    if (stats.btnDouble + stats.seatDouble > 0) tips.push('더블클릭이 있었어요. 실제 사이트에서는 중복 요청으로 대기열이 꼬이거나 오류가 날 수 있으니 한 번만 누르세요.');
+    if (stats.seatMiss > 1) tips.push('오클릭이 많았어요. 좌석표 전체를 훑다 보면 이미 팔린 좌석을 누르게 돼요. 초록색이 뜨는 곳만 보고 누르세요.');
+    if (stats.seatEarly > 0) tips.push('좌석 신호 전에 눌렀어요. 좌석 선택 화면이 열려도 바로 누르지 말고 빈 좌석이 보일 때까지 기다리세요.');
+    if (seatAvg > 800) tips.push('좌석 선택이 느린 편이에요. 구역을 한 번에 훑으려 하지 말고 한 곳을 정해서 보세요.');
+    if (tips.length === 0) tips.push('손이 정말 빨라요! 기록을 공유하고 친구와 비교해보세요.');
+    return tips.slice(0, 2);
   }
 
   // 순위(상위 N%): 서버가 준비돼 있지 않거나 실패하면 순위 줄만 조용히 숨긴다.
   async function submitScore(sc: number, got: number, avg: number, btn: number) {
     const rankEl = $('g-rank');
-    const noteEl = $('g-rank-note');
-    rankEl.hidden = true; noteEl.hidden = true;
+    rankEl.hidden = true;
     try {
       const r = await fetch('/api/score', {
         method: 'POST',
@@ -319,8 +498,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const d = await r.json();
       if (d.estimated) {
         rankEl.textContent = `🏅 상위 약 ${d.top}%`;
-        noteEl.textContent = '아직 참가자가 적어서, 일반적인 반응속도 샘플 분포를 함께 반영한 추정치예요. 참가자가 쌓이면 실제 순위로 바뀌어요.';
-        noteEl.hidden = false;
         resultText = resultText.replace('\n나도', ` · 상위 약 ${d.top}%\n나도`);
       } else {
         rankEl.textContent = `🏅 전체 ${d.total.toLocaleString()}명 중 상위 ${d.top}%`;
@@ -333,18 +510,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   async function start() {
     if (running) return;
     running = true;
-    score = 0; btnMs = -1; earlyClicks = 0; seatsEarly = 0; reactions.length = 0;
+    score = 0;
+    stats.btnMs = []; stats.btnMissed = 0; stats.btnEarly = 0; stats.btnDouble = 0;
+    stats.seatRt = []; stats.seatTotal = 0; stats.seatEarly = 0; stats.seatMiss = 0; stats.seatDouble = 0;
     scoreEl.textContent = '0';
     result.hidden = true;
+    logList.innerHTML = '';
+    logBox.hidden = false;
+    feedback('', '');
     startBtn.disabled = true;
 
-    await playSite();
+    const { q, pos } = await playSite();
+
+    // 대기 순번이 좋을수록 빈 좌석이 많고 오래 남는다 (q: 0~1)
+    const rounds = BASE_ROUNDS.map((r) => ({
+      n: Math.max(2, r.n + Math.round(q * 2) - 1),
+      life: Math.round(r.life * (0.75 + 0.5 * q)),
+    }));
     seatsEl.hidden = false;
-    for (let i = 0; i < ROUNDS.length; i++) await playSeatRound(i);
+    for (let i = 0; i < rounds.length; i++) await playSeatRound(i, rounds[i]);
     seatsEl.hidden = true;
 
-    const got = reactions.length;
-    const avg = got ? Math.round(reactions.reduce((a, b) => a + b, 0) / got) : 0;
+    const got = stats.seatRt.length;
+    const seatAvg = got ? Math.round(stats.seatRt.reduce((a, b) => a + b, 0) / got) : 0;
+    const btnAvg = stats.btnMs.length ? Math.round(stats.btnMs.reduce((a, b) => a + b, 0) / stats.btnMs.length) : -1;
     const best = getBest();
     const isBest = score > best;
     if (isBest) setBest(score);
@@ -352,15 +541,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const grade = gradeFor(score);
     $('g-grade').textContent = grade;
     $('g-detail').textContent =
-      `예매 버튼 ${btnMs >= 0 ? btnMs + 'ms' : '놓침'}${earlyClicks ? ` (일찍 누름 ${earlyClicks}회)` : ''}` +
-      ` · 좌석 ${TOTAL_SEATS}개 중 ${got}개 (평균 ${avg || '-'}ms)` +
-      ` · 점수 ${score}점${isBest ? ' · 🎉 최고 기록!' : ''}`;
+      `대기 ${pos.toLocaleString()}번째 · 예매 버튼 평균 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'}` +
+      ` · 좌석 ${stats.seatTotal}개 중 ${got}개 · 점수 ${score}점${isBest ? ' · 🎉 최고 기록!' : ''}`;
+    const tipsEl = $('g-tips');
+    tipsEl.innerHTML = '';
+    buildTips(btnAvg, seatAvg).forEach((t) => {
+      const li = document.createElement('li');
+      li.textContent = t;
+      tipsEl.appendChild(li);
+    });
     result.hidden = false;
     stageEl.textContent = '끝';
-    msg.textContent = '끝! 결과를 공유해보세요';
-    resultText = `직관냥 티켓팅 연습 ${grade} · 예매 버튼 ${btnMs >= 0 ? btnMs + 'ms' : '놓침'} · 좌석 ${got}/${TOTAL_SEATS} · ${score}점\n나도 해보기 👉 ${location.origin}/practice/`;
+    msg.textContent = '끝! 아래 시도 기록과 팁을 확인하세요';
+    feedback('', '');
+    resultText = `직관냥 티켓팅 연습 ${grade} · 대기 ${pos.toLocaleString()}번째 · 예매 버튼 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'} · 좌석 ${got}/${stats.seatTotal} · ${score}점\n나도 해보기 👉 ${location.origin}/practice/`;
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    submitScore(score, got, avg, btnMs);
+    submitScore(score, got, seatAvg, btnAvg);
     startBtn.disabled = false;
     startBtn.textContent = '다시 시작';
     running = false;
@@ -374,7 +570,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     } catch { return; } // 사용자가 공유 창을 닫은 경우
     try {
       await navigator.clipboard.writeText(resultText);
-      msg.textContent = '결과가 복사됐어요. 붙여넣어 공유하세요!';
+      feedback('ok', '결과가 복사됐어요. 붙여넣어 공유하세요!');
     } catch {
       msg.textContent = resultText;
     }
