@@ -340,3 +340,10 @@ npm run fetch:kopis   # KOPIS API로 새 공연 데이터 병합 (.env 설정 �
   그 함수만 고치면 됩니다. 현재는 사이트의 직관냥 목소리("~냥", "~다냥")를 따르고 있습니다.
 - 로컬/기기 세션에서 바로 테스트하려면 `npm run tweet:new` (환경변수 4개가 없으면 조용히
   에러 메시지만 찍고 종료 — 실수로 호출 안 됨).
+
+## 포도알 챌린지(티켓팅 연습 게임) + 상위 % 순위 (2026-11-02)
+
+- **페이지**: `src/pages/game.astro` (`/game/`). 오픈 신호 뒤 뜨는 빈 좌석(포도알)을 3라운드 동안 빨리 눌러 점수를 얻는 반응속도 게임. 최고 기록은 localStorage(`krconcerts:grape-best`).
+- **순위 API**: `api/score.js` (Vercel Serverless Function, 의존성 없음). 점수 200점 단위 히스토그램과 전체 참가자 수만 Redis에 저장해서 "전체 N명 중 상위 X%"를 계산한다. 닉네임/개인정보는 저장하지 않는다(IP는 1시간짜리 남용 방지 카운터 키로만 사용).
+- **켜는 법**: Vercel 프로젝트 → Storage/Marketplace에서 **Upstash Redis** 연결 → 환경변수(`UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN`, 또는 `KV_REST_API_URL`/`KV_REST_API_TOKEN`)가 주입되면 재배포 후 바로 동작. 환경변수가 없으면 API는 503을 주고 게임 화면은 순위 줄만 숨긴다(게임 자체는 정상).
+- **서버 검증**: 점수 범위, 점수 ≤ 잡은 개수×1000, 평균 반응속도 60ms 이상, IP당 시간당 30회 제한. 클라이언트에서 보내는 값이라 완벽한 부정 방지는 아니고, 순위는 "재미용"이다.

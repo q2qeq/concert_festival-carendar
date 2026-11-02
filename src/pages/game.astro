@@ -21,16 +21,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <span>최고 <b id="g-best">-</b></span>
   </div>
 
-  <div id="g-msg" class="g-msg">시작을 누르면 좌석표가 열려요</div>
-  <div id="g-grid" class="grid" role="grid" aria-label="좌석표"></div>
-
   <div class="g-actions">
     <button id="g-start" type="button" class="btn primary">시작</button>
   </div>
 
+  <div id="g-msg" class="g-msg">시작을 누르면 좌석표가 열려요</div>
+
   <div id="g-result" class="result" hidden>
     <h2 id="g-grade"></h2>
     <p id="g-detail"></p>
+    <p id="g-rank" class="rank" hidden></p>
     <div class="g-actions">
       <button id="g-share" type="button" class="btn primary">결과 공유하기</button>
       <button id="g-retry" type="button" class="btn">다시 하기</button>
@@ -41,8 +41,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
   </div>
 
+  <div id="g-grid" class="grid" role="grid" aria-label="좌석표"></div>
+
   <p class="disclaimer">
     연습용 게임이에요. 자동 클릭·매크로를 제공하지 않고, 실제 예매와는 아무 관련이 없어요.
+    순위를 위해 점수만 익명으로 전송하고, 닉네임·개인정보는 저장하지 않아요.
   </p>
 </BaseLayout>
 
@@ -64,6 +67,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .result { margin-top: 1rem; padding: 1.1rem 1.2rem; border-radius: 12px; background: rgba(255,255,255,0.06); }
   .result h2 { margin: 0 0 0.4rem; }
   .result p { margin: 0.3rem 0; color: #d9d6ee; line-height: 1.7; }
+  .rank { font-size: 1.15rem; font-weight: 800; color: #ffd166 !important; }
   .after a { color: #ff8fbe; }
   .disclaimer { margin-top: 1.5rem; color: #a9a4c9; font-size: 0.82rem; }
 </style>
@@ -212,11 +216,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       `${total}개 중 ${got}개 잡음 · 평균 ${avg || '-'}ms · 점수 ${score}점${isBest ? ' · 🎉 최고 기록!' : ''}` +
       (early ? ` · 일찍 누름 ${early}회` : '');
     result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    submitScore(score, got, avg);
     msg.textContent = '끝! 아래에서 결과를 공유해보세요';
     resultText = `직관냥 포도알 챌린지 ${grade} · ${total}개 중 ${got}개 · 평균 ${avg}ms · ${score}점\n나도 해보기 👉 ${location.origin}/game/`;
     startBtn.disabled = false;
     startBtn.textContent = '다시 시작';
     running = false;
+  }
+
+  // 순위(상위 N%): 서버가 준비돼 있지 않거나 실패하면 순위 줄만 조용히 숨긴다.
+  async function submitScore(sc: number, got: number, avg: number) {
+    const rankEl = document.getElementById('g-rank')!;
+    rankEl.hidden = true;
+    try {
+      const r = await fetch('/api/score', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ score: sc, got, avg }),
+      });
+      if (!r.ok) return;
+      const d = await r.json();
+      rankEl.textContent = `🏅 전체 ${d.total.toLocaleString()}명 중 상위 ${d.top}%`;
+      rankEl.hidden = false;
+      resultText = resultText.replace('\n나도', ` · 상위 ${d.top}%\n나도`);
+    } catch { /* 순위 없이도 게임은 정상 */ }
   }
 
   let resultText = '';
