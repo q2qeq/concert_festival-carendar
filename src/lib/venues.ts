@@ -141,8 +141,21 @@ const SHUTTLE_LIKELY_SLUGS = new Set(
   ].map(venueSlug)
 );
 
+// 공연장 표기가 "킨텍스 제2전시장 10홀", "인스파이어 엔터테인먼트 리조트"처럼 세부 홀/별칭이
+// 붙어 제각각이라 정확 일치만으로는 놓친다. 그래서 아래 키워드가 이름에 들어 있으면도 셔틀
+// 가능성이 높은 공연장으로 본다 (2026-11-02). 서울 지하철 접근이 쉬운 공연장(홍대 라이브홀,
+// 예술의전당 등)은 일부러 넣지 않았다.
+const SHUTTLE_LIKELY_KEYWORDS = [
+  '킨텍스', 'KINTEX', '인스파이어', '파라다이스시티', '임진각', '평화누리',
+  '고양종합운동장', '창원컨벤션', 'CECO', '익산예술의전당', '김해문화의전당',
+  '영남대학교 천마아트센터', '밀양', '소향씨어터', '한국소리문화의전당', '강릉아트센터',
+  '엑스코', 'EXCO', '벡스코', 'BEXCO',
+];
+
 export function isShuttleLikely(venueName: string): boolean {
-  return SHUTTLE_LIKELY_SLUGS.has(venueSlug(venueName));
+  if (SHUTTLE_LIKELY_SLUGS.has(venueSlug(venueName))) return true;
+  const n = venueName.toLowerCase();
+  return SHUTTLE_LIKELY_KEYWORDS.some((k) => n.includes(k.toLowerCase()));
 }
 
 // Naver Map / Google Maps search links for a place, built from a plain-text

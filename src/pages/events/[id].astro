@@ -16,6 +16,7 @@ import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import Mascot from '../../components/Mascot.astro';
 import NextSteps from '../../components/NextSteps.astro';
 import EventCard from '../../components/EventCard.astro';
+import { isShuttleLikely } from '../../lib/venues';
 import { events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents } from '../../lib/events';
 
 export function getStaticPaths() {
@@ -79,12 +80,14 @@ const fallbackPrimaryUrl =
 const officialActionUrl =
   event.officialUrl && event.officialUrl !== fallbackPrimaryUrl ? event.officialUrl : null;
 
-// 셔틀버스 섹션은 모든 공연 페이지에 항상 노출한다 - 확정된 shuttleBus 데이터가
-// 없어도 카카오 T 셔틀(카카오모빌리티)이 별도로 콘서트 셔틀을 운영하는 경우가
-// 많아서, 공식 발표가 없다고 조용히 섹션을 숨기지 않고 항상 확인 방법을 안내한다.
-// isShuttleLikely()는 여전히 venues.ts에 남겨두되(지방/야외 공연장 판별에 계속
-// 쓰임) 섹션 노출 여부 자체는 더 이상 이걸로 좁히지 않는다.
-const showShuttleSection = true;
+// 셔틀버스 섹션 노출 조건 (2026-11-02 변경). 예전에는 모든 공연 페이지에 항상 노출했는데,
+// 확정된 셔틀 정보가 있는 공연이 거의 없어서 거의 모든 페이지에 똑같은 3사 안내 박스만 반복돼
+// 정보가 아니라 군더더기가 됐다. 그래서 아래 둘 중 하나일 때만 보여준다:
+//   1) 확정된 shuttleBus 데이터가 있다 (실제 sourced 셔틀 - 스캔 루틴이 발견한 것 포함)
+//   2) 셔틀이 있을 확률이 높은 공연장이다 (isShuttleLikely: 원거리 야외/지방 공연장, 킨텍스·인스파이어 등)
+// 그 외(서울 지하철로 바로 가는 공연장)는 섹션과 상단 "셔틀버스" 버튼을 숨긴다.
+const hasConfirmedShuttle = (event.shuttleBus?.length ?? 0) > 0;
+const showShuttleSection = hasConfirmedShuttle || isShuttleLikely(event.venue);
 
 // 페스티벌 라인업이 이 숫자를 넘으면 요약만 먼저 보여주고 <details>로 접어
 // 30팀 안팎인 대형 페스티벌 페이지가 아티스트 이름 벽으로 압도하지 않게 한다.
