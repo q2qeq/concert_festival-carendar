@@ -22,27 +22,23 @@ const PLATFORMS = [
 const faq = [
   {
     q: 'YES24·멜론티켓·NOL·티켓링크 아무 사이트에나 써도 되나요?',
-    a: '네. 특정 예매처 전용이 아니라 표준시에 맞춘 범용 정밀 시계예요. 원하는 예매 사이트를 아래에서 선택해두면 그 사이트 탭을 바로 열 수 있어요.',
+    a: '네. 특정 예매처 전용이 아니라 표준시에 맞춘 범용 시계예요.',
   },
   {
     q: '자동 예매(매크로)인가요?',
-    a: '아니에요. 자동으로 클릭하거나 새로고침하지 않아요. 정확한 시각을 보여줘서 수동 클릭 타이밍을 맞추는 데만 도움을 줘요.',
+    a: '아니에요. 자동으로 클릭하거나 새로고침하지 않고, 정확한 시각만 보여줘요.',
   },
   {
-    q: '예매 시계는 예매 사이트의 서버시간과 같은가요?',
-    a: '완전히 같다고 보장할 수는 없어요. 이 시계는 표준시 서버와 동기화한 값이라 내 기기 시계보다는 믿을 만하지만, 예매 사이트 서버 시계와는 수십~수백 ms 차이가 날 수 있어요. 오픈 시각은 항상 예매처 공지를 기준으로 하세요.',
+    q: '예매 사이트의 서버시간과 같은가요?',
+    a: '똑같다고 보장하진 못해요. 내 기기 시계보다는 정확하지만 수십~수백 ms 차이가 날 수 있어요. 오픈 시각은 예매처 공지를 기준으로 하세요.',
   },
   {
     q: '티켓팅 몇 분 전부터 준비하면 되나요?',
-    a: '로그인·본인인증·결제수단 등록은 전날까지 끝내두고, 오픈 10분 전에는 예매 페이지와 시계를 띄워두는 걸 권장해요. 사이트마다 대기 방식이 달라서 정확한 안내는 해당 공연의 예매처 공지를 확인하세요.',
+    a: '로그인·본인인증·결제수단은 전날까지, 예매 페이지는 오픈 10분 전에 띄워두세요.',
   },
   {
-    q: '대기 번호가 나오면 새로고침해도 되나요?',
-    a: '대기열이 있는 사이트에서는 새로고침이나 뒤로 가기를 하면 순번이 초기화될 수 있다고 안내하는 경우가 많아요. 대기 화면에서는 그대로 기다리라는 안내를 따르세요.',
-  },
-  {
-    q: '티켓팅 연습은 어디서 할 수 있나요?',
-    a: '직관냥의 티켓팅 연습 페이지에서 예매 버튼 타이밍과 좌석 선택을 연습할 수 있어요. 실제 예매와는 다르니 손풀기용으로만 생각해주세요.',
+    q: '연습은 어디서 하나요?',
+    a: '티켓팅 연습 페이지에서 버튼 타이밍과 좌석 선택을 연습할 수 있어요. 실제 예매와는 달라서 손풀기용이에요.',
   },
 ];
 
@@ -63,10 +59,7 @@ const jsonLd = {
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <h1>티켓팅 시계</h1>
-  <p class="intro">
-    표준시 서버와 동기화한 정밀 시계로, 예매 오픈 순간에 맞춰 클릭하도록 도와드려요.
-    <strong>자동 예매·매크로가 아니라 수동 클릭을 돕는 시계</strong>예요.
-  </p>
+  <p class="intro">예매 오픈 순간에 맞춰 누를 수 있게 정확한 시각을 보여줘요. <strong>자동 예매(매크로)가 아니라 수동 클릭용 시계</strong>예요.</p>
 
   <div id="countdown-banner" class="countdown-banner" hidden>
     <span id="cd-artist"></span> 티켓 오픈까지
@@ -141,45 +134,42 @@ const jsonLd = {
   <p id="platform-active-note" class="platform-active-note" hidden></p>
 
   <section class="guide" id="guide" aria-label="티켓팅 가이드">
-    <h2>티켓팅 가이드</h2>
-    <p class="guide-lead">예매 시계로 시간을 맞춘 다음에도 결과를 가르는 건 준비 상태예요. 어느 예매처든 공통으로 챙기면 좋은 것들을 순서대로 정리했어요.</p>
-
-    <h3>1. 오픈 전날까지</h3>
-    <ul>
-      <li><strong>회원가입·로그인 상태 확인</strong> - 오픈 직전에 비밀번호를 찾느라 시간을 쓰는 경우가 의외로 많아요.</li>
-      <li><strong>본인인증·결제수단 등록</strong> - 카드와 간편결제를 미리 등록해두면 결제 단계가 훨씬 빨라져요. 무통장입금은 입금 기한이 짧을 수 있어요.</li>
-      <li><strong>선예매 조건 확인</strong> - 팬클럽 선예매는 가입 기간이나 회원 인증이 필요한 경우가 있어서, 조건은 공연 공지에서 확인하세요.</li>
-      <li><strong>좌석 우선순위 정하기</strong> - 가고 싶은 구역을 1~3순위까지 정해두면 선택 화면에서 망설이지 않아요. 공연장 시야는 <a href="/venues/">공연장 페이지</a>에서 볼 수 있어요.</li>
-      <li><strong>매수와 수령 방법</strong> - 1인 예매 가능 매수, 현장수령인지 배송인지, 취소 수수료 기준도 미리 봐두세요.</li>
-    </ul>
-
-    <h3>2. 오픈 10분 전</h3>
-    <ul>
-      <li>예매 페이지를 열어두고, 이 시계로 정각을 확인하세요. 오픈 시각은 예매처 공지를 기준으로 삼고, 시계는 타이밍 보조용으로 쓰세요.</li>
-      <li>가능하면 안정적인 네트워크(유선 또는 신호가 좋은 Wi-Fi)를 쓰고, 다른 앱의 다운로드와 영상 재생은 꺼두세요.</li>
-      <li>같은 계정으로 여러 기기·탭을 동시에 쓰면 접속이 막히는 사이트도 있어서, 예매처의 안내를 확인하세요.</li>
-      <li>팝업 차단과 자동 번역 같은 브라우저 기능이 예매 창을 방해하지 않는지 확인하세요.</li>
-    </ul>
-
-    <h3>3. 오픈 순간</h3>
-    <ul>
-      <li>예매 버튼이 활성화되는 시점은 사이트와 공연마다 달라요. 정각 직전에 대기하고, 버튼이 열리면 바로 누르는 게 기본이에요.</li>
-      <li>대기열이 나오면 새로고침하지 말고 안내를 따르세요. 순번이 초기화될 수 있다고 안내하는 사이트가 많아요.</li>
-      <li>보안문자와 좌석 선택 화면에서는 1~3순위로 정해둔 구역을 빠르게 훑으세요. 좌석을 잡은 뒤 결제 제한시간이 짧으니, 결제 정보는 미리 준비해두세요.</li>
-    </ul>
-
-    <h3>4. 실패했다면</h3>
-    <ul>
-      <li><strong>취소표(취켓팅)</strong> - 결제 기한이 지난 좌석이나 취소된 좌석이 다시 풀리는 시간대에 예매 페이지를 확인해보세요. 취소 마감 직전에 많이 풀리는 편이에요.</li>
-      <li><strong>추가 오픈 확인</strong> - 일반 예매 후 추가 좌석이 열리는 공연도 있어서, 직관냥의 <a href="#open-list">오픈 일정</a>과 공연 공지를 함께 확인해보세요.</li>
-      <li>다음 티켓팅에 대비해 <a href="/practice/">티켓팅 연습</a>으로 손을 풀어두세요.</li>
-    </ul>
-
-    <h3>꼭 알아둘 것: 매크로와 암표</h3>
-    <p>자동 예매 프로그램(매크로)과 부정 거래는 처벌 대상이고, 2026년 8월 28일부터는 부정구매와 부정판매 자체를 처벌하는 규정이 시행됐어요. 이 시계는 정확한 시간만 보여줄 뿐 자동으로 아무것도 하지 않아요. 배경이 궁금하다면 <a href="/blog/post9/">암표방지법 시행과 티켓팅 이야기</a>를 읽어보세요.</p>
-
-    <h3>예매처별 바로가기</h3>
-    <p>예매 사이트는 위의 <a href="#platform-grid">예매 사이트 선택</a>에서 고를 수 있어요. 공연별 예매처와 오픈 일정은 <a href="/">공연 일정</a>의 각 공연 페이지에 정리돼 있어요.</p>
+    <h2>티켓팅 체크리스트</h2>
+    <div class="guide-list">
+      <details class="guide-item" open>
+        <summary>오픈 전날까지</summary>
+        <ul>
+          <li>로그인·본인인증·결제수단 등록해두기</li>
+          <li>선예매 조건(팬클럽 가입 등) 확인</li>
+          <li>가고 싶은 구역 1~3순위 정하기 · <a href="/venues/">공연장 시야 보기</a></li>
+        </ul>
+      </details>
+      <details class="guide-item">
+        <summary>오픈 10분 전</summary>
+        <ul>
+          <li>예매 페이지와 이 시계를 띄워두기</li>
+          <li>안정적인 네트워크, 다른 다운로드·영상은 끄기</li>
+          <li>같은 계정으로 여러 탭을 쓰면 막히는 사이트도 있어요</li>
+        </ul>
+      </details>
+      <details class="guide-item">
+        <summary>오픈 순간</summary>
+        <ul>
+          <li>정각 직전에 대기하다가 버튼이 열리면 바로 클릭</li>
+          <li>대기열에서는 새로고침 금지 (순번이 초기화될 수 있어요)</li>
+          <li>좌석을 잡으면 결제 제한시간이 짧으니 바로 결제</li>
+        </ul>
+      </details>
+      <details class="guide-item">
+        <summary>실패했다면</summary>
+        <ul>
+          <li>취소표가 풀리는 시간대(결제·취소 마감 직전)에 다시 확인</li>
+          <li><a href="#open-list">오픈 일정</a>에서 추가 오픈 확인</li>
+          <li><a href="/practice/">티켓팅 연습</a>으로 손풀기</li>
+        </ul>
+      </details>
+    </div>
+    <p class="guide-note">매크로·부정 거래는 처벌 대상이에요. <a href="/blog/post9/">암표방지법 이야기</a></p>
   </section>
 
   <h2>자주 묻는 질문</h2>
@@ -314,15 +304,15 @@ const jsonLd = {
     color: #ff8fbe;
     font-weight: 600;
   }
-  .guide { margin: 1.5rem 0 2rem; padding: 1.2rem 1.2rem 1rem; background: rgba(255,255,255,0.04); border-radius: 12px; }
+  .guide { margin: 1.5rem 0 2rem; }
   .guide h2 { margin-top: 0; }
-  .guide h3 { font-size: 1rem; margin: 1.2rem 0 0.5rem; color: #f5f3ff; }
-  .guide-lead { color: #d9d6ee; line-height: 1.7; margin: 0; }
-  .guide ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.45rem; }
-  .guide li, .guide p { color: #cfcbe8; font-size: 0.92rem; line-height: 1.65; }
-  .guide p { margin: 0.3rem 0 0; }
-  .guide a { color: #ff8fbe; }
-  .guide li strong { color: #f5f3ff; }
+  .guide-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .guide-item { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 0.8rem 1rem; }
+  .guide-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
+  .guide-item ul { margin: 0.6rem 0 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+  .guide-item li { color: #cfcbe8; font-size: 0.9rem; line-height: 1.55; }
+  .guide-item a, .guide-note a { color: #ff8fbe; }
+  .guide-note { margin: 0.7rem 0 0; color: #a9a4c9; font-size: 0.82rem; }
   .faq { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
   .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
   .faq-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
