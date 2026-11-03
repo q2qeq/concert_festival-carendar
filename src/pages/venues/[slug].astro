@@ -28,8 +28,11 @@ const slug = venueSlug(venueName);
 const venueEvents = upcomingEvents().filter((e) => venueSlug(e.venue) === slug);
 const city = venueEvents[0]?.city;
 
-const pageTitle = `${venueName} 좌석·주차·교통 정보`;
-const pageDescription = `${venueName} 공연 관람 전 알아두면 좋은 오시는 길, 주차, 주변 편의시설 정보와 예정된 공연 목록이에요.`;
+const hasParking = Boolean(info?.parking);
+const pageTitle = hasParking ? `${venueName} 주차장 요금·주차 팁·오시는 길` : `${venueName} 오시는 길·좌석·시야 정보`;
+const pageDescription = hasParking
+  ? `${venueName} 공연 보러 갈 때 주차장 요금과 주차 팁, 대중교통 오시는 길, 주변 편의시설, 예정된 공연 목록을 정리했어요.`
+  : `${venueName} 공연 관람 전 알아두면 좋은 오시는 길, 구역별 시야, 주변 편의시설 정보와 예정된 공연 목록이에요.`;
 ---
 <BaseLayout title={pageTitle} description={pageDescription}>
   <p class="breadcrumb"><a href="/">← 전체 일정</a></p>
