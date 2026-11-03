@@ -5845,5 +5845,55 @@
         "url": "https://ticket.yes24.com/Notice#id=18783"
       }
     ]
+  },
+  {
+    "id": "kenshi-yonezu-ghost-incheon-2027-01",
+    "artist": "요네즈 켄시 (米津玄師 / Kenshi Yonezu)",
+    "genre": "J-POP",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2027-01-14",
+    "endDate": "2027-01-17",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015024"
+      }
+    ],
+    "note": "1/14(목) 19:30, 1/16(토)·1/17(일) 19:00, 총 3회 공연이에요(15일은 쉬어요). 티켓은 2026년 10월 22일 낮 12시에 NOL 티켓 단독으로 이미 오픈됐어요. 남은 좌석·취소표는 NOL에서 확인하세요.",
+    "description": "일본 싱어송라이터 요네즈 켄시의 월드투어 'KENSHI YONEZU 2026-2027 WORLD TOUR / GHOST' 인천 공연. 2025년 3월 같은 인스파이어 아레나에서 가진 첫 내한(2회) 이후 약 2년 만이고, 이번엔 서울권 공연 규모를 3일로 늘렸어요. 라이브네이션코리아 주최.",
+    "funFacts": [
+      "2025년 3월 첫 내한 때는 인스파이어 아레나에서 2회 공연으로 약 2만 명을 모았는데, 이번엔 3회로 늘어났어요.",
+      "이번 'GHOST' 월드투어는 본인 역대 최대 규모로, 12월 26일부터 2027년 2월 28일까지 세계 11개 도시에서 14회 공연을 열고 서울(인천)은 그중 3회예요(일본 현지 보도 기준).",
+      "'Lemon'(2018)으로 일본 빌보드 연간 차트 정상을 연속으로 차지했고, 'KICK BACK', 'IRIS OUT' 같은 애니메이션 주제가로도 한국에서 널리 알려져 있어요."
+    ],
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-22 낮 12시 (NOL 티켓 단독, 1인 2매, 무통장입금 불가)",
+    "ticketOpenAt": "2026-10-22T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "NOL 티켓 - 요네즈 켄시 내한공연",
+        "url": "https://nol.yanolja.com/ticket/products/26015024"
+      },
+      {
+        "label": "'레몬' 요네즈 켄시 2년 만 내한…3일간 인천 물들인다 - 서울신문",
+        "url": "https://www.seoul.co.kr/news/life/pop-culture/2026/10/16/20261016500129"
+      },
+      {
+        "label": "요네즈 켄시, '2년 만에 한국 무대 복귀'…내년 1월 인스파이어 아레나 3회 단독 콘서트 - 더쎈뉴스",
+        "url": "https://www.mhns.co.kr/news/articleView.html?idxno=764623"
+      },
+      {
+        "label": "米津玄師、自身最大規模のワールドツアー『GHOST』開催 - realsound",
+        "url": "https://realsound.jp/2026/10/post-2555048.html"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-10-15",
+        "text": "라이브네이션이 월드투어 'GHOST' 일정을 공개하면서 2027년 1월 14·16·17일 인스파이어 아레나 3회 공연이 확정됐어요.",
+        "sourceUrl": "https://www.seoul.co.kr/news/life/pop-culture/2026/10/16/20261016500129"
+      }
+    ]
   }
 ]
