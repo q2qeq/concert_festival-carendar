@@ -6,29 +6,88 @@
 // 클릭마다 즉시 피드백(빠름/느림/일찍/더블클릭/오클릭)을 보여주고, 끝나면 시도별 기록과 맞춤 팁을 준다.
 // 자동 예매/매크로가 아니라 순수한 반응속도 연습이다. 최고 기록은 이 기기(localStorage)에만 저장.
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+// 검색용 FAQ: 화면에 실제로 보이는 문구와 동일한 내용만 담는다.
+// 특정 예매처 화면을 복제한다고 주장하지 않고, 예매처 공통 흐름을 연습한다고 정직하게 쓴다.
+const faq = [
+  {
+    q: 'NOL(인터파크)·예스24·멜론티켓·티켓링크 티켓팅 연습에 쓸 수 있나요?',
+    a: '네. 특정 예매처 화면을 그대로 복제한 건 아니지만, 어느 예매처든 공통인 핵심 흐름 - 서버 시간을 보고 예매하기 버튼 누르기, 대기열, 빈 좌석 잡기 - 을 그대로 연습할 수 있어요. 연습할 예매처를 골라두면 연습 화면에 그 이름이 표시돼요.',
+  },
+  {
+    q: '티켓팅 연습은 어떻게 하나요?',
+    a: '시작을 누르면 모의 예매 사이트가 열려요. 서버 시간이 오픈 시각이 되는 순간 예매하기 버튼을 3번 연습하고, 버튼 반응속도로 정해진 대기 순번에 따라 좌석 선택 3라운드를 진행해요. 누를 때마다 빠름·느림·일찍 누름·더블클릭을 바로 알려줘요.',
+  },
+  {
+    q: '피켓팅이 뭐예요?',
+    a: '피 튀기는 티켓팅의 줄임말로, 예매 오픈 직후 몇 초 만에 좌석이 모두 사라지는 치열한 티켓팅을 말해요. 이 연습은 그 몇 초에 필요한 손과 눈의 반응속도를 미리 익히는 용도예요.',
+  },
+  {
+    q: '서버 시간은 어디서 확인하나요?',
+    a: '예매처 화면이나 별도 서버 시간 확인 사이트로 볼 수 있어요. 직관냥 티켓팅 시계는 표준시에 동기화해서 오픈 직전까지 켜두기 좋아요.',
+  },
+  {
+    q: '더블클릭하면 왜 안 좋은가요?',
+    a: '실제 예매 사이트에서는 같은 요청이 중복으로 전달돼 대기열이 꼬이거나 오류가 날 수 있어요. 연습에서는 감점 없이 경고만 해드려요.',
+  },
+  {
+    q: '자동 예매(매크로)인가요?',
+    a: '아니에요. 자동으로 클릭하는 기능은 없고, 순수한 반응속도 연습 게임이에요. 대기 순번도 연습을 위한 시뮬레이션이고 실제 예매처와는 관련이 없어요.',
+  },
+];
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: '직관냥 티켓팅 연습',
+    applicationCategory: 'GameApplication',
+    operatingSystem: 'Web',
+    inLanguage: 'ko',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+    description: 'NOL·예스24·멜론티켓·티켓링크 티켓팅 연습 게임. 서버 시간 보고 예매하기 버튼 누르기, 대기열, 좌석 잡기를 연습하고 상위 몇 %인지 확인해요.',
+  },
+];
 ---
 <BaseLayout
-  title="티켓팅 연습 - 서버시간 보고 예매 버튼 누르기"
-  description="서버 시간을 보고 예매하기 버튼을 누르면 대기 순번이 정해지고, 빈 좌석을 잡는 티켓팅 연습. 클릭마다 바로 피드백, 내 반응속도가 상위 몇 %인지 확인해보세요."
->
-  <h1>🎫 티켓팅 연습</h1>
-  <p class="intro">
-    진짜 티켓팅처럼 <strong>① 서버 시간을 보고 예매하기 버튼 누르기(3회) → ② 빈 좌석 잡기</strong> 순서예요.
-    버튼을 빨리 누를수록 대기 순번이 앞서고, 좌석 단계에서 빈 좌석이 더 넉넉해요.
-    누를 때마다 바로 피드백이 나와요.
-  </p>
+  title="티켓팅 연습 게임 - NOL·예스24·멜론티켓·티켓링크 피켓팅 연습"
+  description="NOL(인터파크)·예스24·멜론티켓·티켓링크 티켓팅 연습 게임. 서버 시간 보고 예매하기 버튼 누르기 → 대기열 → 좌석 잡기까지 피켓팅 연습하고, 내 반응속도가 상위 몇 %인지 확인해보세요.">
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <h1>티켓팅 연습 게임</h1>
+  <p class="kicker">NOL(인터파크) · 예스24 · 멜론티켓 · 티켓링크 티켓팅 연습 · 피켓팅 손풀기</p>
 
-  <div class="hud">
-    <span>단계 <b id="g-stage">-</b></span>
-    <span>점수 <b id="g-score">0</b></span>
-    <span>최고 <b id="g-best">-</b></span>
-  </div>
+  <!-- 시작 화면: 플래시 게임처럼 바로 START -->
+  <section id="start-screen" class="arcade" aria-label="티켓팅 연습 시작 화면">
+    <div class="arcade-title">🎫 티켓팅 연습</div>
+    <div class="arcade-sub">서버 시간 보고 예매하기 → 대기열 → 빈 좌석 잡기</div>
+    <ol class="steps">
+      <li><b>①</b><span>서버 시간 보고<br />예매하기 3번</span></li>
+      <li><b>②</b><span>버튼 반응으로<br />대기 순번 결정</span></li>
+      <li><b>③</b><span>빈 좌석<br />3라운드</span></li>
+    </ol>
+    <div class="plat" role="group" aria-label="연습할 예매처">
+      <button type="button" class="chip" data-plat="nol" aria-pressed="false">NOL 티켓</button>
+      <button type="button" class="chip" data-plat="yes24" aria-pressed="false">예스24</button>
+      <button type="button" class="chip" data-plat="melon" aria-pressed="false">멜론티켓</button>
+      <button type="button" class="chip" data-plat="ticketlink" aria-pressed="false">티켓링크</button>
+    </div>
+    <button id="g-start" type="button" class="start-btn">▶ START</button>
+    <div class="arcade-best">최고 기록 <b id="start-best">-</b> · Enter 키로도 시작해요</div>
+  </section>
 
-  <div class="g-actions">
-    <button id="g-start" type="button" class="btn primary">연습 시작</button>
+  <div id="game-area" hidden>
+    <div class="hud">
+      <span>단계 <b id="g-stage">-</b></span>
+      <span>점수 <b id="g-score">0</b></span>
+      <span>최고 <b id="g-best">-</b></span>
+    </div>
+    <div id="g-msg" class="g-msg"></div>
+    <div id="g-feedback" class="g-feedback" aria-live="polite"></div>
   </div>
-  <div id="g-msg" class="g-msg">시작을 누르면 모의 예매 사이트가 열려요</div>
-  <div id="g-feedback" class="g-feedback" aria-live="polite"></div>
 
   <div id="g-result" class="result" hidden>
     <h2 id="g-grade"></h2>
@@ -48,7 +107,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- 1단계: 모의 예매 사이트 -->
   <section id="stage-site" class="site" hidden aria-label="모의 예매 사이트">
     <div class="site-bar">
-      <span class="site-logo">🎟 연습티켓</span>
+      <span class="site-logo" id="site-logo">🎟 연습티켓</span>
       <span class="srv">서버 시간 <b id="srv-time">--:--:--.---</b></span>
     </div>
     <div class="site-body">
@@ -71,14 +130,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <ol id="g-log"></ol>
   </section>
 
+  <section class="seo" aria-label="티켓팅 연습 안내">
+    <h2>티켓팅 연습, 이렇게 해보세요</h2>
+    <p>
+      티켓팅은 예매 오픈 직후 몇 초에서 승패가 갈려요. <strong>NOL(인터파크), 예스24, 멜론티켓, 티켓링크</strong> 어느 예매처든
+      서버 시간을 보고 예매하기 버튼을 누르고, 대기열을 지나 빈 좌석을 잡는 흐름은 같아요.
+      피켓팅 전에 이 연습 게임으로 손을 풀어보세요. 진짜 티켓팅 전에는 <a href="/ticketing-clock/">티켓팅 시계</a>로 오픈 시각을 맞추고,
+      <a href="/">공연 일정</a>에서 예매 오픈일을 확인하세요.
+    </p>
+    <h2>자주 묻는 질문</h2>
+    <div class="faq">
+      {faq.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
   <p class="disclaimer">
-    연습용 게임이에요. 대기 순번은 연습을 위한 시뮬레이션이고 실제 예매 사이트와는 아무 관련이 없어요.
+    연습용 게임이에요. NOL·예스24·멜론티켓·티켓링크는 각 사의 상표이며, 이 게임은 해당 예매처와 관련이 없고 예매처의 화면을 복제하지 않았어요. 대기 순번은 연습을 위한 시뮬레이션이에요.
     자동 클릭·매크로를 제공하지 않아요. 순위를 위해 점수만 익명으로 전송하고, 닉네임·개인정보는 저장하지 않아요.
   </p>
 </BaseLayout>
 
 <style>
-  .intro { color: #d9d6ee; line-height: 1.7; }
+  .kicker { margin: -0.4rem 0 1rem; color: #a9a4c9; font-size: 0.9rem; }
+  .arcade { position: relative; text-align: center; padding: 2rem 1rem 1.6rem; border-radius: 16px; border: 2px solid rgba(255,95,162,0.5); background: radial-gradient(ellipse at 50% 0%, rgba(255,95,162,0.22), transparent 60%), linear-gradient(180deg, #1c1236, #120b25); box-shadow: 0 0 0 4px rgba(255,255,255,0.04), 0 12px 40px rgba(0,0,0,0.5); margin-bottom: 1.2rem; overflow: hidden; }
+  .arcade::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 4px); pointer-events: none; }
+  .arcade-title { font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; color: #fff; text-shadow: 0 0 18px rgba(255,95,162,0.9), 0 3px 0 #b3306f; }
+  .arcade-sub { margin: 0.5rem 0 1.2rem; color: #d9d6ee; font-weight: 700; }
+  .steps { list-style: none; display: flex; justify-content: center; gap: 0.6rem; margin: 0 0 1.2rem; padding: 0; flex-wrap: wrap; }
+  .steps li { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; border-radius: 10px; background: rgba(255,255,255,0.07); font-size: 0.82rem; color: #d9d6ee; line-height: 1.35; text-align: left; }
+  .steps b { color: #ffd166; font-size: 1.2rem; }
+  .plat { display: flex; justify-content: center; gap: 0.4rem; flex-wrap: wrap; margin: 0 0 1.3rem; }
+  .chip { padding: 0.4rem 0.85rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); background: transparent; color: #d9d6ee; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: #ffd166; color: #1a1424; border-color: transparent; }
+  .start-btn { position: relative; z-index: 1; padding: 1rem 3.2rem; border: none; border-radius: 999px; font-size: 1.5rem; font-weight: 900; letter-spacing: 0.04em; color: #1a1424; background: linear-gradient(120deg, #ffd166, #ff5fa2); box-shadow: 0 6px 0 #a02c66, 0 10px 24px rgba(255,95,162,0.5); cursor: pointer; animation: bob 1.1s ease-in-out infinite; }
+  .start-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #a02c66; animation: none; }
+  @keyframes bob { 50% { transform: translateY(-4px); } }
+  .arcade-best { margin-top: 1.1rem; color: #a9a4c9; font-size: 0.85rem; }
+  .arcade-best b { color: #ffd166; }
+  .seo { margin-top: 1.8rem; }
+  .seo h2 { font-size: 1.15rem; margin: 1.4rem 0 0.6rem; }
+  .seo p { color: #d9d6ee; line-height: 1.8; }
+  .seo a { color: #ff8fbe; }
+  .faq { display: flex; flex-direction: column; gap: 0.6rem; }
+  .faq-item { padding: 0.8rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .faq-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.95rem; }
+  .faq-item p { margin: 0.6rem 0 0; color: #a9a4c9; font-size: 0.9rem; line-height: 1.7; }
   .hud { display: flex; gap: 1.2rem; margin: 1rem 0 0.4rem; color: #a9a4c9; font-size: 0.92rem; flex-wrap: wrap; }
   .hud b { color: #f5f3ff; }
   .g-msg { min-height: 1.6rem; margin: 0.4rem 0 0.3rem; font-weight: 700; color: #ff8fbe; }
@@ -197,6 +298,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   function renderBest() {
     const b = getBest();
     bestEl.textContent = b ? String(b) : '-';
+    $('start-best').textContent = b ? String(b) : '-';
   }
   renderBest();
 
@@ -207,6 +309,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     return withMs ? `${base}.${pad(d.getMilliseconds(), 3)}` : base;
   };
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+  // ── 연습할 예매처 선택 (이름 표시용) ───────────────────────────────────
+  // 특정 예매처 화면을 복제하지 않는다. 고른 이름이 모의 사이트 상단과 공유 문구에만 쓰인다.
+  // 티켓팅 시계 페이지와 같은 저장 키를 써서 한쪽에서 고르면 다른 쪽에도 기억된다.
+  const PLATFORM_KEY = 'krconcerts:ticketing-clock-platform';
+  const PLATFORM_NAMES: Record<string, string> = { nol: 'NOL 티켓', yes24: '예스24', melon: '멜론티켓', ticketlink: '티켓링크' };
+  let platform: string | null = null;
+  try { platform = localStorage.getItem(PLATFORM_KEY); } catch { /* 저장 불가 환경이면 기억만 안 된다 */ }
+  if (platform && !PLATFORM_NAMES[platform]) platform = null;
+  const platformLabel = () => (platform ? PLATFORM_NAMES[platform] : '');
+  function applyPlatform() {
+    document.querySelectorAll<HTMLButtonElement>('.chip').forEach((c) => {
+      c.setAttribute('aria-pressed', String(c.dataset.plat === platform));
+    });
+    $('site-logo').textContent = platform ? `🎟 ${PLATFORM_NAMES[platform]} 연습` : '🎟 연습티켓';
+  }
+  document.querySelectorAll<HTMLButtonElement>('.chip').forEach((c) => {
+    c.addEventListener('click', () => {
+      const id = c.dataset.plat ?? null;
+      platform = platform === id ? null : id; // 다시 누르면 해제
+      try {
+        if (platform) localStorage.setItem(PLATFORM_KEY, platform);
+        else localStorage.removeItem(PLATFORM_KEY);
+      } catch { /* 저장 불가 */ }
+      applyPlatform();
+    });
+  });
+  applyPlatform();
 
   // ── 즉시 피드백 ─────────────────────────────────────────────────────────
   type Tone = 'good' | 'ok' | 'slow' | 'warn';
@@ -510,6 +640,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   async function start() {
     if (running) return;
     running = true;
+    $('start-screen').hidden = true;
+    $('game-area').hidden = false;
     score = 0;
     stats.btnMs = []; stats.btnMissed = 0; stats.btnEarly = 0; stats.btnDouble = 0;
     stats.seatRt = []; stats.seatTotal = 0; stats.seatEarly = 0; stats.seatMiss = 0; stats.seatDouble = 0;
@@ -554,7 +686,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     stageEl.textContent = '끝';
     msg.textContent = '끝! 아래 시도 기록과 팁을 확인하세요';
     feedback('', '');
-    resultText = `직관냥 티켓팅 연습 ${grade} · 대기 ${pos.toLocaleString()}번째 · 예매 버튼 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'} · 좌석 ${got}/${stats.seatTotal} · ${score}점\n나도 해보기 👉 ${location.origin}/practice/`;
+    resultText = `직관냥 ${platformLabel() ? platformLabel() + ' ' : ''}티켓팅 연습 ${grade} · 대기 ${pos.toLocaleString()}번째 · 예매 버튼 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'} · 좌석 ${got}/${stats.seatTotal} · ${score}점\n나도 해보기 👉 ${location.origin}/practice/`;
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     submitScore(score, got, seatAvg, btnAvg);
     startBtn.disabled = false;
@@ -563,6 +695,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   startBtn.addEventListener('click', start);
+  // 플래시 게임처럼 Enter/Space로도 바로 시작 (시작 화면이 보일 때만)
+  document.addEventListener('keydown', (e) => {
+    if (running || $('start-screen').hidden) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      if ((e.target as HTMLElement)?.closest?.('.chip, summary, a, input, textarea')) return;
+      e.preventDefault();
+      start();
+    }
+  });
   $('g-retry').addEventListener('click', start);
   $('g-share').addEventListener('click', async () => {
     try {
