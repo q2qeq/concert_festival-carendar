@@ -4443,7 +4443,14 @@
     ],
     "posterUrl": "/posters/cherry-blossom-music-concert-winter-changwon-2026-11.webp",
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/08/202608241326143d42ff3b-131e-4369-9ec8-5d50f6ab5c33.jpg",
-    "merchCheckedAt": "2026-11-02"
+    "merchCheckedAt": "2026-11-02",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000609",
+        "note": "수요조사 후 예약이 오픈된 상품 (2026-11-03 카카오 T 셔틀 페이지에서 직접 확인). 노선·요금은 예약 화면에서 확인하세요."
+      }
+    ]
   },
   {
     "id": "kazumi-tateishi-trio-suwon-2026-11",
