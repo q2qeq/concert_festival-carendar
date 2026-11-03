@@ -4,6 +4,7 @@
 // 이탈률 개선용 (2026-11-02). 목록은 실제 데이터에 있는 것만 보여주고, 없으면 그 줄을 숨긴다.
 import type { ConcertEvent } from '../lib/events';
 import { sameDayEvents, sameVenueUpcoming } from '../lib/events';
+import { ticketOpenIcs, ticketOpenGoogleUrl, icsDataUri } from '../lib/ticketAlert';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -13,6 +14,9 @@ const hasOpen = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as st
 const clockHref = hasOpen
   ? `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt as string)}&artist=${encodeURIComponent(event.artist)}`
   : '/ticketing-clock';
+const alertEvent = hasOpen ? { id: event.id, artist: event.artist, ticketOpenAt: event.ticketOpenAt as string } : null;
+const googleHref = alertEvent ? ticketOpenGoogleUrl(alertEvent) : '';
+const icsHref = alertEvent ? icsDataUri(ticketOpenIcs([alertEvent])) : '';
 const shortDate = (iso: string) => {
   const d = new Date(iso + 'T00:00:00');
   return `${d.getMonth() + 1}.${d.getDate()}`;
@@ -23,9 +27,18 @@ const shortDate = (iso: string) => {
     <a class="ns-btn ns-primary" href={clockHref}>
       ⏱ {hasOpen ? '이 공연 오픈 카운트다운' : '티켓팅 시계 켜기'}
     </a>
-    <a class="ns-btn" href="/my/">♥ 내 찜 모아보기</a>
     <a class="ns-btn" href="/practice/">🎫 티켓팅 연습하기</a>
+    <a class="ns-btn" href="/my/">♥ 내 찜 모아보기</a>
   </div>
+  {alertEvent && (
+    <div class="ns-row">
+      <span class="ns-label">🔔 오픈 알림 (10분 전·하루 전)</span>
+      <div class="ns-links">
+        <a href={googleHref} target="_blank" rel="noopener noreferrer">구글 캘린더</a>
+        <a href={icsHref} download={`${event.id}-ticket-open.ics`}>.ics 파일</a>
+      </div>
+    </div>
+  )}
   {sameDay.length > 0 && (
     <div class="ns-row">
       <span class="ns-label">같은 날 열리는 공연</span>

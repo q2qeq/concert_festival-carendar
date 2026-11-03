@@ -131,6 +131,7 @@ const EVENT_STATUS_MAP = {
   cancelled: 'https://schema.org/EventCancelled',
 };
 const status = event.status ?? 'scheduled';
+const isPast = event.endDate < new Date().toISOString().slice(0, 10);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -283,6 +284,9 @@ const jsonLd = {
         </div>
       )}
       <a class="ab-btn" href="#sightline">구역별 시야</a>
+      {status === 'scheduled' && !isPast && (
+        <a class="ab-btn" href={event.ticketOpenAt && new Date(event.ticketOpenAt).getTime() > Date.now() ? `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}` : '/ticketing-clock'}>⏱ 티켓팅 시계</a>
+      )}
       {showShuttleSection && (
         <a class="ab-btn" href="#shuttle">셔틀버스</a>
       )}

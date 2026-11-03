@@ -16,9 +16,14 @@ const list = upcomingEvents();
   <h1>내 찜</h1>
   <p class="intro">♡로 찜한 공연을 모아서, 티켓오픈이 가까운 순 → 공연일이 가까운 순으로 보여드려요. 찜 목록은 이 기기(브라우저)에만 저장되고 서버로 보내지지 않아요.</p>
 
+  <p id="my-alert" class="my-alert" hidden>
+    <button type="button" id="my-alert-btn">🔔 찜한 공연 티켓오픈 알림 저장 (.ics)</button>
+    <small>캘린더 앱에 넣으면 오픈 하루 전·10분 전에 알려줘요.</small>
+  </p>
+
   <div id="my-list" class="my-list">
     {list.map((e) => (
-      <div class="my-item" data-id={e.id} data-start={e.startDate} data-open-at={e.ticketOpenAt ?? ''} hidden>
+      <div class="my-item" data-id={e.id} data-start={e.startDate} data-open-at={e.ticketOpenAt ?? ''} data-artist={e.artist} hidden>
         {e.ticketOpenAt && (
           <p class="my-open" data-my-open>🎫 티켓오픈 {e.ticketOpenDate ?? e.ticketOpenAt}</p>
         )}
@@ -37,11 +42,16 @@ const list = upcomingEvents();
   .intro { color: #d9d6ee; line-height: 1.7; }
   .my-list { margin-top: 1rem; }
   .my-open { margin: 0.6rem 0 0; font-size: 0.82rem; font-weight: 700; color: #6ee7ff; }
+  .my-alert { margin: 0.8rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem; }
+  .my-alert button { padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.88rem; font-weight: 700; color: #101018; background: linear-gradient(120deg, #ff5fa2, #ff8fbe); border: 0; cursor: pointer; }
+  .my-alert small { color: #a9a4c9; }
   .my-empty { margin-top: 1.5rem; padding: 1.2rem; background: rgba(255,255,255,0.05); border-radius: 12px; color: #d9d6ee; line-height: 1.7; }
   .my-empty a { color: #ff8fbe; }
 </style>
 
 <script>
+  import { ticketOpenIcs } from '../lib/ticketAlert';
+
   function getBookmarks(): Set<string> {
     try {
       const raw = localStorage.getItem('krconcerts:bookmarks');
@@ -81,9 +91,27 @@ const list = upcomingEvents();
       })
       .forEach((el) => list?.appendChild(el));
 
+    const alertBox = document.getElementById('my-alert');
+    if (alertBox) alertBox.hidden = !shown.some((el) => key(el).upcomingOpen);
+
     const empty = document.getElementById('my-empty');
     if (empty) empty.hidden = shown.length > 0;
   }
+
+  document.getElementById('my-alert-btn')?.addEventListener('click', () => {
+    const ids = getBookmarks();
+    const now = Date.now();
+    const events = Array.from(document.querySelectorAll<HTMLElement>('.my-item'))
+      .filter((el) => ids.has(el.dataset.id ?? '') && el.dataset.openAt && new Date(el.dataset.openAt).getTime() >= now - 3600_000)
+      .map((el) => ({ id: el.dataset.id as string, artist: el.dataset.artist ?? '', ticketOpenAt: el.dataset.openAt as string }));
+    if (events.length === 0) return;
+    const blob = new Blob([ticketOpenIcs(events)], { type: 'text/calendar;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'jikgwannyang-ticket-open.ics';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
 
   render();
   window.addEventListener('bookmarks:changed', render);
