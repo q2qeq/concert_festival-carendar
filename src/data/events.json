@@ -5550,5 +5550,89 @@
         "url": "https://www.facebook.com/AKMUsorry"
       }
     ]
+  },
+  {
+    "id": "night-hike-tours-seoul-2026-12",
+    "artist": "NIGHT HIKE TOURS in SEOUL",
+    "genre": "페스티벌",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2026-12-19",
+    "endDate": "2026-12-19",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본의 인터넷 컬처를 배경으로 탄생한 도심형 뮤직&아트 페스티벌 'NIGHT HIKE'의 서울 공연. 보컬로이드부터 클럽·일렉트로닉까지 장르를 넘나드는 아티스트와 DJ가 한자리에 모여요. 2026-12-19(토) 14시, 예스24 원더로크홀.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-06 오후 8시",
+    "ticketOpenAt": "2026-11-06T20:00:00+09:00",
+    "sources": [
+      {
+        "label": "NIGHT HIKE TOURS in SEOUL 티켓 오픈 안내 - YES24 티켓",
+        "url": "https://ticket.yes24.com/Notice#id=18781"
+      }
+    ]
+  },
+  {
+    "id": "sophie-powers-seoul-2026-12",
+    "artist": "Sophie Powers (소피 파워스) Asia Tour \"MANIC PIXIE\" in Seoul",
+    "genre": "팝",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-05",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "캐나다 토론토 출신, LA 기반 아티스트 Sophie Powers(소피 파워스)의 아시아투어 'MANIC PIXIE' 서울 공연. ILLIT 'jellyous' 참여, Grimes·Dillon Francis 등과 협업 경력이 있어요. 2026-12-05(토) 18시, 예스24 원더로크홀.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-03 오후 6시",
+    "ticketOpenAt": "2026-11-03T18:00:00+09:00",
+    "sources": [
+      {
+        "label": "Sophie Powers Asia Tour \"MANIC PIXIE\" in Seoul 티켓 오픈 안내 - YES24 티켓",
+        "url": "https://ticket.yes24.com/Notice#id=18779"
+      }
+    ]
+  },
+  {
+    "id": "cho-q-may-seoul-2027-01",
+    "artist": "Cho Q May (초큐메이) 「Starlight Map Tour」",
+    "genre": "J-POP",
+    "venue": "YES24 원더로크홀",
+    "city": "서울",
+    "startDate": "2027-01-23",
+    "endDate": "2027-01-23",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 밴드 초큐메이(Cho Q May)의 「Starlight Map Tour」 내한공연. 섬세한 멜로디와 보컬, 다채로운 밴드 사운드로 사랑의 여러 순간을 그려내요. 2027-01-23(토) 19시, YES24 원더로크홀.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-11 오후 8시",
+    "ticketOpenAt": "2026-11-11T20:00:00+09:00",
+    "sources": [
+      {
+        "label": "Cho Q May 「Starlight Map Tour」 티켓 오픈 안내 - YES24 티켓",
+        "url": "https://ticket.yes24.com/Notice#id=18766"
+      },
+      {
+        "label": "Cho Q May 「Starlight Map Tour」 티켓 오픈 안내 - 멜론티켓",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=13162"
+      }
+    ]
+  },
+  {
+    "id": "yukiguni-seoul-2026-12",
+    "artist": "雪国 (유키구니) One Man Tour 2026 \"claras\" in Seoul - with Ghost Bookstore",
+    "genre": "J-POP",
+    "venue": "얼라이브홀",
+    "city": "서울",
+    "startDate": "2026-12-17",
+    "endDate": "2026-12-17",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "일본 밴드 유키구니(雪国)의 2번째 EP 발매 기념 투어 서울 공연. 유령서점(Ghost Bookstore)과 함께하는 특별한 무대예요. 2026-12-17(목) 20시, 얼라이브홀(서울 마포구 독막로7길 20 지층).",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-06 오후 8시",
+    "ticketOpenAt": "2026-11-06T20:00:00+09:00",
+    "sources": [
+      {
+        "label": "雪国 One Man Tour 2026 \"claras\" in Seoul - with Ghost Bookstore 티켓 오픈 안내 - 멜론티켓",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=13191"
+      }
+    ]
   }
 ]
