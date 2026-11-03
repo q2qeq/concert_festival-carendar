@@ -61,16 +61,36 @@ const jsonLd = {
   <h1>티켓팅 시계</h1>
   <p class="intro">예매 오픈 순간에 맞춰 누를 수 있게 정확한 시각을 보여줘요. <strong>자동 예매(매크로)가 아니라 수동 클릭용 시계</strong>예요.</p>
 
-  <div id="countdown-banner" class="countdown-banner" hidden>
-    <span id="cd-artist"></span> 티켓 오픈까지
-    <span id="cd-time" class="cd-time">--:--:--</span>
+  <div id="clock-stage" class="clock-stage">
+    <button id="focus-close" class="focus-close" type="button" aria-label="큰 화면 닫기" hidden>✕</button>
+    <div id="countdown-banner" class="countdown-banner" hidden>
+      <span id="cd-artist"></span> 티켓 오픈까지
+      <span id="cd-time" class="cd-time">--:--:--</span>
+    </div>
+
+    <div class="clock-card">
+      <div id="clock-display" class="clock-display" aria-live="off">--:--:--.---</div>
+      <div id="clock-date" class="clock-date"></div>
+      <div id="sync-status" class="sync-status">동기화하는 중...</div>
+    </div>
   </div>
 
-  <div class="clock-card">
-    <div id="clock-display" class="clock-display" aria-live="off">--:--:--.---</div>
-    <div id="clock-date" class="clock-date"></div>
-    <div id="sync-status" class="sync-status">동기화하는 중...</div>
+  <div class="clock-tools" role="group" aria-label="시계 도구">
+    <button type="button" id="sound-btn" class="tool-btn" aria-pressed="false">🔔 소리·진동 꺼짐</button>
+    <button type="button" id="focus-btn" class="tool-btn">⛶ 큰 화면</button>
+    <button type="button" id="share-btn" class="tool-btn" hidden>🔗 링크 복사</button>
   </div>
+  <p class="tool-note">소리 알림은 이 탭이 보이는 상태에서 가장 정확해요. 다른 탭에서는 브라우저가 타이머를 늦춰서 1초쯤 어긋날 수 있어요.</p>
+
+  <details class="custom-open" id="custom-open">
+    <summary>내가 원하는 오픈 시각으로 카운트다운</summary>
+    <div class="custom-row">
+      <input type="text" id="custom-name" placeholder="공연 이름 (선택)" maxlength="40" />
+      <input type="datetime-local" id="custom-at" step="1" aria-label="오픈 시각 (한국 시간)" />
+      <button type="button" id="custom-go">시작</button>
+    </div>
+    <p class="custom-help">한국 시간(KST) 기준이에요. 시작하면 주소가 바뀌어서, 링크를 복사해 친구에게 보낼 수 있어요.</p>
+  </details>
 
   <section class="schedule" aria-label="티켓오픈 일정">
     <h2>곧 오픈하는 티켓</h2>
@@ -304,6 +324,26 @@ const jsonLd = {
     color: #ff8fbe;
     font-weight: 600;
   }
+  .clock-stage { position: relative; }
+  .clock-stage.is-focus { position: fixed; inset: 0; z-index: 1000; background: #0b0b12; display: flex; flex-direction: column; justify-content: center; padding: 1rem; overflow: auto; }
+  .clock-stage.is-focus .clock-display { font-size: clamp(1.8rem, 9vw, 6.5rem); white-space: nowrap; }
+  .clock-stage.is-focus .clock-card { padding: 1.5rem 0.75rem; }
+  .clock-stage.is-focus .countdown-banner { font-size: clamp(1.1rem, 5vw, 2.2rem); }
+  .clock-stage.is-focus .cd-time { font-size: clamp(1.6rem, 8vw, 4rem); display: block; margin: 0.3rem 0 0; }
+  .focus-close { position: absolute; top: 0.6rem; right: 0.8rem; z-index: 2; background: rgba(255,255,255,0.1); color: #f5f3ff; border: 0; border-radius: 999px; width: 2.2rem; height: 2.2rem; font-size: 1rem; cursor: pointer; }
+  .countdown-banner.is-urgent { background: rgba(255, 70, 70, 0.22); color: #ff8a8a; animation: urgent-pulse 1s ease-in-out infinite; }
+  .countdown-banner.is-open { background: rgba(80, 220, 140, 0.2); color: #7dffb6; }
+  @keyframes urgent-pulse { 50% { background: rgba(255, 70, 70, 0.4); } }
+  .clock-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; }
+  .tool-btn { padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.86rem; font-weight: 700; color: #f5f3ff; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); cursor: pointer; }
+  .tool-btn[aria-pressed="true"] { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
+  .tool-note { margin: -0.4rem 0 1rem; color: #a9a4c9; font-size: 0.78rem; line-height: 1.5; }
+  .custom-open { margin: 0 0 1.2rem; padding: 0.8rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .custom-open summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
+  .custom-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; }
+  .custom-row input { flex: 1 1 10rem; min-width: 0; padding: 0.55rem 0.7rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18); background: rgba(0,0,0,0.3); color: #f5f3ff; font-size: 0.9rem; }
+  .custom-row button { padding: 0.55rem 1.1rem; border-radius: 8px; border: 0; font-weight: 700; color: #101018; background: linear-gradient(120deg, #ff5fa2, #ff8fbe); cursor: pointer; }
+  .custom-help { margin: 0.6rem 0 0; color: #a9a4c9; font-size: 0.8rem; }
   .guide { margin: 1.5rem 0 2rem; }
   .guide h2 { margin-top: 0; }
   .guide-list { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -381,27 +421,75 @@ const jsonLd = {
     requestAnimationFrame(tick);
   }
 
-  function updateCountdown(now: Date) {
+  // ── 카운트다운 대상 (URL ?open=&artist= 또는 직접 입력) ───────────────────
+  let target: { at: number; artist: string } | null = null;
+  function readTargetFromUrl() {
     const params = new URLSearchParams(window.location.search);
     const openParam = params.get('open');
     if (!openParam) return;
-    const target = new Date(openParam);
-    if (isNaN(target.getTime())) return;
+    const at = new Date(openParam).getTime();
+    if (isNaN(at)) return;
+    target = { at, artist: params.get('artist') ?? '' };
+  }
+  readTargetFromUrl();
+
+  // ── 소리·진동 (사용자가 켰을 때만. 브라우저 정책상 켜는 클릭에서 오디오를 연다) ──
+  let soundOn = false;
+  let audioCtx: AudioContext | null = null;
+  function beep(freq: number, ms: number) {
+    if (!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.frequency.value = freq;
+    gain.gain.value = 0.15;
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + ms / 1000);
+  }
+  document.getElementById('sound-btn')?.addEventListener('click', (ev) => {
+    const btn = ev.currentTarget as HTMLButtonElement;
+    soundOn = !soundOn;
+    if (soundOn) {
+      try {
+        const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        audioCtx = audioCtx ?? new AC();
+        void audioCtx.resume();
+        beep(660, 120); // 켜졌는지 확인용 짧은 소리
+        navigator.vibrate?.(60);
+      } catch { /* 소리를 못 켜는 환경이면 화면 표시만 */ }
+    }
+    btn.setAttribute('aria-pressed', String(soundOn));
+    btn.textContent = soundOn ? '🔔 소리·진동 켜짐 (3초 전부터)' : '🔔 소리·진동 꺼짐';
+  });
+
+  let lastBeepSec = -1;
+  let firedOpen = false;
+  function updateCountdown(now: Date) {
     const banner = document.getElementById('countdown-banner');
     const artistEl = document.getElementById('cd-artist');
     const timeEl = document.getElementById('cd-time');
-    if (!banner || !timeEl) return;
+    if (!target || !banner || !timeEl) return;
     banner.hidden = false;
-    if (artistEl) {
-      const artist = params.get('artist');
-      artistEl.textContent = artist ? decodeURIComponent(artist) : '이 공연';
-    }
-    const diff = target.getTime() - now.getTime();
+    if (artistEl) artistEl.textContent = target.artist || '이 공연';
+    const diff = target.at - now.getTime();
     if (diff <= 0) {
       timeEl.textContent = '오픈 시각이 지났어요';
+      banner.classList.remove('is-urgent');
+      banner.classList.add('is-open');
+      if (!firedOpen && diff > -3000) {
+        firedOpen = true;
+        if (soundOn) { beep(1000, 600); navigator.vibrate?.([200, 100, 200]); }
+      }
       return;
     }
+    firedOpen = false;
+    banner.classList.remove('is-open');
     const totalSec = Math.floor(diff / 1000);
+    banner.classList.toggle('is-urgent', totalSec < 10);
+    if (soundOn && totalSec < 3 && totalSec !== lastBeepSec) {
+      lastBeepSec = totalSec;
+      beep(660, 150);
+      navigator.vibrate?.(40);
+    }
     const days = Math.floor(totalSec / 86400);
     const hours = Math.floor((totalSec % 86400) / 3600);
     const minutes = Math.floor((totalSec % 3600) / 60);
@@ -411,6 +499,55 @@ const jsonLd = {
       ? `${days}일 ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
       : `${pad(hours)}:${pad(minutes)}:${pad(seconds)}.${pad(ms, 3)}`;
   }
+
+  // ── 직접 입력 / 링크 복사 / 큰 화면 ───────────────────────────────────────
+  // 다른 탭(예매 사이트)을 보는 동안에는 requestAnimationFrame이 멈추므로, 카운트다운·소리 알림은
+  // 타이머로도 돌린다. 백그라운드에서는 브라우저가 1초 단위로 늦출 수 있어 소리는 약간 어긋날 수 있다.
+  setInterval(() => updateCountdown(new Date(nowSynced())), 250);
+
+  const shareBtn = document.getElementById('share-btn') as HTMLButtonElement | null;
+  function refreshShare() { if (shareBtn) shareBtn.hidden = !target; }
+  refreshShare();
+
+  document.getElementById('custom-go')?.addEventListener('click', () => {
+    const at = (document.getElementById('custom-at') as HTMLInputElement).value; // YYYY-MM-DDTHH:mm(:ss), 한국 시간으로 해석
+    const name = (document.getElementById('custom-name') as HTMLInputElement).value.trim();
+    if (!at) return;
+    const iso = `${at.length === 16 ? at + ':00' : at}+09:00`;
+    const ms = new Date(iso).getTime();
+    if (isNaN(ms)) return;
+    target = { at: ms, artist: name };
+    lastBeepSec = -1; firedOpen = false;
+    const url = new URL(window.location.href);
+    url.searchParams.set('open', iso);
+    if (name) url.searchParams.set('artist', name); else url.searchParams.delete('artist');
+    history.replaceState(null, '', url);
+    refreshShare();
+    document.getElementById('clock-stage')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  shareBtn?.addEventListener('click', async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.share) { await navigator.share({ url, title: target?.artist ? `${target.artist} 티켓 오픈 시계` : '티켓팅 시계' }); return; }
+    } catch { return; }
+    try {
+      await navigator.clipboard.writeText(url);
+      shareBtn.textContent = '✓ 복사됐어요';
+      setTimeout(() => { shareBtn.textContent = '🔗 링크 복사'; }, 1800);
+    } catch { /* 복사 불가 환경이면 주소창 링크를 직접 복사 */ }
+  });
+
+  const stage = document.getElementById('clock-stage');
+  const focusClose = document.getElementById('focus-close');
+  function setFocus(on: boolean) {
+    stage?.classList.toggle('is-focus', on);
+    if (focusClose) focusClose.hidden = !on;
+    document.body.style.overflow = on ? 'hidden' : '';
+  }
+  document.getElementById('focus-btn')?.addEventListener('click', () => setFocus(true));
+  focusClose?.addEventListener('click', () => setFocus(false));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setFocus(false); });
 
   document.getElementById('calibrate-btn')?.addEventListener('click', () => {
     const input = document.getElementById('calibrate-input') as HTMLInputElement | null;
