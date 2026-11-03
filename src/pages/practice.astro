@@ -95,8 +95,8 @@ const jsonLd = [
     <p id="g-rank" class="rank" hidden></p>
     <ul id="g-tips" class="tips"></ul>
     <div class="g-actions">
-      <button id="g-share" type="button" class="btn primary">결과 공유하기</button>
-      <button id="g-retry" type="button" class="btn">다시 하기</button>
+      <button id="g-retry" type="button" class="btn primary">▶ 다시 도전 (Enter)</button>
+      <button id="g-share" type="button" class="btn">결과 공유하기</button>
     </div>
     <p class="after">
       진짜 티켓팅 전에는 <a href="/ticketing-clock/">티켓팅 시계</a>로 오픈 시각을 맞추고,
@@ -642,6 +642,7 @@ const jsonLd = [
     running = true;
     $('start-screen').hidden = true;
     $('game-area').hidden = false;
+    $('game-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
     score = 0;
     stats.btnMs = []; stats.btnMissed = 0; stats.btnEarly = 0; stats.btnDouble = 0;
     stats.seatRt = []; stats.seatTotal = 0; stats.seatEarly = 0; stats.seatMiss = 0; stats.seatDouble = 0;
@@ -695,11 +696,12 @@ const jsonLd = [
   }
 
   startBtn.addEventListener('click', start);
-  // 플래시 게임처럼 Enter/Space로도 바로 시작 (시작 화면이 보일 때만)
+  // 플래시 게임처럼 Enter/Space로도 바로 시작 (시작 화면 또는 결과 화면이 보일 때만)
   document.addEventListener('keydown', (e) => {
-    if (running || $('start-screen').hidden) return;
+    // 시작 화면이 보이거나, 한 판이 끝나 결과 화면이 떠 있을 때만 (플레이 중엔 무시)
+    if (running || ($('start-screen').hidden && result.hidden)) return;
     if (e.key === 'Enter' || e.key === ' ') {
-      if ((e.target as HTMLElement)?.closest?.('.chip, summary, a, input, textarea')) return;
+      if ((e.target as HTMLElement)?.closest?.('.chip, summary, a, input, textarea, #g-share')) return;
       e.preventDefault();
       start();
     }
