@@ -1,0 +1,80 @@
+---
+// 랜딩 상단 "도구" 스트립 - 티켓팅 시계/연습을 첫 화면에서 바로 누르게 한다.
+// 시계 카드는 곧 열리는 티켓오픈 하나를 실시간 카운트다운으로 보여준다(정적 빌드라서
+// 후보 3건을 심어두고 브라우저에서 아직 안 지난 첫 번째를 고른다). 연습 카드는 내 최고 기록을 보여준다.
+import { upcomingTicketOpens } from '../lib/events';
+
+const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, at: e.ticketOpenAt as string }));
+---
+<section class="tool-strip" aria-label="티켓팅 도구" data-opens={JSON.stringify(opens)}>
+  <a class="tool-card tool-clock" id="ts-clock" href="/ticketing-clock/">
+    <span class="tool-ico" aria-hidden="true">⏱</span>
+    <span class="tool-body">
+      <strong>티켓팅 시계</strong>
+      <span class="tool-sub" id="ts-clock-sub">예매 오픈 순간을 밀리초까지</span>
+    </span>
+    <span class="tool-go" aria-hidden="true">→</span>
+  </a>
+  <a class="tool-card tool-practice" href="/practice/">
+    <span class="tool-ico" aria-hidden="true">🎫</span>
+    <span class="tool-body">
+      <strong>티켓팅 연습</strong>
+      <span class="tool-sub" id="ts-practice-sub">30초면 끝, 손풀기 게임</span>
+    </span>
+    <span class="tool-go" aria-hidden="true">→</span>
+  </a>
+</section>
+<style>
+  .tool-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 0 0 1.5rem; }
+  .tool-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 0.95rem; border-radius: 14px; text-decoration: none; color: #f5f3ff; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); transition: border-color .15s, transform .15s; min-width: 0; }
+  .tool-card:hover { transform: translateY(-1px); }
+  .tool-clock { border-color: rgba(110,231,255,0.4); background: linear-gradient(135deg, rgba(110,231,255,0.12), rgba(255,255,255,0.04)); }
+  .tool-practice { border-color: rgba(255,95,162,0.45); background: linear-gradient(135deg, rgba(255,95,162,0.16), rgba(255,255,255,0.04)); }
+  .tool-clock:hover { border-color: #6ee7ff; }
+  .tool-practice:hover { border-color: #ff5fa2; }
+  .tool-ico { font-size: 1.6rem; line-height: 1; }
+  .tool-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1; }
+  .tool-body strong { font-size: 0.98rem; }
+  .tool-sub { color: #bdb9d8; font-size: 0.78rem; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tool-sub b { color: #6ee7ff; font-variant-numeric: tabular-nums; }
+  .tool-go { color: #a9a4c9; font-size: 1.1rem; }
+  @media (max-width: 560px) {
+    .tool-strip { grid-template-columns: 1fr; }
+  }
+</style>
+<script>
+  const strip = document.querySelector<HTMLElement>('.tool-strip');
+  const clockCard = document.getElementById('ts-clock') as HTMLAnchorElement | null;
+  const clockSub = document.getElementById('ts-clock-sub');
+  const practiceSub = document.getElementById('ts-practice-sub');
+
+  // 내 최고 기록 (연습 페이지와 같은 저장 키)
+  try {
+    const best = Number(localStorage.getItem('krconcerts:practice-best')) || 0;
+    if (best && practiceSub) practiceSub.innerHTML = `내 최고 <b>${best}점</b> · 다시 도전!`;
+  } catch { /* 저장 불가 환경이면 기본 문구 */ }
+
+  type Open = { id: string; artist: string; at: string };
+  let opens: Open[] = [];
+  try { opens = JSON.parse(strip?.dataset.opens ?? '[]'); } catch { /* 기본 문구 */ }
+
+  const fmt = (ms: number) => {
+    const s = Math.max(0, Math.floor(ms / 1000));
+    const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    if (d > 0) return `${d}일 ${h}시간 후`;
+    if (h > 0) return `${h}시간 ${m}분 후`;
+    return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')} 후`;
+  };
+
+  function tick() {
+    const now = Date.now();
+    const next = opens.find((o) => new Date(o.at).getTime() > now);
+    if (!next || !clockSub || !clockCard) return;
+    const left = new Date(next.at).getTime() - now;
+    clockSub.innerHTML = `오픈 <b>${fmt(left)}</b> · `;
+    clockSub.appendChild(document.createTextNode(next.artist));
+    clockCard.href = `/ticketing-clock/?open=${encodeURIComponent(next.at)}&artist=${encodeURIComponent(next.artist)}`;
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>

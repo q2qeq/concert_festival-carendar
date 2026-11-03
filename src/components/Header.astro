@@ -8,9 +8,9 @@ const NAV = [
   { href: '/venues', label: '공연장' },
   { href: '/events/archive', label: '지난 공연' },
   { href: '/blog', label: '이슈' },
-  { href: '/ticketing-clock', label: '티켓팅 시계' },
+  { href: '/ticketing-clock', label: '티켓팅 시계', tool: true },
   { href: '/my', label: '내 찜' },
-  { href: '/practice', label: '티켓팅 연습' },
+  { href: '/practice', label: '티켓팅 연습', tool: true },
   { href: '/about', label: '소개' },
   { href: '/contact', label: '문의' },
 ];
@@ -30,7 +30,7 @@ function isActive(href: string) {
     </button>
     <div class="links" id="nav-links">
       {NAV.map((item) => (
-        <a href={item.href} class={isActive(item.href) ? 'active' : ''} aria-current={isActive(item.href) ? 'page' : undefined}>
+        <a href={item.href} class={`${isActive(item.href) ? 'active' : ''}${item.tool ? ' tool-link' : ''}`.trim()} aria-current={isActive(item.href) ? 'page' : undefined}>
           {item.label}
         </a>
       ))}
@@ -75,6 +75,7 @@ function isActive(href: string) {
     border-bottom: 2px solid transparent;
   }
   .links a:hover { color: #fff; }
+  .links a.tool-link { color: #ff8fbe; font-weight: 700; }
   .links a.active { color: #fff; font-weight: 700; border-bottom-color: var(--accent, #ff5fa2); }
   .nav-toggle {
     display: none;
