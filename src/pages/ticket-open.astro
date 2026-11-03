@@ -1,0 +1,169 @@
+---
+// 티켓오픈 일정 - 공식 공지로 오픈 시각이 확인된 공연만 모아 보여준다 (없는 시각을 지어내지 않음).
+// 정적 빌드라서 "곧 오픈" 목록은 브라우저에서 아직 안 지난 것만 남기고 카운트다운을 붙인다.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { upcomingTicketOpens, onSaleEvents, upcomingEvents } from '../lib/events';
+import { ticketOpenIcs, ticketOpenGoogleUrl, icsDataUri } from '../lib/ticketAlert';
+
+const soon = upcomingTicketOpens(30);
+const nowMs = Date.now();
+// 최근 2주 안에 막 오픈했고 아직 공연이 안 끝난 공연
+const recent = upcomingEvents()
+  .filter((e) => e.ticketOpenAt)
+  .filter((e) => {
+    const t = new Date(e.ticketOpenAt as string).getTime();
+    return t < nowMs && t >= nowMs - 14 * 86400_000;
+  })
+  .sort((a, b) => (b.ticketOpenAt as string).localeCompare(a.ticketOpenAt as string))
+  .slice(0, 8);
+const onSale = onSaleEvents(12);
+
+const shortDate = (iso: string) => {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()}`;
+};
+const clockHref = (e: { ticketOpenAt?: string; artist: string }) =>
+  `/ticketing-clock/?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`;
+const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
+  ({ id: e.id, artist: e.artist, ticketOpenAt: e.ticketOpenAt as string });
+---
+<BaseLayout
+  title="티켓오픈 일정 - 내한공연 예매 오픈 캘린더"
+  description="곧 열리는 내한공연·페스티벌 티켓오픈 일정을 카운트다운과 캘린더 알림으로 한눈에. 오픈 시각은 예매처 공식 공지로 확인된 것만 올려요."
+>
+  <h1>티켓오픈 일정</h1>
+  <p class="intro">예매처 공지로 오픈 시각이 확인된 공연만 모아요. 오픈 전에 <a href="/ticketing-clock/">티켓팅 시계</a>를 켜고 <a href="/practice/">연습</a>으로 손을 풀어보세요.</p>
+
+  <section aria-label="곧 오픈하는 티켓">
+    <h2>곧 오픈</h2>
+    {soon.length > 0 ? (
+      <>
+        <ul class="open-list" id="soon-list">
+          {soon.map((e) => (
+            <li data-open-at={e.ticketOpenAt}>
+              <div class="open-head">
+                <a class="open-title" href={`/events/${e.id}/`}>{e.artist}</a>
+                <span class="open-left" data-left></span>
+              </div>
+              <p class="open-meta">🎫 {e.ticketOpenDate ?? e.ticketOpenAt} · 공연 {shortDate(e.startDate)} · {e.venue}</p>
+              <div class="open-actions">
+                <a class="oa primary" href={clockHref(e)}>⏱ 시계</a>
+                <a class="oa" href={ticketOpenGoogleUrl(alertOf(e))} target="_blank" rel="noopener noreferrer">🔔 구글</a>
+                <a class="oa" href={icsDataUri(ticketOpenIcs([alertOf(e)]))} download={`${e.id}-ticket-open.ics`}>🔔 .ics</a>
+                <button class="bookmark-btn" type="button" data-bookmark-id={e.id} aria-label={`${e.artist} 찜하기`} aria-pressed="false">♡</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p class="bulk"><button type="button" id="bulk-ics" class="oa primary">🔔 곧 오픈 전체를 캘린더에 저장 (.ics)</button> <small>하루 전·10분 전에 알려줘요</small></p>
+      </>
+    ) : (
+      <p class="empty">지금 확인된 오픈 예정은 없어요. 매일 예매처 공지를 확인해서 새 오픈이 보이면 바로 올려요.</p>
+    )}
+    <p id="soon-empty" class="empty" hidden>곧 열리는 오픈은 모두 지났어요. 새 일정이 확인되면 여기에 올라와요.</p>
+  </section>
+
+  {recent.length > 0 && (
+    <section aria-label="최근 오픈한 티켓">
+      <h2>최근 2주 안에 오픈</h2>
+      <ul class="plain-list">
+        {recent.map((e) => (
+          <li>
+            <a href={`/events/${e.id}/`}><strong>{e.artist}</strong></a>
+            <span>{e.ticketOpenDate ?? ''} 오픈 · 공연 {shortDate(e.startDate)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {onSale.length > 0 && (
+    <section aria-label="지금 예매 중인 공연">
+      <h2>지금 예매 중</h2>
+      <ul class="plain-list">
+        {onSale.map((e) => (
+          <li>
+            <a href={`/events/${e.id}/`}><strong>{e.artist}</strong></a>
+            <span>{shortDate(e.startDate)} · {e.venue}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <p class="note">오픈 시각은 예매처 사정으로 바뀔 수 있어요. 예매 전에 꼭 공식 공지를 다시 확인하세요. 새 오픈 소식은 직관냥이 매일 확인해 이 페이지에 올려요.</p>
+</BaseLayout>
+
+<style>
+  .intro { color: #d9d6ee; line-height: 1.7; }
+  .intro a { color: #ff8fbe; }
+  h2 { margin: 1.6rem 0 0.7rem; }
+  .open-list { list-style: none; margin: 0 0 0.9rem; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+  .open-list li { padding: 0.8rem 0.95rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+  .open-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
+  .open-title { color: #f5f3ff; font-weight: 800; font-size: 1rem; text-decoration: none; min-width: 0; }
+  .open-title:hover { color: #ff8fbe; }
+  .open-left { color: #6ee7ff; font-weight: 700; font-size: 0.86rem; white-space: nowrap; }
+  .open-meta { margin: 0.3rem 0 0.6rem; color: #a9a4c9; font-size: 0.84rem; line-height: 1.5; }
+  .open-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+  .oa { padding: 0.35rem 0.8rem; border-radius: 999px; font-size: 0.82rem; font-weight: 700; text-decoration: none; color: #f5f3ff; border: 1px solid rgba(255,255,255,0.18); background: transparent; cursor: pointer; }
+  .oa.primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
+  .open-actions .bookmark-btn { margin-left: auto; }
+  .bulk { margin: 0 0 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+  .bulk small { color: #a9a4c9; }
+  .plain-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .plain-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; padding: 0.55rem 0.85rem; background: rgba(255,255,255,0.04); border-radius: 10px; }
+  .plain-list a { color: #f5f3ff; text-decoration: none; }
+  .plain-list a:hover { color: #ff8fbe; }
+  .plain-list span { color: #a9a4c9; font-size: 0.84rem; }
+  .empty { color: #a9a4c9; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px; }
+  .note { margin-top: 1.8rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.82rem; line-height: 1.6; }
+</style>
+
+<script>
+  import { ticketOpenIcs } from '../lib/ticketAlert';
+
+  const items = Array.from(document.querySelectorAll<HTMLElement>('#soon-list > li'));
+  const bulk = document.getElementById('bulk-ics') as HTMLButtonElement | null;
+  const emptyMsg = document.getElementById('soon-empty');
+
+  function render() {
+    const now = Date.now();
+    let alive = 0;
+    items.forEach((li) => {
+      const t = new Date(li.dataset.openAt ?? '').getTime();
+      const left = li.querySelector<HTMLElement>('[data-left]');
+      if (isNaN(t)) return;
+      if (t < now - 3600_000) { li.hidden = true; return; } // 오픈 1시간 지난 건 숨김
+      alive++;
+      if (!left) return;
+      const diff = t - now;
+      if (diff <= 0) { left.textContent = '오픈!'; return; }
+      const s = Math.floor(diff / 1000);
+      const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60);
+      left.textContent = d > 0 ? `${d}일 ${h}시간 후` : h > 0 ? `${h}시간 ${m}분 후` : `${m}분 후`;
+    });
+    if (emptyMsg) emptyMsg.hidden = items.length === 0 || alive > 0;
+    if (bulk) bulk.hidden = alive === 0;
+  }
+  render();
+  setInterval(render, 30_000);
+
+  bulk?.addEventListener('click', () => {
+    const now = Date.now();
+    const events = items
+      .filter((li) => new Date(li.dataset.openAt ?? '').getTime() >= now - 3600_000)
+      .map((li) => ({
+        id: (li.querySelector('a.open-title') as HTMLAnchorElement).getAttribute('href')!.split('/').filter(Boolean).pop()!,
+        artist: (li.querySelector('a.open-title') as HTMLElement).textContent ?? '',
+        ticketOpenAt: li.dataset.openAt as string,
+      }));
+    if (events.length === 0) return;
+    const blob = new Blob([ticketOpenIcs(events)], { type: 'text/calendar;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'jikgwannyang-ticket-open.ics';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+</script>
