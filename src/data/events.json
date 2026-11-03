@@ -5456,7 +5456,7 @@
     "startDate": "2027-01-02",
     "endDate": "2027-01-03",
     "officialUrl": "https://www.hanroro.co.kr/schedule/6adb247a735e005ea76a2598",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 싱어송라이터 한로로가 데뷔 후 처음으로 대형 아레나에 입성하는 다섯 번째 단독 콘서트 '물음표'.",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 싱어송라이터 한로로가 데뷔 후 처음으로 대형 아레나에 입성하는 다섯 번째 단독 콘서트 '물음표'. 티켓 오픈 일시는 NOL 티켓 상품 안내(검색 결과 확인, 원문 미확인) 기준이에요 - 예매 전에 공식 공지로 한 번 더 확인하세요.",
     "sources": [
       {
         "label": "한로로, 내년 1월 인스파이어 아레나서 단독 콘서트 - 연합뉴스",
@@ -5469,6 +5469,10 @@
       {
         "label": "한로로 (HANRORO) 5th 단독콘서트 [물음표] - 공식 일정 (hanroro.co.kr)",
         "url": "https://www.hanroro.co.kr/schedule/6adb247a735e005ea76a2598"
+      },
+      {
+        "label": "한로로 (HANRORO) 5th 단독콘서트 [물음표] - NOL 티켓 (검색 결과 기준, 원문 미확인)",
+        "url": "https://nol.yanolja.com/ticket/products/26015537"
       }
     ],
     "shuttleBus": [
@@ -5477,7 +5481,10 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000623",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
       }
-    ]
+    ],
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-13 오후 6시",
+    "ticketOpenAt": "2026-11-13T18:00:00+09:00"
   },
   {
     "id": "shuttle-2026-incheon-airport-sky-festival-2026-11",
