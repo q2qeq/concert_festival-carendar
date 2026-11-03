@@ -75,6 +75,12 @@ const pageDescription = hasParking
         <section class="info-block">
           <h2>주차</h2>
           <p>{info.parking}</p>
+          {info.parkingTips && info.parkingTips.length > 0 && (
+            <ul>{info.parkingTips.map((t) => <li>{t}</li>)}</ul>
+          )}
+          {info.parkingCheckedAt && (
+            <p class="parking-note">{info.parkingCheckedAt} 확인 · 요금과 운영 방식은 바뀔 수 있어요. 공연 당일 공식·예매처 공지를 우선 확인하세요.</p>
+          )}
         </section>
       )}
 
@@ -176,6 +182,7 @@ const pageDescription = hasParking
     border-radius: 999px;
   }
   .food-map-links a:hover { background: rgba(110,231,255,0.16); }
+  .parking-note { margin-top: 0.6rem !important; font-size: 0.78rem !important; color: #9a96b8 !important; }
   .tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(110,231,255,0.08); border-radius: 8px; color: #bdeeff; font-size: 0.85rem; }
   .event-list { display: flex; flex-direction: column; }
   .empty { color: #a9a4c9; }

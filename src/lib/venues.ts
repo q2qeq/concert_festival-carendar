@@ -12,6 +12,9 @@ export interface VenueInfo {
   address?: string;
   transit?: string[];
   parking?: string;
+  // 주차 보강용 - 공식 안내가 확인되지 않은 항목은 '알려져 있다'로 표기하고 checkedAt으로 확인일을 남긴다.
+  parkingTips?: string[];
+  parkingCheckedAt?: string; // YYYY-MM-DD
   // 코인락커/화장실/흡연장 위치 - 셋 다 선택 필드. 다른 필드들과 같은 원칙으로,
   // 실제 확인된 정보만 채운다(추측·일반화 금지) - 확인 전까지는 비워둔다.
   coinLocker?: string;

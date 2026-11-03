@@ -71,7 +71,7 @@
       "지하철 5·9호선 올림픽공원역 3번 출구",
       "버스: 지선 3214·3220·3319·3412·3413, 경기버스 30-5"
     ],
-    "parking": "올림픽공원 P5 주차장 추천(06:00~22:00, 181대) — 소형 10분당 600원·대형 1,200원, 10분 이내 출차 시 무료. 경차·장애인·다자녀 가구 할인 있음",
+    "parking": "올림픽공원 P5 주차장 추천(181대, 도보 약 1분) — 소형 10분당 600원·대형 1,200원, 10분 이내 출차 시 무료. 경차·장애인·저공해차 등 50% 할인",
     "nearbyFood": [
       {
         "name": "다람",
@@ -93,7 +93,14 @@
     "tip": "공연 있는 날은 올림픽공원역 3번 출구가 특히 붐벼요. 조금 여유 있게 도착하는 걸 추천.",
     "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/올림픽체조.jpg?width=640",
     "imageCredit": "Moonhayun, Wikimedia Commons (CC BY-SA 4.0)",
-    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:올림픽체조.jpg"
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:올림픽체조.jpg",
+    "parkingTips": [
+      "KSPO DOME는 P5(181대, 도보 약 1분)가 1순위, P4(172대)가 2순위예요. 둘 다 규모가 작아서 콘서트 날엔 일찍 만차가 됩니다.",
+      "가장 큰 주차장은 P1(614대)이고 K아트홀 쪽이라 KSPO DOME까지는 걸어야 해요. 올림픽홀 공연이면 P2(336대, 올림픽홀 지하)가 가장 가까워요.",
+      "소형차 10분당 600원, 1일 최대 20,000원(대형차는 10분당 1,200원, 최대 24,000원). 10분 이내 출차는 무료예요.",
+      "경차·장애인·저공해차·국가유공자는 50% 할인이 있지만, 공연 티켓으로는 주차요금 할인을 받을 수 없어요."
+    ],
+    "parkingCheckedAt": "2026-11-03"
   },
   "올림픽공원": {
     "address": "서울 송파구 올림픽로 424",
@@ -102,7 +109,7 @@
       "8호선 몽촌토성역 1번 출구",
       "버스: 서울버스 3214·3220·3319·3323·3412·3413, 경기버스 30-5·35, 공항버스 6300"
     ],
-    "parking": "공식 홈페이지에서 실시간 주차 혼잡도 확인 가능 — 공연 있는 날은 대중교통 이용 권장",
+    "parking": "올림픽공원 안에 P1·P2·P4·P5·P6·P7 등 여러 주차장이 있고, 공연장마다 가까운 주차장이 달라요. 공연 있는 날은 대중교통 이용을 권장해요.",
     "nearbyFood": [
       {
         "name": "다람",
@@ -123,7 +130,14 @@
     ],
     "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Seoul_Olympic_Park_from_Lotte_World_Tower.jpg?width=640",
     "imageCredit": "Tristan Surtel, Wikimedia Commons (CC BY-SA 4.0)",
-    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul_Olympic_Park_from_Lotte_World_Tower.jpg"
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul_Olympic_Park_from_Lotte_World_Tower.jpg",
+    "parkingTips": [
+      "KSPO DOME는 P5(181대, 도보 약 1분)가 1순위, P4(172대)가 2순위예요. 둘 다 규모가 작아서 콘서트 날엔 일찍 만차가 됩니다.",
+      "가장 큰 주차장은 P1(614대)이고 K아트홀 쪽이라 KSPO DOME까지는 걸어야 해요. 올림픽홀 공연이면 P2(336대, 올림픽홀 지하)가 가장 가까워요.",
+      "소형차 10분당 600원, 1일 최대 20,000원(대형차는 10분당 1,200원, 최대 24,000원). 10분 이내 출차는 무료예요.",
+      "경차·장애인·저공해차·국가유공자는 50% 할인이 있지만, 공연 티켓으로는 주차요금 할인을 받을 수 없어요."
+    ],
+    "parkingCheckedAt": "2026-11-03"
   },
   "KINTEX": {
     "address": "경기 고양시 일산서구 킨텍스로 217-6",
@@ -157,7 +171,8 @@
     "tip": "홀 번호(1전시장/2전시장, 9홀 등)를 미리 확인하세요 — 같은 KINTEX라도 건물 간 이동에 시간이 꽤 걸립니다.",
     "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%ED%82%A8%ED%85%8D%EC%8A%A4.jpg?width=640",
     "imageCredit": "Wikimedia Commons 기여자 (CC BY-SA 4.0)",
-    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:%ED%82%A8%ED%85%8D%EC%8A%A4.jpg"
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:%ED%82%A8%ED%85%8D%EC%8A%A4.jpg",
+    "parking": "제2전시장에는 지하주차장과 임시주차장이 있지만, 대형 행사 날엔 금방 차요. 공연 날은 GTX-A 킨텍스역 등 대중교통을 권장해요. 요금은 KINTEX 공식 주차 안내에서 확인하세요."
   },
   "인스파이어 아레나": {
     "address": "인천 영종구 공항문화로 127",
@@ -186,7 +201,16 @@
         "name": "브라세리 1783",
         "desc": "리조트 내 수제버거·스테이크 등 양식"
       }
-    ]
+    ],
+    "parking": "주차 공간은 약 3,400대 규모예요. 아레나 입구에 가까운 D주차장이 가장 먼저 차고, 만차면 E주차장·주차타워·임시주차장을 이용하게 돼요.",
+    "parkingTips": [
+      "일반 요금은 30분 5,000원, 당일 최대 60,000원으로 알려져 있어 꽤 비싼 편이에요.",
+      "공연 관람객은 입장 후 스낵바 쪽 주차등록 부스에서 차량번호를 등록하면 최대 6시간까지 무료인 것으로 알려져 있어요(방문자 후기 기준). 공연마다 조건이 다를 수 있으니 예매처 공지를 꼭 확인하세요.",
+      "입구 인근 주차장은 공연 때 만차가 되기 쉬워요. 처음부터 임시주차장으로 가면 빨리 세울 수 있지만 아레나까지 도보 5~10분이 걸려요.",
+      "공연이 끝난 직후엔 출차 정체가 심해서, 잠시 쉬었다가 나오는 편이 낫다는 후기가 많아요.",
+      "주차가 부담되면 공연 주관사 유료 셔틀(서울 거점·인천공항 출발)이나 대중교통을 고려해보세요."
+    ],
+    "parkingCheckedAt": "2026-11-03"
   },
   "KBS스포츠월드(아레나)": {
     "address": "서울 강서구 공항대로 376",

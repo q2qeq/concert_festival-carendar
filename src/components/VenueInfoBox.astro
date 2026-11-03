@@ -28,6 +28,10 @@ const info = getVenueInfo(venue);
     <div class="venue-block">
       <h3>주차</h3>
       <p>{info.parking}</p>
+      {info.parkingTips && info.parkingTips.length > 0 && (
+        <ul>{info.parkingTips.map((t) => <li>{t}</li>)}</ul>
+      )}
+      {info.parkingCheckedAt && <p class="parking-note">{info.parkingCheckedAt} 확인 · 요금은 바뀔 수 있어요. 당일 공식·예매처 공지를 우선 확인하세요.</p>}
     </div>
   )}
 
