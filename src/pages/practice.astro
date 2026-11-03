@@ -317,6 +317,12 @@ const jsonLd = [
   const PLATFORM_NAMES: Record<string, string> = { nol: 'NOL 티켓', yes24: '예스24', melon: '멜론티켓', ticketlink: '티켓링크' };
   let platform: string | null = null;
   try { platform = localStorage.getItem(PLATFORM_KEY); } catch { /* 저장 불가 환경이면 기억만 안 된다 */ }
+  // 예매처별 안내 페이지에서 ?platform=yes24 로 들어오면 그 예매처를 고른 상태로 시작
+  const qp = new URLSearchParams(window.location.search).get('platform');
+  if (qp && PLATFORM_NAMES[qp]) {
+    platform = qp;
+    try { localStorage.setItem(PLATFORM_KEY, qp); } catch { /* 저장 불가 환경이면 이번 방문에만 적용 */ }
+  }
   if (platform && !PLATFORM_NAMES[platform]) platform = null;
   const platformLabel = () => (platform ? PLATFORM_NAMES[platform] : '');
   function applyPlatform() {

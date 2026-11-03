@@ -152,6 +152,7 @@ const jsonLd = {
     ))}
   </div>
   <p id="platform-active-note" class="platform-active-note" hidden></p>
+  <p class="platform-pages">예매처별 안내: <a href="/ticketing-clock/yes24/">예스24</a> · <a href="/ticketing-clock/melon/">멜론티켓</a> · <a href="/ticketing-clock/nol/">NOL 티켓</a> · <a href="/ticketing-clock/ticketlink/">티켓링크</a></p>
 
   <section class="guide" id="guide" aria-label="티켓팅 가이드">
     <h2>티켓팅 체크리스트</h2>
@@ -318,6 +319,8 @@ const jsonLd = {
     white-space: nowrap;
   }
   .platform-open:hover { color: #6ee7ff; border-color: rgba(110,231,255,0.4); }
+  .platform-pages { margin: 0 0 1.5rem; font-size: 0.85rem; color: #a9a4c9; }
+  .platform-pages a { color: #ff8fbe; }
   .platform-active-note {
     margin: 0 0 1.5rem;
     font-size: 0.85rem;
@@ -612,7 +615,12 @@ const jsonLd = {
       applyPlatformSelection(next);
     });
   });
-  applyPlatformSelection(getSavedPlatform());
+  // 예매처별 안내 페이지에서 ?platform=yes24 로 들어오면 그 예매처를 선택해둔다
+  const qp = new URLSearchParams(window.location.search).get('platform');
+  if (qp && PLATFORM_NAMES[qp]) {
+    try { localStorage.setItem(PLATFORM_KEY, qp); } catch { /* 저장 불가 환경이면 이번 방문에만 적용 */ }
+  }
+  applyPlatformSelection(qp && PLATFORM_NAMES[qp] ? qp : getSavedPlatform());
 
   // 곧 오픈하는 티켓 목록: 남은 시간 표시, 이미 지난 건 숨김 (빌드 이후 시간이 흘렀을 수 있으므로).
   function updateOpenList() {

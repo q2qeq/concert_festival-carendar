@@ -1,0 +1,135 @@
+---
+// 예매처별 티켓팅 시계 안내 페이지 (/ticketing-clock/yes24/ 등).
+// 시계 자체는 /ticketing-clock/ 하나만 두고, 여기서는 "그 예매처에서 지금 예매 중인 공연"과
+// "그 예매처 공지로 확인된 오픈 일정"처럼 예매처마다 실제로 다른 데이터를 보여준다.
+// 예매처 내부 규칙(대기열·서버시간 등)은 확인된 게 없어서 단정하지 않는다.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { upcomingEvents, upcomingTicketOpens } from '../../lib/events';
+import { VENDORS, VENDOR_IDS, vendorOfUrl, type VendorId } from '../../lib/vendors';
+
+export function getStaticPaths() {
+  return VENDOR_IDS.map((id) => ({ params: { platform: id }, props: { id } }));
+}
+const { id } = Astro.props as { id: VendorId };
+const v = VENDORS[id];
+
+const eventVendors = (e: { ticketLinks?: { url: string }[]; ticketUrl?: string }) => {
+  const urls = [...(e.ticketLinks ?? []).map((l) => l.url), ...(e.ticketUrl ? [e.ticketUrl] : [])];
+  return new Set(urls.map(vendorOfUrl).filter(Boolean));
+};
+const onSale = upcomingEvents().filter((e) => eventVendors(e).has(id)).slice(0, 12);
+const opens = upcomingTicketOpens(30)
+  .filter((e) => (e.sources ?? []).some((s) => vendorOfUrl(s.url) === id))
+  .slice(0, 8);
+
+const shortDate = (iso: string) => {
+  const d = new Date(iso + 'T00:00:00');
+  return `${d.getMonth() + 1}.${d.getDate()}`;
+};
+
+const title = `${v.short} 티켓팅 시계 - 예매 시계·서버시간`;
+const description = `${v.name} 예매 전에 켜두는 티켓팅 시계. 표준시 서버와 동기화한 밀리초 시계, 오픈 카운트다운, ${v.short}에서 예매 중인 공연과 오픈 일정을 한곳에서.`;
+
+const faq = [
+  {
+    q: `${v.short} 서버시간과 똑같은가요?`,
+    a: `똑같다고 보장하진 못해요. 표준시 서버와 동기화한 값이라 내 기기 시계보다는 정확하지만, ${v.short} 서버와는 수십~수백 ms 차이가 날 수 있어요. 오픈 시각은 ${v.short} 공지를 기준으로 하세요.`,
+  },
+  {
+    q: '자동 예매(매크로)인가요?',
+    a: '아니에요. 자동으로 클릭하거나 새로고침하지 않고, 정확한 시각만 보여줘요.',
+  },
+  {
+    q: `${v.short} 티켓팅은 어떻게 준비하나요?`,
+    a: `로그인·본인인증·결제수단 등록은 전날까지, 예매 페이지는 오픈 10분 전에 띄워두세요. 대기 방식과 제한시간은 공연마다 달라서 ${v.short}의 공연 공지를 확인하세요.`,
+  },
+];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const others = VENDOR_IDS.filter((x) => x !== id);
+---
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <h1>{v.short} 티켓팅 시계</h1>
+  <p class="intro">{v.name} 예매 오픈 순간에 맞춰 누를 수 있게 정확한 시각을 보여줘요. <strong>자동 예매가 아니라 수동 클릭용 시계</strong>예요.</p>
+
+  <div class="cta">
+    <a class="btn primary" href={`/ticketing-clock/?platform=${id}`}>⏱ 시계 켜기</a>
+    <a class="btn" href={`/practice/?platform=${id}`}>🎫 연습하기</a>
+    <a class="btn" href={v.home} target="_blank" rel="noopener noreferrer">{v.short} 열기 ↗</a>
+  </div>
+
+  <h2>{v.short}에서 곧 오픈</h2>
+  {opens.length > 0 ? (
+    <ul class="list" id="opens">
+      {opens.map((e) => (
+        <li data-open-at={e.ticketOpenAt}>
+          <a href={`/events/${e.id}/`}><strong>{e.artist}</strong></a>
+          <span>{e.ticketOpenDate ?? e.ticketOpenAt}</span>
+          <a class="mini" href={`/ticketing-clock/?platform=${id}&open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>⏱ 카운트다운</a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="empty">지금 {v.short} 공지로 확인된 오픈 예정은 없어요. <a href="/ticket-open/">전체 티켓오픈 일정</a>도 확인해보세요.</p>
+  )}
+
+  <h2>{v.short}에서 예매 중인 공연</h2>
+  {onSale.length > 0 ? (
+    <ul class="list">
+      {onSale.map((e) => (
+        <li>
+          <a href={`/events/${e.id}/`}><strong>{e.artist}</strong></a>
+          <span>{shortDate(e.startDate)} · {e.venue}</span>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="empty">지금 {v.short} 링크가 확인된 공연은 없어요.</p>
+  )}
+
+  <h2>자주 묻는 질문</h2>
+  <div class="faq">
+    {faq.map((f) => (
+      <details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>
+    ))}
+  </div>
+
+  <p class="others">다른 예매처:
+    {others.map((o, i) => (<>{i > 0 ? ' · ' : ' '}<a href={`/ticketing-clock/${o}/`}>{VENDORS[o].short}</a></>))}
+    · <a href="/ticketing-clock/">범용 시계</a> · <a href="/ticket-open/">티켓오픈 일정</a>
+  </p>
+</BaseLayout>
+
+<style>
+  .intro { color: #d9d6ee; line-height: 1.7; }
+  .cta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 0.5rem; }
+  .btn { padding: 0.6rem 1.1rem; border-radius: 999px; font-weight: 700; font-size: 0.92rem; text-decoration: none; color: #f5f3ff; border: 1px solid rgba(255,255,255,0.2); }
+  .btn.primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
+  h2 { margin: 1.6rem 0 0.7rem; }
+  .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; padding: 0.6rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .list a { color: #f5f3ff; text-decoration: none; }
+  .list a:hover { color: #ff8fbe; }
+  .list span { color: #a9a4c9; font-size: 0.84rem; }
+  .list .mini { margin-left: auto; color: #6ee7ff; font-size: 0.82rem; }
+  .empty { color: #a9a4c9; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px; }
+  .empty a, .others a { color: #ff8fbe; }
+  .faq { display: flex; flex-direction: column; gap: 0.6rem; }
+  .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .faq-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
+  .faq-item p { margin: 0.6rem 0 0; color: #a9a4c9; font-size: 0.88rem; line-height: 1.6; }
+  .others { margin-top: 1.6rem; color: #a9a4c9; font-size: 0.88rem; }
+</style>
+
+<script>
+  // 빌드 이후 이미 지난 오픈은 숨긴다
+  document.querySelectorAll<HTMLElement>('#opens li[data-open-at]').forEach((li) => {
+    const t = new Date(li.dataset.openAt ?? '').getTime();
+    if (!isNaN(t) && t < Date.now() - 3600_000) li.hidden = true;
+  });
+</script>
