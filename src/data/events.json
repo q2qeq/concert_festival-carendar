@@ -5902,5 +5902,97 @@
         "sourceUrl": "https://www.seoul.co.kr/news/life/pop-culture/2026/10/16/20261016500129"
       }
     ]
+  },
+  {
+    "id": "katseye-seoul-2027-02",
+    "artist": "캣츠아이 (KATSEYE)",
+    "genre": "팝",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2027-02-04",
+    "endDate": "2027-02-04",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015604"
+      }
+    ],
+    "note": "데뷔 첫 단독 내한공연이에요. 보도 기준으로 위버스 선예매는 2026년 11월 10일 낮 12시, 일반예매는 11월 12일 낮 12시(NOL 티켓)예요. 예매 일정은 공식 공지로 다시 확인하세요.",
+    "description": "하이브×게펜레코드의 글로벌 걸그룹 캣츠아이가 'THE WILDWORLD TOUR' 아시아·오세아니아 일정의 일환으로 서울 KSPO DOME에서 여는 데뷔 첫 단독 내한공연. 라이브네이션코리아 주최.",
+    "funFacts": [
+      "서울 공연은 'THE WILDWORLD TOUR' 아시아·오세아니아 11개 도시 일정(2027년 1월 27일~3월 5일) 중 하나예요(스포츠월드 보도 기준).",
+      "첫 단독 내한인데 처음부터 약 1만 5천 석 규모의 KSPO DOME로 잡았다는 점이 눈에 띄어요.",
+      "보도에 따르면 이번 투어의 유럽·영국·북미 일정은 모두 매진됐다고 해요."
+    ],
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-10 낮 12시 (위버스 선예매), 2026-11-12 낮 12시 (일반예매, NOL 티켓)",
+    "ticketOpenAt": "2026-11-10T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "NOL 티켓 - 캣츠아이 첫 단독 내한공연",
+        "url": "https://nol.yanolja.com/ticket/products/26015604"
+      },
+      {
+        "label": "캣츠아이, 첫 단독 내한공연 개최…'와일드월드 투어' 일환 - 파이낸셜투데이",
+        "url": "https://www.ftoday.co.kr/news/articleView.html?idxno=368487"
+      },
+      {
+        "label": "캣츠아이, 내년 2월 데뷔 첫 내한 공연…아시아·오세아니아 11개 도시 투어 - 스포츠월드",
+        "url": "https://www.sportsworldi.com/newsView/20261029514303"
+      },
+      {
+        "label": "캣츠아이, 내년 2월 첫 단독 내한공연 - 마이데일리",
+        "url": "https://www.mydaily.co.kr/page/view/2026102918353833118"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-10-29",
+        "text": "2027년 2월 4일 KSPO DOME 첫 단독 내한공연이 발표됐어요.",
+        "sourceUrl": "https://www.mydaily.co.kr/page/view/2026102918353833118"
+      }
+    ]
+  },
+  {
+    "id": "damien-rice-seoul-2027-02",
+    "artist": "데미안 라이스 (Damien Rice)",
+    "genre": "팝",
+    "venue": "GS아트센터",
+    "city": "서울",
+    "startDate": "2027-02-27",
+    "endDate": "2027-02-28",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015096"
+      }
+    ],
+    "note": "2/27(토) 19:00, 2/28(일) 14:30·19:00 총 3회예요. 티켓은 2026년 10월 23일 낮 12시에 NOL 티켓과 GS아트센터 홈페이지에서 이미 오픈됐어요. 남은 좌석·취소표는 NOL에서 확인하세요.",
+    "description": "아일랜드 싱어송라이터 데미안 라이스의 데뷔 앨범 'O' 발매 25주년 기념 월드투어(25개 도시) 서울 공연. 약 2년 만의 단독 내한이고 주최는 프라이빗커브예요.",
+    "funFacts": [
+      "2002년 데뷔 앨범 'O' 25주년을 기념한 투어로, 전 세계 25개 도시를 돌아요.",
+      "가격은 R석 17만 6000원, S석 15만 4000원, A석 13만 2000원, B석 11만원으로 모두 지정석이에요.",
+      "토요일 1회, 일요일 2회로 이틀간 총 3회 공연이고, 일요일엔 낮 공연도 있어요."
+    ],
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-10-23 낮 12시 (일반예매, NOL 티켓·GS아트센터)",
+    "ticketOpenAt": "2026-10-23T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "NOL 티켓 - 데미안 라이스 내한공연",
+        "url": "https://nol.yanolja.com/ticket/products/26015096"
+      },
+      {
+        "label": "Irish singer-songwriter Damien Rice to hold a Korea concert celebrating the 25th anniversary of debut album 'O' - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202610162142007"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-10-16",
+        "text": "2027년 2월 27·28일 GS아트센터 3회 공연이 발표됐어요.",
+        "sourceUrl": "https://sports.khan.co.kr/en/article/202610162142007"
+      }
+    ]
   }
 ]
