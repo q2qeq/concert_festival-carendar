@@ -588,3 +588,49 @@ events.json 추가 후 npm run build 성공 확인(136 페이지 정상 생성, 
 - WONDERLIVET 2026 (킨텍스 제2전시장) - events.json wonderlivet-2026-11 의 2026-11-20~22과 일치 (퀸즈스마일에서 재확인) → 중복.
 
 참고(기존 검토 파일 2건 상태 변동 없음): OBJET K-POP FESTA 2026(9/26~27, 장소 상충)과 2026 더팩트 뮤직 어워즈(TMA, 9/19)는 모두 이미 종료된 과거 행사. 2026 입크페스티벌(10/3~4)도 종료됨. 세 파일 모두 수정하지 않았으며 사람이 정리 여부를 판단해야 함.
+
+---
+## 2026-11-03 15:02 KST 실행
+
+**스캔 방법:** 카카오 T 셔틀은 `/api/proxy/bus-api/v3/display/item?page=1&size=14`·`page=2` API를 직접 호출해 전체 25건(id·종류·행사명·도착지·판매상태·배지)을 한 번에 확보함(기존 방식인 "더보기" 클릭 후 목록 읽기로 먼저 확인하고, 세부 상태값은 API로 교차 확인). 개별 셔틀 URL은 `https://shuttle.kakaomobility.com/shuttles/{id}` 패턴(마룬5 10000586, 체리블라썸-창원 10000609 두 건은 직접 열어 패턴 확인 — 체리블라썸은 오전 보강 당시 "/shuttles/demand/10000609"였으나 지금은 수요조사가 끝나고 "/shuttles/10000609"의 일반 예약 화면으로 전환됨을 확인). 퀸즈스마일(queenssmile.co.kr/shop/)은 모바일 뷰포트(375x812)로 접속 후 8건 각각의 포스터 이미지를 클릭해 개별 SHOP 상세 URL(`/shop/festival/{id}/`)을 모두 확보함(목록의 "Shuttle Bus" 칩 자체는 클릭해도 반응 없음 — 포스터 이미지를 눌러야 상세로 이동됨, 다음 실행 시 참고). 꽃가마(ggoggama.com)는 랜딩 페이지가 전과 동일(앱 다운로드 랜딩 + 기존 "임윤찬 리사이틀(김해)" 프로모션 링크 1건뿐, 추가 프로모션 페이지 없음).
+
+발견된 후보 (카카오 T 25건 + 퀸즈스마일 8건 + 꽃가마 1건, 이미 등재/중복 포함, 전건 10/5·11/2 로그와 동일):
+카카오 T: 마룬5 내한공연, 브루노 마스 내한공연, 요네즈 켄시 내한공연, 런유니버스페스티벌, 구미 라면축제, FKJ 내한공연, 2026 체리블라썸뮤직콘서트 인 윈터-창원, 칼리드 내한공연, 한로로 콘서트, 네이버 X 현대카드 THE SIX, 5SOS 내한공연, 2026 인천공항 SKY FESTIVAL, 2026 MMA, SBS 2026 가요대전, 엔믹스 콘서트, 에이티즈 콘서트, 후제이 카제 내한공연, Xdinary Heroes Concert [IMPULSE], 제이슨므라즈 아시아 투어, 2026 히어로 락 페스티벌-인천, EXO 콘서트, 이승철 콘서트, 몬스타엑스 월드 투어, 유우리 내한 콘서트, [기브셔틀] 장애인식개선을 위한 벽화 봉사여행(11/18, 신규 노출이나 비음악) / 퀸즈스마일: 2026 대구힙합페스티벌, [강릉] 2026 AKMU CONCERT, WONDERLIVET 2026, NMIXX FINALE INCHEON, 2026 SKY FESTIVAL, Xdinary Heroes IMPULSE, 2026 MONSTA X WORLD TOUR ENCORE, YUURI LIVE 2026 / 꽃가마: 임윤찬 피아노 리사이틀(김해, 기존과 동일).
+
+게시함 (0건): 신규 대형 공연 없음 — 카카오 T·퀸즈스마일 목록의 음악 공연 항목은 전부 events.json에 날짜·장소까지 일치하는 기존 등재 공연이었고, 꽃가마는 기존에 이미 검토 파일에 있는 임윤찬 공연 외 신규 프로모션이 없었음.
+
+검토 파일행 (0건): 신규 추가 없음. 기존 2026 MMA(고척스카이돔 11/14~15)·2026 SBS 가요대전(킨텍스 12/24~25) 두 건이 오늘 카카오 T 목록에서도 동일 날짜·장소로 다시 확인되었으나, genre 확정 불가 사유(다수 아티스트 시상식 성격)가 그대로이므로 기존 검토 파일행을 수정하지 않고 유지함(중복 추가 안 함).
+
+기존 공연 셔틀 정보 보강 (22건, entry 26개 추가 + 1개 갱신) - 3-B단계에서 shuttleBus를 추가/갱신한 이벤트:
+- shuttle-maroon5-seoul-2027-01 (마룬5) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000586 (예약 가능)
+- bruno-mars-goyang-2027-05 (브루노 마스) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000600 (수요조사)
+- kopis-PF304185 (요네즈 켄시) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000618 (예약 가능)
+- fkj-tyber-tour-korea-2026-12 (FKJ) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000570 (예약 가능)
+- shuttle-khalid-2026-12 (칼리드) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000571 (예약 가능)
+- shuttle-hanroro-5th-question-mark-2027-01 (한로로) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000623 (수요조사)
+- 5-seconds-of-summer-2026-11 (5SOS) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000629 (수요조사)
+- shuttle-2026-incheon-airport-sky-festival-2026-11 (SKY FESTIVAL) - 카카오 T 셔틀 https://shuttle.kakaomobility.com/shuttles/10000614 (예약 가능) + 퀸즈스마일 https://queenssmile.co.kr/shop/festival/NDQx/ (유료 17,000원~)
+- shuttle-nmixx-world-tour-zero-frontier-finale-2026-11 (엔믹스) - 카카오 T 셔틀 https://shuttle.kakaomobility.com/shuttles/10000617 (예약 가능) + 퀸즈스마일 https://queenssmile.co.kr/shop/festival/NDUw/ (유료 17,000원~)
+- shuttle-ateez-world-tour-zero-to-all-2027-01 (에이티즈) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000619 (수요조사)
+- fujii-kaze-2027-01 (후지이 카제) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000625 (수요조사, 카카오 목록 표기는 "후제이 카제")
+- shuttle-xdinary-heroes-impulse-2026-11 (Xdinary Heroes) - 카카오 T 셔틀 https://shuttle.kakaomobility.com/shuttles/10000610 (예약 가능) + 퀸즈스마일 https://queenssmile.co.kr/shop/festival/NDQy/ (유료 17,000원~)
+- jason-mraz-2026-11 (제이슨 므라즈) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000615 (수요조사)
+- shuttle-hero-rock-festival-incheon-2026-12 (히어로 락 페스티벌-인천) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000616 (수요조사)
+- exo-planet6-exhorizon-encore-seoul-2026-11 (EXO) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000590 (매진 배지 표시)
+- shuttle-lee-seung-chul-40th-concert-2026-12 (이승철) - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/10000612 (수요조사)
+- shuttle-monsta-x-world-tour-encore-2026-11 (몬스타엑스) - 카카오 T 셔틀 https://shuttle.kakaomobility.com/shuttles/10000596 (예약 가능) + 퀸즈스마일 https://queenssmile.co.kr/shop/festival/NDI4/ (유료 17,000원~)
+- shuttle-yuuri-live-seoul-2026-12 (유우리) - 카카오 T 셔틀 https://shuttle.kakaomobility.com/shuttles/10000578 (예약 가능) + 퀸즈스마일 https://queenssmile.co.kr/shop/festival/NDU4/ (유료 17,000원~)
+- shuttle-daegu-hiphop-festival-2026-12 (대구힙합페스티벌) - 퀸즈스마일, https://queenssmile.co.kr/shop/festival/NDUz/ (유료 29,000원~)
+- shuttle-akmu-concert-tour-gangneung-2026-11 (AKMU 강릉) - 퀸즈스마일, https://queenssmile.co.kr/shop/festival/NDUy/ (유료 28,000원~)
+- wonderlivet-2026-11 (WONDERLIVET 2026) - 퀸즈스마일, https://queenssmile.co.kr/shop/festival/NDI1/ (유료 17,000원~)
+- cherry-blossom-music-concert-winter-changwon-2026-11 (체리블라썸-창원) - 카카오 T 셔틀 URL/상태 갱신: 오전(10:42) 보강 당시 "/shuttles/demand/10000609"·수요조사 상태였던 것이, 오늘 오후 재확인 시 수요조사가 끝나고 일반 예약 화면 "https://shuttle.kakaomobility.com/shuttles/10000609"로 전환된 것을 확인해 url·note 갱신(entry 추가 아님, 같은 운영사 갱신).
+
+제외함/드롭 (6건, 모두 사유 명확):
+- 런유니버스페스티벌 (인제 스피디움) - F1 쇼런/자동차 축제로 음악 공연 아님 → 스코프 밖 (10/5·11/2 로그와 동일 사유) → shuttleBus 보강 대상 아님(비음악).
+- 구미 라면축제 (구미역 일대) - 음식 축제로 음악 공연 아님 → 스코프 밖 (기존 로그와 동일) → shuttleBus 보강 대상 아님(비음악).
+- 네이버 X 현대카드 THE SIX (인스파이어 아레나) - 여자 테니스 토너먼트로 음악 공연 아님 → 스코프 밖 (11/2 로그와 동일) → shuttleBus 보강 대상 아님(비음악).
+- [기브셔틀] 장애인식개선을 위한 벽화 봉사여행 (양평 강상초등학교, 11/18) - 오늘 처음 목록에 노출된 신규 항목이나 장애인식 개선 봉사활동 버스이며 음악 공연이 아님 → 스코프 밖 → shuttleBus 보강 대상 아님(비음악).
+- 2026 MMA (고척스카이돔, 11/14~15) - events.json에는 미등재이나 기존 검토 파일(shuttle-scan-candidates.json)의 "2026 MMA" 항목과 날짜(11/14~15)·장소(고척스카이돔) 완전 일치 → 이미 검토 파일에 있는 항목이라 재추가하지 않음(중복) → shuttleBus 보강 못 함(events.json 미등재 항목이라 3-B 적용 대상 아님 — 검토 파일 항목은 아직 게시되지 않아 공개 이벤트 페이지가 없음).
+- 2026 SBS 가요대전 (일산 킨텍스, 12/24~25) - 기존 검토 파일의 "2026 SBS 가요대전" 항목과 날짜(12/24~25)·장소(킨텍스) 완전 일치 → 중복 → shuttleBus 보강 못 함(events.json 미등재 항목이라 3-B 적용 대상 아님, 사유는 2026 MMA와 동일).
+
+참고(기존 검토 파일 OBJET K-POP FESTA 2026·2026 더팩트 뮤직 어워즈(TMA)·2026 입크페스티벌 3건 상태 변동 없음): 전부 이미 종료된 과거 행사(9/19~10/4). 파일 수정하지 않았으며 사람이 정리 여부를 판단해야 함.

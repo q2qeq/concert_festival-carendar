@@ -3907,7 +3907,14 @@
       }
     ],
     "posterSourceUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg",
-    "merchCheckedAt": "2026-11-03"
+    "merchCheckedAt": "2026-11-03",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000590",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 매진 표시(해당 회차 매진으로 추정, 추가 회차/좌석 열릴 경우 재오픈 가능). 노선·요금은 예약 화면에서 확인하세요."
+      }
+    ]
   },
   {
     "id": "akane-yonezawa-seoul-2026-11",
@@ -4078,7 +4085,14 @@
         "note": "같은 해 다른 공연(브루클린) 세트리스트예요. 서울 공연은 곡 구성이 달라질 수 있어요."
       }
     ],
-    "posterSourceUrl": "https://7lgigmttrjuyfehsudec15072.edge.naverncp.com/news/photo/202604/813454_1329482_2429.jpg"
+    "posterSourceUrl": "https://7lgigmttrjuyfehsudec15072.edge.naverncp.com/news/photo/202604/813454_1329482_2429.jpg",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000615",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
+      }
+    ]
   },
   {
     "id": "buckshot-oscar18-seoul-2026-11",
@@ -4243,7 +4257,14 @@
         "note": "같은 투어의 다른 공연(샌디에이고) 세트리스트예요. 서울 공연은 곡 구성이 달라질 수 있어요."
       }
     ],
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26006756_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26006756_p.gif",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000629",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
+      }
+    ]
   },
   {
     "id": "christopher-seoul-2026-11",
@@ -4393,7 +4414,14 @@
       }
     ],
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png",
-    "merchCheckedAt": "2026-11-02"
+    "merchCheckedAt": "2026-11-02",
+    "shuttleBus": [
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDI1/",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+      }
+    ]
   },
   {
     "id": "shuttle-monsta-x-world-tour-encore-2026-11",
@@ -4414,7 +4442,19 @@
         "url": "https://www.edaily.co.kr/News/Read?newsId=03663766645578480"
       }
     ],
-    "merchCheckedAt": "2026-09-26"
+    "merchCheckedAt": "2026-09-26",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000596",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+      },
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDI4/",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+      }
+    ]
   },
   {
     "id": "cherry-blossom-music-concert-winter-changwon-2026-11",
@@ -4447,8 +4487,8 @@
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
-        "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000609",
-        "note": "수요조사 후 예약이 오픈된 상품 (2026-11-03 카카오 T 셔틀 페이지에서 직접 확인). 노선·요금은 예약 화면에서 확인하세요."
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000609",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사에서 예약 가능 상태로 전환됨(오전 확인 당시보다 진행). 노선·요금은 예약 화면에서 확인하세요."
       }
     ]
   },
@@ -4628,7 +4668,19 @@
     ],
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/shuttle-yuuri-live-seoul-2026-12.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26010352_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26010352_p.gif",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000578",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+      },
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDU4/",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+      }
+    ]
   },
   {
     "id": "shuttle-khalid-2026-12",
@@ -4659,7 +4711,14 @@
         "url": "https://magazine.hankyung.com/money/article/202607070138c"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000571",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+      }
+    ]
   },
   {
     "id": "fkj-tyber-tour-korea-2026-12",
@@ -4697,7 +4756,14 @@
     ],
     "enrichmentCheckedAt": "2026-09-03",
     "posterUrl": "/posters/fkj-tyber-tour-korea-2026-12.webp",
-    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/n/w/g/516eb28f-9953-4d1c-b117-c51437896f7c.jpg?format=webp&width=1920&quality=75"
+    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/n/w/g/516eb28f-9953-4d1c-b117-c51437896f7c.jpg?format=webp&width=1920&quality=75",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000570",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+      }
+    ]
   },
   {
     "id": "zazen-boys-seoul-2026-12",
@@ -5152,7 +5218,14 @@
     "mdUrl": "https://fujiikaze.com/store/",
     "merchCheckedAt": "2026-09-02",
     "posterUrl": "/posters/fujii-kaze-2027-01.webp",
-    "posterSourceUrl": "https://hehn.fujiikaze.com/pwt/ogp_new.jpg"
+    "posterSourceUrl": "https://hehn.fujiikaze.com/pwt/ogp_new.jpg",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000625",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다. 카카오 T 목록 표기는 \"후제이 카제\"(동일 아티스트의 표기 변형)."
+      }
+    ]
   },
   {
     "id": "aosaka-seoul-2027-01",
@@ -5186,7 +5259,14 @@
     "endDate": "2027-01-17",
     "posterUrl": "/posters/kopis-PF304185.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304185_261022_135940.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304185_261022_135940.gif",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000618",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+      }
+    ]
   },
   {
     "id": "humpback-seoul-2027-01",
@@ -5286,7 +5366,14 @@
         "note": "같은 투어의 다른 공연(리마) 세트리스트예요. 서울 공연은 조금씩 달라질 수 있어요."
       }
     ],
-    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202608/16161356_1989358_2038_crop.jpg"
+    "posterSourceUrl": "https://cdn.topstarnews.net/news/photo/202608/16161356_1989358_2038_crop.jpg",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000586",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태(서울/수도권·경기·인천 다수 정류장). 노선·요금은 예약 화면에서 확인하세요."
+      }
+    ]
   },
   {
     "id": "all-eyes-seoul-2027-01",
@@ -5336,7 +5423,14 @@
       }
     ],
     "posterUrl": "/posters/bruno-mars-goyang-2027-05.webp",
-    "posterSourceUrl": "https://images.khan.co.kr/article/2026/08/27/news-p.v1.20260827.16e149a7d6ba4fb09dfa376a85069a52_P1.jpg"
+    "posterSourceUrl": "https://images.khan.co.kr/article/2026/08/27/news-p.v1.20260827.16e149a7d6ba4fb09dfa376a85069a52_P1.jpg",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000600",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
+      }
+    ]
   },
   {
     "id": "shuttle-hanroro-5th-question-mark-2027-01",
@@ -5360,6 +5454,13 @@
       {
         "label": "한로로 (HANRORO) 5th 단독콘서트 [물음표] - 공식 일정 (hanroro.co.kr)",
         "url": "https://www.hanroro.co.kr/schedule/6adb247a735e005ea76a2598"
+      }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000623",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
       }
     ]
   },
@@ -5387,7 +5488,19 @@
         "url": "https://2026skf.com"
       }
     ],
-    "merchCheckedAt": "2026-11-03"
+    "merchCheckedAt": "2026-11-03",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000614",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+      },
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDQx/",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+      }
+    ]
   },
   {
     "id": "shuttle-nmixx-world-tour-zero-frontier-finale-2026-11",
@@ -5407,6 +5520,18 @@
       {
         "label": "NMIXX 1ST WORLD TOUR 〈EPISODE 1: ZERO FRONTIER〉 FINALE IN INCHEON - NOL 티켓",
         "url": "https://nol.yanolja.com/ticket/products/26013946"
+      }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000617",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+      },
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDUw/",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ]
   },
@@ -5433,6 +5558,13 @@
         "label": "에이티즈, 新 2027 월드 투어 'ZERO TO ALL'…인천서 포문 - 전자신문",
         "url": "https://www.etnews.com"
       }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000619",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
+      }
     ]
   },
   {
@@ -5455,7 +5587,19 @@
         "url": "https://nol.yanolja.com/ticket/products/26014103"
       }
     ],
-    "merchCheckedAt": "2026-11-03"
+    "merchCheckedAt": "2026-11-03",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000610",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+      },
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDQy/",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+      }
+    ]
   },
   {
     "id": "shuttle-hero-rock-festival-incheon-2026-12",
@@ -5480,6 +5624,13 @@
         "label": "2026 히어로 락 페스티벌 - 인천 | 기획공연 - 인디스트릿(공식)",
         "url": "https://indistreet.com/programs/2026-%ED%9E%88%EC%96%B4%EB%A1%9C-%EB%9D%BD-%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-%EC%9D%B8%EC%B2%9C-yntyxr79guen72ibt5msl7go"
       }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000616",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
+      }
     ]
   },
   {
@@ -5500,6 +5651,13 @@
       {
         "label": "[인천] 2026 이승철 40주년 콘서트 [THE VOICE: LEE SEUNG CHUL] - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf"
+      }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000612",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
       }
     ]
   },
@@ -5525,6 +5683,13 @@
       {
         "label": "대구 힙합 페스티벌 - koreagenda.com (예매/일정)",
         "url": "https://koreagenda.com/ko/events/event-2026-8772f6"
+      }
+    ],
+    "shuttleBus": [
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDUz/",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 29,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ]
   },
@@ -5552,7 +5717,14 @@
         "url": "https://www.facebook.com/AKMUsorry"
       }
     ],
-    "merchCheckedAt": "2026-11-03"
+    "merchCheckedAt": "2026-11-03",
+    "shuttleBus": [
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDUy/",
+        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 28,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+      }
+    ]
   },
   {
     "id": "night-hike-tours-seoul-2026-12",
