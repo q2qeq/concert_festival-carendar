@@ -4291,7 +4291,7 @@
     ],
     "posterUrl": "/posters/christopher-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260813/20260813-59732.jpg",
-    "merchCheckedAt": "2026-11-02"
+    "merchCheckedAt": "2026-11-03"
   },
   {
     "id": "wonderlivet-2026-11",
@@ -4447,7 +4447,7 @@
         "url": "https://www.edaily.co.kr/News/Read?newsId=03663766645578480"
       }
     ],
-    "merchCheckedAt": "2026-09-26",
+    "merchCheckedAt": "2026-11-03",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -4488,7 +4488,7 @@
     ],
     "posterUrl": "/posters/cherry-blossom-music-concert-winter-changwon-2026-11.webp",
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/08/202608241326143d42ff3b-131e-4369-9ec8-5d50f6ab5c33.jpg",
-    "merchCheckedAt": "2026-11-02",
+    "merchCheckedAt": "2026-11-03",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -4560,7 +4560,7 @@
     "posterUrl": "/posters/kopis-PF299935.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
-    "merchCheckedAt": "2026-09-26"
+    "merchCheckedAt": "2026-11-03"
   },
   {
     "id": "bluenote-tokyo-lisaono-iksan-2026-11",
@@ -4616,7 +4616,8 @@
     "endDate": "2026-12-03",
     "posterUrl": "/posters/kopis-PF303596.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303596_261016_135100.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303596_261016_135100.jpg",
+    "merchCheckedAt": "2026-11-03"
   },
   {
     "id": "mass-of-the-fermenting-dregs-seoul-2026-12",
@@ -4672,6 +4673,7 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
+    "merchCheckedAt": "2026-11-03",
     "posterUrl": "/posters/shuttle-yuuri-live-seoul-2026-12.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26010352_p.gif",
     "shuttleBus": [
@@ -4695,15 +4697,23 @@
     "city": "고양",
     "startDate": "2026-12-05",
     "endDate": "2026-12-05",
-    "ticketUrl": "https://mobileticket.interpark.com/goods/18010432",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26009919",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02). 기존 ticketUrl이 2018년 첫 내한(블루스퀘어, 판매종료) 상품 페이지로 잘못 연결되어 있던 것을 MD 굿즈 워치 중 발견해 2026년 공연 상품 페이지로 교정함 (2026-11-03).",
     "officialSns": [
       {
         "label": "X (Twitter)",
         "url": "https://x.com/thegreatkhalid"
       }
     ],
-    "merchCheckedAt": "2026-09-02",
+    "merch": [
+      {
+        "label": "Khalid VIP Merch Package",
+        "price": "336,000원",
+        "url": "https://nol.yanolja.com/ticket/products/26009919",
+        "note": "NOL 티켓 상품 상세의 가격 옵션 중 하나로 확인됨 (스탠딩석 154,000원과 별도 패키지). 패키지 구성품 상세나 실물 상품 사진은 상세페이지에 없어 미기재."
+      }
+    ],
+    "merchCheckedAt": "2026-11-03",
     "officialUrl": "https://khalidtour2026.com/",
     "description": "칼리드(Khalid)의 2018년 첫 내한 이후 8년 만의 단독 내한공연. 지난 5월 라스베이거스에서 시작한 월드투어 'It's Always Summer Somewhere'의 아시아 일정이다.",
     "funFacts": [
@@ -4752,7 +4762,7 @@
         "url": "https://www.instagram.com/frenchkiwijuice/"
       }
     ],
-    "merchCheckedAt": "2026-09-02",
+    "merchCheckedAt": "2026-11-03",
     "description": "프랑스 멀티 인스트루멘탈리스트 FKJ의 세 번째 정규앨범 'Tyber'를 지원하는 아시아 7개 도시 투어 서울 공연.",
     "funFacts": [
       "라이브가 독특해요 - 반주 없이 색소폰·키보드·기타를 오가며 루프 페달로 쌓아 올려서, 혼자서 풀 밴드 사운드를 만들어내요.",
@@ -5538,7 +5548,8 @@
         "url": "https://queenssmile.co.kr/shop/festival/NDUw/",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
-    ]
+    ],
+    "merchCheckedAt": "2026-11-03"
   },
   {
     "id": "shuttle-ateez-world-tour-zero-to-all-2027-01",
