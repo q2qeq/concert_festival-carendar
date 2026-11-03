@@ -4344,6 +4344,11 @@
         "date": "2026-08-30",
         "text": "티켓 오픈은 9/1(화) 20:00 멜론티켓·티켓링크·예스24티켓·티켓피아로 확정됐어요. 세부 타임테이블은 아직 안 나왔는데, 공개되는 대로 날짜별 라인업으로 정리할게요.",
         "sourceUrl": "https://ticket.yes24.com/Perf/59840"
+      },
+      {
+        "date": "2026-11-03",
+        "text": "공식 사이트에 'OFFICIAL GOODS' 섹션이 신설됐어요. 다만 아직 \"COMING SOON\" 상태로, 구체적인 굿즈 라인업·판매 일정·방식은 모두 추후 공개 예정이에요.",
+        "sourceUrl": "https://wonderli.vet/"
       }
     ],
     "sources": [
@@ -4414,7 +4419,7 @@
       }
     ],
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png",
-    "merchCheckedAt": "2026-11-02",
+    "merchCheckedAt": "2026-11-03",
     "shuttleBus": [
       {
         "operator": "퀸즈스마일",
@@ -5807,6 +5812,26 @@
       {
         "label": "雪国 One Man Tour 2026 \"claras\" in Seoul - with Ghost Bookstore 티켓 오픈 안내 - 멜론티켓",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=13191"
+      }
+    ]
+  },
+  {
+    "id": "jeffbernat-seoul-2027-02",
+    "artist": "Jeff Bernat (제프 버넷) Live: Luv Language Tour 2027 in Seoul",
+    "genre": "팝",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2027-02-18",
+    "endDate": "2027-02-18",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "한국인이 가장 사랑하는 R&B 싱어송라이터 제프 버넷(Jeff Bernat)이 2027년 2월 18일(목) 오후 8시 서울 예스24 원더로크홀에서 단독 내한 공연 'Jeff Bernat Live: Luv Language Tour 2027'을 개최해요. 2024년 이후 약 3년 만의 내한으로, 정규 앨범 [Luv Language] 발매 투어의 일환이에요. 전석 110,000원, 만 12세 이상 관람가.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-10 낮 12시",
+    "ticketOpenAt": "2026-11-10T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "Jeff Bernat Live: Luv Language Tour 2027 in Seoul 티켓 오픈 안내 - YES24 티켓",
+        "url": "https://ticket.yes24.com/Notice#id=18783"
       }
     ]
   }
