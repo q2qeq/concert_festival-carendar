@@ -3907,7 +3907,30 @@
       }
     ],
     "posterSourceUrl": "https://0.soompi.io/wp-content/uploads/2026/08/19224224/EXO-planet-1.jpeg",
-    "merchCheckedAt": "2026-11-03",
+    "mdUrl": "https://global.shop.smtown.com/collections/exo-planet-6-exhorrizon-in-seoul-md",
+    "merch": [
+      {
+        "label": "LED MOOD LAMP",
+        "price": "$65.90",
+        "imageUrl": "https://global.shop.smtown.com/products/led-mood-lamp-exhorrizon-in-seoul-md",
+        "url": "https://global.shop.smtown.com/products/led-mood-lamp-exhorrizon-in-seoul-md",
+        "note": "SM TOWN 글로벌 공식샵 'EXO PLANET #6 - EXhOrizon in SEOUL MD' 컬렉션(총 17종 중 일부, 2026-11-04 기준 재고 있음)"
+      },
+      {
+        "label": "SLEEP EYE MASK SET",
+        "price": "$24.90",
+        "imageUrl": "https://global.shop.smtown.com/cdn/shop/files/07_9972bf90-4ebd-453f-8a86-0f85db418d43.jpg?v=1775600379",
+        "url": "https://global.shop.smtown.com/products/sleep-eye-mask-set-exhorrizon-in-seoul-md",
+        "note": "아이마스크 1개 + 포토카드 1개 세트"
+      },
+      {
+        "label": "NECK PILLOW",
+        "price": "$38.90",
+        "url": "https://global.shop.smtown.com/collections/exo-planet-6-exhorrizon-in-seoul-md",
+        "note": "이 외 FANLIGHT DECO COVER($21.90), HUG DOLL($61.90), DOLL CAPE SET($21.90), MINI DOLL KEY RING($17.90), IMAGE PICKET SET($21.90) 등 다수. BANDANA·LUGGAGE TAG·RANDOM TRADING CARD·TOWEL SLOGAN은 2026-11-04 기준 품절."
+      }
+    ],
+    "merchCheckedAt": "2026-11-04",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -3938,7 +3961,7 @@
         "url": "https://ticket.yes24.com/Perf/59781"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-04",
     "posterUrl": "/posters/akane-yonezawa-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260818/20260818-59781.jpg"
   },
@@ -4006,6 +4029,16 @@
       {
         "date": "2026-08-30",
         "text": "이 투어가 도시마다 별도 포스터·예매 페이지를 쓰는 방식이라는 걸 확인했어요. 밀양 전용 페이지는 예스24·타임티켓·트립닷컴 어디에도 아직 없어서, 다른 도시 포스터를 대신 쓰지 않고 계속 확인 중입니다."
+      },
+      {
+        "date": "2026-11-04",
+        "text": "MD 굿즈 워치 중 NOL(야놀자)에서 밀양 전용 예매 페이지를 찾았어요 (2026-11-08 오후 6시, 밀양아리랑아트센터 대공연장 - 날짜·장소 확인 완료). MD/굿즈 관련 안내는 이 페이지에도 없었습니다."
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL (야놀자)",
+        "url": "https://nol.yanolja.com/ticket/products/26012272"
       }
     ],
     "sources": [
@@ -4016,11 +4049,15 @@
       {
         "label": "2026 김장훈 전국투어 콘서트 : 원맨쇼 - 예스24 티켓",
         "url": "https://ticket.yes24.com/Perf/58980"
+      },
+      {
+        "label": "2026 김장훈 전국투어 콘서트 : 원맨쇼 - 밀양 - NOL 티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26012272"
       }
     ],
     "posterUrl": "/posters/kopis-kimjanghun-miryang-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260618/20260618-58980.jpg",
-    "merchCheckedAt": "2026-11-03"
+    "merchCheckedAt": "2026-11-04"
   },
   {
     "id": "jason-mraz-2026-11",
@@ -4054,7 +4091,7 @@
         "url": "https://www.instagram.com/jason_mraz/"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-04",
     "setlists": [
       {
         "label": "2026 투어 - 브루클린 파라마운트 공연",
@@ -4090,7 +4127,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000615",
-        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
+        "note": "셔틀 스캔으로 확인 (2026-11-04). 수요조사 미달로 미개설 처리됨(DROPPED)."
       }
     ]
   },
@@ -4132,7 +4169,7 @@
         "url": "https://www.instagram.com/teddyswims/"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-04",
     "description": "커버 가수에서 시작해 'Lose Control'로 빌보드 역사를 새로 쓴 테디 스윔스의 첫 단독 내한공연. 투어명은 'I've Tried Everything But Therapy'.",
     "funFacts": [
       "대표곡 'Lose Control'이 빌보드 핫100에 112주간 머물며 2024년 연말결산 1위에 올랐고, 2025 그래미 최우수 신인상 후보에도 올랐어요.",
@@ -4173,7 +4210,7 @@
         "url": "https://ticket.yes24.com/Perf/59831"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-04",
     "posterUrl": "/posters/blu-swing-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59831.jpg"
   },
@@ -4218,7 +4255,7 @@
         "url": "https://x.com/5sos"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-04",
     "setlists": [
       {
         "label": "EVERYONE'S A STAR! World Tour - 비에하스 아레나 공연",
@@ -5510,7 +5547,7 @@
         "url": "https://2026skf.com"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-04",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -5610,7 +5647,7 @@
         "url": "https://nol.yanolja.com/ticket/products/26014103"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-04",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -5740,7 +5777,13 @@
         "url": "https://www.facebook.com/AKMUsorry"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "officialSns": [
+      {
+        "label": "X (Twitter)",
+        "url": "https://x.com/official_akmu"
+      }
+    ],
+    "merchCheckedAt": "2026-11-04",
     "shuttleBus": [
       {
         "operator": "퀸즈스마일",
