@@ -85,5 +85,49 @@
     "showDate": "2026-10-24",
     "discoveredAt": "2026-10-01",
     "note": "공지 원문에 아티스트명이 전혀 없어 어떤 공연인지 특정 불가 - '국내페이지 예매'와 '일반예매(글로벌 포함)'를 분리 운영하고 만 19세 이상 관람으로 제한하는 점으로 미루어 해외 팬층이 있는 인물/팀으로 추정되나 확인 불가. 원문에서 더 이상의 정보를 못 찾아 사람이 다른 경로로 아티스트를 특정한 뒤 게시 여부 판단 필요."
+  },
+  {
+    "artist": "DaiShun (다이슌) 1st Korea Fanmeet 〈자나깨나 다이슌. Daylight / Nightlight〉",
+    "source": ["interpark-websearch"],
+    "sourceUrl": [],
+    "noticeTitle": "DaiShun 1st Korea Fanmeet / Meet&Greet - NOL 오픈 예정 목록",
+    "ticketOpenAt": "2026-11-04T19:00:00+09:00 (Fanmeet) / 2026-11-04T20:00:00+09:00 (Meet&Greet), NOL 오픈 예정 목록 기준",
+    "venue": "H-STAGE",
+    "showDate": "",
+    "discoveredAt": "2026-11-04",
+    "note": "NOL(인터파크) 오픈 예정 목록에서 발견 - 원문 미확인, 목록 제목만 확인됨. 'DaiShun'은 Netflix 리얼리티 데이팅쇼 'The Boyfriend' 출연으로 유명해진 일본인 커플 Dai & Shun으로 추정(웹서치 교차 확인) - 가수가 아닌 비음악 리얼리티쇼 출연자의 팬미팅이라 이 사이트(콘서트 중심)의 다룰 범위에 맞는지부터 사람 판단이 필요. 공연일(showDate) 정보 없음."
+  },
+  {
+    "artist": "Young Kai (영 카이/yung kai) 첫 내한공연 - stay with the ocean, i'll find you: Asia 2026 in Seoul",
+    "source": ["general-websearch"],
+    "sourceUrl": ["https://sports.khan.co.kr/en/article/202607301825007/", "https://sports.khan.co.kr/en/article/202610122124007"],
+    "noticeTitle": "Collaboration with i-dle member Minnie·hit song 'blue' artist 'Young Kai(yung kai)', solo concert in Korea in November - Sports Khan",
+    "ticketOpenAt": "2026-08-05T12:00:00+09:00 (NOL 단독, 검색 스니펫 기준 - 발견 시점에는 이미 지난 날짜)",
+    "venue": "명화라이브홀 또는 무신사 개러지 (검색 스니펫마다 다르게 나와 장소 특정 불가 - 두 곳에서 각각 열리는 별개 공연일 가능성도 있음)",
+    "showDate": "2026-11-16",
+    "discoveredAt": "2026-11-04",
+    "note": "'blue'로 유명한 미국 인디팝 아티스트 yung kai(영 카이)의 첫 단독 내한공연. 공연일(11/16)은 복수 보도로 확인되나 장소 표기가 소스마다 갈려 원문 확인 전까지 보류. NOL 직접 열람 불가라 검색 스니펫 기반."
+  },
+  {
+    "artist": "CUTIE STREET Live in Korea 2027 WINTER (세 번째 단독 내한)",
+    "source": ["general-websearch"],
+    "sourceUrl": ["https://www.segye.com/newsView/20260727508929"],
+    "noticeTitle": "CUTIE STREET、韓国アンコール公演で...来冬のワンマン開催発表も",
+    "ticketOpenAt": "",
+    "venue": "킨텍스 9A홀 (KINTEX)",
+    "showDate": "2027-01-23",
+    "discoveredAt": "2026-11-04",
+    "note": "일본 아이돌 그룹 CUTIE STREET의 세 번째 단독 내한공연(멜론티켓 판매 예정). 공연일·장소(2027-01-23 18시, 킨텍스 9A홀)는 다수 매체로 확인되나 일반예매 티켓오픈 일시는 아직 미공개(8/21~23 팬클럽 선예매만 진행됨) - 추후 공지 확인 후 게시."
+  },
+  {
+    "artist": "Sienna Spiro (시에나 스파이로) 첫 내한공연 - My House Tour in Seoul",
+    "source": ["general-websearch"],
+    "sourceUrl": ["https://mobile.newsis.com/view/NISX20260610_0003664239"],
+    "noticeTitle": "시에나 스파이로 첫 내한공연 - 내년 1월7일 서울 명화라이브홀 - 뉴시스",
+    "ticketOpenAt": "",
+    "venue": "명화라이브홀",
+    "showDate": "2027-01-07",
+    "discoveredAt": "2026-11-04",
+    "note": "영국 싱어송라이터 시에나 스파이로의 첫 단독 내한공연(라이브네이션코리아 주관). 공연일·장소(2027-01-07 20시, 명화라이브홀)는 뉴시스 보도로 확인되나 정확한 티켓오픈 일시는 검색 스니펫에서 못 찾음(12/17 티켓 배송 안내만 확인) - 원문/추가 보도로 확인 후 게시."
   }
 ]
