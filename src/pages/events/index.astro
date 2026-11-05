@@ -1,0 +1,308 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PosterCard from '../../components/PosterCard.astro';
+import Mascot from '../../components/Mascot.astro';
+import CalendarNav from '../../components/CalendarNav.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import RecentIssues from '../../components/RecentIssues.astro';
+import { upcomingEvents, allGenres, allCities, monthLabel, hasTicketsOnSale, ticketOpenInDays } from '../../lib/events';
+
+const events = upcomingEvents();
+const genres = allGenres();
+const cities = allCities();
+
+const groups: { label: string; items: typeof events }[] = [];
+for (const e of events) {
+  const label = monthLabel(e.startDate);
+  let group = groups.find((g) => g.label === label);
+  if (!group) {
+    group = { label, items: [] };
+    groups.push(group);
+  }
+  group.items.push(e);
+}
+---
+<BaseLayout title="전체 공연 일정 - 내한공연·페스티벌 D-day 캘린더" description="예정된 내한공연과 페스티벌을 월별로 모아봤어요. 장르·지역·초성 검색, 이번 주 공연과 티켓오픈 임박 필터로 원하는 공연을 바로 찾으세요.">
+  <section class="page-head">
+    <h1>전체 공연 일정</h1>
+    <p>예정된 내한공연과 페스티벌 {events.length}개를 월별로 모았어요.</p>
+  </section>
+
+  <CalendarNav events={events} />
+
+  <section id="find" class="finder">
+    <div class="filter-row">
+      {genres.length > 0 && (
+        <select class="filter-select" id="genre-select" aria-label="장르 선택">
+          <option value="all">전체 장르</option>
+          {genres.map((g) => (
+            <option value={g}>{g}</option>
+          ))}
+        </select>
+      )}
+
+      {cities.length > 0 && (
+        <select class="filter-select" id="city-select" aria-label="지역 선택">
+          <option value="all">전체 지역</option>
+          {cities.map((c) => (
+            <option value={c}>{c}</option>
+          ))}
+        </select>
+      )}
+
+      <button class="chip fav-toggle" id="fav-toggle" type="button">♡ 찜한 공연만</button>
+    </div>
+
+    <div class="quick-row" role="group" aria-label="빠른 필터">
+      <button class="chip quick-chip" type="button" data-quick="week">이번 주 공연</button>
+      <button class="chip quick-chip" type="button" data-quick="open">티켓오픈 임박</button>
+      <button class="chip quick-chip" type="button" data-quick="onsale">예매 오픈중</button>
+    </div>
+
+    <input
+      type="search"
+      id="artist-search"
+      class="search-input"
+      placeholder="아티스트 검색 (초성 OK · 예: ㅂㄴㅂ)"
+      autocomplete="off"
+    />
+  </section>
+
+  <AdSlot slot="home-top" />
+
+  <section id="listing" class="listing">
+    {groups.map((group) => (
+      <div class="month-group">
+        <h3>{group.label}</h3>
+        <div class="poster-grid">
+          {group.items.map((e) => (
+            <div
+              class="card-wrap"
+              data-genre={e.genre}
+              data-city={e.city}
+              data-id={e.id}
+              data-date={e.startDate}
+              data-onsale={hasTicketsOnSale(e) ? '1' : '0'}
+              data-open-days={ticketOpenInDays(e) ?? ''}
+            >
+              <PosterCard event={e} />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <div class="no-result" id="no-result" hidden>
+      <Mascot size={72} pose="search" />
+      <p><strong>조건에 맞는 공연을 못 찾았어요.</strong><br />필터를 풀거나 다른 이름으로 검색해 보세요.</p>
+    </div>
+
+    {events.length === 0 && (
+      <p class="empty">
+        <Mascot size={40} pose="wave" />
+        예정된 공연이 아직 없어요. 새 소식이 들어오면 바로 채울게요.
+      </p>
+    )}
+  </section>
+
+  <RecentIssues limit={3} />
+</BaseLayout>
+
+<script>
+  const genreSelect = document.querySelector<HTMLSelectElement>('#genre-select');
+  const citySelect = document.querySelector<HTMLSelectElement>('#city-select');
+  const cards = document.querySelectorAll<HTMLElement>('.card-wrap');
+  const searchInput = document.querySelector<HTMLInputElement>('#artist-search');
+  const favToggle = document.querySelector<HTMLButtonElement>('#fav-toggle');
+
+  let activeGenre = 'all';
+  let activeCity = 'all';
+  let activeSearch = '';
+  let favoritesOnly = false;
+  let activeQuick = '';
+
+  // Hangul 초성(initial-consonant) search, e.g. "ㅂㄴㅂ" should match "back number".
+  const CHOSUNG = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+  function getChosung(str: string) {
+    let out = '';
+    for (const ch of str) {
+      const code = ch.charCodeAt(0) - 0xac00;
+      out += code >= 0 && code <= 11171 ? CHOSUNG[Math.floor(code / 588)] : ch;
+    }
+    return out;
+  }
+  function isChosungQuery(q: string) {
+    return /^[ㄱ-ㅎ]+$/.test(q.replace(/\s/g, ''));
+  }
+  function matchesSearch(artistText: string, query: string) {
+    if (!query) return true;
+    const q = query.trim();
+    if (isChosungQuery(q)) return getChosung(artistText).includes(q);
+    return artistText.toLowerCase().includes(q.toLowerCase());
+  }
+  function getBookmarkSet() {
+    try {
+      const raw = localStorage.getItem('krconcerts:bookmarks');
+      return new Set<string>(raw ? JSON.parse(raw) : []);
+    } catch {
+      return new Set<string>();
+    }
+  }
+
+  // 빠른 필터: 이번 주(7일 이내 시작) / 티켓오픈 임박(14일 이내) / 예매 오픈중
+  function matchesQuick(card: HTMLElement) {
+    if (!activeQuick) return true;
+    if (activeQuick === 'onsale') return card.dataset.onsale === '1';
+    if (activeQuick === 'open') {
+      const d = card.dataset.openDays;
+      return d !== undefined && d !== '' && Number(d) <= 14;
+    }
+    if (activeQuick === 'week') {
+      const start = new Date((card.dataset.date ?? '') + 'T00:00:00').getTime();
+      const today = new Date(new Date().toDateString()).getTime();
+      const diff = Math.round((start - today) / 86400000);
+      return diff >= 0 && diff <= 7;
+    }
+    return true;
+  }
+
+  function applyFilters() {
+    const bookmarks = favoritesOnly ? getBookmarkSet() : null;
+    cards.forEach((card) => {
+      const genreMatch = activeGenre === 'all' || card.dataset.genre === activeGenre;
+      const cityMatch = activeCity === 'all' || card.dataset.city === activeCity;
+      const artistText = card.querySelector('h3')?.textContent ?? '';
+      const searchMatch = matchesSearch(artistText, activeSearch);
+      const favMatch = !bookmarks || bookmarks.has(card.dataset.id ?? '');
+      const quickMatch = matchesQuick(card);
+      card.style.display = genreMatch && cityMatch && searchMatch && favMatch && quickMatch ? '' : 'none';
+    });
+    const noResult = document.querySelector<HTMLElement>('#no-result');
+    if (noResult) {
+      const anyCard = Array.from(cards).some((c) => c.style.display !== 'none');
+      noResult.hidden = anyCard;
+    }
+    document.querySelectorAll<HTMLElement>('.month-group').forEach((section) => {
+      const anyVisible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).some(
+        (c) => c.style.display !== 'none'
+      );
+      section.style.display = anyVisible ? '' : 'none';
+    });
+  }
+
+  const quickChips = document.querySelectorAll<HTMLButtonElement>('.quick-chip');
+  quickChips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      activeQuick = activeQuick === chip.dataset.quick ? '' : (chip.dataset.quick ?? '');
+      quickChips.forEach((c) => c.classList.toggle('active', c.dataset.quick === activeQuick));
+      applyFilters();
+    });
+  });
+
+  searchInput?.addEventListener('input', () => {
+    activeSearch = searchInput.value;
+    applyFilters();
+  });
+
+  favToggle?.addEventListener('click', () => {
+    favoritesOnly = !favoritesOnly;
+    favToggle.classList.toggle('active', favoritesOnly);
+    favToggle.textContent = favoritesOnly ? '♥ 찜한 공연만' : '♡ 찜한 공연만';
+    applyFilters();
+  });
+
+  // A heart toggled from a card re-runs the favorites-only filter live.
+  window.addEventListener('bookmarks:changed', () => {
+    if (favoritesOnly) applyFilters();
+  });
+
+  genreSelect?.addEventListener('change', () => {
+    activeGenre = genreSelect.value || 'all';
+    applyFilters();
+  });
+
+  citySelect?.addEventListener('change', () => {
+    activeCity = citySelect.value || 'all';
+    applyFilters();
+  });
+</script>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .finder {
+    scroll-margin-top: 5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 0.85rem 0.95rem 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.65rem;
+  }
+  .filter-select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #ededea;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+  .quick-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.65rem; }
+  .search-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #ededea;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.82rem;
+  }
+  .search-input::placeholder { color: #6f6f77; }
+  .fav-toggle.active { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; font-weight: 700; }
+  .chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #c4c4c8;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    cursor: pointer;
+  }
+  .chip.active { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; font-weight: 700; }
+
+  .listing { scroll-margin-top: 5rem; }
+  .month-group { margin-top: 2rem; }
+  .month-group h3 { font-size: 1.05rem; font-weight: 700; color: #8f8f97; margin-bottom: 0.7rem; }
+  .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem 0.85rem;
+  }
+  @media (min-width: 640px) { .poster-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 900px) { .poster-grid { grid-template-columns: repeat(4, 1fr); gap: 1.3rem 1rem; } }
+  .page-head { margin: 0 0 1.5rem; }
+  .page-head h1 { margin: 0 0 0.3rem; font-size: 1.6rem; }
+  .page-head p { margin: 0; color: var(--muted); }
+  .no-result { display: flex; align-items: center; gap: 1rem; padding: 2rem 0; color: var(--muted); }
+  .no-result[hidden] { display: none; }
+  .no-result p { margin: 0; line-height: 1.6; }
+  .no-result strong { color: var(--fg); }
+  .empty { color: var(--muted); display: flex; align-items: center; gap: 0.6rem; }
+</style>

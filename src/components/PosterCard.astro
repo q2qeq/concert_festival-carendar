@@ -1,4 +1,5 @@
 ---
+import Mascot from './Mascot.astro';
 // 인스타그램 감성의 세로형 포스터 카드 - 홈 화면 "전체 일정" 리스팅용.
 // 가로 한 줄짜리 EventCard 대신 포스터를 크게 보여줘서 보는 재미를 준다.
 // 포스터가 아직 없는 공연은 "준비중" 플레이스홀더를 항상 같은 자리에 보여준다
@@ -43,13 +44,13 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
         <div class="poster-card-placeholder" style="display:none">
-          <span class="poster-card-placeholder-icon" aria-hidden="true"></span>
+          <Mascot size={54} pose="sleep" class="poster-card-placeholder-icon" />
           <span>포스터 준비중</span>
         </div>
       </>
     ) : (
       <div class="poster-card-placeholder">
-        <span class="poster-card-placeholder-icon" aria-hidden="true"></span>
+        <Mascot size={54} pose="sleep" class="poster-card-placeholder-icon" />
         <span>포스터 준비중</span>
       </div>
     )}

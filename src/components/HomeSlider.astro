@@ -1,0 +1,119 @@
+---
+// 랜딩 "지금 많이 보는 공연" 슬라이더 - 3개만. 자동 재생 없이 좌우 버튼/스와이프/점으로 넘긴다.
+// 선정 기준은 lib/events.ts spotlightEvents(demand·티켓오픈 임박·최근 업데이트·예매 오픈).
+import { spotlightEvents, hasTicketsOnSale, isBuzzing, ticketOpenInDays } from '../lib/events';
+
+const picks = spotlightEvents(3, undefined, true);
+function fmt(iso: string) {
+  const d = new Date(iso + 'T00:00:00');
+  const w = ['일', '월', '화', '수', '목', '금', '토'][d.getDay()];
+  return `${d.getMonth() + 1}월 ${d.getDate()}일 (${w})`;
+}
+---
+{picks.length > 0 && (
+  <section class="slider" aria-roledescription="carousel" aria-label="지금 많이 보는 공연">
+    <div class="slider-head">
+      <div>
+        <h2>지금 많이 보는 공연</h2>
+        <p>방문이 몰리거나 곧 티켓이 열리는 공연이에요.</p>
+      </div>
+      {picks.length > 1 && (
+        <div class="slider-ctrl">
+          <button type="button" id="sl-prev" aria-label="이전 공연">←</button>
+          <button type="button" id="sl-next" aria-label="다음 공연">→</button>
+        </div>
+      )}
+    </div>
+    <div class="slides" id="slides" tabindex="0">
+      {picks.map((e, i) => {
+        const openIn = ticketOpenInDays(e);
+        return (
+          <article class="slide" aria-roledescription="slide" aria-label={`${i + 1} / ${picks.length}`}>
+            <a class="slide-poster" href={`/events/${e.id}/`} tabindex="-1" aria-hidden="true">
+              <img src={e.posterUrl} alt="" loading={i === 0 ? 'eager' : 'lazy'} />
+            </a>
+            <div class="slide-body">
+              <div class="slide-tags">
+                <span class="dday-badge" data-dday-start={e.startDate} data-dday-end={e.endDate} data-status={e.status ?? 'scheduled'}>—</span>
+                {isBuzzing(e) && <span class="tag hot">화제</span>}
+                {openIn !== null && openIn <= 14 && <span class="tag">{openIn === 0 ? '오늘 티켓오픈' : `티켓오픈 D-${openIn}`}</span>}
+                {hasTicketsOnSale(e) && <span class="tag">예매 오픈중</span>}
+              </div>
+              <h3><a href={`/events/${e.id}/`}>{e.artist}</a></h3>
+              <p class="slide-meta">{fmt(e.startDate)} · {e.venue}</p>
+              {e.description && <p class="slide-desc">{e.description}</p>}
+              <a class="slide-cta" href={`/events/${e.id}/`}>공연 정보 보기 →</a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+    {picks.length > 1 && (
+      <div class="dots" id="sl-dots" role="tablist" aria-label="슬라이드 선택">
+        {picks.map((_, i) => <button type="button" role="tab" aria-label={`${i + 1}번째 공연`} aria-selected={i === 0 ? 'true' : 'false'} data-i={i}></button>)}
+      </div>
+    )}
+  </section>
+)}
+<script>
+  const track = document.getElementById('slides');
+  const dots = document.querySelectorAll<HTMLButtonElement>('#sl-dots button');
+  if (track) {
+    const slides = Array.from(track.children) as HTMLElement[];
+    const go = (i: number) => {
+      const n = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: slides[n].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+    };
+    const current = () => {
+      const x = track.scrollLeft + track.clientWidth / 2;
+      return Math.max(0, slides.findIndex((s) => x >= s.offsetLeft - track.offsetLeft && x < s.offsetLeft - track.offsetLeft + s.offsetWidth));
+    };
+    document.getElementById('sl-prev')?.addEventListener('click', () => go(current() - 1));
+    document.getElementById('sl-next')?.addEventListener('click', () => go(current() + 1));
+    dots.forEach((d) => d.addEventListener('click', () => go(Number(d.dataset.i))));
+    track.addEventListener('scroll', () => {
+      const c = current();
+      dots.forEach((d, i) => d.setAttribute('aria-selected', String(i === c)));
+    }, { passive: true });
+    track.addEventListener('keydown', (ev) => {
+      if (ev.key === 'ArrowRight') { ev.preventDefault(); go(current() + 1); }
+      if (ev.key === 'ArrowLeft') { ev.preventDefault(); go(current() - 1); }
+    });
+  }
+</script>
+<style>
+  .slider { margin: 0 0 2.5rem; }
+  .slider-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 0.9rem; }
+  .slider-head h2 { margin: 0 0 0.2rem; font-size: 1.15rem; }
+  .slider-head p { margin: 0; font-size: 0.86rem; color: var(--muted); }
+  .slider-ctrl { display: flex; gap: 0.4rem; flex-shrink: 0; }
+  .slider-ctrl button { width: 2.2rem; height: 2.2rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: var(--fg); font-size: 1rem; cursor: pointer; }
+  .slider-ctrl button:hover { border-color: #fff; }
+  .slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #151517; }
+  .slides::-webkit-scrollbar { display: none; }
+  .slides:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; gap: 1.4rem; padding: 1.2rem; min-width: 0; }
+  .slide-poster { flex: 0 0 34%; max-width: 240px; align-self: flex-start; }
+  .slide-poster img { display: block; width: 100%; height: auto; border-radius: 6px; background: #1c1c20; }
+  .slide-body { display: flex; flex-direction: column; min-width: 0; padding: 0.15rem 0; }
+  .slide-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; align-items: center; }
+  .tag { font-size: 0.74rem; padding: 0.18rem 0.5rem; border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; color: #c4c4c8; }
+  .tag.hot { border-color: var(--accent); color: var(--accent); }
+  .slide h3 { margin: 0 0 0.3rem; font-size: 1.35rem; line-height: 1.3; letter-spacing: -0.01em; }
+  .slide h3 a { color: var(--fg); text-decoration: none; }
+  .slide h3 a:hover { text-decoration: underline; }
+  .slide-meta { margin: 0 0 0.7rem; font-weight: 600; color: var(--fg); }
+  .slide-desc { margin: 0 0 1rem; color: #a9a9b0; font-size: 0.92rem; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .slide-cta { margin-top: auto; align-self: flex-start; padding: 0.55rem 1rem; border-radius: 6px; background: var(--accent); color: #0e0e10; font-weight: 700; font-size: 0.9rem; text-decoration: none; }
+  .slide-cta:hover { background: #ff7bb2; }
+  .dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.8rem; }
+  .dots button { width: 0.55rem; height: 0.55rem; padding: 0; border-radius: 50%; border: 0; background: rgba(255,255,255,0.25); cursor: pointer; }
+  .dots button[aria-selected="true"] { background: var(--accent); }
+  @media (max-width: 560px) {
+    .slide { gap: 0.9rem; padding: 0.9rem; }
+    .slide-poster { flex-basis: 38%; }
+    .slide h3 { font-size: 1.1rem; }
+    .slide-desc { -webkit-line-clamp: 2; font-size: 0.85rem; }
+    .slide-cta { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
+  }
+</style>

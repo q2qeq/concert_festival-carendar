@@ -1,4 +1,5 @@
 ---
+import Mascot from '../components/Mascot.astro';
 // "내 찜" - 사이트 어디서든 ♡로 찜해둔 공연을 한곳에 모아 보여준다.
 // 찜 목록은 이 브라우저의 localStorage('krconcerts:bookmarks')에만 있고 서버로 가지 않는다
 // (로그인 없음). 그래서 페이지는 예정된 공연 전부를 미리 렌더링해두고, 브라우저에서
@@ -33,8 +34,9 @@ const list = upcomingEvents();
   </div>
 
   <div id="my-empty" class="my-empty" hidden>
-    <p>아직 찜한 공연이 없어요. 공연 카드의 ♡를 눌러 담아두면 여기서 오픈 일정과 D-day를 모아볼 수 있어요.</p>
-    <p><a href="/">전체 일정 보러가기</a> · <a href="/ticketing-clock/">티켓팅 시계</a></p>
+    <Mascot size={96} pose="heart" />
+    <p>아직 찜한 공연이 없어요. 공연 카드의 ♡를 누르면 티켓오픈 일정과 D-day가 여기에 모여요.</p>
+    <p><a href="/events/">전체 일정 보러가기</a> · <a href="/ticketing-clock/">티켓팅 시계</a></p>
   </div>
 </BaseLayout>
 
@@ -45,7 +47,7 @@ const list = upcomingEvents();
   .my-alert { margin: 0.8rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem; }
   .my-alert button { padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.88rem; font-weight: 700; color: #0e0e10; background: #ff5fa2; border: 0; cursor: pointer; }
   .my-alert small { color: #8f8f97; }
-  .my-empty { margin-top: 1.5rem; padding: 1.2rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #c4c4c8; line-height: 1.7; }
+  .my-empty { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4rem; padding: 1.6rem 1.2rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #c4c4c8; line-height: 1.7; }
   .my-empty a { color: #ff5fa2; }
 </style>
 

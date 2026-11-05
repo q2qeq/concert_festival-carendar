@@ -1,298 +1,98 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PosterCard from '../components/PosterCard.astro';
 import Hero from '../components/Hero.astro';
-import Mascot from '../components/Mascot.astro';
+import HomeSlider from '../components/HomeSlider.astro';
 import ToolStrip from '../components/ToolStrip.astro';
-import CalendarNav from '../components/CalendarNav.astro';
+import PosterCard from '../components/PosterCard.astro';
 import AdSlot from '../components/AdSlot.astro';
 import RecentIssues from '../components/RecentIssues.astro';
-import { upcomingEvents, allGenres, allCities, monthLabel, hasTicketsOnSale, ticketOpenInDays } from '../lib/events';
-import { SITE_TITLE } from '../consts';
+import { upcomingEvents, upcomingTicketOpens } from '../lib/events';
 
-const events = upcomingEvents();
-const genres = allGenres();
-const cities = allCities();
+const all = upcomingEvents();
+const next = all.slice(0, 8);
+const opens = upcomingTicketOpens(4);
 
-const groups: { label: string; items: typeof events }[] = [];
-for (const e of events) {
-  const label = monthLabel(e.startDate);
-  let group = groups.find((g) => g.label === label);
-  if (!group) {
-    group = { label, items: [] };
-    groups.push(group);
-  }
-  group.items.push(e);
+function fmtOpen(iso: string) {
+  const d = new Date(iso);
+  const kst = new Date(d.getTime() + 9 * 3600_000);
+  const m = kst.getUTCMonth() + 1;
+  const day = kst.getUTCDate();
+  const h = kst.getUTCHours();
+  const mi = String(kst.getUTCMinutes()).padStart(2, '0');
+  return `${m}월 ${day}일 ${h}:${mi}`;
 }
 ---
-<BaseLayout title="내한공연·페스티벌 일정 캘린더 D-day" description="해외 아티스트 내한공연과 페스티벌 일정을 D-day로 한눈에. 티켓오픈 일정, 예매처, 공연장 셔틀버스, MD 굿즈 정보까지 직관냥에서 확인하세요.">
-  <h1 class="visually-hidden">{SITE_TITLE}</h1>
+<BaseLayout title="내한공연·페스티벌 일정 캘린더 D-day" description="해외 아티스트 내한공연과 페스티벌 일정을 D-day로 한눈에. 티켓오픈 일정, 예매처, 구역별 시야, 공연장 셔틀버스, MD 굿즈 정보까지 직관냥에서 확인하세요.">
+  <Hero />
 
-  <Hero>
-    <ToolStrip />
-  </Hero>
+  <HomeSlider />
 
-  <CalendarNav events={events} />
+  <ToolStrip />
 
-  <section id="find" class="finder">
-    <div class="filter-row">
-      {genres.length > 0 && (
-        <select class="filter-select" id="genre-select" aria-label="장르 선택">
-          <option value="all">전체 장르</option>
-          {genres.map((g) => (
-            <option value={g}>{g}</option>
-          ))}
-        </select>
-      )}
-
-      {cities.length > 0 && (
-        <select class="filter-select" id="city-select" aria-label="지역 선택">
-          <option value="all">전체 지역</option>
-          {cities.map((c) => (
-            <option value={c}>{c}</option>
-          ))}
-        </select>
-      )}
-
-      <button class="chip fav-toggle" id="fav-toggle" type="button">♡ 찜한 공연만</button>
-    </div>
-
-    <div class="quick-row" role="group" aria-label="빠른 필터">
-      <button class="chip quick-chip" type="button" data-quick="week">이번 주 공연</button>
-      <button class="chip quick-chip" type="button" data-quick="open">티켓오픈 임박</button>
-      <button class="chip quick-chip" type="button" data-quick="onsale">예매 오픈중</button>
-    </div>
-
-    <input
-      type="search"
-      id="artist-search"
-      class="search-input"
-      placeholder="아티스트 검색 (초성 OK · 예: ㅂㄴㅂ)"
-      autocomplete="off"
-    />
-  </section>
+  {opens.length > 0 && (
+    <section class="soon" aria-labelledby="soon-title">
+      <div class="sec-head">
+        <h2 id="soon-title">곧 티켓이 열려요</h2>
+        <a href="/ticket-open/">티켓오픈 일정 전체 →</a>
+      </div>
+      <ul>
+        {opens.map((e) => (
+          <li>
+            <a href={`/events/${e.id}/`}>
+              <span class="soon-when">{fmtOpen(e.ticketOpenAt as string)}</span>
+              <span class="soon-name">{e.artist}</span>
+              <span class="soon-venue">{e.venue}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   <AdSlot slot="home-top" />
 
-  <section id="listing" class="listing">
-    {groups.map((group, gi) => (
-      <>
-      <div class="month-group">
-        <h3>{group.label}</h3>
-        <div class="poster-grid">
-          {group.items.map((e) => (
-            <div
-              class="card-wrap"
-              data-genre={e.genre}
-              data-city={e.city}
-              data-id={e.id}
-              data-date={e.startDate}
-              data-onsale={hasTicketsOnSale(e) ? '1' : '0'}
-              data-open-days={ticketOpenInDays(e) ?? ''}
-            >
-              <PosterCard event={e} />
-            </div>
-          ))}
-        </div>
-      </div>
-      {gi === 1 && <RecentIssues limit={3} />}
-      </>
-    ))}
-
-    {events.length === 0 && (
-      <p class="empty">
-        <Mascot size={40} pose="wave" />
-        현재 등록된 예정 공연이 없습니다. 곧 업데이트할게요.
-      </p>
-    )}
+  <section class="next" aria-labelledby="next-title">
+    <div class="sec-head">
+      <h2 id="next-title">다가오는 공연</h2>
+      <a href="/events/">전체 {all.length}개 보기 →</a>
+    </div>
+    <div class="poster-grid">
+      {next.map((e) => (
+        <div class="card-wrap"><PosterCard event={e} /></div>
+      ))}
+    </div>
+    <div class="more">
+      <a class="more-btn" href="/events/">전체 공연 일정 보기 <span>({all.length})</span></a>
+    </div>
   </section>
 
-  {groups.length < 2 && <RecentIssues limit={3} />}
+  <RecentIssues limit={3} heading="공연 소식·이슈" />
 </BaseLayout>
 
-<script>
-  const genreSelect = document.querySelector<HTMLSelectElement>('#genre-select');
-  const citySelect = document.querySelector<HTMLSelectElement>('#city-select');
-  const cards = document.querySelectorAll<HTMLElement>('.card-wrap');
-  const searchInput = document.querySelector<HTMLInputElement>('#artist-search');
-  const favToggle = document.querySelector<HTMLButtonElement>('#fav-toggle');
-
-  let activeGenre = 'all';
-  let activeCity = 'all';
-  let activeSearch = '';
-  let favoritesOnly = false;
-  let activeQuick = '';
-
-  // Hangul 초성(initial-consonant) search, e.g. "ㅂㄴㅂ" should match "back number".
-  const CHOSUNG = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
-  function getChosung(str: string) {
-    let out = '';
-    for (const ch of str) {
-      const code = ch.charCodeAt(0) - 0xac00;
-      out += code >= 0 && code <= 11171 ? CHOSUNG[Math.floor(code / 588)] : ch;
-    }
-    return out;
-  }
-  function isChosungQuery(q: string) {
-    return /^[ㄱ-ㅎ]+$/.test(q.replace(/\s/g, ''));
-  }
-  function matchesSearch(artistText: string, query: string) {
-    if (!query) return true;
-    const q = query.trim();
-    if (isChosungQuery(q)) return getChosung(artistText).includes(q);
-    return artistText.toLowerCase().includes(q.toLowerCase());
-  }
-  function getBookmarkSet() {
-    try {
-      const raw = localStorage.getItem('krconcerts:bookmarks');
-      return new Set<string>(raw ? JSON.parse(raw) : []);
-    } catch {
-      return new Set<string>();
-    }
-  }
-
-  // 빠른 필터: 이번 주(7일 이내 시작) / 티켓오픈 임박(14일 이내) / 예매 오픈중
-  function matchesQuick(card: HTMLElement) {
-    if (!activeQuick) return true;
-    if (activeQuick === 'onsale') return card.dataset.onsale === '1';
-    if (activeQuick === 'open') {
-      const d = card.dataset.openDays;
-      return d !== undefined && d !== '' && Number(d) <= 14;
-    }
-    if (activeQuick === 'week') {
-      const start = new Date((card.dataset.date ?? '') + 'T00:00:00').getTime();
-      const today = new Date(new Date().toDateString()).getTime();
-      const diff = Math.round((start - today) / 86400000);
-      return diff >= 0 && diff <= 7;
-    }
-    return true;
-  }
-
-  function applyFilters() {
-    const bookmarks = favoritesOnly ? getBookmarkSet() : null;
-    cards.forEach((card) => {
-      const genreMatch = activeGenre === 'all' || card.dataset.genre === activeGenre;
-      const cityMatch = activeCity === 'all' || card.dataset.city === activeCity;
-      const artistText = card.querySelector('h3')?.textContent ?? '';
-      const searchMatch = matchesSearch(artistText, activeSearch);
-      const favMatch = !bookmarks || bookmarks.has(card.dataset.id ?? '');
-      const quickMatch = matchesQuick(card);
-      card.style.display = genreMatch && cityMatch && searchMatch && favMatch && quickMatch ? '' : 'none';
-    });
-    document.querySelectorAll<HTMLElement>('.month-group').forEach((section) => {
-      const anyVisible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).some(
-        (c) => c.style.display !== 'none'
-      );
-      section.style.display = anyVisible ? '' : 'none';
-    });
-  }
-
-  const quickChips = document.querySelectorAll<HTMLButtonElement>('.quick-chip');
-  quickChips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      activeQuick = activeQuick === chip.dataset.quick ? '' : (chip.dataset.quick ?? '');
-      quickChips.forEach((c) => c.classList.toggle('active', c.dataset.quick === activeQuick));
-      applyFilters();
-    });
-  });
-
-  searchInput?.addEventListener('input', () => {
-    activeSearch = searchInput.value;
-    applyFilters();
-  });
-
-  favToggle?.addEventListener('click', () => {
-    favoritesOnly = !favoritesOnly;
-    favToggle.classList.toggle('active', favoritesOnly);
-    favToggle.textContent = favoritesOnly ? '♥ 찜한 공연만' : '♡ 찜한 공연만';
-    applyFilters();
-  });
-
-  // A heart toggled from a card re-runs the favorites-only filter live.
-  window.addEventListener('bookmarks:changed', () => {
-    if (favoritesOnly) applyFilters();
-  });
-
-  genreSelect?.addEventListener('change', () => {
-    activeGenre = genreSelect.value || 'all';
-    applyFilters();
-  });
-
-  citySelect?.addEventListener('change', () => {
-    activeCity = citySelect.value || 'all';
-    applyFilters();
-  });
-</script>
-
 <style>
-  .visually-hidden {
-    position: absolute;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.8rem; }
+  .sec-head h2 { margin: 0; font-size: 1.15rem; }
+  .sec-head a { font-size: 0.85rem; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .sec-head a:hover { color: var(--fg); }
 
-  .finder {
-    scroll-margin-top: 5rem;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 8px;
-    padding: 0.85rem 0.95rem 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-  .filter-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.45rem;
-    margin-bottom: 0.65rem;
-  }
-  .filter-select {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.14);
-    color: #ededea;
-    padding: 0.4rem 0.6rem;
-    border-radius: 6px;
-    font-size: 0.78rem;
-    cursor: pointer;
-  }
-  .quick-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.65rem; }
-  .search-input {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.14);
-    color: #ededea;
-    padding: 0.4rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.82rem;
-  }
-  .search-input::placeholder { color: #6f6f77; }
-  .fav-toggle.active { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; font-weight: 700; }
-  .chip {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: #c4c4c8;
-    padding: 0.3rem 0.7rem;
-    border-radius: 6px;
-    font-size: 0.76rem;
-    cursor: pointer;
-  }
-  .chip.active { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; font-weight: 700; }
+  .soon { margin: 0 0 2.5rem; }
+  .soon ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,0.1); }
+  .soon li a { display: grid; grid-template-columns: 8.5rem 1fr auto; gap: 0.8rem; align-items: baseline; padding: 0.75rem 0.2rem; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--fg); text-decoration: none; }
+  .soon li a:hover { background: rgba(255,255,255,0.04); }
+  .soon-when { font-size: 0.86rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .soon-name { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .soon-venue { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
 
-  .listing { scroll-margin-top: 5rem; }
-  .month-group { margin-top: 2rem; }
-  .month-group h3 { font-size: 1.05rem; font-weight: 700; color: #8f8f97; margin-bottom: 0.7rem; }
-  .poster-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.1rem 0.85rem;
+  .next { margin: 0 0 2.5rem; }
+  .poster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem 0.85rem; }
+  @media (min-width: 640px) { .poster-grid { grid-template-columns: repeat(4, 1fr); } }
+  .more { margin-top: 1.4rem; text-align: center; }
+  .more-btn { display: inline-block; padding: 0.75rem 1.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); color: var(--fg); text-decoration: none; font-weight: 700; }
+  .more-btn:hover { border-color: #fff; }
+  .more-btn span { color: var(--muted); font-weight: 600; }
+
+  @media (max-width: 560px) {
+    .soon li a { grid-template-columns: 1fr; gap: 0.1rem; }
+    .soon-venue { display: none; }
   }
-  @media (min-width: 640px) { .poster-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 900px) { .poster-grid { grid-template-columns: repeat(4, 1fr); gap: 1.3rem 1rem; } }
-  .empty { color: var(--muted); display: flex; align-items: center; gap: 0.6rem; }
 </style>

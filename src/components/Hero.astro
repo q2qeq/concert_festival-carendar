@@ -1,257 +1,49 @@
 ---
-import { spotlightEvents, hasTicketsOnSale, isBuzzing, ticketOpenInDays, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+// 랜딩 최상단: 서비스가 무엇인지 한 문장으로 말하는 제목 + 부제 + 핵심 행동 두 개.
+// 수치는 빌드 시점의 실제 데이터에서 계산한다(지어낸 숫자 금지).
 import Mascot from './Mascot.astro';
+import { upcomingEvents, upcomingTicketOpens } from '../lib/events';
 
-const picks = spotlightEvents(6);
-
-function fmt(iso: string) {
-  const d = new Date(iso + 'T00:00:00');
-  return `${d.getMonth() + 1}.${d.getDate()}`;
-}
+const upcoming = upcomingEvents();
+const opening = upcomingTicketOpens(50).length;
 ---
-<section class="hero-intro-section">
-  <div class="hero-intro">
-    <Mascot size={92} pose="wave" />
-    <div class="hero-bubble">
-      <p class="hero-bubble-text">공연 하나만 눌러도 예매부터 시야·셔틀·캘린더까지 다 나온다냥</p>
+<section class="intro" aria-labelledby="home-title">
+  <div class="intro-text">
+    <p class="eyebrow">내한공연 · 페스티벌 캘린더</p>
+    <h1 id="home-title">내한공연, 예매부터 직관까지 한곳에서</h1>
+    <p class="lead">
+      티켓오픈 일정과 예매처, 구역별 시야, 셔틀버스, MD 정보까지.
+      공연 하나만 열면 직관 준비가 끝나요.
+    </p>
+    <div class="intro-cta">
+      <a class="btn primary" href="/events/">전체 공연 일정 보기</a>
+      <a class="btn" href="/ticket-open/">티켓오픈 일정</a>
     </div>
+    <p class="intro-stats">
+      예정된 공연 <strong>{upcoming.length}</strong>개
+      {opening > 0 && <> · 곧 티켓이 열리는 공연 <strong>{opening}</strong>개</>}
+    </p>
+  </div>
+  <div class="intro-cat" aria-hidden="true">
+    <Mascot size={150} pose="wave" />
   </div>
 </section>
-
-<slot />
-
-{picks.length > 0 && (
-  <section class="hero" id="picks">
-    <div class="hero-rail-head">
-      <h2>티켓오픈 임박 · 화제 공연</h2>
-      <p>놓치면 피눈물! 직관냥이 오늘 물어온 소식부터 모아봤다냥.</p>
-    </div>
-    <div class="hero-rail">
-      {picks.map((e, i) => {
-        const onSale = hasTicketsOnSale(e);
-        const buzzing = isBuzzing(e);
-        const openIn = ticketOpenInDays(e);
-        const buzzAct = e.festivalHighlight?.[0]?.act ?? null;
-        return (
-          <a class={`hero-card${buzzing ? ' is-buzzing' : ''}`} href={`/events/${e.id}/`}>
-            <div class="hero-card-poster-wrap">
-              {e.posterUrl ? (
-                <>
-                  <div class="hero-card-glow" style={`background-image:url(${e.posterUrl})`}></div>
-                  <img
-                    class="hero-card-poster"
-                    src={e.posterUrl}
-                    alt={`${e.artist} 포스터`}
-                    loading={i === 0 ? 'eager' : 'lazy'}
-                    onerror="this.style.display='none';"
-                  />
-                </>
-              ) : (
-                <div class="hero-card-noposter">포스터 준비중</div>
-              )}
-              {openIn !== null && openIn <= 14 ? (
-                <div class="dday-badge hero-dday hero-open-badge">
-                  {openIn === 0 ? '오늘 티켓오픈' : `티켓오픈 D-${openIn}`}
-                </div>
-              ) : (
-                <div
-                  class="dday-badge hero-dday"
-                  data-dday-start={e.startDate}
-                  data-dday-end={e.endDate}
-                  data-status={e.status ?? 'scheduled'}
-                >
-                  —
-                </div>
-              )}
-              {buzzing && (
-                <div class="hero-buzz-banner">{buzzAct ? `${buzzAct} 화제` : '지금 화제'}</div>
-              )}
-            </div>
-            <div class="hero-card-seam"></div>
-            <div class="hero-card-body">
-              <div class="hero-card-tags">
-                {e.ticketingDifficulty && (
-                  <span class={`difficulty-tag difficulty-${e.ticketingDifficulty}`}>
-                    {DIFFICULTY_LABEL[e.ticketingDifficulty]}
-                  </span>
-                )}
-                {onSale && <span class="hero-onsale-tag">예매 오픈중</span>}
-              </div>
-              <h3>{e.artist}</h3>
-              <p class="hero-card-meta">{fmt(e.startDate)} · {e.venue}</p>
-            </div>
-          </a>
-        );
-      })}
-    </div>
-  </section>
-)}
 <style>
-  .hero-intro-section { margin: 0 0 1.75rem; }
-  .hero-intro {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-  }
-  .hero-bubble {
-    position: relative;
-    flex: 1;
-    min-width: 0;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 0.9rem 1.1rem 1rem;
-  }
-  .hero-bubble-text { margin: 0; font-size: 1rem; color: var(--fg); line-height: 1.55; font-weight: 600; }
-  @media (max-width: 560px) {
-    .hero-intro { align-items: flex-start; }
-    .hero-bubble { border-radius: 8px; }
-  }
-
-  .hero { margin: 0 0 2.25rem; scroll-margin-top: 5rem; }
-  .hero-rail-head { margin-bottom: 0.9rem; }
-  .hero-rail-head h2 { margin: 0 0 0.2rem; font-size: 1.1rem; letter-spacing: -0.01em; }
-  .hero-rail-head p { margin: 0; color: var(--muted); font-size: 0.88rem; }
-  .hero-rail {
-    display: flex;
-    gap: 0.9rem;
-    overflow-x: auto;
-    padding: 0.15rem 0.15rem 0.5rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .hero-rail::-webkit-scrollbar { display: none; }
-  .hero-card {
-    scroll-snap-align: start;
-    flex: 0 0 190px;
-    position: relative;
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--card);
-    transition: transform 0.18s, box-shadow 0.18s;
-  }
-  .hero-card:hover { transform: translateY(-4px);}
-  .hero-card.is-buzzing {
-  }
-  .hero-card.is-buzzing:hover {
-  }
-  .hero-buzz-banner {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    text-align: center;
-    font-size: 0.74rem;
-    font-weight: 900;
-    color: #0e0e10;
-    background: #ff5fa2;
-    padding: 0.32rem 0.4rem;
-    letter-spacing: -0.01em;
-  }
-  .hero-card-poster-wrap {
-    position: relative;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    background: #0a0a0b;
-  }
-  .hero-card-glow {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    filter: blur(20px) saturate(1.5) brightness(0.7);
-    transform: scale(1.25);
-  }
-  .hero-dday.hero-open-badge { background: #ff5fa2; color: #0e0e10; font-weight: 800; }
-  .hero-card-noposter { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #6f6f77; background: rgba(255,255,255,0.04); }
-  .hero-card-poster {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 70%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    margin: 9% auto 0;
-    border-radius: 8px;
-  }
-  .hero-dday {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    z-index: 2;
-    background: rgba(14,14,16, 0.75);
-  }
-  .hero-card-seam {
-    position: relative;
-    height: 0;
-    border-top: 1px dashed rgba(255,255,255,0.18);
-  }
-  .hero-card-seam::before,
-  .hero-card-seam::after {
-    content: '';
-    position: absolute;
-    top: -8px;
-    width: 16px;
-    height: 16px;
-    background: var(--bg);
-    border-radius: 50%;
-  }
-  .hero-card-seam::before { left: -8px; }
-  .hero-card-seam::after { right: -8px; }
-  .hero-card-body {
-    position: relative;
-    z-index: 1;
-    padding: 0.7rem 0.75rem 0.85rem;
-  }
-  .hero-card-tags {
-    display: flex;
-    gap: 0.35rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.35rem;
-  }
-  .difficulty-tag {
-    font-size: 0.68rem;
-    padding: 0.18rem 0.5rem;
-    border-radius: 6px;
-    white-space: nowrap;
-  }
-  .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); background: rgba(255,138,138,0.1); }
-  .difficulty-normal { color: #7ed957; border: 1px solid rgba(126,217,87,0.4); background: rgba(126,217,87,0.1); }
-  .difficulty-easy { color: #ffd166; border: 1px solid rgba(255,209,102,0.4); background: rgba(255,209,102,0.1); }
-  .hero-onsale-tag {
-    font-size: 0.68rem;
-    color: #c9c9cf;
-    border: 1px solid rgba(255,255,255,0.4);
-    padding: 0.18rem 0.5rem;
-    border-radius: 6px;
-    white-space: nowrap;
-  }
-  .hero-card h3 {
-    margin: 0 0 0.15rem;
-    font-size: 0.92rem;
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    min-height: 2.6em;
-  }
-  .hero-card-meta {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--fg);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  @media (max-width: 520px) {
-    .hero-card { flex-basis: 168px; }
+  .intro { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin: 0.5rem 0 2rem; }
+  .intro-text { min-width: 0; }
+  .eyebrow { margin: 0 0 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
+  .intro h1 { margin: 0 0 0.75rem; font-size: clamp(1.6rem, 4.6vw, 2.1rem); line-height: 1.25; letter-spacing: -0.02em; }
+  .lead { margin: 0 0 1.1rem; color: #c4c4c8; line-height: 1.7; max-width: 34rem; }
+  .intro-cta { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+  .btn { display: inline-block; padding: 0.65rem 1.15rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.22); color: var(--fg); text-decoration: none; font-weight: 700; font-size: 0.92rem; }
+  .btn:hover { border-color: #fff; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #0e0e10; }
+  .btn.primary:hover { background: #ff7bb2; border-color: #ff7bb2; }
+  .intro-stats { margin: 0.9rem 0 0; font-size: 0.84rem; color: var(--muted); }
+  .intro-stats strong { color: var(--fg); font-variant-numeric: tabular-nums; }
+  .intro-cat { flex-shrink: 0; }
+  @media (max-width: 640px) {
+    .intro { flex-direction: column-reverse; align-items: flex-start; gap: 0.5rem; }
+    .intro-cat :global(svg) { width: 96px; height: auto; }
   }
 </style>

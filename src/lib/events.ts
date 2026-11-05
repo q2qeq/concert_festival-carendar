@@ -489,9 +489,11 @@ export function ticketOpenInDays(e: ConcertEvent, fromISO?: string): number | nu
 
 // 트래픽이 몰리는 건 "검증된 수요 + 티켓오픈 임박" 공연이다 (2026-11 Vercel Analytics:
 // 후지이 카제 상세가 주간 1위). 그래서 포스터가 아직 없어도 오픈 임박 공연은 노출한다.
-export function spotlightEvents(limit = 4, fromISO?: string): ConcertEvent[] {
+export function spotlightEvents(limit = 4, fromISO?: string, posterOnly = false): ConcertEvent[] {
   const from = fromISO ?? new Date().toISOString().slice(0, 10);
-  const pool = upcomingEvents(from).filter((e) => (e.status ?? 'scheduled') === 'scheduled');
+  const pool = upcomingEvents(from).filter(
+    (e) => (e.status ?? 'scheduled') === 'scheduled' && (!posterOnly || e.posterUrl)
+  );
   function score(e: ConcertEvent): number {
     let s = 0;
     if (e.ticketingDifficulty === 'hard') s -= 100;
