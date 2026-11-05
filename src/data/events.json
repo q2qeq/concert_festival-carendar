@@ -4186,7 +4186,9 @@
         "url": "https://www.billboard.co.kr/editorial/music/article/korea-tour/"
       }
     ],
-    "enrichmentCheckedAt": "2026-09-03"
+    "enrichmentCheckedAt": "2026-09-03",
+    "posterUrl": "/posters/shuttle-teddy-swims-2026-11.webp",
+    "posterSourceUrl": "https://dynamicmedia.livenationinternational.com/h/j/m/2440d96f-20d0-4638-b7f5-f2a316b7fcbd.jpg"
   },
   {
     "id": "blu-swing-seoul-2026-11",
@@ -4496,7 +4498,9 @@
         "url": "https://queenssmile.co.kr/shop/festival/NDI4/",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
-    ]
+    ],
+    "posterUrl": "/posters/shuttle-monsta-x-world-tour-encore-2026-11.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013132_p.gif"
   },
   {
     "id": "cherry-blossom-music-concert-winter-changwon-2026-11",
@@ -4770,7 +4774,9 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000571",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
       }
-    ]
+    ],
+    "posterUrl": "/posters/shuttle-khalid-2026-12.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26009919_p.gif"
   },
   {
     "id": "fkj-tyber-tour-korea-2026-12",
@@ -5522,7 +5528,9 @@
     ],
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-11-13 오후 6시",
-    "ticketOpenAt": "2026-11-13T18:00:00+09:00"
+    "ticketOpenAt": "2026-11-13T18:00:00+09:00",
+    "posterUrl": "/posters/shuttle-hanroro-5th-question-mark-2027-01.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/TicketImage/notice_poster/20/20261023085031.jpg"
   },
   {
     "id": "shuttle-2026-incheon-airport-sky-festival-2026-11",
@@ -5594,7 +5602,9 @@
         "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
-    "merchCheckedAt": "2026-11-03"
+    "merchCheckedAt": "2026-11-03",
+    "posterUrl": "/posters/shuttle-nmixx-world-tour-zero-frontier-finale-2026-11.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013946_p.gif"
   },
   {
     "id": "shuttle-ateez-world-tour-zero-to-all-2027-01",
@@ -5626,7 +5636,9 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000619",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
       }
-    ]
+    ],
+    "posterUrl": "/posters/shuttle-ateez-world-tour-zero-to-all-2027-01.webp",
+    "posterSourceUrl": "https://img8.yna.co.kr/etc/inner/KR/2026/10/11/AKR20261011017600005_02_i_P4.jpg"
   },
   {
     "id": "shuttle-xdinary-heroes-impulse-2026-11",
@@ -5660,7 +5672,9 @@
         "url": "https://queenssmile.co.kr/shop/festival/NDQy/",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
-    ]
+    ],
+    "posterUrl": "/posters/shuttle-xdinary-heroes-impulse-2026-11.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26014103_p.gif"
   },
   {
     "id": "shuttle-hero-rock-festival-incheon-2026-12",
@@ -5720,7 +5734,9 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000612",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
       }
-    ]
+    ],
+    "posterUrl": "/posters/shuttle-lee-seung-chul-40th-concert-2026-12.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26011556_p.gif"
   },
   {
     "id": "shuttle-daegu-hiphop-festival-2026-12",
@@ -5752,7 +5768,9 @@
         "url": "https://queenssmile.co.kr/shop/festival/NDUz/",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 29,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
-    ]
+    ],
+    "posterUrl": "/posters/shuttle-daegu-hiphop-festival-2026-12.webp",
+    "posterSourceUrl": "https://kopis.or.kr/upload/pfmPoster/PF_PF298256_260811_144755.png"
   },
   {
     "id": "shuttle-akmu-concert-tour-gangneung-2026-11",
@@ -5952,7 +5970,9 @@
         "text": "라이브네이션이 월드투어 'GHOST' 일정을 공개하면서 2027년 1월 14·16·17일 인스파이어 아레나 3회 공연이 확정됐어요.",
         "sourceUrl": "https://www.seoul.co.kr/news/life/pop-culture/2026/10/16/20261016500129"
       }
-    ]
+    ],
+    "posterUrl": "/posters/kenshi-yonezu-ghost-incheon-2027-01.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015024_p.gif"
   },
   {
     "id": "katseye-seoul-2027-02",
@@ -6002,7 +6022,9 @@
         "text": "2027년 2월 4일 KSPO DOME 첫 단독 내한공연이 발표됐어요.",
         "sourceUrl": "https://www.mydaily.co.kr/page/view/2026102918353833118"
       }
-    ]
+    ],
+    "posterUrl": "/posters/katseye-seoul-2027-02.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015604_p.gif"
   },
   {
     "id": "damien-rice-seoul-2027-02",
@@ -6044,7 +6066,9 @@
         "text": "2027년 2월 27·28일 GS아트센터 3회 공연이 발표됐어요.",
         "sourceUrl": "https://sports.khan.co.kr/en/article/202610162142007"
       }
-    ]
+    ],
+    "posterUrl": "/posters/damien-rice-seoul-2027-02.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015096_p.gif"
   },
   {
     "id": "steve-gadd-bhg-seoul-2027-01",
