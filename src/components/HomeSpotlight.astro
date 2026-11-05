@@ -139,12 +139,24 @@ const first = items[0];
   .pic { position: relative; z-index: 2; justify-self: end; width: 100%; max-width: 520px; }
   .pic img { display: block; width: 100%; aspect-ratio: 3 / 4.1; object-fit: cover; background: #151517; transition: opacity .2s; }
   @media (max-width: 820px) {
-    .stage { grid-template-columns: 1fr; min-height: auto; gap: 1.6rem; padding-top: 1.4rem; padding-bottom: 2.4rem; }
-    .pic { order: -1; max-width: 62%; justify-self: start; }
+    /* 모바일: 포스터(좌) + 숫자(우)를 한 줄로 묶어 제목·버튼이 첫 화면에 보이게 한다 */
+    .stage {
+      grid-template-columns: 42% 1fr; column-gap: 1.1rem; row-gap: 0;
+      grid-template-areas: "pic kick" "pic big" "name name" "sub sub" "act act" "thumbs thumbs";
+      min-height: auto; align-items: start; padding-top: 1.2rem; padding-bottom: 2.2rem;
+    }
+    .info { display: contents; }
+    .pic { grid-area: pic; max-width: none; justify-self: stretch; }
+    .kicker { grid-area: kick; margin: 0; display: block; font-size: 0.7rem; letter-spacing: .1em; line-height: 1.6; align-self: start; }
+    .kicker em { display: block; margin: 0.15rem 0 0; }
+    .big { grid-area: big; margin: 0; flex-direction: column; align-items: flex-start; gap: 0.4rem; align-self: end; }
+    .big .n { font-size: clamp(4rem, 21vw, 5.6rem); }
+    .name { grid-area: name; margin-top: 1.3rem; font-size: clamp(2.3rem, 11.5vw, 3.4rem); }
+    .sub { grid-area: sub; margin-top: 0.5rem; font-size: 1rem; }
+    .act { grid-area: act; margin-top: 1.2rem; }
+    .act .btn { flex: 1 1 0; text-align: center; padding-inline: 0.8rem; }
+    .thumbs { grid-area: thumbs; margin-top: 1.4rem; }
     .stage::before { font-size: 46vw; }
-    .name { font-size: clamp(2.4rem, 12vw, 3.6rem); }
-    .big .n { font-size: clamp(4rem, 22vw, 6rem); }
-    .thumbs { margin-top: 1.6rem; }
   }
   @media (prefers-reduced-motion: reduce) { .name, .pic img { transition: none; } }
 </style>
