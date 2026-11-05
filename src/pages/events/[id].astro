@@ -112,6 +112,13 @@ const buzzing = isBuzzing(event);
 const buzzHeadlineAct = event.festivalHighlight?.[0]?.act ?? null;
 const related = relatedEvents(event);
 const lastUpdated = latestUpdateISO(event);
+// 큰 제목 + 보조(한글 병기) 분리: "Fujii Kaze (후지이 카제)" → 제목 / 부제
+const nameMatch = event.artist.match(/^(.*?)\s*\((.+)\)\s*$/);
+const heroName = nameMatch ? nameMatch[1].trim() : event.artist;
+const heroSub = nameMatch ? nameMatch[2].trim() : '';
+const WD_EN = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+const dotDate = (iso: string) => `${iso.replace(/-/g, '.')} ${WD_EN[new Date(iso + 'T00:00:00').getDay()]}`;
+const whenLabel = event.startDate === event.endDate ? dotDate(event.startDate) : `${dotDate(event.startDate)} – ${event.endDate.slice(5).replace('-', '.')}`;
 const mentionedIn = await postsMentioningEvent(event.id);
 
 // 이 공연 페이지에 실제로 존재하는 섹션만 골라 오른쪽 목차(TOC)를 만든다 -
@@ -202,19 +209,20 @@ const jsonLd = {
   <article>
     <p class="breadcrumb"><a href="/events/">← 전체 일정</a></p>
 
+    <div class={`ev-stage${event.posterUrl ? '' : ' no-pic'}`}>
+    <div class="ev-info">
     <header class={`event-header${buzzing ? ' is-buzzing' : ''}`}>
-      {buzzing && (
-        <span class="buzz-ribbon">
-          {buzzHeadlineAct ? `${buzzHeadlineAct} 화제` : '화제의 공연'}
-        </span>
-      )}
-      <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
-      <div>
-        <h1>{event.artist}</h1>
-        <p class="meta">{dateLabel} · {event.venue} ({event.city})</p>
-        {lastUpdated && <p class="last-updated">최근 업데이트 {lastUpdated.slice(5).replace('-', '.')}</p>}
-        {event.description && <p class="event-description">{event.description}</p>}
+      <p class="ev-kicker mono">
+        {event.genre} · {event.city}
+        {buzzing && <b>{buzzHeadlineAct ? `${buzzHeadlineAct} 화제` : '화제의 공연'}</b>}
+      </p>
+      <h1 class={heroName.length > 22 ? 'long' : undefined}>{heroName}{heroSub && <small>{heroSub}</small>}</h1>
+      <div class="ev-big">
+        <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
+        <p class="ev-when mono">{whenLabel}<span>{event.venue}</span></p>
       </div>
+      {lastUpdated && <p class="last-updated">최근 업데이트 {lastUpdated.slice(5).replace('-', '.')}</p>}
+      {event.description && <p class="event-description">{event.description}</p>}
     </header>
 
     {status === 'postponed' && (
@@ -302,17 +310,19 @@ const jsonLd = {
       >♡</button>
     </div>
 
+    </div>
     {event.posterUrl && (
-      <img
-        class="poster"
-        src={event.posterUrl}
-        alt={`${event.artist} 공식 포스터`}
-        loading="lazy"
-        width="400"
-        height="560"
-        onerror="this.style.display='none';"
-      />
+      <div class="ev-pic">
+        <img
+          class="poster"
+          src={event.posterUrl}
+          alt={`${event.artist} 공식 포스터`}
+          fetchpriority="high"
+          onerror="this.style.display='none';"
+        />
+      </div>
     )}
+    </div>
 
     <NextSteps event={event} />
 
@@ -765,4 +775,43 @@ const jsonLd = {
     .event-toc { display: block; }
   }
   .event-list { display: flex; flex-direction: column; }
+  /* ── 첫 화면(스포트라이트) : 랜딩과 같은 구성 ── */
+  .ev-stage { display: grid; grid-template-columns: 1fr minmax(230px, 36%); gap: 2.4rem; align-items: start; margin: 1.2rem 0 0; }
+  .ev-stage.no-pic { grid-template-columns: 1fr; }
+  .ev-info { min-width: 0; }
+  .event-header, .event-header.is-buzzing { display: block; margin: 0 0 1.4rem; padding: 0; border: 0; background: none; border-radius: 0; }
+  .ev-kicker { margin: 0 0 1rem; font-size: 0.76rem; letter-spacing: .14em; color: #8f8f97; }
+  .ev-kicker b { margin-left: 0.9rem; font-weight: 500; color: #ff5fa2; letter-spacing: .06em; }
+  .event-header h1 { margin: 0; font-size: clamp(2.3rem, 6.2vw, 4.6rem); line-height: .98; letter-spacing: -.055em; font-weight: 900; overflow-wrap: anywhere; }
+  .event-header h1.long { font-size: clamp(1.7rem, 3.6vw, 2.8rem); line-height: 1.1; letter-spacing: -.04em; }
+  .event-header h1 small { display: block; margin-top: 0.7rem; font-size: 1.05rem; line-height: 1.3; letter-spacing: 0; font-weight: 600; color: #b5b5bd; }
+  .ev-big { display: flex; align-items: baseline; gap: 1.1rem; margin: 1.5rem 0 1rem; }
+  .dday-badge.big { min-width: 0; padding: 0; border-radius: 0; background: none; color: #ff5fa2; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: clamp(3rem, 8vw, 5.8rem); font-weight: 900; letter-spacing: -.07em; line-height: .9; }
+  .dday-badge.big.is-past { color: #6f6f77; background: none; }
+  .dday-badge.big.is-postponed, .dday-badge.big.is-cancelled { background: none; }
+  .ev-when { margin: 0; font-size: 0.95rem; font-weight: 700; line-height: 1.55; color: #f4f4f0; }
+  .ev-when span { display: block; font-weight: 500; color: #8f8f97; }
+  .event-description { margin: 0.6rem 0 0; color: #b5b5bd; }
+  .ev-pic { position: sticky; top: 5rem; }
+  .ev-pic .poster { width: 100%; max-width: none; margin: 0; border-radius: 2px; }
+  .ev-info .action-bar { position: static; margin: 0.4rem 0 0; }
+  .ev-info .status-banner { margin: 0 0 1rem; }
+  @media (max-width: 720px) {
+    /* 모바일: 포스터(좌)+숫자(우)를 한 줄로, 제목 → 예매 버튼 → 설명 순서 */
+    .ev-stage { grid-template-columns: 42% 1fr; column-gap: 1.1rem; row-gap: 0; margin-top: 0.8rem;
+      grid-template-areas: "pic kick" "pic big" "name name" "act act" "desc desc" "ban ban"; }
+    .ev-stage.no-pic { grid-template-columns: 1fr; grid-template-areas: "kick" "big" "name" "act" "desc" "ban"; }
+    .ev-info, .event-header, .event-header.is-buzzing { display: contents; }
+    .ev-pic { grid-area: pic; position: static; }
+    .ev-kicker { grid-area: kick; margin: 0; font-size: 0.7rem; line-height: 1.7; align-self: start; }
+    .ev-kicker b { display: block; margin: 0.1rem 0 0; }
+    .ev-big { grid-area: big; flex-direction: column; align-items: flex-start; gap: 0.4rem; margin: 0; align-self: end; }
+    .dday-badge.big { font-size: clamp(3.4rem, 18vw, 5rem); }
+    .event-header h1 { grid-area: name; margin-top: 1.2rem; font-size: clamp(2.1rem, 10.5vw, 3.2rem); }
+    .event-header h1.long { font-size: clamp(1.5rem, 7.2vw, 2.1rem); }
+    .ev-info .action-bar { grid-area: act; margin: 1.1rem 0 0; }
+    .event-header .event-description { grid-area: desc; margin-top: 1.1rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .event-header .last-updated { display: none; }
+    .ev-info .status-banner { grid-area: ban; margin-top: 1rem; }
+  }
 </style>
