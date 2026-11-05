@@ -1,5 +1,5 @@
 ---
-import { spotlightEvents, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+import { spotlightEvents, hasTicketsOnSale, isBuzzing, ticketOpenInDays, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
 import Mascot from './Mascot.astro';
 
 const picks = spotlightEvents(6);
@@ -30,18 +30,25 @@ function fmt(iso: string) {
       {picks.map((e, i) => {
         const onSale = hasTicketsOnSale(e);
         const buzzing = isBuzzing(e);
+        const openIn = ticketOpenInDays(e);
         const buzzAct = e.festivalHighlight?.[0]?.act ?? null;
         return (
           <a class={`hero-card${buzzing ? ' is-buzzing' : ''}`} href={`/events/${e.id}/`}>
             <div class="hero-card-poster-wrap">
-              <div class="hero-card-glow" style={`background-image:url(${e.posterUrl})`}></div>
-              <img
-                class="hero-card-poster"
-                src={e.posterUrl}
-                alt={`${e.artist} 포스터`}
-                loading={i === 0 ? 'eager' : 'lazy'}
-                onerror="this.style.display='none';"
-              />
+              {e.posterUrl ? (
+                <>
+                  <div class="hero-card-glow" style={`background-image:url(${e.posterUrl})`}></div>
+                  <img
+                    class="hero-card-poster"
+                    src={e.posterUrl}
+                    alt={`${e.artist} 포스터`}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    onerror="this.style.display='none';"
+                  />
+                </>
+              ) : (
+                <div class="hero-card-noposter" aria-hidden="true">🎫</div>
+              )}
               <div
                 class="dday-badge hero-dday"
                 data-dday-start={e.startDate}
@@ -63,6 +70,9 @@ function fmt(iso: string) {
                   </span>
                 )}
                 {onSale && <span class="hero-onsale-tag">예매 오픈중</span>}
+                {openIn !== null && openIn <= 14 && (
+                  <span class="hero-onsale-tag">{openIn === 0 ? '오늘 티켓오픈' : `티켓오픈 D-${openIn}`}</span>
+                )}
               </div>
               <h3>{e.artist}</h3>
               <p class="hero-card-meta">{fmt(e.startDate)} · {e.venue}</p>
@@ -158,6 +168,7 @@ function fmt(iso: string) {
     filter: blur(20px) saturate(1.5) brightness(0.7);
     transform: scale(1.25);
   }
+  .hero-card-noposter { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2.6rem; background: linear-gradient(160deg, rgba(255,95,162,0.18), rgba(110,231,255,0.1)); }
   .hero-card-poster {
     position: relative;
     z-index: 1;

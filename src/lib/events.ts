@@ -259,6 +259,9 @@ export interface ConcertEvent {
   // unset. 'hard' = 피켓팅 (brutal), 'normal' = 무난, 'easy' = 현장에서도
   // 구할 수 있을 정도로 여유 있음.
   ticketingDifficulty?: 'hard' | 'normal' | 'easy';
+  // 실제 수요가 확인된 공연만 'high' - 근거는 Vercel Analytics 주간 방문자 상위, 매진/선예매 경쟁 보도 등
+  // 실측 신호가 있을 때만 (추측 금지). 홈 "화제 공연" 노출과 상세 페이지 관련 공연 추천 가중치에 쓰인다.
+  demand?: 'high';
   // Official/known shuttle bus services to the venue. Mostly relevant for festivals
   // at remote or hard-to-reach venues (자라섬, KINTEX, 파라다이스시티 등) - see
   // ShuttleBusInfo for sourcing rules. Rendered next to VenueInfoBox.
@@ -436,7 +439,11 @@ export function festivalHighlightSet(event: ConcertEvent): Set<string> {
 // see ticketingDifficulty/FestivalHighlightAct for the sourcing bar each one
 // has to clear before it's ever set.
 export function isBuzzing(event: ConcertEvent): boolean {
-  return event.ticketingDifficulty === 'hard' || (event.festivalHighlight?.length ?? 0) > 0;
+  return (
+    event.ticketingDifficulty === 'hard' ||
+    event.demand === 'high' ||
+    (event.festivalHighlight?.length ?? 0) > 0
+  );
 }
 
 // True when we have at least one verified prior edition to compare against.
@@ -469,16 +476,31 @@ export function attendanceTrend(event: ConcertEvent): 'growing' | 'shrinking' | 
 // and shows already on sale, then breaks ties by how soon the show is.
 // Requires a poster (nothing to show in a poster gallery without one), so a
 // well-researched-but-unposterred event never takes a slot it can't render.
+// 오늘(from) 기준 ticketOpenAt까지 남은 일수. 이미 열렸거나 시각 정보가 없으면 null.
+function daysUntilTicketOpen(e: ConcertEvent, from: string): number | null {
+  if (!e.ticketOpenAt) return null;
+  const diff = (new Date(e.ticketOpenAt).getTime() - new Date(from + 'T00:00:00+09:00').getTime()) / 86400000;
+  return diff >= 0 ? Math.floor(diff) : null;
+}
+
+export function ticketOpenInDays(e: ConcertEvent, fromISO?: string): number | null {
+  return daysUntilTicketOpen(e, fromISO ?? new Date().toISOString().slice(0, 10));
+}
+
+// 트래픽이 몰리는 건 "검증된 수요 + 티켓오픈 임박" 공연이다 (2026-11 Vercel Analytics:
+// 후지이 카제 상세가 주간 1위). 그래서 포스터가 아직 없어도 오픈 임박 공연은 노출한다.
 export function spotlightEvents(limit = 4, fromISO?: string): ConcertEvent[] {
   const from = fromISO ?? new Date().toISOString().slice(0, 10);
-  const pool = upcomingEvents(from).filter(
-    (e) => e.posterUrl && (e.status ?? 'scheduled') === 'scheduled'
-  );
+  const pool = upcomingEvents(from).filter((e) => (e.status ?? 'scheduled') === 'scheduled');
   function score(e: ConcertEvent): number {
     let s = 0;
     if (e.ticketingDifficulty === 'hard') s -= 100;
+    if (e.demand === 'high') s -= 120;
+    const open = daysUntilTicketOpen(e, from);
+    if (open !== null && open <= 14) s -= 80 - open * 3; // 오픈이 가까울수록 앞으로
     if (hasRecentUpdate(e, 7, from)) s -= 20;
     if (hasTicketsOnSale(e)) s -= 10;
+    if (!e.posterUrl) s += 15; // 포스터 있는 카드가 더 잘 눌리므로 동점일 때만 뒤로
     const days = Math.max(
       0,
       Math.floor(
@@ -495,13 +517,6 @@ export function spotlightEvents(limit = 4, fromISO?: string): ConcertEvent[] {
     .slice(0, limit);
 }
 
-// "관련 공연" cross-links for the event detail page - same venue first (fans
-// going to that venue often want to know what else is on), then same genre,
-// then same city, then everything else, deprioritizing shows that have
-// already happened. This exists for two reasons at once: it's genuinely
-// useful to a reader deciding what else to see, AND it gives Googlebot/other
-// crawlers a real link path into every event page instead of relying solely
-// on the sitemap for discovery (added 2026-09-04, see project memory).
 export function relatedEvents(event: ConcertEvent, limit = 4, fromISO?: string): ConcertEvent[] {
   const from = fromISO ?? new Date().toISOString().slice(0, 10);
   const pool = events.filter((e) => e.id !== event.id && (e.status ?? 'scheduled') !== 'cancelled');
@@ -510,6 +525,9 @@ export function relatedEvents(event: ConcertEvent, limit = 4, fromISO?: string):
     if (e.venue === event.venue) s -= 100;
     if (e.genre === event.genre) s -= 40;
     if (e.city === event.city) s -= 10;
+    if (e.demand === 'high' || e.ticketingDifficulty === 'hard') s -= 60; // 검색 유입 방문자를 화제 공연으로 연결
+    const open = daysUntilTicketOpen(e, from);
+    if (open !== null && open <= 14) s -= 30;
     if (e.startDate < from) s += 1000; // heavily deprioritize (but don't exclude) past shows
     const daysDiff =
       Math.abs(
