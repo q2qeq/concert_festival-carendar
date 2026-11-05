@@ -3,7 +3,18 @@
 // 선정 기준은 lib/events.ts spotlightEvents(demand·티켓오픈 임박·최근 업데이트·예매 오픈).
 import { spotlightEvents, hasTicketsOnSale, isBuzzing, ticketOpenInDays } from '../lib/events';
 
+import sharp from 'sharp';
+import path from 'node:path';
+
 const picks = spotlightEvents(3, undefined, true);
+// 포스터 방향을 빌드 때 읽어서, 가로형이면 세로 여백 없이 원본 비율로 보여준다.
+const landscape = new Set<string>();
+for (const e of picks) {
+  try {
+    const m = await sharp(path.join(process.cwd(), 'public', e.posterUrl as string)).metadata();
+    if ((m.width ?? 0) > (m.height ?? 0)) landscape.add(e.id);
+  } catch {}
+}
 function fmt(iso: string) {
   const d = new Date(iso + 'T00:00:00');
   const w = ['일', '월', '화', '수', '목', '금', '토'][d.getDay()];
@@ -13,10 +24,7 @@ function fmt(iso: string) {
 {picks.length > 0 && (
   <section class="slider" aria-roledescription="carousel" aria-label="지금 많이 보는 공연">
     <div class="slider-head">
-      <div>
-        <h2>지금 많이 보는 공연</h2>
-        <p>방문이 몰리거나 곧 티켓이 열리는 공연이에요.</p>
-      </div>
+      <h2>지금 많이 보는 공연</h2>
       {picks.length > 1 && (
         <div class="slider-ctrl">
           <button type="button" id="sl-prev" aria-label="이전 공연">←</button>
@@ -28,7 +36,7 @@ function fmt(iso: string) {
       {picks.map((e, i) => {
         const openIn = ticketOpenInDays(e);
         return (
-          <article class="slide" aria-roledescription="slide" aria-label={`${i + 1} / ${picks.length}`}>
+          <article class={`slide${landscape.has(e.id) ? ' is-landscape' : ''}`} aria-roledescription="slide" aria-label={`${i + 1} / ${picks.length}`}>
             <a class="slide-poster" href={`/events/${e.id}/`} tabindex="-1" aria-hidden="true">
               <img src={e.posterUrl} alt="" loading={i === 0 ? 'eager' : 'lazy'} />
             </a>
@@ -41,7 +49,6 @@ function fmt(iso: string) {
               </div>
               <h3><a href={`/events/${e.id}/`}>{e.artist}</a></h3>
               <p class="slide-meta">{fmt(e.startDate)} · {e.venue}</p>
-              {e.description && <p class="slide-desc">{e.description}</p>}
               <a class="slide-cta" href={`/events/${e.id}/`}>공연 정보 보기 →</a>
             </div>
           </article>
@@ -62,7 +69,8 @@ function fmt(iso: string) {
     const slides = Array.from(track.children) as HTMLElement[];
     const go = (i: number) => {
       const n = Math.max(0, Math.min(slides.length - 1, i));
-      track.scrollTo({ left: slides[n].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      track.scrollTo({ left: slides[n].offsetLeft - track.offsetLeft, behavior: calm ? 'auto' : 'smooth' });
     };
     const current = () => {
       const x = track.scrollLeft + track.clientWidth / 2;
@@ -83,37 +91,39 @@ function fmt(iso: string) {
 </script>
 <style>
   .slider { margin: 0 0 2.5rem; }
-  .slider-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; margin-bottom: 0.9rem; }
-  .slider-head h2 { margin: 0 0 0.2rem; font-size: 1.15rem; }
-  .slider-head p { margin: 0; font-size: 0.86rem; color: var(--muted); }
+  .slider-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
+  .slider-head h2 { margin: 0; font-size: 1.15rem; }
   .slider-ctrl { display: flex; gap: 0.4rem; flex-shrink: 0; }
   .slider-ctrl button { width: 2.2rem; height: 2.2rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: var(--fg); font-size: 1rem; cursor: pointer; }
   .slider-ctrl button:hover { border-color: #fff; }
-  .slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; background: #151517; }
+  .slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; border-radius: 8px; background: #151517; }
   .slides::-webkit-scrollbar { display: none; }
   .slides:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; gap: 1.4rem; padding: 1.2rem; min-width: 0; }
-  .slide-poster { flex: 0 0 34%; max-width: 240px; align-self: flex-start; }
-  .slide-poster img { display: block; width: 100%; height: auto; border-radius: 6px; background: #1c1c20; }
-  .slide-body { display: flex; flex-direction: column; min-width: 0; padding: 0.15rem 0; }
-  .slide-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; align-items: center; }
+  .slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; align-items: stretch; min-width: 0; }
+  .slide-poster { flex: 0 0 58%; height: 460px; display: flex; align-items: center; justify-content: center; background: #0e0e10; }
+  .slide.is-landscape .slide-poster { height: auto; align-self: center; }
+  .slide.is-landscape .slide-poster img { width: 100%; }
+  .slide.is-landscape .slide-body { padding-block: 1.6rem; }
+  .slide-poster img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+  .slide-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.35rem; min-width: 0; padding: 1.5rem 1.6rem; }
+  .slide-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; align-items: center; }
   .tag { font-size: 0.74rem; padding: 0.18rem 0.5rem; border: 1px solid rgba(255,255,255,0.22); border-radius: 4px; color: #c4c4c8; }
   .tag.hot { border-color: var(--accent); color: var(--accent); }
-  .slide h3 { margin: 0 0 0.3rem; font-size: 1.35rem; line-height: 1.3; letter-spacing: -0.01em; }
+  .slide h3 { margin: 0; font-size: 1.7rem; line-height: 1.25; letter-spacing: -0.02em; }
   .slide h3 a { color: var(--fg); text-decoration: none; }
   .slide h3 a:hover { text-decoration: underline; }
-  .slide-meta { margin: 0 0 0.7rem; font-weight: 600; color: var(--fg); }
-  .slide-desc { margin: 0 0 1rem; color: #a9a9b0; font-size: 0.92rem; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .slide-cta { margin-top: auto; align-self: flex-start; padding: 0.55rem 1rem; border-radius: 6px; background: var(--accent); color: #0e0e10; font-weight: 700; font-size: 0.9rem; text-decoration: none; }
+  .slide-meta { margin: 0 0 1rem; color: #a9a9b0; }
+  .slide-cta { align-self: flex-start; padding: 0.65rem 1.2rem; border-radius: 6px; background: var(--accent); color: #0e0e10; font-weight: 700; font-size: 0.95rem; text-decoration: none; }
   .slide-cta:hover { background: #ff7bb2; }
   .dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.8rem; }
   .dots button { width: 0.55rem; height: 0.55rem; padding: 0; border-radius: 50%; border: 0; background: rgba(255,255,255,0.25); cursor: pointer; }
   .dots button[aria-selected="true"] { background: var(--accent); }
-  @media (max-width: 560px) {
-    .slide { gap: 0.9rem; padding: 0.9rem; }
-    .slide-poster { flex-basis: 38%; }
-    .slide h3 { font-size: 1.1rem; }
-    .slide-desc { -webkit-line-clamp: 2; font-size: 0.85rem; }
-    .slide-cta { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
+  @media (max-width: 640px) {
+    .slide { flex-direction: column; }
+    .slide-poster { flex-basis: auto; height: 340px; }
+    .slide.is-landscape .slide-poster { height: auto; }
+    .slide-body { padding: 1rem 1rem 1.2rem; }
+    .slide h3 { font-size: 1.25rem; }
+    .slide-meta { margin-bottom: 0.8rem; }
   }
 </style>

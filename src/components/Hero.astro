@@ -9,41 +9,30 @@ const opening = upcomingTicketOpens(50).length;
 ---
 <section class="intro" aria-labelledby="home-title">
   <div class="intro-text">
-    <p class="eyebrow">내한공연 · 페스티벌 캘린더</p>
-    <h1 id="home-title">내한공연, 예매부터 직관까지 한곳에서</h1>
-    <p class="lead">
-      티켓오픈 일정과 예매처, 구역별 시야, 셔틀버스, MD 정보까지.
-      공연 하나만 열면 직관 준비가 끝나요.
-    </p>
+    <h1 id="home-title">내한공연, 예매부터 직관까지</h1>
+    <p class="lead">예매처·시야·셔틀·MD를 공연마다 한 페이지에.</p>
     <div class="intro-cta">
-      <a class="btn primary" href="/events/">전체 공연 일정 보기</a>
-      <a class="btn" href="/ticket-open/">티켓오픈 일정</a>
+      <a class="btn primary" href="/events/">전체 공연 {upcoming.length}개</a>
+      <a class="btn" href="/ticket-open/">티켓오픈 일정{opening > 0 ? ` ${opening}` : ''}</a>
     </div>
-    <p class="intro-stats">
-      예정된 공연 <strong>{upcoming.length}</strong>개
-      {opening > 0 && <> · 곧 티켓이 열리는 공연 <strong>{opening}</strong>개</>}
-    </p>
   </div>
   <div class="intro-cat" aria-hidden="true">
-    <Mascot size={150} pose="wave" />
+    <Mascot size={120} pose="wave" />
   </div>
 </section>
 <style>
-  .intro { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin: 0.5rem 0 2rem; }
+  .intro { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin: 0.25rem 0 1.5rem; }
   .intro-text { min-width: 0; }
-  .eyebrow { margin: 0 0 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
   .intro h1 { margin: 0 0 0.75rem; font-size: clamp(1.6rem, 4.6vw, 2.1rem); line-height: 1.25; letter-spacing: -0.02em; }
-  .lead { margin: 0 0 1.1rem; color: #c4c4c8; line-height: 1.7; max-width: 34rem; }
+  .lead { margin: 0 0 1rem; color: #a9a9b0; }
   .intro-cta { display: flex; flex-wrap: wrap; gap: 0.55rem; }
   .btn { display: inline-block; padding: 0.65rem 1.15rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.22); color: var(--fg); text-decoration: none; font-weight: 700; font-size: 0.92rem; }
   .btn:hover { border-color: #fff; }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #0e0e10; }
   .btn.primary:hover { background: #ff7bb2; border-color: #ff7bb2; }
-  .intro-stats { margin: 0.9rem 0 0; font-size: 0.84rem; color: var(--muted); }
-  .intro-stats strong { color: var(--fg); font-variant-numeric: tabular-nums; }
   .intro-cat { flex-shrink: 0; }
   @media (max-width: 640px) {
     .intro { flex-direction: column-reverse; align-items: flex-start; gap: 0.5rem; }
-    .intro-cat :global(svg) { width: 96px; height: auto; }
+    .intro-cat :global(svg) { width: 72px; height: auto; }
   }
 </style>
