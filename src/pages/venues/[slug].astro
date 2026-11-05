@@ -54,6 +54,7 @@ const pageDescription = hasParking
   </section>
 
   <RouteFinder venue={venueName} address={info?.address} />
+  <p class="return-link"><a href={`/return-trip/?venue=${encodeURIComponent(venueName)}`}>공연 끝나고 막차 탈 수 있을까? 막차 계산하기 →</a></p>
 
   <section class="venue-sightline-section" id="sightline">
     <h2>구역별 시야 (View Guide)</h2>
@@ -186,4 +187,7 @@ const pageDescription = hasParking
   .tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.08); border-radius: 8px; color: #dcdcd8; font-size: 0.85rem; }
   .event-list { display: flex; flex-direction: column; }
   .empty { color: #8f8f97; }
+  .return-link { margin: 0.8rem 0 0; font-size: 0.92rem; }
+  .return-link a { color: #f4f4f0; font-weight: 700; }
+  .return-link a:hover { color: #ff5fa2; }
 </style>

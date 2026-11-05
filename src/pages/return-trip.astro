@@ -1,0 +1,196 @@
+---
+// 공연 끝나고 집에 가기 - 막차 계산기.
+// 막차 시각표를 우리가 갖고 있지 않으므로(노선·방향마다 다르고 수시로 바뀜) 시각은 사용자가 직접 넣고,
+// 우리는 "공연 종료 → 역 도착 → 막차" 사이의 여유만 계산한다. 공연장 정보는 venues.json의 실제 교통 안내만 보여준다.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { allVenueNames, getVenueInfo, venueSlug } from '../lib/venues';
+
+const seen = new Set<string>();
+const venues = allVenueNames()
+  .filter((n) => { const s = venueSlug(n); if (seen.has(s)) return false; seen.add(s); return true; })
+  .map((name) => {
+    const info = getVenueInfo(name);
+    const transit = info?.transit ?? [];
+    const stations = Array.from(new Set(transit.flatMap((t) => (t.startsWith('지하철') || t.startsWith('철도') || t.includes('역')) ? Array.from(t.matchAll(/([가-힣0-9]{2,}역)/g)).map((m) => m[1]) : []))).slice(0, 3);
+    return { name, slug: venueSlug(name), transit, stations, tip: info?.tip ?? '' };
+  });
+---
+<BaseLayout
+  title="공연 끝나고 집에 가기 - 막차 계산기"
+  description="콘서트 끝나고 막차 탈 수 있을까? 공연 시작 시각과 막차 시각만 넣으면 역까지 이동 시간을 고려해 여유를 계산해 줘요. 공연장별 가까운 역 정보도 함께."
+>
+  <section class="head">
+    <h1>공연 끝나고 집에 가기</h1>
+    <p class="lead">막차 탈 수 있을지 계산해 보세요. 시각표는 직접 넣고, 우리는 그 사이의 여유를 계산해요.</p>
+  </section>
+
+  <form class="calc" id="calc" autocomplete="off" onsubmit="return false">
+    <label class="f wide">
+      <span>공연장</span>
+      <select id="venue">
+        {venues.map((v) => <option value={v.slug}>{v.name}</option>)}
+        <option value="">직접 입력 (기타)</option>
+      </select>
+    </label>
+    <div class="venue-info" id="venue-info"></div>
+
+    <label class="f"><span>공연 시작</span><input type="time" id="start" value="19:00" /></label>
+    <label class="f"><span>공연 길이 (분)</span><input type="number" id="runtime" value="120" min="30" max="360" step="5" inputmode="numeric" /></label>
+    <label class="f"><span>앙코르·지연 (분)</span><input type="number" id="extra" value="10" min="0" max="60" step="5" inputmode="numeric" /></label>
+    <label class="f"><span>퇴장·이동 (분)</span><input type="number" id="exit" value="30" min="5" max="120" step="5" inputmode="numeric" /></label>
+    <label class="f"><span>환승·도보 여유 (분)</span><input type="number" id="buffer" value="5" min="0" max="30" step="1" inputmode="numeric" /></label>
+    <label class="f"><span>막차 출발 시각 <em>(내 집 방향)</em></span><input type="time" id="last" /></label>
+  </form>
+  <p class="hint">공연 길이는 예매처 공지의 관람 시간을 확인해 넣으세요. 퇴장·이동은 인파에 따라 크게 달라져서 아래 표로 같이 보여드려요. 막차 시각은 <span id="last-links"></span>에서 확인하세요.</p>
+
+  <section class="result" id="result" aria-live="polite" hidden>
+    <p class="verdict" id="verdict"></p>
+    <dl class="times mono">
+      <div><dt>공연 종료 예상</dt><dd id="r-end">–</dd></div>
+      <div><dt>역 도착 예상</dt><dd id="r-arrive">–</dd></div>
+      <div><dt>막차</dt><dd id="r-last">–</dd></div>
+      <div><dt>늦어도 퇴장 시작</dt><dd id="r-leave">–</dd></div>
+    </dl>
+    <p class="advice" id="advice"></p>
+    <table class="scen mono" id="scen"><caption>퇴장·이동 시간별 결과</caption><thead><tr><th>이동</th><th>역 도착</th><th>여유</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <section class="venues">
+    <h2 class="sec mono">VENUES</h2>
+    <ul>
+      {venues.map((v) => (
+        <li>
+          <a href={`/venues/${v.slug}/`}><strong>{v.name}</strong></a>
+          <span>{v.transit.length > 0 ? v.transit[0] : '대중교통 안내는 공연장 페이지를 확인하세요'}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <p class="note">계산 결과는 입력하신 값으로 계산한 참고용이에요. 막차 시각과 운행 여부는 이용하는 노선의 공식 안내(지하철·버스 앱)로 꼭 확인하세요. 공연 직후에는 역 진입 대기나 인파 통제가 생길 수 있어요.</p>
+</BaseLayout>
+
+<script id="venue-data" type="application/json" set:html={JSON.stringify(venues)} />
+<script>
+  type V = { name: string; slug: string; transit: string[]; stations: string[]; tip: string };
+  const venues: V[] = JSON.parse(document.getElementById('venue-data')!.textContent || '[]');
+  const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+  const KEY = 'krconcerts:return-trip';
+
+  const toMin = (hhmm: string) => { const [h, m] = hhmm.split(':').map(Number); return h * 60 + m; };
+  const fmt = (min: number) => {
+    const day = Math.floor(min / 1440);
+    const d = ((min % 1440) + 1440) % 1440;
+    return `${String(Math.floor(d / 60)).padStart(2, '0')}:${String(d % 60).padStart(2, '0')}${day >= 1 ? ' +1일' : ''}`;
+  };
+
+  // 저장값/쿼리 복원
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    for (const k of ['start', 'runtime', 'extra', 'exit', 'buffer', 'last']) if (saved[k] !== undefined) $(k).value = saved[k];
+    if (saved.venue !== undefined) $('venue').value = saved.venue;
+  } catch {}
+  const q = new URLSearchParams(location.search);
+  const qv = q.get('venue');
+  if (qv) {
+    const hit = venues.find((v) => v.name === qv || v.slug === qv);
+    if (hit) $('venue').value = hit.slug;
+  }
+
+  function venueBlock() {
+    const v = venues.find((x) => x.slug === $('venue').value);
+    const box = document.getElementById('venue-info')!;
+    const links = document.getElementById('last-links')!;
+    if (!v) { box.innerHTML = ''; links.textContent = '지하철·버스 앱'; return; }
+    const lines = v.transit.map((t) => `<li>${t}</li>`).join('');
+    box.innerHTML = (lines ? `<ul>${lines}</ul>` : '') + (v.tip ? `<p>${v.tip}</p>` : '') + `<a href="/venues/${v.slug}/">공연장 상세 보기 →</a>`;
+    links.innerHTML = v.stations.length
+      ? v.stations.map((s) => `<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(s + ' 막차 시간')}" target="_blank" rel="noopener noreferrer">${s} 막차 검색 ↗</a>`).join(' · ')
+      : '지하철·버스 앱';
+  }
+
+  function calc() {
+    venueBlock();
+    const start = toMin($('start').value || '19:00');
+    const runtime = Number($('runtime').value) || 0;
+    const extra = Number($('extra').value) || 0;
+    const exit = Number($('exit').value) || 0;
+    const buffer = Number($('buffer').value) || 0;
+    const lastRaw = $('last').value;
+    try { localStorage.setItem(KEY, JSON.stringify({ venue: $('venue').value, start: $('start').value, runtime: $('runtime').value, extra: $('extra').value, exit: $('exit').value, buffer: $('buffer').value, last: lastRaw })); } catch {}
+
+    const res = document.getElementById('result')!;
+    if (!lastRaw) { res.hidden = true; return; }
+    res.hidden = false;
+    let last = toMin(lastRaw);
+    if (last < 360) last += 1440; // 새벽 막차(00:10 등)는 다음날로 본다
+    const end = start + runtime + extra;
+    const arrive = end + exit;
+    const margin = last - arrive - buffer;
+    const leave = last - exit - buffer;
+    $('r-end').textContent = fmt(end);
+    $('r-arrive').textContent = fmt(arrive);
+    $('r-last').textContent = fmt(last);
+    $('r-leave').textContent = fmt(leave);
+    const verdict = document.getElementById('verdict')!;
+    const advice = document.getElementById('advice')!;
+    verdict.className = 'verdict ' + (margin >= 15 ? 'ok' : margin >= 0 ? 'tight' : 'bad');
+    if (margin >= 15) {
+      verdict.textContent = `막차까지 ${margin}분 여유 있어요`;
+      advice.textContent = '앙코르까지 보고 나가도 계산상 탈 수 있어요. 인파가 많으면 이동 시간이 늘어나니 아래 표도 확인해 보세요.';
+    } else if (margin >= 0) {
+      verdict.textContent = `막차까지 ${margin}분, 아슬아슬해요`;
+      advice.textContent = `${fmt(leave)}에는 객석에서 나오기 시작해야 해요. 마지막 곡이 길어지면 놓칠 수 있어요.`;
+    } else {
+      verdict.textContent = `막차를 ${-margin}분 놓칠 수 있어요`;
+      advice.textContent = `${-margin}분 일찍 나가야 계산상 탈 수 있어요(${fmt(leave)}에 퇴장 시작). 앙코르 전에 나가거나, 택시·근처 숙소 같은 대안도 미리 생각해 두세요.`;
+    }
+    const tb = document.querySelector('#scen tbody')!;
+    tb.innerHTML = [15, 30, 45, 60].map((m) => {
+      const mg = last - (end + m) - buffer;
+      return `<tr class="${mg >= 0 ? 'y' : 'n'}"><td>${m}분</td><td>${fmt(end + m)}</td><td>${mg >= 0 ? `+${mg}분` : `${mg}분`}</td></tr>`;
+    }).join('');
+  }
+  document.getElementById('calc')!.addEventListener('input', calc);
+  calc();
+</script>
+<style>
+  .head h1 { margin: 0 0 0.6rem; }
+  .lead { margin: 0 0 1.6rem; color: #a9a9b0; max-width: 40rem; }
+  .calc { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.9rem 0.8rem; padding: 1.1rem; border: 1px solid #2a2a30; border-radius: 4px; }
+  .f { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem; color: #8f8f97; }
+  .f.wide { grid-column: 1 / -1; }
+  .f em { font-style: normal; color: #6f6f77; }
+  .f input, .f select { background: #151517; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; padding: 0.7rem 0.75rem; font: inherit; font-size: 1rem; }
+  .f input:focus, .f select:focus { outline: none; border-color: #ff5fa2; }
+  .venue-info { grid-column: 1 / -1; font-size: 0.86rem; color: #a9a9b0; }
+  .venue-info:empty { display: none; }
+  .venue-info ul { margin: 0 0 0.4rem; padding-left: 1.1rem; }
+  .venue-info p { margin: 0 0 0.4rem; }
+  .venue-info a { color: #f4f4f0; }
+  .hint { margin: 0.8rem 0 1.4rem; font-size: 0.84rem; color: #8f8f97; }
+  .hint :global(a) { color: #f4f4f0; }
+  .result { padding: 1.2rem; border: 1px solid #3a3a42; border-radius: 4px; margin-bottom: 2rem; }
+  .verdict { margin: 0 0 1rem; font-size: clamp(1.4rem, 4.6vw, 2.2rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.15; }
+  .verdict.ok { color: #f4f4f0; }
+  .verdict.tight { color: #ffb84c; }
+  .verdict.bad { color: #ff5fa2; }
+  .times { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 0.8rem; margin: 0 0 1rem; }
+  .times dt { font-size: 0.7rem; letter-spacing: .1em; color: #8f8f97; }
+  .times dd { margin: 0.2rem 0 0; font-size: 1.5rem; font-weight: 900; letter-spacing: -.04em; }
+  .advice { margin: 0 0 1.2rem; color: #c4c4c8; }
+  .scen { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  .scen caption { text-align: left; font-size: 0.7rem; letter-spacing: .12em; color: #8f8f97; padding-bottom: 0.4rem; }
+  .scen th { text-align: left; font-weight: 500; color: #8f8f97; border-bottom: 1px solid #2a2a30; padding: 0.35rem 0; }
+  .scen td { padding: 0.45rem 0; border-bottom: 1px solid #202024; }
+  .scen tr.y td:last-child { color: #f4f4f0; }
+  .scen tr.n td:last-child { color: #ff5fa2; }
+  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: 0.8rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .venues ul { list-style: none; margin: 0; padding: 0; }
+  .venues li { display: grid; grid-template-columns: 12rem 1fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid #202024; font-size: 0.9rem; }
+  .venues a { color: #f4f4f0; text-decoration: none; }
+  .venues a:hover { color: #ff5fa2; }
+  .venues span { color: #8f8f97; }
+  .note { margin: 1.6rem 0 0; font-size: 0.82rem; color: #8f8f97; line-height: 1.6; }
+  @media (max-width: 560px) { .venues li { grid-template-columns: 1fr; gap: 0.15rem; } }
+</style>

@@ -4,11 +4,13 @@
 // 이탈률 개선용 (2026-11-02). 목록은 실제 데이터에 있는 것만 보여주고, 없으면 그 줄을 숨긴다.
 import type { ConcertEvent } from '../lib/events';
 import { sameDayEvents, sameVenueUpcoming } from '../lib/events';
+import { getVenueInfo } from '../lib/venues';
 import { ticketOpenIcs, ticketOpenGoogleUrl, icsDataUri } from '../lib/ticketAlert';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
 const sameDay = sameDayEvents(event);
+const returnHref = getVenueInfo(event.venue) ? `/return-trip/?venue=${encodeURIComponent(event.venue)}` : '/return-trip/';
 const sameVenue = sameVenueUpcoming(event);
 const hasOpen = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
 const clockHref = hasOpen
@@ -28,6 +30,7 @@ const shortDate = (iso: string) => {
       {hasOpen ? '이 공연 오픈 카운트다운' : '티켓팅 시계 켜기'}
     </a>
     <a class="ns-btn" href="/practice/">티켓팅 연습하기</a>
+    <a class="ns-btn" href={returnHref}>막차 계산</a>
     <a class="ns-btn" href="/my/">♥ 내 찜 모아보기</a>
   </div>
   {alertEvent && (
