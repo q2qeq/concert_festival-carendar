@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const TOOLS = [
+  { href: '/ticketing-clock/', name: '티켓팅 시계', desc: '표준시에 맞춘 시계와 오픈 카운트다운. 예매처별 가이드까지.' },
+  { href: '/practice/', name: '티켓팅 연습', desc: '30초 게임으로 서버 시간 보고 클릭하는 손을 풀어요.' },
+  { href: '/ticketing-check/', name: '티켓팅 준비 점검', desc: '시계 오차·네트워크·인앱 브라우저·팝업 차단을 1분에 점검.' },
+  { href: '/return-trip/', name: '공연 끝나고 집에 가기', desc: '막차를 탈 수 있을지 퇴장·이동 시간까지 넣어 계산해요.' },
+  { href: '/ticket-open/', name: '티켓오픈 알림', desc: '곧 열리는 티켓을 캘린더 알림(.ics)으로 저장해요.' },
+  { href: '/schedule/', name: '월별 일정', desc: '달별로 내한공연과 예매 상태를 날짜순으로 확인해요.' },
+];
+---
+<BaseLayout title="도구 모음 - 티켓팅 시계·연습·점검·막차 계산" description="티켓팅 시계, 티켓팅 연습, 준비 점검, 공연 후 막차 계산기까지 공연 보러 갈 때 쓰는 도구를 한곳에 모았어요.">
+  <section class="head">
+    <h1>도구 모음</h1>
+    <p>예매 전, 공연 가는 날, 공연 끝난 뒤까지 쓸 수 있는 도구예요.</p>
+  </section>
+  <ul class="grid">
+    {TOOLS.map((t, i) => (
+      <li><a href={t.href}><span class="n mono">{String(i + 1).padStart(2, '0')}</span><b>{t.name}</b><span class="d">{t.desc}</span></a></li>
+    ))}
+  </ul>
+</BaseLayout>
+<style>
+  .head h1 { margin: 0 0 0.6rem; }
+  .head p { margin: 0 0 1.6rem; color: #a9a9b0; }
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 0.8rem; }
+  .grid a { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; padding: 1.1rem; border: 1px solid #2a2a30; border-radius: 4px; color: inherit; text-decoration: none; }
+  .grid a:hover { border-color: #ff5fa2; }
+  .n { font-size: 0.78rem; letter-spacing: .14em; color: #ff5fa2; }
+  .grid b { font-size: 1.2rem; letter-spacing: -.03em; }
+  .d { font-size: 0.88rem; color: #a9a9b0; line-height: 1.55; }
+</style>

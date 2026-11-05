@@ -23,9 +23,9 @@ export interface VenueInfo {
   nearbyFood?: VenueFood[];
   tip?: string;
   // 공연장 공식/현장 사진 - 출처가 명확한(라이선스 확인된) 사진이 있을 때만 채운다.
-  // 저작권 문제를 피하려고 자체 리호스팅 없이 원본(Wikimedia Commons 등)을 그대로
-  // 링크한다 - posterUrl과 동일한 원칙. imageCredit/imageSourceUrl은 CC 라이선스
-  // 사진의 출처 표기용(퍼블릭 도메인 사진도 검증 가능하도록 함께 채워둔다).
+  // 위키미디어 원격 링크가 불안정해(빈 박스) 2026-11-06부터 /public/venues/ 에 640px webp로
+  // 저장해 쓴다(CC 라이선스는 출처 표기 조건으로 재사용 허용). 원본은 imageSourceUrl에 남기고
+  // imageCredit은 반드시 화면에 표기한다.
   imageUrl?: string;
   imageCredit?: string;
   imageSourceUrl?: string;

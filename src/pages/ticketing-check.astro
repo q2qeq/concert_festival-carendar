@@ -1,0 +1,242 @@
+---
+// 티켓팅 준비 점검 - 오픈 직전에 "내 환경이 괜찮은지" 한 번에 확인하는 도구.
+// 모든 측정은 이 브라우저에서만 일어난다(서버 저장 없음). 판정 기준은 참고용 경험치이며 화면에도 그렇게 표시한다.
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { VENDORS, VENDOR_IDS } from '../lib/vendors';
+
+// 속도 측정용: 이미 사이트에 있는 큰 포스터 3개(외부 호출 없이 같은 출처에서 측정)
+const dir = path.join(process.cwd(), 'public', 'posters');
+const probes = fs.readdirSync(dir)
+  .map((f) => ({ f, size: fs.statSync(path.join(dir, f)).size }))
+  .sort((a, b) => b.size - a.size)
+  .slice(0, 3)
+  .map((x) => ({ url: `/posters/${x.f}`, size: x.size }));
+
+const GROUPS = [
+  { id: 'acct', title: '계정', items: ['예매처에 미리 로그인해 두었어요', '본인인증·회원정보(연락처, 주소)가 최신이에요', '예매처 앱을 쓴다면 최신 버전이에요'] },
+  { id: 'pay', title: '결제', items: ['결제수단(카드·간편결제)을 미리 등록했고 한도를 확인했어요', '카드사 인증 앱·공동인증이 필요한지 확인했어요', '무통장 입금 마감 시간을 알고 있어요'] },
+  { id: 'env', title: '환경', items: ['안정적인 Wi-Fi나 유선에 연결했어요(약한 신호 피하기)', '불필요한 탭·다운로드·VPN을 꺼 두었어요', '배터리를 충분히 충전했고 절전 모드를 껐어요', '카카오톡 등 인앱 브라우저가 아니라 기본 브라우저를 써요'] },
+  { id: 'plan', title: '예매 전략', items: ['원하는 등급·구역 후보를 2~3개 정해 뒀어요', '좌석 배치도를 미리 봤어요', '일행 인원수와 매수 제한을 확인했어요', '티켓팅 연습으로 손을 풀었어요'] },
+  { id: 'go', title: '오픈 직전', items: ['티켓팅 시계로 오픈 시각을 확인했어요', '오픈 5분 전에는 대기 화면 근처에서 준비했어요'] },
+];
+---
+<BaseLayout
+  title="티켓팅 준비 점검 - 시계 오차·네트워크·브라우저 체크"
+  description="티켓팅 직전 내 환경을 1분에 점검하세요. 기기 시계 오차, 네트워크 지연, 인앱 브라우저·팝업 차단 여부와 예매 체크리스트를 한 번에 확인해요."
+>
+  <section class="head">
+    <h1>티켓팅 준비 점검</h1>
+    <p class="lead">오픈 직전 1분 점검. 측정은 이 브라우저 안에서만 이뤄지고 어디에도 저장되지 않아요.</p>
+  </section>
+
+  <section class="auto">
+    <div class="auto-head">
+      <h2 class="sec mono">AUTO CHECK</h2>
+      <button type="button" id="run" class="run">점검 시작</button>
+    </div>
+    <ul class="checks" id="checks">
+      <li data-k="clock"><span class="st mono">–</span><div><b>기기 시계 오차</b><p>표준시 서버와 비교해요.</p></div></li>
+      <li data-k="ping"><span class="st mono">–</span><div><b>네트워크 지연</b><p>이 사이트에 5번 요청해 응답 시간을 재요.</p></div></li>
+      <li data-k="speed"><span class="st mono">–</span><div><b>다운로드 속도(대략)</b><p>이미지 몇 장을 받아 속도를 어림해요.</p></div></li>
+      <li data-k="browser"><span class="st mono">–</span><div><b>브라우저 환경</b><p>인앱 브라우저, 쿠키, 시간대, 알림 권한을 봐요.</p></div></li>
+      <li data-k="popup"><span class="st mono">–</span><div><b>팝업 차단</b><p>예매창이 팝업으로 뜨는 경우를 대비해요. <button type="button" id="popup-test" class="mini">팝업 테스트</button></p></div></li>
+    </ul>
+    <p class="summary mono" id="summary" hidden></p>
+    <p class="fine">판정 기준(지연·속도 등)은 일반적인 경험치를 바탕으로 한 참고용이에요. 같은 환경에서 여러 번 돌려 보세요.</p>
+  </section>
+
+  <section class="list">
+    <div class="auto-head">
+      <h2 class="sec mono">CHECKLIST</h2>
+      <span class="prog mono" id="prog">0 / 0</span>
+    </div>
+    {GROUPS.map((g) => (
+      <fieldset>
+        <legend>{g.title}</legend>
+        {g.items.map((t, i) => (
+          <label class="item"><input type="checkbox" data-id={`${g.id}-${i}`} /><span>{t}</span></label>
+        ))}
+      </fieldset>
+    ))}
+    <button type="button" id="reset" class="mini">체크 초기화</button>
+  </section>
+
+  <section class="next">
+    <h2 class="sec mono">NEXT</h2>
+    <div class="links">
+      <a href="/ticketing-clock/">티켓팅 시계 열기</a>
+      <a href="/practice/">티켓팅 연습하기</a>
+      <a href="/ticket-open/">곧 열리는 티켓오픈</a>
+    </div>
+    <p class="vend">예매처별 가이드:
+      {VENDOR_IDS.map((id, i) => <><a href={`/ticketing-clock/${id}/`}>{VENDORS[id].short}</a>{i < VENDOR_IDS.length - 1 ? ' · ' : ''}</>)}
+    </p>
+  </section>
+</BaseLayout>
+
+<script id="probe-data" type="application/json" set:html={JSON.stringify(probes)} />
+<script>
+  const probes: { url: string; size: number }[] = JSON.parse(document.getElementById('probe-data')!.textContent || '[]');
+  const $ = (id: string) => document.getElementById(id)!;
+  type R = { s: 'ok' | 'warn' | 'bad' | 'na'; msg: string };
+  const LABEL = { ok: 'OK', warn: '주의', bad: '확인', na: '–' } as const;
+  const results: Record<string, R> = {};
+
+  function show(k: string, r: R) {
+    results[k] = r;
+    const li = document.querySelector<HTMLElement>(`#checks li[data-k="${k}"]`)!;
+    li.dataset.s = r.s;
+    li.querySelector('.st')!.textContent = LABEL[r.s];
+    li.querySelector('p')!.firstChild!.textContent = r.msg + ' ';
+  }
+  const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
+
+  async function checkClock(): Promise<R> {
+    let best: { rtt: number; off: number } | null = null;
+    for (let i = 0; i < 3; i++) {
+      try {
+        const t0 = Date.now();
+        const res = await fetch('https://timeapi.io/api/Time/current/zone?timeZone=Asia/Seoul', { cache: 'no-store' });
+        const t1 = Date.now();
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        const server = new Date(`${data.dateTime}+09:00`).getTime() + (t1 - t0) / 2;
+        const off = server - t1; // 서버 - 내 기기
+        if (!best || t1 - t0 < best.rtt) best = { rtt: t1 - t0, off };
+      } catch {}
+    }
+    if (!best) return { s: 'na', msg: '표준시 서버에 연결하지 못했어요. 티켓팅 시계의 수동 보정을 이용해 보세요.' };
+    const a = Math.abs(best.off);
+    const dir = best.off > 0 ? '느려요' : '빨라요';
+    if (a <= 500) return { s: 'ok', msg: `오차 약 ${Math.round(a)}ms로 정확해요.` };
+    if (a <= 1500) return { s: 'warn', msg: `내 기기 시계가 약 ${(a / 1000).toFixed(1)}초 ${dir}. 기기 설정에서 날짜·시간 자동 설정을 켜 보세요.` };
+    return { s: 'bad', msg: `내 기기 시계가 약 ${(a / 1000).toFixed(1)}초 ${dir}. 자동 설정을 켜거나 티켓팅 시계로 오픈 시각을 맞추세요.` };
+  }
+
+  async function checkPing(): Promise<R> {
+    const t: number[] = [];
+    for (let i = 0; i < 5; i++) {
+      try {
+        const t0 = performance.now();
+        await fetch(`/favicon.svg?p=${Date.now()}${i}`, { cache: 'no-store' });
+        t.push(performance.now() - t0);
+      } catch {}
+    }
+    if (t.length < 3) return { s: 'na', msg: '요청에 실패했어요. 연결 상태를 확인해 보세요.' };
+    const m = median(t); const jitter = Math.max(...t) - Math.min(...t);
+    const base = `응답 ${Math.round(m)}ms (편차 ${Math.round(jitter)}ms).`;
+    if (m <= 150 && jitter <= 150) return { s: 'ok', msg: base + ' 안정적이에요.' };
+    if (m <= 350) return { s: 'warn', msg: base + ' 조금 느리거나 들쭉날쭉해요. Wi-Fi 위치를 바꾸거나 다른 기기를 잠시 꺼 보세요.' };
+    return { s: 'bad', msg: base + ' 많이 느려요. 유선·다른 네트워크로 바꾸는 걸 권해요.' };
+  }
+
+  async function checkSpeed(): Promise<R> {
+    let bytes = 0; const t0 = performance.now();
+    try {
+      for (const p of probes) { const r = await fetch(`${p.url}?s=${Date.now()}`, { cache: 'no-store' }); bytes += (await r.arrayBuffer()).byteLength; }
+    } catch { return { s: 'na', msg: '측정에 실패했어요.' }; }
+    const sec = (performance.now() - t0) / 1000;
+    const mbps = (bytes * 8) / sec / 1e6;
+    const base = `대략 ${mbps.toFixed(1)}Mbps.`;
+    if (mbps >= 5) return { s: 'ok', msg: base + ' 예매에는 충분해요.' };
+    if (mbps >= 1.5) return { s: 'warn', msg: base + ' 다소 느려요. 오픈 직전에는 다른 다운로드를 멈춰 두세요.' };
+    return { s: 'bad', msg: base + ' 느려요. 다른 네트워크를 쓰는 게 좋아요.' };
+  }
+
+  function checkBrowser(): R {
+    const ua = navigator.userAgent;
+    const inapp = /KAKAOTALK|NAVER\(inapp|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp|Twitter/i.test(ua);
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const notes: string[] = []; let s: R['s'] = 'ok';
+    if (inapp) { notes.push('앱 안의 인앱 브라우저예요. 로그인·결제가 막힐 수 있으니 기본 브라우저(Chrome·Safari)로 여세요.'); s = 'bad'; }
+    if (!navigator.cookieEnabled) { notes.push('쿠키가 꺼져 있어요.'); s = 'bad'; }
+    try { localStorage.setItem('__t', '1'); localStorage.removeItem('__t'); } catch { notes.push('브라우저 저장소를 쓸 수 없어요(시크릿 모드 등).'); if (s === 'ok') s = 'warn'; }
+    if (tz && tz !== 'Asia/Seoul') { notes.push(`시간대가 ${tz}로 설정돼 있어요. 한국 시간(Asia/Seoul)인지 확인하세요.`); if (s === 'ok') s = 'warn'; }
+    const conn = (navigator as any).connection;
+    if (conn?.saveData) { notes.push('데이터 절약 모드가 켜져 있어요.'); if (s === 'ok') s = 'warn'; }
+    const perm = 'Notification' in window ? Notification.permission : 'unsupported';
+    const permTxt = perm === 'granted' ? '알림 허용됨' : perm === 'denied' ? '알림 차단됨' : perm === 'default' ? '알림 미설정' : '알림 미지원';
+    const type = conn?.effectiveType ? ` · 연결 ${String(conn.effectiveType).toUpperCase()}` : '';
+    return { s, msg: (notes.length ? notes.join(' ') : '문제 없어 보여요.') + ` (${permTxt}${type})` };
+  }
+
+  function popupTest() {
+    let w: Window | null = null;
+    try { w = window.open('about:blank', '_blank', 'width=200,height=120'); } catch {}
+    if (!w) { show('popup', { s: 'bad', msg: '팝업이 차단돼요. 주소창의 팝업 차단 아이콘에서 이 사이트와 예매처를 허용해 두세요.' }); return; }
+    w.close();
+    show('popup', { s: 'ok', msg: '팝업이 열려요. 예매처 사이트에서도 허용되는지 확인해 두세요.' });
+    summarize();
+  }
+
+  function summarize() {
+    const vals = Object.values(results).filter((r) => r.s !== 'na');
+    if (vals.length === 0) return;
+    const ok = vals.filter((r) => r.s === 'ok').length;
+    const el = $('summary'); el.hidden = false;
+    el.textContent = `자동 점검 ${ok} / ${vals.length} 통과` + (ok === vals.length ? ' · 준비 완료' : ' · 위 항목을 확인해 보세요');
+  }
+
+  let running = false;
+  $('run').addEventListener('click', async () => {
+    if (running) return; running = true;
+    const btn = $('run') as HTMLButtonElement; btn.disabled = true; btn.textContent = '점검 중…';
+    document.querySelectorAll('#checks li').forEach((li) => { if ((li as HTMLElement).dataset.k !== 'popup') li.querySelector('.st')!.textContent = '…'; });
+    show('browser', checkBrowser());
+    const [clock, ping] = await Promise.all([checkClock(), checkPing()]);
+    show('clock', clock); show('ping', ping);
+    show('speed', await checkSpeed());
+    summarize();
+    btn.disabled = false; btn.textContent = '다시 점검'; running = false;
+  });
+  $('popup-test').addEventListener('click', popupTest);
+
+  // 체크리스트(이 브라우저에만 저장)
+  const KEY = 'krconcerts:ticketing-check';
+  const boxes = Array.from(document.querySelectorAll<HTMLInputElement>('.item input'));
+  let saved: Record<string, boolean> = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch {}
+  const prog = () => { const n = boxes.filter((b) => b.checked).length; $('prog').textContent = `${n} / ${boxes.length}`; };
+  boxes.forEach((b) => {
+    b.checked = !!saved[b.dataset.id!];
+    b.addEventListener('change', () => { saved[b.dataset.id!] = b.checked; try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch {} prog(); });
+  });
+  $('reset').addEventListener('click', () => { boxes.forEach((b) => (b.checked = false)); saved = {}; try { localStorage.removeItem(KEY); } catch {} prog(); });
+  prog();
+</script>
+<style>
+  .head h1 { margin: 0 0 0.6rem; }
+  .lead { margin: 0 0 1.6rem; color: #a9a9b0; max-width: 40rem; }
+  .sec { margin: 0; font-size: 0.8rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .auto-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.7rem; border-bottom: 1px solid #2a2a30; }
+  .run { padding: 0.7rem 1.3rem; border: 0; border-radius: 4px; background: #ff5fa2; color: #0e0e10; font: inherit; font-weight: 900; cursor: pointer; }
+  .run:disabled { opacity: .6; cursor: default; }
+  .checks { list-style: none; margin: 0; padding: 0; }
+  .checks li { display: grid; grid-template-columns: 3.2rem 1fr; gap: 0.8rem; padding: 0.95rem 0; border-bottom: 1px solid #202024; }
+  .st { font-size: 0.78rem; letter-spacing: .08em; padding-top: 0.15rem; color: #6f6f77; }
+  li[data-s="ok"] .st { color: #f4f4f0; }
+  li[data-s="warn"] .st { color: #ffb84c; }
+  li[data-s="bad"] .st { color: #ff5fa2; }
+  .checks b { display: block; margin-bottom: 0.15rem; }
+  .checks p { margin: 0; font-size: 0.88rem; color: #a9a9b0; line-height: 1.55; }
+  .mini { padding: 0.25rem 0.6rem; border: 1px solid #3a3a42; border-radius: 4px; background: transparent; color: #f4f4f0; font: inherit; font-size: 0.8rem; cursor: pointer; margin-left: 0.3rem; }
+  .mini:hover { border-color: #ff5fa2; }
+  .summary { margin: 1rem 0 0; font-size: 1.05rem; font-weight: 900; }
+  .fine { margin: 0.8rem 0 0; font-size: 0.8rem; color: #6f6f77; }
+  .list { margin-top: 2.4rem; }
+  .prog { font-size: 0.85rem; color: #ff5fa2; }
+  fieldset { border: 0; border-bottom: 1px solid #202024; margin: 0; padding: 0.9rem 0; }
+  legend { padding: 0; font-size: 0.74rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; margin-bottom: 0.4rem; }
+  .item { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.45rem 0; cursor: pointer; line-height: 1.5; }
+  .item input { margin-top: 0.3rem; width: 1.05rem; height: 1.05rem; accent-color: #ff5fa2; flex-shrink: 0; }
+  .list .mini { margin: 1rem 0 0; }
+  .next { margin-top: 2.4rem; }
+  .next .sec { padding-bottom: 0.7rem; border-bottom: 1px solid #2a2a30; margin-bottom: 0.9rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .links a { padding: 0.6rem 1rem; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+  .links a:hover { border-color: #ff5fa2; }
+  .vend { margin-top: 0.9rem; font-size: 0.86rem; color: #8f8f97; }
+  .vend a { color: #c4c4c8; }
+</style>
