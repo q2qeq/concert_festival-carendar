@@ -511,10 +511,19 @@ export function spotlightEvents(limit = 4, fromISO?: string): ConcertEvent[] {
     s += days * 0.1;
     return s;
   }
-  return pool
-    .slice()
-    .sort((a, b) => score(a) - score(b))
-    .slice(0, limit);
+  // 포스터 없는 카드가 화제 영역을 채우면 휑해 보여서 최대 2개까지만 허용한다.
+  const MAX_NO_POSTER = 2;
+  const out: ConcertEvent[] = [];
+  let noPoster = 0;
+  for (const e of pool.slice().sort((a, b) => score(a) - score(b))) {
+    if (!e.posterUrl) {
+      if (noPoster >= MAX_NO_POSTER) continue;
+      noPoster++;
+    }
+    out.push(e);
+    if (out.length >= limit) break;
+  }
+  return out;
 }
 
 export function relatedEvents(event: ConcertEvent, limit = 4, fromISO?: string): ConcertEvent[] {

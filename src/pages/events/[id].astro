@@ -18,7 +18,7 @@ import NextSteps from '../../components/NextSteps.astro';
 import { postsMentioningEvent, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
 import { isShuttleLikely } from '../../lib/venues';
-import { events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents } from '../../lib/events';
+import { latestUpdateISO, events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -39,6 +39,16 @@ function fmtDay(iso: string) {
 const dateLabel = event.startDate === event.endDate
   ? fmtFull(event.startDate)
   : `${fmtFull(event.startDate)} ~ ${fmtFull(event.endDate)}`;
+
+const eventYear = event.startDate.slice(0, 4);
+// 네이버/구글 검색어("OOO 내한 티켓팅", "OOO 예매처")에 맞춘 제목. 공연 상태에 따라 약속하는 내용이 다르다.
+const pageTitle = event.genre === '페스티벌'
+  ? `${event.artist} ${eventYear} 라인업·티켓 예매처 정리`
+  : event.endDate < new Date().toISOString().slice(0, 10)
+    ? `${event.artist} 내한 ${eventYear} 공연 정보·셋리스트`
+    : event.ticketOpenAt && new Date(event.ticketOpenAt).getTime() > Date.now()
+      ? `${event.artist} 내한 ${eventYear} 티켓오픈 일정·예매처`
+      : `${event.artist} 내한 ${eventYear} 예매처·좌석·시야 정리`;
 
 const pageDescription = event.description
   ? `${event.description} (${dateLabel}, ${event.venue})`
@@ -101,6 +111,7 @@ const highlightSet = festivalHighlightSet(event);
 const buzzing = isBuzzing(event);
 const buzzHeadlineAct = event.festivalHighlight?.[0]?.act ?? null;
 const related = relatedEvents(event);
+const lastUpdated = latestUpdateISO(event);
 const mentionedIn = await postsMentioningEvent(event.id);
 
 // 이 공연 페이지에 실제로 존재하는 섹션만 골라 오른쪽 목차(TOC)를 만든다 -
@@ -172,7 +183,7 @@ const jsonLd = {
 };
 ---
 <BaseLayout
-  title={`${event.artist} 내한공연 일정 및 예매 팁`}
+  title={pageTitle}
   description={pageDescription}
   image={event.posterUrl}
 >
@@ -201,21 +212,10 @@ const jsonLd = {
       <div>
         <h1>{event.artist}</h1>
         <p class="meta">{dateLabel} · {event.venue} ({event.city})</p>
+        {lastUpdated && <p class="last-updated">🕒 최근 업데이트 {lastUpdated.slice(5).replace('-', '.')}</p>}
         {event.description && <p class="event-description">{event.description}</p>}
       </div>
     </header>
-
-    {event.posterUrl && (
-      <img
-        class="poster"
-        src={event.posterUrl}
-        alt={`${event.artist} 공식 포스터`}
-        loading="lazy"
-        width="400"
-        height="560"
-        onerror="this.style.display='none';"
-      />
-    )}
 
     {status === 'postponed' && (
       <p class="status-banner status-postponed">
@@ -301,6 +301,18 @@ const jsonLd = {
         aria-pressed="false"
       >♡</button>
     </div>
+
+    {event.posterUrl && (
+      <img
+        class="poster"
+        src={event.posterUrl}
+        alt={`${event.artist} 공식 포스터`}
+        loading="lazy"
+        width="400"
+        height="560"
+        onerror="this.style.display='none';"
+      />
+    )}
 
     <NextSteps event={event} />
 
@@ -565,6 +577,7 @@ const jsonLd = {
   .status-announced { background: rgba(110, 231, 255, 0.14); color: #6ee7ff; }
   .status-announced .clock-link { color: #ff5fa2; font-weight: 800; text-decoration: none; white-space: nowrap; }
   .status-announced .clock-link:hover { text-decoration: underline; }
+  .last-updated { margin: 0.4rem 0 0; font-size: 0.8rem; color: #a9a4c9; }
   .poster {
     display: block;
     width: 100%;
@@ -592,6 +605,10 @@ const jsonLd = {
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 14px;
+  }
+  @media (max-width: 640px) {
+    /* 모바일: 칩이 3줄이라 고정하면 화면의 1/6을 덮는다 - 고정 해제, 포스터보다 위에 배치 */
+    .action-bar { position: static; margin: 0.9rem 0; }
   }
   .ab-btn {
     display: inline-flex;
