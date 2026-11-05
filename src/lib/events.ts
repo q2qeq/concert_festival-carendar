@@ -493,14 +493,26 @@ export function ticketOpenInDays(e: ConcertEvent, fromISO?: string): number | nu
 // 후지이 카제 상세가 주간 1위). 그래서 포스터가 아직 없어도 오픈 임박 공연은 노출한다.
 export function spotlightEvents(limit = 4, fromISO?: string, posterOnly = false): ConcertEvent[] {
   const from = fromISO ?? new Date().toISOString().slice(0, 10);
-  const pool = upcomingEvents(from).filter(
-    (e) => (e.status ?? 'scheduled') === 'scheduled' && (!posterOnly || e.posterUrl)
-  );
+  const daysTo = (e: ConcertEvent) =>
+    Math.floor((new Date(e.startDate + 'T00:00:00').getTime() - new Date(from + 'T00:00:00').getTime()) / 86400000);
+  // 편집 고정은 동시에 1개만 인정한다(가장 먼저 만료되는 것) - 하나가 계속 독점하지 않게.
+  const activePins = upcomingEvents(from)
+    .filter((e) => e.featuredUntil && e.featuredUntil >= from)
+    .sort((a, b) => (a.featuredUntil as string).localeCompare(b.featuredUntil as string));
+  const pinnedId = activePins[0]?.id;
+  const pool = upcomingEvents(from).filter((e) => {
+    if ((e.status ?? 'scheduled') !== 'scheduled') return false;
+    if (posterOnly && !e.posterUrl) return false;
+    // 신호(수요·고정·티켓오픈 임박) 없이 공연이 150일 넘게 남았으면 랜딩 후보에서 제외
+    const open = daysUntilTicketOpen(e, from);
+    const signal = e.demand === 'high' || e.id === pinnedId || (open !== null && open <= 14);
+    return signal || daysTo(e) <= 150;
+  });
   function score(e: ConcertEvent): number {
     let s = 0;
     if (e.ticketingDifficulty === 'hard') s -= 100;
     if (e.demand === 'high') s -= 120;
-    if (e.featuredUntil && e.featuredUntil >= from) s -= 100;
+    if (e.id === pinnedId) s -= 100;
     const open = daysUntilTicketOpen(e, from);
     if (open !== null && open <= 14) s -= 80 - open * 3; // 오픈이 가까울수록 앞으로
     if (hasRecentUpdate(e, 7, from)) s -= 20;
