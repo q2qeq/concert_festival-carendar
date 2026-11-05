@@ -25,7 +25,7 @@ for (const e of events) {
 <BaseLayout title="전체 공연 일정 - 내한공연·페스티벌 D-day 캘린더" description="예정된 내한공연과 페스티벌을 월별로 모아봤어요. 장르·지역·초성 검색, 이번 주 공연과 티켓오픈 임박 필터로 원하는 공연을 바로 찾으세요.">
   <section class="page-head">
     <h1>전체 공연 일정</h1>
-    <p>예정된 내한공연과 페스티벌 {events.length}개를 월별로 모았어요.</p>
+    <p class="count mono"><b>{events.length}</b> UPCOMING SHOWS</p>
   </section>
 
   <CalendarNav events={events} />
@@ -73,7 +73,10 @@ for (const e of events) {
   <section id="listing" class="listing">
     {groups.map((group) => (
       <div class="month-group">
-        <h3>{group.label}</h3>
+        <h3>
+          <span class="ym mono">{group.label.replace(/^(\d+)년 (\d+)월$/, (_m, y, mo) => `${y}.${String(mo).padStart(2, '0')}`)}</span>
+          <span class="cnt mono" data-total={group.items.length}>{group.items.length} SHOWS</span>
+        </h3>
         <div class="poster-grid">
           {group.items.map((e) => (
             <div
@@ -183,10 +186,12 @@ for (const e of events) {
       noResult.hidden = anyCard;
     }
     document.querySelectorAll<HTMLElement>('.month-group').forEach((section) => {
-      const anyVisible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).some(
+      const visible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).filter(
         (c) => c.style.display !== 'none'
-      );
-      section.style.display = anyVisible ? '' : 'none';
+      ).length;
+      section.style.display = visible > 0 ? '' : 'none';
+      const cnt = section.querySelector<HTMLElement>('.cnt');
+      if (cnt) cnt.textContent = `${visible} SHOWS`;
     });
   }
 
@@ -305,4 +310,20 @@ for (const e of events) {
   .no-result p { margin: 0; line-height: 1.6; }
   .no-result strong { color: var(--fg); }
   .empty { color: var(--muted); display: flex; align-items: center; gap: 0.6rem; }
+
+  /* ── 랜딩(스포트라이트)과 같은 톤으로 정리 ── */
+  .page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin: 0 0 1.6rem; flex-wrap: wrap; }
+  .page-head h1 { margin: 0; font-size: clamp(2.2rem, 6.6vw, 4.2rem); line-height: 1; letter-spacing: -.055em; font-weight: 900; }
+  .page-head .count { margin: 0; font-size: 0.78rem; letter-spacing: .14em; color: #8f8f97; }
+  .page-head .count b { color: #ff5fa2; font-size: 1.1rem; letter-spacing: 0; margin-right: 0.3rem; }
+  .finder { background: transparent; border: 0; border-top: 1px solid #2a2a30; border-bottom: 1px solid #2a2a30; border-radius: 0; padding: 1rem 0 1.1rem; }
+  .filter-select, .chip { border-radius: 4px; border-color: #3a3a42; background: transparent; color: #dcdcd8; font-size: 0.85rem; padding: 0.5rem 0.8rem; }
+  .filter-select:hover, .chip:hover { border-color: #8f8f97; }
+  .chip.active, .fav-toggle.active { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+  .search-input { border-radius: 4px; border-color: #3a3a42; background: #151517; padding: 0.8rem 0.95rem; font-size: 0.95rem; }
+  .search-input:focus { outline: none; border-color: #ff5fa2; }
+  .month-group { margin-top: 3rem; }
+  .month-group h3 { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 1rem; padding-bottom: 0.7rem; border-bottom: 1px solid #2a2a30; }
+  .month-group .ym { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 900; letter-spacing: -.05em; color: #f4f4f0; line-height: 1; }
+  .month-group .cnt { font-size: 0.74rem; letter-spacing: .14em; color: #8f8f97; font-weight: 500; }
 </style>
