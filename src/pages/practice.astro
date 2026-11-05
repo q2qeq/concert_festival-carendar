@@ -12,11 +12,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const faq = [
   {
     q: 'NOL(인터파크)·예스24·멜론티켓·티켓링크 티켓팅 연습에 쓸 수 있나요?',
-    a: '네. 특정 예매처 화면을 그대로 복제한 건 아니지만, 어느 예매처든 공통인 핵심 흐름 - 서버 시간을 보고 예매하기 버튼 누르기, 대기열, 빈 좌석 잡기 - 을 그대로 연습할 수 있어요. 연습할 예매처를 골라두면 연습 화면에 그 이름이 표시돼요.',
+    a: '네. 특정 예매처 화면을 그대로 복제한 건 아니지만, 어느 예매처든 공통인 핵심 흐름 - 서버 시간을 보고 예매하기 버튼 누르기, 대기열, 구역 고르기, 빈 좌석 잡기 - 를 그대로 연습할 수 있어요. 연습할 예매처를 골라두면 연습 화면에 그 이름이 표시돼요.',
   },
   {
     q: '티켓팅 연습은 어떻게 하나요?',
-    a: '시작을 누르면 모의 예매 사이트가 열려요. 서버 시간이 오픈 시각이 되는 순간 예매하기 버튼을 3번 연습하고, 버튼 반응속도로 정해진 대기 순번에 따라 좌석 선택 3라운드를 진행해요. 누를 때마다 빠름·느림·일찍 누름·더블클릭을 바로 알려줘요.',
+    a: '시작을 누르면 모의 예매 사이트가 열려요. 서버 시간이 오픈 시각이 되는 순간 예매하기 버튼을 3번 연습하고, 버튼 반응속도로 대기 순번이 정해지고, 목표 구역을 빠르게 골라 좌석 선택 3라운드를 진행해요. 구역을 빠르고 정확하게 고를수록 좌석이 더 많이 남아 있어요. 누를 때마다 빠름·느림·일찍 누름·더블클릭을 바로 알려줘요.',
   },
   {
     q: '피켓팅이 뭐예요?',
@@ -49,13 +49,13 @@ const jsonLd = [
     operatingSystem: 'Web',
     inLanguage: 'ko',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
-    description: 'NOL·예스24·멜론티켓·티켓링크 티켓팅 연습 게임. 서버 시간 보고 예매하기 버튼 누르기, 대기열, 좌석 잡기를 연습하고 상위 몇 %인지 확인해요.',
+    description: 'NOL·예스24·멜론티켓·티켓링크 티켓팅 연습 게임. 서버 시간 보고 예매하기 버튼 누르기, 대기열, 구역 고르기, 좌석 잡기를 연습하고 상위 몇 %인지 확인해요.',
   },
 ];
 ---
 <BaseLayout
   title="티켓팅 연습 게임 - NOL·예스24·멜론티켓·티켓링크 피켓팅 연습"
-  description="NOL(인터파크)·예스24·멜론티켓·티켓링크 티켓팅 연습 게임. 서버 시간 보고 예매하기 버튼 누르기 → 대기열 → 좌석 잡기까지 피켓팅 연습하고, 내 반응속도가 상위 몇 %인지 확인해보세요.">
+  description="NOL(인터파크)·예스24·멜론티켓·티켓링크 티켓팅 연습 게임. 서버 시간 보고 예매하기 버튼 누르기 → 대기열 → 구역 고르기 → 좌석 잡기까지 피켓팅 연습하고, 내 반응속도가 상위 몇 %인지 확인해보세요.">
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <h1>티켓팅 연습 게임</h1>
   <p class="kicker">NOL(인터파크) · 예스24 · 멜론티켓 · 티켓링크 티켓팅 연습 · 피켓팅 손풀기</p>
@@ -63,11 +63,12 @@ const jsonLd = [
   <!-- 시작 화면: 플래시 게임처럼 바로 START -->
   <section id="start-screen" class="arcade" aria-label="티켓팅 연습 시작 화면">
     <div class="arcade-title">티켓팅 연습</div>
-    <div class="arcade-sub">서버 시간 보고 예매하기 → 대기열 → 빈 좌석 잡기</div>
+    <div class="arcade-sub">서버 시간 보고 예매하기 → 대기열 → 구역 고르기 → 빈 좌석 잡기</div>
     <ol class="steps">
       <li><b>①</b><span>서버 시간 보고<br />예매하기 3번</span></li>
       <li><b>②</b><span>버튼 반응으로<br />대기 순번 결정</span></li>
-      <li><b>③</b><span>빈 좌석<br />3라운드</span></li>
+      <li><b>③</b><span>목표 구역<br />빨리 고르기</span></li>
+      <li><b>④</b><span>빈 좌석<br />3라운드</span></li>
     </ol>
     <div class="plat" role="group" aria-label="연습할 예매처">
       <button type="button" class="chip" data-plat="nol" aria-pressed="false">NOL 티켓</button>
@@ -120,7 +121,14 @@ const jsonLd = [
     </div>
   </section>
 
-  <!-- 2단계: 좌석 선택 -->
+  <!-- 2단계: 구역 선택 -->
+  <section id="stage-zones" class="zones" hidden aria-label="구역 선택">
+    <p id="zone-target" class="zone-target"></p>
+    <div id="zone-map" class="zone-map" role="group" aria-label="좌석 구역도"></div>
+    <p class="zone-legend">회색 구역은 매진이에요 · 목표 구역만 누르세요</p>
+  </section>
+
+  <!-- 3단계: 좌석 선택 -->
   <section id="stage-seats" hidden aria-label="좌석 선택">
     <div id="g-grid" class="grid" role="grid" aria-label="좌석표"></div>
   </section>
@@ -238,6 +246,21 @@ const jsonLd = [
   .tips :global(li) { margin: 0.2rem 0; }
   .after a { color: #ff5fa2; }
   .disclaimer { margin-top: 1.5rem; color: #8f8f97; font-size: 0.82rem; line-height: 1.6; }
+
+  /* 구역 선택 단계 */
+  .zones { margin-bottom: 1rem; }
+  .zone-target { margin: 0 0 0.7rem; padding: 0.8rem 1rem; border-radius: 6px; background: #1c1c20; color: #c4c4c8; font-size: 0.95rem; text-align: center; }
+  .zone-target b { color: #ff5fa2; font-size: 1.35rem; margin: 0 0.2rem; }
+  .zone-map { display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px; padding: 0.8rem; background: rgba(255,255,255,0.05); border-radius: 8px; user-select: none; touch-action: manipulation; }
+  .zone-map :global(.stage-bar) { grid-column: 3 / 11; padding: 0.5rem; text-align: center; font-size: 0.75rem; letter-spacing: .2em; color: #8f8f97; border: 1px dashed #4a4a52; border-radius: 4px; margin-bottom: 0.3rem; }
+  .zone-map :global(.zone) { padding: 0.9rem 0.2rem; border: 0; border-radius: 4px; background: #3b3f6e; color: #fff; font: inherit; font-size: 0.82rem; font-weight: 700; line-height: 1.3; cursor: pointer; appearance: none; -webkit-appearance: none; }
+  .zone-map :global(.zone small) { display: block; font-weight: 500; opacity: .75; font-size: 0.7rem; }
+  .zone-map :global(.zone.floor) { background: #5a3d6e; }
+  .zone-map :global(.zone.soldout) { background: #26262b; color: #55555d; cursor: default; }
+  .zone-map :global(.zone.right) { background: #2e7d4f; }
+  .zone-map :global(.zone.wrong) { background: #8a3a3a; }
+  .zone-legend { margin: 0.5rem 0 0; font-size: 0.8rem; color: #6f6f77; text-align: center; }
+  .zone-load { padding: 2.2rem 1rem; text-align: center; color: #8f8f97; }
 </style>
 
 <script>
@@ -256,6 +279,14 @@ const jsonLd = [
     { n: 5, life: 900 },
   ];
   const BEST_KEY = 'krconcerts:practice-best';
+  // 구역 선택: 목표 구역을 빨리·정확하게 고를수록 좌석 단계의 빈 좌석이 늘어난다(점수에는 직접 더하지 않는다 - 순위 집계 유지).
+  const ZONE_ROUNDS = 2;
+  const ZONE_WRONG_DELAY = 500;    // 오클릭하면 이만큼 화면이 먹통(재로딩 시뮬레이션)
+  const ZONES = [
+    ...['A', 'B', 'C'].map((n) => ({ id: `F${n}`, name: `스탠딩 ${n}`, tier: 'VIP', floor: true, span: 4 })),
+    ...['A', 'B', 'C', 'D'].map((n) => ({ id: `1${n}`, name: `1층 ${n}구역`, tier: 'R석', floor: false, span: 3 })),
+    ...['A', 'B', 'C', 'D', 'E', 'F'].map((n) => ({ id: `2${n}`, name: `2층 ${n}구역`, tier: 'S석', floor: false, span: 2 })),
+  ];
 
   const $ = (id: string) => document.getElementById(id)!;
   const grid = $('g-grid');
@@ -362,6 +393,13 @@ const jsonLd = [
     if (ms < 900) return { tone: 'ok', label: '보통이에요' };
     return { tone: 'slow', label: '늦었어요' };
   }
+  // 구역 선택은 목표를 읽고 구역도를 훑는 시간이 있어 좌석보다 기준이 느슨하다.
+  function judgeZone(ms: number): { tone: Tone; label: string } {
+    if (ms < 700) return { tone: 'good', label: '번개같아요' };
+    if (ms < 1100) return { tone: 'good', label: '빨라요' };
+    if (ms < 1700) return { tone: 'ok', label: '보통이에요' };
+    return { tone: 'slow', label: '늦었어요' };
+  }
   function addLog(html: string) {
     const li = document.createElement('li');
     li.innerHTML = html;
@@ -383,6 +421,9 @@ const jsonLd = [
     seatEarly: 0,
     seatMiss: 0,
     seatDouble: 0,
+    zoneRt: [] as number[],    // 목표 구역을 제대로 고른 반응시간
+    zoneMiss: 0,               // 오클릭(다른 구역/매진 구역)
+    zoneRounds: 0,
   };
 
   function addScore(d: number) {
@@ -393,7 +434,7 @@ const jsonLd = [
   // ── 1단계: 모의 예매 사이트 (3회 시도) ───────────────────────────────────
   // 반환: 이 시도의 유효 반응시간(ms), 놓쳤으면 -1
   async function playButtonAttempt(i: number): Promise<number> {
-    stageEl.textContent = `1/2 예매 버튼 ${i + 1}/${BTN_ATTEMPTS}`;
+    stageEl.textContent = `1/3 예매 버튼 ${i + 1}/${BTN_ATTEMPTS}`;
     attemptNo.textContent = `${i + 1}/${BTN_ATTEMPTS}회`;
     bookBtn.className = 'book is-wait';
     bookBtn.textContent = '오픈 대기중';
@@ -508,11 +549,86 @@ const jsonLd = [
     return { q, pos };
   }
 
+  // ── 2단계: 구역 선택 ────────────────────────────────────────────────
+  // 목표 구역이 제시되고, 구역도가 뜨면 그 구역을 누른다. 매진 구역·다른 구역을 누르면 오클릭(잠깐 먹통).
+  const zonesEl = $('stage-zones');
+  const zoneMap = $('zone-map');
+  const zoneTarget = $('zone-target');
+  async function playZoneRound(idx: number): Promise<void> {
+    stageEl.textContent = `2/3 구역 선택 ${idx + 1}/${ZONE_ROUNDS}`;
+    feedback('', '');
+    const pool = ZONES.filter((z) => !z.floor);
+    const target = pool[Math.floor(Math.random() * pool.length)];
+    // 목표를 뺀 나머지 중 일부는 매진 처리
+    const soldout = new Set(ZONES.filter((z) => z.id !== target.id).sort(() => Math.random() - 0.5).slice(0, 5).map((z) => z.id));
+    msg.textContent = `구역 ${idx + 1}라운드 - 구역도가 뜨면 목표 구역을 누르세요`;
+    zoneTarget.innerHTML = `목표 <b>${target.name}</b> (${target.tier})`;
+    zoneMap.innerHTML = '<div class="zone-load" style="grid-column:1/-1">구역도를 불러오는 중…</div>';
+    await sleep(500 + Math.random() * 900); // 페이지 로딩 느낌
+    zoneMap.innerHTML = '<div class="stage-bar">STAGE</div>';
+    const buttons: HTMLButtonElement[] = [];
+    ZONES.slice().sort((a, b) => (a.floor === b.floor ? 0 : a.floor ? -1 : 1)).forEach((z) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'zone' + (z.floor ? ' floor' : '') + (soldout.has(z.id) ? ' soldout' : '');
+      b.dataset.id = z.id;
+      b.style.gridColumn = `span ${z.span}`;
+      b.innerHTML = `${z.name}<small>${soldout.has(z.id) ? '매진' : z.tier}</small>`;
+      zoneMap.appendChild(b);
+      buttons.push(b);
+    });
+    const t0 = performance.now();
+    let misses = 0;
+    let locked = false;
+    await new Promise<void>((resolve) => {
+      zoneMap.onpointerdown = (e) => {
+        const b = (e.target as HTMLElement).closest?.('.zone') as HTMLButtonElement | null;
+        if (!b || locked) return;
+        if (b.dataset.id === target.id) {
+          locked = true;
+          const rt = Math.round(performance.now() - t0);
+          b.classList.add('right');
+          stats.zoneRt.push(rt);
+          const j = judgeZone(rt);
+          feedback(j.tone, `${j.label} · ${rt}ms`);
+          setTimeout(resolve, 500);
+        } else {
+          misses++;
+          stats.zoneMiss++;
+          locked = true;
+          b.classList.add('wrong');
+          feedback('warn', b.classList.contains('soldout')
+            ? '매진 구역이에요! 다시 불러오는 중… (오클릭)'
+            : '목표와 다른 구역이에요! 다시 불러오는 중… (오클릭)');
+          setTimeout(() => { b.classList.remove('wrong'); locked = false; }, ZONE_WRONG_DELAY);
+        }
+      };
+    });
+    zoneMap.onpointerdown = null;
+    stats.zoneRounds++;
+    const rt = stats.zoneRt[stats.zoneRt.length - 1];
+    const j = judgeZone(rt);
+    addLog(`구역 ${idx + 1}/${ZONE_ROUNDS} · ${target.name} · ${rt}ms ${tag(j.tone, j.label)}` + (misses ? ` · ${tag('warn', `오클릭 ${misses}회`)}` : ''));
+    await sleep(500);
+  }
+
+  // 구역을 빨리·정확하게 골랐는지가 좌석 단계의 q(빈 좌석 수/지속시간)에 반영된다.
+  async function playZones(): Promise<number> {
+    zonesEl.hidden = false;
+    for (let i = 0; i < ZONE_ROUNDS; i++) await playZoneRound(i);
+    zonesEl.hidden = true;
+    const avg = stats.zoneRt.length ? stats.zoneRt.reduce((a, b) => a + b, 0) / stats.zoneRt.length : 1500;
+    const dq = Math.max(-0.2, Math.min(0.15, (1200 - avg) / 1200 * 0.2 - stats.zoneMiss * 0.06));
+    const hint = dq > 0.05 ? '구역을 빨리 골라서 좌석이 더 많이 남았어요' : dq < -0.05 ? '구역을 고르는 사이 좌석이 줄었어요' : '구역 선택 영향은 보통이에요';
+    addLog(`구역 선택 결과 · ${hint}`);
+    return dq;
+  }
+
   // ── 2단계: 좌석 선택 ────────────────────────────────────────────────────
   function resetSeats() { seats.forEach((s) => { s.className = 'seat'; }); }
 
   async function playSeatRound(idx: number, cfg: { n: number; life: number }) {
-    stageEl.textContent = `2/2 좌석 ${idx + 1}라운드`;
+    stageEl.textContent = `3/3 좌석 ${idx + 1}라운드`;
     resetSeats();
     msg.textContent = `좌석 ${idx + 1}라운드 - 곧 열려요. 신호 전에 누르면 감점!`;
     feedback('', '');
@@ -614,6 +730,7 @@ const jsonLd = [
     if (stats.btnDouble + stats.seatDouble > 0) tips.push('더블클릭이 있었어요. 실제 사이트에서는 중복 요청으로 대기열이 꼬이거나 오류가 날 수 있으니 한 번만 누르세요.');
     if (stats.seatMiss > 1) tips.push('오클릭이 많았어요. 좌석표 전체를 훑다 보면 이미 팔린 좌석을 누르게 돼요. 초록색이 뜨는 곳만 보고 누르세요.');
     if (stats.seatEarly > 0) tips.push('좌석 신호 전에 눌렀어요. 좌석 선택 화면이 열려도 바로 누르지 말고 빈 좌석이 보일 때까지 기다리세요.');
+    if (stats.zoneMiss > 0) tips.push('구역을 잘못 눌렀어요. 예매 전에 좌석 배치도를 보고 원하는 구역 후보를 2~3개 정해 두면 헤매지 않아요. 준비 점검의 체크리스트에도 있어요.');
     if (seatAvg > 800) tips.push('좌석 선택이 느린 편이에요. 구역을 한 번에 훑으려 하지 말고 한 곳을 정해서 보세요.');
     if (tips.length === 0) tips.push('손이 정말 빨라요! 기록을 공유하고 친구와 비교해보세요.');
     return tips.slice(0, 2);
@@ -651,6 +768,7 @@ const jsonLd = [
     score = 0;
     stats.btnMs = []; stats.btnMissed = 0; stats.btnEarly = 0; stats.btnDouble = 0;
     stats.seatRt = []; stats.seatTotal = 0; stats.seatEarly = 0; stats.seatMiss = 0; stats.seatDouble = 0;
+    stats.zoneRt = []; stats.zoneMiss = 0; stats.zoneRounds = 0;
     scoreEl.textContent = '0';
     result.hidden = true;
     logList.innerHTML = '';
@@ -658,7 +776,9 @@ const jsonLd = [
     feedback('', '');
     startBtn.disabled = true;
 
-    const { q, pos } = await playSite();
+    const { q: q0, pos } = await playSite();
+    const dq = await playZones();
+    const q = Math.max(0, Math.min(1, q0 + dq));
 
     // 대기 순번이 좋을수록 빈 좌석이 많고 오래 남는다 (q: 0~1)
     const rounds = BASE_ROUNDS.map((r) => ({
@@ -672,6 +792,7 @@ const jsonLd = [
     const got = stats.seatRt.length;
     const seatAvg = got ? Math.round(stats.seatRt.reduce((a, b) => a + b, 0) / got) : 0;
     const btnAvg = stats.btnMs.length ? Math.round(stats.btnMs.reduce((a, b) => a + b, 0) / stats.btnMs.length) : -1;
+    const zoneAvg = stats.zoneRt.length ? Math.round(stats.zoneRt.reduce((a, b) => a + b, 0) / stats.zoneRt.length) : 0;
     const best = getBest();
     const isBest = score > best;
     if (isBest) setBest(score);
@@ -680,6 +801,7 @@ const jsonLd = [
     $('g-grade').textContent = grade;
     $('g-detail').textContent =
       `대기 ${pos.toLocaleString()}번째 · 예매 버튼 평균 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'}` +
+      ` · 구역 평균 ${zoneAvg}ms${stats.zoneMiss ? ` (오클릭 ${stats.zoneMiss})` : ''}` +
       ` · 좌석 ${stats.seatTotal}개 중 ${got}개 · 점수 ${score}점${isBest ? ' · 최고 기록!' : ''}`;
     const tipsEl = $('g-tips');
     tipsEl.innerHTML = '';
