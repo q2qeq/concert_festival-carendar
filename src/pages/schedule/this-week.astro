@@ -1,0 +1,108 @@
+---
+// 이번 주(앞으로 7일) 내한공연 - "이번 주말 콘서트", "이번 주 내한공연" 같은 즉시 검색 의도용.
+// 정적 빌드라 날짜가 낡을 수 있어서, 빌드 시점의 목록을 먼저 보여주고 브라우저에서 오늘 날짜가 다르면 같은 함수로 다시 그린다.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { scheduleEvents, upcomingTicketOpens, ticketStatusText } from '../../lib/events';
+import { weekGroups, rowHtml, opensIn, openHtml, todayKST } from '../../lib/week';
+import type { WeekEvent, OpenItem } from '../../lib/week';
+
+const data: WeekEvent[] = scheduleEvents().map((e) => {
+  const st = ticketStatusText(e);
+  return { id: e.id, a: e.artist, s: e.startDate, e: e.endDate, v: e.venue, c: e.city, g: e.genre, p: e.posterUrl ?? '', t: st.text, k: st.tone };
+});
+const opens: OpenItem[] = upcomingTicketOpens(200).map((e) => ({ id: e.id, a: e.artist, at: e.ticketOpenAt as string }));
+const builtToday = todayKST();
+const g = weekGroups(data, builtToday);
+const op = opensIn(opens, Date.now());
+const nextUp = data.filter((x) => x.s > g.end).sort((a, b) => a.s.localeCompare(b.s))[0];
+const fmt = (iso: string) => `${Number(iso.slice(5, 7))}월 ${Number(iso.slice(8, 10))}일`;
+---
+<BaseLayout
+  title="이번 주 내한공연·콘서트 일정 (이번 주말 포함)"
+  description="오늘부터 7일 안에 열리는 내한공연과 페스티벌, 이번 주말 콘서트와 이번 주 티켓오픈을 한눈에 확인하세요."
+>
+  <p class="breadcrumb"><a href="/schedule/">← 월별 일정</a></p>
+  <section class="head">
+    <h1>이번 주 내한공연</h1>
+    <p class="count mono" id="range">{fmt(builtToday)} – {fmt(g.end)}</p>
+  </section>
+  <p class="lead">오늘부터 7일 안에 열리는 공연이에요. 이번 주말과 이번 주 티켓오픈도 따로 모았어요.</p>
+
+  <div class="wk" id="wk" data-built={builtToday} data-json={JSON.stringify(data)} data-opens={JSON.stringify(opens)}>
+    <section id="sec-today"><h2 class="sec mono">TODAY</h2><ol class="rows" id="l-today" set:html={g.today.map(rowHtml).join('')} /></section>
+    <section id="sec-weekend"><h2 class="sec mono">THIS WEEKEND</h2><ol class="rows" id="l-weekend" set:html={g.weekend.map(rowHtml).join('')} /></section>
+    <section id="sec-others"><h2 class="sec mono">NEXT 7 DAYS</h2><ol class="rows" id="l-others" set:html={g.others.map(rowHtml).join('')} /></section>
+    <section id="sec-opens"><h2 class="sec mono">TICKET OPEN THIS WEEK</h2><ul class="opens" id="l-opens" set:html={op.map(openHtml).join('')} /></section>
+    <p class="empty" id="empty" hidden>
+      앞으로 7일 안에 시작하는 공연이 없어요.
+      <span id="next-up">{nextUp ? <>가장 가까운 공연은 <a href={`/events/${nextUp.id}/`}>{nextUp.a}</a>({fmt(nextUp.s)})이에요.</> : ''}</span>
+    </p>
+  </div>
+
+  <nav class="links">
+    <a href="/schedule/">월별 일정</a>
+    <a href="/ticket-open/">티켓오픈 일정</a>
+    <a href="/calendar/">캘린더 구독</a>
+    <a href="/events/">전체 공연</a>
+  </nav>
+</BaseLayout>
+<script>
+  import { weekGroups, rowHtml, opensIn, openHtml, todayKST, addDays } from '../../lib/week';
+  import type { WeekEvent, OpenItem } from '../../lib/week';
+  const root = document.getElementById('wk')!;
+  const data: WeekEvent[] = JSON.parse(root.dataset.json || '[]');
+  const opens: OpenItem[] = JSON.parse(root.dataset.opens || '[]');
+  const today = todayKST();
+  const set = (id: string, html: string) => { const el = document.getElementById(id)!; el.innerHTML = html; (el.closest('section') as HTMLElement).hidden = html === ''; };
+  // 빌드 날짜와 오늘이 다르면 다시 계산해서 낡은 목록을 바로잡는다. (같은 날이면 서버가 그린 그대로 둔다.)
+  const g = weekGroups(data, today);
+  const op = opensIn(opens, Date.now());
+  if (root.dataset.built !== today) {
+    set('l-today', g.today.map(rowHtml).join(''));
+    set('l-weekend', g.weekend.map(rowHtml).join(''));
+    set('l-others', g.others.map(rowHtml).join(''));
+    set('l-opens', op.map(openHtml).join(''));
+    const md = (iso: string) => `${Number(iso.slice(5, 7))}월 ${Number(iso.slice(8, 10))}일`;
+    document.getElementById('range')!.textContent = `${md(today)} – ${md(addDays(today, 6))}`;
+  } else {
+    ['today', 'weekend', 'others', 'opens'].forEach((k) => { const el = document.getElementById('l-' + k)!; (el.closest('section') as HTMLElement).hidden = el.innerHTML.trim() === ''; });
+  }
+  document.getElementById('empty')!.hidden = g.total > 0;
+</script>
+<style>
+  .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 0 0 1rem; }
+  .head h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1; letter-spacing: -.055em; font-weight: 900; }
+  .count { margin: 0; font-size: 0.82rem; letter-spacing: .1em; color: #8f8f97; }
+  .lead { max-width: 40rem; color: #a9a9b0; margin: 0 0 1.4rem; }
+  .breadcrumb a { color: #8f8f97; font-size: 0.9rem; text-decoration: none; }
+  .wk section { margin-bottom: 2rem; }
+  .wk section[hidden] { display: none; }
+  .sec { margin: 0 0 0.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: 0.8rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .rows, .opens { list-style: none; margin: 0; padding: 0; }
+  .wk :global(.row) { display: grid; grid-template-columns: 6.2rem 3.5rem 1fr auto; gap: 1rem; align-items: center; padding: 0.9rem 0.2rem; border-bottom: 1px solid #2a2a30; color: inherit; text-decoration: none; }
+  .wk :global(.row:hover) { background: rgba(255,255,255,0.03); }
+  .wk :global(.d) { white-space: nowrap; font-size: 1.25rem; font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
+  .wk :global(.d small) { display: block; font-size: 0.66rem; font-weight: 500; letter-spacing: .12em; color: #8f8f97; }
+  .wk :global(.th) { width: 3.5rem; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; background: #151517; display: block; }
+  .wk :global(.b) { min-width: 0; }
+  .wk :global(.b strong) { display: block; font-size: 1.02rem; line-height: 1.3; }
+  .wk :global(.b em) { display: block; font-style: normal; font-size: 0.82rem; color: #8f8f97; margin-top: 0.15rem; }
+  .wk :global(.st) { font-size: 0.76rem; font-weight: 700; white-space: nowrap; color: #8f8f97; }
+  .wk :global(.st-on) { color: #f4f4f0; }
+  .wk :global(.st-soon) { color: #ff5fa2; }
+  .opens li { padding: 0.55rem 0; border-bottom: 1px solid #202024; }
+  .opens :global(a) { color: #f4f4f0; text-decoration: none; font-weight: 600; }
+  .opens :global(a:hover) { color: #ff5fa2; }
+  .opens :global(.mono) { color: #ff5fa2; margin-right: 0.6rem; font-size: 0.86rem; }
+  .empty { color: #a9a9b0; padding: 1rem 0; }
+  .empty a { color: #f4f4f0; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid #2a2a30; }
+  .links a { padding: 0.45rem 0.8rem; border: 1px solid #3a3a42; border-radius: 4px; color: #c4c4c8; text-decoration: none; font-size: 0.86rem; }
+  .links a:hover { border-color: #ff5fa2; color: #ff5fa2; }
+  @media (max-width: 600px) {
+    .wk :global(.row) { grid-template-columns: 4.6rem 3rem 1fr; gap: 0.7rem; }
+    .wk :global(.d) { font-size: 1.05rem; }
+    .wk :global(.th) { width: 3rem; }
+    .wk :global(.st) { grid-column: 3; justify-self: start; margin-top: -0.2rem; }
+  }
+</style>

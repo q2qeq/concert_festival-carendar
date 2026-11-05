@@ -5553,7 +5553,13 @@
       }
     ],
     "posterUrl": "/posters/shuttle-2026-incheon-airport-sky-festival-2026-11.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013822_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013822_p.gif",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓(인터파크)",
+        "url": "https://nol.yanolja.com/ticket/products/26013822"
+      }
+    ]
   },
   {
     "id": "shuttle-nmixx-world-tour-zero-frontier-finale-2026-11",
@@ -5796,7 +5802,13 @@
       }
     ],
     "posterUrl": "/posters/shuttle-akmu-concert-tour-gangneung-2026-11.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260909/20260909-60017_1.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260909/20260909-60017_1.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60017"
+      }
+    ]
   },
   {
     "id": "night-hike-tours-seoul-2026-12",

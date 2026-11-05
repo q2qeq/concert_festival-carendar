@@ -9,7 +9,7 @@ const count = (p: string) => all.filter((e) => e.startDate.startsWith(p)).length
 <BaseLayout title="월별·연도별 내한공연 일정" description="예정된 내한공연과 페스티벌을 월별, 연도별로 모았어요. 티켓오픈 일정과 예매 상태를 한눈에 확인하세요.">
   <section class="head">
     <h1>월별 내한공연 일정</h1>
-    <p>보고 싶은 달을 골라 날짜순으로 확인하세요.</p>
+    <p>보고 싶은 달을 골라 날짜순으로 확인하세요. 당장 갈 공연이 궁금하면 <a href="/schedule/this-week/">이번 주 공연</a>을 보세요.</p>
   </section>
   {years.map((y) => (
     <section class="yr">
