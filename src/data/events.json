@@ -5437,7 +5437,9 @@
         "label": "콘서트 > 해외뮤지션 카테고리 - YES24 티켓",
         "url": "https://ticket.yes24.com/New/Genre/GenreList.aspx?genretype=2&genre=15463"
       }
-    ]
+    ],
+    "posterUrl": "/posters/all-eyes-seoul-2027-01.webp",
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202609/20260930/20260930-60411.jpg"
   },
   {
     "id": "bruno-mars-goyang-2027-05",
@@ -5814,7 +5816,9 @@
         "label": "NIGHT HIKE TOURS in SEOUL 티켓 오픈 안내 - YES24 티켓",
         "url": "https://ticket.yes24.com/Notice#id=18781"
       }
-    ]
+    ],
+    "posterUrl": "/posters/night-hike-tours-seoul-2026-12.webp",
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202611/20261102/20261102-60949.jpg"
   },
   {
     "id": "sophie-powers-seoul-2026-12",
@@ -5834,7 +5838,9 @@
         "label": "Sophie Powers Asia Tour \"MANIC PIXIE\" in Seoul 티켓 오픈 안내 - YES24 티켓",
         "url": "https://ticket.yes24.com/Notice#id=18779"
       }
-    ]
+    ],
+    "posterUrl": "/posters/sophie-powers-seoul-2026-12.webp",
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202611/20261102/20261102-60948.jpg"
   },
   {
     "id": "cho-q-may-seoul-2027-01",
@@ -5858,7 +5864,9 @@
         "label": "Cho Q May 「Starlight Map Tour」 티켓 오픈 안내 - 멜론티켓",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=13162"
       }
-    ]
+    ],
+    "posterUrl": "/posters/cho-q-may-seoul-2027-01.webp",
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202610/20261029/20261029-60901.jpg"
   },
   {
     "id": "yukiguni-seoul-2026-12",
@@ -5878,7 +5886,9 @@
         "label": "雪国 One Man Tour 2026 \"claras\" in Seoul - with Ghost Bookstore 티켓 오픈 안내 - 멜론티켓",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=13191"
       }
-    ]
+    ],
+    "posterUrl": "/posters/yukiguni-seoul-2026-12.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/10/202610301030431bfb91f9-5f23-42b4-a62c-6a69e9fc063e.jpg"
   },
   {
     "id": "jeffbernat-seoul-2027-02",
@@ -5898,7 +5908,9 @@
         "label": "Jeff Bernat Live: Luv Language Tour 2027 in Seoul 티켓 오픈 안내 - YES24 티켓",
         "url": "https://ticket.yes24.com/Notice#id=18783"
       }
-    ]
+    ],
+    "posterUrl": "/posters/jeffbernat-seoul-2027-02.webp",
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/BoardNotice/202611/20261103/20261103-49789d13-06a1-4fbd-bd6f-bfa215286b00.jpg"
   },
   {
     "id": "kenshi-yonezu-ghost-incheon-2027-01",
@@ -6074,6 +6086,8 @@
         "label": "스티브 갯 BHG Project 블리처 / 헤머 / 갯 내한공연 티켓오픈 안내 - 티켓링크 공지사항",
         "url": "https://www.ticketlink.co.kr/help/notice/66450"
       }
-    ]
+    ],
+    "posterUrl": "/posters/steve-gadd-bhg-seoul-2027-01.webp",
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_7/open_1105.jpg"
   }
 ]
