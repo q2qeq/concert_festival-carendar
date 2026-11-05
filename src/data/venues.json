@@ -29,7 +29,7 @@
       }
     ],
     "tip": "야외 잔디밭 행사가 많은 곳이라 해가 지면 기온이 뚝 떨어져요. 9~10월이라도 얇은 겉옷은 챙기는 걸 추천.",
-    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Imjingak_001.jpg?width=640",
+    "imageUrl": "/venues/78507492aa.webp",
     "imageCredit": "Rbtjd0201, Wikimedia Commons (Public domain)",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Imjingak_001.jpg"
   },
@@ -91,7 +91,7 @@
       }
     ],
     "tip": "공연 있는 날은 올림픽공원역 3번 출구가 특히 붐벼요. 조금 여유 있게 도착하는 걸 추천.",
-    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/올림픽체조.jpg?width=640",
+    "imageUrl": "/venues/0805b39601.webp",
     "imageCredit": "Moonhayun, Wikimedia Commons (CC BY-SA 4.0)",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:올림픽체조.jpg",
     "parkingTips": [
@@ -128,7 +128,7 @@
         "desc": "원테이블 레스토랑, 수비드 삼겹살·로제떡볶이"
       }
     ],
-    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Seoul_Olympic_Park_from_Lotte_World_Tower.jpg?width=640",
+    "imageUrl": "/venues/5069f2e136.webp",
     "imageCredit": "Tristan Surtel, Wikimedia Commons (CC BY-SA 4.0)",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Seoul_Olympic_Park_from_Lotte_World_Tower.jpg",
     "parkingTips": [
@@ -169,7 +169,7 @@
       }
     ],
     "tip": "홀 번호(1전시장/2전시장, 9홀 등)를 미리 확인하세요 — 같은 KINTEX라도 건물 간 이동에 시간이 꽤 걸립니다.",
-    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/%ED%82%A8%ED%85%8D%EC%8A%A4.jpg?width=640",
+    "imageUrl": "/venues/c0aea238a8.webp",
     "imageCredit": "Wikimedia Commons 기여자 (CC BY-SA 4.0)",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:%ED%82%A8%ED%85%8D%EC%8A%A4.jpg",
     "parking": "제2전시장에는 지하주차장과 임시주차장이 있지만, 대형 행사 날엔 금방 차요. 공연 날은 GTX-A 킨텍스역 등 대중교통을 권장해요. 요금은 KINTEX 공식 주차 안내에서 확인하세요."
@@ -272,7 +272,7 @@
         "desc": "파스타, 브런치 느낌"
       }
     ],
-    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Goyang_sta_1.JPG?width=640",
+    "imageUrl": "/venues/3a681f51ca.webp",
     "imageCredit": "WAKA77, Wikimedia Commons (Public domain)",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Goyang_sta_1.JPG",
     "parking": "경기장 내부 주차장이 있지만 대형 공연 날에는 공연 시작 몇 시간 전에 만차가 되는 경우가 많아요.",
@@ -344,7 +344,7 @@
       }
     ],
     "tip": "야외 잔디밭 행사가 많은 곳이라 해가 지면 기온이 뚝 떨어져요. 9~10월이라도 얇은 겉옷은 챙기는 걸 추천.",
-    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Imjingak_001.jpg?width=640",
+    "imageUrl": "/venues/78507492aa.webp",
     "imageCredit": "Rbtjd0201, Wikimedia Commons (Public domain)",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Imjingak_001.jpg"
   },
@@ -365,7 +365,7 @@
   "한국소리문화의전당": {
     "address": "전북 전주시 덕진구 소리로 31 (덕진동1가)",
     "tip": "전주역·전주고속버스터미널에서 거리가 있는 편이라 버스보다 택시가 편해요. 지방 공연장이라 셔틀버스가 따로 있는 경우가 많으니 예매처 공지사항을 꼭 확인하세요.",
-    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moak_Hall_of_the_Sori_Arts_Center_of_Jeollabuk-do.jpg?width=640",
+    "imageUrl": "/venues/59ee1c9b5a.webp",
     "imageCredit": "Judahdavis, Wikimedia Commons (Public domain)",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Moak_Hall_of_the_Sori_Arts_Center_of_Jeollabuk-do.jpg",
     "nearbyFood": [
@@ -454,7 +454,7 @@
   "엑스코(EXCO)": {
     "address": "대구 북구 엑스코로 10 (산격동)",
     "tip": "대형 전시장이라 홀 번호를 미리 확인해두는 게 좋아요.",
-    "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Daegu_EXCO_4.jpg?width=640",
+    "imageUrl": "/venues/8fa7a0fad1.webp",
     "imageCredit": "Wikimedia Commons (Public domain)",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Daegu_EXCO_4.jpg",
     "nearbyFood": [

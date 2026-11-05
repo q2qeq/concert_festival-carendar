@@ -5,6 +5,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { upcomingTicketOpens, onSaleEvents, upcomingEvents } from '../lib/events';
 import { ticketOpenIcs, ticketOpenGoogleUrl, icsDataUri } from '../lib/ticketAlert';
 
+function openParts(iso: string) {
+  const k = new Date(new Date(iso).getTime() + 9 * 3600_000);
+  return {
+    md: `${k.getUTCMonth() + 1}.${String(k.getUTCDate()).padStart(2, '0')}`,
+    hm: `${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`,
+  };
+}
 const soon = upcomingTicketOpens(30);
 const nowMs = Date.now();
 // 최근 2주 안에 막 오픈했고 아직 공연이 안 끝난 공연
@@ -35,12 +42,14 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
   <p class="intro">예매처 공지로 오픈 시각이 확인된 공연만 모아요. 오픈 전에 <a href="/ticketing-clock/">티켓팅 시계</a>를 켜고 <a href="/practice/">연습</a>으로 손을 풀어보세요.</p>
 
   <section aria-label="곧 오픈하는 티켓">
-    <h2>곧 오픈</h2>
+    <h2 class="sec mono">TICKET OPEN SOON</h2>
     {soon.length > 0 ? (
       <>
         <ul class="open-list" id="soon-list">
           {soon.map((e) => (
             <li data-open-at={e.ticketOpenAt}>
+              <p class="open-when mono">{openParts(e.ticketOpenAt as string).md} <span>{openParts(e.ticketOpenAt as string).hm}</span></p>
+              <div class="open-body">
               <div class="open-head">
                 <a class="open-title" href={`/events/${e.id}/`}>{e.artist}</a>
                 <span class="open-left" data-left></span>
@@ -51,6 +60,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
                 <a class="oa" href={ticketOpenGoogleUrl(alertOf(e))} target="_blank" rel="noopener noreferrer">구글</a>
                 <a class="oa" href={icsDataUri(ticketOpenIcs([alertOf(e)]))} download={`${e.id}-ticket-open.ics`}>.ics</a>
                 <button class="bookmark-btn" type="button" data-bookmark-id={e.id} aria-label={`${e.artist} 찜하기`} aria-pressed="false">♡</button>
+              </div>
               </div>
             </li>
           ))}
@@ -65,7 +75,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
 
   {recent.length > 0 && (
     <section aria-label="최근 오픈한 티켓">
-      <h2>최근 2주 안에 오픈</h2>
+      <h2 class="sec mono">RECENTLY OPENED</h2>
       <ul class="plain-list">
         {recent.map((e) => (
           <li>
@@ -79,7 +89,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
 
   {onSale.length > 0 && (
     <section aria-label="지금 예매 중인 공연">
-      <h2>지금 예매 중</h2>
+      <h2 class="sec">지금 예매 중</h2>
       <ul class="plain-list">
         {onSale.map((e) => (
           <li>
@@ -118,6 +128,20 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
   .plain-list span { color: #8f8f97; font-size: 0.84rem; }
   .empty { color: #8f8f97; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
   .note { margin-top: 1.8rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #8f8f97; font-size: 0.82rem; line-height: 1.6; }
+  /* ── 랜딩 톤: 큰 시간 숫자 행 ── */
+  .intro { max-width: 40rem; color: #a9a9b0; }
+  h2.sec { margin: 2.4rem 0 0; padding-bottom: 0.7rem; border-bottom: 1px solid #2a2a30; font-size: 0.82rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .open-list { gap: 0; margin: 0 0 1rem; }
+  .open-list li { display: grid; grid-template-columns: 8.2em 1fr; font-size: clamp(1.5rem, 3.6vw, 2.6rem); column-gap: 1.6rem; align-items: start; padding: 1.2rem 0.2rem; border: 0; border-bottom: 1px solid #2a2a30; border-radius: 0; background: transparent; }
+  .open-when { margin: 0; font-weight: 900; letter-spacing: -.05em; line-height: 1.05; white-space: nowrap; }
+  .open-when span { color: #8f8f97; }
+  .open-body { min-width: 0; font-size: 1rem; padding-top: 0.2em; }
+  .open-title { font-size: clamp(1.05rem, 2vw, 1.4rem); }
+  .open-left { color: #ff5fa2; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; }
+  .oa { border-radius: 4px; }
+  .oa.primary { border-color: #ff5fa2; }
+  .plain-list li, .empty, .note { border-radius: 4px; }
+  @media (max-width: 560px) { .open-list li { grid-template-columns: 1fr; row-gap: 0.5rem; } .open-body { padding-top: 0; } }
 </style>
 
 <script>

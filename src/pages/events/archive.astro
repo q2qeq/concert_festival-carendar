@@ -39,7 +39,7 @@ function fmt(iso: string) {
 
   {groups.map((group) => (
     <section class="month-group">
-      <h2>{group.label}</h2>
+      <h2 class="mono">{group.label.replace(/^(\d+)년 (\d+)월$/, (_m, y, mo) => `${y}.${String(mo).padStart(2, '0')}`)}</h2>
       <ul class="archive-list">
         {group.items.map((e) => (
           <li>
@@ -61,7 +61,7 @@ function fmt(iso: string) {
   .breadcrumb a { color: #8f8f97; text-decoration: none; }
   .breadcrumb a:hover { color: #fff; }
   .intro { padding: 0.25rem 0 1.5rem; }
-  .intro h1 { font-size: 1.7rem; margin-bottom: 0.5rem; }
+  .intro h1 { margin-bottom: 0.7rem; }
   .intro p { color: #c4c4c8; }
   .month-group { margin-top: 2rem; }
   .month-group h2 { font-size: 1.15rem; color: #8f8f97; margin-bottom: 0.5rem; }
@@ -80,4 +80,7 @@ function fmt(iso: string) {
   .artist { flex: 1; min-width: 0; font-size: 0.95rem; }
   .venue { flex-shrink: 0; color: #8f8f97; font-size: 0.82rem; }
   .empty { color: #8f8f97; margin-top: 1.5rem; }
+  .intro p { max-width: 38rem; color: #a9a9b0; }
+  .month-group { margin-top: 2.6rem; }
+  .month-group h2 { margin: 0 0 0.9rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: clamp(1.6rem, 4.6vw, 2.6rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; color: #f4f4f0; }
 </style>
