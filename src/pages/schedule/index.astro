@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { scheduleEvents, schedulePeriods, periodLabel } from '../../lib/events';
+
+const { months, years } = schedulePeriods();
+const all = scheduleEvents();
+const count = (p: string) => all.filter((e) => e.startDate.startsWith(p)).length;
+---
+<BaseLayout title="월별·연도별 내한공연 일정" description="예정된 내한공연과 페스티벌을 월별, 연도별로 모았어요. 티켓오픈 일정과 예매 상태를 한눈에 확인하세요.">
+  <section class="head">
+    <h1>월별 내한공연 일정</h1>
+    <p>보고 싶은 달을 골라 날짜순으로 확인하세요.</p>
+  </section>
+  {years.map((y) => (
+    <section class="yr">
+      <h2><a href={`/schedule/${y}/`}><span class="mono">{y}</span> 전체 <small class="mono">{count(y)} SHOWS →</small></a></h2>
+      <div class="grid">
+        {months.filter((m) => m.startsWith(y)).map((m) => (
+          <a href={`/schedule/${m}/`}>
+            <span class="mm mono">{m.slice(5)}<small>월</small></span>
+            <span class="mn mono">{count(m)} SHOWS</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+</BaseLayout>
+<style>
+  .head h1 { margin: 0 0 0.6rem; }
+  .head p { margin: 0 0 1.6rem; color: #a9a9b0; }
+  .yr h2 { margin: 2rem 0 0.8rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: clamp(1.6rem, 4.6vw, 2.4rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; }
+  .yr h2 a { display: flex; justify-content: space-between; align-items: baseline; color: inherit; text-decoration: none; }
+  .yr h2 a:hover { color: #ff5fa2; }
+  .yr h2 small { font-size: 0.74rem; font-weight: 500; letter-spacing: .14em; color: #8f8f97; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 0.7rem; }
+  .grid a { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem; border: 1px solid #2a2a30; border-radius: 4px; color: inherit; text-decoration: none; }
+  .grid a:hover { border-color: #ff5fa2; }
+  .mm { font-size: 2rem; font-weight: 900; letter-spacing: -.06em; line-height: 1; }
+  .mm small { font-size: 0.85rem; letter-spacing: 0; margin-left: 0.2rem; color: #8f8f97; }
+  .mn { font-size: 0.7rem; letter-spacing: .14em; color: #ff5fa2; }
+</style>

@@ -5,9 +5,10 @@ import Mascot from '../../components/Mascot.astro';
 import CalendarNav from '../../components/CalendarNav.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import RecentIssues from '../../components/RecentIssues.astro';
-import { upcomingEvents, allGenres, allCities, monthLabel, hasTicketsOnSale, ticketOpenInDays } from '../../lib/events';
+import { schedulePeriods, periodLabel, upcomingEvents, allGenres, allCities, monthLabel, hasTicketsOnSale, ticketOpenInDays } from '../../lib/events';
 
 const events = upcomingEvents();
+const periods = schedulePeriods();
 const genres = allGenres();
 const cities = allCities();
 
@@ -27,6 +28,10 @@ for (const e of events) {
     <h1>전체 공연 일정</h1>
     <p class="count mono"><b>{events.length}</b> UPCOMING SHOWS</p>
   </section>
+  <nav class="period-links" aria-label="월별 일정">
+    <span class="mono">BY MONTH</span>
+    {periods.months.map((m) => <a href={`/schedule/${m}/`}>{periodLabel(m)}</a>)}
+  </nav>
 
   <CalendarNav events={events} />
 
@@ -243,6 +248,10 @@ for (const e of events) {
     border: 0;
   }
 
+  .period-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: -0.6rem 0 1.4rem; }
+  .period-links span { font-size: 0.7rem; letter-spacing: .14em; color: #8f8f97; margin-right: 0.4rem; }
+  .period-links a { padding: 0.3rem 0.65rem; border: 1px solid #3a3a42; border-radius: 4px; color: #c4c4c8; text-decoration: none; font-size: 0.82rem; }
+  .period-links a:hover { border-color: #ff5fa2; color: #ff5fa2; }
   .finder {
     scroll-margin-top: 5rem;
     background: rgba(255,255,255,0.03);

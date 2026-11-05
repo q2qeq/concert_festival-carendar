@@ -594,3 +594,29 @@ export function sameVenueUpcoming(event: ConcertEvent, limit = 3): ConcertEvent[
     .sort((a, b) => a.startDate.localeCompare(b.startDate))
     .slice(0, limit);
 }
+
+// ── 월별·연도별 일정 페이지용 (2026-11-06) ─────────────────────────────────
+// 예정된(종료 전) 공연만, 취소는 제외. 시작일 기준으로 월/연에 배정한다.
+export function scheduleEvents(): ConcertEvent[] {
+  return upcomingEvents().filter((e) => (e.status ?? 'scheduled') !== 'cancelled');
+}
+
+export function schedulePeriods(): { months: string[]; years: string[] } {
+  const months = Array.from(new Set(scheduleEvents().map((e) => e.startDate.slice(0, 7)))).sort();
+  const years = Array.from(new Set(months.map((m) => m.slice(0, 4))));
+  return { months, years };
+}
+
+export function periodLabel(period: string): string {
+  return /^\d{4}$/.test(period) ? `${period}년` : `${period.slice(0, 4)}년 ${Number(period.slice(5, 7))}월`;
+}
+
+// 목록 한 줄에 보여줄 예매 상태 문구 - 확인된 정보만 (없으면 '예매 일정 미정').
+export function ticketStatusText(e: ConcertEvent, nowMs = Date.now()): { text: string; tone: 'on' | 'soon' | 'none' } {
+  if (hasTicketsOnSale(e)) return { text: '예매 오픈중', tone: 'on' };
+  if (e.ticketOpenAt && new Date(e.ticketOpenAt).getTime() > nowMs) {
+    const k = new Date(new Date(e.ticketOpenAt).getTime() + 9 * 3600_000);
+    return { text: `티켓오픈 ${k.getUTCMonth() + 1}.${String(k.getUTCDate()).padStart(2, '0')} ${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`, tone: 'soon' };
+  }
+  return { text: '예매 일정 미정', tone: 'none' };
+}
