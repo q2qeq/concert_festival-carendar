@@ -25,14 +25,14 @@ const shortDate = (iso: string) => {
 <section class="next-steps" aria-label="다음 행동">
   <div class="ns-actions">
     <a class="ns-btn ns-primary" href={clockHref}>
-      ⏱ {hasOpen ? '이 공연 오픈 카운트다운' : '티켓팅 시계 켜기'}
+      {hasOpen ? '이 공연 오픈 카운트다운' : '티켓팅 시계 켜기'}
     </a>
-    <a class="ns-btn" href="/practice/">🎫 티켓팅 연습하기</a>
+    <a class="ns-btn" href="/practice/">티켓팅 연습하기</a>
     <a class="ns-btn" href="/my/">♥ 내 찜 모아보기</a>
   </div>
   {alertEvent && (
     <div class="ns-row">
-      <span class="ns-label">🔔 오픈 알림 (10분 전·하루 전)</span>
+      <span class="ns-label">오픈 알림 (10분 전·하루 전)</span>
       <div class="ns-links">
         <a href={googleHref} target="_blank" rel="noopener noreferrer">구글 캘린더</a>
         <a href={icsHref} download={`${event.id}-ticket-open.ics`}>.ics 파일</a>
@@ -57,16 +57,16 @@ const shortDate = (iso: string) => {
   )}
 </section>
 <style>
-  .next-steps { margin: 0.9rem 0 1.2rem; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+  .next-steps { margin: 0.9rem 0 1.2rem; padding: 0.9rem 1rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
   .ns-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .ns-btn { padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.88rem; font-weight: 700; text-decoration: none; color: #f5f3ff; border: 1px solid rgba(255,255,255,0.18); }
-  .ns-btn:hover { border-color: #ff5fa2; color: #ff8fbe; }
-  .ns-primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
-  .ns-primary:hover { color: #101018; filter: brightness(1.05); }
+  .ns-btn { padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.88rem; font-weight: 700; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.18); }
+  .ns-btn:hover { border-color: #ff5fa2; color: #ff5fa2; }
+  .ns-primary { background: #ff5fa2; color: #0e0e10; border-color: transparent; }
+  .ns-primary:hover { color: #0e0e10; filter: brightness(1.05); }
   .ns-row { margin-top: 0.7rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.7rem; }
-  .ns-label { color: #a9a4c9; font-size: 0.82rem; }
+  .ns-label { color: #8f8f97; font-size: 0.82rem; }
   .ns-links { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .ns-links a { font-size: 0.86rem; color: #6ee7ff; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid rgba(110,231,255,0.3); }
-  .ns-links a:hover { background: rgba(110,231,255,0.1); }
-  .ns-links small { color: #a9a4c9; }
+  .ns-links a { font-size: 0.86rem; color: #c9c9cf; text-decoration: none; padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); }
+  .ns-links a:hover { background: rgba(255,255,255,0.1); }
+  .ns-links small { color: #8f8f97; }
 </style>

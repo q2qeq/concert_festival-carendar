@@ -76,9 +76,9 @@ const jsonLd = {
   </div>
 
   <div class="clock-tools" role="group" aria-label="시계 도구">
-    <button type="button" id="sound-btn" class="tool-btn" aria-pressed="false">🔔 소리·진동 꺼짐</button>
+    <button type="button" id="sound-btn" class="tool-btn" aria-pressed="false">소리·진동 꺼짐</button>
     <button type="button" id="focus-btn" class="tool-btn">⛶ 큰 화면</button>
-    <button type="button" id="share-btn" class="tool-btn" hidden>🔗 링크 복사</button>
+    <button type="button" id="share-btn" class="tool-btn" hidden>링크 복사</button>
   </div>
   <p class="tool-note">소리 알림은 이 탭이 보이는 상태에서 가장 정확해요. 다른 탭에서는 브라우저가 타이머를 늦춰서 1초쯤 어긋날 수 있어요.</p>
 
@@ -128,7 +128,7 @@ const jsonLd = {
         </ul>
       </>
     )}
-    <p class="sched-more"><a href="/ticket-open/">📅 티켓오픈 일정 전체 보기</a> · <a href="/my/">♥ 내 찜 목록에서 한눈에 보기</a> · <a href="/practice/">🎫 티켓팅 연습으로 손풀기</a></p>
+    <p class="sched-more"><a href="/ticket-open/">티켓오픈 일정 전체 보기</a> · <a href="/my/">♥ 내 찜 목록에서 한눈에 보기</a> · <a href="/practice/">티켓팅 연습으로 손풀기</a></p>
   </section>
 
   <details class="calibrate">
@@ -212,22 +212,22 @@ const jsonLd = {
 
 <style>
   .sched-list { list-style: none; margin: 0 0 1.2rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-  .sched-list li { position: relative; display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 2.4rem 0.65rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .sched-list li { position: relative; display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 2.4rem 0.65rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
   .sched-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.15rem; color: inherit; text-decoration: none; }
   .sched-main strong { font-size: 0.96rem; }
-  .sched-main:hover strong { color: #ff8fbe; }
-  .sched-when { color: #a9a4c9; font-size: 0.82rem; }
-  .sched-left { color: #6ee7ff; font-size: 0.82rem; font-weight: 700; white-space: nowrap; }
-  .sched-side { color: #a9a4c9; font-size: 0.8rem; text-decoration: none; padding: 0.2rem 0.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; }
+  .sched-main:hover strong { color: #ff5fa2; }
+  .sched-when { color: #8f8f97; font-size: 0.82rem; }
+  .sched-left { color: #c9c9cf; font-size: 0.82rem; font-weight: 700; white-space: nowrap; }
+  .sched-side { color: #8f8f97; font-size: 0.8rem; text-decoration: none; padding: 0.2rem 0.5rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; }
   .sched-list li .bookmark-btn { position: absolute; top: 50%; right: 0.5rem; transform: translateY(-50%); }
-  .sched-empty { color: #a9a4c9; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px; margin: 0 0 1.2rem; }
+  .sched-empty { color: #8f8f97; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; margin: 0 0 1.2rem; }
   .sched-more { margin: 0 0 1.5rem; font-size: 0.9rem; }
-  .sched-more a { color: #ff8fbe; }
-  .intro { color: #d9d6ee; line-height: 1.7; }
+  .sched-more a { color: #ff5fa2; }
+  .intro { color: #c4c4c8; line-height: 1.7; }
   .countdown-banner {
     margin: 1rem 0;
     padding: 0.85rem 1.1rem;
-    border-radius: 10px;
+    border-radius: 8px;
     background: rgba(255, 95, 162, 0.14);
     color: #ff8fc0;
     font-weight: 700;
@@ -240,7 +240,7 @@ const jsonLd = {
     padding: 2rem 1.5rem;
     background: rgba(20, 20, 30, 0.9);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
+    border-radius: 8px;
     text-align: center;
   }
   .clock-display {
@@ -251,11 +251,11 @@ const jsonLd = {
     letter-spacing: 0.02em;
     font-variant-numeric: tabular-nums;
   }
-  .clock-date { margin-top: 0.4rem; color: #a9a4c9; font-size: 0.95rem; }
-  .sync-status { margin-top: 0.9rem; font-size: 0.85rem; color: #6ee7ff; }
+  .clock-date { margin-top: 0.4rem; color: #8f8f97; font-size: 0.95rem; }
+  .sync-status { margin-top: 0.9rem; font-size: 0.85rem; color: #c9c9cf; }
   .sync-status.is-error { color: #ffb84c; }
-  .calibrate { margin: 1rem 0; padding: 0.9rem 1.1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
-  .calibrate summary { cursor: pointer; font-weight: 700; color: #f5f3ff; }
+  .calibrate { margin: 1rem 0; padding: 0.9rem 1.1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .calibrate summary { cursor: pointer; font-weight: 700; color: #ededea; }
   .calibrate-row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-top: 0.7rem; }
   .calibrate-row input {
     padding: 0.5rem 0.7rem;
@@ -270,18 +270,18 @@ const jsonLd = {
     border-radius: 8px;
     border: none;
     background: var(--accent, #ff5fa2);
-    color: #1a1424;
+    color: #151517;
     font-weight: 700;
     cursor: pointer;
   }
-  .platform-help { margin: 0 0 0.8rem; color: #a9a4c9; font-size: 0.88rem; }
+  .platform-help { margin: 0 0 0.8rem; color: #8f8f97; font-size: 0.88rem; }
   .platform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin: 0 0 0.5rem; }
   @media (max-width: 480px) { .platform-grid { grid-template-columns: 1fr; } }
   .platform-item {
     display: flex;
     align-items: stretch;
     gap: 0.4rem;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
   }
   .platform-select {
@@ -290,77 +290,77 @@ const jsonLd = {
     align-items: center;
     gap: 0.4rem;
     padding: 0.8rem 1rem;
-    border-radius: 10px;
+    border-radius: 8px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
-    color: #f5f3ff;
+    color: #ededea;
     font-weight: 700;
     font-size: 0.95rem;
     cursor: pointer;
     text-align: left;
   }
-  .platform-select .platform-check { opacity: 0; color: #101018; }
+  .platform-select .platform-check { opacity: 0; color: #0e0e10; }
   .platform-select[aria-pressed="true"] {
-    background: linear-gradient(120deg, #ff5fa2, #ff8fbe);
+    background: #ff5fa2;
     border-color: transparent;
-    color: #101018;
+    color: #0e0e10;
   }
   .platform-select[aria-pressed="true"] .platform-check { opacity: 1; }
   .platform-open {
     display: flex;
     align-items: center;
     padding: 0 0.85rem;
-    border-radius: 10px;
+    border-radius: 8px;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.1);
-    color: #a9a4c9;
+    color: #8f8f97;
     text-decoration: none;
     font-size: 0.82rem;
     white-space: nowrap;
   }
-  .platform-open:hover { color: #6ee7ff; border-color: rgba(110,231,255,0.4); }
-  .platform-pages { margin: 0 0 1.5rem; font-size: 0.85rem; color: #a9a4c9; }
-  .platform-pages a { color: #ff8fbe; }
+  .platform-open:hover { color: #c9c9cf; border-color: rgba(255,255,255,0.4); }
+  .platform-pages { margin: 0 0 1.5rem; font-size: 0.85rem; color: #8f8f97; }
+  .platform-pages a { color: #ff5fa2; }
   .platform-active-note {
     margin: 0 0 1.5rem;
     font-size: 0.85rem;
-    color: #ff8fbe;
+    color: #ff5fa2;
     font-weight: 600;
   }
   .clock-stage { position: relative; }
-  .clock-stage.is-focus { position: fixed; inset: 0; z-index: 1000; background: #0b0b12; display: flex; flex-direction: column; justify-content: center; padding: 1rem; overflow: auto; }
+  .clock-stage.is-focus { position: fixed; inset: 0; z-index: 1000; background: #0e0e10; display: flex; flex-direction: column; justify-content: center; padding: 1rem; overflow: auto; }
   .clock-stage.is-focus .clock-display { font-size: clamp(1.8rem, 9vw, 6.5rem); white-space: nowrap; }
   .clock-stage.is-focus .clock-card { padding: 1.5rem 0.75rem; }
   .clock-stage.is-focus .countdown-banner { font-size: clamp(1.1rem, 5vw, 2.2rem); }
   .clock-stage.is-focus .cd-time { font-size: clamp(1.6rem, 8vw, 4rem); display: block; margin: 0.3rem 0 0; }
-  .focus-close { position: absolute; top: 0.6rem; right: 0.8rem; z-index: 2; background: rgba(255,255,255,0.1); color: #f5f3ff; border: 0; border-radius: 999px; width: 2.2rem; height: 2.2rem; font-size: 1rem; cursor: pointer; }
+  .focus-close { position: absolute; top: 0.6rem; right: 0.8rem; z-index: 2; background: rgba(255,255,255,0.1); color: #ededea; border: 0; border-radius: 6px; width: 2.2rem; height: 2.2rem; font-size: 1rem; cursor: pointer; }
   .countdown-banner.is-urgent { background: rgba(255, 70, 70, 0.22); color: #ff8a8a; animation: urgent-pulse 1s ease-in-out infinite; }
   .countdown-banner.is-open { background: rgba(80, 220, 140, 0.2); color: #7dffb6; }
   @keyframes urgent-pulse { 50% { background: rgba(255, 70, 70, 0.4); } }
   .clock-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; }
-  .tool-btn { padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.86rem; font-weight: 700; color: #f5f3ff; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); cursor: pointer; }
-  .tool-btn[aria-pressed="true"] { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
-  .tool-note { margin: -0.4rem 0 1rem; color: #a9a4c9; font-size: 0.78rem; line-height: 1.5; }
-  .custom-open { margin: 0 0 1.2rem; padding: 0.8rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
-  .custom-open summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
+  .tool-btn { padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.86rem; font-weight: 700; color: #ededea; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); cursor: pointer; }
+  .tool-btn[aria-pressed="true"] { background: #ff5fa2; color: #0e0e10; border-color: transparent; }
+  .tool-note { margin: -0.4rem 0 1rem; color: #8f8f97; font-size: 0.78rem; line-height: 1.5; }
+  .custom-open { margin: 0 0 1.2rem; padding: 0.8rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .custom-open summary { cursor: pointer; font-weight: 700; color: #ededea; font-size: 0.94rem; }
   .custom-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; }
-  .custom-row input { flex: 1 1 10rem; min-width: 0; padding: 0.55rem 0.7rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18); background: rgba(0,0,0,0.3); color: #f5f3ff; font-size: 0.9rem; }
-  .custom-row button { padding: 0.55rem 1.1rem; border-radius: 8px; border: 0; font-weight: 700; color: #101018; background: linear-gradient(120deg, #ff5fa2, #ff8fbe); cursor: pointer; }
-  .custom-help { margin: 0.6rem 0 0; color: #a9a4c9; font-size: 0.8rem; }
+  .custom-row input { flex: 1 1 10rem; min-width: 0; padding: 0.55rem 0.7rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18); background: rgba(0,0,0,0.3); color: #ededea; font-size: 0.9rem; }
+  .custom-row button { padding: 0.55rem 1.1rem; border-radius: 8px; border: 0; font-weight: 700; color: #0e0e10; background: #ff5fa2; cursor: pointer; }
+  .custom-help { margin: 0.6rem 0 0; color: #8f8f97; font-size: 0.8rem; }
   .guide { margin: 1.5rem 0 2rem; }
   .guide h2 { margin-top: 0; }
   .guide-list { display: flex; flex-direction: column; gap: 0.5rem; }
-  .guide-item { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 0.8rem 1rem; }
-  .guide-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
+  .guide-item { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 0.8rem 1rem; }
+  .guide-item summary { cursor: pointer; font-weight: 700; color: #ededea; font-size: 0.94rem; }
   .guide-item ul { margin: 0.6rem 0 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.35rem; }
-  .guide-item li { color: #cfcbe8; font-size: 0.9rem; line-height: 1.55; }
-  .guide-item a, .guide-note a { color: #ff8fbe; }
-  .guide-note { margin: 0.7rem 0 0; color: #a9a4c9; font-size: 0.82rem; }
+  .guide-item li { color: #c4c4c8; font-size: 0.9rem; line-height: 1.55; }
+  .guide-item a, .guide-note a { color: #ff5fa2; }
+  .guide-note { margin: 0.7rem 0 0; color: #8f8f97; font-size: 0.82rem; }
   .faq { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
-  .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
-  .faq-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
-  .faq-item p { margin: 0.6rem 0 0; color: #a9a4c9; font-size: 0.88rem; line-height: 1.6; }
-  .disclaimer { margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.82rem; line-height: 1.6; }
+  .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .faq-item summary { cursor: pointer; font-weight: 700; color: #ededea; font-size: 0.94rem; }
+  .faq-item p { margin: 0.6rem 0 0; color: #8f8f97; font-size: 0.88rem; line-height: 1.6; }
+  .disclaimer { margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #8f8f97; font-size: 0.82rem; line-height: 1.6; }
 </style>
 
 <script>
@@ -461,7 +461,7 @@ const jsonLd = {
       } catch { /* 소리를 못 켜는 환경이면 화면 표시만 */ }
     }
     btn.setAttribute('aria-pressed', String(soundOn));
-    btn.textContent = soundOn ? '🔔 소리·진동 켜짐 (3초 전부터)' : '🔔 소리·진동 꺼짐';
+    btn.textContent = soundOn ? '소리·진동 켜짐 (3초 전부터)' : '소리·진동 꺼짐';
   });
 
   let lastBeepSec = -1;
@@ -537,7 +537,7 @@ const jsonLd = {
     try {
       await navigator.clipboard.writeText(url);
       shareBtn.textContent = '✓ 복사됐어요';
-      setTimeout(() => { shareBtn.textContent = '🔗 링크 복사'; }, 1800);
+      setTimeout(() => { shareBtn.textContent = '링크 복사'; }, 1800);
     } catch { /* 복사 불가 환경이면 주소창 링크를 직접 복사 */ }
   });
 

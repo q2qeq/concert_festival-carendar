@@ -8,7 +8,7 @@ const { videos } = Astro.props;
 ---
 {videos.length > 0 && (
   <section class="yt-box">
-    <h2>▶ 직관냥이 찾은 영상</h2>
+    <h2>직관냥이 찾은 영상</h2>
     <div class="yt-grid">
       {videos.map((v) => (
         <figure class="yt-item">
@@ -32,11 +32,11 @@ const { videos } = Astro.props;
 )}
 <style>
   .yt-box { margin: 1.75rem 0; }
-  .yt-box h2 { margin: 0 0 0.8rem; font-size: 1.05rem; color: #e5e2f7; }
+  .yt-box h2 { margin: 0 0 0.8rem; font-size: 1.05rem; color: #dcdcd8; }
   .yt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
-  .yt-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+  .yt-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; }
   .yt-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .yt-item figcaption { margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.15rem; }
-  .yt-item strong { color: #f5f3ff; font-size: 0.9rem; }
-  .yt-note { color: #a9a4c9; font-size: 0.8rem; }
+  .yt-item strong { color: #ededea; font-size: 0.9rem; }
+  .yt-note { color: #8f8f97; font-size: 0.8rem; }
 </style>

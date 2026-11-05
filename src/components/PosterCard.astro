@@ -43,13 +43,13 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
         <div class="poster-card-placeholder" style="display:none">
-          <span class="poster-card-placeholder-icon" aria-hidden="true">🎫</span>
+          <span class="poster-card-placeholder-icon" aria-hidden="true"></span>
           <span>포스터 준비중</span>
         </div>
       </>
     ) : (
       <div class="poster-card-placeholder">
-        <span class="poster-card-placeholder-icon" aria-hidden="true">🎫</span>
+        <span class="poster-card-placeholder-icon" aria-hidden="true"></span>
         <span>포스터 준비중</span>
       </div>
     )}
@@ -61,7 +61,7 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
       aria-pressed="false"
     >♡</button>
     {buzzing && (
-      <div class="poster-buzz-banner">🔥 {buzzAct ? `${buzzAct} 화제` : '지금 화제'}</div>
+      <div class="poster-buzz-banner">{buzzAct ? `${buzzAct} 화제` : '지금 화제'}</div>
     )}
   </div>
   <div class="poster-card-body">
@@ -84,16 +84,15 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     flex-direction: column;
     text-decoration: none;
     color: inherit;
-    border-radius: 14px;
+    border-radius: 8px;
     overflow: hidden;
     background: var(--card);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
     transition: transform 0.15s, box-shadow 0.15s;
   }
-  .poster-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,0.4); }
+  .poster-card:hover { transform: translateY(-3px);}
   .poster-card:hover h3 { color: #ff5fa2; }
-  .poster-card.is-buzzing { box-shadow: 0 6px 18px rgba(0,0,0,0.3), 0 0 0 1.5px rgba(255,95,162,0.5); }
-  .poster-card.is-buzzing:hover { box-shadow: 0 12px 26px rgba(0,0,0,0.4), 0 0 0 1.5px rgba(255,95,162,0.7); }
+  .poster-card.is-buzzing {}
+  .poster-card.is-buzzing:hover {}
   .poster-card-frame {
     position: relative;
     aspect-ratio: 3 / 4;
@@ -108,18 +107,17 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     gap: 0.4rem;
     width: 100%;
     height: 100%;
-    color: #7d78a0;
+    color: #6f6f77;
     font-size: 0.82rem;
     font-weight: 600;
-    background: repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 10px, rgba(255,255,255,0.015) 10px 20px);
+    background: #161619;
   }
   .poster-card-placeholder-icon { font-size: 1.8rem; opacity: 0.6; }
   .poster-dday {
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
-    background: rgba(16, 16, 24, 0.78);
-    backdrop-filter: blur(2px);
+    background: rgba(14,14,16, 0.78);
   }
   .poster-buzz-banner {
     position: absolute;
@@ -130,8 +128,8 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     text-align: center;
     font-size: 0.72rem;
     font-weight: 900;
-    color: #101018;
-    background: linear-gradient(90deg, #ffd166, #ff5fa2);
+    color: #0e0e10;
+    background: #ff5fa2;
     padding: 0.3rem 0.35rem;
     line-height: 1.2;
   }
@@ -139,7 +137,7 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     position: absolute;
     top: 0.35rem;
     right: 0.35rem;
-    background: rgba(16,16,24,0.55);
+    background: rgba(14,14,16,0.55);
     border-radius: 50%;
     width: 1.9rem;
     height: 1.9rem;
@@ -161,17 +159,17 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .poster-card-meta { margin: 0 0 0.4rem; color: #a9a4c9; font-size: 0.8rem; }
+  .poster-card-meta { margin: 0 0 0.4rem; color: #8f8f97; font-size: 0.8rem; }
   .poster-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .ticket-tag, .announced-tag, .fresh-tag, .status-tag, .difficulty-tag {
     font-size: 0.65rem;
     padding: 0.16rem 0.45rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
-  .ticket-tag { color: #6ee7ff; border: 1px solid rgba(110,231,255,0.4); }
-  .announced-tag { color: #6ee7ff; border: 1px dashed rgba(110,231,255,0.5); }
-  .fresh-tag { font-weight: 700; color: #101018; background: linear-gradient(120deg, #ff5fa2, #ff8fbe); }
+  .ticket-tag { color: #c9c9cf; border: 1px solid rgba(255,255,255,0.4); }
+  .announced-tag { color: #c9c9cf; border: 1px dashed rgba(255,255,255,0.5); }
+  .fresh-tag { font-weight: 700; color: #0e0e10; background: #ff5fa2; }
   .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); }
   .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); }
   .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); }

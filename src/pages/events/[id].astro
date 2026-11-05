@@ -205,14 +205,14 @@ const jsonLd = {
     <header class={`event-header${buzzing ? ' is-buzzing' : ''}`}>
       {buzzing && (
         <span class="buzz-ribbon">
-          🔥 {buzzHeadlineAct ? `${buzzHeadlineAct} 화제` : '화제의 공연'}
+          {buzzHeadlineAct ? `${buzzHeadlineAct} 화제` : '화제의 공연'}
         </span>
       )}
       <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
       <div>
         <h1>{event.artist}</h1>
         <p class="meta">{dateLabel} · {event.venue} ({event.city})</p>
-        {lastUpdated && <p class="last-updated">🕒 최근 업데이트 {lastUpdated.slice(5).replace('-', '.')}</p>}
+        {lastUpdated && <p class="last-updated">최근 업데이트 {lastUpdated.slice(5).replace('-', '.')}</p>}
         {event.description && <p class="event-description">{event.description}</p>}
       </div>
     </header>
@@ -288,7 +288,7 @@ const jsonLd = {
       )}
       <a class="ab-btn" href="#sightline">구역별 시야</a>
       {status === 'scheduled' && !isPast && (
-        <a class="ab-btn" href={event.ticketOpenAt && new Date(event.ticketOpenAt).getTime() > Date.now() ? `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}` : '/ticketing-clock'}>⏱ 티켓팅 시계</a>
+        <a class="ab-btn" href={event.ticketOpenAt && new Date(event.ticketOpenAt).getTime() > Date.now() ? `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}` : '/ticketing-clock'}>티켓팅 시계</a>
       )}
       {showShuttleSection && (
         <a class="ab-btn" href="#shuttle">셔틀버스</a>
@@ -323,7 +323,7 @@ const jsonLd = {
         <h2>라인업{lineupTotal > 0 ? ` (${lineupTotal}팀)` : ''}</h2>
         {event.festivalHighlight && event.festivalHighlight.length > 0 && (
           <div class="lineup-highlight-strip">
-            <p class="lineup-highlight-kicker"><Mascot size={26} pose="cheer" class="lineup-highlight-mascot" />🔥 지금 가장 화제인 라인업</p>
+            <p class="lineup-highlight-kicker"><Mascot size={26} pose="cheer" class="lineup-highlight-mascot" />지금 가장 화제인 라인업</p>
             {event.festivalHighlight.map((h) => (
               <div class="lineup-highlight-item">
                 <span class="lineup-highlight-act">{h.act}</span>
@@ -536,35 +536,30 @@ const jsonLd = {
 
 <style>
   .issue-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
-  .issue-links a { color: #6ee7ff; text-decoration: none; font-weight: 600; }
+  .issue-links a { color: #c9c9cf; text-decoration: none; font-weight: 600; }
   .issue-links a:hover { text-decoration: underline; }
-  .issue-links small { margin-left: 0.5rem; color: #a9a4c9; }
-  .breadcrumb a { color: #a9a4c9; font-size: 0.9rem; text-decoration: none; }
+  .issue-links small { margin-left: 0.5rem; color: #8f8f97; }
+  .breadcrumb a { color: #8f8f97; font-size: 0.9rem; text-decoration: none; }
   .event-header { display: flex; align-items: center; gap: 1.25rem; margin: 1.5rem 0; }
   .dday-badge.big { font-size: 0.95rem; padding: 0.4rem 0.75rem; min-width: 3.75rem; }
   .event-header { position: relative; flex-wrap: wrap; }
   .event-header.is-buzzing {
     padding: 1rem 1.1rem 0.85rem;
-    background: linear-gradient(120deg, rgba(255, 95, 162, 0.16), rgba(255, 209, 102, 0.08));
-    border: 1px solid rgba(255, 95, 162, 0.35);
-    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
   }
   .buzz-ribbon {
-    position: absolute;
-    top: -0.7rem;
-    left: 1rem;
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #101018;
-    background: linear-gradient(120deg, #ffd166, #ff5fa2);
-    padding: 0.28rem 0.75rem;
-    border-radius: 999px;
-    box-shadow: 0 4px 14px rgba(255, 95, 162, 0.35);
+    flex: 0 0 100%;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #ff5fa2;
   }
   h1 { margin: 0 0 0.25rem; font-size: 1.7rem; }
-  .meta { margin: 0; color: #f5f3ff; font-weight: 600; font-size: 1.02rem; }
-  .event-description { margin: 0.5rem 0 0; color: #d8d5ef; font-size: 0.95rem; line-height: 1.6; }
-  .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.85rem; }
+  .meta { margin: 0; color: #ededea; font-weight: 600; font-size: 1.02rem; }
+  .event-description { margin: 0.5rem 0 0; color: #c4c4c8; font-size: 0.95rem; line-height: 1.6; }
+  .disclaimer { margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #8f8f97; font-size: 0.85rem; }
   .status-banner {
     margin: 1rem 0;
     padding: 0.75rem 1rem;
@@ -574,18 +569,17 @@ const jsonLd = {
   }
   .status-postponed { background: rgba(255, 184, 76, 0.14); color: #ffb84c; }
   .status-cancelled { background: rgba(255, 95, 95, 0.14); color: #ff6b6b; }
-  .status-announced { background: rgba(110, 231, 255, 0.14); color: #6ee7ff; }
+  .status-announced { background: rgba(255,255,255, 0.14); color: #c9c9cf; }
   .status-announced .clock-link { color: #ff5fa2; font-weight: 800; text-decoration: none; white-space: nowrap; }
   .status-announced .clock-link:hover { text-decoration: underline; }
-  .last-updated { margin: 0.4rem 0 0; font-size: 0.8rem; color: #a9a4c9; }
+  .last-updated { margin: 0.4rem 0 0; font-size: 0.8rem; color: #8f8f97; }
   .poster {
     display: block;
     width: 100%;
     max-width: 440px;
     height: auto;
-    border-radius: 12px;
+    border-radius: 8px;
     margin: 1.5rem 0 0;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 
   /* Quick actions bar - sticks under the site header so 캘린더/찜/티켓팅 are
@@ -600,11 +594,9 @@ const jsonLd = {
     gap: 0.55rem;
     margin: 1.1rem 0;
     padding: 0.6rem;
-    background: rgba(16, 16, 24, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(14,14,16, 0.9);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px;
+    border-radius: 8px;
   }
   @media (max-width: 640px) {
     /* 모바일: 칩이 3줄이라 고정하면 화면의 1/6을 덮는다 - 고정 해제, 포스터보다 위에 배치 */
@@ -616,17 +608,17 @@ const jsonLd = {
     gap: 0.3rem;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #f5f3ff;
+    color: #ededea;
     background: rgba(255,255,255,0.07);
     border: 1px solid rgba(255,255,255,0.14);
     padding: 0.45rem 0.85rem;
-    border-radius: 999px;
+    border-radius: 6px;
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
   }
   .ab-btn:hover { background: rgba(255,255,255,0.13); }
-  .ab-primary { background: #ff5fa2; color: #101018; border-color: #ff5fa2; }
+  .ab-primary { background: #ff5fa2; color: #0e0e10; border-color: #ff5fa2; }
   .ab-primary:hover { background: #ff7bb2; }
   .ab-bookmark { font-size: 1.05rem; padding: 0.4rem 0.7rem; margin-left: auto; }
   .ab-bookmark.is-bookmarked { color: #ff5fa2; border-color: rgba(255,95,162,0.5); }
@@ -641,7 +633,7 @@ const jsonLd = {
     align-items: center;
     gap: 0.75rem;
     margin: 3rem 0 0.5rem;
-    color: #7d78a0;
+    color: #6f6f77;
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -657,20 +649,20 @@ const jsonLd = {
 
   [id] { scroll-margin-top: 7rem; }
 
-  .section-h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #e5e2f7; }
+  .section-h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #dcdcd8; }
 
   .lineup-section { margin: 1.5rem 0; scroll-margin-top: 7rem; }
-  .lineup-section h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #e5e2f7; }
+  .lineup-section h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #dcdcd8; }
   .lineup-days { display: flex; flex-direction: column; gap: 1.1rem; }
   .lineup-day-label {
     font-size: 0.85rem;
     margin: 0 0 0.5rem;
-    color: #ff8fbe;
+    color: #ff5fa2;
     font-weight: 700;
     display: inline-block;
     padding: 0.2rem 0.6rem;
     background: rgba(255, 95, 162, 0.12);
-    border-radius: 999px;
+    border-radius: 6px;
   }
   .lineup-list {
     columns: 2;
@@ -684,7 +676,7 @@ const jsonLd = {
   }
   .lineup-list li {
     break-inside: avoid;
-    color: #d8d5ef;
+    color: #c4c4c8;
     font-size: 0.92rem;
     padding: 0.4rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -692,7 +684,7 @@ const jsonLd = {
   .lineup-details summary {
     cursor: pointer;
     list-style: none;
-    color: #d8d5ef;
+    color: #c4c4c8;
     font-size: 0.92rem;
     line-height: 1.5;
     padding: 0.75rem 1rem;
@@ -703,35 +695,35 @@ const jsonLd = {
   .lineup-toggle-hint {
     display: block;
     margin-top: 0.35rem;
-    color: #ff8fbe;
+    color: #ff5fa2;
     font-weight: 600;
     font-size: 0.85rem;
   }
   .lineup-details[open] summary { border-radius: 8px 8px 0 0; margin-bottom: 0.75rem; }
   .lineup-details .lineup-list { padding: 0 0.25rem; }
-  .lineup-pending { color: #a9a4c9; font-size: 0.9rem; margin: 0; }
+  .lineup-pending { color: #8f8f97; font-size: 0.9rem; margin: 0; }
   .lineup-highlight-strip {
     margin: 0 0 1rem;
     padding: 0.85rem 1rem;
-    background: linear-gradient(120deg, rgba(255, 95, 162, 0.14), rgba(255, 209, 102, 0.07));
-    border: 1px solid rgba(255, 95, 162, 0.3);
-    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
-  .lineup-highlight-kicker { margin: 0; font-size: 0.8rem; font-weight: 800; color: #ffd166; display: flex; align-items: center; gap: 0.35rem; }
+  .lineup-highlight-kicker { margin: 0; font-size: 0.8rem; font-weight: 700; color: #ff5fa2; display: flex; align-items: center; gap: 0.35rem; }
   .lineup-highlight-mascot { display: inline-flex; }
   .lineup-highlight-item { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
   .lineup-highlight-act {
     font-weight: 800;
     font-size: 1.02rem;
     color: #fff;
-    background: rgba(255, 95, 162, 0.25);
+    background: rgba(255, 255, 255, 0.1);
     padding: 0.15rem 0.6rem;
-    border-radius: 999px;
+    border-radius: 4px;
   }
-  .lineup-highlight-reason { color: #e5e2f7; font-size: 0.88rem; }
+  .lineup-highlight-reason { color: #dcdcd8; font-size: 0.88rem; }
   .lineup-list li.is-highlight { color: #ffd7e9; font-weight: 700; }
   .lineup-star { color: #ffd166; margin-right: 0.15rem; }
 
@@ -756,9 +748,7 @@ const jsonLd = {
     gap: 0.2rem;
     background: rgba(24, 24, 38, 0.75);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    border-radius: 8px;
   }
   .event-toc a {
     display: block;
@@ -770,7 +760,7 @@ const jsonLd = {
     white-space: nowrap;
   }
   .event-toc a:hover { color: #fff; background: rgba(255,255,255,0.06); }
-  .event-toc a.active { color: #101018; background: var(--accent, #ff5fa2); font-weight: 700; }
+  .event-toc a.active { color: #fff; background: rgba(255,255,255,0.08); box-shadow: inset 2px 0 0 var(--accent, #ff5fa2); font-weight: 700; }
   @media (min-width: 1180px) {
     .event-toc { display: block; }
   }

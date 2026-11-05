@@ -62,7 +62,7 @@ const jsonLd = [
 
   <!-- 시작 화면: 플래시 게임처럼 바로 START -->
   <section id="start-screen" class="arcade" aria-label="티켓팅 연습 시작 화면">
-    <div class="arcade-title">🎫 티켓팅 연습</div>
+    <div class="arcade-title">티켓팅 연습</div>
     <div class="arcade-sub">서버 시간 보고 예매하기 → 대기열 → 빈 좌석 잡기</div>
     <ol class="steps">
       <li><b>①</b><span>서버 시간 보고<br />예매하기 3번</span></li>
@@ -107,7 +107,7 @@ const jsonLd = [
   <!-- 1단계: 모의 예매 사이트 -->
   <section id="stage-site" class="site" hidden aria-label="모의 예매 사이트">
     <div class="site-bar">
-      <span class="site-logo" id="site-logo">🎟 연습티켓</span>
+      <span class="site-logo" id="site-logo">연습티켓</span>
       <span class="srv">서버 시간 <b id="srv-time">--:--:--.---</b></span>
     </div>
     <div class="site-body">
@@ -156,89 +156,88 @@ const jsonLd = [
 </BaseLayout>
 
 <style>
-  .kicker { margin: -0.4rem 0 1rem; color: #a9a4c9; font-size: 0.9rem; }
-  .arcade { position: relative; text-align: center; padding: 2rem 1rem 1.6rem; border-radius: 16px; border: 2px solid rgba(255,95,162,0.5); background: radial-gradient(ellipse at 50% 0%, rgba(255,95,162,0.22), transparent 60%), linear-gradient(180deg, #1c1236, #120b25); box-shadow: 0 0 0 4px rgba(255,255,255,0.04), 0 12px 40px rgba(0,0,0,0.5); margin-bottom: 1.2rem; overflow: hidden; }
-  .arcade::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 2px, transparent 2px 4px); pointer-events: none; }
-  .arcade-title { font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; color: #fff; text-shadow: 0 0 18px rgba(255,95,162,0.9), 0 3px 0 #b3306f; }
-  .arcade-sub { margin: 0.5rem 0 1.2rem; color: #d9d6ee; font-weight: 700; }
+  .kicker { margin: -0.4rem 0 1rem; color: #8f8f97; font-size: 0.9rem; }
+  .arcade { position: relative; text-align: center; padding: 2rem 1rem 1.6rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.14); background: #151517; margin-bottom: 1.2rem; overflow: hidden; }
+  .arcade-title { font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; color: #fff;}
+  .arcade-sub { margin: 0.5rem 0 1.2rem; color: #c4c4c8; font-weight: 700; }
   .steps { list-style: none; display: flex; justify-content: center; gap: 0.6rem; margin: 0 0 1.2rem; padding: 0; flex-wrap: wrap; }
-  .steps li { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; border-radius: 10px; background: rgba(255,255,255,0.07); font-size: 0.82rem; color: #d9d6ee; line-height: 1.35; text-align: left; }
+  .steps li { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; border-radius: 8px; background: rgba(255,255,255,0.07); font-size: 0.82rem; color: #c4c4c8; line-height: 1.35; text-align: left; }
   .steps b { color: #ffd166; font-size: 1.2rem; }
   .plat { display: flex; justify-content: center; gap: 0.4rem; flex-wrap: wrap; margin: 0 0 1.3rem; }
-  .chip { padding: 0.4rem 0.85rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); background: transparent; color: #d9d6ee; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
-  .chip[aria-pressed="true"] { background: #ffd166; color: #1a1424; border-color: transparent; }
-  .start-btn { position: relative; z-index: 1; padding: 1rem 3.2rem; border: none; border-radius: 999px; font-size: 1.5rem; font-weight: 900; letter-spacing: 0.04em; color: #1a1424; background: linear-gradient(120deg, #ffd166, #ff5fa2); box-shadow: 0 6px 0 #a02c66, 0 10px 24px rgba(255,95,162,0.5); cursor: pointer; animation: bob 1.1s ease-in-out infinite; }
-  .start-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #a02c66; animation: none; }
+  .chip { padding: 0.4rem 0.85rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.22); background: transparent; color: #c4c4c8; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: #ffd166; color: #151517; border-color: transparent; }
+  .start-btn { position: relative; z-index: 1; padding: 1rem 3.2rem; border: none; border-radius: 6px; font-size: 1.5rem; font-weight: 900; letter-spacing: 0.04em; color: #151517; background: #ff5fa2;cursor: pointer; animation: bob 1.1s ease-in-out infinite; }
+  .start-btn:active { transform: translateY(4px);animation: none; }
   @keyframes bob { 50% { transform: translateY(-4px); } }
-  .arcade-best { margin-top: 1.1rem; color: #a9a4c9; font-size: 0.85rem; }
+  .arcade-best { margin-top: 1.1rem; color: #8f8f97; font-size: 0.85rem; }
   .arcade-best b { color: #ffd166; }
   .seo { margin-top: 1.8rem; }
   .seo h2 { font-size: 1.15rem; margin: 1.4rem 0 0.6rem; }
-  .seo p { color: #d9d6ee; line-height: 1.8; }
-  .seo a { color: #ff8fbe; }
+  .seo p { color: #c4c4c8; line-height: 1.8; }
+  .seo a { color: #ff5fa2; }
   .faq { display: flex; flex-direction: column; gap: 0.6rem; }
-  .faq-item { padding: 0.8rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
-  .faq-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.95rem; }
-  .faq-item p { margin: 0.6rem 0 0; color: #a9a4c9; font-size: 0.9rem; line-height: 1.7; }
-  .hud { display: flex; gap: 1.2rem; margin: 1rem 0 0.4rem; color: #a9a4c9; font-size: 0.92rem; flex-wrap: wrap; }
-  .hud b { color: #f5f3ff; }
-  .g-msg { min-height: 1.6rem; margin: 0.4rem 0 0.3rem; font-weight: 700; color: #ff8fbe; }
-  .g-feedback { min-height: 2.1rem; margin: 0 0 0.7rem; padding: 0.35rem 0.8rem; border-radius: 8px; font-weight: 800; font-size: 1rem; background: rgba(255,255,255,0.04); color: #a9a4c9; }
+  .faq-item { padding: 0.8rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .faq-item summary { cursor: pointer; font-weight: 700; color: #ededea; font-size: 0.95rem; }
+  .faq-item p { margin: 0.6rem 0 0; color: #8f8f97; font-size: 0.9rem; line-height: 1.7; }
+  .hud { display: flex; gap: 1.2rem; margin: 1rem 0 0.4rem; color: #8f8f97; font-size: 0.92rem; flex-wrap: wrap; }
+  .hud b { color: #ededea; }
+  .g-msg { min-height: 1.6rem; margin: 0.4rem 0 0.3rem; font-weight: 700; color: #ff5fa2; }
+  .g-feedback { min-height: 2.1rem; margin: 0 0 0.7rem; padding: 0.35rem 0.8rem; border-radius: 8px; font-weight: 800; font-size: 1rem; background: rgba(255,255,255,0.04); color: #8f8f97; }
   .g-feedback.good { color: #7ed957; background: rgba(126,217,87,0.12); }
-  .g-feedback.ok { color: #6ee7ff; background: rgba(110,231,255,0.1); }
+  .g-feedback.ok { color: #c9c9cf; background: rgba(255,255,255,0.1); }
   .g-feedback.slow { color: #ffb84c; background: rgba(255,184,76,0.12); }
   .g-feedback.warn { color: #ff7a7a; background: rgba(255,107,107,0.13); }
   .g-actions { display: flex; gap: 0.6rem; margin: 1rem 0; flex-wrap: wrap; }
-  .btn { padding: 0.65rem 1.2rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #f5f3ff; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
-  .btn.primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
+  .btn { padding: 0.65rem 1.2rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #ededea; font-weight: 700; cursor: pointer; font-size: 0.95rem; }
+  .btn.primary { background: #ff5fa2; color: #0e0e10; border-color: transparent; }
   .btn:disabled { opacity: 0.5; cursor: default; }
 
-  .site { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: #f4f4f7; color: #1a1a24; margin-bottom: 1rem; }
-  .site-bar { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; padding: 0.7rem 1rem; background: #1f2a44; color: #fff; }
+  .site { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: #f4f4f7; color: #151517; margin-bottom: 1rem; }
+  .site-bar { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; padding: 0.7rem 1rem; background: #1c1c20; color: #fff; }
   .site-logo { font-weight: 800; }
-  .srv { font-size: 0.82rem; color: #b8c4e8; }
+  .srv { font-size: 0.82rem; color: #c4c4c8; }
   .srv b { color: #fff; font-variant-numeric: tabular-nums; font-size: 1.05rem; }
   .site-body { padding: 1.4rem 1.2rem 1.6rem; text-align: center; }
-  .site-body h2 { margin: 0 0 0.3rem; font-size: 1.25rem; color: #1a1a24; }
+  .site-body h2 { margin: 0 0 0.3rem; font-size: 1.25rem; color: #151517; }
   .site-sub { margin: 0 0 1rem; color: #667; font-size: 0.88rem; }
   .site-open { margin: 0 0 1.1rem; font-size: 1rem; }
   .site-open b { font-size: 1.5rem; color: #d62d6f; font-variant-numeric: tabular-nums; }
-  .attempt-no { display: inline-block; margin-left: 0.4rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: #e7e9f2; color: #556; font-size: 0.78rem; font-weight: 700; }
-  .book { width: 100%; max-width: 360px; padding: 1rem; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 800; cursor: pointer; }
-  .book.is-wait { background: #c9ccd6; color: #fff; }
-  .book.is-open { background: #e0245e; color: #fff; box-shadow: 0 4px 14px rgba(224,36,94,0.45); }
+  .attempt-no { display: inline-block; margin-left: 0.4rem; padding: 0.1rem 0.5rem; border-radius: 6px; background: #e7e9f2; color: #556; font-size: 0.78rem; font-weight: 700; }
+  .book { width: 100%; max-width: 360px; padding: 1rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 800; cursor: pointer; }
+  .book.is-wait { background: #c4c4c8; color: #fff; }
+  .book.is-open { background: #e0245e; color: #fff;}
   .book.is-done { background: #2e7d4f; color: #fff; }
   .book.shake { animation: shake 0.3s; }
   @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
   .site-note { margin: 0.9rem 0 0; font-size: 0.84rem; color: #667; min-height: 1.2rem; }
-  .queue-box { margin: 1rem auto 0; max-width: 360px; padding: 0.9rem 1rem; border-radius: 10px; background: #1f2a44; color: #fff; line-height: 1.6; }
+  .queue-box { margin: 1rem auto 0; max-width: 360px; padding: 0.9rem 1rem; border-radius: 8px; background: #1c1c20; color: #fff; line-height: 1.6; }
   .queue-box b { color: #ffd166; font-size: 1.3rem; }
-  .queue-box small { color: #b8c4e8; display: block; margin-top: 0.3rem; }
+  .queue-box small { color: #c4c4c8; display: block; margin-top: 0.3rem; }
 
-  .grid { display: grid; grid-template-columns: repeat(16, 1fr); gap: 4px; padding: 0.8rem; background: rgba(255,255,255,0.05); border-radius: 12px; user-select: none; touch-action: manipulation; margin-bottom: 1rem; }
+  .grid { display: grid; grid-template-columns: repeat(16, 1fr); gap: 4px; padding: 0.8rem; background: rgba(255,255,255,0.05); border-radius: 8px; user-select: none; touch-action: manipulation; margin-bottom: 1rem; }
   /* 좌석은 스크립트가 만들기 때문에 Astro 스코프 스타일이 안 붙는다 - :global로 지정 */
   .grid :global(.seat) { aspect-ratio: 1; border-radius: 3px; border: none; padding: 0; margin: 0; min-width: 0; background: #6a4fd6; cursor: default; appearance: none; -webkit-appearance: none; }
-  .grid :global(.seat.open) { background: #7ed957; box-shadow: 0 0 8px #7ed957; cursor: pointer; animation: pulse 0.4s infinite alternate; }
+  .grid :global(.seat.open) { background: #7ed957;cursor: pointer; animation: pulse 0.4s infinite alternate; }
   .grid :global(.seat.got) { background: #ff5fa2; }
   .grid :global(.seat.lost) { background: #3b2f7a; }
   @keyframes pulse { to { transform: scale(1.15); } }
 
-  .log { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 12px; background: rgba(255,255,255,0.05); }
-  .log h2 { margin: 0 0 0.5rem; font-size: 1rem; color: #f5f3ff; }
-  .log ol { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.35rem; color: #d9d6ee; font-size: 0.9rem; line-height: 1.5; }
+  .log { margin: 1rem 0; padding: 0.9rem 1.1rem; border-radius: 8px; background: rgba(255,255,255,0.05); }
+  .log h2 { margin: 0 0 0.5rem; font-size: 1rem; color: #ededea; }
+  .log ol { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.35rem; color: #c4c4c8; font-size: 0.9rem; line-height: 1.5; }
   .log :global(.t-good) { color: #7ed957; font-weight: 800; }
-  .log :global(.t-ok) { color: #6ee7ff; font-weight: 800; }
+  .log :global(.t-ok) { color: #c9c9cf; font-weight: 800; }
   .log :global(.t-slow) { color: #ffb84c; font-weight: 800; }
   .log :global(.t-warn) { color: #ff7a7a; font-weight: 700; }
 
-  .result { margin-top: 1rem; padding: 1.1rem 1.2rem; border-radius: 12px; background: rgba(255,255,255,0.06); }
+  .result { margin-top: 1rem; padding: 1.1rem 1.2rem; border-radius: 8px; background: rgba(255,255,255,0.06); }
   .result h2 { margin: 0 0 0.4rem; }
-  .result p { margin: 0.3rem 0; color: #d9d6ee; line-height: 1.7; }
+  .result p { margin: 0.3rem 0; color: #c4c4c8; line-height: 1.7; }
   .rank { font-size: 1.15rem; font-weight: 800; color: #ffd166 !important; }
-  .tips { margin: 0.6rem 0 0; padding-left: 1.2rem; color: #d9d6ee; line-height: 1.7; }
+  .tips { margin: 0.6rem 0 0; padding-left: 1.2rem; color: #c4c4c8; line-height: 1.7; }
   .tips :global(li) { margin: 0.2rem 0; }
-  .after a { color: #ff8fbe; }
-  .disclaimer { margin-top: 1.5rem; color: #a9a4c9; font-size: 0.82rem; line-height: 1.6; }
+  .after a { color: #ff5fa2; }
+  .disclaimer { margin-top: 1.5rem; color: #8f8f97; font-size: 0.82rem; line-height: 1.6; }
 </style>
 
 <script>
@@ -329,7 +328,7 @@ const jsonLd = [
     document.querySelectorAll<HTMLButtonElement>('.chip').forEach((c) => {
       c.setAttribute('aria-pressed', String(c.dataset.plat === platform));
     });
-    $('site-logo').textContent = platform ? `🎟 ${PLATFORM_NAMES[platform]} 연습` : '🎟 연습티켓';
+    $('site-logo').textContent = platform ? `${PLATFORM_NAMES[platform]} 연습` : '연습티켓';
   }
   document.querySelectorAll<HTMLButtonElement>('.chip').forEach((c) => {
     c.addEventListener('click', () => {
@@ -352,16 +351,16 @@ const jsonLd = [
   }
   // 반응속도(ms) 판정. 버튼과 좌석은 허용 시간이 달라서 기준을 따로 둔다.
   function judgeBtn(ms: number): { tone: Tone; label: string } {
-    if (ms < 150) return { tone: 'good', label: '⚡ 번개같아요' };
-    if (ms < 300) return { tone: 'good', label: '👍 빨라요' };
-    if (ms < 600) return { tone: 'ok', label: '🙂 보통이에요' };
-    return { tone: 'slow', label: '🐢 늦었어요' };
+    if (ms < 150) return { tone: 'good', label: '번개같아요' };
+    if (ms < 300) return { tone: 'good', label: '빨라요' };
+    if (ms < 600) return { tone: 'ok', label: '보통이에요' };
+    return { tone: 'slow', label: '늦었어요' };
   }
   function judgeSeat(ms: number): { tone: Tone; label: string } {
-    if (ms < 350) return { tone: 'good', label: '⚡ 번개같아요' };
-    if (ms < 600) return { tone: 'good', label: '👍 빨라요' };
-    if (ms < 900) return { tone: 'ok', label: '🙂 보통이에요' };
-    return { tone: 'slow', label: '🐢 늦었어요' };
+    if (ms < 350) return { tone: 'good', label: '번개같아요' };
+    if (ms < 600) return { tone: 'good', label: '빨라요' };
+    if (ms < 900) return { tone: 'ok', label: '보통이에요' };
+    return { tone: 'slow', label: '늦었어요' };
   }
   function addLog(html: string) {
     const li = document.createElement('li');
@@ -436,7 +435,7 @@ const jsonLd = [
             bookBtn.classList.remove('shake'); void bookBtn.offsetWidth; bookBtn.classList.add('shake');
             const sec = ((openAt - now) / 1000).toFixed(2);
             siteNote.textContent = '아직 예매 시간이 아닙니다!';
-            feedback('warn', `⛔ ${sec}초 일찍 눌렀어요 (-${EARLY_PENALTY}) · 서버 시간이 ${fmtClock(openAt, false)}가 되면 누르세요`);
+            feedback('warn', `${sec}초 일찍 눌렀어요 (-${EARLY_PENALTY}) · 서버 시간이 ${fmtClock(openAt, false)}가 되면 누르세요`);
             return;
           }
           clicked = true;
@@ -451,15 +450,15 @@ const jsonLd = [
           setTimeout(finish, DBL_WINDOW_MS);
         } else if (now - (openAt + ms) <= DBL_WINDOW_MS) {
           dbl++;
-          feedback('warn', '⚠️ 더블클릭 감지! 실제 사이트에서는 중복 요청으로 대기열이 꼬일 수 있어요. 한 번만 누르세요 (감점은 없어요)');
+          feedback('warn', '더블클릭 감지! 실제 사이트에서는 중복 요청으로 대기열이 꼬일 수 있어요. 한 번만 누르세요 (감점은 없어요)');
         }
       };
       const giveUp = setInterval(() => {
         if (finished || clicked) { if (finished) clearInterval(giveUp); return; }
         if (Date.now() >= openAt + BTN_GIVEUP_MS) {
           clearInterval(giveUp);
-          siteNote.textContent = '너무 늦었어요 😭';
-          feedback('slow', '🐢 놓쳤어요! 오픈 4초가 지나도록 누르지 못했어요');
+          siteNote.textContent = '너무 늦었어요 ';
+          feedback('slow', '놓쳤어요! 오픈 4초가 지나도록 누르지 못했어요');
           finish();
         }
       }, 100);
@@ -499,9 +498,9 @@ const jsonLd = [
     stageEl.textContent = '대기열';
     msg.textContent = '예매 버튼 반응으로 대기 순번이 정해졌어요';
     queueBox.hidden = false;
-    const hint = q >= 0.66 ? '앞 순번이라 빈 좌석이 넉넉해요 😎'
-      : q >= 0.33 ? '중간 순번이라 빈 좌석이 보통이에요 🙂'
-      : '뒤쪽 순번이라 빈 좌석이 적고 금방 사라져요 😭';
+    const hint = q >= 0.66 ? '앞 순번이라 빈 좌석이 넉넉해요 '
+      : q >= 0.33 ? '중간 순번이라 빈 좌석이 보통이에요 '
+      : '뒤쪽 순번이라 빈 좌석이 적고 금방 사라져요 ';
     queueBox.innerHTML = `내 앞에 <b>${pos.toLocaleString()}명</b><small>${hint}</small><small>(연습용 시뮬레이션이에요)</small>`;
     addLog(`대기 순번 <b>${pos.toLocaleString()}번째</b> · ${hint}`);
     await sleep(2200);
@@ -535,7 +534,7 @@ const jsonLd = [
       if (!signaled) {
         early++;
         addScore(-SEAT_EARLY_PENALTY);
-        feedback('warn', `⛔ 신호 전에 눌렀어요! (-${SEAT_EARLY_PENALTY}) · 초록색이 뜰 때까지 기다리세요`);
+        feedback('warn', `신호 전에 눌렀어요! (-${SEAT_EARLY_PENALTY}) · 초록색이 뜰 때까지 기다리세요`);
         return;
       }
       if (seat.classList.contains('open')) {
@@ -552,13 +551,13 @@ const jsonLd = [
       } else if (seat.classList.contains('got')) {
         if (now - (gotAt.get(seat) ?? 0) <= DBL_WINDOW_MS) {
           dbl++;
-          feedback('warn', '⚠️ 더블클릭 감지! 이미 잡은 좌석이에요. 한 번이면 충분해요 (감점은 없어요)');
+          feedback('warn', '더블클릭 감지! 이미 잡은 좌석이에요. 한 번이면 충분해요 (감점은 없어요)');
         }
       } else {
         miss++;
         feedback('warn', seat.classList.contains('lost')
-          ? '😵 이미 다른 사람이 채간 좌석이에요 (오클릭)'
-          : '😵 매진된 좌석이에요 - 초록색만 누르세요 (오클릭)');
+          ? '이미 다른 사람이 채간 좌석이에요 (오클릭)'
+          : '매진된 좌석이에요 - 초록색만 누르세요 (오클릭)');
       }
     };
 
@@ -600,11 +599,11 @@ const jsonLd = [
   }
 
   function gradeFor(total: number) {
-    if (total >= 13000) return '🏆 피켓팅 신';
-    if (total >= 10000) return '🎫 티켓팅 고수';
-    if (total >= 6500) return '🙂 티켓팅 중수';
-    if (total >= 3500) return '🌱 티켓팅 초보';
-    return '😭 오늘은 손이 느렸어요';
+    if (total >= 13000) return '피켓팅 신';
+    if (total >= 10000) return '티켓팅 고수';
+    if (total >= 6500) return '티켓팅 중수';
+    if (total >= 3500) return '티켓팅 초보';
+    return '오늘은 손이 느렸어요';
   }
 
   // 결과 기반 맞춤 팁 (최대 2개)
@@ -633,10 +632,10 @@ const jsonLd = [
       if (!r.ok) return;
       const d = await r.json();
       if (d.estimated) {
-        rankEl.textContent = `🏅 상위 약 ${d.top}%`;
+        rankEl.textContent = `상위 약 ${d.top}%`;
         resultText = resultText.replace('\n나도', ` · 상위 약 ${d.top}%\n나도`);
       } else {
-        rankEl.textContent = `🏅 전체 ${d.total.toLocaleString()}명 중 상위 ${d.top}%`;
+        rankEl.textContent = `전체 ${d.total.toLocaleString()}명 중 상위 ${d.top}%`;
         resultText = resultText.replace('\n나도', ` · 상위 ${d.top}%\n나도`);
       }
       rankEl.hidden = false;
@@ -681,7 +680,7 @@ const jsonLd = [
     $('g-grade').textContent = grade;
     $('g-detail').textContent =
       `대기 ${pos.toLocaleString()}번째 · 예매 버튼 평균 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'}` +
-      ` · 좌석 ${stats.seatTotal}개 중 ${got}개 · 점수 ${score}점${isBest ? ' · 🎉 최고 기록!' : ''}`;
+      ` · 좌석 ${stats.seatTotal}개 중 ${got}개 · 점수 ${score}점${isBest ? ' · 최고 기록!' : ''}`;
     const tipsEl = $('g-tips');
     tipsEl.innerHTML = '';
     buildTips(btnAvg, seatAvg).forEach((t) => {
@@ -693,7 +692,7 @@ const jsonLd = [
     stageEl.textContent = '끝';
     msg.textContent = '끝! 아래 시도 기록과 팁을 확인하세요';
     feedback('', '');
-    resultText = `직관냥 ${platformLabel() ? platformLabel() + ' ' : ''}티켓팅 연습 ${grade} · 대기 ${pos.toLocaleString()}번째 · 예매 버튼 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'} · 좌석 ${got}/${stats.seatTotal} · ${score}점\n나도 해보기 👉 ${location.origin}/practice/`;
+    resultText = `직관냥 ${platformLabel() ? platformLabel() + ' ' : ''}티켓팅 연습 ${grade} · 대기 ${pos.toLocaleString()}번째 · 예매 버튼 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'} · 좌석 ${got}/${stats.seatTotal} · ${score}점\n나도 해보기 ${location.origin}/practice/`;
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     submitScore(score, got, seatAvg, btnAvg);
     startBtn.disabled = false;

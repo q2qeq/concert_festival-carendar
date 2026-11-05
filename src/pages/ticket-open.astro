@@ -45,17 +45,17 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
                 <a class="open-title" href={`/events/${e.id}/`}>{e.artist}</a>
                 <span class="open-left" data-left></span>
               </div>
-              <p class="open-meta">🎫 {e.ticketOpenDate ?? e.ticketOpenAt} · 공연 {shortDate(e.startDate)} · {e.venue}</p>
+              <p class="open-meta">{e.ticketOpenDate ?? e.ticketOpenAt} · 공연 {shortDate(e.startDate)} · {e.venue}</p>
               <div class="open-actions">
-                <a class="oa primary" href={clockHref(e)}>⏱ 시계</a>
-                <a class="oa" href={ticketOpenGoogleUrl(alertOf(e))} target="_blank" rel="noopener noreferrer">🔔 구글</a>
-                <a class="oa" href={icsDataUri(ticketOpenIcs([alertOf(e)]))} download={`${e.id}-ticket-open.ics`}>🔔 .ics</a>
+                <a class="oa primary" href={clockHref(e)}>시계</a>
+                <a class="oa" href={ticketOpenGoogleUrl(alertOf(e))} target="_blank" rel="noopener noreferrer">구글</a>
+                <a class="oa" href={icsDataUri(ticketOpenIcs([alertOf(e)]))} download={`${e.id}-ticket-open.ics`}>.ics</a>
                 <button class="bookmark-btn" type="button" data-bookmark-id={e.id} aria-label={`${e.artist} 찜하기`} aria-pressed="false">♡</button>
               </div>
             </li>
           ))}
         </ul>
-        <p class="bulk"><button type="button" id="bulk-ics" class="oa primary">🔔 곧 오픈 전체를 캘린더에 저장 (.ics)</button> <small>하루 전·10분 전에 알려줘요</small></p>
+        <p class="bulk"><button type="button" id="bulk-ics" class="oa primary">곧 오픈 전체를 캘린더에 저장 (.ics)</button> <small>하루 전·10분 전에 알려줘요</small></p>
       </>
     ) : (
       <p class="empty">지금 확인된 오픈 예정은 없어요. 매일 예매처 공지를 확인해서 새 오픈이 보이면 바로 올려요.</p>
@@ -95,29 +95,29 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
 </BaseLayout>
 
 <style>
-  .intro { color: #d9d6ee; line-height: 1.7; }
-  .intro a { color: #ff8fbe; }
+  .intro { color: #c4c4c8; line-height: 1.7; }
+  .intro a { color: #ff5fa2; }
   h2 { margin: 1.6rem 0 0.7rem; }
   .open-list { list-style: none; margin: 0 0 0.9rem; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
-  .open-list li { padding: 0.8rem 0.95rem; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+  .open-list li { padding: 0.8rem 0.95rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
   .open-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
-  .open-title { color: #f5f3ff; font-weight: 800; font-size: 1rem; text-decoration: none; min-width: 0; }
-  .open-title:hover { color: #ff8fbe; }
-  .open-left { color: #6ee7ff; font-weight: 700; font-size: 0.86rem; white-space: nowrap; }
-  .open-meta { margin: 0.3rem 0 0.6rem; color: #a9a4c9; font-size: 0.84rem; line-height: 1.5; }
+  .open-title { color: #ededea; font-weight: 800; font-size: 1rem; text-decoration: none; min-width: 0; }
+  .open-title:hover { color: #ff5fa2; }
+  .open-left { color: #c9c9cf; font-weight: 700; font-size: 0.86rem; white-space: nowrap; }
+  .open-meta { margin: 0.3rem 0 0.6rem; color: #8f8f97; font-size: 0.84rem; line-height: 1.5; }
   .open-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
-  .oa { padding: 0.35rem 0.8rem; border-radius: 999px; font-size: 0.82rem; font-weight: 700; text-decoration: none; color: #f5f3ff; border: 1px solid rgba(255,255,255,0.18); background: transparent; cursor: pointer; }
-  .oa.primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
+  .oa { padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.18); background: transparent; cursor: pointer; }
+  .oa.primary { background: #ff5fa2; color: #0e0e10; border-color: transparent; }
   .open-actions .bookmark-btn { margin-left: auto; }
   .bulk { margin: 0 0 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-  .bulk small { color: #a9a4c9; }
+  .bulk small { color: #8f8f97; }
   .plain-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
-  .plain-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; padding: 0.55rem 0.85rem; background: rgba(255,255,255,0.04); border-radius: 10px; }
-  .plain-list a { color: #f5f3ff; text-decoration: none; }
-  .plain-list a:hover { color: #ff8fbe; }
-  .plain-list span { color: #a9a4c9; font-size: 0.84rem; }
-  .empty { color: #a9a4c9; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px; }
-  .note { margin-top: 1.8rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #a9a4c9; font-size: 0.82rem; line-height: 1.6; }
+  .plain-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; padding: 0.55rem 0.85rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
+  .plain-list a { color: #ededea; text-decoration: none; }
+  .plain-list a:hover { color: #ff5fa2; }
+  .plain-list span { color: #8f8f97; font-size: 0.84rem; }
+  .empty { color: #8f8f97; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
+  .note { margin-top: 1.8rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #8f8f97; font-size: 0.82rem; line-height: 1.6; }
 </style>
 
 <script>

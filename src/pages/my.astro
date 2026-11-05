@@ -17,7 +17,7 @@ const list = upcomingEvents();
   <p class="intro">♡로 찜한 공연을 모아서, 티켓오픈이 가까운 순 → 공연일이 가까운 순으로 보여드려요. 찜 목록은 이 기기(브라우저)에만 저장되고 서버로 보내지지 않아요.</p>
 
   <p id="my-alert" class="my-alert" hidden>
-    <button type="button" id="my-alert-btn">🔔 찜한 공연 티켓오픈 알림 저장 (.ics)</button>
+    <button type="button" id="my-alert-btn">찜한 공연 티켓오픈 알림 저장 (.ics)</button>
     <small>캘린더 앱에 넣으면 오픈 하루 전·10분 전에 알려줘요.</small>
   </p>
 
@@ -25,7 +25,7 @@ const list = upcomingEvents();
     {list.map((e) => (
       <div class="my-item" data-id={e.id} data-start={e.startDate} data-open-at={e.ticketOpenAt ?? ''} data-artist={e.artist} hidden>
         {e.ticketOpenAt && (
-          <p class="my-open" data-my-open>🎫 티켓오픈 {e.ticketOpenDate ?? e.ticketOpenAt}</p>
+          <p class="my-open" data-my-open>티켓오픈 {e.ticketOpenDate ?? e.ticketOpenAt}</p>
         )}
         <EventCard event={e} />
       </div>
@@ -39,14 +39,14 @@ const list = upcomingEvents();
 </BaseLayout>
 
 <style>
-  .intro { color: #d9d6ee; line-height: 1.7; }
+  .intro { color: #c4c4c8; line-height: 1.7; }
   .my-list { margin-top: 1rem; }
-  .my-open { margin: 0.6rem 0 0; font-size: 0.82rem; font-weight: 700; color: #6ee7ff; }
+  .my-open { margin: 0.6rem 0 0; font-size: 0.82rem; font-weight: 700; color: #c9c9cf; }
   .my-alert { margin: 0.8rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem; }
-  .my-alert button { padding: 0.5rem 0.9rem; border-radius: 999px; font-size: 0.88rem; font-weight: 700; color: #101018; background: linear-gradient(120deg, #ff5fa2, #ff8fbe); border: 0; cursor: pointer; }
-  .my-alert small { color: #a9a4c9; }
-  .my-empty { margin-top: 1.5rem; padding: 1.2rem; background: rgba(255,255,255,0.05); border-radius: 12px; color: #d9d6ee; line-height: 1.7; }
-  .my-empty a { color: #ff8fbe; }
+  .my-alert button { padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.88rem; font-weight: 700; color: #0e0e10; background: #ff5fa2; border: 0; cursor: pointer; }
+  .my-alert small { color: #8f8f97; }
+  .my-empty { margin-top: 1.5rem; padding: 1.2rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #c4c4c8; line-height: 1.7; }
+  .my-empty a { color: #ff5fa2; }
 </style>
 
 <script>

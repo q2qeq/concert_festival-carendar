@@ -13,7 +13,7 @@ function fmt(iso: string) {
   <div class="hero-intro">
     <Mascot size={92} pose="wave" />
     <div class="hero-bubble">
-      <p class="hero-bubble-text">공연 하나만 눌러도 예매부터 시야·셔틀·캘린더까지 다 나온다냥 🐾</p>
+      <p class="hero-bubble-text">공연 하나만 눌러도 예매부터 시야·셔틀·캘린더까지 다 나온다냥</p>
     </div>
   </div>
 </section>
@@ -23,7 +23,7 @@ function fmt(iso: string) {
 {picks.length > 0 && (
   <section class="hero" id="picks">
     <div class="hero-rail-head">
-      <h2>🔥 티켓오픈 임박 · 화제 공연</h2>
+      <h2>티켓오픈 임박 · 화제 공연</h2>
       <p>놓치면 피눈물! 직관냥이 오늘 물어온 소식부터 모아봤다냥.</p>
     </div>
     <div class="hero-rail">
@@ -47,7 +47,7 @@ function fmt(iso: string) {
                   />
                 </>
               ) : (
-                <div class="hero-card-noposter" aria-hidden="true">🎫</div>
+                <div class="hero-card-noposter">포스터 준비중</div>
               )}
               {openIn !== null && openIn <= 14 ? (
                 <div class="dday-badge hero-dday hero-open-badge">
@@ -64,7 +64,7 @@ function fmt(iso: string) {
                 </div>
               )}
               {buzzing && (
-                <div class="hero-buzz-banner">🔥 {buzzAct ? `${buzzAct} 화제` : '지금 화제'}</div>
+                <div class="hero-buzz-banner">{buzzAct ? `${buzzAct} 화제` : '지금 화제'}</div>
               )}
             </div>
             <div class="hero-card-seam"></div>
@@ -97,15 +97,15 @@ function fmt(iso: string) {
     position: relative;
     flex: 1;
     min-width: 0;
-    background: linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255, 95, 162, 0.05));
-    border: 1px solid rgba(255, 95, 162, 0.25);
-    border-radius: 18px 18px 18px 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     padding: 0.9rem 1.1rem 1rem;
   }
   .hero-bubble-text { margin: 0; font-size: 1rem; color: var(--fg); line-height: 1.55; font-weight: 600; }
   @media (max-width: 560px) {
     .hero-intro { align-items: flex-start; }
-    .hero-bubble { border-radius: 16px; }
+    .hero-bubble { border-radius: 8px; }
   }
 
   .hero { margin: 0 0 2.25rem; scroll-margin-top: 5rem; }
@@ -130,18 +130,15 @@ function fmt(iso: string) {
     display: block;
     text-decoration: none;
     color: inherit;
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
     background: var(--card);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
     transition: transform 0.18s, box-shadow 0.18s;
   }
-  .hero-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,0.45); }
+  .hero-card:hover { transform: translateY(-4px);}
   .hero-card.is-buzzing {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 1.5px rgba(255, 95, 162, 0.55);
   }
   .hero-card.is-buzzing:hover {
-    box-shadow: 0 14px 32px rgba(0,0,0,0.45), 0 0 0 1.5px rgba(255, 95, 162, 0.75);
   }
   .hero-buzz-banner {
     position: absolute;
@@ -152,8 +149,8 @@ function fmt(iso: string) {
     text-align: center;
     font-size: 0.74rem;
     font-weight: 900;
-    color: #101018;
-    background: linear-gradient(90deg, #ffd166, #ff5fa2);
+    color: #0e0e10;
+    background: #ff5fa2;
     padding: 0.32rem 0.4rem;
     letter-spacing: -0.01em;
   }
@@ -161,7 +158,7 @@ function fmt(iso: string) {
     position: relative;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    background: #05050a;
+    background: #0a0a0b;
   }
   .hero-card-glow {
     position: absolute;
@@ -171,8 +168,8 @@ function fmt(iso: string) {
     filter: blur(20px) saturate(1.5) brightness(0.7);
     transform: scale(1.25);
   }
-  .hero-dday.hero-open-badge { background: #ff5fa2; color: #101018; font-weight: 800; }
-  .hero-card-noposter { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2.6rem; background: linear-gradient(160deg, rgba(255,95,162,0.18), rgba(110,231,255,0.1)); }
+  .hero-dday.hero-open-badge { background: #ff5fa2; color: #0e0e10; font-weight: 800; }
+  .hero-card-noposter { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #6f6f77; background: rgba(255,255,255,0.04); }
   .hero-card-poster {
     position: relative;
     z-index: 1;
@@ -182,15 +179,13 @@ function fmt(iso: string) {
     object-fit: cover;
     margin: 9% auto 0;
     border-radius: 8px;
-    box-shadow: 0 10px 26px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.08);
   }
   .hero-dday {
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
     z-index: 2;
-    background: rgba(16, 16, 24, 0.75);
-    backdrop-filter: blur(2px);
+    background: rgba(14,14,16, 0.75);
   }
   .hero-card-seam {
     position: relative;
@@ -223,7 +218,7 @@ function fmt(iso: string) {
   .difficulty-tag {
     font-size: 0.68rem;
     padding: 0.18rem 0.5rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); background: rgba(255,138,138,0.1); }
@@ -231,10 +226,10 @@ function fmt(iso: string) {
   .difficulty-easy { color: #ffd166; border: 1px solid rgba(255,209,102,0.4); background: rgba(255,209,102,0.1); }
   .hero-onsale-tag {
     font-size: 0.68rem;
-    color: #6ee7ff;
-    border: 1px solid rgba(110,231,255,0.4);
+    color: #c9c9cf;
+    border: 1px solid rgba(255,255,255,0.4);
     padding: 0.18rem 0.5rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .hero-card h3 {

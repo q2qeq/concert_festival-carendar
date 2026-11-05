@@ -88,6 +88,7 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
           }
           el.textContent = label;
           if (label === '종료') el.classList.add('is-past');
+          if (/^D-\d+$/.test(label) && Number(label.slice(2)) <= 7) el.classList.add('is-soon');
           if (label === 'D-DAY') el.classList.add('is-today');
         });
       }
@@ -147,12 +148,12 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
 
 <style is:global>
   :root {
-    --bg: #101018;
-    --fg: #f5f3ff;
-    --muted: #a9a4c9;
+    --bg: #0e0e10;
+    --fg: #ededea;
+    --muted: #8f8f97;
     --accent: #ff5fa2;
-    --accent-2: #6ee7ff;
-    --card: #181826;
+    --accent-2: #c9c9cf;
+    --card: #151517;
     --max-width: 880px;
   }
   * { box-sizing: border-box; }
@@ -166,13 +167,16 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
     font-weight: 700;
     font-size: 0.78rem;
     padding: 0.2rem 0.5rem;
-    border-radius: 999px;
-    background: rgba(255, 95, 162, 0.15);
-    color: var(--accent);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--fg);
     min-width: 3rem;
     text-align: center;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
   }
-  .dday-badge.is-today { background: var(--accent); color: #101018; }
+  .dday-badge.is-soon { background: rgba(255, 95, 162, 0.16); color: var(--accent); }
+  .dday-badge.is-today { background: var(--accent); color: #0e0e10; }
   .dday-badge.is-past { background: rgba(255,255,255,0.08); color: var(--muted); }
   .dday-badge.is-postponed { background: rgba(255, 184, 76, 0.18); color: #ffb84c; }
   .dday-badge.is-cancelled { background: rgba(255, 95, 95, 0.18); color: #ff6b6b; }

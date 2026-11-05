@@ -8,7 +8,6 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
 ---
 <section class="tool-strip" aria-label="티켓팅 도구" data-opens={JSON.stringify(opens)}>
   <a class="tool-card tool-clock" id="ts-clock" href="/ticketing-clock/">
-    <span class="tool-ico" aria-hidden="true">⏱</span>
     <span class="tool-body">
       <strong>티켓팅 시계</strong>
       <span class="tool-sub" id="ts-clock-sub">예매 오픈 순간을 밀리초까지</span>
@@ -16,7 +15,6 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
     <span class="tool-go" aria-hidden="true">→</span>
   </a>
   <a class="tool-card tool-practice" href="/practice/">
-    <span class="tool-ico" aria-hidden="true">🎫</span>
     <span class="tool-body">
       <strong>티켓팅 연습</strong>
       <span class="tool-sub" id="ts-practice-sub">30초면 끝, 손풀기 게임</span>
@@ -26,18 +24,18 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
 </section>
 <style>
   .tool-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 0 0 1.5rem; }
-  .tool-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 0.95rem; border-radius: 14px; text-decoration: none; color: #f5f3ff; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); transition: border-color .15s, transform .15s; min-width: 0; }
+  .tool-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 0.95rem; border-radius: 8px; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); transition: border-color .15s, transform .15s; min-width: 0; }
   .tool-card:hover { transform: translateY(-1px); }
-  .tool-clock { border-color: rgba(110,231,255,0.4); background: linear-gradient(135deg, rgba(110,231,255,0.12), rgba(255,255,255,0.04)); }
-  .tool-practice { border-color: rgba(255,95,162,0.45); background: linear-gradient(135deg, rgba(255,95,162,0.16), rgba(255,255,255,0.04)); }
-  .tool-clock:hover { border-color: #6ee7ff; }
+  .tool-clock { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); }
+  .tool-practice { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); }
+  .tool-clock:hover { border-color: #c9c9cf; }
   .tool-practice:hover { border-color: #ff5fa2; }
   .tool-ico { font-size: 1.6rem; line-height: 1; }
   .tool-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1; }
   .tool-body strong { font-size: 0.98rem; }
-  .tool-sub { color: #bdb9d8; font-size: 0.78rem; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .tool-sub b { color: #6ee7ff; font-variant-numeric: tabular-nums; }
-  .tool-go { color: #a9a4c9; font-size: 1.1rem; }
+  .tool-sub { color: #a9a9b0; font-size: 0.78rem; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tool-sub b { color: #c9c9cf; font-variant-numeric: tabular-nums; }
+  .tool-go { color: #8f8f97; font-size: 1.1rem; }
   @media (max-width: 560px) {
     .tool-strip { grid-template-columns: 1fr; }
   }

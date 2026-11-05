@@ -61,22 +61,20 @@ function isActive(href: string) {
     top: 0;
     z-index: 40;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-    background: rgba(16, 16, 24, 0.82);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(14,14,16, 0.82);
   }
   nav { position: relative; max-width: 880px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
   .brand { display: flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
   .links { display: flex; gap: 1.1rem; }
   .links a {
-    color: #a9a4c9;
+    color: #8f8f97;
     text-decoration: none;
     font-size: 0.9rem;
     padding-bottom: 0.2rem;
     border-bottom: 2px solid transparent;
   }
   .links a:hover { color: #fff; }
-  .links a.tool-link { color: #ff8fbe; font-weight: 700; }
+  
   .links a.active { color: #fff; font-weight: 700; border-bottom-color: var(--accent, #ff5fa2); }
   .nav-toggle {
     display: none;
@@ -94,7 +92,7 @@ function isActive(href: string) {
     display: block;
     width: 100%;
     height: 2px;
-    background: #f5f3ff;
+    background: #ededea;
     border-radius: 2px;
     transition: transform 0.15s, opacity 0.15s;
   }
@@ -112,9 +110,8 @@ function isActive(href: string) {
       right: 0;
       flex-direction: column;
       gap: 0;
-      background: #14141f;
+      background: #151517;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
     }
     .links.is-open { display: flex; }
     .links a {

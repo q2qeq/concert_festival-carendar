@@ -58,8 +58,8 @@ const others = VENDOR_IDS.filter((x) => x !== id);
   <p class="intro">{v.name} 예매 오픈 순간에 맞춰 누를 수 있게 정확한 시각을 보여줘요. <strong>자동 예매가 아니라 수동 클릭용 시계</strong>예요.</p>
 
   <div class="cta">
-    <a class="btn primary" href={`/ticketing-clock/?platform=${id}`}>⏱ 시계 켜기</a>
-    <a class="btn" href={`/practice/?platform=${id}`}>🎫 연습하기</a>
+    <a class="btn primary" href={`/ticketing-clock/?platform=${id}`}>시계 켜기</a>
+    <a class="btn" href={`/practice/?platform=${id}`}>연습하기</a>
     <a class="btn" href={v.home} target="_blank" rel="noopener noreferrer">{v.short} 열기 ↗</a>
   </div>
 
@@ -70,7 +70,7 @@ const others = VENDOR_IDS.filter((x) => x !== id);
         <li data-open-at={e.ticketOpenAt}>
           <a href={`/events/${e.id}/`}><strong>{e.artist}</strong></a>
           <span>{e.ticketOpenDate ?? e.ticketOpenAt}</span>
-          <a class="mini" href={`/ticketing-clock/?platform=${id}&open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>⏱ 카운트다운</a>
+          <a class="mini" href={`/ticketing-clock/?platform=${id}&open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>카운트다운</a>
         </li>
       ))}
     </ul>
@@ -106,24 +106,24 @@ const others = VENDOR_IDS.filter((x) => x !== id);
 </BaseLayout>
 
 <style>
-  .intro { color: #d9d6ee; line-height: 1.7; }
+  .intro { color: #c4c4c8; line-height: 1.7; }
   .cta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 0.5rem; }
-  .btn { padding: 0.6rem 1.1rem; border-radius: 999px; font-weight: 700; font-size: 0.92rem; text-decoration: none; color: #f5f3ff; border: 1px solid rgba(255,255,255,0.2); }
-  .btn.primary { background: linear-gradient(120deg, #ff5fa2, #ff8fbe); color: #101018; border-color: transparent; }
+  .btn { padding: 0.6rem 1.1rem; border-radius: 6px; font-weight: 700; font-size: 0.92rem; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.2); }
+  .btn.primary { background: #ff5fa2; color: #0e0e10; border-color: transparent; }
   h2 { margin: 1.6rem 0 0.7rem; }
   .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
-  .list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; padding: 0.6rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
-  .list a { color: #f5f3ff; text-decoration: none; }
-  .list a:hover { color: #ff8fbe; }
-  .list span { color: #a9a4c9; font-size: 0.84rem; }
-  .list .mini { margin-left: auto; color: #6ee7ff; font-size: 0.82rem; }
-  .empty { color: #a9a4c9; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 10px; }
-  .empty a, .others a { color: #ff8fbe; }
+  .list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; padding: 0.6rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .list a { color: #ededea; text-decoration: none; }
+  .list a:hover { color: #ff5fa2; }
+  .list span { color: #8f8f97; font-size: 0.84rem; }
+  .list .mini { margin-left: auto; color: #c9c9cf; font-size: 0.82rem; }
+  .empty { color: #8f8f97; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
+  .empty a, .others a { color: #ff5fa2; }
   .faq { display: flex; flex-direction: column; gap: 0.6rem; }
-  .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 10px; }
-  .faq-item summary { cursor: pointer; font-weight: 700; color: #f5f3ff; font-size: 0.94rem; }
-  .faq-item p { margin: 0.6rem 0 0; color: #a9a4c9; font-size: 0.88rem; line-height: 1.6; }
-  .others { margin-top: 1.6rem; color: #a9a4c9; font-size: 0.88rem; }
+  .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .faq-item summary { cursor: pointer; font-weight: 700; color: #ededea; font-size: 0.94rem; }
+  .faq-item p { margin: 0.6rem 0 0; color: #8f8f97; font-size: 0.88rem; line-height: 1.6; }
+  .others { margin-top: 1.6rem; color: #8f8f97; font-size: 0.88rem; }
 </style>
 
 <script>

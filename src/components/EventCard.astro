@@ -31,7 +31,7 @@ const buzzing = isBuzzing(event);
     <p class="meta"><strong class="meta-date">{dateLabel}</strong> · <strong class="meta-venue">{event.venue}</strong> ({event.city}) · {event.genre}</p>
   </div>
   <div class="tags">
-    {buzzing && <span class="buzz-tag">🔥 화제</span>}
+    {buzzing && <span class="buzz-tag">화제</span>}
     {isFresh && <span class="fresh-tag">새 소식</span>}
     {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
     {status === 'scheduled' && onSale && <span class="ticket-tag">예매 오픈중</span>}
@@ -55,7 +55,7 @@ const buzzing = isBuzzing(event);
     gap: 1rem;
     padding: 0.9rem 2.1rem 0.9rem 0.75rem;
     margin: 0 -0.75rem;
-    border-radius: 12px;
+    border-radius: 8px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     text-decoration: none;
     color: inherit;
@@ -69,7 +69,7 @@ const buzzing = isBuzzing(event);
   .difficulty-tag {
     font-size: 0.72rem;
     padding: 0.22rem 0.55rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); background: rgba(255,138,138,0.1); }
@@ -84,23 +84,22 @@ const buzzing = isBuzzing(event);
     object-fit: cover;
     border-radius: 6px;
     background: rgba(255,255,255,0.05);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
   @media (max-width: 420px) {
     .thumb { width: 48px; height: 66px; }
   }
   .event-card.is-buzzing {
-    background: linear-gradient(100deg, rgba(255, 95, 162, 0.1), rgba(255, 209, 102, 0.05));
+    background: rgba(255,255,255,0.04);
     border-bottom-color: rgba(255, 95, 162, 0.35);
   }
-  .event-card.is-buzzing:hover { background: linear-gradient(100deg, rgba(255, 95, 162, 0.16), rgba(255, 209, 102, 0.08)); }
+  .event-card.is-buzzing:hover { background: rgba(255,255,255,0.04); }
   .buzz-tag {
     font-size: 0.72rem;
     font-weight: 800;
-    color: #101018;
-    background: linear-gradient(120deg, #ffd166, #ff5fa2);
+    color: #0e0e10;
+    background: #ff5fa2;
     padding: 0.22rem 0.6rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .event-card.is-postponed,
@@ -108,32 +107,32 @@ const buzzing = isBuzzing(event);
   .event-card.is-cancelled h3 { text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.6); }
   .info { flex: 1; min-width: 0; }
   h3 { margin: 0 0 0.2rem; font-size: 1.05rem; transition: color 0.15s; }
-  .meta { margin: 0; color: #a9a4c9; font-size: 0.92rem; }
-  .meta-date, .meta-venue { color: #f5f3ff; font-weight: 700; }
+  .meta { margin: 0; color: #8f8f97; font-size: 0.92rem; }
+  .meta-date, .meta-venue { color: #ededea; font-weight: 700; }
   .tags { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; flex-shrink: 0; }
   .ticket-tag {
     font-size: 0.75rem;
-    color: #6ee7ff;
-    border: 1px solid rgba(110,231,255,0.4);
+    color: #c9c9cf;
+    border: 1px solid rgba(255,255,255,0.4);
     padding: 0.25rem 0.6rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .announced-tag {
     font-size: 0.75rem;
-    color: #6ee7ff;
-    border: 1px dashed rgba(110,231,255,0.5);
+    color: #c9c9cf;
+    border: 1px dashed rgba(255,255,255,0.5);
     padding: 0.25rem 0.6rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .fresh-tag {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #101018;
-    background: linear-gradient(120deg, #ff5fa2, #ff8fbe);
+    color: #0e0e10;
+    background: #ff5fa2;
     padding: 0.22rem 0.6rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .status-tag {
@@ -141,7 +140,7 @@ const buzzing = isBuzzing(event);
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.25rem 0.6rem;
-    border-radius: 999px;
+    border-radius: 6px;
     white-space: nowrap;
   }
   .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); background: rgba(255,184,76,0.1); }
