@@ -65,7 +65,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
             </li>
           ))}
         </ul>
-        <p class="bulk"><button type="button" id="bulk-ics" class="oa primary">곧 오픈 전체를 캘린더에 저장 (.ics)</button> <small>하루 전·10분 전에 알려줘요</small></p>
+        <p class="bulk"><a class="oa" href="/calendar/">캘린더로 구독하기</a> <button type="button" id="bulk-ics" class="oa primary">곧 오픈 전체를 캘린더에 저장 (.ics)</button> <small>하루 전·10분 전에 알려줘요</small></p>
       </>
     ) : (
       <p class="empty">지금 확인된 오픈 예정은 없어요. 매일 예매처 공지를 확인해서 새 오픈이 보이면 바로 올려요.</p>

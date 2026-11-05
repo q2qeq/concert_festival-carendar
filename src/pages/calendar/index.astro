@@ -1,0 +1,99 @@
+---
+// 캘린더 구독 안내 - 구글/애플/삼성 등 캘린더 앱에 직관냥 일정을 "구독"으로 추가한다.
+// 피드는 정적 .ics이며 사이트가 배포될 때마다 갱신된다(캘린더 앱이 받아가는 주기는 앱마다 다르다).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { scheduleEvents, upcomingTicketOpens, allGenres, genreSlug } from '../../lib/events';
+
+const SITE = 'https://jikgwannyang.com';
+const shows = scheduleEvents();
+const opens = upcomingTicketOpens(200).length;
+const have = new Set(shows.map((e) => e.genre));
+const genres = allGenres().filter((g) => have.has(g)).map((g) => ({ name: g, slug: genreSlug(g), n: shows.filter((e) => e.genre === g).length }));
+
+const FEEDS = [
+  { id: 'open', title: '티켓오픈 일정', desc: `오픈 시각이 확인된 공연 ${opens}개. 오픈 10분 전·하루 전에 알림이 와요.`, path: '/calendar/ticket-open.ics' },
+  { id: 'shows', title: '전체 공연 일정', desc: `예정된 내한공연·페스티벌 ${shows.length}개. 일정마다 공연 페이지 링크가 들어 있어요.`, path: '/calendar/shows.ics' },
+];
+const enc = (p: string) => encodeURIComponent(`webcal://jikgwannyang.com${p}`);
+---
+<BaseLayout title="내한공연 캘린더 구독 - 티켓오픈 알림 (구글·애플 캘린더)" description="내한공연 일정과 티켓오픈 알림을 구글 캘린더·애플 캘린더에 구독하세요. 새 공연과 일정 변경이 자동으로 반영돼요.">
+  <section class="head">
+    <h1>캘린더 구독</h1>
+    <p class="lead">한 번 추가해 두면 새 공연과 일정 변경이 내 캘린더에 자동으로 들어와요. 계정이나 가입은 필요 없어요.</p>
+  </section>
+
+  {FEEDS.map((f) => (
+    <section class="feed" data-path={f.path}>
+      <div class="info">
+        <h2>{f.title}</h2>
+        <p>{f.desc}</p>
+      </div>
+      <div class="acts">
+        <a class="btn p" href={`https://calendar.google.com/calendar/r?cid=${enc(f.path)}`} target="_blank" rel="noopener noreferrer">구글 캘린더에 추가</a>
+        <a class="btn" href={`webcal://jikgwannyang.com${f.path}`}>애플·기본 캘린더 앱</a>
+        <button type="button" class="btn copy" data-url={`${SITE}${f.path}`}>주소 복사</button>
+        <a class="btn" href={f.path} download>.ics 받기</a>
+      </div>
+    </section>
+  ))}
+
+  <section class="genres">
+    <h2 class="sec mono">BY GENRE</h2>
+    <p class="sub">보고 싶은 장르만 따로 구독할 수 있어요.</p>
+    <ul>
+      {genres.map((g) => (
+        <li>
+          <span>{g.name} <small class="mono">{g.n}</small></span>
+          <span class="gacts">
+            <button type="button" class="mini copy" data-url={`${SITE}/calendar/genre/${g.slug}.ics`}>주소 복사</button>
+            <a class="mini" href={`webcal://jikgwannyang.com/calendar/genre/${g.slug}.ics`}>구독</a>
+          </span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="how">
+    <h2 class="sec mono">HOW TO</h2>
+    <ol>
+      <li><b>구글 캘린더</b>: 위 버튼이 안 열리면 "주소 복사" 후 구글 캘린더 → 다른 캘린더 옆 + → <b>URL로 추가</b>에 붙여넣으세요.</li>
+      <li><b>아이폰·맥</b>: "애플·기본 캘린더 앱"을 누르면 구독 화면이 열려요.</li>
+      <li><b>그 외 앱</b>: "URL(웹) 캘린더 추가"가 있으면 복사한 주소를 넣으세요.</li>
+    </ol>
+    <p class="note">일정은 사이트가 업데이트될 때마다 새로 만들어지고, 캘린더 앱이 몇 시간~하루 간격으로 받아가요(앱마다 달라서 즉시 반영되지는 않아요). 오픈 시각과 공연 일정은 예매처 공지가 기준이니 중요한 일정은 공식 공지로 다시 확인하세요.</p>
+  </section>
+</BaseLayout>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.copy').forEach((b) => {
+    b.addEventListener('click', async () => {
+      const url = b.dataset.url || '';
+      const orig = b.textContent;
+      try { await navigator.clipboard.writeText(url); b.textContent = '복사됨'; }
+      catch { window.prompt('이 주소를 복사하세요', url); }
+      setTimeout(() => { b.textContent = orig; }, 1500);
+    });
+  });
+</script>
+<style>
+  .head h1 { margin: 0 0 0.6rem; }
+  .lead { margin: 0 0 1.6rem; color: #a9a9b0; max-width: 40rem; }
+  .feed { padding: 1.2rem; border: 1px solid #2a2a30; border-radius: 4px; margin-bottom: 0.8rem; }
+  .feed h2 { margin: 0 0 0.3rem; font-size: 1.3rem; letter-spacing: -.03em; }
+  .feed p { margin: 0 0 1rem; color: #a9a9b0; font-size: 0.92rem; }
+  .acts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .btn { padding: 0.65rem 1rem; border: 1px solid #3a3a42; border-radius: 4px; background: transparent; color: #f4f4f0; font: inherit; font-weight: 700; font-size: 0.88rem; text-decoration: none; cursor: pointer; }
+  .btn:hover { border-color: #fff; }
+  .btn.p { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+  .genres { margin-top: 2.4rem; }
+  .sec { margin: 0; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: 0.8rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .sub { color: #8f8f97; font-size: 0.88rem; margin: 0.6rem 0 0.3rem; }
+  .genres ul { list-style: none; margin: 0; padding: 0; }
+  .genres li { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid #202024; }
+  .genres small { color: #8f8f97; margin-left: 0.4rem; }
+  .gacts { display: flex; gap: 0.4rem; }
+  .mini { padding: 0.35rem 0.75rem; border: 1px solid #3a3a42; border-radius: 4px; background: transparent; color: #f4f4f0; font: inherit; font-size: 0.82rem; text-decoration: none; cursor: pointer; }
+  .mini:hover { border-color: #ff5fa2; }
+  .how { margin-top: 2.4rem; }
+  .how ol { margin: 0.9rem 0; padding-left: 1.2rem; color: #c4c4c8; line-height: 1.8; }
+  .note { font-size: 0.84rem; color: #8f8f97; line-height: 1.65; }
+</style>
