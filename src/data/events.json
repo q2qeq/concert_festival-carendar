@@ -5904,6 +5904,13 @@
     "city": "인천",
     "startDate": "2027-01-14",
     "endDate": "2027-01-17",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/10000618",
+        "note": "셔틀 스캔으로 확인 (2026-11-05). 예약 가능 상태. 같은 요네즈 켄시 내한공연으로 중복 등재된 kopis-PF304185(인스파이어 엔터테인먼트 리조트 표기)에 이미 등록된 것과 동일한 셔틀을 이번에 이 항목에도 보강함. 노선·요금은 예약 화면에서 확인하세요."
+      }
+    ],
     "ticketLinks": [
       {
         "vendor": "NOL티켓",
