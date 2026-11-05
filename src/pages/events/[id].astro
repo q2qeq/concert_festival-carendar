@@ -154,6 +154,16 @@ const EVENT_STATUS_MAP = {
 const status = event.status ?? 'scheduled';
 const isPast = event.endDate < new Date().toISOString().slice(0, 10);
 
+// 모바일 하단 고정 예매 버튼 - 액션바가 화면 밖으로 나가면 나타난다.
+const openUpcoming = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
+const mobileCtaKind: 'links' | 'official' | 'clock' | null =
+  status !== 'scheduled' || isPast ? null
+  : ticketPopoverLinks.length > 0 ? 'links'
+  : fallbackPrimaryUrl ? 'official'
+  : openUpcoming ? 'clock'
+  : null;
+const mobileClockHref = `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt ?? '')}&artist=${encodeURIComponent(event.artist)}`;
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicEvent',
@@ -482,6 +492,31 @@ const jsonLd = {
 
     <AdSlot slot="event-bottom" />
   </article>
+
+  {mobileCtaKind && (
+    <div class="m-cta" id="m-cta" hidden>
+      {mobileCtaKind === 'links' && ticketPopoverLinks.length > 1 && (
+        <>
+          <div class="m-sheet" id="m-sheet" hidden>
+            {ticketPopoverLinks.map((l) => (
+              <a href={l.url} target="_blank" rel="noopener noreferrer">{l.label} ↗</a>
+            ))}
+          </div>
+          <button type="button" class="m-btn" id="m-toggle" aria-expanded="false" aria-controls="m-sheet">티켓 예매 ({ticketPopoverLinks.length}곳)</button>
+        </>
+      )}
+      {mobileCtaKind === 'links' && ticketPopoverLinks.length === 1 && (
+        <a class="m-btn" href={ticketPopoverLinks[0].url} target="_blank" rel="noopener noreferrer">티켓 예매 ↗</a>
+      )}
+      {mobileCtaKind === 'official' && (
+        <a class="m-btn" href={fallbackPrimaryUrl as string} target="_blank" rel="noopener noreferrer">공식 홈페이지·공지 ↗</a>
+      )}
+      {mobileCtaKind === 'clock' && (
+        <a class="m-btn" href={mobileClockHref}>티켓팅 시계로 준비하기</a>
+      )}
+      <button class="m-heart bookmark-btn" type="button" data-bookmark-id={event.id} aria-label={`${event.artist} 찜하기`} aria-pressed="false">♡</button>
+    </div>
+  )}
 </BaseLayout>
 
 <script>
@@ -542,6 +577,29 @@ const jsonLd = {
   }
   setupActionPopover('calendar-toggle', 'calendar-popover');
   setupActionPopover('ticket-toggle', 'ticket-popover');
+
+  // 모바일 하단 고정 예매 버튼: 액션바가 화면 위로 지나가면 보이고, 다시 보이면 숨긴다.
+  (() => {
+    const bar = document.querySelector<HTMLElement>('.ev-info .action-bar');
+    const cta = document.getElementById('m-cta');
+    if (!bar || !cta) return;
+    const sheet = document.getElementById('m-sheet');
+    const toggle = document.getElementById('m-toggle');
+    const close = () => { if (sheet) sheet.hidden = true; toggle?.setAttribute('aria-expanded', 'false'); };
+    const io = new IntersectionObserver(([entry]) => {
+      const show = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      cta.hidden = !show;
+      document.body.classList.toggle('has-mcta', show);
+      if (!show) close();
+    }, { threshold: 0 });
+    io.observe(bar);
+    toggle?.addEventListener('click', () => {
+      if (!sheet) return;
+      sheet.hidden = !sheet.hidden;
+      toggle.setAttribute('aria-expanded', String(!sheet.hidden));
+    });
+    document.addEventListener('click', (e) => { if (!cta.contains(e.target as Node)) close(); });
+  })();
 </script>
 
 <style>
@@ -813,5 +871,17 @@ const jsonLd = {
     .event-header .event-description { grid-area: desc; margin-top: 1.1rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
     .event-header .last-updated { display: none; }
     .ev-info .status-banner { grid-area: ban; margin-top: 1rem; }
+  }
+  /* ── 모바일 하단 고정 예매 버튼 ── */
+  .m-cta { display: none; }
+  @media (max-width: 720px) {
+    .m-cta:not([hidden]) { display: flex; gap: 0.6rem; align-items: stretch; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom)); background: #0e0e10; border-top: 1px solid #2a2a30; }
+    .m-btn { flex: 1; display: block; text-align: center; padding: 0.95rem 1rem; border: 0; border-radius: 4px; background: #ff5fa2; color: #0e0e10; font: inherit; font-weight: 900; font-size: 1rem; text-decoration: none; cursor: pointer; }
+    .m-heart { flex: 0 0 3.1rem; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; font-size: 1.2rem; display: grid; place-items: center; }
+    .m-sheet { position: absolute; left: 1rem; right: 1rem; bottom: calc(100% + 0.5rem); display: flex; flex-direction: column; background: #151517; border: 1px solid #3a3a42; border-radius: 4px; overflow: hidden; }
+    .m-sheet[hidden] { display: none; }
+    .m-sheet a { padding: 1rem 1.1rem; color: #f4f4f0; font-weight: 700; text-decoration: none; border-bottom: 1px solid #2a2a30; }
+    .m-sheet a:last-child { border-bottom: 0; }
+    :global(body.has-mcta) { padding-bottom: 5rem; }
   }
 </style>
