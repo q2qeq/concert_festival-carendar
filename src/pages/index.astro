@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import HomeSlider from '../components/HomeSlider.astro';
+import HomeSpotlight from '../components/HomeSpotlight.astro';
 import ToolStrip from '../components/ToolStrip.astro';
 import PosterCard from '../components/PosterCard.astro';
 import AdSlot from '../components/AdSlot.astro';
@@ -12,87 +11,80 @@ const all = upcomingEvents();
 const next = all.slice(0, 8);
 const opens = upcomingTicketOpens(4);
 
-function fmtOpen(iso: string) {
-  const d = new Date(iso);
-  const kst = new Date(d.getTime() + 9 * 3600_000);
-  const m = kst.getUTCMonth() + 1;
-  const day = kst.getUTCDate();
-  const h = kst.getUTCHours();
-  const mi = String(kst.getUTCMinutes()).padStart(2, '0');
-  return `${m}월 ${day}일 ${h}:${mi}`;
+function when(iso: string) {
+  const k = new Date(new Date(iso).getTime() + 9 * 3600_000);
+  const md = `${k.getUTCMonth() + 1}.${String(k.getUTCDate()).padStart(2, '0')}`;
+  const hm = `${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`;
+  return { md, hm };
 }
 ---
-<BaseLayout title="내한공연·페스티벌 일정 캘린더 D-day" description="해외 아티스트 내한공연과 페스티벌 일정을 D-day로 한눈에. 티켓오픈 일정, 예매처, 구역별 시야, 공연장 셔틀버스, MD 굿즈 정보까지 직관냥에서 확인하세요.">
-  <Hero />
+<BaseLayout wide title="내한공연·페스티벌 일정 캘린더 D-day" description="해외 아티스트 내한공연과 페스티벌 일정을 D-day로 한눈에. 티켓오픈 일정, 예매처, 구역별 시야, 공연장 셔틀버스, MD 굿즈 정보까지 직관냥에서 확인하세요.">
+  <HomeSpotlight />
 
-  <HomeSlider />
+  <div class="wrap">
+    <ToolStrip />
 
-  <ToolStrip />
+    {opens.length > 0 && (
+      <section class="soon" aria-labelledby="soon-title">
+        <div class="sec-head">
+          <h2 id="soon-title" class="mono">TICKET OPEN SOON</h2>
+          <a href="/ticket-open/">티켓오픈 일정 →</a>
+        </div>
+        <div class="rows">
+          {opens.map((e) => {
+            const w = when(e.ticketOpenAt as string);
+            return (
+              <a href={`/events/${e.id}/`}>
+                <span class="t mono">{w.md} <span>{w.hm}</span></span>
+                <span class="nm">{e.artist}</span>
+                <span class="v">{e.venue}</span>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
 
-  {opens.length > 0 && (
-    <section class="soon" aria-labelledby="soon-title">
+    <AdSlot slot="home-top" />
+
+    <section class="next" aria-labelledby="next-title">
       <div class="sec-head">
-        <h2 id="soon-title">곧 티켓이 열려요</h2>
-        <a href="/ticket-open/">티켓오픈 일정 전체 →</a>
+        <h2 id="next-title" class="mono">UPCOMING</h2>
+        <a href="/events/">전체 {all.length}개 →</a>
       </div>
-      <ul>
-        {opens.map((e) => (
-          <li>
-            <a href={`/events/${e.id}/`}>
-              <span class="soon-when">{fmtOpen(e.ticketOpenAt as string)}</span>
-              <span class="soon-name">{e.artist}</span>
-              <span class="soon-venue">{e.venue}</span>
-            </a>
-          </li>
+      <div class="poster-grid">
+        {next.map((e) => (
+          <div class="card-wrap"><PosterCard event={e} /></div>
         ))}
-      </ul>
+      </div>
+      <a class="more" href="/events/">전체 공연 일정 보기 →</a>
     </section>
-  )}
 
-  <AdSlot slot="home-top" />
-
-  <section class="next" aria-labelledby="next-title">
-    <div class="sec-head">
-      <h2 id="next-title">다가오는 공연</h2>
-      <a href="/events/">전체 {all.length}개 보기 →</a>
-    </div>
-    <div class="poster-grid">
-      {next.map((e) => (
-        <div class="card-wrap"><PosterCard event={e} /></div>
-      ))}
-    </div>
-    <div class="more">
-      <a class="more-btn" href="/events/">전체 공연 일정 보기 <span>({all.length})</span></a>
-    </div>
-  </section>
-
-  <RecentIssues limit={3} heading="공연 소식·이슈" compact />
+    <RecentIssues limit={3} heading="공연 소식·이슈" compact />
+  </div>
 </BaseLayout>
 
 <style>
-  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.8rem; }
-  .sec-head h2 { margin: 0; font-size: 1.15rem; }
-  .sec-head a { font-size: 0.85rem; color: var(--muted); text-decoration: none; white-space: nowrap; }
-  .sec-head a:hover { color: var(--fg); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 2.8rem 0 0.8rem; border-bottom: 1px solid #2a2a30; }
+  .sec-head h2 { margin: 0; font-size: 0.82rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .sec-head a { font-size: 0.85rem; color: #8f8f97; text-decoration: none; white-space: nowrap; }
+  .sec-head a:hover { color: #f4f4f0; }
 
-  .soon { margin: 0 0 2.5rem; }
-  .soon ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,0.1); }
-  .soon li a { display: grid; grid-template-columns: 8.5rem 1fr auto; gap: 0.8rem; align-items: baseline; padding: 0.75rem 0.2rem; border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--fg); text-decoration: none; }
-  .soon li a:hover { background: rgba(255,255,255,0.04); }
-  .soon-when { font-size: 0.86rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
-  .soon-name { font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .soon-venue { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+  .rows a { display: grid; font-size: clamp(1.7rem, 4.2vw, 3.6rem); grid-template-columns: 6.9em 1fr auto; column-gap: 1.4rem; align-items: baseline; padding: 1.3rem 0; border-bottom: 1px solid #2a2a30; color: #f4f4f0; text-decoration: none; transition: padding-left .2s, color .2s; }
+  .rows a:hover { padding-left: .8rem; color: #ff5fa2; }
+  .rows .t { font-size: 1em; white-space: nowrap; font-weight: 900; letter-spacing: -.05em; line-height: 1; }
+  .rows .t span { color: #8f8f97; }
+  .rows .nm { font-size: clamp(1.05rem, 2vw, 1.6rem); font-weight: 700; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rows .v { font-size: 0.82rem; color: #8f8f97; white-space: nowrap; }
 
-  .next { margin: 0 0 2.5rem; }
-  .poster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem 0.85rem; }
-  @media (min-width: 640px) { .poster-grid { grid-template-columns: repeat(4, 1fr); } }
-  .more { margin-top: 1.4rem; text-align: center; }
-  .more-btn { display: inline-block; padding: 0.75rem 1.6rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); color: var(--fg); text-decoration: none; font-weight: 700; }
-  .more-btn:hover { border-color: #fff; }
-  .more-btn span { color: var(--muted); font-weight: 600; }
+  .poster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem 0.9rem; padding-top: 1.4rem; }
+  @media (min-width: 720px) { .poster-grid { grid-template-columns: repeat(4, 1fr); } }
+  .more { display: block; margin: 2.2rem 0 0.5rem; padding: 1.4rem; border: 1px solid #3a3a42; border-radius: 4px; text-align: center; font-weight: 900; font-size: 1.2rem; color: #f4f4f0; text-decoration: none; }
+  .more:hover { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
 
   @media (max-width: 560px) {
-    .soon li a { grid-template-columns: 1fr; gap: 0.1rem; }
-    .soon-venue { display: none; }
+    .rows a { grid-template-columns: 1fr; row-gap: 0.2rem; }
+    .rows .v { display: none; }
   }
 </style>

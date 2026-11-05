@@ -2,6 +2,7 @@
 import { SITE_TITLE } from '../consts';
 import Mascot from './Mascot.astro';
 
+const { wide = false } = Astro.props;
 const { pathname } = Astro.url;
 const NAV = [
   { href: '/events', label: '전체 일정' },
@@ -20,7 +21,7 @@ function isActive(href: string) {
   return pathname.startsWith(href);
 }
 ---
-<header class="site-header">
+<header class={`site-header${wide ? ' wide' : ''}`}>
   <nav>
     <a class="brand" href="/">
       <Mascot size={30} />
@@ -63,6 +64,7 @@ function isActive(href: string) {
     border-bottom: 1px solid rgba(255,255,255,0.08);
     background: rgba(14,14,16, 0.82);
   }
+  .site-header.wide nav { max-width: 1180px; }
   nav { position: relative; max-width: 880px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
   .brand { display: flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
   .links { display: flex; gap: 1.1rem; }

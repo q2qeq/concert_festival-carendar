@@ -1,0 +1,150 @@
+---
+// 랜딩 "스포트라이트": 지금 가장 많이 보는 공연 3개 중 하나를 화면 가득 보여주고,
+// 아래 썸네일로 바꿔 본다. 선정 기준은 lib/events.ts spotlightEvents(demand·티켓오픈 임박 등).
+// D-day 숫자는 정적 빌드 값이 낡지 않도록 브라우저에서 계산한다.
+import { spotlightEvents, hasTicketsOnSale, ticketOpenInDays, upcomingEvents } from '../lib/events';
+
+const picks = spotlightEvents(3, undefined, true);
+const total = upcomingEvents().length;
+const WD = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+
+// "Fujii Kaze (후지이 카제)" → 영문/원어 이름과 한글 병기를 분리해서 큰 제목과 보조 줄로 쓴다.
+function splitName(artist: string) {
+  const m = artist.match(/^(.*?)\s*\((.+)\)\s*$/);
+  return m ? { name: m[1].trim(), sub: m[2].trim() } : { name: artist, sub: '' };
+}
+const items = picks.map((e) => {
+  const d = new Date(e.startDate + 'T00:00:00');
+  const { name, sub } = splitName(e.artist);
+  const open = ticketOpenInDays(e);
+  return {
+    href: `/events/${e.id}/`,
+    name,
+    sub: [sub, e.venue.replace(/\s*\(.*$/, '')].filter(Boolean).join(' · '),
+    date: e.startDate,
+    dot: `${e.startDate.replace(/-/g, '.')} ${WD[d.getDay()]}`,
+    bg: `${d.getMonth() + 1}.${d.getDate()}`,
+    img: e.posterUrl as string,
+    note: open !== null && open <= 14 ? (open === 0 ? '오늘 티켓오픈' : `티켓오픈 D-${open}`) : hasTicketsOnSale(e) ? '예매 오픈중' : '',
+  };
+});
+const first = items[0];
+---
+{first && (
+  <section class="stage" id="stage" data-bg={first.bg} data-items={JSON.stringify(items)}>
+    <div class="info">
+      <h1 class="kicker mono"><b id="sp-idx">01</b><span> / {String(items.length).padStart(2, '0')}</span> <em>지금 많이 보는 내한공연</em></h1>
+      <h2 class="name" id="sp-name">{first.name}</h2>
+      <p class="sub" id="sp-sub">{first.sub}</p>
+      <div class="big">
+        <div class="n mono" id="sp-num" data-date={first.date}>—</div>
+        <div class="u mono">DAYS LEFT<b id="sp-dot">{first.dot}</b><i id="sp-note">{first.note}</i></div>
+      </div>
+      <div class="act">
+        <a class="btn p" id="sp-link" href={first.href}>공연 정보 보기 →</a>
+        <a class="btn" href="/events/">전체 공연 {total}개</a>
+      </div>
+      {items.length > 1 && (
+        <div class="thumbs" id="sp-thumbs" role="tablist" aria-label="인기 공연 선택">
+          {items.map((it, i) => (
+            <button type="button" role="tab" aria-label={it.name} aria-selected={i === 0 ? 'true' : 'false'} data-i={i}>
+              <img src={it.img} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+    <a class="pic" id="sp-pic-link" href={first.href} aria-label={`${first.name} 공연 정보`}>
+      <img id="sp-pic" src={first.img} alt={`${first.name} 포스터`} fetchpriority="high" />
+    </a>
+  </section>
+)}
+<script>
+  const stage = document.getElementById('stage');
+  if (stage) {
+    type Item = { href: string; name: string; sub: string; date: string; dot: string; bg: string; img: string; note: string };
+    const items: Item[] = JSON.parse(stage.dataset.items || '[]');
+    const $ = (id: string) => document.getElementById(id) as HTMLElement;
+    const daysLeft = (iso: string) => {
+      const t = new Date(); t.setHours(0, 0, 0, 0);
+      return Math.ceil((new Date(iso + 'T00:00:00').getTime() - t.getTime()) / 86400000);
+    };
+    const paint = (i: number) => {
+      const it = items[i];
+      $('sp-name').textContent = it.name;
+      $('sp-sub').textContent = it.sub;
+      $('sp-dot').textContent = it.dot;
+      $('sp-note').textContent = it.note;
+      $('sp-idx').textContent = String(i + 1).padStart(2, '0');
+      ($('sp-link') as HTMLAnchorElement).href = it.href;
+      ($('sp-pic-link') as HTMLAnchorElement).href = it.href;
+      const img = $('sp-pic') as HTMLImageElement;
+      img.src = it.img; img.alt = `${it.name} 포스터`;
+      stage.dataset.bg = it.bg;
+      const n = daysLeft(it.date);
+      $('sp-num').textContent = n <= 0 ? 'D-DAY' : String(n);
+      document.querySelectorAll('#sp-thumbs button').forEach((b, j) => b.setAttribute('aria-selected', String(j === i)));
+    };
+    const swap = (i: number) => {
+      const targets = [$('sp-name'), $('sp-pic')];
+      targets.forEach((el) => (el.style.opacity = '0'));
+      setTimeout(() => { paint(i); targets.forEach((el) => (el.style.opacity = '1')); }, 200);
+    };
+    items.forEach((it) => { const im = new Image(); im.src = it.img; });
+    document.querySelectorAll<HTMLButtonElement>('#sp-thumbs button').forEach((b) =>
+      b.addEventListener('click', () => swap(Number(b.dataset.i)))
+    );
+    paint(0);
+  }
+</script>
+<style>
+  .stage {
+    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: 1fr minmax(300px, 36%); gap: 3rem; align-items: center;
+    min-height: max(640px, calc(100vh - 68px));
+    padding: 3rem max(24px, calc((100vw - 1180px) / 2)) 3.5rem;
+  }
+  .stage::before {
+    content: attr(data-bg); position: absolute; left: -1vw; bottom: -4vw;
+    font-size: 30vw; line-height: .8; font-weight: 900; letter-spacing: -.08em;
+    color: rgba(255,255,255,0.03); pointer-events: none; white-space: nowrap;
+  }
+  .info { position: relative; z-index: 2; min-width: 0; }
+  .kicker { display: flex; align-items: baseline; gap: 0.25rem; margin: 0 0 1.4rem; font-size: 0.78rem; font-weight: 500; letter-spacing: .14em; color: #8f8f97; }
+  .kicker b { color: #ff5fa2; font-weight: 500; }
+  .kicker em { font-style: normal; margin-left: 0.9rem; }
+  .name {
+    margin: 0; font-size: clamp(2.6rem, 7.4vw, 7.4rem); line-height: .95; letter-spacing: -.055em; font-weight: 900;
+    transition: opacity .2s; overflow-wrap: anywhere;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .sub { margin: 1rem 0 0; font-size: 1.15rem; font-weight: 600; color: #b5b5bd; }
+  .big { display: flex; align-items: baseline; gap: 1.1rem; margin-top: clamp(1.2rem, 3.5vw, 2.8rem); }
+  .big .n { font-size: clamp(4.4rem, 10vw, 9.6rem); line-height: .85; font-weight: 900; letter-spacing: -.07em; color: #ff5fa2; }
+  .big .u { font-size: 0.78rem; letter-spacing: .18em; color: #8f8f97; line-height: 1.8; }
+  .big .u b { display: block; font-size: 1rem; letter-spacing: .02em; color: #f4f4f0; font-weight: 700; }
+  .big .u i { display: block; font-style: normal; letter-spacing: .04em; color: #ff5fa2; }
+  .big .u i:empty { display: none; }
+  .act { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.8rem; }
+  .btn { padding: 0.95rem 1.6rem; border-radius: 4px; border: 1px solid #3a3a42; font-weight: 800; font-size: 0.95rem; color: #f4f4f0; text-decoration: none; }
+  .btn:hover { border-color: #fff; }
+  .btn.p { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+  .btn.p:hover { background: #ff7bb2; border-color: #ff7bb2; }
+  .thumbs { display: flex; gap: 0.75rem; margin-top: 2.2rem; }
+  .thumbs button { all: unset; cursor: pointer; width: 3.9rem; opacity: .45; border-bottom: 3px solid transparent; transition: opacity .2s; }
+  .thumbs button:hover { opacity: .8; }
+  .thumbs button[aria-selected="true"] { opacity: 1; border-color: #ff5fa2; }
+  .thumbs button:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 2px; }
+  .thumbs img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+  .pic { position: relative; z-index: 2; justify-self: end; width: 100%; max-width: 520px; }
+  .pic img { display: block; width: 100%; aspect-ratio: 3 / 4.1; object-fit: cover; background: #151517; transition: opacity .2s; }
+  @media (max-width: 820px) {
+    .stage { grid-template-columns: 1fr; min-height: auto; gap: 1.6rem; padding-top: 1.4rem; padding-bottom: 2.4rem; }
+    .pic { order: -1; max-width: 62%; justify-self: start; }
+    .stage::before { font-size: 46vw; }
+    .name { font-size: clamp(2.4rem, 12vw, 3.6rem); }
+    .big .n { font-size: clamp(4rem, 22vw, 6rem); }
+    .thumbs { margin-top: 1.6rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .name, .pic img { transition: none; } }
+</style>

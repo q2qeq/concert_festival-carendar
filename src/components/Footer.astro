@@ -1,11 +1,12 @@
 ---
 import { SITE_TITLE } from '../consts';
 import { allGenres, genreSlug } from '../lib/events';
+const { wide = false } = Astro.props;
 const year = new Date().getFullYear();
 const genres = allGenres();
 ---
 <footer class="site-footer">
-  <div class="wrap">
+  <div class={`wrap${wide ? ' wide' : ''}`}>
     {genres.length > 0 && (
       <div class="tag-links">
         <span class="tag-links-label">장르별 보기</span>
@@ -26,6 +27,7 @@ const genres = allGenres();
 </footer>
 <style>
   .site-footer { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 3rem; }
+  .wrap.wide { max-width: 1180px; }
   .wrap { max-width: 880px; margin: 0 auto; padding: 2rem 1.25rem; color: #8f8f97; font-size: 0.85rem; display: flex; flex-direction: column; gap: 1rem; }
   .wrap > p, .wrap > .links { align-self: stretch; }
   .tag-links { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
