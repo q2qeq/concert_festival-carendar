@@ -3961,7 +3961,7 @@
         "url": "https://ticket.yes24.com/Perf/59781"
       }
     ],
-    "merchCheckedAt": "2026-11-04",
+    "merchCheckedAt": "2026-11-05",
     "posterUrl": "/posters/akane-yonezawa-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260818/20260818-59781.jpg"
   },
@@ -4057,7 +4057,7 @@
     ],
     "posterUrl": "/posters/kopis-kimjanghun-miryang-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202606/20260618/20260618-58980.jpg",
-    "merchCheckedAt": "2026-11-04"
+    "merchCheckedAt": "2026-11-05"
   },
   {
     "id": "jason-mraz-2026-11",
@@ -4091,7 +4091,7 @@
         "url": "https://www.instagram.com/jason_mraz/"
       }
     ],
-    "merchCheckedAt": "2026-11-04",
+    "merchCheckedAt": "2026-11-05",
     "setlists": [
       {
         "label": "2026 투어 - 브루클린 파라마운트 공연",
@@ -4169,7 +4169,7 @@
         "url": "https://www.instagram.com/teddyswims/"
       }
     ],
-    "merchCheckedAt": "2026-11-04",
+    "merchCheckedAt": "2026-11-05",
     "description": "커버 가수에서 시작해 'Lose Control'로 빌보드 역사를 새로 쓴 테디 스윔스의 첫 단독 내한공연. 투어명은 'I've Tried Everything But Therapy'.",
     "funFacts": [
       "대표곡 'Lose Control'이 빌보드 핫100에 112주간 머물며 2024년 연말결산 1위에 올랐고, 2025 그래미 최우수 신인상 후보에도 올랐어요.",
@@ -4210,7 +4210,7 @@
         "url": "https://ticket.yes24.com/Perf/59831"
       }
     ],
-    "merchCheckedAt": "2026-11-04",
+    "merchCheckedAt": "2026-11-05",
     "posterUrl": "/posters/blu-swing-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59831.jpg"
   },
@@ -4255,7 +4255,7 @@
         "url": "https://x.com/5sos"
       }
     ],
-    "merchCheckedAt": "2026-11-04",
+    "merchCheckedAt": "2026-11-05",
     "setlists": [
       {
         "label": "EVERYONE'S A STAR! World Tour - 비에하스 아레나 공연",
@@ -5547,7 +5547,7 @@
         "url": "https://2026skf.com"
       }
     ],
-    "merchCheckedAt": "2026-11-04",
+    "merchCheckedAt": "2026-11-05",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -5647,7 +5647,7 @@
         "url": "https://nol.yanolja.com/ticket/products/26014103"
       }
     ],
-    "merchCheckedAt": "2026-11-04",
+    "merchCheckedAt": "2026-11-05",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -5783,7 +5783,7 @@
         "url": "https://x.com/official_akmu"
       }
     ],
-    "merchCheckedAt": "2026-11-04",
+    "merchCheckedAt": "2026-11-05",
     "shuttleBus": [
       {
         "operator": "퀸즈스마일",
@@ -6035,6 +6035,26 @@
         "date": "2026-10-16",
         "text": "2027년 2월 27·28일 GS아트센터 3회 공연이 발표됐어요.",
         "sourceUrl": "https://sports.khan.co.kr/en/article/202610162142007"
+      }
+    ]
+  },
+  {
+    "id": "steve-gadd-bhg-seoul-2027-01",
+    "artist": "스티브 갯 BHG Project (Blicher Hemmer Gadd)",
+    "genre": "재즈/내한",
+    "venue": "연세대학교 백주년기념관 콘서트홀",
+    "city": "서울",
+    "startDate": "2027-01-29",
+    "endDate": "2027-01-29",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "폴 사이먼, 에릭 클랩튼, 스틸리 댄, 칙 코리아 등 수많은 명반에 참여한 전설적인 드러머 스티브 갯(Steve Gadd)이 덴마크 색소포니스트 마이클 블리처(Michael Blicher), 오르가니스트 댄 해머(Dan Hemmer)와 함께하는 'Blicher Hemmer Gadd' 내한공연. 2027년 1월 29일(금) 저녁 7시 30분, 연세대학교 백주년기념관 콘서트홀에서 열려요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-12 낮 12시",
+    "ticketOpenAt": "2026-11-12T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "스티브 갯 BHG Project 블리처 / 헤머 / 갯 내한공연 티켓오픈 안내 - 티켓링크 공지사항",
+        "url": "https://www.ticketlink.co.kr/help/notice/66450"
       }
     ]
   }
