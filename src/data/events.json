@@ -5568,7 +5568,9 @@
         "url": "https://queenssmile.co.kr/shop/festival/NDQx/",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
-    ]
+    ],
+    "posterUrl": "/posters/shuttle-2026-incheon-airport-sky-festival-2026-11.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013822_p.gif"
   },
   {
     "id": "shuttle-nmixx-world-tour-zero-frontier-finale-2026-11",
@@ -5809,7 +5811,9 @@
         "url": "https://queenssmile.co.kr/shop/festival/NDUy/",
         "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 28,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
-    ]
+    ],
+    "posterUrl": "/posters/shuttle-akmu-concert-tour-gangneung-2026-11.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260909/20260909-60017_1.jpg"
   },
   {
     "id": "night-hike-tours-seoul-2026-12",
