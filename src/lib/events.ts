@@ -262,6 +262,8 @@ export interface ConcertEvent {
   // 실제 수요가 확인된 공연만 'high' - 근거는 Vercel Analytics 주간 방문자 상위, 매진/선예매 경쟁 보도 등
   // 실측 신호가 있을 때만 (추측 금지). 홈 "화제 공연" 노출과 상세 페이지 관련 공연 추천 가중치에 쓰인다.
   demand?: 'high';
+  // 랜딩 스포트라이트 편집 고정. 이 날짜(YYYY-MM-DD, 포함)까지만 상위에 노출되고 지나면 자동 해제된다.
+  featuredUntil?: string;
   // Official/known shuttle bus services to the venue. Mostly relevant for festivals
   // at remote or hard-to-reach venues (자라섬, KINTEX, 파라다이스시티 등) - see
   // ShuttleBusInfo for sourcing rules. Rendered next to VenueInfoBox.
@@ -498,6 +500,7 @@ export function spotlightEvents(limit = 4, fromISO?: string, posterOnly = false)
     let s = 0;
     if (e.ticketingDifficulty === 'hard') s -= 100;
     if (e.demand === 'high') s -= 120;
+    if (e.featuredUntil && e.featuredUntil >= from) s -= 100;
     const open = daysUntilTicketOpen(e, from);
     if (open !== null && open <= 14) s -= 80 - open * 3; // 오픈이 가까울수록 앞으로
     if (hasRecentUpdate(e, 7, from)) s -= 20;

@@ -5309,25 +5309,6 @@
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260911/20260911-60147.jpg"
   },
   {
-    "id": "kopis-PF304185",
-    "artist": "요네즈 켄시 내한공연",
-    "genre": "J-POP",
-    "venue": "인스파이어 엔터테인먼트 리조트",
-    "city": "인천",
-    "startDate": "2027-01-14",
-    "endDate": "2027-01-17",
-    "posterUrl": "/posters/kopis-PF304185.webp",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304185_261022_135940.gif",
-    "shuttleBus": [
-      {
-        "operator": "카카오 T 셔틀",
-        "url": "https://shuttle.kakaomobility.com/shuttles/10000618",
-        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
-      }
-    ]
-  },
-  {
     "id": "humpback-seoul-2027-01",
     "artist": "Hump Back (험프백)",
     "genre": "J-POP",
@@ -5921,6 +5902,7 @@
   },
   {
     "id": "kenshi-yonezu-ghost-incheon-2027-01",
+    "featuredUntil": "2026-11-20",
     "artist": "요네즈 켄시 (米津玄師 / Kenshi Yonezu)",
     "genre": "J-POP",
     "venue": "인스파이어 아레나",
