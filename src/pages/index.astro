@@ -6,6 +6,7 @@ import Mascot from '../components/Mascot.astro';
 import ToolStrip from '../components/ToolStrip.astro';
 import CalendarNav from '../components/CalendarNav.astro';
 import AdSlot from '../components/AdSlot.astro';
+import RecentIssues from '../components/RecentIssues.astro';
 import { upcomingEvents, allGenres, allCities, monthLabel } from '../lib/events';
 import { SITE_TITLE } from '../consts';
 
@@ -88,6 +89,8 @@ for (const e of events) {
       </p>
     )}
   </section>
+
+  <RecentIssues limit={4} />
 </BaseLayout>
 
 <script>

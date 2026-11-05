@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import RecentIssues from '../../components/RecentIssues.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -33,6 +34,8 @@ function fmt(d: Date) {
     </div>
 
     <AdSlot slot="post-bottom" />
+
+    <RecentIssues limit={4} excludeId={post.id} heading="다른 이슈도 읽어보세요" />
   </article>
 </BaseLayout>
 

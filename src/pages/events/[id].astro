@@ -15,6 +15,7 @@ import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import Mascot from '../../components/Mascot.astro';
 import NextSteps from '../../components/NextSteps.astro';
+import { postsMentioningEvent, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
 import { isShuttleLikely } from '../../lib/venues';
 import { events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents } from '../../lib/events';
@@ -100,6 +101,7 @@ const highlightSet = festivalHighlightSet(event);
 const buzzing = isBuzzing(event);
 const buzzHeadlineAct = event.festivalHighlight?.[0]?.act ?? null;
 const related = relatedEvents(event);
+const mentionedIn = await postsMentioningEvent(event.id);
 
 // 이 공연 페이지에 실제로 존재하는 섹션만 골라 오른쪽 목차(TOC)를 만든다 -
 // 이벤트마다 보유 정보가 달라서 하드코딩된 고정 목록을 쓰면 빈 링크가 생긴다.
@@ -116,6 +118,7 @@ const tocItems = [
   event.updates && event.updates.length > 0 && { id: 'updates', label: '업데이트' },
   showShuttleSection && { id: 'shuttle', label: '셔틀버스' },
   { id: 'venue', label: '공연장 정보' },
+  mentionedIn.length > 0 && { id: 'issues', label: '관련 이슈' },
   related.length > 0 && { id: 'related', label: '관련 공연' },
   event.sources && event.sources.length > 0 && { id: 'sources', label: '출처' },
 ].filter(Boolean) as { id: string; label: string }[];
@@ -432,6 +435,20 @@ const jsonLd = {
       </div>
     )}
 
+    {mentionedIn.length > 0 && (
+      <div class="info-block" id="issues">
+        <h2>이 공연이 언급된 이슈</h2>
+        <ul class="issue-links">
+          {mentionedIn.map((p) => (
+            <li>
+              <a href={`/blog/${p.id}/`}>{p.data.title}</a>
+              <small>{postDateLabel(p.data.pubDate)}</small>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
     {related.length > 0 && (
       <div class="info-block" id="related">
         <h2>관련 공연</h2>
@@ -506,6 +523,10 @@ const jsonLd = {
 </script>
 
 <style>
+  .issue-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+  .issue-links a { color: #6ee7ff; text-decoration: none; font-weight: 600; }
+  .issue-links a:hover { text-decoration: underline; }
+  .issue-links small { margin-left: 0.5rem; color: #a9a4c9; }
   .breadcrumb a { color: #a9a4c9; font-size: 0.9rem; text-decoration: none; }
   .event-header { display: flex; align-items: center; gap: 1.25rem; margin: 1.5rem 0; }
   .dday-badge.big { font-size: 0.95rem; padding: 0.4rem 0.75rem; min-width: 3.75rem; }

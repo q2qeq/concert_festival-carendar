@@ -1,0 +1,39 @@
+---
+// 최신 이슈(블로그) 글 목록 - 홈과 글 하단에서 재사용. 글로 가는 내부 링크를 늘려
+// 구글 크롤링/색인 우선순위를 높이고 검색 유입 방문자를 다른 글로 잇는다.
+import { latestPosts, postDateLabel } from '../lib/posts';
+interface Props { limit?: number; excludeId?: string; heading?: string }
+const { limit = 3, excludeId, heading = '📰 최신 이슈' } = Astro.props;
+const posts = await latestPosts(limit, excludeId);
+---
+{posts.length > 0 && (
+  <section class="recent-issues" aria-label={heading}>
+    <div class="ri-head">
+      <h2>{heading}</h2>
+      <a href="/blog/">전체 보기 →</a>
+    </div>
+    <ul>
+      {posts.map((p) => (
+        <li>
+          <a href={`/blog/${p.id}/`}>
+            <small>{postDateLabel(p.data.pubDate)}</small>
+            <strong>{p.data.title}</strong>
+            <span>{p.data.description}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+<style>
+  .recent-issues { margin: 2.5rem 0 1.5rem; }
+  .ri-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.8rem; }
+  .ri-head h2 { margin: 0; font-size: 1.1rem; }
+  .ri-head a { color: #a9a4c9; font-size: 0.85rem; text-decoration: none; }
+  .recent-issues ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+  .recent-issues li a { display: block; padding: 0.85rem 1rem; border-radius: 12px; text-decoration: none; color: inherit; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+  .recent-issues li a:hover { border-color: #ff5fa2; }
+  .recent-issues small { display: block; color: #a9a4c9; font-size: 0.78rem; margin-bottom: 0.2rem; }
+  .recent-issues strong { display: block; font-size: 0.98rem; line-height: 1.4; color: #f5f3ff; }
+  .recent-issues span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 0.25rem; color: #a9a4c9; font-size: 0.85rem; line-height: 1.5; }
+</style>
