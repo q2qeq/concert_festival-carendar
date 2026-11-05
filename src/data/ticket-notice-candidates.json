@@ -129,5 +129,27 @@
     "showDate": "2027-01-07",
     "discoveredAt": "2026-11-04",
     "note": "영국 싱어송라이터 시에나 스파이로의 첫 단독 내한공연(라이브네이션코리아 주관). 공연일·장소(2027-01-07 20시, 명화라이브홀)는 뉴시스 보도로 확인되나 정확한 티켓오픈 일시는 검색 스니펫에서 못 찾음(12/17 티켓 배송 안내만 확인) - 원문/추가 보도로 확인 후 게시."
+  },
+  {
+    "artist": "YAO CHI (야오치/姚驰) 1st FANMEETING in seoul 〈Happy to Wander to Seoul〉",
+    "source": ["melon-notice"],
+    "sourceUrl": ["https://ticket.melon.com/csoon/detail.htm?csoonId=13212"],
+    "noticeTitle": "YAO CHI 1st FANMEETING in seoul 〈Happy to Wander to Seoul〉 '서울, 꿈속을 거닐다' 티켓 오픈 안내",
+    "ticketOpenAt": "2026-11-05T20:00:00+09:00",
+    "venue": "성암아트홀",
+    "showDate": "2026-11-22",
+    "discoveredAt": "2026-11-05",
+    "note": "멜론티켓 공지 원문을 직접 열어 확인함 - 장소·공연일·티켓오픈 시각 모두 원문에 명확하게 적혀 있음. 다만 중국 배우 야오치(姚驰, 드라마 '너의 미소에 빠져' 등 출연)의 '첫 단독 내한 팬미팅'으로, 가수가 아닌 배우의 팬미팅이라는 점이 이전 DaiShun 사례와 같은 종류의 스코프 질문 - 이 사이트(콘서트 중심)에서 다룰 범위에 맞는지 사람 판단 필요해서 바로 게시하지 않고 후보로 남김."
+  },
+  {
+    "artist": "필하모닉스 (PhilharmoniX) 2026 내한공연 - 송년 콘서트",
+    "source": ["general-websearch"],
+    "sourceUrl": ["https://www.sac.or.kr/site/eng/show/show_view?SN=76433"],
+    "noticeTitle": "2026 필하모닉스 내한공연 - 예술의전당 작품소개 페이지",
+    "ticketOpenAt": "",
+    "venue": "예술의전당 콘서트홀",
+    "showDate": "2026-12-22",
+    "discoveredAt": "2026-11-05",
+    "note": "빈·베를린 필하모닉 단원들로 구성된 실내악 앙상블 필하모닉스(PhilharmoniX)가 2022년부터 매년 12월 내한하는 '송년 콘서트' 시리즈 - 공연일·장소(2026-12-22 19:30, 예술의전당 콘서트홀)는 예술의전당 공식 상세페이지로 직접 확인했으나, 정확한 티켓오픈 일시는 못 찾음(검색 스니펫 중 하나는 '10월 14일 오후 2시 일반예매 오픈'이라 했는데 원문 미대조라 신뢰도 낮고, 이미 지난 날짜라 오픈 공지로서도 신선도가 낮음) - NOL 등에서 실제 오픈 일시/티켓 링크 확인 후 게시 필요."
   }
 ]
