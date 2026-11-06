@@ -65,6 +65,7 @@ const VENUE_SLUG_MAP: Record<string, string> = {
   '밀양아리랑아트센터': 'miryang-arirang-art-center',
   '공감센터': 'gonggam-center',
   '엑스코(EXCO)': 'exco-daegu',
+  '고척스카이돔': 'gocheok-sky-dome',
 };
 const SLUG_TO_VENUE: Record<string, string> = Object.fromEntries(
   Object.entries(VENUE_SLUG_MAP).map(([venue, slug]) => [slug, venue])

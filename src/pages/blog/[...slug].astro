@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import RecentIssues from '../../components/RecentIssues.astro';
+import { relatedPosts } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -11,6 +12,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const related = await relatedPosts(post, 4);
 
 function fmt(d: Date) {
   return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
@@ -35,7 +37,7 @@ function fmt(d: Date) {
 
     <AdSlot slot="post-bottom" />
 
-    <RecentIssues limit={4} excludeId={post.id} heading="다른 이슈도 읽어보세요" />
+    <RecentIssues posts={related} heading="다른 이슈도 읽어보세요" />
   </article>
 </BaseLayout>
 

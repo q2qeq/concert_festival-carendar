@@ -18,7 +18,7 @@ import NextSteps from '../../components/NextSteps.astro';
 import { postsMentioningEvent, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
 import { isShuttleLikely } from '../../lib/venues';
-import { latestUpdateISO, events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents } from '../../lib/events';
+import { latestUpdateISO, events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents, isDomestic, artistAliases } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -42,17 +42,35 @@ const dateLabel = event.startDate === event.endDate
 
 const eventYear = event.startDate.slice(0, 4);
 // 네이버/구글 검색어("OOO 내한 티켓팅", "OOO 예매처")에 맞춘 제목. 공연 상태에 따라 약속하는 내용이 다르다.
-const pageTitle = event.genre === '페스티벌'
-  ? `${event.artist} ${eventYear} 라인업·티켓 예매처 정리`
-  : event.endDate < new Date().toISOString().slice(0, 10)
-    ? `${event.artist} 내한 ${eventYear} 공연 정보·셋리스트`
-    : event.ticketOpenAt && new Date(event.ticketOpenAt).getTime() > Date.now()
-      ? `${event.artist} 내한 ${eventYear} 티켓오픈 일정·예매처`
-      : `${event.artist} 내한 ${eventYear} 예매처·좌석·시야 정리`;
+// 국내 아티스트(가요)는 "내한"이 아니라 "콘서트"로 부른다("2026 아이유 콘서트 일정" 검색에 맞춤).
+// 같은 이름을 띄어쓰기만 다르게 검색하는 경우("후지이 카제"/"후지이카제")를 위해, 붙여 쓴 표기가 있으면
+// 제목 끝(괄호)과 설명·본문에도 넣는다.
+const domestic = isDomestic(event);
+const aliases = artistAliases(event);
+const akaTitle = aliases.length > 0 ? ` (${aliases[0]})` : '';
+// 이름에 연도가 이미 들어 있으면(예: "NOL FESTIVAL 2026") 제목에서 연도를 또 붙이지 않는다.
+const yp = event.artist.includes(eventYear) ? '' : ` ${eventYear}`;
+const titleIsPast = event.endDate < new Date().toISOString().slice(0, 10);
+const opensLater = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
+const pageTitle = (event.genre === '페스티벌'
+  ? `${event.artist}${yp} 라인업·티켓 예매처 정리`
+  : domestic
+    ? titleIsPast
+      ? `${event.artist}${yp} 콘서트 정보·셋리스트`
+      : opensLater
+        ? `${event.artist}${yp} 콘서트 일정·티켓오픈·예매처`
+        : `${event.artist}${yp} 콘서트 일정·예매처·좌석 시야`
+    : titleIsPast
+      ? `${event.artist} 내한${yp} 공연 정보·셋리스트`
+      : opensLater
+        ? `${event.artist} 내한${yp} 티켓오픈 일정·예매처`
+        : `${event.artist} 내한${yp} 예매처·좌석·시야 정리`) + akaTitle;
 
-const pageDescription = event.description
+const kindWord = event.genre === '페스티벌' ? '페스티벌' : domestic ? '콘서트' : '내한 공연';
+const akaTail = aliases.length > 0 ? ` ${aliases[0]} ${kindWord} 일정·예매 정보.` : '';
+const pageDescription = (event.description
   ? `${event.description} (${dateLabel}, ${event.venue})`
-  : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`;
+  : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`) + akaTail;
 
 // 한 공연을 여러 사이트에서 판매하는 경우(예: 인터파크 + NOL티켓) 벤더별로
 // 링크를 전부 모은다 - 액션바의 "티켓 예매" 버튼은 캘린더 추가와 같은
@@ -186,6 +204,7 @@ const jsonLd = {
   performer: {
     '@type': 'PerformingGroup',
     name: event.artist,
+    ...(aliases.length > 0 ? { alternateName: aliases } : {}),
   },
   ...(event.posterUrl ? { image: event.posterUrl } : {}),
   ...(ticketLinks.length > 0 && status === 'scheduled'
@@ -231,6 +250,7 @@ const jsonLd = {
         <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
         <p class="ev-when mono">{whenLabel}<span>{event.venue}</span></p>
       </div>
+      {aliases.length > 0 && <p class="aka">다른 표기: {aliases.join(' · ')}</p>}
       {lastUpdated && <p class="last-updated">최근 업데이트 {lastUpdated.slice(5).replace('-', '.')}</p>}
       {event.description && <p class="event-description">{event.description}</p>}
     </header>
@@ -641,6 +661,7 @@ const jsonLd = {
   .status-announced .clock-link { color: #ff5fa2; font-weight: 800; text-decoration: none; white-space: nowrap; }
   .status-announced .clock-link:hover { text-decoration: underline; }
   .last-updated { margin: 0.4rem 0 0; font-size: 0.8rem; color: #8f8f97; }
+  .aka { margin: 0.4rem 0 0; font-size: 0.8rem; color: #8f8f97; }
   .poster {
     display: block;
     width: 100%;

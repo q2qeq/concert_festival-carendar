@@ -1,10 +1,11 @@
 ---
 // 최신 이슈(블로그) 글 목록 - 홈과 글 하단에서 재사용. 글로 가는 내부 링크를 늘려
 // 구글 크롤링/색인 우선순위를 높이고 검색 유입 방문자를 다른 글로 잇는다.
-import { latestPosts, postDateLabel } from '../lib/posts';
-interface Props { limit?: number; excludeId?: string; heading?: string; compact?: boolean }
-const { limit = 3, excludeId, heading = '최신 이슈', compact = false } = Astro.props;
-const posts = await latestPosts(limit, excludeId);
+import { latestPosts, postDateLabel, type Post } from '../lib/posts';
+// posts를 직접 넘기면(글 하단 연관 글) 그 목록을 쓰고, 없으면 최신 글을 보여준다.
+interface Props { limit?: number; excludeId?: string; heading?: string; compact?: boolean; posts?: Post[] }
+const { limit = 3, excludeId, heading = '최신 이슈', compact = false, posts: given } = Astro.props;
+const posts = given ?? await latestPosts(limit, excludeId);
 ---
 {posts.length > 0 && (
   <section class="recent-issues" aria-label={heading}>

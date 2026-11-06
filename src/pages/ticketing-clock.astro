@@ -37,6 +37,18 @@ const faq = [
     a: '로그인·본인인증·결제수단은 전날까지, 예매 페이지는 오픈 10분 전에 띄워두세요.',
   },
   {
+    q: '예매시계와 티켓팅 시계는 같은 건가요?',
+    a: '네, 같은 도구를 부르는 이름이에요. 예매 오픈 순간에 맞춰 누를 수 있도록 표준시와 동기화한 정확한 시각을 보여줘요.',
+  },
+  {
+    q: '내 기기 시계가 몇 초 틀린지 어떻게 아나요?',
+    a: '이 페이지를 열면 표준시 서버와 자동으로 동기화하고, 화면의 시계는 내 기기 오차를 보정한 시각으로 표시돼요. 동기화가 안 되면 수동 보정도 쓸 수 있어요.',
+  },
+  {
+    q: '티켓팅 전에 인터넷 속도도 확인해야 하나요?',
+    a: '시계가 정확해도 연결이 느리거나 불안정하면 오픈 순간에 밀릴 수 있어요. 오픈 전에 인터넷 속도 측정으로 지연과 예매처 응답을 한 번 재보세요.',
+  },
+  {
     q: '연습은 어디서 하나요?',
     a: '티켓팅 연습 페이지에서 버튼 타이밍과 좌석 선택을 연습할 수 있어요. 실제 예매와는 달라서 손풀기용이에요.',
   },
@@ -53,13 +65,13 @@ const jsonLd = {
 };
 ---
 <BaseLayout
-  title="티켓팅 시계·예매 시계 - 서버시간 (YES24·멜론티켓·NOL·티켓링크)"
-  description="콘서트 예매 시계·티켓팅 시계. YES24·멜론티켓·NOL(인터파크)·티켓링크 서버시간 기준으로 내 기기 오차를 보정해 밀리초 단위로 보여줘요. 오픈 일정 확인과 티켓팅 연습까지."
+  title="티켓팅 시계 사이트·예매시계 - 서버시간 확인 (YES24·멜론티켓·NOL·티켓링크)"
+  description="티켓팅 시계 사이트·예매시계. 표준시 서버와 동기화해 내 기기 시계 오차를 보정하고 밀리초 단위 카운트다운을 보여줘요. YES24·멜론티켓·NOL(인터파크)·티켓링크 어디서나, 설치·로그인 없이 무료. 오픈 일정 알림과 티켓팅 연습까지."
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <h1>티켓팅 시계</h1>
-  <p class="intro">예매 오픈 순간에 맞춰 누를 수 있게 정확한 시각을 보여줘요. <strong>자동 예매(매크로)가 아니라 수동 클릭용 시계</strong>예요.</p>
+  <p class="intro">예매 오픈 순간에 맞춰 누를 수 있게 표준시와 동기화한 정확한 시각을 보여주는 티켓팅 시계(예매시계) 사이트예요. 내 기기 시계가 얼마나 어긋났는지 보정해서 밀리초 단위로 보여줘요. <strong>자동 예매(매크로)가 아니라 수동 클릭용 시계</strong>예요.</p>
 
   <div id="clock-stage" class="clock-stage">
     <button id="focus-close" class="focus-close" type="button" aria-label="큰 화면 닫기" hidden>✕</button>
@@ -153,6 +165,16 @@ const jsonLd = {
   </div>
   <p id="platform-active-note" class="platform-active-note" hidden></p>
   <p class="platform-pages">예매처별 안내: <a href="/ticketing-clock/yes24/">예스24</a> · <a href="/ticketing-clock/melon/">멜론티켓</a> · <a href="/ticketing-clock/nol/">NOL 티켓</a> · <a href="/ticketing-clock/ticketlink/">티켓링크</a></p>
+
+  <section class="howto" aria-label="티켓팅 시계 사용법">
+    <h2>티켓팅 시계(예매시계) 사용법</h2>
+    <ol>
+      <li>이 페이지를 열면 표준시 서버와 동기화해 내 기기 오차를 자동으로 보정해요.</li>
+      <li>위 "곧 오픈하는 티켓"에서 공연을 누르거나, 내가 원하는 오픈 시각을 직접 넣어 카운트다운을 켜요.</li>
+      <li>예매 사이트는 따로 열어 두고, 시계가 오픈 시각이 되면 예매 버튼을 눌러요. 시계를 큰 화면으로 띄워 두면 보기 편해요.</li>
+      <li>오픈 10분 전에는 <a href="/internet-speed/">인터넷 속도 측정</a>으로 지연과 예매처 응답을 한 번 재보세요.</li>
+    </ol>
+  </section>
 
   <section class="guide" id="guide" aria-label="티켓팅 가이드">
     <h2>티켓팅 체크리스트</h2>
@@ -347,6 +369,10 @@ const jsonLd = {
   .custom-row input { flex: 1 1 10rem; min-width: 0; padding: 0.55rem 0.7rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18); background: rgba(0,0,0,0.3); color: #ededea; font-size: 0.9rem; }
   .custom-row button { padding: 0.55rem 1.1rem; border-radius: 8px; border: 0; font-weight: 700; color: #0e0e10; background: #ff5fa2; cursor: pointer; }
   .custom-help { margin: 0.6rem 0 0; color: #8f8f97; font-size: 0.8rem; }
+  .howto { margin: 1.5rem 0 0.5rem; }
+  .howto h2 { margin-top: 0; }
+  .howto ol { margin: 0; padding-left: 1.3rem; color: #c4c4c8; font-size: 0.92rem; line-height: 1.8; }
+  .howto a { color: #ff5fa2; }
   .guide { margin: 1.5rem 0 2rem; }
   .guide h2 { margin-top: 0; }
   .guide-list { display: flex; flex-direction: column; gap: 0.5rem; }

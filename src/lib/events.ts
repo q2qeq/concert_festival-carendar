@@ -159,6 +159,9 @@ export interface CrowdOutlook {
 export interface ConcertEvent {
   id: string;
   artist: string;
+  // 검색에서 쓰이는 다른 표기(띄어쓰기·철자 변형). 한글 이름의 붙여 쓴 표기는
+  // artistAliases()가 자동으로 만들고, 여기에는 자동으로 못 만드는 것만 직접 적는다.
+  aliases?: string[];
   genre: string;
   venue: string;
   city: string;
@@ -631,4 +634,24 @@ export function ticketStatusText(e: ConcertEvent, nowMs = Date.now()): { text: s
     return { text: `티켓오픈 ${k.getUTCMonth() + 1}.${String(k.getUTCDate()).padStart(2, '0')} ${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`, tone: 'soon' };
   }
   return { text: '예매 일정 미정', tone: 'none' };
+}
+
+// 국내 아티스트(가요)는 "내한"이 아니라 "콘서트"라고 부른다. 제목·설명 문구 분기에 쓴다.
+export function isDomestic(e: ConcertEvent): boolean {
+  return e.genre === '가요';
+}
+
+// 검색 표기 변형. 사람들은 같은 이름을 띄어쓰기만 다르게 검색한다
+// ("후지이 카제" / "후지이카제" 둘 다 클릭이 나옴 - 네이버 서치어드바이저 2026-11).
+// "English (한글 이름)" 또는 "한글 이름 (English)" 형태이고 한글 이름에 띄어쓰기가 있을 때만
+// 붙여 쓴 표기를 만든다. 페스티벌 라인업 나열 같은 긴 괄호는 건드리지 않는다.
+export function artistAliases(e: ConcertEvent): string[] {
+  const out: string[] = [];
+  const hangulWords = /^[가-힣]+(?: [가-힣]+)+$/;
+  const latinThenHangul = /^[^(가-힣]*[A-Za-z][^(가-힣]*?\s*\(([가-힣 ]+)\)\s*(?:[-–].*)?$/;
+  const hangulThenLatin = /^([가-힣 ]+?)\s*\([A-Za-z][^)]*\)\s*$/;
+  const name = (e.artist.match(latinThenHangul) ?? e.artist.match(hangulThenLatin))?.[1]?.trim();
+  if (name && hangulWords.test(name)) out.push(name.replace(/ /g, ''));
+  for (const a of e.aliases ?? []) out.push(a);
+  return Array.from(new Set(out)).filter((a) => !e.artist.includes(a));
 }

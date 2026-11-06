@@ -23,3 +23,23 @@ export async function postsMentioningEvent(eventId: string, limit = 3): Promise<
 export function postDateLabel(d: Date): string {
   return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
 }
+
+// 글 하단 "다른 이슈" 추천. 항상 최신 글만 보여주면 오래된 글은 안쪽 링크를 거의 못 받아
+// 색인이 늦어진다(2026-11 구글: 블로그 11개가 "발견됨 - 색인 안 됨"). 그래서
+// 1) 태그가 겹치는 글을 먼저, 2) 나머지는 날짜순으로 이어지는(더 오래된) 글을 순환하며 채운다.
+// 그러면 모든 글이 서로 다른 글 4개씩에서 링크를 받는다.
+export async function relatedPosts(post: Post, limit = 4): Promise<Post[]> {
+  const all = await allPosts(); // 최신순
+  const i = all.findIndex((p) => p.id === post.id);
+  const tags = new Set(post.data.tags ?? []);
+  const shared = (p: Post) => (p.data.tags ?? []).filter((t) => tags.has(t)).length;
+  const picked: Post[] = all
+    .filter((p) => p.id !== post.id && shared(p) > 0)
+    .sort((a, b) => shared(b) - shared(a) || b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, Math.ceil(limit / 2));
+  for (let k = 1; k < all.length && picked.length < limit; k++) {
+    const p = all[(i + k) % all.length];
+    if (p.id !== post.id && !picked.some((x) => x.id === p.id)) picked.push(p);
+  }
+  return picked;
+}
