@@ -17,7 +17,7 @@ const NAV = [
 ];
 function isActive(href: string) {
   if (href === '/events') return pathname.startsWith('/events') && !pathname.startsWith('/events/archive');
-  if (href === '/tools') return ['/tools', '/ticketing-clock', '/practice', '/ticketing-check', '/return-trip'].some((p) => pathname.startsWith(p));
+  if (href === '/tools') return ['/tools', '/ticketing-clock', '/practice', '/ticketing-check', '/internet-speed', '/return-trip'].some((p) => pathname.startsWith(p));
   return pathname.startsWith(href);
 }
 ---

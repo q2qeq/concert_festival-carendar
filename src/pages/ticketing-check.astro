@@ -1,18 +1,12 @@
 ---
 // 티켓팅 준비 점검 - 오픈 직전에 "내 환경이 괜찮은지" 한 번에 확인하는 도구.
 // 모든 측정은 이 브라우저에서만 일어난다(서버 저장 없음). 판정 기준은 참고용 경험치이며 화면에도 그렇게 표시한다.
-import fs from 'node:fs';
-import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { VENDORS, VENDOR_IDS } from '../lib/vendors';
+import { speedProbes } from '../lib/speedProbes';
 
 // 속도 측정용: 이미 사이트에 있는 큰 포스터 3개(외부 호출 없이 같은 출처에서 측정)
-const dir = path.join(process.cwd(), 'public', 'posters');
-const probes = fs.readdirSync(dir)
-  .map((f) => ({ f, size: fs.statSync(path.join(dir, f)).size }))
-  .sort((a, b) => b.size - a.size)
-  .slice(0, 3)
-  .map((x) => ({ url: `/posters/${x.f}`, size: x.size }));
+const probes = speedProbes();
 
 const GROUPS = [
   { id: 'acct', title: '계정', items: ['예매처에 미리 로그인해 두었어요', '본인인증·회원정보(연락처, 주소)가 최신이에요', '예매처 앱을 쓴다면 최신 버전이에요'] },
@@ -38,8 +32,8 @@ const GROUPS = [
     </div>
     <ul class="checks" id="checks">
       <li data-k="clock"><span class="st mono">–</span><div><b>기기 시계 오차</b><p>표준시 서버와 비교해요.</p></div></li>
-      <li data-k="ping"><span class="st mono">–</span><div><b>네트워크 지연</b><p>이 사이트에 5번 요청해 응답 시간을 재요.</p></div></li>
-      <li data-k="speed"><span class="st mono">–</span><div><b>다운로드 속도(대략)</b><p>이미지 몇 장을 받아 속도를 어림해요.</p></div></li>
+      <li data-k="ping"><span class="st mono">–</span><div><b>네트워크 지연</b><p>이 사이트에 5번 요청해 응답 시간을 재요. <a href="/internet-speed/">예매처별 응답까지 재기</a></p></div></li>
+      <li data-k="speed"><span class="st mono">–</span><div><b>다운로드 속도(대략)</b><p>이미지 몇 장을 받아 속도를 어림해요. <a href="/internet-speed/">인터넷 속도 측정 자세히</a></p></div></li>
       <li data-k="browser"><span class="st mono">–</span><div><b>브라우저 환경</b><p>인앱 브라우저, 쿠키, 시간대, 알림 권한을 봐요.</p></div></li>
       <li data-k="popup"><span class="st mono">–</span><div><b>팝업 차단</b><p>예매창이 팝업으로 뜨는 경우를 대비해요. <button type="button" id="popup-test" class="mini">팝업 테스트</button></p></div></li>
     </ul>
@@ -66,6 +60,7 @@ const GROUPS = [
   <section class="next">
     <h2 class="sec mono">NEXT</h2>
     <div class="links">
+      <a href="/internet-speed/">인터넷 속도 측정</a>
       <a href="/ticketing-clock/">티켓팅 시계 열기</a>
       <a href="/practice/">티켓팅 연습하기</a>
       <a href="/ticket-open/">곧 열리는 티켓오픈</a>
@@ -78,6 +73,8 @@ const GROUPS = [
 
 <script id="probe-data" type="application/json" set:html={JSON.stringify(probes)} />
 <script>
+  import { measurePing, judgePing, measureSpeed, judgeSpeed } from '../lib/netcheck';
+
   const probes: { url: string; size: number }[] = JSON.parse(document.getElementById('probe-data')!.textContent || '[]');
   const $ = (id: string) => document.getElementById(id)!;
   type R = { s: 'ok' | 'warn' | 'bad' | 'na'; msg: string };
@@ -91,7 +88,6 @@ const GROUPS = [
     li.querySelector('.st')!.textContent = LABEL[r.s];
     li.querySelector('p')!.firstChild!.textContent = r.msg + ' ';
   }
-  const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
 
   async function checkClock(): Promise<R> {
     let best: { rtt: number; off: number } | null = null;
@@ -113,36 +109,6 @@ const GROUPS = [
     if (a <= 500) return { s: 'ok', msg: `오차 약 ${Math.round(a)}ms로 정확해요.` };
     if (a <= 1500) return { s: 'warn', msg: `내 기기 시계가 약 ${(a / 1000).toFixed(1)}초 ${dir}. 기기 설정에서 날짜·시간 자동 설정을 켜 보세요.` };
     return { s: 'bad', msg: `내 기기 시계가 약 ${(a / 1000).toFixed(1)}초 ${dir}. 자동 설정을 켜거나 티켓팅 시계로 오픈 시각을 맞추세요.` };
-  }
-
-  async function checkPing(): Promise<R> {
-    const t: number[] = [];
-    for (let i = 0; i < 5; i++) {
-      try {
-        const t0 = performance.now();
-        await fetch(`/favicon.svg?p=${Date.now()}${i}`, { cache: 'no-store' });
-        t.push(performance.now() - t0);
-      } catch {}
-    }
-    if (t.length < 3) return { s: 'na', msg: '요청에 실패했어요. 연결 상태를 확인해 보세요.' };
-    const m = median(t); const jitter = Math.max(...t) - Math.min(...t);
-    const base = `응답 ${Math.round(m)}ms (편차 ${Math.round(jitter)}ms).`;
-    if (m <= 150 && jitter <= 150) return { s: 'ok', msg: base + ' 안정적이에요.' };
-    if (m <= 350) return { s: 'warn', msg: base + ' 조금 느리거나 들쭉날쭉해요. Wi-Fi 위치를 바꾸거나 다른 기기를 잠시 꺼 보세요.' };
-    return { s: 'bad', msg: base + ' 많이 느려요. 유선·다른 네트워크로 바꾸는 걸 권해요.' };
-  }
-
-  async function checkSpeed(): Promise<R> {
-    let bytes = 0; const t0 = performance.now();
-    try {
-      for (const p of probes) { const r = await fetch(`${p.url}?s=${Date.now()}`, { cache: 'no-store' }); bytes += (await r.arrayBuffer()).byteLength; }
-    } catch { return { s: 'na', msg: '측정에 실패했어요.' }; }
-    const sec = (performance.now() - t0) / 1000;
-    const mbps = (bytes * 8) / sec / 1e6;
-    const base = `대략 ${mbps.toFixed(1)}Mbps.`;
-    if (mbps >= 5) return { s: 'ok', msg: base + ' 예매에는 충분해요.' };
-    if (mbps >= 1.5) return { s: 'warn', msg: base + ' 다소 느려요. 오픈 직전에는 다른 다운로드를 멈춰 두세요.' };
-    return { s: 'bad', msg: base + ' 느려요. 다른 네트워크를 쓰는 게 좋아요.' };
   }
 
   function checkBrowser(): R {
@@ -185,9 +151,9 @@ const GROUPS = [
     const btn = $('run') as HTMLButtonElement; btn.disabled = true; btn.textContent = '점검 중…';
     document.querySelectorAll('#checks li').forEach((li) => { if ((li as HTMLElement).dataset.k !== 'popup') li.querySelector('.st')!.textContent = '…'; });
     show('browser', checkBrowser());
-    const [clock, ping] = await Promise.all([checkClock(), checkPing()]);
-    show('clock', clock); show('ping', ping);
-    show('speed', await checkSpeed());
+    const [clock, ping] = await Promise.all([checkClock(), measurePing()]);
+    show('clock', clock); show('ping', judgePing(ping));
+    show('speed', judgeSpeed(await measureSpeed(probes)));
     summarize();
     btn.disabled = false; btn.textContent = '다시 점검'; running = false;
   });
@@ -237,6 +203,8 @@ const GROUPS = [
   .links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .links a { padding: 0.6rem 1rem; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
   .links a:hover { border-color: #ff5fa2; }
+  .checks p a { color: #8f8f97; font-size: 0.8rem; margin-left: 0.2rem; }
+  .checks p a:hover { color: #ff5fa2; }
   .vend { margin-top: 0.9rem; font-size: 0.86rem; color: #8f8f97; }
   .vend a { color: #c4c4c8; }
 </style>

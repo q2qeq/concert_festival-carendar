@@ -101,7 +101,7 @@ const others = VENDOR_IDS.filter((x) => x !== id);
 
   <p class="others">다른 예매처:
     {others.map((o, i) => (<>{i > 0 ? ' · ' : ' '}<a href={`/ticketing-clock/${o}/`}>{VENDORS[o].short}</a></>))}
-    · <a href="/ticketing-clock/">범용 시계</a> · <a href="/ticket-open/">티켓오픈 일정</a>
+    · <a href="/ticketing-clock/">범용 시계</a> · <a href="/ticket-open/">티켓오픈 일정</a> · <a href="/internet-speed/">{v.short} 응답 포함 인터넷 속도 측정</a>
   </p>
 </BaseLayout>
 

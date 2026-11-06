@@ -28,6 +28,13 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
     </span>
     <span class="tool-go" aria-hidden="true">→</span>
   </a>
+  <a class="tool-card" href="/internet-speed/">
+    <span class="tool-body">
+      <strong>인터넷 속도 측정</strong>
+      <span class="tool-sub">지연·속도·예매처 응답을 10초에</span>
+    </span>
+    <span class="tool-go" aria-hidden="true">→</span>
+  </a>
   <a class="tool-card" href="/return-trip/">
     <span class="tool-body">
       <strong>막차 계산기</strong>
@@ -40,6 +47,7 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
   .tool-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 0 0 1.5rem; }
   .tool-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 0.95rem; border-radius: 8px; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); transition: border-color .15s, transform .15s; min-width: 0; }
   .tool-card:hover { transform: translateY(-1px); }
+  .tool-card:last-child:nth-child(odd) { grid-column: 1 / -1; } /* 카드가 홀수 개일 때 마지막 줄을 꽉 채움 */
   .tool-clock { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); }
   .tool-practice { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); }
   .tool-clock:hover { border-color: #c9c9cf; }

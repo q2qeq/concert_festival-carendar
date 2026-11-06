@@ -1,0 +1,263 @@
+---
+// 티켓팅 인터넷 속도 측정 (2026-11-06). 점검 페이지(/ticketing-check/)의 한 항목이던 속도 측정을
+// 검색으로 바로 들어올 수 있는 전용 페이지로 분리했다. 이 사이트까지의 지연·다운로드 속도에 더해
+// 예매처 4곳(NOL·예스24·멜론티켓·티켓링크)까지의 응답 시간을 재서 "내 연결이 예매에 괜찮은지"를 보여준다.
+// 측정은 방문자 브라우저 안에서만 일어나고 서버에 저장하지 않는다. 판정 기준은 참고용 경험치.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { VENDORS, VENDOR_IDS } from '../lib/vendors';
+import { THRESH } from '../lib/netcheck';
+import { speedProbes } from '../lib/speedProbes';
+
+const probes = speedProbes();
+const vendors = VENDOR_IDS.map((id) => ({ id, short: VENDORS[id].short, home: VENDORS[id].home }));
+
+const title = '티켓팅 인터넷 속도 측정 - 지연·다운로드·예매처 응답 확인';
+const description = '티켓팅 직전 내 인터넷이 괜찮은지 10초에 확인하세요. 지연(핑)·다운로드 속도에 NOL(인터파크)·예스24·멜론티켓·티켓링크까지의 응답 시간을 한 번에 측정해요. 설치 없이 브라우저에서.';
+
+const faq = [
+  {
+    q: '티켓팅에는 인터넷 속도가 몇 Mbps 필요한가요?',
+    a: `예매 화면은 용량이 작아서 영상이 끊김 없이 나오는 정도(${THRESH.speed.okMbps}Mbps 안팎)면 속도는 충분한 편이에요. 오히려 응답 지연과 끊김이 결과를 좌우해서, 이 도구는 Mbps와 함께 지연·편차·예매처 응답을 같이 보여줘요. 기준은 일반적인 경험치라 참고용이에요.`,
+  },
+  {
+    q: '속도 측정 결과가 빠르면 티켓팅에 유리한가요?',
+    a: '어느 정도까지만 그래요. 기본 속도가 넘으면 그 이상 빨라져도 큰 차이는 없고, 예매 오픈 직후에는 예매처 서버의 대기열과 혼잡이 더 큰 변수예요. 내 쪽 병목(약한 Wi-Fi, 다른 기기의 다운로드, VPN)을 없애는 용도로 쓰세요.',
+  },
+  {
+    q: '예매처 응답 시간은 어떻게 재나요?',
+    a: '브라우저에서 각 예매처 첫 화면에 가벼운 요청을 몇 번 보내고, 응답이 오기 시작할 때까지 걸린 시간의 중앙값을 보여줘요. 로그인이나 예매 기능은 건드리지 않아요. 예매처 서버 처리 시간이 섞여 있어서 정확한 핑이 아닌 체감 응답에 가깝고, 오픈 순간의 혼잡은 반영되지 않아요.',
+  },
+  {
+    q: 'Wi-Fi가 나을까요, 모바일 데이터(LTE·5G)가 나을까요?',
+    a: '그날 환경에 따라 달라서 둘 다 재보는 게 가장 정확해요. 같은 자리에서 Wi-Fi와 모바일 데이터로 한 번씩 측정해 지연과 편차가 더 작은 쪽을 쓰세요. 공연장·카페처럼 사람이 많은 곳은 Wi-Fi가 붐빌 수 있어요.',
+  },
+  {
+    q: '측정 결과가 어디에 저장되거나 전송되나요?',
+    a: '아니요. 측정은 내 브라우저에서만 이뤄지고, 지난 결과 비교용으로 이 기기의 브라우저 저장소에만 남겨요.',
+  },
+  {
+    q: '결과가 측정할 때마다 달라요.',
+    a: '정상이에요. 인터넷 상태는 시간에 따라 출렁여서 한 번의 값으로 판단하기 어려워요. 오픈 전날과 오픈 30분 전쯤 두세 번 재서 비슷한 값이 나오는지 보세요.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: '직관냥 티켓팅 인터넷 속도 측정',
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Web',
+    inLanguage: 'ko',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+    description,
+  },
+];
+---
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="head">
+    <h1>티켓팅 인터넷 속도 측정</h1>
+    <p class="lead">오픈 직전, 내 인터넷이 예매에 괜찮은지 10초에 확인해요. 지연과 다운로드 속도에 더해 <strong>예매처 4곳까지의 응답 시간</strong>을 같이 봐요. 측정은 이 브라우저 안에서만 이뤄지고 어디에도 전송되지 않아요.</p>
+  </section>
+
+  <section class="auto" aria-label="측정">
+    <div class="auto-head">
+      <h2 class="sec mono">SPEED TEST</h2>
+      <button type="button" id="run" class="run">측정 시작</button>
+    </div>
+    <ul class="checks" id="checks">
+      <li data-k="ping"><span class="st mono">–</span><div><b>네트워크 지연</b><p><span class="msg">이 사이트에 5번 요청해 응답 시간과 편차를 재요.</span></p></div></li>
+      <li data-k="speed"><span class="st mono">–</span><div><b>다운로드 속도(대략)</b><p><span class="msg">이미지 몇 장을 받아 속도를 어림해요.</span></p></div></li>
+      {vendors.map((v) => (
+        <li data-k={`v-${v.id}`}>
+          <span class="st mono">–</span>
+          <div><b>{v.short} 응답</b><p><span class="msg">{v.short} 첫 화면까지 걸리는 시간을 재요.</span> <a href={`/ticketing-clock/${v.id}/`}>{v.short} 티켓팅 시계</a></p></div>
+        </li>
+      ))}
+    </ul>
+    <p class="summary mono" id="summary" hidden></p>
+    <p class="diag" id="diag" hidden></p>
+    <p class="last mono" id="last" hidden></p>
+    <p class="fine">판정 기준은 일반적인 경험치를 바탕으로 한 참고용이에요. 예매처 응답은 정확한 핑이 아니라 체감 응답에 가깝고, 오픈 순간의 서버 혼잡은 반영되지 않아요.</p>
+  </section>
+
+  <section class="guide">
+    <h2 class="sec mono">HOW TO READ</h2>
+    <h3>결과 보는 법</h3>
+    <table class="tbl">
+      <thead><tr><th>항목</th><th>좋음</th><th>주의</th><th>확인 필요</th></tr></thead>
+      <tbody>
+        <tr><td>네트워크 지연</td><td>{THRESH.ping.okMs}ms 이하 · 편차 {THRESH.ping.okJitter}ms 이하</td><td>{THRESH.ping.warnMs}ms 이하</td><td>{THRESH.ping.warnMs}ms 초과</td></tr>
+        <tr><td>다운로드 속도</td><td>{THRESH.speed.okMbps}Mbps 이상</td><td>{THRESH.speed.warnMbps}Mbps 이상</td><td>{THRESH.speed.warnMbps}Mbps 미만</td></tr>
+        <tr><td>예매처 응답</td><td>{THRESH.vendor.okMs}ms 이하</td><td>{THRESH.vendor.warnMs}ms 이하</td><td>{THRESH.vendor.warnMs}ms 초과</td></tr>
+      </tbody>
+    </table>
+    <p class="note">예매에서는 속도(Mbps)보다 <b>지연과 편차</b>가 더 중요해요. 속도가 충분해도 응답이 들쭉날쭉하면 결제 단계에서 끊길 수 있어요. 또 내 지연은 좋은데 특정 예매처만 느리다면 내 연결보다 그쪽 서버 사정일 가능성이 커요.</p>
+
+    <h3>오픈 전에 연결 상태 올리는 법</h3>
+    <ul class="tips">
+      <li>가능하면 유선, 아니면 공유기와 가까운 자리에서 5GHz Wi-Fi를 써요.</li>
+      <li>같은 망의 영상 스트리밍·클라우드 백업·게임 다운로드를 오픈 전에 멈춰 둬요.</li>
+      <li>VPN과 광고 차단 확장 프로그램은 예매처와 충돌할 수 있어 끄는 편이 안전해요.</li>
+      <li>Wi-Fi와 모바일 데이터를 각각 재보고 더 안정적인 쪽으로 정해요. 하나는 예비로 남겨 두세요.</li>
+      <li>카카오톡·인스타그램 같은 앱 안의 브라우저 대신 기본 브라우저(Chrome·Safari)로 열어요.</li>
+    </ul>
+  </section>
+
+  <section class="faqs">
+    <h2 class="sec mono">FAQ</h2>
+    <div class="faq">
+      {faq.map((f) => (
+        <details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>
+      ))}
+    </div>
+  </section>
+
+  <section class="next">
+    <h2 class="sec mono">NEXT</h2>
+    <div class="links">
+      <a href="/ticketing-check/">티켓팅 준비 점검 (시계·브라우저·체크리스트)</a>
+      <a href="/ticketing-clock/">티켓팅 시계</a>
+      <a href="/practice/">티켓팅 연습</a>
+      <a href="/ticket-open/">곧 열리는 티켓오픈</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script id="probe-data" type="application/json" set:html={JSON.stringify(probes)} />
+<script id="vendor-data" type="application/json" set:html={JSON.stringify(vendors)} />
+<script>
+  import { measurePing, judgePing, measureSpeed, judgeSpeed, measureVendor, judgeVendor, type Verdict } from '../lib/netcheck';
+
+  const probes: { url: string }[] = JSON.parse(document.getElementById('probe-data')!.textContent || '[]');
+  const vendors: { id: string; short: string; home: string }[] = JSON.parse(document.getElementById('vendor-data')!.textContent || '[]');
+  const $ = (id: string) => document.getElementById(id)!;
+  const LABEL = { ok: 'OK', warn: '주의', bad: '확인', na: '–' } as const;
+  const results: Record<string, Verdict> = {};
+
+  function show(k: string, r: Verdict) {
+    results[k] = r;
+    const li = document.querySelector<HTMLElement>(`#checks li[data-k="${k}"]`)!;
+    li.dataset.s = r.s;
+    li.querySelector('.st')!.textContent = LABEL[r.s];
+    li.querySelector('.msg')!.textContent = r.msg;
+  }
+
+  // 지난 측정(이 브라우저에만 저장)
+  const KEY = 'krconcerts:speed-last';
+  type Last = { t: number; ping: number | null; mbps: number | null };
+  const readLast = (): Last | null => { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { return null; } };
+  const fmtDate = (t: number) => { const d = new Date(t); return `${d.getMonth() + 1}.${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`; };
+  function showLast(prev: Last | null) {
+    if (!prev) return;
+    const el = $('last'); el.hidden = false;
+    const p = prev.ping === null ? '–' : `${Math.round(prev.ping)}ms`;
+    const m = prev.mbps === null ? '–' : `${prev.mbps.toFixed(1)}Mbps`;
+    el.textContent = `지난 측정(${fmtDate(prev.t)}) 지연 ${p} · 속도 ${m}`;
+  }
+  showLast(readLast());
+
+  function summarize(vendorMs: Record<string, number | null>, pingMs: number | null) {
+    const vals = Object.values(results).filter((r) => r.s !== 'na');
+    if (vals.length === 0) return;
+    const ok = vals.filter((r) => r.s === 'ok').length;
+    const el = $('summary'); el.hidden = false;
+    el.textContent = `${ok} / ${vals.length} 항목 양호` + (ok === vals.length ? ' · 이 연결이면 준비 완료' : ' · 위 항목을 확인해 보세요');
+
+    // 내 연결 vs 예매처 비교: 어디가 병목인지 한 줄로
+    const diag = $('diag');
+    const reached = vendors.filter((v) => vendorMs[v.id] !== null);
+    const slow = reached.filter((v) => results[`v-${v.id}`].s !== 'ok');
+    const myBad = pingMs !== null && results.ping.s !== 'ok';
+    let text = '';
+    if (reached.length === 0) text = '예매처 응답을 하나도 받지 못했어요. VPN·광고 차단·보안 프로그램을 끄고 다시 재보세요.';
+    else if (myBad && slow.length === reached.length) text = '내 연결 지연과 예매처 응답이 모두 느려요. 연결(Wi-Fi 위치·다른 기기·네트워크)부터 바꿔 보세요.';
+    else if (!myBad && slow.length === reached.length) text = '내 연결은 괜찮은데 예매처 응답이 전반적으로 느려요. 지금 접속이 몰린 시간일 수 있어요.';
+    else if (!myBad && slow.length > 0) text = `내 연결은 괜찮은데 ${slow.map((v) => v.short).join('·')}만 느려요. 그쪽 서버 사정일 수 있으니 잠시 뒤 다시 재보세요.`;
+    diag.hidden = !text; diag.textContent = text;
+  }
+
+  let running = false;
+  $('run').addEventListener('click', async () => {
+    if (running) return; running = true;
+    const btn = $('run') as HTMLButtonElement; btn.disabled = true; btn.textContent = '측정 중…';
+    $('summary').hidden = true; $('diag').hidden = true;
+    document.querySelectorAll('#checks li .st').forEach((s) => (s.textContent = '…'));
+    const prev = readLast();
+
+    // 1) 내 연결(지연) + 예매처 응답은 가벼운 요청이라 함께 돌린다. 2) 그 뒤에 다운로드 속도(대역폭을 쓰니 따로)
+    const vendorMs: Record<string, number | null> = {};
+    const [ping] = await Promise.all([
+      measurePing(),
+      ...vendors.map(async (v) => {
+        const ms = await measureVendor(v.home);
+        vendorMs[v.id] = ms;
+        show(`v-${v.id}`, judgeVendor(ms));
+      }),
+    ]);
+    show('ping', judgePing(ping));
+    const mbps = await measureSpeed(probes);
+    show('speed', judgeSpeed(mbps));
+    summarize(vendorMs, ping ? ping.ms : null);
+
+    try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), ping: ping ? ping.ms : null, mbps })); } catch { /* 저장 불가 환경 */ }
+    showLast(prev);
+    btn.disabled = false; btn.textContent = '다시 측정'; running = false;
+  });
+</script>
+<style>
+  .head h1 { margin: 0 0 0.6rem; }
+  .lead { margin: 0 0 1.6rem; color: #a9a9b0; max-width: 40rem; line-height: 1.7; }
+  .lead strong { color: #ededea; }
+  .sec { margin: 0; font-size: 0.8rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .auto-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.7rem; border-bottom: 1px solid #2a2a30; }
+  .run { padding: 0.7rem 1.3rem; border: 0; border-radius: 4px; background: #ff5fa2; color: #0e0e10; font: inherit; font-weight: 900; cursor: pointer; }
+  .run:disabled { opacity: .6; cursor: default; }
+  .checks { list-style: none; margin: 0; padding: 0; }
+  .checks li { display: grid; grid-template-columns: 3.2rem 1fr; gap: 0.8rem; padding: 0.95rem 0; border-bottom: 1px solid #202024; }
+  .st { font-size: 0.78rem; letter-spacing: .08em; padding-top: 0.15rem; color: #6f6f77; }
+  li[data-s="ok"] .st { color: #f4f4f0; }
+  li[data-s="warn"] .st { color: #ffb84c; }
+  li[data-s="bad"] .st { color: #ff5fa2; }
+  .checks b { display: block; margin-bottom: 0.15rem; }
+  .checks p { margin: 0; font-size: 0.88rem; color: #a9a9b0; line-height: 1.55; }
+  .checks p a { color: #8f8f97; font-size: 0.8rem; margin-left: 0.3rem; }
+  .checks p a:hover { color: #ff5fa2; }
+  .summary { margin: 1rem 0 0; font-size: 1.05rem; font-weight: 900; }
+  .diag { margin: 0.5rem 0 0; font-size: 0.9rem; color: #c4c4c8; line-height: 1.6; }
+  .last { margin: 0.5rem 0 0; font-size: 0.8rem; color: #8f8f97; }
+  .fine { margin: 0.8rem 0 0; font-size: 0.8rem; color: #6f6f77; line-height: 1.6; }
+
+  .guide { margin-top: 2.4rem; }
+  .guide .sec, .faqs .sec, .next .sec { padding-bottom: 0.7rem; border-bottom: 1px solid #2a2a30; margin-bottom: 0.9rem; }
+  .guide h3 { margin: 1.4rem 0 0.6rem; font-size: 1.05rem; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  .tbl th, .tbl td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid #202024; vertical-align: top; }
+  .tbl th { color: #8f8f97; font-weight: 700; font-size: 0.78rem; }
+  .tbl td:first-child { font-weight: 700; white-space: nowrap; }
+  .note { margin: 0.9rem 0 0; color: #a9a9b0; font-size: 0.9rem; line-height: 1.7; }
+  .note b { color: #ededea; }
+  .tips { margin: 0; padding-left: 1.2rem; color: #c4c4c8; font-size: 0.92rem; line-height: 1.8; }
+
+  .faqs { margin-top: 2.4rem; }
+  .faq { display: flex; flex-direction: column; gap: 0.6rem; }
+  .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .faq-item summary { cursor: pointer; font-weight: 700; color: #ededea; font-size: 0.94rem; }
+  .faq-item p { margin: 0.6rem 0 0; color: #8f8f97; font-size: 0.88rem; line-height: 1.7; }
+
+  .next { margin-top: 2.4rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .links a { padding: 0.6rem 1rem; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+  .links a:hover { border-color: #ff5fa2; }
+  @media (max-width: 560px) {
+    .tbl { font-size: 0.8rem; }
+    .tbl td:first-child { white-space: normal; }
+  }
+</style>
