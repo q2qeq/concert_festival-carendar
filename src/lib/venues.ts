@@ -68,6 +68,10 @@ const VENUE_SLUG_MAP: Record<string, string> = {
   '고척스카이돔': 'gocheok-sky-dome',
   '예스24 라이브홀': 'yes24-live-hall',
   'KT&G 상상마당 홍대 라이브홀': 'ktg-sangsangmadang-hongdae',
+  '예스24 원더로크홀': 'yes24-wonderlochhall',
+  '홍대 롤링홀': 'rolling-hall',
+  '무신사 개러지': 'musinsa-garage',
+  '경기아트센터 소극장': 'ggac-small-theater',
 };
 
 // 같은 공연장의 표기 변형 -> 대표 이름. 예매처·KOPIS마다 이름을 다르게 적어도
@@ -75,6 +79,9 @@ const VENUE_SLUG_MAP: Record<string, string> = {
 const VENUE_ALIASES: Record<string, string> = {
   'YES24 LIVE HALL': '예스24 라이브홀',
   '예스24 라이브홀 (구. 악스코리아)': '예스24 라이브홀',
+  'YES24 원더로크홀': '예스24 원더로크홀',
+  '무신사 개러지 (musinsa garage)': '무신사 개러지',
+  '무신사 개러지 (구. 왓챠홀)': '무신사 개러지',
 };
 const canonicalVenue = (name: string) => VENUE_ALIASES[name] ?? name;
 const SLUG_TO_VENUE: Record<string, string> = Object.fromEntries(
