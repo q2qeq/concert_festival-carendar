@@ -37,7 +37,7 @@ const venues = raw as Record<string, VenueInfo>;
 // at the same physical venue (e.g. two festivals both at 임진각 평화누리) reuse one
 // entry here instead of repeating researched transit details per event.
 export function getVenueInfo(venueName: string): VenueInfo | undefined {
-  return venues[venueName];
+  return venues[canonicalVenue(venueName)];
 }
 
 export function allVenueNames(): string[] {
@@ -66,13 +66,24 @@ const VENUE_SLUG_MAP: Record<string, string> = {
   '공감센터': 'gonggam-center',
   '엑스코(EXCO)': 'exco-daegu',
   '고척스카이돔': 'gocheok-sky-dome',
+  '예스24 라이브홀': 'yes24-live-hall',
+  'KT&G 상상마당 홍대 라이브홀': 'ktg-sangsangmadang-hongdae',
 };
+
+// 같은 공연장의 표기 변형 -> 대표 이름. 예매처·KOPIS마다 이름을 다르게 적어도
+// 하나의 공연장 페이지·정보로 합친다(정보를 변형마다 복사하지 않는다).
+const VENUE_ALIASES: Record<string, string> = {
+  'YES24 LIVE HALL': '예스24 라이브홀',
+  '예스24 라이브홀 (구. 악스코리아)': '예스24 라이브홀',
+};
+const canonicalVenue = (name: string) => VENUE_ALIASES[name] ?? name;
 const SLUG_TO_VENUE: Record<string, string> = Object.fromEntries(
   Object.entries(VENUE_SLUG_MAP).map(([venue, slug]) => [slug, venue])
 );
 
 export function venueSlug(venueName: string): string {
-  return VENUE_SLUG_MAP[venueName] ?? encodeURIComponent(venueName.toLowerCase());
+  const name = canonicalVenue(venueName);
+  return VENUE_SLUG_MAP[name] ?? encodeURIComponent(name.toLowerCase());
 }
 
 export function venueFromSlug(slug: string): string | undefined {
