@@ -7,6 +7,13 @@ import { upcomingTicketOpens } from '../lib/events';
 const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, at: e.ticketOpenAt as string }));
 ---
 <section class="tool-strip" aria-label="티켓팅 도구" data-opens={JSON.stringify(opens)}>
+  <a class="tool-card tool-speed" href="/internet-speed/">
+    <span class="tool-body">
+      <strong>인터넷 속도 측정</strong>
+      <span class="tool-sub" id="ts-speed-sub">내 인터넷 속도, 10초면 확인돼요</span>
+    </span>
+    <span class="tool-go" aria-hidden="true">→</span>
+  </a>
   <a class="tool-card tool-clock" id="ts-clock" href="/ticketing-clock/">
     <span class="tool-body">
       <strong>티켓팅 시계</strong>
@@ -25,13 +32,6 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
     <span class="tool-body">
       <strong>티켓팅 준비 점검</strong>
       <span class="tool-sub">시계·네트워크·브라우저 1분 점검</span>
-    </span>
-    <span class="tool-go" aria-hidden="true">→</span>
-  </a>
-  <a class="tool-card" href="/internet-speed/">
-    <span class="tool-body">
-      <strong>인터넷 속도 측정</strong>
-      <span class="tool-sub">지연·속도·예매처 응답을 10초에</span>
     </span>
     <span class="tool-go" aria-hidden="true">→</span>
   </a>
@@ -72,6 +72,16 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
   try {
     const best = Number(localStorage.getItem('krconcerts:practice-best')) || 0;
     if (best && practiceSub) practiceSub.innerHTML = `내 최고 <b>${best}점</b> · 다시 도전!`;
+  } catch { /* 저장 불가 환경이면 기본 문구 */ }
+
+  // 내 지난 속도 측정 결과 (속도 측정 페이지와 같은 저장 키)
+  try {
+    const last = JSON.parse(localStorage.getItem('krconcerts:speed-last') || 'null');
+    const speedSub = document.getElementById('ts-speed-sub');
+    if (last && typeof last.mbps === 'number' && speedSub) {
+      const m = last.mbps >= 100 ? Math.round(last.mbps) : last.mbps.toFixed(1);
+      speedSub.innerHTML = `지난 측정 <b>${m}Mbps</b> · 다시 재보기`;
+    }
   } catch { /* 저장 불가 환경이면 기본 문구 */ }
 
   type Open = { id: string; artist: string; at: string };

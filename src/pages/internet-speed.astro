@@ -72,6 +72,15 @@ const jsonLd = [
       <h2 class="sec mono">SPEED TEST</h2>
       <button type="button" id="run" class="run">측정 시작</button>
     </div>
+    <div class="big" id="big" data-s="na" aria-live="polite">
+      <div class="big-main"><span class="big-num mono" id="big-num">0.0</span><span class="big-unit">Mbps</span></div>
+      <p class="big-sub" id="big-sub">측정 시작을 누르면 내 다운로드 속도가 여기에 크게 표시돼요.</p>
+      <dl class="big-row">
+        <div><dt>지연</dt><dd class="mono" id="big-ping">–</dd></div>
+        <div><dt>편차</dt><dd class="mono" id="big-jitter">–</dd></div>
+        <div><dt>예매처 응답(가장 느린 곳)</dt><dd class="mono" id="big-vendor">–</dd></div>
+      </dl>
+    </div>
     <ul class="checks" id="checks">
       <li data-k="ping"><span class="st mono">–</span><div><b>네트워크 지연</b><p><span class="msg">이 사이트에 5번 요청해 응답 시간과 편차를 재요.</span></p></div></li>
       <li data-k="speed"><span class="st mono">–</span><div><b>다운로드 속도(대략)</b><p><span class="msg">이미지 몇 장을 받아 속도를 어림해요.</span></p></div></li>
@@ -191,6 +200,9 @@ const jsonLd = [
     $('summary').hidden = true; $('diag').hidden = true;
     document.querySelectorAll('#checks li .st').forEach((s) => (s.textContent = '…'));
     const prev = readLast();
+    $('big').dataset.s = 'na';
+    $('big-num').textContent = '…'; $('big-sub').textContent = '측정 중이에요. 10초쯤 걸려요.';
+    $('big-ping').textContent = '…'; $('big-jitter').textContent = '…'; $('big-vendor').textContent = '…';
 
     // 1) 내 연결(지연) + 예매처 응답은 가벼운 요청이라 함께 돌린다. 2) 그 뒤에 다운로드 속도(대역폭을 쓰니 따로)
     const vendorMs: Record<string, number | null> = {};
@@ -207,6 +219,16 @@ const jsonLd = [
     show('speed', judgeSpeed(mbps));
     summarize(vendorMs, ping ? ping.ms : null);
 
+    // 큰 글씨 결과
+    const sp = judgeSpeed(mbps);
+    $('big').dataset.s = sp.s;
+    $('big-num').textContent = mbps === null ? '0.0' : mbps >= 100 ? String(Math.round(mbps)) : mbps.toFixed(1);
+    $('big-sub').textContent = mbps === null ? '속도를 재지 못했어요. 연결을 확인하고 다시 측정해 보세요.' : sp.msg.replace(/^대략 [\d.]+Mbps\.\s*/, '');
+    $('big-ping').textContent = ping ? `${Math.round(ping.ms)}ms` : '–';
+    $('big-jitter').textContent = ping ? `${Math.round(ping.jitter)}ms` : '–';
+    const vals = Object.values(vendorMs).filter((v): v is number => v !== null);
+    $('big-vendor').textContent = vals.length ? `${Math.round(Math.max(...vals))}ms` : '–';
+
     try { localStorage.setItem(KEY, JSON.stringify({ t: Date.now(), ping: ping ? ping.ms : null, mbps })); } catch { /* 저장 불가 환경 */ }
     showLast(prev);
     btn.disabled = false; btn.textContent = '다시 측정'; running = false;
@@ -220,6 +242,17 @@ const jsonLd = [
   .auto-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.7rem; border-bottom: 1px solid #2a2a30; }
   .run { padding: 0.7rem 1.3rem; border: 0; border-radius: 4px; background: #ff5fa2; color: #0e0e10; font: inherit; font-weight: 900; cursor: pointer; }
   .run:disabled { opacity: .6; cursor: default; }
+  .big { padding: 1.6rem 0 1.3rem; border-bottom: 1px solid #202024; }
+  .big-main { display: flex; align-items: baseline; gap: 0.6rem; }
+  .big-num { font-size: clamp(4rem, 18vw, 7rem); font-weight: 900; line-height: 1; letter-spacing: -.04em; color: #f4f4f0; font-variant-numeric: tabular-nums; }
+  .big-unit { font-size: clamp(1.1rem, 4vw, 1.5rem); font-weight: 700; color: #8f8f97; }
+  .big[data-s="na"] .big-num { color: #6f6f77; }
+  .big[data-s="warn"] .big-num { color: #ffb84c; }
+  .big[data-s="bad"] .big-num { color: #ff5fa2; }
+  .big-sub { margin: 0.7rem 0 0; font-size: 0.95rem; color: #c4c4c8; line-height: 1.6; }
+  .big-row { display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; margin: 1.1rem 0 0; }
+  .big-row dt { font-size: 0.74rem; letter-spacing: .08em; color: #8f8f97; margin-bottom: 0.15rem; }
+  .big-row dd { margin: 0; font-size: 1.35rem; font-weight: 900; }
   .checks { list-style: none; margin: 0; padding: 0; }
   .checks li { display: grid; grid-template-columns: 3.2rem 1fr; gap: 0.8rem; padding: 0.95rem 0; border-bottom: 1px solid #202024; }
   .st { font-size: 0.78rem; letter-spacing: .08em; padding-top: 0.15rem; color: #6f6f77; }
