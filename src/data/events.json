@@ -4127,7 +4127,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000615",
-        "note": "셔틀 스캔으로 확인 (2026-11-04). 수요조사 미달로 미개설 처리됨(DROPPED)."
+        "note": "셔틀 스캔으로 확인 (2026-11-06). 11/4 확인 당시 수요조사 미달로 미개설(DROPPED) 처리됐던 상품이 다시 수요조사 중 상태로 재개됨."
       }
     ]
   },
@@ -5506,7 +5506,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000623",
-        "note": "셔틀 스캔으로 확인 (2026-11-03). 수요조사 중인 상품입니다."
+        "note": "셔틀 스캔으로 확인 (2026-11-06). 수요조사에서 예약 가능 상태로 전환됨(11/3 확인 당시 수요조사 중 -> 지금 예약 가능). 노선·요금은 예약 화면에서 확인하세요."
       }
     ],
     "ticketingAnnounced": true,
@@ -5544,12 +5544,12 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000614",
-        "note": "셔틀 스캔으로 확인 (2026-11-03). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-06). 대부분 정류장 매진(일부 정류장만 \"일부 매진\"으로 잔여석 있음) - 11/3 확인 당시 예약 가능 상태에서 수요 급증으로 전환. 노선·요금은 예약 화면에서 확인하세요."
       },
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDQx/",
-        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-06). 운행 정류장이 서울역 1곳(17,000원~)만 남음 - 11/3 확인 당시 여러 정류장 운행에서 축소됨. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
     "posterUrl": "/posters/shuttle-2026-incheon-airport-sky-festival-2026-11.webp",
@@ -5661,7 +5661,7 @@
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDQy/",
-        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-06). 신도림역·부평역 매진, 나머지 정류장은 예약 가능(17,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
     "posterUrl": "/posters/shuttle-xdinary-heroes-impulse-2026-11.webp",
@@ -5798,7 +5798,7 @@
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDUy/",
-        "note": "셔틀 스캔으로 확인 (2026-11-03). 유료 셔틀버스(왕복/편도 티켓 28,000원~). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-06). 공연일(11/7) 임박으로 합정역·왕십리역·종합운동장역 매진, 서울역만 잔여(28,000원). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
     "posterUrl": "/posters/shuttle-akmu-concert-tour-gangneung-2026-11.webp",
@@ -6101,5 +6101,33 @@
     ],
     "posterUrl": "/posters/steve-gadd-bhg-seoul-2027-01.webp",
     "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_7/open_1105.jpg"
+  },
+  {
+    "id": "nct-wish-2nd-concert-tour-seoul-2027-01",
+    "artist": "NCT WISH",
+    "genre": "가요",
+    "venue": "고척스카이돔",
+    "city": "서울",
+    "startDate": "2027-01-15",
+    "endDate": "2027-01-16",
+    "officialUrl": "https://weverse.io/nctwish/notice/40039",
+    "shuttleBus": [
+      {
+        "operator": "카카오 T 셔틀",
+        "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000630",
+        "note": "셔틀 스캔으로 확인 (2026-11-06). 수요조사 중인 상품입니다."
+      }
+    ],
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-06). NCT WISH 2nd 콘서트 투어 'INTO THE WISH : Face Our WISH' 서울(고척스카이돔) 공연 - 1/15(금)·1/16(토) 양일.",
+    "sources": [
+      {
+        "label": "[NOTICE] NCT WISH 2nd CONCERT TOUR 'INTO THE WISH : Face Our WISH' Open Announcement - Weverse 공식",
+        "url": "https://weverse.io/nctwish/notice/40039"
+      },
+      {
+        "label": "NCT WISH Announces Stops For 2nd Concert Tour 'INTO THE WISH : Face Our WISH' - Soompi",
+        "url": "https://www.soompi.com/article/1876986wpp/nct-wish-announces-stops-for-2nd-concert-tour-into-the-wish-face-our-wish"
+      }
+    ]
   }
 ]
