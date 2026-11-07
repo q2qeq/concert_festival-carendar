@@ -17,7 +17,7 @@ import Mascot from '../../components/Mascot.astro';
 import NextSteps from '../../components/NextSteps.astro';
 import { postsMentioningEvent, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
-import { isShuttleLikely } from '../../lib/venues';
+import { isShuttleLikely, getVenueInfo } from '../../lib/venues';
 import { latestUpdateISO, events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents, isDomestic, artistAliases } from '../../lib/events';
 
 export function getStaticPaths() {
