@@ -22,6 +22,11 @@ export interface VenueInfo {
   smokingArea?: string;
   nearbyFood?: VenueFood[];
   tip?: string;
+  // 수용 인원 - 공식 시설 안내 등 출처가 확인된 곳만 채운다(블로그·커뮤니티 수치는 쓰지 않는다).
+  // 무대 구성에 따라 실제 판매 좌석은 달라지므로 capacityNote로 단서를 함께 적는다.
+  capacity?: string;
+  capacityNote?: string;
+  capacitySource?: { label: string; url: string };
   // 공연장 공식/현장 사진 - 출처가 명확한(라이선스 확인된) 사진이 있을 때만 채운다.
   // 위키미디어 원격 링크가 불안정해(빈 박스) 2026-11-06부터 /public/venues/ 에 640px webp로
   // 저장해 쓴다(CC 라이선스는 출처 표기 조건으로 재사용 허용). 원본은 imageSourceUrl에 남기고

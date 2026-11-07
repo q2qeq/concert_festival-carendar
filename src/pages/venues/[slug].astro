@@ -12,7 +12,9 @@ import AdSlot from '../../components/AdSlot.astro';
 import { getVenueInfo, allVenueNames, venueSlug, venueFromSlug, mapLinks } from '../../lib/venues';
 import RouteFinder from '../../components/RouteFinder.astro';
 import SightlineSearch from '../../components/SightlineSearch.astro';
-import { upcomingEvents } from '../../lib/events';
+import { upcomingEvents, pastEvents } from '../../lib/events';
+import { regionOf, isShuttleLikely } from '../../lib/venues';
+import { SITE_URL } from '../../../astro.config.mjs';
 
 export function getStaticPaths() {
   const uniqueSlugs = Array.from(new Set(allVenueNames().map(venueSlug)));
@@ -27,6 +29,51 @@ const info = getVenueInfo(venueName);
 const slug = venueSlug(venueName);
 const venueEvents = upcomingEvents().filter((e) => venueSlug(e.venue) === slug);
 const city = venueEvents[0]?.city;
+// 지난 공연 - 이 공연장이 어떤 공연을 치러 왔는지 보여주는 이력(최근 순, 최대 8건).
+const pastHere = pastEvents().filter((e) => venueSlug(e.venue) === slug).reverse().slice(0, 8);
+// 같은 지역의 다른 공연장 - 주소 앞부분(시/도)이 같은 곳.
+const region = regionOf(info?.address);
+const sameRegion = Array.from(new Set(allVenueNames().map(venueSlug)))
+  .filter((s2) => s2 !== slug)
+  .map((s2) => ({ slug: s2, name: venueFromSlug(s2)! }))
+  .filter((v) => region !== '기타' && regionOf(getVenueInfo(v.name)?.address) === region)
+  .slice(0, 8);
+
+// 자주 묻는 질문 - 이미 확인해 둔 정보에서만 만든다(없는 항목은 질문 자체를 빼서 빈 답을 만들지 않는다).
+const faqs: Array<{ q: string; a: string }> = [];
+if (info?.address) faqs.push({ q: `${venueName} 주소가 어떻게 되나요?`, a: info.address });
+if (info?.transit?.length) faqs.push({ q: `${venueName}에 대중교통으로 어떻게 가나요?`, a: info.transit.join(' / ') });
+if (info?.parking) faqs.push({ q: `${venueName}에 주차할 수 있나요?`, a: [info.parking, ...(info.parkingTips ?? [])].join(' ') });
+if (info?.capacity) faqs.push({ q: `${venueName}은 몇 명까지 들어가나요?`, a: `${info.capacity}${info.capacityNote ? ` ${info.capacityNote}` : ''}` });
+if (isShuttleLikely(venueName)) faqs.push({ q: `${venueName} 공연에 셔틀버스가 있나요?`, a: '공연마다 달라요. 공연 상세 페이지의 셔틀 안내와 예매처 공지를 먼저 확인하고, 없으면 카카오 T 셔틀·콘서트 셔틀 업체에서 검색해 보세요.' });
+if (info?.coinLocker) faqs.push({ q: `${venueName}에 코인락커가 있나요?`, a: info.coinLocker });
+faqs.push({ q: `${venueName} 공연이 끝난 뒤 막차를 탈 수 있을까요?`, a: '공연 종료 시각은 공연마다 달라요. 막차 계산기에서 공연 끝나는 시간과 출발지를 넣어 확인해 보세요.' });
+
+const pageUrl = new URL(`/venues/${slug}/`, SITE_URL).toString();
+const jsonLd: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: '직관냥', item: SITE_URL + '/' },
+      { '@type': 'ListItem', position: 2, name: '공연장', item: SITE_URL + '/venues/' },
+      { '@type': 'ListItem', position: 3, name: venueName, item: pageUrl },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'PerformingArtsTheater',
+    name: venueName,
+    url: pageUrl,
+    ...(info?.address ? { address: { '@type': 'PostalAddress', streetAddress: info.address, addressCountry: 'KR' } } : {}),
+    ...(info?.imageUrl ? { image: new URL(info.imageUrl, SITE_URL).toString() } : {}),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
 
 const hasParking = Boolean(info?.parking);
 // "주차장 요금"을 제목에 쓰려면 실제로 요금·팁 정보가 있어야 한다. 주차 가능 여부만 아는 곳은 문구를 낮춘다.
@@ -59,6 +106,19 @@ const pageDescription = hasParkingFee
     <h1>{venueName}</h1>
     {city && <p class="city-tag">{city}</p>}
     {info?.address && <p class="address">{info.address}</p>}
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="at-a-glance" aria-label={`${venueName} 한눈에 보기`}>
+    <dl>
+      {region !== '기타' && <div><dt>지역</dt><dd>{region}</dd></div>}
+      {info?.capacity && <div><dt>수용 인원</dt><dd>{info.capacity}</dd></div>}
+      <div><dt>주차</dt><dd>{hasParking ? '안내 있음' : '정보 확인 중'}</dd></div>
+      <div><dt>셔틀버스</dt><dd>{isShuttleLikely(venueName) ? '공연별 확인 필요' : '대중교통 이용이 일반적'}</dd></div>
+      <div><dt>예정 공연</dt><dd>{venueEvents.length}건</dd></div>
+    </dl>
+    {info?.capacityNote && <p class="glance-note">{info.capacityNote}{info.capacitySource && <> · 출처: <a href={info.capacitySource.url} target="_blank" rel="noopener noreferrer">{info.capacitySource.label}</a></>}</p>}
   </section>
 
   <RouteFinder venue={venueName} address={info?.address} />
@@ -141,8 +201,52 @@ const pageDescription = hasParkingFee
       <p class="empty">현재 예정된 공연이 없어요.</p>
     )}
   </section>
+
+  {pastHere.length > 0 && (
+    <section class="info-block">
+      <h2>이곳에서 열렸던 공연</h2>
+      <ul class="past-list">
+        {pastHere.map((e) => (
+          <li><a href={`/events/${e.id}/`}>{e.artist}</a><span>{e.startDate}{e.endDate !== e.startDate ? ` ~ ${e.endDate}` : ''}</span></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <section class="info-block faq">
+    <h2>자주 묻는 질문</h2>
+    {faqs.map((f) => (
+      <details>
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </section>
+
+  {sameRegion.length > 0 && (
+    <section class="info-block">
+      <h2>{region}의 다른 공연장</h2>
+      <ul class="past-list">
+        {sameRegion.map((v) => <li><a href={`/venues/${v.slug}/`}>{v.name}</a></li>)}
+      </ul>
+    </section>
+  )}
 </BaseLayout>
 <style>
+  .at-a-glance { margin: 1rem 0 0.5rem; padding: 0.8rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .at-a-glance dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.6rem 1rem; margin: 0; }
+  .at-a-glance dt { font-size: 0.74rem; color: #8f8f97; }
+  .at-a-glance dd { margin: 0.1rem 0 0; font-size: 0.92rem; color: #ededea; font-weight: 600; }
+  .glance-note { margin: 0.6rem 0 0; font-size: 0.78rem; color: #8f8f97; line-height: 1.5; }
+  .glance-note a { color: inherit; }
+  .past-list { list-style: none; padding-left: 0 !important; }
+  .past-list li { display: flex; gap: 0.7rem; align-items: baseline; }
+  .past-list a { color: #ededea; text-decoration: none; font-weight: 600; }
+  .past-list a:hover { color: #ff5fa2; }
+  .past-list span { color: #8f8f97; font-size: 0.82rem; }
+  .faq details { border-top: 1px solid rgba(255,255,255,0.12); padding: 0.6rem 0; }
+  .faq summary { cursor: pointer; color: #ededea; font-size: 0.94rem; font-weight: 600; }
+  .faq details p { margin-top: 0.5rem; }
   .breadcrumb { margin: 0 0 1rem; font-size: 0.88rem; }
   .breadcrumb a { color: #8f8f97; text-decoration: none; }
   .breadcrumb a:hover { color: #fff; }
