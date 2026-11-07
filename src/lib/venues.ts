@@ -72,6 +72,21 @@ const VENUE_SLUG_MAP: Record<string, string> = {
   '홍대 롤링홀': 'rolling-hall',
   '무신사 개러지': 'musinsa-garage',
   '경기아트센터 소극장': 'ggac-small-theater',
+  '롯데콘서트홀': 'lotte-concert-hall',
+  '예술의전당 콘서트홀': 'sac-concert-hall',
+  '세종문화회관 대극장': 'sejong-center-grand-theater',
+  '연세대학교 대강당': 'yonsei-grand-auditorium',
+  '연세대학교 백주년기념관 콘서트홀': 'yonsei-centennial-hall',
+  '경희대학교 평화의전당': 'khu-peace-palace',
+  '얼라이브홀': 'alive-hall',
+  'GS아트센터': 'gs-art-center',
+  '익산예술의전당 대공연장': 'iksan-arts-center',
+  '김해문화의전당 마루홀': 'gimhae-arts-center-maru',
+  '영남대학교 천마아트센터 그랜드홀': 'yeungnam-cheonma-art-center',
+  '아트센터인천 콘서트홀': 'art-center-incheon',
+  '송도컨벤시아': 'songdo-convensia',
+  '강릉 올림픽파크 (스피드스케이팅경기장)': 'gangneung-olympic-park-skating',
+  '창원컨벤션센터(CECO) 2,3전시장': 'ceco-changwon',
 };
 
 // 같은 공연장의 표기 변형 -> 대표 이름. 예매처·KOPIS마다 이름을 다르게 적어도
@@ -82,6 +97,12 @@ const VENUE_ALIASES: Record<string, string> = {
   'YES24 원더로크홀': '예스24 원더로크홀',
   '무신사 개러지 (musinsa garage)': '무신사 개러지',
   '무신사 개러지 (구. 왓챠홀)': '무신사 개러지',
+  '킨텍스 제2전시장 10홀': '킨텍스 제2전시장',
+  '킨텍스 제1전시장 4,5홀': 'KINTEX',
+  '킨텍스 제1전시장 5홀 (KINTEX)': 'KINTEX',
+  '고양종합운동장 주경기장': '고양종합운동장',
+  '엑스코 (EXCO) 동관': '엑스코(EXCO)',
+  'KT&G 상상마당 라이브홀 [마포]': 'KT&G 상상마당 홍대 라이브홀',
 };
 const canonicalVenue = (name: string) => VENUE_ALIASES[name] ?? name;
 const SLUG_TO_VENUE: Record<string, string> = Object.fromEntries(
