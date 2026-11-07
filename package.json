@@ -16,7 +16,8 @@
     "fanchant:watch": "node scripts/fanchant-watch-list.mjs",
     "ticketvendor:watch": "node scripts/ticket-vendor-watch-list.mjs",
     "indexnow:ping": "node scripts/indexnow-ping.mjs",
-    "posters:cache": "node scripts/cache-posters.mjs"
+    "posters:cache": "node scripts/cache-posters.mjs",
+    "audit:events": "node scripts/audit-events.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {
