@@ -1,10 +1,9 @@
 // 외부 링크 클릭 집계 리포트 (api/click.js가 쌓은 Redis 카운터를 읽는다).
 //   npm run clicks:report            # 최근 14일
 //   npm run clicks:report -- 30      # 최근 30일
-// 접속 정보: 환경변수 REDIS_URL(또는 UPSTASH_REDIS_REST_URL/TOKEN). 없으면 .env.local 을 읽는다.
-//   처음 한 번: `vercel env pull .env.local` (Vercel CLI 로그인 필요)
+// 사이트의 /api/click-report 를 토큰으로 호출한다(REDIS_URL은 비공개 값이라 로컬에서 직접 못 읽는다).
+// 토큰: 환경변수 또는 .env.local 의 CLICK_REPORT_TOKEN. 주소 바꾸려면 CLICK_REPORT_URL.
 import { readFileSync, existsSync } from 'node:fs';
-import { createClient } from 'redis';
 
 for (const f of ['.env.local', '.env']) {
   if (!existsSync(f)) continue;
@@ -14,25 +13,19 @@ for (const f of ['.env.local', '.env']) {
   }
 }
 const days = Number(process.argv[2]) > 0 ? Number(process.argv[2]) : 14;
-if (!process.env.REDIS_URL) {
-  console.error('REDIS_URL이 없습니다. `vercel env pull .env.local` 로 받아 오세요.');
+const token = process.env.CLICK_REPORT_TOKEN;
+const base = process.env.CLICK_REPORT_URL || 'https://jikgwannyang.com';
+if (!token) {
+  console.error('CLICK_REPORT_TOKEN이 없습니다. .env.local 에 CLICK_REPORT_TOKEN=... 을 넣으세요.');
   process.exit(1);
 }
 
-const client = createClient({ url: process.env.REDIS_URL, socket: { connectTimeout: 5000, reconnectStrategy: false } });
-client.on('error', () => {});
-await client.connect();
-
-const rows = [];
-for (let i = 0; i < days; i++) {
-  const day = new Date(Date.now() + 9 * 3600000 - i * 86400000).toISOString().slice(0, 10);
-  const h = await client.hGetAll(`clicks:${day}`);
-  for (const [field, n] of Object.entries(h)) {
-    const [kind, event, host] = field.split('|');
-    rows.push({ day, kind, event, host, n: Number(n) });
-  }
+const res = await fetch(`${base}/api/click-report?days=${days}`, { headers: { Authorization: `Bearer ${token}` } });
+if (!res.ok) {
+  console.error(`조회 실패: HTTP ${res.status} ${await res.text()}`);
+  process.exit(1);
 }
-await client.quit();
+const rows = (await res.json()).rows.map(([day, kind, event, host, n]) => ({ day, kind, event, host, n }));
 
 const sum = (key) => {
   const m = new Map();
