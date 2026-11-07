@@ -206,16 +206,29 @@ const jsonLd = {
     name: event.artist,
     ...(aliases.length > 0 ? { alternateName: aliases } : {}),
   },
-  ...(event.posterUrl ? { image: event.posterUrl } : {}),
+  ...(event.posterUrl ? { image: new URL(event.posterUrl, Astro.site).toString() } : {}),
+  url: new URL(Astro.url.pathname, Astro.site).toString(),
+  ...(event.officialUrl ? { sameAs: [event.officialUrl] } : {}),
   ...(ticketLinks.length > 0 && status === 'scheduled'
     ? {
         offers: ticketLinks.map((t) => ({
           '@type': 'Offer',
           url: t.url,
           availability: 'https://schema.org/InStock',
+          ...(event.ticketOpenAt ? { validFrom: event.ticketOpenAt } : {}),
         })),
       }
     : {}),
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: '직관냥', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: '전체 일정', item: new URL('/events/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: event.artist, item: new URL(Astro.url.pathname, Astro.site).toString() },
+  ],
 };
 ---
 <BaseLayout
@@ -224,6 +237,7 @@ const jsonLd = {
   image={event.posterUrl}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
 
   {tocItems.length > 2 && (
     <nav class="event-toc" aria-label="이 페이지의 정보">

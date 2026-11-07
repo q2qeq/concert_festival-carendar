@@ -31,6 +31,7 @@ for (const e of events) {
   <nav class="period-links" aria-label="월별 일정">
     <span class="mono">BY MONTH</span>
     {periods.months.map((m) => <a href={`/schedule/${m}/`}>{periodLabel(m)}</a>)}
+    <a href="/artists/">아티스트순</a>
   </nav>
 
   <CalendarNav events={events} />

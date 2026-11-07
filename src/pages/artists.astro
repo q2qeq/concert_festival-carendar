@@ -1,0 +1,100 @@
+---
+// 아티스트 가나다·ABC 색인. 사람들은 같은 이름을 한글/영문/붙여쓰기로 제각각 검색하므로
+// 표기 변형(artistAliases)까지 한 줄에 보여 주고, 각 공연 상세로 연결한다.
+// 아티스트별 별도 페이지는 만들지 않는다 - 공연 1건당 아티스트 1팀이라 상세 페이지와 내용이 겹친다.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { upcomingEvents, artistAliases } from '../lib/events';
+
+const events = upcomingEvents();
+
+// "English (한글)" / "한글 (English)" 어느 쪽이든 대표 표기를 앞쪽 이름으로 쓴다.
+const rows = events.map((e) => {
+  const main = e.artist.split('(')[0].trim();
+  const initial = (() => {
+    const c = main[0] ?? '#';
+    if (/[가-힣]/.test(c)) {
+      const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+      const idx = Math.floor((c.charCodeAt(0) - 0xac00) / 588);
+      const base = CHO[idx] ?? '#';
+      const MAP: Record<string, string> = { ㄲ: 'ㄱ', ㄸ: 'ㄷ', ㅃ: 'ㅂ', ㅆ: 'ㅅ', ㅉ: 'ㅈ' };
+      return MAP[base] ?? base;
+    }
+    return /[A-Za-z]/.test(c) ? c.toUpperCase() : '#';
+  })();
+  return { event: e, main, initial, aliases: artistAliases(e) };
+});
+
+const ORDER = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎABCDEFGHIJKLMNOPQRSTUVWXYZ#'.split('');
+const groups = ORDER
+  .map((key) => ({
+    key,
+    items: rows
+      .filter((r) => r.initial === key)
+      .sort((a, b) => a.main.localeCompare(b.main, 'ko')),
+  }))
+  .filter((g) => g.items.length > 0);
+
+const pageTitle = '아티스트별 내한공연 일정';
+const pageDescription = `예정된 내한공연·페스티벌 ${rows.length}건을 아티스트 이름 가나다·ABC 순으로 찾아보세요. 한글·영문 표기 모두 검색돼요.`;
+
+const itemListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: rows.map((r, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: new URL(`/events/${r.event.id}/`, Astro.site).toString(),
+    name: r.event.artist,
+  })),
+};
+---
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(itemListLd)} />
+  <p class="breadcrumb"><a href="/events/">← 전체 일정</a></p>
+
+  <section class="intro">
+    <h1>아티스트별 일정</h1>
+    <p>{pageDescription}</p>
+  </section>
+
+  <nav class="jump" aria-label="초성·알파벳 바로가기">
+    {groups.map((g) => <a href={`#i-${g.key}`}>{g.key}</a>)}
+  </nav>
+
+  {groups.map((g) => (
+    <section class="group" id={`i-${g.key}`}>
+      <h2 class="mono">{g.key}</h2>
+      <ul>
+        {g.items.map((r) => (
+          <li>
+            <a href={`/events/${r.event.id}/`}>
+              <span class="name">{r.event.artist}</span>
+              <span class="meta mono">
+                {r.event.startDate.slice(5).replace('-', '.')} · {r.event.venue}
+              </span>
+            </a>
+            {r.aliases.length > 0 && <span class="aka">{r.aliases.join(' · ')}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>
+
+<style>
+  .intro h1 { margin: 0 0 0.4rem; }
+  .intro p { margin: 0 0 1rem; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+  .jump { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
+  .jump a { padding: 0.25rem 0.6rem; border: 1px solid var(--border, #ddd); border-radius: 6px; font-size: 0.85rem; text-decoration: none; color: inherit; }
+  .group { margin-bottom: 1.5rem; scroll-margin-top: 4rem; }
+  .group h2 { font-size: 1rem; margin: 0 0 0.4rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--border, #ddd); }
+  .group ul { list-style: none; margin: 0; padding: 0; }
+  .group li { padding: 0.45rem 0; }
+  .group li a { display: flex; justify-content: space-between; gap: 1rem; text-decoration: none; color: inherit; }
+  .name { font-weight: 600; }
+  .meta { color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+  .aka { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 0.1rem; }
+  @media (max-width: 560px) {
+    .group li a { flex-direction: column; gap: 0.1rem; }
+  }
+</style>
