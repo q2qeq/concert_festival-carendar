@@ -4611,7 +4611,13 @@
       }
     ],
     "posterUrl": "/posters/yuki-kajiura-live-seoul-2026-11.webp",
-    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_7/Yuki_open_1002.jpg"
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_7/Yuki_open_1002.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "티켓링크",
+        "url": "https://www.ticketlink.co.kr/product/66073"
+      }
+    ]
   },
   {
     "id": "kopis-PF299935",
@@ -4624,7 +4630,19 @@
     "posterUrl": "/posters/kopis-PF299935.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
-    "merchCheckedAt": "2026-11-03"
+    "merchCheckedAt": "2026-11-03",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/59771"
+      }
+    ],
+    "sources": [
+      {
+        "label": "예스24 티켓 - ELLEGARDEN 'Bad For Education Tour II (2026)' (11/28·29, YES24 LIVE HALL)",
+        "url": "https://ticket.yes24.com/Perf/59771"
+      }
+    ]
   },
   {
     "id": "bluenote-tokyo-lisaono-iksan-2026-11",
@@ -4646,7 +4664,13 @@
       }
     ],
     "posterUrl": "/posters/bluenote-tokyo-lisaono-iksan-2026-11.webp",
-    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_8/1128_poster_0903.jpg"
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_8/1128_poster_0903.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "티켓링크",
+        "url": "https://www.ticketlink.co.kr/product/65425"
+      }
+    ]
   },
   {
     "id": "pm-kenobi-seoul-2026-11",
