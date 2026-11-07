@@ -4151,7 +4151,13 @@
       }
     ],
     "posterUrl": "/posters/buckshot-oscar18-seoul-2026-11.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-60420.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-60420.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60420"
+      }
+    ]
   },
   {
     "id": "shuttle-teddy-swims-2026-11",
@@ -4505,7 +4511,13 @@
       }
     ],
     "posterUrl": "/posters/shuttle-monsta-x-world-tour-encore-2026-11.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013132_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013132_p.gif",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓(인터파크)",
+        "url": "https://nol.yanolja.com/ticket/products/26013132"
+      }
+    ]
   },
   {
     "id": "cherry-blossom-music-concert-winter-changwon-2026-11",
@@ -4571,7 +4583,13 @@
       }
     ],
     "posterUrl": "/posters/kazumi-tateishi-trio-suwon-2026-11.webp",
-    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/2026091110553020329853-f4bd-4c58-a58c-d2b228850531.jpg"
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/2026091110553020329853-f4bd-4c58-a58c-d2b228850531.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60194"
+      }
+    ]
   },
   {
     "id": "yuki-kajiura-live-seoul-2026-11",
@@ -4650,7 +4668,13 @@
       }
     ],
     "posterUrl": "/posters/pm-kenobi-seoul-2026-11.webp",
-    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/202609091520529397865a-7ea0-4f6c-898a-2f8c0926e8a4.png"
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/202609091520529397865a-7ea0-4f6c-898a-2f8c0926e8a4.png",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213872"
+      }
+    ]
   },
   {
     "id": "kopis-PF303596",
@@ -4685,7 +4709,13 @@
       }
     ],
     "posterUrl": "/posters/mass-of-the-fermenting-dregs-seoul-2026-12.webp",
-    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/202609031356224e3a440b-b11b-4f48-9864-869a8b969612.jpg"
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/202609031356224e3a440b-b11b-4f48-9864-869a8b969612.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213843"
+      }
+    ]
   },
   {
     "id": "shuttle-yuuri-live-seoul-2026-12",
@@ -4938,7 +4968,13 @@
       }
     ],
     "posterUrl": "/posters/bbc-philharmonic-seoul-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/BoardNotice/202609/20260907/20260907-cd76222d-cac0-4b82-9563-c168d6aeff47.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/BoardNotice/202609/20260907/20260907-cd76222d-cac0-4b82-9563-c168d6aeff47.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓(인터파크)",
+        "url": "https://nol.yanolja.com/ticket/products/26012634"
+      }
+    ]
   },
   {
     "id": "mulasaki-ima-seoul-2026-12",
@@ -4998,7 +5034,13 @@
       }
     ],
     "posterUrl": "/posters/yuki-kuramoto-gimhae-2026-12.webp",
-    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_4/uk_open_0928.jpg"
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_4/uk_open_0928.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓(인터파크)",
+        "url": "https://nol.yanolja.com/ticket/products/26014068"
+      }
+    ]
   },
   {
     "id": "yuki-kuramoto-daegu-2026-12",
@@ -5020,7 +5062,13 @@
       }
     ],
     "posterUrl": "/posters/yuki-kuramoto-daegu-2026-12.webp",
-    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_9/uk_daegu_open_0928.jpg"
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_9/uk_daegu_open_0928.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓(인터파크)",
+        "url": "https://nol.yanolja.com/ticket/products/26013986"
+      }
+    ]
   },
   {
     "id": "nee-seoul-2026-12",
@@ -5042,7 +5090,13 @@
       }
     ],
     "posterUrl": "/posters/nee-seoul-2026-12.webp",
-    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/20260910135442edd4eff2-1cfa-4537-932a-2430a6590b1f.jpg"
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/20260910135442edd4eff2-1cfa-4537-932a-2430a6590b1f.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213863"
+      }
+    ]
   },
   {
     "id": "luck-life-seoul-2026-12",
@@ -5064,7 +5118,13 @@
       }
     ],
     "posterUrl": "/posters/luck-life-seoul-2026-12.webp",
-    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/20260916093247c6e7ed22-4ef5-462f-b6b6-5d22d8ca0c8d.jpg"
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/09/20260916093247c6e7ed22-4ef5-462f-b6b6-5d22d8ca0c8d.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213903"
+      }
+    ]
   },
   {
     "id": "penthouse-seoul-2026-12",
@@ -5136,7 +5196,13 @@
       }
     ],
     "posterUrl": "/posters/raintree-seoul-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260818/20260818-59777.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260818/20260818-59777.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/59777"
+      }
+    ]
   },
   {
     "id": "kawasaki-takaya-seoul-2026-12",
@@ -5311,7 +5377,13 @@
       }
     ],
     "posterUrl": "/posters/aosaka-seoul-2027-01.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260911/20260911-60147.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260911/20260911-60147.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60147"
+      }
+    ]
   },
   {
     "id": "humpback-seoul-2027-01",
@@ -5337,7 +5409,13 @@
       }
     ],
     "posterUrl": "/posters/humpback-seoul-2027-01.webp",
-    "posterSourceUrl": "https://humpback.jp/s3/skiyaki/uploads/ckeditor/pictures/873700/content_IMG_4062.jpeg"
+    "posterSourceUrl": "https://humpback.jp/s3/skiyaki/uploads/ckeditor/pictures/873700/content_IMG_4062.jpeg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60207"
+      }
+    ]
   },
   {
     "id": "shuttle-maroon5-seoul-2027-01",
@@ -5444,7 +5522,13 @@
       }
     ],
     "posterUrl": "/posters/all-eyes-seoul-2027-01.webp",
-    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202609/20260930/20260930-60411.jpg"
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202609/20260930/20260930-60411.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60411"
+      }
+    ]
   },
   {
     "id": "bruno-mars-goyang-2027-05",
@@ -5476,6 +5560,12 @@
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000600",
         "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다."
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓(인터파크)",
+        "url": "https://nol.yanolja.com/ticket/products/26012591"
       }
     ]
   },
@@ -5835,7 +5925,13 @@
       }
     ],
     "posterUrl": "/posters/night-hike-tours-seoul-2026-12.webp",
-    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202611/20261102/20261102-60949.jpg"
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202611/20261102/20261102-60949.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60949"
+      }
+    ]
   },
   {
     "id": "sophie-powers-seoul-2026-12",
@@ -5857,7 +5953,13 @@
       }
     ],
     "posterUrl": "/posters/sophie-powers-seoul-2026-12.webp",
-    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202611/20261102/20261102-60948.jpg"
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202611/20261102/20261102-60948.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60948"
+      }
+    ]
   },
   {
     "id": "cho-q-may-seoul-2027-01",
@@ -5905,7 +6007,13 @@
       }
     ],
     "posterUrl": "/posters/yukiguni-seoul-2026-12.webp",
-    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/10/202610301030431bfb91f9-5f23-42b4-a62c-6a69e9fc063e.jpg"
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/ticketopen/2026/10/202610301030431bfb91f9-5f23-42b4-a62c-6a69e9fc063e.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214216"
+      }
+    ]
   },
   {
     "id": "jeffbernat-seoul-2027-02",
