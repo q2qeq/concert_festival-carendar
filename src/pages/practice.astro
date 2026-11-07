@@ -6,6 +6,10 @@
 // 클릭마다 즉시 피드백(빠름/느림/일찍/더블클릭/오클릭)을 보여주고, 끝나면 시도별 기록과 맞춤 팁을 준다.
 // 자동 예매/매크로가 아니라 순수한 반응속도 연습이다. 최고 기록은 이 기기(localStorage)에만 저장.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { upcomingTicketOpens } from '../lib/events';
+
+// 연습을 마친 사람이 바로 이어서 갈 곳: 곧 열리는 티켓 오픈 3건 (2026-11-07 이탈률 개선).
+const nextOpens = upcomingTicketOpens(3);
 
 // 검색용 FAQ: 화면에 실제로 보이는 문구와 동일한 내용만 담는다.
 // 특정 예매처 화면을 복제한다고 주장하지 않고, 예매처 공통 흐름을 연습한다고 정직하게 쓴다.
@@ -138,6 +142,23 @@ const jsonLd = [
     <ol id="g-log"></ol>
   </section>
 
+  {nextOpens.length > 0 && (
+    <section class="next-opens" aria-label="곧 열리는 티켓 오픈">
+      <h2>연습했다면 다음은 진짜 오픈</h2>
+      <ul>
+        {nextOpens.map((e) => (
+          <li>
+            <a href={`/ticketing-clock?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>
+              <strong>{e.artist}</strong>
+              <span>{e.ticketOpenDate ?? e.ticketOpenAt}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p><a href="/ticket-open/">티켓오픈 일정 전체 보기</a></p>
+    </section>
+  )}
+
   <section class="seo" aria-label="티켓팅 연습 안내">
     <h2>티켓팅 연습, 이렇게 해보세요</h2>
     <p>
@@ -179,6 +200,14 @@ const jsonLd = [
   @keyframes bob { 50% { transform: translateY(-4px); } }
   .arcade-best { margin-top: 1.1rem; color: #8f8f97; font-size: 0.85rem; }
   .arcade-best b { color: #ffd166; }
+  .next-opens { margin-top: 1.8rem; }
+  .next-opens h2 { font-size: 1.15rem; margin: 0 0 0.6rem; }
+  .next-opens ul { list-style: none; margin: 0 0 0.6rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+  .next-opens li a { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.65rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: inherit; text-decoration: none; }
+  .next-opens li a:hover strong { color: #ff5fa2; }
+  .next-opens li span { color: #8f8f97; font-size: 0.82rem; }
+  .next-opens p { margin: 0; font-size: 0.9rem; }
+  .next-opens p a { color: #ff5fa2; }
   .seo { margin-top: 1.8rem; }
   .seo h2 { font-size: 1.15rem; margin: 1.4rem 0 0.6rem; }
   .seo p { color: #c4c4c8; line-height: 1.8; }
