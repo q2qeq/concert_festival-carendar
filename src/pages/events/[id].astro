@@ -196,6 +196,7 @@ const jsonLd = {
     name: event.venue,
     address: {
       '@type': 'PostalAddress',
+      ...(getVenueInfo(event.venue)?.address ? { streetAddress: getVenueInfo(event.venue)!.address } : {}),
       addressLocality: event.city,
       addressCountry: 'KR',
     },
