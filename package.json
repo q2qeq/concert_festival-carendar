@@ -18,7 +18,8 @@
     "indexnow:ping": "node scripts/indexnow-ping.mjs",
     "posters:cache": "node scripts/cache-posters.mjs",
     "audit:events": "node scripts/audit-events.mjs",
-    "clicks:report": "node scripts/click-report.mjs"
+    "clicks:report": "node scripts/click-report.mjs",
+    "popular:events": "node scripts/popular-events.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {
