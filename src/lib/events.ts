@@ -643,15 +643,25 @@ export function isDomestic(e: ConcertEvent): boolean {
 
 // 검색 표기 변형. 사람들은 같은 이름을 띄어쓰기만 다르게 검색한다
 // ("후지이 카제" / "후지이카제" 둘 다 클릭이 나옴 - 네이버 서치어드바이저 2026-11).
-// "English (한글 이름)" 또는 "한글 이름 (English)" 형태이고 한글 이름에 띄어쓰기가 있을 때만
-// 붙여 쓴 표기를 만든다. 페스티벌 라인업 나열 같은 긴 괄호는 건드리지 않는다.
+// 아티스트 문자열에서 띄어쓰기가 있는 한글 이름을 찾아 붙여 쓴 표기를 만든다. 찾는 위치는 두 곳이다:
+//  1) 맨 앞의 한글 이름: "요네즈 켄시 (米津玄師 / Kenshi Yonezu)", "유키 구라모토 (Yuki Kuramoto) - Peacefully",
+//     "스티브 갯 BHG Project", "욘 스토르고르스 & BBC 필하모닉"
+//  2) 괄호 안의 한글 이름: "Fujii Kaze (후지이 카제)", "Sophie Powers (소피 파워스) Asia Tour ..."
+// 콘서트·투어·협연 같은 일반 단어가 들어 있거나, 단어가 4개를 넘거나, 붙인 길이가 12자를 넘으면
+// 이름이 아니라 제목일 가능성이 커서 만들지 않는다. 페스티벌 라인업 나열 같은 긴 괄호
+// ("(넬·극동아시아타이거즈·...)")와 [대괄호] 투어명도 건드리지 않는다.
+const ALIAS_STOP = /(협연|콘서트|투어|페스티벌|축제|내한|공연|월드|단독|앙코르|팬미팅|라이브|어워즈|시리즈|스페셜|프로젝트)/;
 export function artistAliases(e: ConcertEvent): string[] {
   const out: string[] = [];
-  const hangulWords = /^[가-힣]+(?: [가-힣]+)+$/;
-  const latinThenHangul = /^[^(가-힣]*[A-Za-z][^(가-힣]*?\s*\(([가-힣 ]+)\)\s*(?:[-–].*)?$/;
-  const hangulThenLatin = /^([가-힣 ]+?)\s*\([A-Za-z][^)]*\)\s*$/;
-  const name = (e.artist.match(latinThenHangul) ?? e.artist.match(hangulThenLatin))?.[1]?.trim();
-  if (name && hangulWords.test(name)) out.push(name.replace(/ /g, ''));
+  const names: string[] = [];
+  const lead = e.artist.match(/^([가-힣]+(?: [가-힣]+){1,2})(?=\s*(?:[(&/\-–]|[A-Za-z]|$))/);
+  if (lead) names.push(lead[1]);
+  for (const m of e.artist.matchAll(/\(([가-힣]+(?: [가-힣]+){1,3})\)/g)) names.push(m[1]);
+  for (const name of names) {
+    const joined = name.replace(/ /g, '');
+    if (ALIAS_STOP.test(name) || joined.length > 12) continue;
+    out.push(joined);
+  }
   for (const a of e.aliases ?? []) out.push(a);
   return Array.from(new Set(out)).filter((a) => !e.artist.includes(a));
 }

@@ -3827,6 +3827,9 @@
   {
     "id": "exo-planet6-exhorizon-encore-seoul-2026-11",
     "artist": "EXO",
+    "aliases": [
+      "엑소"
+    ],
     "genre": "가요",
     "venue": "KSPO DOME",
     "city": "서울",
@@ -4319,6 +4322,9 @@
   {
     "id": "christopher-seoul-2026-11",
     "artist": "Christopher",
+    "aliases": [
+      "크리스토퍼"
+    ],
     "genre": "팝",
     "venue": "세종문화회관 대극장",
     "city": "서울",
@@ -4622,6 +4628,9 @@
   {
     "id": "kopis-PF299935",
     "artist": "ELLEGARDEN, Bad For Education Tour Ⅱ",
+    "aliases": [
+      "엘르가든"
+    ],
     "genre": "J-POP",
     "venue": "예스24 라이브홀 (구. 악스코리아)",
     "city": "서울",
@@ -5384,6 +5393,9 @@
   {
     "id": "aosaka-seoul-2027-01",
     "artist": "Aosaka: kurayamisaka & parannoul",
+    "aliases": [
+      "파란노을"
+    ],
     "genre": "팝/락",
     "venue": "KT&G 상상마당 홍대 라이브홀",
     "city": "서울",
@@ -5753,6 +5765,10 @@
   {
     "id": "shuttle-xdinary-heroes-impulse-2026-11",
     "artist": "Xdinary Heroes Concert <IMPULSE>",
+    "aliases": [
+      "엑스디너리 히어로즈",
+      "엑스디너리히어로즈"
+    ],
     "genre": "가요",
     "venue": "인스파이어 아레나",
     "city": "인천",
@@ -6242,6 +6258,10 @@
   {
     "id": "nct-wish-2nd-concert-tour-seoul-2027-01",
     "artist": "NCT WISH",
+    "aliases": [
+      "엔시티 위시",
+      "엔시티위시"
+    ],
     "genre": "가요",
     "venue": "고척스카이돔",
     "city": "서울",
