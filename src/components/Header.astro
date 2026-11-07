@@ -32,13 +32,26 @@ function isActive(href: string) {
     </button>
     <div class="links" id="nav-links">
       {NAV.map((item) => (
-        <a href={item.href} class={`${isActive(item.href) ? 'active' : ''}${item.tool ? ' tool-link' : ''}`.trim()} aria-current={isActive(item.href) ? 'page' : undefined}>
+        <a href={item.href} data-nav={item.href} class={`${isActive(item.href) ? 'active' : ''}${item.tool ? ' tool-link' : ''}`.trim()} aria-current={isActive(item.href) ? 'page' : undefined}>
           {item.label}
         </a>
       ))}
     </div>
   </nav>
 </header>
+<script>
+  // 찜한 공연에 새 소식이 있으면 '내 찜' 옆에 점을 찍는다. /my 에서는 그 페이지가 직접 보여준다.
+  import { findNews } from '../lib/bookmarkUpdates';
+  if (location.pathname.replace(/\/$/, '') !== '/my') {
+    findNews().then((news) => {
+      if (news.length === 0) return;
+      document.querySelectorAll('[data-nav="/my"]').forEach((a) => {
+        a.classList.add('has-news');
+        a.setAttribute('aria-label', `내 찜, 새 소식 ${news.length}건`);
+      });
+    });
+  }
+</script>
 <script>
   // Mobile nav: on narrow screens the full link list collapses behind a
   // hamburger toggle (see @media rule below) instead of wrapping into
@@ -76,6 +89,7 @@ function isActive(href: string) {
     border-bottom: 2px solid transparent;
   }
   .links a:hover { color: #fff; }
+  .links a.has-news::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 5px; border-radius: 50%; background: var(--accent, #ff5fa2); vertical-align: 0.15em; }
   
   .links a.active { color: #fff; font-weight: 700; border-bottom-color: var(--accent, #ff5fa2); }
   .nav-toggle {

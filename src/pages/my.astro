@@ -25,6 +25,7 @@ const list = upcomingEvents();
   <div id="my-list" class="my-list">
     {list.map((e) => (
       <div class="my-item" data-id={e.id} data-start={e.startDate} data-open-at={e.ticketOpenAt ?? ''} data-artist={e.artist} hidden>
+        <p class="my-news" data-my-news hidden></p>
         {e.ticketOpenAt && (
           <p class="my-open" data-my-open>티켓오픈 {e.ticketOpenDate ?? e.ticketOpenAt}</p>
         )}
@@ -44,6 +45,8 @@ const list = upcomingEvents();
   .intro { color: #c4c4c8; line-height: 1.7; }
   .my-list { margin-top: 1rem; }
   .my-open { margin: 0.6rem 0 0; font-size: 0.82rem; font-weight: 700; color: #c9c9cf; }
+  .my-news { margin: 0.6rem 0 0; font-size: 0.84rem; font-weight: 700; color: #ff5fa2; line-height: 1.5; }
+  .my-news small { color: #8f8f97; font-weight: 400; margin-right: 0.4rem; }
   .my-alert { margin: 0.8rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem; }
   .my-alert button { padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.88rem; font-weight: 700; color: #0e0e10; background: #ff5fa2; border: 0; cursor: pointer; }
   .my-alert small { color: #8f8f97; }
@@ -53,6 +56,7 @@ const list = upcomingEvents();
 
 <script>
   import { ticketOpenIcs } from '../lib/ticketAlert';
+  import { findNews, markSeen } from '../lib/bookmarkUpdates';
 
   function getBookmarks(): Set<string> {
     try {
@@ -115,6 +119,22 @@ const list = upcomingEvents();
     URL.revokeObjectURL(a.href);
   });
 
+  // 마지막 방문 이후 올라온 업데이트를 카드 위에 보여주고, 보여준 뒤에는 '확인함'으로 기록한다.
+  async function showNews() {
+    const news = await findNews();
+    for (const n of news) {
+      const el = document.querySelector<HTMLElement>(`.my-item[data-id="${CSS.escape(n.id)}"] [data-my-news]`);
+      if (!el) continue;
+      el.textContent = '';
+      const when = document.createElement('small');
+      when.textContent = `새 소식 ${n.date.slice(5).replace('-', '.')}`;
+      el.append(when, n.text);
+      el.hidden = false;
+    }
+    markSeen(news);
+  }
+
   render();
+  showNews();
   window.addEventListener('bookmarks:changed', render);
 </script>
