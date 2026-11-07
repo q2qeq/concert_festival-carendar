@@ -45,6 +45,14 @@ function when(iso: string) {
       </section>
     )}
 
+    <section class="cal-sub" aria-label="캘린더 구독" data-track-kind="calendar">
+      <p><b>티켓오픈 알림을 캘린더로 받아보세요.</b> 한 번 추가하면 오픈 하루 전·10분 전에 알려주고, 새 공연도 자동으로 들어와요. 가입은 필요 없어요.</p>
+      <div class="cal-acts">
+        <a class="cal-btn" href={`https://calendar.google.com/calendar/r?cid=${encodeURIComponent('webcal://jikgwannyang.com/calendar/ticket-open.ics')}`} target="_blank" rel="noopener noreferrer">구글 캘린더에 구독</a>
+        <a class="cal-link" href="/calendar/">애플 캘린더·장르별 구독 →</a>
+      </div>
+    </section>
+
     <AdSlot slot="home-top" />
 
     <section class="next" aria-labelledby="next-title">
@@ -70,6 +78,15 @@ function when(iso: string) {
   .sec-head h2 { margin: 0; font-size: 0.82rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
   .sec-head a { font-size: 0.85rem; color: #8f8f97; text-decoration: none; white-space: nowrap; }
   .sec-head a:hover { color: #f4f4f0; }
+
+  .cal-sub { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin: 2rem 0 0; padding: 1.2rem 1.4rem; border: 1px solid #2a2a30; border-radius: 4px; }
+  .cal-sub p { margin: 0; flex: 1 1 22rem; color: #c4c4c8; font-size: 0.92rem; line-height: 1.65; }
+  .cal-sub p b { color: #f4f4f0; }
+  .cal-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; }
+  .cal-btn { padding: 0.6rem 1.1rem; border-radius: 4px; background: #ff5fa2; color: #0e0e10; font-weight: 800; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
+  .cal-btn:hover { background: #ff7db4; }
+  .cal-link { color: #8f8f97; font-size: 0.85rem; text-decoration: none; white-space: nowrap; }
+  .cal-link:hover { color: #f4f4f0; }
 
   .rows a { display: grid; font-size: clamp(1.7rem, 4.2vw, 3.6rem); grid-template-columns: 6.9em 1fr auto; column-gap: 1.4rem; align-items: baseline; padding: 1.3rem 0; border-bottom: 1px solid #2a2a30; color: #f4f4f0; text-decoration: none; transition: padding-left .2s, color .2s; }
   .rows a:hover { padding-left: .8rem; color: #ff5fa2; }
