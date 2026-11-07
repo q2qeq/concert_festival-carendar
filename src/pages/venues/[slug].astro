@@ -14,6 +14,7 @@ import RouteFinder from '../../components/RouteFinder.astro';
 import SightlineSearch from '../../components/SightlineSearch.astro';
 import { upcomingEvents, pastEvents } from '../../lib/events';
 import { regionOf, isShuttleLikely } from '../../lib/venues';
+import { postsMentioningVenue, postDateLabel } from '../../lib/posts';
 import { SITE_URL } from '../../../astro.config.mjs';
 
 export function getStaticPaths() {
@@ -29,6 +30,7 @@ const info = getVenueInfo(venueName);
 const slug = venueSlug(venueName);
 const venueEvents = upcomingEvents().filter((e) => venueSlug(e.venue) === slug);
 const city = venueEvents[0]?.city;
+const guidePosts = await postsMentioningVenue(slug, 4);
 // 지난 공연 - 이 공연장이 어떤 공연을 치러 왔는지 보여주는 이력(최근 순, 최대 8건).
 const pastHere = pastEvents().filter((e) => venueSlug(e.venue) === slug).reverse().slice(0, 8);
 // 같은 지역의 다른 공연장 - 주소 앞부분(시/도)이 같은 곳.
@@ -208,6 +210,17 @@ const pageDescription = hasParkingFee
       <ul class="past-list">
         {pastHere.map((e) => (
           <li><a href={`/events/${e.id}/`}>{e.artist}</a><span>{e.startDate}{e.endDate !== e.startDate ? ` ~ ${e.endDate}` : ''}</span></li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  {guidePosts.length > 0 && (
+    <section class="info-block">
+      <h2>{venueName} 관련 글</h2>
+      <ul class="past-list">
+        {guidePosts.map((p) => (
+          <li><a href={`/blog/${p.id}/`}>{p.data.title}</a><span>{postDateLabel(p.data.pubDate)}</span></li>
         ))}
       </ul>
     </section>

@@ -20,6 +20,12 @@ export async function postsMentioningEvent(eventId: string, limit = 3): Promise<
   return (await allPosts()).filter((p) => (p.body ?? '').includes(needle)).slice(0, limit);
 }
 
+// 본문에 `/venues/<slug>/` 링크가 들어 있는 글 - 공연장 가이드 글을 공연장·공연 페이지에서 찾게 한다.
+export async function postsMentioningVenue(venueSlugValue: string, limit = 3): Promise<Post[]> {
+  const needle = `/venues/${venueSlugValue}/`;
+  return (await allPosts()).filter((p) => (p.body ?? '').includes(needle)).slice(0, limit);
+}
+
 export function postDateLabel(d: Date): string {
   return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
 }

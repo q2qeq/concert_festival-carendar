@@ -15,9 +15,9 @@ import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import Mascot from '../../components/Mascot.astro';
 import NextSteps from '../../components/NextSteps.astro';
-import { postsMentioningEvent, postDateLabel } from '../../lib/posts';
+import { postsMentioningEvent, postsMentioningVenue, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
-import { isShuttleLikely, getVenueInfo } from '../../lib/venues';
+import { isShuttleLikely, getVenueInfo, venueSlug } from '../../lib/venues';
 import { latestUpdateISO, events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents, isDomestic, artistAliases } from '../../lib/events';
 
 export function getStaticPaths() {
@@ -137,7 +137,9 @@ const heroSub = nameMatch ? nameMatch[2].trim() : '';
 const WD_EN = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 const dotDate = (iso: string) => `${iso.replace(/-/g, '.')} ${WD_EN[new Date(iso + 'T00:00:00').getDay()]}`;
 const whenLabel = event.startDate === event.endDate ? dotDate(event.startDate) : `${dotDate(event.startDate)} – ${event.endDate.slice(5).replace('-', '.')}`;
-const mentionedIn = await postsMentioningEvent(event.id);
+const mentionedEvent = await postsMentioningEvent(event.id);
+const mentionedVenue = (await postsMentioningVenue(venueSlug(event.venue))).filter((p) => !mentionedEvent.some((m) => m.id === p.id));
+const mentionedIn = [...mentionedEvent, ...mentionedVenue].slice(0, 4);
 
 // 이 공연 페이지에 실제로 존재하는 섹션만 골라 오른쪽 목차(TOC)를 만든다 -
 // 이벤트마다 보유 정보가 달라서 하드코딩된 고정 목록을 쓰면 빈 링크가 생긴다.
