@@ -43,5 +43,5 @@ npm run popular:events -- "<CSV 경로>" 12 --must=<꼭 포함할 공연 id>
 
 ## 한계
 
-- 트래픽 CSV는 사람이 Vercel에서 내려받아야 한다. 자동으로 가져오는 길이 없다.
+- 매주 월요일 11시대에 스케줄 작업 `krconcerts-popular-event-weekly`가 Vercel Analytics를 Chrome으로 읽어 이 루틴을 자동 실행한다(최대 3건). Vercel 로그인이 풀려 있으면 중단하고 보고한다. 수동으로 돌릴 때는 CSV를 직접 내려받아 1단계부터 하면 된다.
 - 7일 표본이 작아서 순위 차이가 1~2명이면 우연일 수 있다. 며칠 치를 모아서 보면 더 낫다.
