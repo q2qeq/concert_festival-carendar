@@ -10,7 +10,7 @@ const venues = allVenueNames()
   .filter((n) => { const s = venueSlug(n); if (seen.has(s)) return false; seen.add(s); return true; })
   .map((name) => {
     const info = getVenueInfo(name);
-    return { name, slug: venueSlug(name), transit: (info?.transit ?? []).slice(0, 2), parking: info?.parking ?? '' };
+    return { name, slug: venueSlug(name), transit: (info?.transit ?? []).slice(0, 2), parking: info?.parking ?? '', rate: info?.parkingRate ?? null };
   });
 
 const faqs = [
@@ -44,6 +44,11 @@ const jsonLd = {
       </select>
     </label>
     <div class="venue-info" id="venue-info"></div>
+    <div class="rate-box" id="rate-box" hidden>
+      <label class="f"><span>주차 시간 <em>(시간)</em></span><input type="number" id="park-hours" value="5" min="0" max="24" step="0.5" inputmode="decimal" /></label>
+      <button type="button" id="park-fill">주차비 계산해서 채우기</button>
+      <p id="rate-note"></p>
+    </div>
 
     <h2 class="grp">티켓</h2>
     <label class="f"><span>티켓 가격 <em>(장당 · 원)</em></span><input type="number" id="price" min="0" step="1000" inputmode="numeric" placeholder="예: 154000" /></label>
@@ -87,7 +92,8 @@ const jsonLd = {
 
 <script id="venue-data" type="application/json" set:html={JSON.stringify(venues)} />
 <script>
-  type V = { name: string; slug: string; transit: string[]; parking: string };
+  type Rate = { label: string; unitMin: number; unitWon: number; freeMin: number; dayMax: number };
+  type V = { name: string; slug: string; transit: string[]; parking: string; rate: Rate | null };
   const venues: V[] = JSON.parse(document.getElementById('venue-data')!.textContent || '[]');
   const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
   const KEY = 'krconcerts:trip-cost';
@@ -106,6 +112,9 @@ const jsonLd = {
   function venueBlock() {
     const v = venues.find((x) => x.slug === $('venue').value);
     const box = document.getElementById('venue-info')!;
+    const rb = document.getElementById('rate-box')!;
+    rb.hidden = !v?.rate;
+    if (v?.rate) document.getElementById('rate-note')!.textContent = v.rate.label;
     if (!v) { box.innerHTML = ''; return; }
     const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c] as string));
     const lines = [...v.transit, v.parking].filter(Boolean).map((t) => `<li>${esc(t)}</li>`).join('');
@@ -142,6 +151,15 @@ const jsonLd = {
     lastText = `직관 비용 ${won(total)}\n` + items.filter(([, v]) => v > 0).map(([n, v]) => `- ${n} ${won(v)}`).join('\n') + `\n직관냥 직관 비용 계산기 https://jikgwannyang.com/trip-cost/`;
   }
   document.getElementById('calc')!.addEventListener('input', calc);
+  document.getElementById('park-fill')!.addEventListener('click', () => {
+    const v = venues.find((x) => x.slug === $('venue').value);
+    if (!v?.rate) return;
+    const min = Math.round((Number($('park-hours').value) || 0) * 60);
+    const r = v.rate;
+    const cost = min <= r.freeMin ? 0 : Math.min(Math.ceil(min / r.unitMin) * r.unitWon, r.dayMax);
+    $('parking').value = String(cost);
+    calc();
+  });
   document.getElementById('copy')!.addEventListener('click', async () => {
     try { await navigator.clipboard.writeText(lastText); const c = document.getElementById('copied')!; c.hidden = false; setTimeout(() => (c.hidden = true), 1800); } catch {}
   });
@@ -166,6 +184,12 @@ const jsonLd = {
   .venue-info:empty { display: none; }
   .venue-info ul { margin: 0 0 0.4rem; padding-left: 1.1rem; }
   .venue-info a { color: #f4f4f0; }
+  .rate-box { grid-column: 1 / -1; display: flex; gap: 0.8rem; align-items: flex-end; flex-wrap: wrap; }
+  .rate-box[hidden] { display: none; }
+  .rate-box .f { width: 9rem; }
+  .rate-box button { background: transparent; color: #f4f4f0; border: 1px solid #3a3a42; border-radius: 4px; padding: 0.7rem 0.9rem; font: inherit; cursor: pointer; }
+  .rate-box button:hover { border-color: #ff5fa2; }
+  .rate-box p { flex-basis: 100%; margin: 0; font-size: 0.8rem; color: #8f8f97; }
   .result { padding: 1.2rem; border: 1px solid #3a3a42; border-radius: 4px; margin: 1.4rem 0 2rem; }
   .verdict { margin: 0 0 0.4rem; font-size: clamp(1.4rem, 4.6vw, 2.2rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.15; }
   .sub { margin: 0 0 1.1rem; color: #c4c4c8; }

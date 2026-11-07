@@ -24,6 +24,9 @@ export interface VenueInfo {
   tip?: string;
   // 수용 인원 - 공식 시설 안내 등 출처가 확인된 곳만 채운다(블로그·커뮤니티 수치는 쓰지 않는다).
   // 무대 구성에 따라 실제 판매 좌석은 달라지므로 capacityNote로 단서를 함께 적는다.
+  // 주차 요금을 계산기에서 자동 계산할 수 있는 곳만 채운다(공식 안내의 단위 요금이 확인된 경우).
+  // 10분 이내 출차 무료처럼 freeMin 이하면 0원, 아니면 ceil(분/unitMin)*unitWon, dayMax로 상한.
+  parkingRate?: { label: string; unitMin: number; unitWon: number; freeMin: number; dayMax: number };
   capacity?: string;
   capacityNote?: string;
   capacitySource?: { label: string; url: string };
