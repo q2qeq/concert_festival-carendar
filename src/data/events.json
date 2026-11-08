@@ -5304,6 +5304,7 @@
   },
   {
     "id": "fujii-kaze-2027-01",
+    "noAkaText": true,
     "demand": "high",
     "artist": "Fujii Kaze (후지이 카제)",
     "genre": "J-POP",

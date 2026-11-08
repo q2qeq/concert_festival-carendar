@@ -47,7 +47,8 @@ const eventYear = event.startDate.slice(0, 4);
 // 제목 끝(괄호)과 설명·본문에도 넣는다.
 const domestic = isDomestic(event);
 const aliases = artistAliases(event);
-const akaTitle = aliases.length > 0 ? ` (${aliases[0]})` : '';
+const showAka = aliases.length > 0 && !event.noAkaText;
+const akaTitle = showAka ? ` (${aliases[0]})` : '';
 // 이름에 연도가 이미 들어 있으면(예: "NOL FESTIVAL 2026") 제목에서 연도를 또 붙이지 않는다.
 const yp = event.artist.includes(eventYear) ? '' : ` ${eventYear}`;
 const titleIsPast = event.endDate < new Date().toISOString().slice(0, 10);
@@ -67,7 +68,7 @@ const pageTitle = (event.genre === '페스티벌'
         : `${event.artist} 내한${yp} 예매처·좌석·시야 정리`) + akaTitle;
 
 const kindWord = event.genre === '페스티벌' ? '페스티벌' : domestic ? '콘서트' : '내한 공연';
-const akaTail = aliases.length > 0 ? ` ${aliases[0]} ${kindWord} 일정·예매 정보.` : '';
+const akaTail = showAka ? ` ${aliases[0]} ${kindWord} 일정·예매 정보.` : '';
 const pageDescription = (event.description
   ? `${event.description} (${dateLabel}, ${event.venue})`
   : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`) + akaTail;
@@ -267,7 +268,7 @@ const breadcrumbLd = {
         <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
         <p class="ev-when mono">{whenLabel}<span>{event.venue}</span></p>
       </div>
-      {aliases.length > 0 && <p class="aka">다른 표기: {aliases.join(' · ')}</p>}
+      {showAka && <p class="aka">다른 표기: {aliases.join(' · ')}</p>}
       {lastUpdated && <p class="last-updated">최근 업데이트 {lastUpdated.slice(5).replace('-', '.')}</p>}
       {event.description && <p class="event-description">{event.description}</p>}
     </header>
