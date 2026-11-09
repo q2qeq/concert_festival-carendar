@@ -19,7 +19,9 @@
     "posters:cache": "node scripts/cache-posters.mjs",
     "audit:events": "node scripts/audit-events.mjs",
     "clicks:report": "node scripts/click-report.mjs",
-    "popular:events": "node scripts/popular-events.mjs"
+    "popular:events": "node scripts/popular-events.mjs",
+    "og:cards": "node scripts/make-share-card.mjs",
+    "promo:copy": "node scripts/promo-copy.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

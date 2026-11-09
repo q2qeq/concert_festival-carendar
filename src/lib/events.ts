@@ -267,6 +267,11 @@ export interface ConcertEvent {
   // 실제 수요가 확인된 공연만 'high' - 근거는 Vercel Analytics 주간 방문자 상위, 매진/선예매 경쟁 보도 등
   // 실측 신호가 있을 때만 (추측 금지). 홈 "화제 공연" 노출과 상세 페이지 관련 공연 추천 가중치에 쓰인다.
   demand?: 'high';
+  // 사이트에 처음 올린 날(KST, yyyy-mm-dd). 신규 배지·홈 '이번 주 새로 추가'·신규 공연 배너가 이 값으로 7일간 동작한다.
+  // 값이 없는 기존 공연은 신규로 취급하지 않는다. 새 공연을 추가할 때만 채운다.
+  addedAt?: string;
+  // 값이 있으면 addedAt 7일 안에 사이트 상단 배너로 알린다(한 줄 문구). 화제성 큰 신규 공연에만 쓴다.
+  promoBanner?: string;
   // 랜딩 스포트라이트 편집 고정. 이 날짜(YYYY-MM-DD, 포함)까지만 상위에 노출되고 지나면 자동 해제된다.
   featuredUntil?: string;
   // Official/known shuttle bus services to the venue. Mostly relevant for festivals
@@ -666,4 +671,29 @@ export function artistAliases(e: ConcertEvent): string[] {
   }
   for (const a of e.aliases ?? []) out.push(a);
   return Array.from(new Set(out)).filter((a) => !e.artist.includes(a));
+}
+
+// ---- 신규 공연 홍보 (배지·홈 섹션·배너) ----
+const kstToday = () => new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10);
+
+// addedAt이 오늘 기준 `days`일 안이면 신규. 미래 날짜는 오타로 보고 제외한다.
+export function isNewlyAdded(event: ConcertEvent, days = 7, fromISO?: string): boolean {
+  if (!event.addedAt) return false;
+  const from = new Date((fromISO ?? kstToday()) + 'T00:00:00Z').getTime();
+  const added = new Date(event.addedAt + 'T00:00:00Z').getTime();
+  const diff = Math.floor((from - added) / 86400000);
+  return diff >= 0 && diff <= days;
+}
+
+// 홈 '이번 주 새로 추가' 용: 아직 끝나지 않은 신규 공연을 최근 등록 순으로.
+export function newlyAddedEvents(limit = 4, fromISO?: string): ConcertEvent[] {
+  return upcomingEvents(fromISO)
+    .filter((e) => e.status !== 'cancelled' && isNewlyAdded(e, 7, fromISO))
+    .sort((a, b) => (b.addedAt as string).localeCompare(a.addedAt as string) || a.startDate.localeCompare(b.startDate))
+    .slice(0, limit);
+}
+
+// 사이트 상단 배너로 알릴 공연 하나. promoBanner 문구가 있고 신규 기간 안인 것 중 가장 최근 등록.
+export function bannerEvent(fromISO?: string): ConcertEvent | null {
+  return newlyAddedEvents(20, fromISO).find((e) => e.promoBanner) ?? null;
 }

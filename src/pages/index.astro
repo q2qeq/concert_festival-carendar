@@ -5,11 +5,12 @@ import ToolStrip from '../components/ToolStrip.astro';
 import PosterCard from '../components/PosterCard.astro';
 import AdSlot from '../components/AdSlot.astro';
 import RecentIssues from '../components/RecentIssues.astro';
-import { upcomingEvents, upcomingTicketOpens } from '../lib/events';
+import { upcomingEvents, upcomingTicketOpens, newlyAddedEvents } from '../lib/events';
 
 const all = upcomingEvents();
 const next = all.slice(0, 8);
 const opens = upcomingTicketOpens(4);
+const fresh = newlyAddedEvents(4);
 
 function when(iso: string) {
   const k = new Date(new Date(iso).getTime() + 9 * 3600_000);
@@ -41,6 +42,20 @@ function when(iso: string) {
               </a>
             );
           })}
+        </div>
+      </section>
+    )}
+
+    {fresh.length > 0 && (
+      <section class="fresh" aria-labelledby="fresh-title">
+        <div class="sec-head">
+          <h2 id="fresh-title" class="mono">NEW THIS WEEK</h2>
+          <a href="/events/">이번 주 새로 추가된 공연 {fresh.length}개</a>
+        </div>
+        <div class="poster-grid">
+          {fresh.map((e) => (
+            <div class="card-wrap"><PosterCard event={e} /></div>
+          ))}
         </div>
       </section>
     )}

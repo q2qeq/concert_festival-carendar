@@ -1,6 +1,6 @@
 ---
 import type { ConcertEvent } from '../lib/events';
-import { hasRecentUpdate, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+import { isNewlyAdded, hasRecentUpdate, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -18,6 +18,7 @@ const STATUS_LABEL: Record<string, string> = {
   cancelled: '취소',
 };
 const isFresh = hasRecentUpdate(event);
+const isNew = isNewlyAdded(event);
 const onSale = hasTicketsOnSale(event);
 const buzzing = isBuzzing(event);
 ---
@@ -32,7 +33,8 @@ const buzzing = isBuzzing(event);
   </div>
   <div class="tags">
     {buzzing && <span class="buzz-tag">화제</span>}
-    {isFresh && <span class="fresh-tag">새 소식</span>}
+    {isNew && <span class="new-tag">신규</span>}
+    {isFresh && !isNew && <span class="fresh-tag">새 소식</span>}
     {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
     {status === 'scheduled' && onSale && <span class="ticket-tag">예매 오픈중</span>}
     {status === 'scheduled' && !onSale && event.ticketingAnnounced && <span class="announced-tag">티켓오픈 예정</span>}
@@ -123,6 +125,15 @@ const buzzing = isBuzzing(event);
     color: #c9c9cf;
     border: 1px dashed rgba(255,255,255,0.5);
     padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .new-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #0e0e10;
+    background: #f4f4f0;
+    padding: 0.22rem 0.6rem;
     border-radius: 6px;
     white-space: nowrap;
   }

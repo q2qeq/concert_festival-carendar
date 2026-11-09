@@ -572,6 +572,7 @@ async function main() {
         city: city ?? '확인 필요',
         startDate: r.startDate,
         endDate: r.endDate,
+        addedAt: new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10), // 사이트 등록일(KST) - 신규 배지·홈 '이번 주 새로 추가'용
         posterUrl,
         note:
           'KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). ' +

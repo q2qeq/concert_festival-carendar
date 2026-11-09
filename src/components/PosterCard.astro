@@ -5,7 +5,7 @@ import Mascot from './Mascot.astro';
 // 포스터가 아직 없는 공연은 "준비중" 플레이스홀더를 항상 같은 자리에 보여준다
 // (조용히 숨기지 않음 - 나중에 포스터가 채워지면 자동으로 바뀐다).
 import type { ConcertEvent } from '../lib/events';
-import { hasRecentUpdate, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+import { isNewlyAdded, hasRecentUpdate, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -23,6 +23,7 @@ const STATUS_LABEL: Record<string, string> = {
   cancelled: '취소',
 };
 const isFresh = hasRecentUpdate(event);
+const isNew = isNewlyAdded(event);
 const onSale = hasTicketsOnSale(event);
 const buzzing = isBuzzing(event);
 const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
@@ -72,7 +73,8 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
       {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
       {status === 'scheduled' && onSale && <span class="ticket-tag">예매 오픈중</span>}
       {status === 'scheduled' && !onSale && event.ticketingAnnounced && <span class="announced-tag">티켓오픈 예정</span>}
-      {isFresh && <span class="fresh-tag">새 소식</span>}
+      {isNew && <span class="new-tag">신규</span>}
+    {isFresh && !isNew && <span class="fresh-tag">새 소식</span>}
       {event.ticketingDifficulty && (
         <span class={`difficulty-tag difficulty-${event.ticketingDifficulty}`}>{DIFFICULTY_LABEL[event.ticketingDifficulty]}</span>
       )}
@@ -172,6 +174,7 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
   .ticket-tag { color: #c9c9cf; border: 1px solid rgba(255,255,255,0.4); }
   .announced-tag { color: #c9c9cf; border: 1px dashed rgba(255,255,255,0.5); }
   .fresh-tag { font-weight: 700; color: #0e0e10; background: #ff5fa2; }
+  .new-tag { font-weight: 800; color: #0e0e10; background: #f4f4f0; font-size: 0.65rem; padding: 0.16rem 0.45rem; border-radius: 6px; white-space: nowrap; }
   .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); }
   .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); }
   .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); }

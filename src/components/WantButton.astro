@@ -1,0 +1,57 @@
+---
+// '가고 싶어요' 버튼 - 공연별 숫자 하나만 서버(/api/want)에 센다. 누른 기록은 이 브라우저(localStorage)에만 남는다.
+// 서버 저장소가 없거나 응답이 없으면(503 등) 버튼 전체를 숨긴다. 숫자는 3 이상일 때만 보여준다(1~2는 민망한 숫자라서).
+import type { ConcertEvent } from '../lib/events';
+interface Props { event: ConcertEvent }
+const { event } = Astro.props;
+---
+<div class="want" data-want-id={event.id} hidden>
+  <button class="want-btn" type="button" aria-pressed="false">
+    <span class="want-label">가고 싶어요</span>
+    <span class="want-count mono" hidden></span>
+  </button>
+</div>
+<script>
+  const box = document.querySelector<HTMLElement>('.want');
+  if (box) {
+    const id = box.dataset.wantId ?? '';
+    const KEY = 'krconcerts:want';
+    const btn = box.querySelector<HTMLButtonElement>('.want-btn')!;
+    const label = box.querySelector<HTMLElement>('.want-label')!;
+    const cnt = box.querySelector<HTMLElement>('.want-count')!;
+    const read = (): string[] => { try { const v = JSON.parse(localStorage.getItem(KEY) ?? '[]'); return Array.isArray(v) ? v : []; } catch { return []; } };
+    const write = (v: string[]) => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch { /* 무시 */ } };
+    let on = read().includes(id);
+    let count = 0;
+    const paint = () => {
+      btn.setAttribute('aria-pressed', String(on));
+      btn.classList.toggle('is-on', on);
+      label.textContent = on ? '가고 싶어요 ✓' : '가고 싶어요';
+      cnt.hidden = count < 3;
+      cnt.textContent = String(count);
+    };
+    fetch(`/api/want?event=${encodeURIComponent(id)}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d: { count: number }) => { count = d.count; box.hidden = false; paint(); })
+      .catch(() => { /* 서버 저장소가 없으면 버튼을 숨긴 채로 둔다 */ });
+    btn.addEventListener('click', () => {
+      on = !on;
+      count = Math.max(count + (on ? 1 : -1), 0);
+      write(on ? [...new Set([...read(), id])] : read().filter((x) => x !== id));
+      paint();
+      fetch('/api/want', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ event: id, action: on ? 'add' : 'remove' }) })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d: { count: number } | null) => { if (d) { count = d.count; paint(); } })
+        .catch(() => { /* 실패해도 화면은 그대로 둔다 */ });
+    });
+  }
+</script>
+<style>
+  .want { margin: 1rem 0 0; }
+  .want[hidden] { display: none; }
+  .want-btn { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1.1rem; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; font-weight: 700; font-size: 0.92rem; }
+  .want-btn:hover { border-color: #ff5fa2; }
+  .want-btn.is-on { border-color: #ff5fa2; color: #ff5fa2; }
+  .want-count { color: #8f8f97; font-size: 0.85rem; }
+  .want-btn:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 2px; }
+</style>

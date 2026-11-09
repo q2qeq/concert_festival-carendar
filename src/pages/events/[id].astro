@@ -15,6 +15,9 @@ import SetlistBox from '../../components/SetlistBox.astro';
 import YoutubeEmbeds from '../../components/YoutubeEmbeds.astro';
 import Mascot from '../../components/Mascot.astro';
 import NextSteps from '../../components/NextSteps.astro';
+import WantButton from '../../components/WantButton.astro';
+import AnnounceWatch from '../../components/AnnounceWatch.astro';
+import { existsSync } from 'node:fs';
 import { postsMentioningEvent, postsMentioningVenue, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
 import { isShuttleLikely, getVenueInfo, venueSlug } from '../../lib/venues';
@@ -172,6 +175,8 @@ const EVENT_STATUS_MAP = {
   postponed: 'https://schema.org/EventPostponed',
   cancelled: 'https://schema.org/EventCancelled',
 };
+// 포스터가 없으면 scripts/make-share-card.mjs 가 만든 글자 카드(public/og)를 공유 이미지로 쓴다.
+const shareImage = event.posterUrl ?? (existsSync(`public/og/${event.id}.png`) ? `/og/${event.id}.png` : undefined);
 const status = event.status ?? 'scheduled';
 const isPast = event.endDate < new Date().toISOString().slice(0, 10);
 
@@ -238,7 +243,7 @@ const breadcrumbLd = {
 <BaseLayout
   title={pageTitle}
   description={pageDescription}
-  image={event.posterUrl}
+  image={shareImage}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
@@ -371,6 +376,9 @@ const breadcrumbLd = {
       </div>
     )}
     </div>
+
+    {status === 'scheduled' && !isPast && <WantButton event={event} />}
+    <AnnounceWatch event={event} />
 
     <NextSteps event={event} />
 
