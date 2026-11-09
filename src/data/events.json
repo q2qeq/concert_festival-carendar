@@ -6346,5 +6346,39 @@
         "sourceUrl": "https://www.specialtimes.co.kr/news/articleView.html?idxno=481423"
       }
     ]
+  },
+  {
+    "id": "yoasobi-korea-2027-04",
+    "artist": "요아소비 (YOASOBI)",
+    "aliases": [
+      "YOASOBI",
+      "ヨアソビ",
+      "요아소비"
+    ],
+    "genre": "J-POP",
+    "venue": "장소 추후 발표",
+    "city": "한국",
+    "startDate": "2027-04-17",
+    "endDate": "2027-04-17",
+    "officialUrl": "https://www.yoasobi-music.jp/news/588376",
+    "note": "2026년 11월 9일 공식 발표로 2027년 4월 17일(토) 한국 공연이 확정됐어요. 공연장과 티켓 오픈 일정은 공식 사이트에 '추후 발표 예정'이라고만 적혀 있어요. 발표되는 대로 이 페이지에 반영할게요.",
+    "description": "일본 듀오 요아소비의 'YOASOBI 11-CITY ASIA-OCEANIA TOUR 2026-2027 超惑星' 한국 공연. 2023년 12월(고려대 화정체육관), 2024년 12월(인스파이어 아레나)에 이은 세 번째 내한이고, 한국이 투어의 마지막 도시예요.",
+    "sources": [
+      {
+        "label": "YOASOBI 공식 사이트 - 香港・オーストラリア公演の詳細が発表(2026-11-09)",
+        "url": "https://www.yoasobi-music.jp/news/588376"
+      },
+      {
+        "label": "YOASOBI、ツアータイトル変更を発表 - オリコン",
+        "url": "https://news.yahoo.co.jp/articles/20c54d485087a6a5eb14b95e7e53012019441801"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-11-09",
+        "text": "공식 사이트가 2027년 4월 17일(토) 한국 공연을 발표했어요. 공연장은 추후 발표 예정이에요.",
+        "sourceUrl": "https://www.yoasobi-music.jp/news/588376"
+      }
+    ]
   }
 ]
