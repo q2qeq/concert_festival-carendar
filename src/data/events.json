@@ -4130,7 +4130,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000615",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다(11/4 미개설(DROPPED) -> 11/6 재개 후 계속 수요조사 중)."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 수요조사 중인 상품입니다(11/4 미개설(DROPPED) -> 11/6 재개 후 계속 수요조사 중)."
       }
     ]
   },
@@ -4322,7 +4322,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000629",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 수요조사 중인 상품입니다."
       }
     ]
   },
@@ -4366,6 +4366,7 @@
     "endDate": "2026-11-22",
     "ticketUrl": "https://ticket.yes24.com/Perf/59840",
     "officialUrl": "https://wonderli.vet/",
+    "mdUrl": "https://m.ticket.yes24.com/event/PromotionInfo.aspx?id=4021",
     "note": "타임테이블(날짜별 출연 순서)은 9월 말 공개 예정입니다. 확정되는 대로 이 페이지의 라인업을 날짜별로 나눌 예정이에요. 멜론티켓·티켓피아에서도 함께 판매되지만, 두 곳은 아직 구체적인 상품 페이지 링크를 확인하지 못해 위 두 곳만 버튼으로 연결해뒀어요.",
     "description": "원더로크와 LIVET이 주최하는 국내 최대 규모 J-POP & Iconic 아티스트 페스티벌. 2023년 시작돼 매년 4분기 킨텍스에서 열리며, 2025년에는 2만 명 이상이 방문했다.",
     "lineup": [
@@ -4412,6 +4413,11 @@
         "date": "2026-11-03",
         "text": "공식 사이트에 'OFFICIAL GOODS' 섹션이 신설됐어요. 다만 아직 \"COMING SOON\" 상태로, 구체적인 굿즈 라인업·판매 일정·방식은 모두 추후 공개 예정이에요.",
         "sourceUrl": "https://wonderli.vet/"
+      },
+      {
+        "date": "2026-11-10",
+        "text": "공식 굿즈(티셔츠·윈드브레이커·타월·키링 등 11종) 사전예약 판매가 열렸어요. 판매 기간은 11/5(목) 18:00 ~ 11/11(수) 23:59로 내일 마감이니 서두르세요! 현장 수령만 가능하고(배송 불가), 구매 시 지정한 수령일이 실제 티켓 관람일과 같아야 해요. 라인업 42팀 중 다수 아티스트도 각자 개별 굿즈(티셔츠·타월·키링 등)를 따로 판매하는데, 팀 수가 많아 이 페이지엔 공식 페스티벌 굿즈만 정리했어요 - 아티스트별 굿즈는 아래 공식 사전예약 페이지에서 확인하세요.",
+        "sourceUrl": "https://m.ticket.yes24.com/event/PromotionInfo.aspx?id=4021"
       }
     ],
     "sources": [
@@ -4482,12 +4488,92 @@
       }
     ],
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59840.png",
-    "merchCheckedAt": "2026-11-03",
+    "merch": [
+      {
+        "label": "WONDERLIVET 2026 LINEUP T-SHIRT",
+        "price": "39,000원",
+        "variants": "SIZE: L / XL / XXL",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/T_SHIRT_01.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 GRAPHIC T-SHIRT",
+        "price": "39,000원",
+        "variants": "SIZE: L / XL / XXL",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/T_SHIRT_02.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 WINDBREAKER",
+        "price": "79,000원",
+        "variants": "SIZE: L / XL",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/WINDBREAKER.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 TOWEL",
+        "price": "22,000원",
+        "variants": "(W)850 X (H)340 mm",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/TOWEL.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 SLOGAN HOLDER",
+        "price": "5,000원",
+        "variants": "(W)230 X (H)33.9 mm",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/SLOGAN_HOLDER.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 BANDANA",
+        "price": "19,000원",
+        "variants": "(W)600 X (H)600 mm",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/BANDANA.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 GYM SACK",
+        "price": "25,000원",
+        "variants": "(W)360 X (H)430 mm",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/GYM_SACK.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 TARPAULIN BAG",
+        "price": "11,000원",
+        "variants": "(W)550 X (D)185 X (H)390 mm",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/TARPAULIN_BAG.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 STICKER SET",
+        "price": "9,000원",
+        "variants": "10매",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/STICKER_SET.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 METAL KEYRING",
+        "price": "21,000원",
+        "variants": "(W)55 X (H)61.2 mm",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/METAL_KEYRING.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      },
+      {
+        "label": "WONDERLIVET 2026 ACRYLIC KEYRING",
+        "price": "12,000원",
+        "variants": "(W)70 X (H)43.3 mm",
+        "imageUrl": "https://tkfile.yes24.com/img/event/md/WL26/official/ACRYLIC_KEYRING.jpg",
+        "url": "https://ticket.yes24.com/Perf/60868"
+      }
+    ],
+    "merchPhotoUrl": "https://tkfile.yes24.com/img/event/md/WL26/Thumb01.jpg",
+    "merchCheckedAt": "2026-11-10",
     "shuttleBus": [
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDI1/",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ]
   },
@@ -4515,12 +4601,12 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000596",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
       },
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDI4/",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
     "posterUrl": "/posters/shuttle-monsta-x-world-tour-encore-2026-11.webp",
@@ -4564,7 +4650,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000609",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태(강남역·서울역·잠실역). 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태(강남역·서울역·잠실역). 노선·요금은 예약 화면에서 확인하세요."
       }
     ]
   },
@@ -4796,12 +4882,12 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000578",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
       },
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDU4/",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
     "schedule": "12/5(토) 18:00, 12/6(일) 17:00, 러닝타임 90분",
@@ -4855,7 +4941,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000571",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
       }
     ],
     "posterUrl": "/posters/shuttle-khalid-2026-12.webp",
@@ -4902,7 +4988,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000570",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
       }
     ]
   },
@@ -5416,7 +5502,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000625",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다. 카카오 T 목록 표기는 \"후제이 카제\"(동일 아티스트의 표기 변형)."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 수요조사 중인 상품입니다. 카카오 T 목록 표기는 \"후제이 카제\"(동일 아티스트의 표기 변형)."
       }
     ]
   },
@@ -5567,7 +5653,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000586",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태(서울/수도권·경기·인천 다수 정류장). 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태(서울/수도권·경기·인천 다수 정류장). 노선·요금은 예약 화면에서 확인하세요."
       }
     ]
   },
@@ -5632,7 +5718,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000600",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 수요조사 중인 상품입니다."
       }
     ],
     "ticketLinks": [
@@ -5674,7 +5760,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000623",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
       }
     ],
     "ticketingAnnounced": true,
@@ -5753,12 +5839,12 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000617",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
       },
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDUw/",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
     "merchCheckedAt": "2026-11-03",
@@ -5793,7 +5879,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000619",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 수요조사 중인 상품입니다."
       }
     ],
     "posterUrl": "/posters/shuttle-ateez-world-tour-zero-to-all-2027-01.webp",
@@ -5828,12 +5914,12 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000610",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 강남역·노원역·마곡역·서울역·신도림역·왕십리역·백석역·부평역 매진, 사당역·잠실역·합정역·미금역·영통역은 예약 가능. 11/7 확인 당시(예약 가능 상태)보다 매진 정류장이 크게 늘어남(공연 임박 11/13~15)."
       },
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDQy/",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 신도림역·서울역 매진, 부평역 등 나머지 정류장은 예약 가능(17,000원~) - 11/6 확인 당시(신도림역·부평역 매진)와 매진 정류장이 바뀜(서울역 신규 매진, 부평역은 재오픈). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 합정역·신도림역·서울역·잠실역·수원역 매진, 사당역·왕십리역·노원역·부평역은 예약 가능(17,000~19,000원). 신규로 부산(우등고속, 79,000원) 정류장 추가 확인. 11/7 확인 당시(신도림역·서울역만 매진)보다 매진 정류장이 늘어남."
       }
     ],
     "posterUrl": "/posters/shuttle-xdinary-heroes-impulse-2026-11.webp",
@@ -5867,7 +5953,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000616",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 수요조사 중인 상품입니다."
       }
     ]
   },
@@ -5895,7 +5981,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000612",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 수요조사 중인 상품입니다."
       }
     ],
     "posterUrl": "/posters/shuttle-lee-seung-chul-40th-concert-2026-12.webp",
@@ -5929,7 +6015,7 @@
       {
         "operator": "퀸즈스마일",
         "url": "https://queenssmile.co.kr/shop/festival/NDUz/",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 유료 셔틀버스(왕복/편도 티켓 29,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 유료 셔틀버스(왕복/편도 티켓 29,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
     "posterUrl": "/posters/shuttle-daegu-hiphop-festival-2026-12.webp",
@@ -6133,7 +6219,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000618",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 예약 가능 상태. 같은 요네즈 켄시 내한공연으로 중복 등재된 kopis-PF304185(인스파이어 엔터테인먼트 리조트 표기)에 이미 등록된 것과 동일한 셔틀을 이번에 이 항목에도 보강함. 노선·요금은 예약 화면에서 확인하세요."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 예약 가능 상태. 같은 요네즈 켄시 내한공연으로 중복 등재된 kopis-PF304185(인스파이어 엔터테인먼트 리조트 표기)에 이미 등록된 것과 동일한 셔틀을 이번에 이 항목에도 보강함. 노선·요금은 예약 화면에서 확인하세요."
       }
     ],
     "ticketLinks": [
@@ -6327,7 +6413,7 @@
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000630",
-        "note": "셔틀 스캔으로 확인 (2026-11-07). 수요조사 중인 상품입니다(아직 오픈 안 됨)."
+        "note": "셔틀 스캔으로 확인 (2026-11-10). 수요조사 중인 상품입니다(아직 오픈 안 됨)."
       }
     ],
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-06). NCT WISH 2nd 콘서트 투어 'INTO THE WISH : Face Our WISH' 서울(고척스카이돔) 공연 - 1/15(금)·1/16(토) 양일.",
