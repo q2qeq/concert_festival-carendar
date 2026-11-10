@@ -6656,5 +6656,32 @@
     "addedAt": "2026-11-09",
     "promoBanner": "요아소비 내한 확정 - 2027.4.17(토), 장소·티켓은 발표 전",
     "featuredUntil": "2026-11-23"
+  },
+  {
+    "id": "yonyon-seoul-2026-12",
+    "artist": "2026 욘욘 단독공연 (YonYon 1st ONEMAN in Seoul)",
+    "genre": "팝",
+    "venue": "스페이스 소다2002 (SPACE SODA2002)",
+    "city": "서울",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-05",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "description": "싱어송라이터이자 DJ/프로듀서 욘욘(YonYon)이 한국에서 여는 첫 단독공연이에요. 2026년 12월 5일(토) 오후 6시 스페이스 소다2002에서 열리고, 욘욘과 라이브 세션의 미니멀 밴드셋 무대에 주혜린·라바다부(Labäda Bu)의 라이브와 디제잉 타임이 더해져요. 전석 스탠딩 55,000원, 관람시간 160분, 전체이용가. 멜론티켓 단독판매.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-10 오후 8시",
+    "ticketOpenAt": "2026-11-10T20:00:00+09:00",
+    "sources": [
+      {
+        "label": "2026 욘욘 단독공연 (YonYon 1st ONEMAN in Seoul) 티켓 오픈 안내 - 멜론티켓",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=13256"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214285"
+      }
+    ],
+    "addedAt": "2026-11-11"
   }
 ]
