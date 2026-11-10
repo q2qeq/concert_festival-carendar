@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/:path((?!api(?:/|$)|_astro/|_vercel/)[^.]*[^/.])",
+      "destination": "/:path/",
+      "permanent": true
+    }
+  ]
+}

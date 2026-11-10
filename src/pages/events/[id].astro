@@ -188,7 +188,7 @@ const mobileCtaKind: 'links' | 'official' | 'clock' | null =
   : fallbackPrimaryUrl ? 'official'
   : openUpcoming ? 'clock'
   : null;
-const mobileClockHref = `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt ?? '')}&artist=${encodeURIComponent(event.artist)}`;
+const mobileClockHref = `/ticketing-clock/?open=${encodeURIComponent(event.ticketOpenAt ?? '')}&artist=${encodeURIComponent(event.artist)}`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -294,7 +294,7 @@ const breadcrumbLd = {
             {' '}
             <a
               class="clock-link"
-              href={`/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}`}
+              href={`/ticketing-clock/?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}`}
             >
               티켓팅 시계로 준비하기 →
             </a>
@@ -349,7 +349,7 @@ const breadcrumbLd = {
       )}
       <a class="ab-btn" href="#sightline">구역별 시야</a>
       {status === 'scheduled' && !isPast && (
-        <a class="ab-btn" href={event.ticketOpenAt && new Date(event.ticketOpenAt).getTime() > Date.now() ? `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}` : '/ticketing-clock'}>티켓팅 시계</a>
+        <a class="ab-btn" href={event.ticketOpenAt && new Date(event.ticketOpenAt).getTime() > Date.now() ? `/ticketing-clock/?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}` : '/ticketing-clock'}>티켓팅 시계</a>
       )}
       {showShuttleSection && (
         <a class="ab-btn" href="#shuttle">셔틀버스</a>

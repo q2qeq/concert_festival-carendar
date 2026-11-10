@@ -20,7 +20,7 @@ function fmt(d: Date) {
 ---
 <BaseLayout title={post.data.title} description={post.data.description} image={post.body?.match(/!\[[^\]]*\]\((\/[^)\s]+)\)/)?.[1]}>
   <article class="post">
-    <p class="breadcrumb"><a href="/blog">← 이슈 목록</a></p>
+    <p class="breadcrumb"><a href="/blog/">← 이슈 목록</a></p>
     <p class="post-date">{fmt(post.data.pubDate)}</p>
     <h1>{post.data.title}</h1>
     {post.data.tags && post.data.tags.length > 0 && (

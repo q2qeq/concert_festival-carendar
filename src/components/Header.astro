@@ -5,19 +5,19 @@ import Mascot from './Mascot.astro';
 const { wide = false } = Astro.props;
 const { pathname } = Astro.url;
 const NAV = [
-  { href: '/events', label: '전체 일정' },
-  { href: '/venues', label: '공연장' },
-  { href: '/events/archive', label: '지난 공연' },
-  { href: '/blog', label: '이슈' },
-  { href: '/ticket-open', label: '티켓오픈' },
-  { href: '/tools', label: '도구' },
-  { href: '/my', label: '내 찜' },
-  { href: '/about', label: '소개' },
-  { href: '/contact', label: '문의' },
+  { href: '/events/', label: '전체 일정' },
+  { href: '/venues/', label: '공연장' },
+  { href: '/events/archive/', label: '지난 공연' },
+  { href: '/blog/', label: '이슈' },
+  { href: '/ticket-open/', label: '티켓오픈' },
+  { href: '/tools/', label: '도구' },
+  { href: '/my/', label: '내 찜' },
+  { href: '/about/', label: '소개' },
+  { href: '/contact/', label: '문의' },
 ];
 function isActive(href: string) {
-  if (href === '/events') return pathname.startsWith('/events') && !pathname.startsWith('/events/archive');
-  if (href === '/tools') return ['/tools', '/ticketing-clock', '/practice', '/ticketing-check', '/internet-speed', '/return-trip'].some((p) => pathname.startsWith(p));
+  if (href === '/events/') return pathname.startsWith('/events') && !pathname.startsWith('/events/archive');
+  if (href === '/tools/') return ['/tools', '/ticketing-clock', '/practice', '/ticketing-check', '/internet-speed', '/return-trip'].some((p) => pathname.startsWith(p));
   return pathname.startsWith(href);
 }
 ---
@@ -45,7 +45,7 @@ function isActive(href: string) {
   if (location.pathname.replace(/\/$/, '') !== '/my') {
     findNews().then((news) => {
       if (news.length === 0) return;
-      document.querySelectorAll('[data-nav="/my"]').forEach((a) => {
+      document.querySelectorAll('[data-nav="/my/"]').forEach((a) => {
         a.classList.add('has-news');
         a.setAttribute('aria-label', `내 찜, 새 소식 ${news.length}건`);
       });

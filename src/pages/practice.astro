@@ -148,7 +148,7 @@ const jsonLd = [
       <ul>
         {nextOpens.map((e) => (
           <li>
-            <a href={`/ticketing-clock?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>
+            <a href={`/ticketing-clock/?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>
               <strong>{e.artist}</strong>
               <span>{e.ticketOpenDate ?? e.ticketOpenAt}</span>
             </a>
