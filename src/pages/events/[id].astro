@@ -17,6 +17,7 @@ import Mascot from '../../components/Mascot.astro';
 import NextSteps from '../../components/NextSteps.astro';
 import WantButton from '../../components/WantButton.astro';
 import AnnounceWatch from '../../components/AnnounceWatch.astro';
+import OpenCountdown from '../../components/OpenCountdown.astro';
 import { existsSync } from 'node:fs';
 import { postsMentioningEvent, postsMentioningVenue, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
@@ -278,6 +279,8 @@ const breadcrumbLd = {
       {event.description && <p class="event-description">{event.description}</p>}
     </header>
 
+    <div class="ev-oc"><OpenCountdown event={event} variant="page" /></div>
+
     {status === 'postponed' && (
       <p class="status-banner status-postponed">
         이 공연은 연기되었습니다. 재개최 일정이 정해지지 않았다면 아래 안내를 확인하세요.
@@ -286,7 +289,7 @@ const breadcrumbLd = {
     {status === 'cancelled' && (
       <p class="status-banner status-cancelled">이 공연은 취소되었습니다.</p>
     )}
-    {event.ticketingAnnounced && ticketLinks.length === 0 && (
+    {event.ticketingAnnounced && ticketLinks.length === 0 && !event.ticketOpenAt && (
       <p class="status-banner status-announced">
         티켓 오픈 예정 공연이에요{event.ticketOpenDate ? ` — 오픈: ${event.ticketOpenDate}` : ''}. 오픈되면 이 페이지에 바로 예매 링크를 추가할게요.
         {event.ticketOpenAt && (
@@ -904,8 +907,8 @@ const breadcrumbLd = {
   @media (max-width: 720px) {
     /* 모바일: 포스터(좌)+숫자(우)를 한 줄로, 제목 → 예매 버튼 → 설명 순서 */
     .ev-stage { grid-template-columns: 42% 1fr; column-gap: 1.1rem; row-gap: 0; margin-top: 0.8rem;
-      grid-template-areas: "pic kick" "pic big" "name name" "act act" "desc desc" "ban ban"; }
-    .ev-stage.no-pic { grid-template-columns: 1fr; grid-template-areas: "kick" "big" "name" "act" "desc" "ban"; }
+      grid-template-areas: "pic kick" "pic big" "name name" "oc oc" "act act" "desc desc" "ban ban"; }
+    .ev-stage.no-pic { grid-template-columns: 1fr; grid-template-areas: "kick" "big" "name" "oc" "act" "desc" "ban"; }
     .ev-info, .event-header, .event-header.is-buzzing { display: contents; }
     .ev-pic { grid-area: pic; position: static; }
     .ev-kicker { grid-area: kick; margin: 0; font-size: 0.7rem; line-height: 1.7; align-self: start; }
@@ -918,6 +921,7 @@ const breadcrumbLd = {
     .event-header .event-description { grid-area: desc; margin-top: 1.1rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
     .event-header .last-updated { display: none; }
     .ev-info .status-banner { grid-area: ban; margin-top: 1rem; }
+    .ev-oc { grid-area: oc; min-width: 0; }
   }
   /* ── 모바일 하단 고정 예매 버튼 ── */
   .m-cta { display: none; }

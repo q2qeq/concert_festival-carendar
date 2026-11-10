@@ -5,7 +5,7 @@ import Mascot from '../../components/Mascot.astro';
 import CalendarNav from '../../components/CalendarNav.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import RecentIssues from '../../components/RecentIssues.astro';
-import { schedulePeriods, periodLabel, upcomingEvents, allGenres, allCities, monthLabel, hasTicketsOnSale, ticketOpenInDays } from '../../lib/events';
+import { schedulePeriods, periodLabel, upcomingEvents, allGenres, allCities, monthLabel, hasTicketsOnSale, hasUpcomingOpen } from '../../lib/events';
 
 const events = upcomingEvents();
 const periods = schedulePeriods();
@@ -92,7 +92,7 @@ for (const e of events) {
               data-id={e.id}
               data-date={e.startDate}
               data-onsale={hasTicketsOnSale(e) ? '1' : '0'}
-              data-open-days={ticketOpenInDays(e) ?? ''}
+              data-open-at={hasUpcomingOpen(e) ? e.ticketOpenAt : ''}
             >
               <PosterCard event={e} />
             </div>
@@ -163,8 +163,9 @@ for (const e of events) {
     if (!activeQuick) return true;
     if (activeQuick === 'onsale') return card.dataset.onsale === '1';
     if (activeQuick === 'open') {
-      const d = card.dataset.openDays;
-      return d !== undefined && d !== '' && Number(d) <= 14;
+      // 빌드 시점이 아니라 지금 시각 기준으로 14일 안에 열리는(또는 막 열린) 공연
+      const at = new Date(card.dataset.openAt || '').getTime();
+      return !isNaN(at) && at >= Date.now() - 3600_000 && at - Date.now() <= 14 * 86400_000;
     }
     if (activeQuick === 'week') {
       const start = new Date((card.dataset.date ?? '') + 'T00:00:00').getTime();

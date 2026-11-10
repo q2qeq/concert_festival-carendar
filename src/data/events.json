@@ -5058,7 +5058,7 @@
     "city": "서울",
     "startDate": "2026-12-12",
     "endDate": "2026-12-12",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연. 포스터는 2026-08-12 내한 발표 보도(더팩트) 이미지. 국내 주최는 엠피엠지뮤직·민트페이퍼로 확인되나, 구체적 예매처 URL은 아직 공개되지 않았습니다(2026-08-30 확인). 공식 투어 페이지도 'Bandsintown RSVP'로만 안내하고 있어요.",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연. 포스터는 2026-08-12 내한 발표 보도(더팩트) 이미지. 국내 주최는 엠피엠지뮤직·민트페이퍼. 예매는 NOL 티켓 단독(회차별 1인 4매)이에요.",
     "description": "미국 재즈·퓨전 듀오 DOMi & JD BECK의 내한 공연. 그래미 수상 프로듀서들과의 협업으로 주목받았다.",
     "officialUrl": "https://www.domiandjdbeck.com/tour/",
     "posterUrl": "/posters/kopis-domi-jdbeck-2026-12.webp",
@@ -5085,9 +5085,19 @@
       {
         "label": "DOMi & JD BECK, 12월 첫 韓 공연 개최 - 전자신문",
         "url": "https://www.etnews.com/20260812000409"
+      },
+      {
+        "label": "WHO ASKED? TOUR DOMi & JD BECK LIVE IN SEOUL - NOL 티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26012221"
       }
     ],
-    "posterSourceUrl": "https://img.tf.co.kr/article/home/2026/08/12/202640161786503048.jpg"
+    "posterSourceUrl": "https://img.tf.co.kr/article/home/2026/08/12/202640161786503048.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26012221"
+      }
+    ]
   },
   {
     "id": "bbc-philharmonic-seoul-2026-12",
@@ -5744,7 +5754,7 @@
     "startDate": "2027-01-02",
     "endDate": "2027-01-03",
     "officialUrl": "https://www.hanroro.co.kr/schedule/6adb247a735e005ea76a2598",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 싱어송라이터 한로로가 데뷔 후 처음으로 대형 아레나에 입성하는 다섯 번째 단독 콘서트 '물음표'. 티켓 오픈 일시는 NOL 티켓 상품 안내(검색 결과 확인, 원문 미확인) 기준이에요 - 예매 전에 공식 공지로 한 번 더 확인하세요.",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 싱어송라이터 한로로가 데뷔 후 처음으로 대형 아레나에 입성하는 다섯 번째 단독 콘서트 '물음표'. 티켓은 11/13(금) 오후 6시 NOL 티켓에서 오픈해요(NOL 상품 페이지 확인).",
     "sources": [
       {
         "label": "한로로, 내년 1월 인스파이어 아레나서 단독 콘서트 - 연합뉴스",
@@ -5759,7 +5769,7 @@
         "url": "https://www.hanroro.co.kr/schedule/6adb247a735e005ea76a2598"
       },
       {
-        "label": "한로로 (HANRORO) 5th 단독콘서트 [물음표] - NOL 티켓 (검색 결과 기준, 원문 미확인)",
+        "label": "한로로 (HANRORO) 5th 단독콘서트 [물음표] - NOL 티켓",
         "url": "https://nol.yanolja.com/ticket/products/26015537"
       }
     ],
@@ -5774,7 +5784,13 @@
     "ticketOpenDate": "2026-11-13 오후 6시",
     "ticketOpenAt": "2026-11-13T18:00:00+09:00",
     "posterUrl": "/posters/shuttle-hanroro-5th-question-mark-2027-01.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/TicketImage/notice_poster/20/20261023085031.jpg"
+    "posterSourceUrl": "https://ticketimage.interpark.com/TicketImage/notice_poster/20/20261023085031.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015537"
+      }
+    ]
   },
   {
     "id": "shuttle-2026-incheon-airport-sky-festival-2026-11",
@@ -5880,6 +5896,10 @@
       {
         "label": "에이티즈, 新 2027 월드 투어 'ZERO TO ALL'…인천서 포문 - 전자신문",
         "url": "https://www.etnews.com"
+      },
+      {
+        "label": "2027 ATEEZ WORLD TOUR [ZERO TO ALL] IN INCHEON - NOL 티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015983"
       }
     ],
     "shuttleBus": [
@@ -5890,7 +5910,48 @@
       }
     ],
     "posterUrl": "/posters/shuttle-ateez-world-tour-zero-to-all-2027-01.webp",
-    "posterSourceUrl": "https://img8.yna.co.kr/etc/inner/KR/2026/10/11/AKR20261011017600005_02_i_P4.jpg"
+    "posterSourceUrl": "https://img8.yna.co.kr/etc/inner/KR/2026/10/11/AKR20261011017600005_02_i_P4.jpg",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-12-03 오후 8시 (국내 멤버십 선예매), 2026-12-07 오후 8시 (글로벌 멤버십 선예매), 2026-12-08 오후 8시 (일반예매, NOL 단독)",
+    "ticketOpenAt": "2026-12-03T20:00:00+09:00",
+    "ticketOpens": [
+      {
+        "label": "국내 멤버십 선예매",
+        "at": "2026-12-03T20:00:00+09:00",
+        "until": "2026-12-03T23:59:00+09:00"
+      },
+      {
+        "label": "글로벌 멤버십 선예매",
+        "at": "2026-12-07T20:00:00+09:00",
+        "until": "2026-12-07T23:59:00+09:00"
+      },
+      {
+        "label": "일반예매",
+        "at": "2026-12-08T20:00:00+09:00"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015983"
+      }
+    ],
+    "presale": [
+      {
+        "title": "ATINY 멤버십 선예매 (국내·글로벌)",
+        "detail": "ATEEZ 공식 팬클럽 ATINY 회원 대상이에요. 국내 선예매 12/3(목) 오후 8시~11시 59분, 글로벌 선예매 12/7(월) 오후 8시~11시 59분, 회차당 1인 1매.",
+        "howTo": "1) 11/23(월) 오후 7시~11/25(수) 밤 11시 59분에 TOKTOQ 멤버십 서베이 작성(이름·ATINY 멤버십 번호 6자리). 2) 12/1(화) 오후 2시부터 NOL 예매 페이지 멤버십 인증창에 TOKTOQ ID와 멤버십 번호 입력(국내는 12/3, 글로벌은 12/7 밤 11시 59분까지). 서베이를 안 하면 인증·선예매 모두 불가해요.",
+        "date": "2026-12-03 오후 8시",
+        "url": "https://nol.yanolja.com/ticket/products/26015983"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-11-11",
+        "text": "NOL 단독 예매 일정이 나왔어요. 국내 멤버십 선예매 12/3(목), 글로벌 멤버십 선예매 12/7(월), 일반예매 12/8(화) 모두 오후 8시예요. 가격은 Sailor석(사운드체크 포함) 209,000원, 일반석 165,000원, 일반예매는 회차당 1인 2매.",
+        "sourceUrl": "https://nol.yanolja.com/ticket/products/26015983"
+      }
+    ]
   },
   {
     "id": "shuttle-xdinary-heroes-impulse-2026-11",
@@ -5982,6 +6043,10 @@
       {
         "label": "[인천] 2026 이승철 40주년 콘서트 [THE VOICE: LEE SEUNG CHUL] - YES24 티켓",
         "url": "https://ticket.yes24.com/Perf"
+      },
+      {
+        "label": "2026 이승철 40주년 콘서트 [THE VOICE: LEE SEUNG CHUL] - 인천 - NOL 티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26011556"
       }
     ],
     "shuttleBus": [
@@ -5992,7 +6057,13 @@
       }
     ],
     "posterUrl": "/posters/shuttle-lee-seung-chul-40th-concert-2026-12.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26011556_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26011556_p.gif",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26011556"
+      }
+    ]
   },
   {
     "id": "shuttle-daegu-hiphop-festival-2026-12",
@@ -6302,7 +6373,7 @@
       "보도에 따르면 이번 투어의 유럽·영국·북미 일정은 모두 매진됐다고 해요."
     ],
     "ticketingAnnounced": true,
-    "ticketOpenDate": "2026-11-10 낮 12시 (위버스 선예매), 2026-11-12 낮 12시 (일반예매, NOL 티켓)",
+    "ticketOpenDate": "2026-11-10 낮 12시 (위버스 선예매), 2026-11-11 낮 12시 (아티스트 코드 선예매), 2026-11-12 낮 12시 (일반예매, NOL 티켓)",
     "ticketOpenAt": "2026-11-10T12:00:00+09:00",
     "sources": [
       {
@@ -6335,7 +6406,23 @@
       }
     ],
     "posterUrl": "/posters/katseye-seoul-2027-02.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015604_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015604_p.gif",
+    "ticketOpens": [
+      {
+        "label": "위버스 선예매",
+        "at": "2026-11-10T12:00:00+09:00",
+        "until": "2026-11-10T15:00:00+09:00"
+      },
+      {
+        "label": "아티스트 코드 선예매",
+        "at": "2026-11-11T12:00:00+09:00",
+        "until": "2026-11-11T15:00:00+09:00"
+      },
+      {
+        "label": "일반예매",
+        "at": "2026-11-12T12:00:00+09:00"
+      }
+    ]
   },
   {
     "id": "damien-rice-seoul-2027-02",

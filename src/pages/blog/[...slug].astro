@@ -4,6 +4,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import RecentIssues from '../../components/RecentIssues.astro';
 import { relatedPosts } from '../../lib/posts';
+import OpenCountdown from '../../components/OpenCountdown.astro';
+import { events, ticketOpenStages, hasUpcomingOpen } from '../../lib/events';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -13,6 +15,23 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const related = await relatedPosts(post, 4);
+
+// 본문에 링크된 공연 중 티켓오픈 시각이 확인된 공연 (본문에 나온 순서, 최대 2개).
+// 오픈 전이면 카운트다운, 오픈 후 30일 안이면 취소표 안내로 글 상단에 붙는다.
+const body = post.body ?? '';
+const nowMs = Date.now();
+const openEvents = events
+  .map((e) => ({ e, pos: body.indexOf(`/events/${e.id}/`) }))
+  .filter(({ e, pos }) => {
+    if (pos < 0) return false;
+    const stages = ticketOpenStages(e);
+    if (stages.length === 0) return false;
+    const last = new Date(stages[stages.length - 1].at).getTime();
+    return hasUpcomingOpen(e, nowMs) || nowMs - last < 30 * 86400_000;
+  })
+  .sort((a, b) => a.pos - b.pos)
+  .slice(0, 2)
+  .map(({ e }) => e);
 
 function fmt(d: Date) {
   return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
@@ -28,6 +47,8 @@ function fmt(d: Date) {
         {post.data.tags.map((t) => <span class="tag">{t}</span>)}
       </div>
     )}
+
+    {openEvents.map((e) => <OpenCountdown event={e} variant="post" />)}
 
     <AdSlot slot="post-top" />
 

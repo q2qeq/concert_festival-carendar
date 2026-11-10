@@ -256,6 +256,9 @@ export interface ConcertEvent {
   // /ticketing-clock?open=...&artist=... for a synced countdown) - purely
   // additive, ticketOpenDate above still carries the human-readable label.
   ticketOpenAt?: string;
+  // 선예매·일반예매처럼 오픈이 여러 단계일 때 단계별 시각 (공식 공지에 시각이 나온 것만).
+  // 있으면 빌드 시 ticketOpenAt을 "다음 단계" 시각으로 맞춘다 - 아래 events 로딩부 참고.
+  ticketOpens?: TicketOpenStage[];
   // Editorial judgment on how hard tickets are to get, grounded in a real,
   // citable signal (e.g. a past/this-year sale selling out immediately, a
   // small venue vs a huge-demand artist). This is commentary, like
@@ -325,7 +328,35 @@ export interface ConcertEvent {
   ticketLinksCheckedAt?: string;
 }
 
-export const events: ConcertEvent[] = (raw as ConcertEvent[]).slice();
+export interface TicketOpenStage {
+  label: string; // "위버스 선예매", "일반예매"
+  at: string; // ISO (+09:00)
+  until?: string; // 선예매처럼 끝나는 시각이 공지된 경우
+}
+
+// 공연의 티켓오픈 단계 목록 (시각 순). ticketOpens가 없으면 ticketOpenAt 하나를 단계로 본다.
+export function ticketOpenStages(e: ConcertEvent): TicketOpenStage[] {
+  if (e.ticketOpens && e.ticketOpens.length > 0) {
+    return e.ticketOpens.slice().sort((a, b) => new Date(a.at).getTime() - new Date(b.at).getTime());
+  }
+  return e.ticketOpenAt ? [{ label: '티켓 오픈', at: e.ticketOpenAt }] : [];
+}
+
+// 아직 안 지난 단계(오픈 후 1시간까지는 "막 열림"으로 포함)가 하나라도 있는지.
+export function hasUpcomingOpen(e: ConcertEvent, nowMs = Date.now()): boolean {
+  return ticketOpenStages(e).some((s) => new Date(s.at).getTime() >= nowMs - 3600_000);
+}
+
+// 단계가 여러 개면 ticketOpenAt을 빌드 시점의 "다음 단계"로 맞춘다. 그래야 홈·티켓오픈
+// 일정·캘린더처럼 ticketOpenAt 하나만 보는 기존 화면도 지난 선예매 대신 다음 오픈을 보여준다.
+function withNextStage(e: ConcertEvent, nowMs: number): ConcertEvent {
+  if (!e.ticketOpens || e.ticketOpens.length === 0) return e;
+  const stages = ticketOpenStages(e);
+  const next = stages.find((s) => new Date(s.at).getTime() >= nowMs - 3600_000) ?? stages[stages.length - 1];
+  return { ...e, ticketOpenAt: next.at };
+}
+
+export const events: ConcertEvent[] = (raw as ConcertEvent[]).map((e) => withNextStage(e, Date.now()));
 
 export function sortedEvents(): ConcertEvent[] {
   return events.slice().sort((a, b) => a.startDate.localeCompare(b.startDate));
@@ -591,6 +622,20 @@ export function upcomingTicketOpens(limit = 8, nowMs = Date.now()): ConcertEvent
     .slice(0, limit);
 }
 
+// 오픈 단계 단위 목록 (선예매·일반예매를 각각 한 줄로), 가까운 순.
+export function upcomingOpenStages(limit = 60, nowMs = Date.now()): { event: ConcertEvent; stage: TicketOpenStage; multi: boolean }[] {
+  const today = new Date(nowMs + 9 * 3600_000).toISOString().slice(0, 10);
+  return events
+    .filter((e) => (e.status ?? 'scheduled') === 'scheduled' && e.endDate >= today)
+    .flatMap((e) => {
+      const stages = ticketOpenStages(e);
+      return stages.map((stage) => ({ event: e, stage, multi: stages.length > 1 }));
+    })
+    .filter(({ stage }) => new Date(stage.at).getTime() >= nowMs - 3600_000)
+    .sort((a, b) => new Date(a.stage.at).getTime() - new Date(b.stage.at).getTime())
+    .slice(0, limit);
+}
+
 // 지금 예매 링크가 있는 공연 중 공연일이 가까운 순 (아직 안 끝난 것만).
 export function onSaleEvents(limit = 6, fromISO?: string): ConcertEvent[] {
   const from = fromISO ?? new Date().toISOString().slice(0, 10);
@@ -635,11 +680,12 @@ export function periodLabel(period: string): string {
 
 // 목록 한 줄에 보여줄 예매 상태 문구 - 확인된 정보만 (없으면 '예매 일정 미정').
 export function ticketStatusText(e: ConcertEvent, nowMs = Date.now()): { text: string; tone: 'on' | 'soon' | 'none' } {
-  if (hasTicketsOnSale(e)) return { text: '예매 오픈중', tone: 'on' };
+  // 예매 링크가 미리 걸려 있어도 오픈 전이면 "오픈 예정"이 먼저다 (선예매만 열린 경우 포함).
   if (e.ticketOpenAt && new Date(e.ticketOpenAt).getTime() > nowMs) {
     const k = new Date(new Date(e.ticketOpenAt).getTime() + 9 * 3600_000);
     return { text: `티켓오픈 ${k.getUTCMonth() + 1}.${String(k.getUTCDate()).padStart(2, '0')} ${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`, tone: 'soon' };
   }
+  if (hasTicketsOnSale(e)) return { text: '예매 오픈중', tone: 'on' };
   return { text: '예매 일정 미정', tone: 'none' };
 }
 

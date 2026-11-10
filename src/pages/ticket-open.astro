@@ -2,7 +2,8 @@
 // 티켓오픈 일정 - 공식 공지로 오픈 시각이 확인된 공연만 모아 보여준다 (없는 시각을 지어내지 않음).
 // 정적 빌드라서 "곧 오픈" 목록은 브라우저에서 아직 안 지난 것만 남기고 카운트다운을 붙인다.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { upcomingTicketOpens, onSaleEvents, upcomingEvents } from '../lib/events';
+import { upcomingOpenStages, onSaleEvents, upcomingEvents } from '../lib/events';
+import { kstDayDiff } from '../lib/openPhase';
 import { ticketOpenIcs, ticketOpenGoogleUrl, icsDataUri } from '../lib/ticketAlert';
 
 function openParts(iso: string) {
@@ -12,7 +13,16 @@ function openParts(iso: string) {
     hm: `${String(k.getUTCHours()).padStart(2, '0')}:${String(k.getUTCMinutes()).padStart(2, '0')}`,
   };
 }
-const soon = upcomingTicketOpens(30);
+// 선예매·일반예매를 각각 한 줄로. 묶음(오늘/내일/이번 주/그 이후)은 빌드 시점으로 먼저 나누고 브라우저가 다시 나눈다.
+const soon = upcomingOpenStages(60).map(({ event, stage, multi }) => ({
+  ...event,
+  ticketOpenAt: stage.at,
+  stageLabel: multi ? stage.label : '',
+}));
+const groupOf = (iso: string, now = Date.now()) => {
+  const d = kstDayDiff(iso, now);
+  return d <= 0 ? '오늘' : d === 1 ? '내일' : d <= 7 ? '이번 주' : '그 이후';
+};
 const nowMs = Date.now();
 // 최근 2주 안에 막 오픈했고 아직 공연이 안 끝난 공연
 const recent = upcomingEvents()
@@ -31,8 +41,8 @@ const shortDate = (iso: string) => {
 };
 const clockHref = (e: { ticketOpenAt?: string; artist: string }) =>
   `/ticketing-clock/?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`;
-const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
-  ({ id: e.id, artist: e.artist, ticketOpenAt: e.ticketOpenAt as string });
+const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLabel?: string }) =>
+  ({ id: e.id, artist: e.stageLabel ? `${e.artist} ${e.stageLabel}` : e.artist, ticketOpenAt: e.ticketOpenAt as string });
 ---
 <BaseLayout
   title="티켓오픈 일정 - 내한공연 예매 오픈 캘린더"
@@ -46,15 +56,19 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
     {soon.length > 0 ? (
       <>
         <ul class="open-list" id="soon-list">
-          {soon.map((e) => (
-            <li data-open-at={e.ticketOpenAt}>
+          {soon.map((e, i) => (
+            <>
+            {(i === 0 || groupOf(soon[i - 1].ticketOpenAt) !== groupOf(e.ticketOpenAt)) && (
+              <li class="grp mono" data-grp>{groupOf(e.ticketOpenAt)}</li>
+            )}
+            <li data-open-at={e.ticketOpenAt} data-id={e.id} data-artist={e.stageLabel ? `${e.artist} ${e.stageLabel}` : e.artist}>
               <p class="open-when mono">{openParts(e.ticketOpenAt as string).md} <span>{openParts(e.ticketOpenAt as string).hm}</span></p>
               <div class="open-body">
               <div class="open-head">
-                <a class="open-title" href={`/events/${e.id}/`}>{e.artist}</a>
+                <a class="open-title" href={`/events/${e.id}/`}>{e.artist}{e.stageLabel && <em class="open-stage">{e.stageLabel}</em>}</a>
                 <span class="open-left" data-left></span>
               </div>
-              <p class="open-meta">{e.ticketOpenDate ?? e.ticketOpenAt} · 공연 {shortDate(e.startDate)} · {e.venue}</p>
+              <p class="open-meta">공연 {shortDate(e.startDate)} · {e.venue}</p>
               <div class="open-actions">
                 <a class="oa primary" href={clockHref(e)}>시계</a>
                 <a class="oa" href={ticketOpenGoogleUrl(alertOf(e))} target="_blank" rel="noopener noreferrer">구글</a>
@@ -63,6 +77,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
               </div>
               </div>
             </li>
+            </>
           ))}
         </ul>
         <p class="bulk"><a class="oa" href="/calendar/">캘린더로 구독하기</a> <button type="button" id="bulk-ics" class="oa primary">곧 오픈 전체를 캘린더에 저장 (.ics)</button> <small>하루 전·10분 전에 알려줘요</small></p>
@@ -141,13 +156,39 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
   .oa { border-radius: 4px; }
   .oa.primary { border-color: #ff5fa2; }
   .plain-list li, .empty, .note { border-radius: 4px; }
-  @media (max-width: 560px) { .open-list li { grid-template-columns: 1fr; row-gap: 0.5rem; } .open-body { padding-top: 0; } }
+  .open-list li.grp { display: block; font-size: 0.8rem; letter-spacing: .12em; color: #ff5fa2; font-weight: 700; padding: 1.4rem 0.2rem 0.3rem; border-bottom: 1px solid #2a2a30; }
+  .open-stage { font-style: normal; font-size: 0.8em; color: #c9c9cf; font-weight: 700; margin-left: 0.5em; padding: 0.1em 0.45em; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; vertical-align: 0.1em; }
+  @media (max-width: 560px) { .open-list li.grp { grid-template-columns: none; } .open-list li { grid-template-columns: 1fr; row-gap: 0.5rem; } .open-body { padding-top: 0; } }
 </style>
 
 <script>
   import { ticketOpenIcs } from '../lib/ticketAlert';
+  import { kstDayDiff } from '../lib/openPhase';
 
-  const items = Array.from(document.querySelectorAll<HTMLElement>('#soon-list > li'));
+  const list = document.getElementById('soon-list');
+  const items = Array.from(document.querySelectorAll<HTMLElement>('#soon-list > li[data-open-at]'));
+  const groupOf = (t: number, now: number) => {
+    const d = kstDayDiff(new Date(t).toISOString(), now);
+    return d <= 0 ? '오늘' : d === 1 ? '내일' : d <= 7 ? '이번 주' : '그 이후';
+  };
+  // 오늘/내일/이번 주/그 이후 묶음을 지금 시각 기준으로 다시 만든다
+  function regroup(now: number) {
+    if (!list) return;
+    list.querySelectorAll('[data-grp]').forEach((g) => g.remove());
+    let prev = '';
+    items.forEach((li) => {
+      if (li.hidden) return;
+      const g = groupOf(new Date(li.dataset.openAt ?? '').getTime(), now);
+      if (g !== prev) {
+        const h = document.createElement('li');
+        h.className = 'grp mono';
+        h.dataset.grp = '';
+        h.textContent = g;
+        list.insertBefore(h, li);
+        prev = g;
+      }
+    });
+  }
   const bulk = document.getElementById('bulk-ics') as HTMLButtonElement | null;
   const emptyMsg = document.getElementById('soon-empty');
 
@@ -167,6 +208,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
       const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60);
       left.textContent = d > 0 ? `${d}일 ${h}시간 후` : h > 0 ? `${h}시간 ${m}분 후` : `${m}분 후`;
     });
+    regroup(now);
     if (emptyMsg) emptyMsg.hidden = items.length === 0 || alive > 0;
     if (bulk) bulk.hidden = alive === 0;
   }
@@ -178,9 +220,10 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string }) =>
     const events = items
       .filter((li) => new Date(li.dataset.openAt ?? '').getTime() >= now - 3600_000)
       .map((li) => ({
-        id: (li.querySelector('a.open-title') as HTMLAnchorElement).getAttribute('href')!.split('/').filter(Boolean).pop()!,
-        artist: (li.querySelector('a.open-title') as HTMLElement).textContent ?? '',
+        id: li.dataset.id as string,
+        artist: li.dataset.artist ?? '',
         ticketOpenAt: li.dataset.openAt as string,
+        key: (li.dataset.openAt as string).replace(/\D/g, '').slice(0, 12),
       }));
     if (events.length === 0) return;
     const blob = new Blob([ticketOpenIcs(events)], { type: 'text/calendar;charset=utf-8' });

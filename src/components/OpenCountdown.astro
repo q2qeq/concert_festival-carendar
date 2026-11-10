@@ -1,0 +1,223 @@
+---
+// 티켓오픈 D-시계. 공연 상세 상단(variant="page")과 블로그 글 상단(variant="post")에서 쓴다.
+// 공식 공지로 확인된 오픈 시각(ticketOpens / ticketOpenAt)이 있는 공연만 그린다.
+// 정적 빌드라 빌드 시점 상태로 먼저 그리고, 브라우저가 지금 시각 기준으로 단계를 다시 고른다:
+//   오픈 전: D-n → 24시간 안이면 시:분:초 → 10분 안이면 0.1초 단위
+//   오픈 중: "예매하러 가기" 버튼 (예매처 링크)
+//   모두 끝남: 공연 페이지에선 숨김, 블로그에선 취소표 안내로 바뀜
+import type { ConcertEvent } from '../lib/events';
+import { ticketOpenStages, allTicketLinks } from '../lib/events';
+import { vendorOfUrl, VENDORS } from '../lib/vendors';
+import { ticketOpenGoogleUrl } from '../lib/ticketAlert';
+import { openPhase, kstLabel, kstDayDiff, hms } from '../lib/openPhase';
+
+interface Props { event: ConcertEvent; variant?: 'page' | 'post' }
+const { event, variant = 'page' } = Astro.props;
+
+const nowMs = Date.now();
+const today = new Date(nowMs + 9 * 3600_000).toISOString().slice(0, 10);
+const stages = ticketOpenStages(event);
+const links = allTicketLinks(event);
+const vendor = links.map((l) => vendorOfUrl(l.url)).find(Boolean) ?? null;
+const vendorName = vendor ? VENDORS[vendor].short : links[0]?.vendor ?? '';
+const bookUrl = links[0]?.url ?? event.officialUrl ?? event.sources?.[0]?.url ?? '';
+const shortName = event.artist.replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+
+const phase = openPhase(stages, nowMs);
+const ended = event.endDate < today || (event.status ?? 'scheduled') !== 'scheduled';
+// 공연 페이지: 오픈이 다 끝났으면 안 그린다. 블로그: 공연 전이면 취소표 안내로 남긴다.
+const show = stages.length > 0 && !ended && (variant === 'post' || phase.kind !== 'after');
+
+const clockHref = (at: string) =>
+  `/ticketing-clock/?open=${encodeURIComponent(at)}&artist=${encodeURIComponent(shortName)}${vendor ? `&platform=${vendor}` : ''}`;
+const data = stages.map((s) => ({
+  ...s,
+  when: kstLabel(s.at),
+  clock: clockHref(s.at),
+  alert: ticketOpenGoogleUrl({ id: event.id, artist: stages.length > 1 ? `${shortName} ${s.label}` : shortName, ticketOpenAt: s.at }),
+}));
+
+// 빌드 시점 표시 (JS가 꺼져 있어도 읽히는 기본값)
+const cur = phase.kind === 'after' ? null : data[phase.index];
+const bigText = phase.kind === 'before'
+  ? (phase.msLeft < 86400_000 ? hms(phase.msLeft) : `D-${kstDayDiff(phase.stage.at, nowMs)}`)
+  : phase.kind === 'live' ? '지금 오픈' : '취소표 노리기';
+---
+{show && (
+  <section
+    class={`oc oc-${variant}`}
+    aria-label="티켓 오픈 카운트다운"
+    data-oc
+    data-stages={JSON.stringify(data)}
+    data-book={bookUrl}
+    data-variant={variant}
+  >
+    {variant === 'post' && (
+      <p class="oc-title"><a href={`/events/${event.id}/`}>{shortName}</a> 티켓팅 준비</p>
+    )}
+    <div class="oc-head">
+      <p class="oc-kicker mono" data-oc-kicker>
+        {phase.kind === 'before' ? '티켓 오픈까지' : phase.kind === 'live' ? '지금 예매 진행 중' : '티켓 오픈이 끝났어요'}
+      </p>
+      <strong class="oc-big mono" data-oc-big>{bigText}</strong>
+      <p class="oc-when" data-oc-when>
+        {cur ? (
+          <><b>{cur.label}</b> {cur.when}{vendorName && ` · ${vendorName}`}</>
+        ) : (
+          '취소표는 예고 없이 풀려요. 시계를 켜두고 틈틈이 새로고침해 보세요.'
+        )}
+      </p>
+    </div>
+
+    {data.length > 1 && (
+      <ol class="oc-stages">
+        {data.map((s, i) => (
+          <li data-oc-stage={i} class={phase.kind !== 'after' && i === phase.index ? 'is-next' : (phase.kind === 'after' || i < (phase as { index: number }).index) ? 'is-past' : ''}>
+            <span class="oc-st-label">{s.label}</span>
+            <span class="oc-st-when mono">{s.when}</span>
+          </li>
+        ))}
+      </ol>
+    )}
+
+    <div class="oc-actions">
+      <a class="oc-btn oc-primary" data-oc-primary href={cur ? cur.clock : (bookUrl || clockHref(stages[stages.length - 1].at))}>
+        {phase.kind === 'live' ? '예매하러 가기 →' : cur ? '티켓팅 시계로 정각 맞추기' : '예매처 바로가기 →'}
+      </a>
+      {cur && <a class="oc-btn" data-oc-alert href={cur.alert} target="_blank" rel="noopener noreferrer">10분 전 알림 받기</a>}
+      {!cur && <a class="oc-btn" href="/ticketing-clock/">티켓팅 시계</a>}
+    </div>
+
+    <ul class="oc-steps" data-oc-steps hidden={!cur}>
+      <li><span class="mono">전날</span> 로그인·결제수단 확인 <a href="/ticketing-check/">1분 준비 점검</a></li>
+      <li><span class="mono">30분 전</span> 내 인터넷 상태 확인 <a href="/internet-speed/">속도 측정</a></li>
+      <li><span class="mono">10분 전</span> 손 풀고 예매 창 띄우기 <a href="/practice/">30초 연습</a></li>
+    </ul>
+
+    <p class="oc-note">오픈 시각은 공식 공지 기준이에요. 실제 오픈은 예매처 서버시간을 따르니 정각 직전엔 티켓팅 시계를 같이 켜두세요.</p>
+  </section>
+)}
+
+<style>
+  .oc { border: 1px solid rgba(255,255,255,0.16); border-left: 3px solid #ff5fa2; border-radius: 8px; background: #151517; padding: 1rem 1.1rem 0.9rem; margin: 1rem 0 1.4rem; color: #ededea; }
+  .oc-title { margin: 0 0 0.6rem; font-size: 0.9rem; font-weight: 700; color: #c9c9cf; }
+  .oc-title a { color: #ededea; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+  .oc-head { display: grid; gap: 0.15rem; }
+  .oc-kicker { margin: 0; font-size: 0.75rem; letter-spacing: 0.08em; color: #8f8f97; }
+  .oc-big { display: block; font-size: clamp(2.4rem, 9vw, 3.6rem); line-height: 1.05; font-weight: 900; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: #ededea; }
+  .oc-post .oc-big { font-size: clamp(2rem, 7vw, 2.8rem); }
+  .oc.is-hot .oc-big { color: #ff5fa2; }
+  .oc-when { margin: 0.2rem 0 0; font-size: 0.95rem; color: #c9c9cf; }
+  .oc-when b { color: #ededea; }
+  .oc-stages { list-style: none; margin: 0.8rem 0 0; padding: 0; display: grid; gap: 0.25rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.6rem; }
+  .oc-stages li { display: flex; justify-content: space-between; gap: 0.8rem; font-size: 0.85rem; color: #a9a9b0; }
+  .oc-stages li.is-next { color: #ededea; font-weight: 700; }
+  .oc-stages li.is-past { color: #6f6f77; text-decoration: line-through; }
+  .oc-st-when { white-space: nowrap; }
+  .oc-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
+  .oc-btn { display: inline-flex; align-items: center; padding: 0.6rem 0.9rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.25); color: #ededea; text-decoration: none; font-size: 0.9rem; font-weight: 700; }
+  .oc-btn:hover { border-color: #ededea; }
+  .oc-primary { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+  .oc-primary:hover { border-color: #ff5fa2; filter: brightness(1.05); }
+  .oc-steps { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; gap: 0.3rem; font-size: 0.85rem; color: #c9c9cf; }
+  .oc-steps[hidden] { display: none; }
+  .oc-steps span { display: inline-block; min-width: 4.2em; color: #8f8f97; font-size: 0.78rem; }
+  .oc-steps a { color: #ff5fa2; margin-left: 0.3rem; }
+  .oc-note { margin: 0.8rem 0 0; font-size: 0.75rem; color: #8f8f97; line-height: 1.5; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  @media (max-width: 560px) {
+    .oc-btn { flex: 1 1 auto; justify-content: center; }
+  }
+</style>
+
+<script>
+  import { openPhase, kstDayDiff, hms } from '../lib/openPhase';
+
+  type Stage = { label: string; at: string; until?: string; when: string; clock: string; alert: string };
+
+  function setup(root: HTMLElement) {
+    const stages: Stage[] = JSON.parse(root.dataset.stages || '[]');
+    const variant = root.dataset.variant;
+    const book = root.dataset.book || '';
+    const kicker = root.querySelector<HTMLElement>('[data-oc-kicker]');
+    const big = root.querySelector<HTMLElement>('[data-oc-big]');
+    const when = root.querySelector<HTMLElement>('[data-oc-when]');
+    const primary = root.querySelector<HTMLAnchorElement>('[data-oc-primary]');
+    const alert = root.querySelector<HTMLAnchorElement>('[data-oc-alert]');
+    const steps = root.querySelector<HTMLElement>('[data-oc-steps]');
+    const items = Array.from(root.querySelectorAll<HTMLElement>('[data-oc-stage]'));
+    const vendorText = when?.textContent?.match(/ · ([^·]+)$/)?.[1] ?? '';
+    let lastKey = '';
+    let timer = 0;
+
+    function tick() {
+      const now = Date.now();
+      const p = openPhase(stages, now);
+      const key = p.kind === 'after' ? 'after' : `${p.kind}-${p.index}`;
+
+      if (key !== lastKey) {
+        lastKey = key;
+        if (p.kind === 'after' && variant === 'page') { root.hidden = true; return; }
+        items.forEach((li, i) => {
+          li.classList.toggle('is-next', p.kind !== 'after' && i === p.index);
+          li.classList.toggle('is-past', p.kind === 'after' || i < (p as { index: number }).index);
+        });
+        if (p.kind === 'after') {
+          if (kicker) kicker.textContent = '티켓 오픈이 끝났어요';
+          if (big) big.textContent = '취소표 노리기';
+          if (when) when.textContent = '취소표는 예고 없이 풀려요. 시계를 켜두고 틈틈이 새로고침해 보세요.';
+          if (primary) { primary.textContent = book ? '예매처 바로가기 →' : '티켓팅 시계'; primary.href = book || '/ticketing-clock/'; }
+          if (alert) alert.hidden = true;
+          if (steps) steps.hidden = true;
+          root.classList.remove('is-hot');
+        } else {
+          const s = stages[p.index];
+          if (when) {
+            when.textContent = '';
+            const b = document.createElement('b');
+            b.textContent = s.label;
+            when.append(b, ` ${s.when}${vendorText ? ` · ${vendorText}` : ''}`);
+          }
+          if (alert) { alert.href = s.alert; alert.hidden = p.kind === 'live'; }
+          if (steps) steps.hidden = p.kind === 'live';
+          if (p.kind === 'live') {
+            if (kicker) kicker.textContent = '지금 예매 진행 중';
+            if (big) big.textContent = '지금 오픈';
+            if (primary) {
+              primary.textContent = '예매하러 가기 →';
+              primary.href = book || s.clock;
+              if (book) { primary.target = '_blank'; primary.rel = 'noopener noreferrer'; }
+            }
+            root.classList.add('is-hot');
+          } else {
+            if (kicker) kicker.textContent = stages.length > 1 ? `${s.label} 오픈까지` : '티켓 오픈까지';
+            if (primary) { primary.textContent = '티켓팅 시계로 정각 맞추기'; primary.href = s.clock; primary.removeAttribute('target'); }
+          }
+        }
+      }
+
+      if (p.kind === 'before' && big) {
+        const left = p.msLeft;
+        if (left < 600_000) {
+          const t = Math.floor(left / 100);
+          big.textContent = `${String(Math.floor(t / 600)).padStart(2, '0')}:${String(Math.floor((t % 600) / 10)).padStart(2, '0')}.${t % 10}`;
+        } else if (left < 86400_000) {
+          big.textContent = hms(left);
+        } else {
+          big.textContent = `D-${kstDayDiff(p.stage.at, now)}`;
+        }
+        root.classList.toggle('is-hot', left < 86400_000);
+      }
+
+      // 10분 안쪽은 0.1초 단위로, 그 외엔 1초마다
+      const next = p.kind === 'before' && p.msLeft < 600_000 ? 100 : 1000;
+      timer = window.setTimeout(tick, next);
+    }
+    tick();
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) { window.clearTimeout(timer); tick(); }
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-oc]').forEach(setup);
+</script>

@@ -1,6 +1,7 @@
 ---
 import type { ConcertEvent } from '../lib/events';
-import { isNewlyAdded, hasRecentUpdate, hasTicketsOnSale, isBuzzing, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
+import { badgeText } from '../lib/openPhase';
+import { isNewlyAdded, hasRecentUpdate, hasTicketsOnSale, isBuzzing, ticketOpenStages, hasUpcomingOpen, TICKETING_DIFFICULTY_LABEL as DIFFICULTY_LABEL } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -20,6 +21,10 @@ const STATUS_LABEL: Record<string, string> = {
 const isFresh = hasRecentUpdate(event);
 const isNew = isNewlyAdded(event);
 const onSale = hasTicketsOnSale(event);
+// 오픈 전(또는 막 열린) 공연은 "예매 오픈중" 대신 티켓오픈 D-배지를 보여준다 (브라우저가 시각에 맞춰 갱신).
+const openStages = ticketOpenStages(event).map(({ label, at, until }) => ({ label, at, until }));
+const openSoon = (event.status ?? 'scheduled') === 'scheduled' && hasUpcomingOpen(event);
+const openBadge = openSoon ? badgeText(openStages, Date.now()) : null;
 const buzzing = isBuzzing(event);
 ---
 <a class={`event-card${status !== 'scheduled' ? ' is-' + status : ''}${buzzing ? ' is-buzzing' : ''}`} href={`/events/${event.id}/`}>
@@ -36,8 +41,11 @@ const buzzing = isBuzzing(event);
     {isNew && <span class="new-tag">신규</span>}
     {isFresh && !isNew && <span class="fresh-tag">새 소식</span>}
     {status !== 'scheduled' && <span class={`status-tag status-${status}`}>{STATUS_LABEL[status]}</span>}
-    {status === 'scheduled' && onSale && <span class="ticket-tag">예매 오픈중</span>}
-    {status === 'scheduled' && !onSale && event.ticketingAnnounced && <span class="announced-tag">티켓오픈 예정</span>}
+    {openSoon && openBadge && (
+      <span class={`open-tag${openBadge.hot ? ' is-hot' : ''}`} data-open-badge data-stages={JSON.stringify(openStages)} data-onsale={onSale ? '1' : '0'}>{openBadge.text}</span>
+    )}
+    {status === 'scheduled' && onSale && !openSoon && <span class="ticket-tag">예매 오픈중</span>}
+    {status === 'scheduled' && !onSale && !openSoon && event.ticketingAnnounced && <span class="announced-tag">티켓오픈 예정</span>}
     {event.ticketingDifficulty && (
       <span class={`difficulty-tag difficulty-${event.ticketingDifficulty}`}>{DIFFICULTY_LABEL[event.ticketingDifficulty]}</span>
     )}
@@ -156,4 +164,10 @@ const buzzing = isBuzzing(event);
   }
   .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); background: rgba(255,184,76,0.1); }
   .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); background: rgba(255,107,107,0.1); }
+  .open-tag { font-size: 0.75rem; font-weight: 700; color: #ededea; border: 1px solid rgba(255,255,255,0.45); padding: 0.25rem 0.6rem; border-radius: 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .open-tag.is-hot { color: #ff5fa2; border-color: #ff5fa2; }
 </style>
+
+<script>
+  import '../lib/openBadges.client';
+</script>

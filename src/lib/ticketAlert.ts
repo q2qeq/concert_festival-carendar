@@ -4,6 +4,7 @@ export interface OpenAlertEvent {
   id: string;
   artist: string;
   ticketOpenAt: string; // ISO (+09:00 포함)
+  key?: string; // 같은 공연의 선예매·일반예매를 한 파일에 담을 때 UID가 겹치지 않게
 }
 
 const SITE = 'https://jikgwannyang.com';
@@ -21,7 +22,7 @@ function vevent(e: OpenAlertEvent): string[] {
   const url = `${SITE}/events/${e.id}/`;
   return [
     'BEGIN:VEVENT',
-    `UID:${e.id}-ticketopen@jikgwannyang.com`,
+    `UID:${e.id}${e.key ? '-' + e.key : ''}-ticketopen@jikgwannyang.com`,
     `DTSTAMP:${toUtcStamp(start)}`,
     `DTSTART:${toUtcStamp(start)}`,
     `DTEND:${toUtcStamp(start + DURATION_MIN * 60_000)}`,
