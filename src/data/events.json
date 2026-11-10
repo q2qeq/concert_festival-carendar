@@ -4145,12 +4145,17 @@
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-10-02 낮 12시",
     "ticketOpenAt": "2026-10-02T12:00:00+09:00",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "예스24 티켓 기준 스탠딩석 68,000원, 러닝타임 90분, 만 19세 이상 관람 가능해요.",
     "description": "아일랜드 언더그라운드 씬을 대표하는 buckshot과 프로듀서 Oscar18의 아시아투어 마지막 종착지인 서울 공연. 베이비셀렉츠 단독판매로 홍대스테이지에서 열려요.",
+    "schedule": "11/14(토) 오후 7시, 스탠딩석 68,000원, 러닝타임 90분, 만 19세 이상",
     "sources": [
       {
         "label": "단독판매 baby selects \"Buckshot\" Live in Seoul 티켓 오픈 안내 - YES24 티켓",
         "url": "https://ticket.yes24.com/Notice#id=18582"
+      },
+      {
+        "label": "baby selects \"Buckshot\" Live in Seoul - YES24 티켓 상세",
+        "url": "https://ticket.yes24.com/Perf/60420"
       }
     ],
     "posterUrl": "/posters/buckshot-oscar18-seoul-2026-11.webp",
@@ -4207,8 +4212,9 @@
     "city": "서울",
     "startDate": "2026-11-15",
     "endDate": "2026-11-15",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "예스24 티켓 기준 스탠딩석 66,000원, 러닝타임 약 90분, 전체관람가예요.",
     "description": "일본 애시드재즈 밴드 BLU-SWING의 단독 내한공연 '“Across the Blue” in Seoul'.",
+    "schedule": "11/15(일) 오후 5시, 스탠딩석 66,000원, 러닝타임 약 90분, 전체관람가",
     "ticketLinks": [
       {
         "vendor": "YES24 티켓",
@@ -4629,6 +4635,7 @@
     "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213803",
     "officialUrl": "https://www.cbmfestival.com/",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-10-02). 넬(NELL)·극동아시아타이거즈·jisokuryClub·마그(MAG) 등이 출연하는 '겨울을 뜨겁게 채울 밴드 라이브 콘서트'.",
+    "description": "멜론티켓 기준 2026년 11월 21일(토) 오후 6시, 창원컨벤션센터(CECO) 2,3전시장에서 열려요. 가격은 정가 88,000원, 장애인·국가유공자 할인 79,200원, 수험생 할인 66,000원이고, 러닝타임은 인터미션 30분 포함 240분, 8세 이상 관람 가능해요. 본 공연은 모바일티켓으로만 입장할 수 있어요.",
     "sources": [
       {
         "label": "2026 체리블라썸뮤직콘서트 인 윈터 - 공식 사이트 (cbmfestival.com)",
