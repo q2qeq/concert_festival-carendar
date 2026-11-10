@@ -6112,7 +6112,13 @@
       }
     ],
     "posterUrl": "/posters/jeffbernat-seoul-2027-02.webp",
-    "posterSourceUrl": "https://stkfile.yes24.com/upload2/BoardNotice/202611/20261103/20261103-49789d13-06a1-4fbd-bd6f-bfa215286b00.jpg"
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/BoardNotice/202611/20261103/20261103-49789d13-06a1-4fbd-bd6f-bfa215286b00.jpg",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/61043"
+      }
+    ]
   },
   {
     "id": "kenshi-yonezu-ghost-incheon-2027-01",
