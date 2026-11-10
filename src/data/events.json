@@ -6361,6 +6361,8 @@
     "startDate": "2027-04-17",
     "endDate": "2027-04-17",
     "officialUrl": "https://www.yoasobi-music.jp/news/588376",
+    "posterUrl": "/posters/yoasobi-korea-2027-04.webp",
+    "posterSourceUrl": "https://www.sonymusic.co.jp/adm_image/common/artist_image/90000/90055/live_image/69325.jpg",
     "note": "2026년 11월 9일 공식 발표로 2027년 4월 17일(토) 한국 공연이 확정됐어요. 공연장과 티켓 오픈 일정은 공식 사이트에 '추후 발표 예정'이라고만 적혀 있어요. 발표되는 대로 이 페이지에 반영할게요.",
     "description": "일본 듀오 요아소비의 'YOASOBI 11-CITY ASIA-OCEANIA TOUR 2026-2027 超惑星' 한국 공연. 2023년 12월(고려대 화정체육관), 2024년 12월(인스파이어 아레나)에 이은 세 번째 내한이고, 한국이 투어의 마지막 도시예요.",
     "sources": [
@@ -6374,6 +6376,11 @@
       }
     ],
     "updates": [
+      {
+        "date": "2026-11-10",
+        "text": "공식 사이트의 투어 超惑星 키비주얼을 포스터로 올렸어요. 일본 공연 일정이 적힌 버전이고(투어명도 바뀌기 전 표기예요), 한국 공연 전용 포스터와 공연장·티켓 오픈 일정은 아직 발표되지 않았어요.",
+        "sourceUrl": "https://www.yoasobi-music.jp/live/54776"
+      },
       {
         "date": "2026-11-09",
         "text": "공식 사이트가 2027년 4월 17일(토) 한국 공연을 발표했어요. 공연장은 추후 발표 예정이에요.",
@@ -6456,6 +6463,7 @@
       }
     ],
     "addedAt": "2026-11-09",
-    "promoBanner": "요아소비 내한 확정 - 2027.4.17(토), 장소·티켓은 발표 전"
+    "promoBanner": "요아소비 내한 확정 - 2027.4.17(토), 장소·티켓은 발표 전",
+    "featuredUntil": "2026-11-23"
   }
 ]
