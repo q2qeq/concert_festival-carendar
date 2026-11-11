@@ -78,9 +78,12 @@ const info = getVenueInfo(venue);
 
   {info?.tip && <p class="venue-tip">{info.tip}</p>}
 
-  <a class="venue-full-link" href={`/venues/${venueSlug(venue)}/`}>
-    {venue} 공연장 페이지 전체보기 (예정된 공연 목록 포함) →
-  </a>
+  {/* 공연장 페이지는 venues.json에 있는 곳만 만들어지므로, 없는 곳은 링크를 숨긴다(404 방지). */}
+  {info && (
+    <a class="venue-full-link" href={`/venues/${venueSlug(venue)}/`}>
+      {venue} 공연장 페이지 전체보기 (예정된 공연 목록 포함) →
+    </a>
+  )}
 </section>
 <style>
   .venue-box { margin: 2rem 0; padding: 1.25rem; background: rgba(255,255,255,0.04); border-radius: 8px; }

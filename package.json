@@ -18,6 +18,7 @@
     "indexnow:ping": "node scripts/indexnow-ping.mjs",
     "posters:cache": "node scripts/cache-posters.mjs",
     "audit:events": "node scripts/audit-events.mjs",
+    "audit:posts": "node scripts/audit-posts.mjs",
     "clicks:report": "node scripts/click-report.mjs",
     "popular:events": "node scripts/popular-events.mjs",
     "og:cards": "node scripts/make-share-card.mjs",

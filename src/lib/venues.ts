@@ -111,6 +111,13 @@ const VENUE_ALIASES: Record<string, string> = {
   '고양종합운동장 주경기장': '고양종합운동장',
   '엑스코 (EXCO) 동관': '엑스코(EXCO)',
   'KT&G 상상마당 라이브홀 [마포]': 'KT&G 상상마당 홍대 라이브홀',
+  // 올림픽공원 안의 공연장들은 교통·주차 정보가 같아서 올림픽공원 페이지로 묶는다.
+  '올림픽공원 內 올림픽홀': '올림픽공원',
+  '티켓링크 라이브 아레나 (올림픽공원)': '올림픽공원',
+  '티켓링크 라이브 아레나 (구 올림픽공원 핸드볼경기장)': '올림픽공원',
+  '킨텍스 제2전시장 9A홀': '킨텍스 제2전시장',
+  '킨텍스 제2전시장 7홀, 8홀': '킨텍스 제2전시장',
+  '인스파이어 엔터테인먼트 리조트': '인스파이어 아레나',
 };
 const canonicalVenue = (name: string) => VENUE_ALIASES[name] ?? name;
 const SLUG_TO_VENUE: Record<string, string> = Object.fromEntries(
