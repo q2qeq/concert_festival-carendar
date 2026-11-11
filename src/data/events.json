@@ -7042,5 +7042,145 @@
     "addedAt": "2026-11-12",
     "promoBanner": "비바두비 첫 내한 - 2027.3.23(화) 올림픽홀",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303466_261015_141109.gif"
+  },
+  {
+    "id": "tahiti-80-seoul-2026-11",
+    "artist": "Tahiti 80 (타히티 80)",
+    "aliases": [
+      "타히티80",
+      "현대카드 Curated 109"
+    ],
+    "genre": "팝",
+    "venue": "현대카드 언더스테이지",
+    "city": "서울",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-27",
+    "description": "프랑스 밴드 타히티 80의 '현대카드 Curated 109' 공연이에요. 그자비에 부아예, 메데리크 공티에, 라파엘 레제, 페드로 르상드, 아드리앵 브라운이 이태원 현대카드 언더스테이지 무대에 올라요.",
+    "schedule": "11/27(금) 오후 8시, 러닝타임 135분, 스탠딩 88,000원",
+    "note": "KOPIS 등록 기준 전석(스탠딩) 88,000원. 주최 파운데이션. 예매는 NOL티켓(현대카드 10% 할인). 관람 연령은 출처마다 달라 예매처에서 확인해 주세요.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015105"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 현대카드 Curated 109, Tahiti 80 (PF303937)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF303937"
+      },
+      {
+        "label": "NOL티켓 - 현대카드 Curated 109 Tahiti 80",
+        "url": "https://nol.yanolja.com/ticket/products/26015105"
+      }
+    ],
+    "posterUrl": "/posters/tahiti-80-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303937_261020_171413.gif"
+  },
+  {
+    "id": "sunny-day-service-seoul-2026-12",
+    "artist": "Sunny Day Service (서니 데이 서비스)",
+    "aliases": [
+      "サニーデイ・サービス",
+      "써니데이서비스"
+    ],
+    "genre": "J-POP",
+    "venue": "무신사 개러지 (구. 왓챠홀)",
+    "city": "서울",
+    "startDate": "2026-12-03",
+    "endDate": "2026-12-03",
+    "description": "일본 밴드 서니 데이 서비스(소카베 케이이치, 다나카 타카시, 마루야마 하루시게)의 서울 공연 'Sunny Day Service TOUR 2026 in SEOUL'이에요. APF CONCERTS가 열어요.",
+    "schedule": "12/3(목) 오후 8시, 러닝타임 150분, 만 7세 이상",
+    "note": "KOPIS 등록 기준 전석 88,000원(NOL 안내 기준 현장 구매 99,000원). 주최 에이피에프컴퍼니(APF COMPANY). 예매는 NOL티켓·29CM.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26011116"
+      },
+      {
+        "vendor": "29CM",
+        "url": "https://ticket.29cm.co.kr/catalog/4109064"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - APF CONCERTS PRESENTS, Sunny Day Service TOUR in SEOUL (PF298542)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF298542"
+      },
+      {
+        "label": "NOL티켓 - Sunny Day Service TOUR 2026 in SEOUL",
+        "url": "https://nol.yanolja.com/ticket/products/26011116"
+      }
+    ],
+    "posterUrl": "/posters/sunny-day-service-seoul-2026-12.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298542_260814_131523.gif"
+  },
+  {
+    "id": "benny-sings-seoul-2026-12",
+    "artist": "Benny Sings (베니싱스)",
+    "aliases": [
+      "베니 싱스",
+      "베니싱즈"
+    ],
+    "genre": "팝",
+    "venue": "무신사 개러지 (구. 왓챠홀)",
+    "city": "서울",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-12",
+    "description": "네덜란드 싱어송라이터·프로듀서 베니싱스의 내한 공연 'BENNY SINGS LIVE IN SEOUL'이에요. 무신사 개러지에서 스탠딩으로 열려요.",
+    "schedule": "12/12(토) 오후 8시, 러닝타임 90분, 전체 관람가",
+    "note": "KOPIS 등록 기준 전석 99,000원(얼리버드 88,000원은 9/28 판매 종료). 주최 김밥레코즈. 29CM에서 판매하고, 일반 예매 페이지 주소는 확인되는 대로 추가할게요.",
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 베니싱스 내한공연 BENNY SINGS LIVE IN SEOUL (PF301059)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF301059"
+      },
+      {
+        "label": "29CM 티켓 - [얼리버드] 베니싱스 내한공연 (2026. 12. 12 무신사 개러지)",
+        "url": "https://ticket.29cm.co.kr/catalog/4207822"
+      }
+    ],
+    "posterUrl": "/posters/benny-sings-seoul-2026-12.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301059_260916_133638.jpg"
+  },
+  {
+    "id": "cutie-street-goyang-2027-01",
+    "artist": "CUTIE STREET (큐티 스트리트)",
+    "aliases": [
+      "큐티스트리트",
+      "キューティーストリート",
+      "CUTIE STREET Live in Korea 2027 WINTER"
+    ],
+    "genre": "J-POP",
+    "venue": "킨텍스 제2전시장 9A홀",
+    "city": "고양",
+    "startDate": "2027-01-23",
+    "endDate": "2027-01-23",
+    "description": "'귀엽기만 하면 안 되나요?'로 알려진 일본 걸그룹 큐티 스트리트의 세 번째 한국 단독 공연 'CUTIE STREET Live in Korea 2027 WINTER'예요. 2026년 7월 세종대 대양홀 공연에 이어 약 5,000석 규모의 킨텍스로 무대를 키웠어요.",
+    "schedule": "2027년 1/23(토) 오후 6시, 러닝타임 90분, 만 7세 이상",
+    "note": "KOPIS 등록 기준 전석 135,000원. 주최 LIVET(리벳). 예매는 멜론티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213705"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - CUTIE STREET WINTER Live (PF299233)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF299233"
+      },
+      {
+        "label": "큐티 스트리트, 서울 단독 콘서트 성료…2027년 1월 내한 공연 예고 - 세계일보",
+        "url": "https://www.segye.com/newsView/20260727508929"
+      }
+    ],
+    "posterUrl": "/posters/cutie-street-goyang-2027-01.webp",
+    "addedAt": "2026-11-12",
+    "promoBanner": "큐티 스트리트 한국 단독 - 2027.1.23(토) 킨텍스",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299233_260824_143416.jpg"
   }
 ]
