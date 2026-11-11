@@ -7182,5 +7182,296 @@
     "addedAt": "2026-11-12",
     "promoBanner": "큐티 스트리트 한국 단독 - 2027.1.23(토) 킨텍스",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299233_260824_143416.jpg"
+  },
+  {
+    "id": "roy-kim-roy-seoul-2026-11",
+    "artist": "로이킴 (Roy Kim)",
+    "aliases": [
+      "로이 킴",
+      "R:O:Y"
+    ],
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-11-20",
+    "endDate": "2026-11-22",
+    "description": "로이킴의 첫 KSPO DOME 단독 공연 '2026-27 로이킴 LIVE TOUR [R:O:Y] in SEOUL'이에요. 처음엔 21·22일 이틀이었는데 매진되면서 20일 공연이 추가됐고, 추가 회차까지 모두 매진됐다고 보도됐어요. 서울 공연 뒤 아시아 투어로 이어져요.",
+    "schedule": "11/20(금) 오후 8시, 11/21(토) 오후 6시, 11/22(일) 오후 5시",
+    "note": "KOPIS 등록 기준 VIP석 165,000원, R석 154,000원, 만 7세 이상. 주최 CJ ENM·들(DEUL). 예매는 NOL티켓. 3회 모두 매진 보도(2026-10-14) - 취소표는 NOL에서 확인하세요.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26013078"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 로이킴 LIVE TOUR, R: O: Y in SEOUL (PF301234)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF301234"
+      },
+      {
+        "label": "로이킴, 첫 KSPO돔 콘서트 3일 전석 매진 - 일간스포츠",
+        "url": "https://isplus.com/article/view/isp202610140170"
+      }
+    ],
+    "posterUrl": "/posters/roy-kim-roy-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301234_261006_164647.gif"
+  },
+  {
+    "id": "cho-yong-pil-seoul-2026-11",
+    "artist": "조용필 & 위대한 탄생",
+    "aliases": [
+      "조용필",
+      "가왕 조용필",
+      "Cho Yong-pil"
+    ],
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-29",
+    "description": "'가왕' 조용필이 밴드 위대한 탄생과 함께 여는 '2026 조용필 & 위대한탄생 콘서트' 서울 공연이에요. KSPO DOME에서 사흘 동안 열리고, 12월에는 부산(벡스코)·대구(엑스코)로 이어져요.",
+    "schedule": "11/27(금) 오후 7시, 11/28(토) 오후 6시, 11/29(일) 오후 5시, 러닝타임 130분",
+    "note": "KOPIS·예스24 기준 VIP석 176,000원, R석 165,000원, S석 143,000원, A석 110,000원, 만 7세 이상. 주최 위즈덤엔터테인먼트. 예매는 예스24 티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/60153"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 조용필 & 위대한 탄생 전국투어 콘서트 [서울] (PF301499)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF301499"
+      },
+      {
+        "label": "YES24 티켓 / 2026 조용필 & 위대한탄생 콘서트 (서울)",
+        "url": "https://ticket.yes24.com/Perf/60153"
+      },
+      {
+        "label": "가왕 조용필이 돌아온다 - 헤럴드경제",
+        "url": "https://www.heraldk.com/article/2026091601193472589"
+      }
+    ],
+    "posterUrl": "/posters/cho-yong-pil-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "promoBanner": "조용필 & 위대한 탄생 서울 - 11.27(금)~29(일) KSPO DOME",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301499_260921_170434.jpg"
+  },
+  {
+    "id": "dynamic-duo-seoul-2026-11",
+    "artist": "다이나믹 듀오 (Dynamic Duo)",
+    "aliases": [
+      "다이나믹듀오",
+      "다듀",
+      "가끔씩 오래 보자"
+    ],
+    "genre": "팝/힙합",
+    "venue": "올림픽공원 內 올림픽홀",
+    "city": "서울",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-29",
+    "description": "다이나믹 듀오(개코·최자)의 연말 단독 콘서트 '가끔씩 오래 보자' 서울 공연이에요. 올림픽홀에서 사흘 동안 열리고, 12월에는 부산(12/12)·대전(12/19)으로 이어져요.",
+    "schedule": "11/27(금) 오후 8시, 11/28(토) 오후 6시, 11/29(일) 오후 5시",
+    "note": "KOPIS 등록 기준 전석 143,000원, 만 7세 이상. 주최 아메바컬쳐. 예매는 NOL티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26013810"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 다이나믹 듀오 단독 콘서트: 가끔씩 오래 보자 [서울] (PF302131)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF302131"
+      },
+      {
+        "label": "NOL티켓 - 2026 다이나믹 듀오 단독 콘서트 \"가끔씩 오래 보자\" - 서울",
+        "url": "https://nol.yanolja.com/ticket/products/26013810"
+      }
+    ],
+    "posterUrl": "/posters/dynamic-duo-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302131_260930_140740.gif"
+  },
+  {
+    "id": "rain-the-smoke-seoul-2026-12",
+    "artist": "비 (RAIN)",
+    "aliases": [
+      "정지훈",
+      "레인",
+      "THE SMOKE"
+    ],
+    "genre": "가요",
+    "venue": "올림픽공원 內 올림픽홀",
+    "city": "서울",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-06",
+    "description": "비(RAIN)의 단독 콘서트 '2026 비 (RAIN) CONCERT [THE SMOKE]'예요. 올림픽공원 올림픽홀에서 이틀 동안 열려요.",
+    "schedule": "12/5(토) 오후 6시, 12/6(일) 오후 5시, 러닝타임 120분, 만 8세 이상",
+    "note": "KOPIS·예스24 기준 VVIP석 198,000원, VIP석 165,000원, R석 143,000원, S석 110,000원. 주최 레인컴퍼니. 예매는 예스24 티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/60211"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 비 (RAIN) 콘서트: THE SMOKE (PF302170)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF302170"
+      },
+      {
+        "label": "YES24 티켓 / 2026 비 (RAIN) CONCERT [THE SMOKE]",
+        "url": "https://ticket.yes24.com/Perf/60211"
+      }
+    ],
+    "posterUrl": "/posters/rain-the-smoke-seoul-2026-12.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302170_260930_155921.jpg"
+  },
+  {
+    "id": "davichi-in-our-scenes-seoul-2026-12",
+    "artist": "다비치 (DAVICHI)",
+    "aliases": [
+      "IN OUR SCENES",
+      "이해리",
+      "강민경"
+    ],
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-13",
+    "description": "다비치의 연말 콘서트 '2026 DAVICHI CONCERT [IN OUR SCENES]'예요. 세 번째 KSPO DOME 단독 공연이자 처음으로 360도 무대로 열리고, 두 회차 모두 매진됐다고 보도됐어요.",
+    "schedule": "12/12(토) 오후 6시, 12/13(일) 오후 5시, 러닝타임 120분, 만 7세 이상",
+    "note": "KOPIS 등록 기준 VIP석 176,000원, R석 165,000원, S석 154,000원. 주최 씨에이엠위더스(CAM). 예매는 NOL티켓. 전석 매진 보도(2026-10) - 취소표는 NOL에서 확인하세요.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26014056"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - DAVICHI CONCERT: IN OUR SCENES (PF302745)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF302745"
+      },
+      {
+        "label": "Davichi sets record as the first female duo to achieve three consecutive sellouts at KSPO DOME - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202610110728007"
+      }
+    ],
+    "posterUrl": "/posters/davichi-in-our-scenes-seoul-2026-12.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302745_261007_145954.gif"
+  },
+  {
+    "id": "jaurim-midnight-express-seoul-2026-12",
+    "artist": "자우림 (Jaurim)",
+    "aliases": [
+      "김윤아",
+      "MIDNIGHT EXPRESS"
+    ],
+    "genre": "가요",
+    "venue": "올림픽공원 內 올림픽홀",
+    "city": "서울",
+    "startDate": "2026-12-18",
+    "endDate": "2026-12-20",
+    "description": "자우림(김윤아·이선규·김진만)의 연말 단독 콘서트 'MIDNIGHT EXPRESS 2026-2027' 서울 공연이에요. 올림픽홀 사흘 뒤 부산(12/25), 대전(2027-01-02), 대구(2027-01-09)로 이어져요.",
+    "schedule": "12/18(금) 오후 8시, 12/19(토) 오후 6시, 12/20(일) 오후 5시, 러닝타임 120분, 만 8세 이상",
+    "note": "KOPIS 등록 기준 SR석 154,000원, R석 143,000원, 스탠딩 143,000원. 주최 놀유니버스. 예매는 NOL티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015207"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 자우림 단독 콘서트: MIDNIGHT EXPRESS [서울] (PF304645)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF304645"
+      },
+      {
+        "label": "Jaurim to hold solo concert 'MIDNIGHT EXPRESS 2026-2027' in December - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202610240351007"
+      }
+    ],
+    "posterUrl": "/posters/jaurim-midnight-express-seoul-2026-12.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304645_261028_104244.gif"
+  },
+  {
+    "id": "jyp-wet-seoul-2026-12",
+    "artist": "박진영 (J.Y. Park)",
+    "aliases": [
+      "JYP",
+      "박진영 콘서트 WET"
+    ],
+    "genre": "가요",
+    "venue": "올림픽공원 內 올림픽홀",
+    "city": "서울",
+    "startDate": "2026-12-24",
+    "endDate": "2026-12-26",
+    "description": "박진영이 크리스마스 시즌에 여는 단독 콘서트 '2026 박진영 콘서트 〈WET〉'이에요. 올해 7월에 낸 싱글 'WET'과 같은 이름이고, 올림픽홀에서 사흘 동안 열려요.",
+    "schedule": "12/24(목) 오후 8시, 12/25(금) 오후 5시, 12/26(토) 오후 5시, 만 7세 이상",
+    "note": "KOPIS 등록 기준 SR석 165,000원, R석 143,000원, S석 121,000원(전석 지정석). 주최 JYP엔터테인먼트. 예매는 NOL티켓·예스24.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26014222"
+      },
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/60981"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 박진영 콘서트: WET (PF302732)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF302732"
+      },
+      {
+        "label": "'Wet' Park Jin-young to paint Christmas red - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202610030837007"
+      }
+    ],
+    "posterUrl": "/posters/jyp-wet-seoul-2026-12.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302732_261007_142711.gif"
+  },
+  {
+    "id": "epik-high-kspo-seoul-2027-01",
+    "artist": "에픽하이 (EPIK HIGH)",
+    "aliases": [
+      "에픽 하이",
+      "타블로"
+    ],
+    "genre": "팝/힙합",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2027-01-22",
+    "endDate": "2027-01-24",
+    "description": "에픽하이가 데뷔 후 처음으로 KSPO DOME에서 여는 단독 콘서트 '2027 에픽하이 콘서트'예요. 사흘 동안 열려요.",
+    "schedule": "2027년 1/22(금) 오후 8시, 1/23(토) 오후 6시, 1/24(일) 오후 4시, 러닝타임 120분, 만 11세 이상",
+    "note": "KOPIS 등록 기준 R석 176,000원, S석 165,000원, A석 154,000원. 주최 쇼노트·아워즈. 예매는 멜론티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213943"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 에픽하이 콘서트 (PF302528)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF302528"
+      },
+      {
+        "label": "EPIK HIGH to take the stage at KSPO DOME - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202609291423007"
+      }
+    ],
+    "addedAt": "2026-11-12"
   }
 ]
