@@ -6769,5 +6769,278 @@
     ],
     "addedAt": "2026-11-11",
     "promoBanner": "카운트다운 판타지 2026-2027 - 12.31(목) 킨텍스, 카카오 T 셔틀 예약 오픈"
+  },
+  {
+    "id": "txt-steal-the-wind-seoul-2026-11",
+    "artist": "TOMORROW X TOGETHER (투모로우바이투게더)",
+    "aliases": [
+      "TXT",
+      "투바투",
+      "STEAL THE WIND"
+    ],
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-15",
+    "description": "투모로우바이투게더(TXT)의 새 월드투어 'STEAL THE WIND' 서울 공연이에요. 올림픽공원 KSPO DOME에서 사흘 동안 열리고, 아시아·북미·유럽 23개 도시로 이어지는 투어의 출발점이에요.",
+    "schedule": "11/13(금) 오후 7시, 11/14(토) 오후 6시, 11/15(일) 오후 5시",
+    "note": "KOPIS 등록 기준 GENERAL(지정석) 165,000원, SOUND CHECK(스탠딩) 220,000원, M&G(지정석) 253,000원, 만 9세 이상. 주최 하이브. 예매는 NOL티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26013161"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - TOMORROW X TOGETHER WORLD TOUR: STEAL THE WIND [서울] (PF302337)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF302337"
+      },
+      {
+        "label": "NOL티켓 - TOMORROW X TOGETHER WORLD TOUR <STEAL THE WIND> IN SEOUL",
+        "url": "https://nol.yanolja.com/ticket/products/26013161"
+      },
+      {
+        "label": "TXT kick off new world tour 'STEAL THE WIND' in Seoul - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202609150712007"
+      }
+    ],
+    "posterUrl": "/posters/txt-steal-the-wind-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "promoBanner": "투모로우바이투게더 'STEAL THE WIND' 서울 - 11.13(금)~15(일) KSPO DOME",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302337_261002_130537.gif"
+  },
+  {
+    "id": "yung-kai-seoul-2026-11",
+    "artist": "yung kai (영 카이)",
+    "aliases": [
+      "영카이",
+      "Young Kai"
+    ],
+    "genre": "팝",
+    "venue": "무신사 개러지 (구. 왓챠홀)",
+    "city": "서울",
+    "startDate": "2026-11-16",
+    "endDate": "2026-11-16",
+    "description": "숏폼 배경음악으로 퍼진 'blue'의 주인공 yung kai의 첫 내한 공연 'stay with the ocean, i'll find you: Asia 2026 in Seoul'이에요. 처음 발표 땐 명화라이브홀로 알려졌지만 지금은 무신사 개러지로 등록돼 있어요.",
+    "schedule": "11/16(월) 오후 8시, 스탠딩 99,000원, 전체 관람가",
+    "note": "KOPIS 등록 기준 스탠딩석 99,000원, VIP MEET & GREET PACKAGE 224,000원, 전체 관람가. 주최 라이브네이션코리아. 예매는 NOL티켓·29CM.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26013373"
+      },
+      {
+        "vendor": "29CM",
+        "url": "https://ticket.29cm.co.kr/catalog/4213833"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 영 카이 첫 내한공연 yung kai asia tour [서울] (PF301121)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF301121"
+      },
+      {
+        "label": "'blue' artist yung kai to perform in Korea in November - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202610122124007"
+      }
+    ],
+    "posterUrl": "/posters/yung-kai-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "promoBanner": "'blue' yung kai 첫 내한 - 11.16(월) 무신사 개러지",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301121_260916_161747.gif"
+  },
+  {
+    "id": "kings-of-convenience-seoul-2026-11",
+    "artist": "Kings of Convenience (킹스 오브 컨비니언스)",
+    "aliases": [
+      "킹스오브컨비니언스",
+      "킹오컨",
+      "SJF at the Theater"
+    ],
+    "genre": "팝",
+    "venue": "세종문화회관 대극장",
+    "city": "서울",
+    "startDate": "2026-11-18",
+    "endDate": "2026-11-18",
+    "description": "노르웨이 듀오 킹스 오브 컨비니언스(아일릭 글람벡 뵈·얼렌드 오여)의 단독 공연이에요. 서울재즈페스티벌을 만든 프라이빗커브가 올해 새로 연 공연 시리즈 'SJF at the Theater 2026'의 첫 무대예요.",
+    "schedule": "11/18(수) 오후 8시, 러닝타임 80분, 만 6세 이상",
+    "note": "KOPIS 등록 기준 R석 143,000원, S석 132,000원, A석 110,000원, B석 99,000원. 주최 프라이빗커브·SBS. 예매는 멜론티켓·예스24·세종문화회관.",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213500"
+      },
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59136"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - SJF at the Theater, Kings of Convenience (PF295591)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF295591"
+      },
+      {
+        "label": "Kings of Convenience to Headline Inaugural SJF at the Theater - SBS Star",
+        "url": "https://sbsstar.net/article/N1008638672/kings-of-convenience-to-headline-inaugural-sjf-at-the-theater-concert-series-this-november"
+      }
+    ],
+    "posterUrl": "/posters/kings-of-convenience-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295591_260708_125621.png"
+  },
+  {
+    "id": "stacey-kent-seoul-2026-11",
+    "artist": "Stacey Kent (스테이시 켄트)",
+    "aliases": [
+      "스테이시켄트"
+    ],
+    "genre": "재즈/내한",
+    "venue": "LG아트센터 서울 LG SIGNATURE 홀",
+    "city": "서울",
+    "startDate": "2026-11-19",
+    "endDate": "2026-11-19",
+    "description": "재즈 보컬리스트 스테이시 켄트의 내한 공연이에요. 색소폰·플루트의 짐 톰린슨, 피아노의 아트 히라하라와 함께 무대에 서요. 다음 날(11/20)엔 울산 HD아트센터 공연도 있어요.",
+    "schedule": "11/19(목) 오후 7시 30분, 러닝타임 80분",
+    "note": "KOPIS 등록 기준 VIP석 121,000원, R석 99,000원, S석 77,000원, A석 66,000원. 주최 재즈브릿지컴퍼니. 관람 연령은 출처마다 달라 예매처에서 확인해 주세요.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/L0000146"
+      },
+      {
+        "vendor": "LG아트센터",
+        "url": "https://www.lgart.com/product/ko/performance/252975"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 스테이시 켄트 내한공연 (PF299001)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF299001"
+      },
+      {
+        "label": "LG아트센터 - 스테이시 켄트 내한공연",
+        "url": "https://www.lgart.com/product/ko/performance/252975"
+      }
+    ],
+    "posterUrl": "/posters/stacey-kent-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299001_260820_150851.jpg"
+  },
+  {
+    "id": "diana-krall-seoul-2026-11",
+    "artist": "Diana Krall (다이애나 크롤)",
+    "aliases": [
+      "다이아나 크롤",
+      "SJF at the Theater"
+    ],
+    "genre": "재즈/내한",
+    "venue": "세종문화회관 대극장",
+    "city": "서울",
+    "startDate": "2026-11-22",
+    "endDate": "2026-11-22",
+    "description": "재즈 피아니스트이자 보컬리스트 다이애나 크롤의 내한 공연이에요. 프라이빗커브의 'SJF at the Theater 2026' 시리즈 공연으로 세종문화회관 대극장에서 열려요.",
+    "schedule": "11/22(일) 오후 6시, 러닝타임 75분, 만 7세 이상",
+    "note": "KOPIS 등록 기준 VIP석 165,000원, R석 143,000원, S석 132,000원, A석 110,000원, B석 99,000원. 주최 프라이빗커브·SBS. 예매는 멜론티켓·예스24·세종문화회관.",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213652"
+      },
+      {
+        "vendor": "YES24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59429"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - SJF at the Theater, Diana Krall (PF297759)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF297759"
+      },
+      {
+        "label": "YES24 티켓 / SJF at the Theater 2026 - Diana Krall",
+        "url": "https://ticket.yes24.com/Perf/59429"
+      }
+    ],
+    "posterUrl": "/posters/diana-krall-seoul-2026-11.webp",
+    "addedAt": "2026-11-12",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297759_260805_134746.jpg"
+  },
+  {
+    "id": "slowdive-seoul-2026-12",
+    "artist": "Slowdive (슬로우다이브)",
+    "aliases": [
+      "슬로다이브"
+    ],
+    "genre": "팝/락",
+    "venue": "KBS스포츠월드(아레나)",
+    "city": "서울",
+    "startDate": "2026-12-08",
+    "endDate": "2026-12-08",
+    "description": "영국 슈게이즈 밴드 슬로우다이브의 내한 공연이에요. 닐 할스테드, 레이첼 고스웰, 크리스티안 새빌, 닉 채플린, 사이먼 스콧 다섯 멤버가 KBS아레나(옛 88체육관) 무대에 올라요.",
+    "schedule": "12/8(화) 오후 8시, 만 12세 이상",
+    "note": "KOPIS 등록 기준 스탠딩 132,000원, 지정석 P 143,000원, 지정석 R 132,000원. 주최 라이브네이션코리아. 예매는 티켓링크·NOL티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "티켓링크",
+        "url": "https://www.ticketlink.co.kr/product/65083"
+      },
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26012276"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 슬로우다이브 내한 공연 (PF299778)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF299778"
+      },
+      {
+        "label": "Slowdive Korea concert at KBS Arena - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202608212058007"
+      }
+    ],
+    "posterUrl": "/posters/slowdive-seoul-2026-12.webp",
+    "addedAt": "2026-11-12",
+    "promoBanner": "슬로우다이브 내한 - 12.8(화) KBS아레나",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299778_260831_160438.gif"
+  },
+  {
+    "id": "beabadoobee-seoul-2027-03",
+    "artist": "beabadoobee (비바두비)",
+    "aliases": [
+      "비바두비",
+      "The Powerlines Tour"
+    ],
+    "genre": "팝/락",
+    "venue": "올림픽공원 內 올림픽홀",
+    "city": "서울",
+    "startDate": "2027-03-23",
+    "endDate": "2027-03-23",
+    "description": "'Glue Song', 'Coffee'로 알려진 싱어송라이터 비바두비의 첫 내한 공연 'The Powerlines Tour'예요. 올림픽공원 올림픽홀에서 열려요.",
+    "schedule": "2027년 3/23(화) 오후 8시, 만 12세 이상",
+    "note": "KOPIS 등록 기준 스탠딩 110,000원, 지정석 P 132,000원, 지정석 R 121,000원, Early Entry Package 272,000원, Gold Seat Package 294,000원. 주최 라이브네이션코리아. 예매는 NOL티켓.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26014497"
+      }
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - 비바두비 첫 내한공연 beabadoobee: The Powerlines Tour [서울] (PF303466)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF303466"
+      },
+      {
+        "label": "NOL티켓 - 비바두비 첫 내한공연",
+        "url": "https://nol.yanolja.com/ticket/products/26014497"
+      }
+    ],
+    "posterUrl": "/posters/beabadoobee-seoul-2027-03.webp",
+    "addedAt": "2026-11-12",
+    "promoBanner": "비바두비 첫 내한 - 2027.3.23(화) 올림픽홀",
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303466_261015_141109.gif"
   }
 ]
