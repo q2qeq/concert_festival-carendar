@@ -23,7 +23,6 @@ const postsDir = 'src/content/posts';
 const posts = readdirSync(postsDir)
   .filter((f) => /\.mdx?$/.test(f))
   .map((f) => ({ file: f, text: readFileSync(`${postsDir}/${f}`, 'utf8') }));
-const postNumbers = posts.map((p) => Number(p.file.match(/^post(\d+)\./)?.[1])).filter(Number.isFinite);
 
 // 간단 CSV 파싱: 따옴표로 감싼 경로 + 숫자 두 칸
 const rows = [];
@@ -59,7 +58,7 @@ const rowsOut = candidates
   .sort((a, b) => Number(b.must) - Number(a.must) || b.visitors - a.visitors)
   .slice(0, limit);
 
-console.log(`다음 글 번호: post${Math.max(0, ...postNumbers) + 1}  (쓰기 직전에 다시 확인하고, 쓰자마자 커밋할 것 - 다른 작업과 번호가 겹치면 덮어써진다)\n`);
+console.log(`새 글 파일 이름: src/content/posts/${today}-<영문-슬러그>.mdx  (postN 번호는 더 쓰지 않는다)\n`);
 console.log('방문자  조회  글  정보  공연 id');
 for (const r of rowsOut) {
   const flags = [r.must ? '필수' : '', r.thin ? '정보부족' : '', r.posts.length ? `글:${r.posts.join(',')}` : '글없음'].filter(Boolean).join(' ');

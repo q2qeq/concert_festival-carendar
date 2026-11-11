@@ -8,6 +8,9 @@ import path from 'node:path';
 const ROOT = path.resolve(new URL('.', import.meta.url).pathname, '..');
 const POSTS = path.join(ROOT, 'src/content/posts');
 const RULE_SINCE = '2026-11-12';
+// 파일 이름 규칙: 2026-11-13부터 새 글은 postN 대신 'YYYY-MM-DD-영문-슬러그.mdx' (자동 작업끼리 번호가 겹쳐 덮어써지는 사고 방지).
+const NAME_RULE_SINCE = '2026-11-13';
+const NAME_RE = /^\d{4}-\d{2}-\d{2}-[a-z0-9]+(-[a-z0-9]+)*\.mdx?$/;
 const TOOL_LINKS = ['/ticketing-clock/', '/ticketing-check/', '/practice/', '/ticket-open/', '/return-trip/', '/trip-cost/', '/internet-speed/', '/tools/', '/venues/'];
 
 const out = { ERROR: [], INFO: [] };
@@ -20,6 +23,7 @@ for (const f of files) {
   const pubDate = (fm?.[1].match(/^pubDate:\s*"?(\d{4}-\d{2}-\d{2})/m) || [])[1] ?? '';
   const level = pubDate >= RULE_SINCE ? 'ERROR' : 'INFO';
   const problems = [];
+  if (pubDate >= NAME_RULE_SINCE && !NAME_RE.test(f)) problems.push(`파일 이름 규칙 위반(YYYY-MM-DD-영문-슬러그.mdx 이어야 함)`);
 
   const images = [...src.matchAll(/!\[[^\]]*\]\((\/[^)\s]+)\)/g)].map((m) => m[1]);
   if (images.length === 0) problems.push('사진 없음');
