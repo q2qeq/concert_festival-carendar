@@ -4765,6 +4765,35 @@
     ]
   },
   {
+    "id": "kana-boon-seoul-2026-12",
+    "artist": "KANA-BOON (카나분)",
+    "genre": "J-POP",
+    "venue": "예스24 라이브홀 (구. 악스코리아)",
+    "city": "서울",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-05",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-08-10 오후 8시",
+    "ticketOpenAt": "2026-08-10T20:00:00+09:00",
+    "description": "'나루토 질풍전' 오프닝 '실루엣', '나의 히어로 아카데미아' 주제가 '스타마커'로 알려진 오사카 밴드 KANA-BOON의 첫 단독 내한 공연 'CRITICAL HIT PARADE - Asian Adventure -'. 2025년 원더리벳 페스티벌 이후 처음으로 단독 무대로 와요.",
+    "schedule": "12/5(토) 오후 6시, 스탠딩석·지정석 모두 138,000원, 만 7세 이상",
+    "note": "KOPIS 등록 기준 스탠딩석·지정석 138,000원, 만 7세 이상. 주최 LIVET(리벳)·원더로크. 예매는 예스24 티켓(8/10 오후 8시 오픈). 예스24 공연 페이지 주소는 확인되는 대로 추가할게요.",
+    "sources": [
+      {
+        "label": "KOPIS 공연DB - KANA-BOON, CRITICAL HIT PARADE: Asian Adventure (PF298220)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF298220"
+      },
+      {
+        "label": "카나분, “CRITICAL HIT PARADE”…12월 첫 단독 내한 - 톱스타뉴스",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16154164"
+      },
+      {
+        "label": "KANA-BOON first solo concert in Korea - 스타뉴스",
+        "url": "https://www.starnewskorea.com/en/music/2026/08/04/2026080410042952283"
+      }
+    ]
+  },
+  {
     "id": "bluenote-tokyo-lisaono-iksan-2026-11",
     "artist": "블루노트 도쿄 올스타 재즈 오케스트라 & 리사 오노",
     "genre": "재즈/내한",
