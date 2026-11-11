@@ -6260,6 +6260,16 @@
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-11-11 오후 8시",
     "ticketOpenAt": "2026-11-11T20:00:00+09:00",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60901"
+      },
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214199"
+      }
+    ],
     "sources": [
       {
         "label": "Cho Q May 「Starlight Map Tour」 티켓 오픈 안내 - YES24 티켓",
