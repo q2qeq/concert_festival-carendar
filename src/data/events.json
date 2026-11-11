@@ -4726,18 +4726,21 @@
     ]
   },
   {
-    "id": "kopis-PF299935",
-    "artist": "ELLEGARDEN, Bad For Education Tour Ⅱ",
+    "id": "ellegarden-seoul-2026-11",
+    "artist": "ELLEGARDEN (엘레가든)",
     "aliases": [
-      "엘르가든"
+      "엘르가든",
+      "엘레가든"
     ],
     "genre": "J-POP",
     "venue": "예스24 라이브홀 (구. 악스코리아)",
     "city": "서울",
     "startDate": "2026-11-28",
     "endDate": "2026-11-29",
+    "description": "일본 멜로딕 펑크 밴드 ELLEGARDEN의 'Bad For Education Tour II (2026)' 서울 공연. 2004년 투어 이름을 22년 만에 다시 꺼낸 일본 투어에서 일본 밖 공연은 서울 2회뿐이에요.",
+    "schedule": "11/28(토)·11/29(일) 오후 6시, 스탠딩석·지정석 모두 88,000원, 러닝타임 90분(인터미션 없음), 7세 이상",
+    "note": "예스24 티켓 기준 스탠딩석·지정석 88,000원, 러닝타임 90분, 7세 이상 관람가. 주최 (주)엠피엠지.",
     "posterUrl": "/posters/kopis-PF299935.webp",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
     "merchCheckedAt": "2026-11-11",
     "ticketLinks": [
@@ -4748,8 +4751,16 @@
     ],
     "sources": [
       {
-        "label": "예스24 티켓 - ELLEGARDEN 'Bad For Education Tour II (2026)' (11/28·29, YES24 LIVE HALL)",
+        "label": "ELLEGARDEN 'Bad For Education Tour II (2026)' - YES24 티켓 상세",
         "url": "https://ticket.yes24.com/Perf/59771"
+      },
+      {
+        "label": "ELLEGARDEN 'Bad For Education Tour II (2026)' Seoul concert to be held in November - 스포츠경향",
+        "url": "https://sports.khan.co.kr/en/article/202608190215007"
+      },
+      {
+        "label": "Japanese band ELLEGARDEN returns with 22-year-old tour, only overseas show in November - 씨네플레이",
+        "url": "https://www.cineplay.co.kr/en-us/articles/29303"
       }
     ]
   },
@@ -5421,7 +5432,6 @@
   },
   {
     "id": "fujii-kaze-2027-01",
-    "noAkaText": true,
     "demand": "high",
     "artist": "Fujii Kaze (후지이 카제)",
     "genre": "J-POP",

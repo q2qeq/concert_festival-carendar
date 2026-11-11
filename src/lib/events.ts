@@ -162,8 +162,6 @@ export interface ConcertEvent {
   // 검색에서 쓰이는 다른 표기(띄어쓰기·철자 변형). 한글 이름의 붙여 쓴 표기는
   // artistAliases()가 자동으로 만들고, 여기에는 자동으로 못 만드는 것만 직접 적는다.
   aliases?: string[];
-  // true면 붙여쓰기 표기를 제목·설명·본문 줄에 넣지 않는다(구조화 데이터에는 유지). 2026-11-08 후지이 카제 노출 급감 대응.
-  noAkaText?: boolean;
   genre: string;
   venue: string;
   city: string;

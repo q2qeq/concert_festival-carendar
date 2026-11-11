@@ -52,5 +52,7 @@ export default defineConfig({
     '/game': '/practice/',
     // KOPIS 자동 수집본과 직접 정리한 페이지가 중복돼 하나로 합침 (2026-11-06)
     '/events/kopis-PF304185': '/events/kenshi-yonezu-ghost-incheon-2027-01/',
+    // KOPIS 자동 수집 주소를 아티스트 이름 주소로 바꿈 (2026-11-12)
+    '/events/kopis-PF299935': '/events/ellegarden-seoul-2026-11/',
   },
 });
