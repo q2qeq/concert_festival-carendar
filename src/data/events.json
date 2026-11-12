@@ -7487,5 +7487,30 @@
       }
     ],
     "addedAt": "2026-11-12"
+  },
+  {
+    "id": "koresawa-seoul-2027-02",
+    "artist": "Koresawa (코레사와) I AM KORESAWA vol.1",
+    "genre": "J-POP",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2027-02-27",
+    "endDate": "2027-02-27",
+    "description": "Koresawa의 서울 공연 'I AM KORESAWA vol.1'이에요. 2027년 2월 27일(토) 오후 6시, 예스24 원더로크홀에서 열리고 관람 시간은 약 90분이에요. 예스24 티켓에서 예매할 수 있어요.",
+    "schedule": "2/27(토) 오후 6시, 약 90분, VIP석 110,000원·스탠딩석 99,000원·지정석 99,000원, 8세 이상, 1인 2매",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 주최·주관은 위트(weete)예요. 예매 페이지에 출연자 소개가 따로 없어 아티스트 정보는 확인되는 대로 보강할게요.",
+    "sources": [
+      {
+        "label": "I AM KORESAWA vol.1 - YES24 티켓 예매 페이지",
+        "url": "https://ticket.yes24.com/Perf/60647"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60647"
+      }
+    ],
+    "addedAt": "2026-11-13"
   }
 ]
