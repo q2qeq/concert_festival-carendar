@@ -4094,7 +4094,7 @@
         "url": "https://www.instagram.com/jason_mraz/"
       }
     ],
-    "merchCheckedAt": "2026-11-11",
+    "merchCheckedAt": "2026-11-12",
     "setlists": [
       {
         "label": "2026 투어 - 브루클린 파라마운트 공연",
@@ -4227,7 +4227,7 @@
         "url": "https://ticket.yes24.com/Perf/59831"
       }
     ],
-    "merchCheckedAt": "2026-11-11",
+    "merchCheckedAt": "2026-11-12",
     "posterUrl": "/posters/blu-swing-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59831.jpg"
   },
@@ -4284,7 +4284,7 @@
         "url": "https://x.com/5sos"
       }
     ],
-    "merchCheckedAt": "2026-11-11",
+    "merchCheckedAt": "2026-11-12",
     "setlists": [
       {
         "label": "EVERYONE'S A STAR! World Tour - 비에하스 아레나 공연",
@@ -4360,7 +4360,7 @@
     ],
     "posterUrl": "/posters/christopher-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260813/20260813-59732.jpg",
-    "merchCheckedAt": "2026-11-11"
+    "merchCheckedAt": "2026-11-12"
   },
   {
     "id": "wonderlivet-2026-11",
@@ -4652,7 +4652,7 @@
     ],
     "posterUrl": "/posters/cherry-blossom-music-concert-winter-changwon-2026-11.webp",
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/08/202608241326143d42ff3b-131e-4369-9ec8-5d50f6ab5c33.jpg",
-    "merchCheckedAt": "2026-11-11",
+    "merchCheckedAt": "2026-11-12",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -6022,7 +6022,7 @@
         "url": "https://nol.yanolja.com/ticket/products/26014103"
       }
     ],
-    "merchCheckedAt": "2026-11-11",
+    "merchCheckedAt": "2026-11-12",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -6819,7 +6819,8 @@
     "posterUrl": "/posters/txt-steal-the-wind-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "promoBanner": "투모로우바이투게더 'STEAL THE WIND' 서울 - 11.13(금)~15(일) KSPO DOME",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302337_261002_130537.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302337_261002_130537.gif",
+    "merchCheckedAt": "2026-11-12"
   },
   {
     "id": "yung-kai-seoul-2026-11",
@@ -6859,7 +6860,8 @@
     "posterUrl": "/posters/yung-kai-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "promoBanner": "'blue' yung kai 첫 내한 - 11.16(월) 무신사 개러지",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301121_260916_161747.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301121_260916_161747.gif",
+    "merchCheckedAt": "2026-11-12"
   },
   {
     "id": "kings-of-convenience-seoul-2026-11",
@@ -6899,7 +6901,8 @@
     ],
     "posterUrl": "/posters/kings-of-convenience-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295591_260708_125621.png"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295591_260708_125621.png",
+    "merchCheckedAt": "2026-11-12"
   },
   {
     "id": "stacey-kent-seoul-2026-11",
@@ -6937,7 +6940,8 @@
     ],
     "posterUrl": "/posters/stacey-kent-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299001_260820_150851.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299001_260820_150851.jpg",
+    "merchCheckedAt": "2026-11-12"
   },
   {
     "id": "diana-krall-seoul-2026-11",
