@@ -1,0 +1,115 @@
+---
+// 블로그 글 끝 "다 읽었다면" 선반 - 웹툰 마지막 화면처럼, 글을 읽은 사람이 바로 이어서
+// 쓸 도구를 모아 보여준다. 본문에 링크된 공연(/events/<id>/)을 읽어서 그 공연 값이 채워진
+// 링크를 만든다(시계는 오픈 시각, 막차·비용 계산기는 공연장). 공연 링크가 없거나 다 지난
+// 공연이면 일반 티켓팅 도구를 보여준다. 옛 글까지 레이아웃 한 곳에서 자동으로 붙는다 (2026-11-12).
+import { events, ticketOpenStages, hasTicketsOnSale, type ConcertEvent } from '../lib/events';
+import { getVenueInfo } from '../lib/venues';
+
+interface Props { body: string }
+const { body } = Astro.props;
+
+interface Card { href: string; title: string; sub: string; kind?: 'event' }
+
+const nowMs = Date.now();
+const todayISO = new Date(nowMs + 9 * 3600_000).toISOString().slice(0, 10); // KST 기준 오늘
+
+// 본문에 나온 순서대로 공연을 모은다.
+const linked: ConcertEvent[] = events
+  .map((e) => ({ e, pos: body.indexOf(`/events/${e.id}/`) }))
+  .filter(({ pos }) => pos >= 0)
+  .sort((a, b) => a.pos - b.pos)
+  .map(({ e }) => e);
+const primary = linked.find((e) => e.endDate >= todayISO);
+
+const fmtStage = (iso: string) => {
+  const parts = new Intl.DateTimeFormat('ko-KR', {
+    timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false,
+  }).formatToParts(new Date(iso));
+  const get = (t: string) => parts.find((p) => p.type === t)?.value ?? '';
+  return `${get('month')}.${get('day')}(${get('weekday')}) ${get('hour')}:${get('minute')}`;
+};
+
+const cards: Card[] = [];
+let heading = '공연 보러 가기 전에';
+
+if (primary) {
+  heading = '이 공연, 이렇게 준비해요';
+  const nextStage = ticketOpenStages(primary).find((s) => new Date(s.at).getTime() >= nowMs);
+  const venueKnown = Boolean(getVenueInfo(primary.venue));
+
+  cards.push({
+    href: `/events/${primary.id}/`,
+    title: primary.artist,
+    sub: '일정·장소·예매처·티켓오픈 한눈에',
+    kind: 'event',
+  });
+
+  if (nextStage) {
+    cards.push({
+      href: `/ticketing-clock?open=${encodeURIComponent(nextStage.at)}&artist=${encodeURIComponent(primary.artist)}`,
+      title: '오픈 카운트다운',
+      sub: `${nextStage.label} ${fmtStage(nextStage.at)}까지`,
+    });
+    cards.push({ href: '/practice/', title: '티켓팅 연습', sub: '오픈 전 30초 손풀기 게임' });
+  } else if (hasTicketsOnSale(primary)) {
+    cards.push({ href: '/ticketing-clock/', title: '티켓팅 시계', sub: '취소표 잡을 때 서버 시간 확인' });
+  }
+
+  if (venueKnown) {
+    const v = encodeURIComponent(primary.venue);
+    cards.push({ href: `/return-trip/?venue=${v}`, title: '막차 계산기', sub: `${primary.venue}에서 공연 끝나고 집 가기` });
+    cards.push({ href: `/trip-cost/?venue=${v}`, title: '직관 비용 계산기', sub: '티켓·교통·숙박·굿즈 합계' });
+  }
+
+  // 자리가 남으면 오픈 직전에 쓸 점검 도구로 채운다.
+  if (nextStage) cards.push({ href: '/ticketing-check/', title: '티켓팅 준비 점검', sub: '시계·네트워크·브라우저 1분 점검' });
+  cards.push({ href: '/internet-speed/', title: '인터넷 속도 측정', sub: '내 인터넷 속도, 10초면 확인돼요' });
+  if (cards.length < 4) cards.push({ href: '/ticket-open/', title: '티켓오픈 일정', sub: '다른 공연 예매도 날짜순으로' });
+} else {
+  cards.push(
+    { href: '/ticket-open/', title: '티켓오픈 일정', sub: '곧 열리는 예매를 날짜순으로' },
+    { href: '/ticketing-clock/', title: '티켓팅 시계', sub: '오픈 순간을 밀리초까지' },
+    { href: '/practice/', title: '티켓팅 연습', sub: '30초 손풀기 게임' },
+    { href: '/ticketing-check/', title: '티켓팅 준비 점검', sub: '시계·네트워크·브라우저 1분 점검' },
+  );
+}
+
+const shown = cards.slice(0, 5);
+// 공연 카드는 한 줄 전체, 나머지는 두 칸씩. 도구가 홀수 개면 마지막 카드가 줄을 채운다.
+const toolCount = shown.filter((c) => c.kind !== 'event').length;
+const lastWide = toolCount % 2 === 1;
+---
+<section class="tool-shelf" aria-label="이어서 쓸 도구">
+  <p class="ts-kicker">다 읽었다면</p>
+  <h2>{heading}</h2>
+  <div class="ts-grid">
+    {shown.map((c, i) => (
+      <a class:list={['ts-card', { 'ts-event': c.kind === 'event', 'ts-wide': lastWide && i === shown.length - 1 }]} href={c.href}>
+        <span class="ts-body">
+          <strong>{c.title}</strong>
+          <span class="ts-sub">{c.sub}</span>
+        </span>
+        <span class="ts-go" aria-hidden="true">→</span>
+      </a>
+    ))}
+  </div>
+  <a class="ts-all" href="/tools/">도구 전체 보기 →</a>
+</section>
+<style>
+  .tool-shelf { margin: 2.5rem 0 1.5rem; padding-top: 1.6rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  .ts-kicker { margin: 0 0 0.3rem; color: #8f8f97; font-size: 0.8rem; }
+  .tool-shelf h2 { margin: 0 0 0.9rem; font-size: 1.15rem; line-height: 1.35; color: #ededea; }
+  .ts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .ts-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 0.95rem; border-radius: 8px; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); min-width: 0; transition: border-color .15s; }
+  .ts-card:hover { border-color: #c9c9cf; }
+  .ts-event { grid-column: 1 / -1; background: rgba(255,255,255,0.07); }
+  .ts-wide { grid-column: 1 / -1; }
+  .ts-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1; }
+  .ts-body strong { font-size: 0.95rem; }
+  .ts-sub { color: #8f8f97; font-size: 0.8rem; line-height: 1.4; overflow-wrap: anywhere; }
+  .ts-go { color: #8f8f97; flex-shrink: 0; }
+  .ts-all { display: inline-block; margin-top: 0.8rem; color: #8f8f97; font-size: 0.85rem; text-decoration: none; }
+  .ts-all:hover { color: #c9c9cf; }
+  @media (max-width: 480px) { .ts-grid { grid-template-columns: 1fr; } }
+</style>

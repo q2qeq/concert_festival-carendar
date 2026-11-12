@@ -5,6 +5,7 @@ import AdSlot from '../../components/AdSlot.astro';
 import RecentIssues from '../../components/RecentIssues.astro';
 import { relatedPosts } from '../../lib/posts';
 import OpenCountdown from '../../components/OpenCountdown.astro';
+import PostToolShelf from '../../components/PostToolShelf.astro';
 import { events, ticketOpenStages, hasUpcomingOpen } from '../../lib/events';
 
 export async function getStaticPaths() {
@@ -55,6 +56,8 @@ function fmt(d: Date) {
     <div class="prose">
       <Content />
     </div>
+
+    <PostToolShelf body={body} />
 
     <AdSlot slot="post-bottom" />
 
