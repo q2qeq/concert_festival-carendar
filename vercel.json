@@ -1,5 +1,11 @@
 {
   "redirects": [
+    { "source": "/game", "destination": "/practice/", "permanent": true },
+    { "source": "/game/", "destination": "/practice/", "permanent": true },
+    { "source": "/events/kopis-PF304185", "destination": "/events/kenshi-yonezu-ghost-incheon-2027-01/", "permanent": true },
+    { "source": "/events/kopis-PF304185/", "destination": "/events/kenshi-yonezu-ghost-incheon-2027-01/", "permanent": true },
+    { "source": "/events/kopis-PF299935", "destination": "/events/ellegarden-seoul-2026-11/", "permanent": true },
+    { "source": "/events/kopis-PF299935/", "destination": "/events/ellegarden-seoul-2026-11/", "permanent": true },
     {
       "source": "/:path((?!api(?:/|$)|_astro/|_vercel/)[^.]*[^/.])",
       "destination": "/:path/",

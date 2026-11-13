@@ -34,6 +34,19 @@ for (const file of readdirSync(postsDir)) {
 // 개인용 페이지(브라우저 저장소로만 내용이 채워짐)는 색인 대상이 아니다
 const SITEMAP_EXCLUDE = new Set(['/my/']);
 
+// 끝난 지 7일 넘은 공연 중 셋리스트가 없는 페이지는 사이트맵에서 뺀다.
+// 서치콘솔에서 75개가 "발견됨 - 색인 안 됨"에 걸려 있었는데(2026-11), 얇은 지난 공연 페이지가
+// 크롤 순서를 차지하지 않게 하려는 것이다. 페이지 자체는 그대로 두고 /events/archive/에서 링크한다.
+// 셋리스트가 있는 지난 공연은 "OO 셋리스트" 검색 수요가 있어 남긴다.
+const kstToday = new Date(Date.now() + 9 * 3600 * 1000);
+const staleCutoff = new Date(kstToday.getTime() - 7 * 86400 * 1000).toISOString().slice(0, 10);
+for (const e of events) {
+  const end = e.endDate ?? e.startDate;
+  if (isDate(end) && end < staleCutoff && !(e.setlists?.length > 0)) {
+    SITEMAP_EXCLUDE.add(`/events/${e.id}/`);
+  }
+}
+
 export default defineConfig({
   site: SITE_URL,
   integrations: [
@@ -47,12 +60,6 @@ export default defineConfig({
     }),
     mdx(),
   ],
-  // 예전 주소(/game)로 공유된 링크가 깨지지 않도록
-  redirects: {
-    '/game': '/practice/',
-    // KOPIS 자동 수집본과 직접 정리한 페이지가 중복돼 하나로 합침 (2026-11-06)
-    '/events/kopis-PF304185': '/events/kenshi-yonezu-ghost-incheon-2027-01/',
-    // KOPIS 자동 수집 주소를 아티스트 이름 주소로 바꿈 (2026-11-12)
-    '/events/kopis-PF299935': '/events/ellegarden-seoul-2026-11/',
-  },
+  // 옛 주소 리디렉션(/game, kopis-PF304185, kopis-PF299935)은 vercel.json에서 진짜 301/308로 처리한다.
+  // Astro redirects는 정적 빌드에서 200 + meta refresh 페이지를 만들어 서치콘솔에 '대체 페이지'로 남았다.
 });
