@@ -4094,7 +4094,7 @@
         "url": "https://www.instagram.com/jason_mraz/"
       }
     ],
-    "merchCheckedAt": "2026-11-13",
+    "merchCheckedAt": "2026-11-14",
     "setlists": [
       {
         "label": "2026 투어 - 브루클린 파라마운트 공연",
@@ -4234,7 +4234,7 @@
         "url": "https://ticket.yes24.com/Perf/59831"
       }
     ],
-    "merchCheckedAt": "2026-11-13",
+    "merchCheckedAt": "2026-11-14",
     "posterUrl": "/posters/blu-swing-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59831.jpg"
   },
@@ -4269,6 +4269,11 @@
         "date": "2026-11-06",
         "text": "MD 굿즈 워치 중 확인: NOL 티켓의 'UPGRADE BITE THE APPLE' 업그레이드 패키지 상품 페이지에 공연 당일(11/19) 오전 11시부터 현장 머천다이즈 샵이 별도 운영되고, 업그레이드 패키지 구매자는 체크인 시 '업그레이드 기프트'를 받으며 이후 MD 부스 전용 창구에서 추가 구매도 가능하다는 안내가 있었어요. 다만 구체적인 상품 구성·가격은 이미지로만 제공되어 있어 확인하지 못했어요 - 추측으로 채우지 않습니다.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26006757"
+      },
+      {
+        "date": "2026-11-14",
+        "text": "NOL 티켓 예매 페이지에 일반 관객 타임테이블이 올라왔어요. 공연 당일(11/19) 머천다이즈 샵은 낮 12시에 열리고, VIP·업그레이드 패키지 전용 창구는 오전 11시부터예요. 물품보관소는 오전 11시, 티켓박스는 오후 2시, 일반 입장은 오후 6시 예정이에요. 머천다이즈 샵은 입장 시작 30분 전에 잠시 멈췄다가 공연이 끝난 뒤 품절되지 않은 품목만 다시 판다고 해요. 상품 구성과 가격은 공지에서 확인하지 못했어요.",
+        "sourceUrl": "https://nol.yanolja.com/ticket/products/26006756"
       }
     ],
     "sources": [
@@ -4291,7 +4296,7 @@
         "url": "https://x.com/5sos"
       }
     ],
-    "merchCheckedAt": "2026-11-13",
+    "merchCheckedAt": "2026-11-14",
     "setlists": [
       {
         "label": "EVERYONE'S A STAR! World Tour - 비에하스 아레나 공연",
@@ -4367,7 +4372,7 @@
     ],
     "posterUrl": "/posters/christopher-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260813/20260813-59732.jpg",
-    "merchCheckedAt": "2026-11-13"
+    "merchCheckedAt": "2026-11-14"
   },
   {
     "id": "wonderlivet-2026-11",
@@ -4609,7 +4614,7 @@
         "url": "https://www.edaily.co.kr/News/Read?newsId=03663766645578480"
       }
     ],
-    "merchCheckedAt": "2026-11-11",
+    "merchCheckedAt": "2026-11-14",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -4659,12 +4664,18 @@
     ],
     "posterUrl": "/posters/cherry-blossom-music-concert-winter-changwon-2026-11.webp",
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/08/202608241326143d42ff3b-131e-4369-9ec8-5d50f6ab5c33.jpg",
-    "merchCheckedAt": "2026-11-13",
+    "merchCheckedAt": "2026-11-14",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000609",
         "note": "셔틀 스캔으로 확인 (2026-11-12). 예약 가능 상태(강남역·서울역·잠실역). 노선·요금은 예약 화면에서 확인하세요."
+      }
+    ],
+    "officialSns": [
+      {
+        "label": "Instagram",
+        "url": "https://www.instagram.com/cbmfestival/"
       }
     ]
   },
@@ -6036,7 +6047,7 @@
         "url": "https://nol.yanolja.com/ticket/products/26014103"
       }
     ],
-    "merchCheckedAt": "2026-11-13",
+    "merchCheckedAt": "2026-11-14",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -7005,7 +7016,7 @@
     "addedAt": "2026-11-12",
     "promoBanner": "'blue' yung kai 첫 내한 - 11.16(월) 무신사 개러지",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301121_260916_161747.gif",
-    "merchCheckedAt": "2026-11-13"
+    "merchCheckedAt": "2026-11-14"
   },
   {
     "id": "kings-of-convenience-seoul-2026-11",
@@ -7046,7 +7057,7 @@
     "posterUrl": "/posters/kings-of-convenience-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295591_260708_125621.png",
-    "merchCheckedAt": "2026-11-13"
+    "merchCheckedAt": "2026-11-14"
   },
   {
     "id": "stacey-kent-seoul-2026-11",
@@ -7085,7 +7096,7 @@
     "posterUrl": "/posters/stacey-kent-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299001_260820_150851.jpg",
-    "merchCheckedAt": "2026-11-13"
+    "merchCheckedAt": "2026-11-14"
   },
   {
     "id": "diana-krall-seoul-2026-11",
