@@ -1,0 +1,36 @@
+name: Ticket-open push
+
+# 5분마다 사이트의 /api/push-send 를 깨워서, 오픈이 가까워진 공연의 푸시 알림을 내보낸다.
+# Vercel Hobby의 cron은 하루 한 번만 돌 수 있어서 여기서 대신 깨운다.
+# 무엇을 언제 보낼지는 전부 그 함수가 정한다(하루 전·30분 전·10분 전, 중복 방지 포함).
+# GitHub의 schedule은 몇 분씩 밀릴 수 있다 - 함수가 구간으로 판단하므로 밀려도 빠지지 않는다.
+#
+# 필요한 저장소 시크릿: PUSH_SEND_TOKEN (Vercel 환경변수 PUSH_SEND_TOKEN과 같은 값).
+# 시크릿이 없으면 아무것도 하지 않고 끝난다.
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch: {}
+
+permissions: {}
+
+concurrency:
+  group: push-send
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Wake the sender
+        env:
+          PUSH_SEND_TOKEN: ${{ secrets.PUSH_SEND_TOKEN }}
+        run: |
+          if [ -z "$PUSH_SEND_TOKEN" ]; then echo "PUSH_SEND_TOKEN 시크릿이 없어 건너뜀"; exit 0; fi
+          code=$(curl -sS -o out.json -w '%{http_code}' --max-time 60 -X POST \
+            -H "Authorization: Bearer $PUSH_SEND_TOKEN" https://jikgwannyang.com/api/push-send)
+          cat out.json; echo
+          # 503은 서버에 키가 아직 없는 상태 - 실패로 치지 않는다
+          if [ "$code" != "200" ] && [ "$code" != "503" ]; then echo "HTTP $code"; exit 1; fi

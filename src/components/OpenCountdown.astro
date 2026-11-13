@@ -84,9 +84,12 @@ const bigText = phase.kind === 'before'
       <a class="oc-btn oc-primary" data-oc-primary href={cur ? cur.clock : (bookUrl || clockHref(stages[stages.length - 1].at))}>
         {phase.kind === 'live' ? '예매하러 가기 →' : cur ? '티켓팅 시계로 정각 맞추기' : '예매처 바로가기 →'}
       </a>
-      {cur && <a class="oc-btn" data-oc-alert href={cur.alert} target="_blank" rel="noopener noreferrer">10분 전 알림 받기</a>}
+      {cur && <button class="oc-btn oc-push" type="button" data-oc-push={event.id} aria-pressed="false" hidden>오픈 알림 받기</button>}
+      {cur && <a class="oc-btn" data-oc-alert href={cur.alert} target="_blank" rel="noopener noreferrer">캘린더에 추가</a>}
       {!cur && <a class="oc-btn" href="/ticketing-clock/">티켓팅 시계</a>}
     </div>
+
+    <p class="oc-push-msg" data-oc-push-msg role="status" hidden></p>
 
     <ul class="oc-steps" data-oc-steps hidden={!cur}>
       <li><span class="mono">전날</span> 로그인·결제수단 확인 <a href="/ticketing-check/">1분 준비 점검</a></li>
@@ -119,6 +122,12 @@ const bigText = phase.kind === 'before'
   .oc-btn:hover { border-color: #ededea; }
   .oc-primary { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
   .oc-primary:hover { border-color: #ff5fa2; filter: brightness(1.05); }
+  button.oc-btn { background: none; font-family: inherit; cursor: pointer; }
+  .oc-btn[hidden] { display: none; }
+  .oc-push.is-on { border-color: #ff5fa2; color: #ff5fa2; }
+  .oc-push:disabled { opacity: 0.6; cursor: default; }
+  .oc-push-msg { margin: 0.6rem 0 0; font-size: 0.82rem; color: #c9c9cf; line-height: 1.55; }
+  .oc-push-msg[hidden] { display: none; }
   .oc-steps { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; gap: 0.3rem; font-size: 0.85rem; color: #c9c9cf; }
   .oc-steps[hidden] { display: none; }
   .oc-steps span { display: inline-block; min-width: 4.2em; color: #8f8f97; font-size: 0.78rem; }
@@ -132,6 +141,52 @@ const bigText = phase.kind === 'before'
 
 <script>
   import { openPhase, kstDayDiff, hms } from '../lib/openPhase';
+  import { pushSupport, serverKey, alertEvents, enableAlert, disableAlert } from '../lib/pushClient';
+
+  // "오픈 알림 받기" - 하루 전·30분 전·10분 전에 푸시로 알려준다. 서버에 알림 기능이 없으면 버튼을 숨긴 채 둔다.
+  function setupPush(root: HTMLElement) {
+    const btn = root.querySelector<HTMLButtonElement>('[data-oc-push]');
+    const msg = root.querySelector<HTMLElement>('[data-oc-push-msg]');
+    if (!btn) return;
+    const id = btn.dataset.ocPush || '';
+    const say = (t: string) => { if (msg) { msg.textContent = t; msg.hidden = !t; } };
+    const paint = () => {
+      const on = alertEvents().includes(id);
+      btn.classList.toggle('is-on', on);
+      btn.setAttribute('aria-pressed', String(on));
+      btn.textContent = on ? '오픈 알림 켜짐 ✓' : '오픈 알림 받기';
+    };
+    serverKey().then((key) => {
+      if (!key) return;
+      btn.hidden = false;
+      paint();
+    });
+    window.addEventListener('push-alerts:changed', paint);
+    btn.addEventListener('click', async () => {
+      const support = pushSupport();
+      if (support === 'ios-install') {
+        say('아이폰은 사파리 공유 버튼 → "홈 화면에 추가"로 직관냥을 설치한 뒤, 홈 화면 아이콘으로 열면 알림을 켤 수 있어요. 지금은 "캘린더에 추가"를 써 주세요.');
+        return;
+      }
+      if (support === 'unsupported') {
+        say('이 브라우저는 푸시 알림을 지원하지 않아요. 크롬·삼성 인터넷·사파리에서 열거나 "캘린더에 추가"를 써 주세요.');
+        return;
+      }
+      if (support === 'denied') {
+        say('브라우저에서 이 사이트 알림이 차단돼 있어요. 주소창의 사이트 설정에서 알림을 허용한 뒤 다시 눌러 주세요.');
+        return;
+      }
+      const on = alertEvents().includes(id);
+      btn.disabled = true;
+      const result = on ? await disableAlert(id) : await enableAlert(id);
+      btn.disabled = false;
+      paint();
+      if (result === 'on') say('알림을 켰어요. 오픈 하루 전, 30분 전, 10분 전에 이 기기로 알려드려요.');
+      else if (result === 'off') say('이 공연 알림을 껐어요.');
+      else if (result === 'denied') say('알림 권한이 허용되지 않아 켜지 못했어요.');
+      else say('알림을 설정하지 못했어요. 잠시 뒤 다시 시도해 주세요.');
+    });
+  }
 
   type Stage = { label: string; at: string; until?: string; when: string; clock: string; alert: string };
 
@@ -144,6 +199,7 @@ const bigText = phase.kind === 'before'
     const when = root.querySelector<HTMLElement>('[data-oc-when]');
     const primary = root.querySelector<HTMLAnchorElement>('[data-oc-primary]');
     const alert = root.querySelector<HTMLAnchorElement>('[data-oc-alert]');
+    const pushBtn = root.querySelector<HTMLButtonElement>('[data-oc-push]');
     const steps = root.querySelector<HTMLElement>('[data-oc-steps]');
     const items = Array.from(root.querySelectorAll<HTMLElement>('[data-oc-stage]'));
     const vendorText = when?.textContent?.match(/ · ([^·]+)$/)?.[1] ?? '';
@@ -168,6 +224,7 @@ const bigText = phase.kind === 'before'
           if (when) when.textContent = '취소표는 예고 없이 풀려요. 시계를 켜두고 틈틈이 새로고침해 보세요.';
           if (primary) { primary.textContent = book ? '예매처 바로가기 →' : '티켓팅 시계'; primary.href = book || '/ticketing-clock/'; }
           if (alert) alert.hidden = true;
+          if (pushBtn) pushBtn.hidden = true;
           if (steps) steps.hidden = true;
           root.classList.remove('is-hot');
         } else {
@@ -219,5 +276,5 @@ const bigText = phase.kind === 'before'
     });
   }
 
-  document.querySelectorAll<HTMLElement>('[data-oc]').forEach(setup);
+  document.querySelectorAll<HTMLElement>('[data-oc]').forEach((root) => { setup(root); setupPush(root); });
 </script>

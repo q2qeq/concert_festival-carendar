@@ -1,0 +1,22 @@
+{
+  "name": "직관냥 - 내한공연·페스티벌 캘린더",
+  "short_name": "직관냥",
+  "description": "내한공연·페스티벌 일정과 티켓오픈 알림을 한곳에서.",
+  "lang": "ko",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0e0e10",
+  "theme_color": "#0e0e10",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "티켓오픈 일정", "url": "/ticket-open/" },
+    { "name": "내 찜", "url": "/my/" },
+    { "name": "티켓팅 시계", "url": "/ticketing-clock/" }
+  ]
+}
