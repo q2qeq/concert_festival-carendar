@@ -128,6 +128,7 @@ const bigText = phase.kind === 'before'
   .oc-push:disabled { opacity: 0.6; cursor: default; }
   .oc-push-msg { margin: 0.6rem 0 0; font-size: 0.82rem; color: #c9c9cf; line-height: 1.55; }
   .oc-push-msg[hidden] { display: none; }
+  .oc-push-msg a { color: #ff5fa2; font-weight: 700; white-space: nowrap; }
   .oc-steps { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; gap: 0.3rem; font-size: 0.85rem; color: #c9c9cf; }
   .oc-steps[hidden] { display: none; }
   .oc-steps span { display: inline-block; min-width: 4.2em; color: #8f8f97; font-size: 0.78rem; }
@@ -141,7 +142,7 @@ const bigText = phase.kind === 'before'
 
 <script>
   import { openPhase, kstDayDiff, hms } from '../lib/openPhase';
-  import { pushSupport, serverKey, alertEvents, enableAlert, disableAlert } from '../lib/pushClient';
+  import { pushSupport, serverKey, alertEvents, enableAlert, disableAlert, chromeIntentUrl } from '../lib/pushClient';
 
   // "오픈 알림 받기" - 하루 전·30분 전·10분 전에 푸시로 알려준다. 서버에 알림 기능이 없으면 버튼을 숨긴 채 둔다.
   function setupPush(root: HTMLElement) {
@@ -149,7 +150,17 @@ const bigText = phase.kind === 'before'
     const msg = root.querySelector<HTMLElement>('[data-oc-push-msg]');
     if (!btn) return;
     const id = btn.dataset.ocPush || '';
-    const say = (t: string) => { if (msg) { msg.textContent = t; msg.hidden = !t; } };
+    const say = (t: string, link?: { text: string; href: string }) => {
+      if (!msg) return;
+      msg.textContent = t;
+      if (link) {
+        const a = document.createElement('a');
+        a.textContent = link.text;
+        a.href = link.href;
+        msg.append(' ', a);
+      }
+      msg.hidden = !t;
+    };
     const paint = () => {
       const on = alertEvents().includes(id);
       btn.classList.toggle('is-on', on);
@@ -166,6 +177,14 @@ const bigText = phase.kind === 'before'
       const support = pushSupport();
       if (support === 'ios-install') {
         say('아이폰은 사파리 공유 버튼 → "홈 화면에 추가"로 직관냥을 설치한 뒤, 홈 화면 아이콘으로 열면 알림을 켤 수 있어요. 지금은 "캘린더에 추가"를 써 주세요.');
+        return;
+      }
+      if (support === 'inapp-android') {
+        say('지금은 앱 안 브라우저라 알림을 켤 수 없어요. 크롬으로 열면 바로 켤 수 있어요.', { text: '크롬으로 열기', href: chromeIntentUrl() });
+        return;
+      }
+      if (support === 'inapp-ios') {
+        say('지금은 앱 안 브라우저라 알림을 켤 수 없어요. 메뉴에서 "Safari로 열기"를 누른 뒤, 공유 버튼 → "홈 화면에 추가"로 설치하면 알림을 켤 수 있어요. 지금은 "캘린더에 추가"를 써 주세요.');
         return;
       }
       if (support === 'unsupported') {

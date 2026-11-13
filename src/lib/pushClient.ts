@@ -7,15 +7,30 @@ const KEY = 'krconcerts:push-events';
 export type PushSupport =
   | 'ok' // 바로 켤 수 있음
   | 'ios-install' // 아이폰·아이패드: 홈 화면에 추가한 뒤에만 가능
+  | 'inapp-android' // 네이버·카카오톡 등 앱 안 브라우저(안드로이드): 크롬으로 열면 가능
+  | 'inapp-ios' // 앱 안 브라우저(아이폰): 사파리로 연 뒤 홈 화면에 추가해야 가능
   | 'denied' // 사용자가 브라우저에서 알림을 차단해 둠
   | 'unsupported'; // 인앱 브라우저 등 푸시를 못 쓰는 환경
+
+// 네이버 앱·카카오톡·인스타그램 등 앱 안에서 열리는 브라우저. 이런 곳은 푸시를 지원하지 않는다.
+export const isInAppBrowser = (ua: string) =>
+  /NAVER\(inapp|KAKAOTALK|KAKAOSTORY|DaumApps|Instagram|FBAN|FBAV|FB_IAB|Line\/|everytimeApp|BAND\/|Twitter|; wv\)/i.test(ua);
+
+// 지금 보고 있는 페이지를 안드로이드 크롬으로 여는 주소(앱 안 브라우저 탈출용).
+export function chromeIntentUrl(): string {
+  const { host, pathname, search } = window.location;
+  return `intent://${host}${pathname}${search}#Intent;scheme=https;package=com.android.chrome;end`;
+}
 
 export function pushSupport(): PushSupport {
   const ua = navigator.userAgent;
   const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const standalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as { standalone?: boolean }).standalone === true;
   const has = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
-  if (!has) return isIOS && !standalone ? 'ios-install' : 'unsupported';
+  if (!has) {
+    if (isInAppBrowser(ua)) return isIOS ? 'inapp-ios' : /Android/i.test(ua) ? 'inapp-android' : 'unsupported';
+    return isIOS && !standalone ? 'ios-install' : 'unsupported';
+  }
   if (Notification.permission === 'denied') return 'denied';
   return 'ok';
 }
