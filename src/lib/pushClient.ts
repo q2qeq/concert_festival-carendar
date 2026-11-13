@@ -22,6 +22,13 @@ export function chromeIntentUrl(): string {
   return `intent://${host}${pathname}${search}#Intent;scheme=https;package=com.android.chrome;end`;
 }
 
+// 지금 보고 있는 페이지를 아이폰 사파리로 여는 주소(iOS 17 이상에서 동작). 아이폰은 크롬으로 열어도
+// 홈 화면에 설치해야만 푸시가 되고 크롬이 없는 기기도 많아서, 항상 깔려 있는 사파리로 보낸다.
+export function safariUrl(): string {
+  const { host, pathname, search } = window.location;
+  return `x-safari-https://${host}${pathname}${search}`;
+}
+
 export function pushSupport(): PushSupport {
   const ua = navigator.userAgent;
   const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);

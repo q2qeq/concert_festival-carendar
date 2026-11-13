@@ -142,7 +142,7 @@ const bigText = phase.kind === 'before'
 
 <script>
   import { openPhase, kstDayDiff, hms } from '../lib/openPhase';
-  import { pushSupport, serverKey, alertEvents, enableAlert, disableAlert, chromeIntentUrl } from '../lib/pushClient';
+  import { pushSupport, serverKey, alertEvents, enableAlert, disableAlert, chromeIntentUrl, safariUrl } from '../lib/pushClient';
 
   // "오픈 알림 받기" - 하루 전·30분 전·10분 전에 푸시로 알려준다. 서버에 알림 기능이 없으면 버튼을 숨긴 채 둔다.
   function setupPush(root: HTMLElement) {
@@ -184,7 +184,7 @@ const bigText = phase.kind === 'before'
         return;
       }
       if (support === 'inapp-ios') {
-        say('지금은 앱 안 브라우저라 알림을 켤 수 없어요. 메뉴에서 "Safari로 열기"를 누른 뒤, 공유 버튼 → "홈 화면에 추가"로 설치하면 알림을 켤 수 있어요. 지금은 "캘린더에 추가"를 써 주세요.');
+        say('지금은 앱 안 브라우저라 알림을 켤 수 없어요. 사파리로 연 뒤 공유 버튼 → "홈 화면에 추가"로 설치하면 알림을 켤 수 있어요. 링크가 안 열리면 앱 메뉴의 "Safari로 열기"를 눌러 주세요.', { text: 'Safari로 열기', href: safariUrl() });
         return;
       }
       if (support === 'unsupported') {
