@@ -4094,7 +4094,7 @@
         "url": "https://www.instagram.com/jason_mraz/"
       }
     ],
-    "merchCheckedAt": "2026-11-12",
+    "merchCheckedAt": "2026-11-13",
     "setlists": [
       {
         "label": "2026 투어 - 브루클린 파라마운트 공연",
@@ -4131,6 +4131,13 @@
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000615",
         "note": "셔틀 스캔으로 확인 (2026-11-12). 카카오 T 셔틀 목록에서 항목이 사라짐 - 11/11 \"미개설\"(DROPPED) 전환 뒤 목록 비노출. 셔틀 운행 확정 아님."
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-11-13",
+        "text": "NOL 티켓 예매 페이지의 입장 안내에 공연 당일(11/14) 오후 2시에 머천다이즈 샵·티켓 박스·물품보관소가 열린다고 나와 있어요. 스탠딩 대기 장소는 오후 5시, 입장은 오후 6시부터예요. 어떤 상품을 얼마에 파는지는 공지에서 확인하지 못했어요.",
+        "sourceUrl": "https://nol.yanolja.com/ticket/products/26006423"
       }
     ]
   },
@@ -4227,7 +4234,7 @@
         "url": "https://ticket.yes24.com/Perf/59831"
       }
     ],
-    "merchCheckedAt": "2026-11-12",
+    "merchCheckedAt": "2026-11-13",
     "posterUrl": "/posters/blu-swing-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260820/20260820-59831.jpg"
   },
@@ -4284,7 +4291,7 @@
         "url": "https://x.com/5sos"
       }
     ],
-    "merchCheckedAt": "2026-11-12",
+    "merchCheckedAt": "2026-11-13",
     "setlists": [
       {
         "label": "EVERYONE'S A STAR! World Tour - 비에하스 아레나 공연",
@@ -4360,7 +4367,7 @@
     ],
     "posterUrl": "/posters/christopher-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260813/20260813-59732.jpg",
-    "merchCheckedAt": "2026-11-12"
+    "merchCheckedAt": "2026-11-13"
   },
   {
     "id": "wonderlivet-2026-11",
@@ -4652,7 +4659,7 @@
     ],
     "posterUrl": "/posters/cherry-blossom-music-concert-winter-changwon-2026-11.webp",
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/08/202608241326143d42ff3b-131e-4369-9ec8-5d50f6ab5c33.jpg",
-    "merchCheckedAt": "2026-11-12",
+    "merchCheckedAt": "2026-11-13",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -6029,7 +6036,7 @@
         "url": "https://nol.yanolja.com/ticket/products/26014103"
       }
     ],
-    "merchCheckedAt": "2026-11-12",
+    "merchCheckedAt": "2026-11-13",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -6827,7 +6834,137 @@
     "addedAt": "2026-11-12",
     "promoBanner": "투모로우바이투게더 'STEAL THE WIND' 서울 - 11.13(금)~15(일) KSPO DOME",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302337_261002_130537.gif",
-    "merchCheckedAt": "2026-11-12"
+    "merchCheckedAt": "2026-11-13",
+    "updates": [
+      {
+        "date": "2026-11-13",
+        "text": "위버스 공지(11/10)로 공식 상품 판매 방식이 나왔어요. 위버스샵에서 사고 현장에서 받는 방식은 11/13(금) 11:30~18:00, 11/14(토) 10:30~17:00, 11/15(일) 09:30~16:00에 주문할 수 있고, 공연장 반경 40km 안에서만 구매돼요. 결제 전에 수령 시간을 골라야 해요. 현장 구매 부스와 수령 부스는 11/13 12:00~18:30, 11/14 11:00~17:30, 11/15 10:00~16:30에 올림픽수영장 야외(KSPO DOME 2-3 게이트 방면)에서 운영해요. 품절되면 일찍 마감될 수 있고 쇼핑백은 주지 않아요. 응원봉은 Ver.2만 무선 연출이 돼요.",
+        "sourceUrl": "https://weverse.io/txt/notice/40871"
+      }
+    ],
+    "merch": [
+      {
+        "label": "Official Light Stick Ver.2",
+        "price": "49,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/73325d7a30f3fcf6135e4bdbf0603bfa.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73904"
+      },
+      {
+        "label": "Official Light Stick Keyring Ver.2",
+        "price": "22,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/56288a1a71e290da1ce72817d0bad0bb.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73905"
+      },
+      {
+        "label": "Mini Photo Card",
+        "price": "8,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/80ffac576faefb74981a3c66dbb1dc24.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73906"
+      },
+      {
+        "label": "Mini Photo Card Set",
+        "price": "80,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/e82b69ec483bf8f55bf6a10dfc24bfcc.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73907"
+      },
+      {
+        "label": "Mini Photo Book",
+        "price": "20,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/d53133d6cd8f1cea32e88ce839b8ff79.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73908"
+      },
+      {
+        "label": "Acrylic Keyring",
+        "price": "18,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/ab196ba31e4d8a59fc8fc81f28998ede.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73909"
+      },
+      {
+        "label": "Photocard Holder",
+        "price": "15,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/2f24782da4403ba6b371c4f2c3a7fe0c.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73910"
+      },
+      {
+        "label": "Image Picket",
+        "price": "10,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/c4079f72aa3b650563c4e81b6da3c7e2.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73911"
+      },
+      {
+        "label": "Photo Slogan",
+        "price": "22,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/ff724ae00c9cae5885f29dc5c3696076.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73912"
+      },
+      {
+        "label": "Lucky Draw (Mini Charm)",
+        "price": "5,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/8a26d5d3190273605e86f09e57ace9e5.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73913"
+      },
+      {
+        "label": "Image Picket Grip",
+        "price": "16,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/f27921796356714bacd1e1a06da96457.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73914"
+      },
+      {
+        "label": "Official Light Stick Deco Band",
+        "price": "9,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/e3ab5921571e3c76fc71da81500163fc.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73915"
+      },
+      {
+        "label": "Worry Stone Keyring",
+        "price": "17,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/21aaac67a0590ea4dad10a6821fe4055.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73916"
+      },
+      {
+        "label": "Sachet",
+        "price": "29,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/0a3883a099989b533802ccbac2871ecc.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73917"
+      },
+      {
+        "label": "Keyring",
+        "price": "16,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/1d78ceba3240906efa1e6dbfe56bf15a.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73918"
+      },
+      {
+        "label": "PPULBATU Hooded Blanket",
+        "price": "45,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/b19aa0d831a905db7d742c267a73375e.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73919"
+      },
+      {
+        "label": "S/S T-Shirt",
+        "price": "49,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/0e4317a87c2c20ee2cae3ee1e1099005.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73920"
+      },
+      {
+        "label": "Zip-Up Hoodie",
+        "price": "109,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/7b0066ba715625775ab7952717b0c06b.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73921"
+      },
+      {
+        "label": "Cardigan",
+        "price": "89,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/6ce6c3e179ea0d5f05cb2db3774f4132.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73922"
+      },
+      {
+        "label": "Beanie",
+        "price": "39,000원",
+        "imageUrl": "https://cdn-contents.weverseshop.io/public/shop/064f9f3aa16f306f9df0b9313b0b7d70.jpg?w=720&q=95",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73923"
+      }
+    ],
+    "mdUrl": "https://shop.weverse.io/ko/shop/KRW/artists/3/categories/927?subCategoryId=8519"
   },
   {
     "id": "yung-kai-seoul-2026-11",
@@ -6868,7 +7005,7 @@
     "addedAt": "2026-11-12",
     "promoBanner": "'blue' yung kai 첫 내한 - 11.16(월) 무신사 개러지",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301121_260916_161747.gif",
-    "merchCheckedAt": "2026-11-12"
+    "merchCheckedAt": "2026-11-13"
   },
   {
     "id": "kings-of-convenience-seoul-2026-11",
@@ -6909,7 +7046,7 @@
     "posterUrl": "/posters/kings-of-convenience-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295591_260708_125621.png",
-    "merchCheckedAt": "2026-11-12"
+    "merchCheckedAt": "2026-11-13"
   },
   {
     "id": "stacey-kent-seoul-2026-11",
@@ -6948,7 +7085,7 @@
     "posterUrl": "/posters/stacey-kent-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299001_260820_150851.jpg",
-    "merchCheckedAt": "2026-11-12"
+    "merchCheckedAt": "2026-11-13"
   },
   {
     "id": "diana-krall-seoul-2026-11",
