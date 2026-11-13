@@ -32,7 +32,7 @@ for (const file of readdirSync(postsDir)) {
 }
 
 // 개인용 페이지(브라우저 저장소로만 내용이 채워짐)는 색인 대상이 아니다
-const SITEMAP_EXCLUDE = new Set(['/my/']);
+const SITEMAP_EXCLUDE = new Set(['/my/', '/lab/stage/']);
 
 // 끝난 지 7일 넘은 공연 중 셋리스트가 없는 페이지는 사이트맵에서 뺀다.
 // 서치콘솔에서 75개가 "발견됨 - 색인 안 됨"에 걸려 있었는데(2026-11), 얇은 지난 공연 페이지가

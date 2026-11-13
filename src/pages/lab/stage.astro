@@ -1,0 +1,572 @@
+---
+// 랜딩 개편 시안 "무대" (2026-11-14). 검색에 안 잡히는 시안 주소(/lab/stage/)로만 열린다.
+// 첫 화면을 공연장 무대처럼: 막이 열리고, 조명이 움직이고, 핀 조명이 지금 소개하는 공연 포스터를 비춘다.
+// 사이트 디자인 규칙대로 그라데이션·블러·글로우 없이 단색 면과 선, 움직임만으로 만든다.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolStrip from '../../components/ToolStrip.astro';
+import PosterCard from '../../components/PosterCard.astro';
+import RecentIssues from '../../components/RecentIssues.astro';
+import { spotlightEvents, hasTicketsOnSale, ticketOpenInDays, upcomingEvents, upcomingOpenStages } from '../../lib/events';
+import { kstShort, kstLabel } from '../../lib/openPhase';
+
+const all = upcomingEvents();
+const next = all.slice(0, 8);
+const picks = spotlightEvents(3, undefined, true);
+const WD = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+const shortName = (artist: string) => artist.replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+function splitName(artist: string) {
+  const m = artist.match(/^(.*?)\s*\((.+)\)\s*$/);
+  return m ? { name: m[1].trim(), sub: m[2].trim() } : { name: artist, sub: '' };
+}
+const items = picks.map((e) => {
+  const d = new Date(e.startDate + 'T00:00:00');
+  const { name, sub } = splitName(e.artist);
+  const open = ticketOpenInDays(e);
+  return {
+    href: `/events/${e.id}/`,
+    name,
+    sub: [sub, e.venue.replace(/\s*\(.*$/, '')].filter(Boolean).join(' · '),
+    date: e.startDate,
+    dot: `${e.startDate.replace(/-/g, '.')} ${WD[d.getDay()]}`,
+    img: e.posterUrl as string,
+    note: open !== null && open <= 14 ? (open === 0 ? '오늘 티켓오픈' : `티켓오픈 D-${open}`) : hasTicketsOnSale(e) ? '예매 오픈중' : '',
+  };
+});
+const first = items[0];
+
+// 전광판·타임테이블: 공식 공지로 확인된 티켓오픈 단계만
+const opens = upcomingOpenStages(6).map(({ event, stage, multi }) => ({
+  href: `/events/${event.id}/`,
+  artist: shortName(event.artist),
+  label: multi ? stage.label : '티켓 오픈',
+  at: stage.at,
+  short: kstShort(stage.at),
+  long: kstLabel(stage.at),
+  venue: event.venue.replace(/\s*\(.*$/, ''),
+}));
+
+// 객석 실루엣: 머리·어깨를 겹쳐 그린 한 줄. 몇 명은 응원봉을 든다. 자리마다 조금씩 다르게(난수 대신 고정 수열).
+const CROWD_W = 1200;
+const crowd = Array.from({ length: 34 }, (_, i) => {
+  const r = 15 + ((i * 7) % 5) * 1.6;
+  const x = 18 + i * (CROWD_W / 33) + (((i * 13) % 7) - 3) * 2;
+  const y = 74 + ((i * 5) % 6) * 3;
+  return { x, y, r, stick: i % 3 === 1, arm: i % 2 === 0 ? -1 : 1, delay: (i * 137) % 1600 };
+});
+
+// 알림 시안에 돌려 보여줄 문구 (실제 발송 문구와 같은 형식)
+const sample = opens[0];
+const notiName = sample ? `${sample.artist} ${sample.label}` : '티켓 오픈';
+const notiTime = sample ? sample.short.split(' ')[1] : '20:00';
+const notis = [
+  { when: '하루 전', title: notiName, body: `내일 ${notiTime}에 열려요. 로그인과 결제수단을 미리 확인해 두세요.` },
+  { when: '30분 전', title: notiName, body: `오늘 ${notiTime} 오픈, 약 30분 남았어요. 예매 창을 띄워 두세요.` },
+  { when: '10분 전', title: notiName, body: `오늘 ${notiTime} 오픈, 약 10분 남았어요. 예매 창을 띄워 두세요.` },
+];
+---
+<BaseLayout wide noindex title="랜딩 시안 - 무대" description="직관냥 랜딩 개편 시안">
+  <script is:inline>document.documentElement.classList.add('js');</script>
+
+  {first && (
+    <section class="st" id="st" data-items={JSON.stringify(items)}>
+      <!-- 무대 장치: 트러스와 조명기, 천천히 움직이는 빛줄기 -->
+      <svg class="rig" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+        <g class="beams">
+          {[150, 420, 780, 1050].map((x, i) => (
+            <polygon class={`beam b${i}`} points={`${x - 7},52 ${x + 7},52 ${x + 150},900 ${x - 150},900`} />
+          ))}
+        </g>
+        <g class="truss">
+          <line x1="0" y1="22" x2="1200" y2="22" />
+          <line x1="0" y1="40" x2="1200" y2="40" />
+          {Array.from({ length: 34 }, (_, i) => (
+            <line x1={i * 36} y1={i % 2 ? 22 : 40} x2={(i + 1) * 36} y2={i % 2 ? 40 : 22} />
+          ))}
+        </g>
+        <g class="lamps">
+          {[150, 420, 600, 780, 1050].map((x) => (
+            <g><rect x={x - 3} y="40" width="6" height="6" /><rect x={x - 11} y="46" width="22" height="12" rx="2" /></g>
+          ))}
+        </g>
+      </svg>
+      <div class="floor" aria-hidden="true"></div>
+
+      <div class="st-in">
+        <div class="info">
+          <p class="kicker mono"><span class="live" aria-hidden="true"></span>NOW ON STAGE <b id="st-idx">01</b><span> / {String(items.length).padStart(2, '0')}</span></p>
+          <h1 class="name"><span class="mask"><span class="rise" id="st-name">{first.name}</span></span></h1>
+          <p class="sub"><span class="mask"><span class="rise" id="st-sub">{first.sub}</span></span></p>
+          <div class="big">
+            <div class="n mono" id="st-num" data-date={first.date}>—</div>
+            <div class="u mono">DAYS LEFT<b id="st-dot">{first.dot}</b><i id="st-note">{first.note}</i></div>
+          </div>
+          <div class="act">
+            <a class="btn p" id="st-link" href={first.href}>공연 정보 보기 →</a>
+            <a class="btn" href="/events/">전체 공연 {all.length}개</a>
+          </div>
+          {items.length > 1 && (
+            <ol class="setlist" id="st-tabs" role="tablist" aria-label="지금 많이 보는 공연">
+              {items.map((it, i) => (
+                <li>
+                  <button type="button" role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-i={i}>
+                    <span class="no mono">{String(i + 1).padStart(2, '0')}</span>
+                    <span class="tt">{it.name}</span>
+                    <span class="bar" aria-hidden="true"><i></i></span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+          )}
+        </div>
+
+        <div class="riser">
+          <div class="spot" id="st-spot" aria-hidden="true"></div>
+          <div class="pool" aria-hidden="true"></div>
+          <a class="pic" id="st-pic-link" href={first.href} aria-label={`${first.name} 공연 정보`}>
+            <img id="st-pic" src={first.img} alt={`${first.name} 포스터`} fetchpriority="high" />
+          </a>
+        </div>
+      </div>
+
+      <!-- 객석: 응원봉이 파도처럼 흔들린다 -->
+      <svg class="crowd" viewBox={`0 0 ${CROWD_W} 120`} preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        {crowd.map((c) => (
+          <g>
+            {c.stick && (
+              <g class="stick" style={`animation-delay:${c.delay}ms`}>
+                <line x1={c.x + c.arm * (c.r + 2)} y1={c.y + 20} x2={c.x + c.arm * (c.r + 9)} y2={c.y - c.r - 12} />
+                <rect class="tip" x={c.x + c.arm * (c.r + 9) - 3.5} y={c.y - c.r - 26} width="7" height="15" rx="3.5" />
+              </g>
+            )}
+            <circle cx={c.x} cy={c.y} r={c.r} />
+            <rect x={c.x - c.r * 1.55} y={c.y + c.r - 3} width={c.r * 3.1} height="70" rx={c.r * 0.9} />
+          </g>
+        ))}
+      </svg>
+
+      <!-- 막 -->
+      <div class="curtain cl" aria-hidden="true"></div>
+      <div class="curtain cr" aria-hidden="true"></div>
+    </section>
+  )}
+
+  <!-- 전광판 -->
+  {opens.length > 0 && (
+    <div class="led" aria-label="다가오는 티켓 오픈">
+      <span class="led-tag mono"><span class="live" aria-hidden="true"></span>TICKET OPEN</span>
+      <div class="led-win">
+        <div class="led-run mono">
+          {[0, 1].map((k) => (
+            <span class="led-set" aria-hidden={k === 1 ? 'true' : undefined}>
+              {opens.map((o) => (
+                <a href={o.href} tabindex={k === 1 ? -1 : undefined}><b>{o.short}</b> {o.artist} <i>{o.label}</i></a>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+
+  <div class="wrap">
+    {opens.length > 0 && (
+      <section class="tt-sec" aria-labelledby="tt-title">
+        <div class="sec-head rv">
+          <h2 id="tt-title" class="mono">TIMETABLE</h2>
+          <a href="/ticket-open/">티켓오픈 일정 전체 →</a>
+        </div>
+        <div class="rows">
+          {opens.slice(0, 4).map((o, i) => (
+            <a class="rv" style={`--d:${i * 70}ms`} href={o.href}>
+              <span class="t mono">{o.short.split(' ')[0]} <span>{o.short.split(' ')[1]}</span></span>
+              <span class="nm">{o.artist}<small>{o.label} · {o.venue}</small></span>
+              <span class="cd mono" data-at={o.at}>—</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- 알림·앱 설치 소개 -->
+    <section class="app" aria-labelledby="app-title">
+      <div class="app-copy rv">
+        <p class="eyebrow mono">TICKET OPEN ALERT</p>
+        <h2 id="app-title">오픈 10분 전,<br />폰이 먼저 알려줘요.</h2>
+        <p class="lead">공연 페이지에서 "오픈 알림 받기"만 눌러 두면 하루 전, 30분 전, 10분 전에 알림이 가요. 가입도 앱 설치도 필요 없어요.</p>
+        <ol class="steps">
+          <li><span class="mono">01</span>보고 싶은 공연의 "오픈 알림 받기"를 눌러요</li>
+          <li><span class="mono">02</span>선예매·일반예매 단계마다 따로 알려드려요</li>
+          <li><span class="mono">03</span>홈 화면에 추가하면 앱처럼 바로 열려요</li>
+        </ol>
+        <div class="act">
+          <a class="btn p" href="/ticket-open/">알림 켤 공연 고르기 →</a>
+          <a class="btn" href="/calendar/">캘린더로 받기</a>
+        </div>
+        <p class="fine">아이폰은 사파리에서 공유 → "홈 화면에 추가"로 설치한 뒤에 알림을 켤 수 있어요.</p>
+      </div>
+      <div class="phone rv" style="--d:120ms" id="phone" data-notis={JSON.stringify(notis)} aria-hidden="true">
+        <div class="ph-notch"></div>
+        <p class="ph-date mono">12월 3일 목요일</p>
+        <p class="ph-clock mono" id="ph-clock">19:50</p>
+        <div class="noti" id="noti">
+          <span class="noti-ic"></span>
+          <div>
+            <p class="noti-top"><b>직관냥</b><span id="noti-when">{notis[2].when}</span></p>
+            <p class="noti-title" id="noti-title">{notis[2].title}</p>
+            <p class="noti-body" id="noti-body">{notis[2].body}</p>
+          </div>
+        </div>
+        <div class="ph-bar"></div>
+      </div>
+    </section>
+
+    <div class="tools rv"><ToolStrip /></div>
+
+    <section class="next" aria-labelledby="next-title">
+      <div class="sec-head rv">
+        <h2 id="next-title" class="mono">LINEUP</h2>
+        <a href="/events/">전체 {all.length}개 →</a>
+      </div>
+      <div class="poster-grid">
+        {next.map((e, i) => (
+          <div class="card-wrap rv" style={`--d:${(i % 4) * 70}ms`}><PosterCard event={e} /></div>
+        ))}
+      </div>
+      <a class="more rv" href="/events/">전체 공연 일정 보기 →</a>
+    </section>
+
+    <div class="rv"><RecentIssues limit={3} heading="공연 소식·이슈" compact /></div>
+  </div>
+</BaseLayout>
+
+<script>
+  import { hms, kstDayDiff } from '../../lib/openPhase';
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (id: string) => document.getElementById(id) as HTMLElement;
+
+  // ── 무대: 막 열기 + 공연 전환 ─────────────────────────────
+  const st = document.getElementById('st');
+  if (st) {
+    type Item = { href: string; name: string; sub: string; date: string; dot: string; img: string; note: string };
+    const items: Item[] = JSON.parse(st.dataset.items || '[]');
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('#st-tabs button'));
+    const HOLD = 6500; // 한 공연을 비추는 시간
+    let cur = 0;
+    let timer = 0;
+    let raf = 0;
+
+    const daysLeft = (iso: string) => {
+      const t = new Date(); t.setHours(0, 0, 0, 0);
+      return Math.ceil((new Date(iso + 'T00:00:00').getTime() - t.getTime()) / 86400000);
+    };
+    // D-day 숫자가 0에서 올라오며 멈춘다
+    const countTo = (n: number) => {
+      const el = $('st-num');
+      cancelAnimationFrame(raf);
+      if (n <= 0) { el.textContent = 'D-DAY'; return; }
+      if (reduce) { el.textContent = String(n); return; }
+      const t0 = performance.now();
+      const step = (t: number) => {
+        const p = Math.min(1, (t - t0) / 700);
+        el.textContent = String(Math.round(n * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+    };
+    const paint = (i: number) => {
+      const it = items[i];
+      $('st-name').textContent = it.name;
+      $('st-sub').textContent = it.sub;
+      $('st-dot').textContent = it.dot;
+      $('st-note').textContent = it.note;
+      $('st-idx').textContent = String(i + 1).padStart(2, '0');
+      ($('st-link') as HTMLAnchorElement).href = it.href;
+      ($('st-pic-link') as HTMLAnchorElement).href = it.href;
+      const img = $('st-pic') as HTMLImageElement;
+      img.src = it.img; img.alt = `${it.name} 포스터`;
+      countTo(daysLeft(it.date));
+      tabs.forEach((b, j) => b.setAttribute('aria-selected', String(j === i)));
+    };
+    // 전환: 핀 조명이 꺼지고 → 내용이 바뀌고 → 조명이 깜빡이며 다시 켜진다
+    const show = (i: number) => {
+      cur = i;
+      if (reduce) { paint(i); return; }
+      st.classList.add('is-dark');
+      window.setTimeout(() => {
+        paint(i);
+        st.classList.remove('is-dark');
+        st.classList.remove('is-cue');
+        void st.offsetWidth; // 같은 애니메이션을 다시 시작시키기 위해
+        st.classList.add('is-cue');
+      }, 260);
+    };
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (reduce || items.length < 2) return;
+      st.style.setProperty('--hold', `${HOLD}ms`);
+      st.classList.remove('is-running'); void st.offsetWidth; st.classList.add('is-running');
+      timer = window.setTimeout(() => { show((cur + 1) % items.length); schedule(); }, HOLD);
+    };
+    const pause = () => { window.clearTimeout(timer); st.classList.remove('is-running'); };
+
+    items.forEach((it) => { const im = new Image(); im.src = it.img; });
+    tabs.forEach((b) => b.addEventListener('click', () => { show(Number(b.dataset.i)); schedule(); }));
+    st.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pause(); });
+    st.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') schedule(); });
+    st.addEventListener('focusin', pause);
+    st.addEventListener('focusout', schedule);
+    document.addEventListener('visibilitychange', () => (document.hidden ? pause() : schedule()));
+
+    paint(0);
+    // 막은 방문(탭)마다 한 번만 연다 - 뒤로 가기로 돌아올 때마다 기다리게 하지 않는다
+    let seen = false;
+    try { seen = sessionStorage.getItem('krconcerts:curtain') === '1'; sessionStorage.setItem('krconcerts:curtain', '1'); } catch { /* 저장소를 못 쓰면 매번 연다 */ }
+    if (reduce || seen) {
+      st.classList.add('is-open', 'no-curtain', 'is-cue');
+      schedule();
+    } else {
+      requestAnimationFrame(() => requestAnimationFrame(() => st.classList.add('is-open')));
+      window.setTimeout(() => { st.classList.add('is-cue'); schedule(); }, 900);
+    }
+  }
+
+  // ── 스크롤하면 아래 구역이 차례로 올라온다 ─────────────────
+  const rv = Array.from(document.querySelectorAll<HTMLElement>('.rv'));
+  if (reduce || !('IntersectionObserver' in window)) {
+    rv.forEach((el) => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach((el) => io.observe(el));
+  }
+
+  // ── 타임테이블 남은 시간 ───────────────────────────────────
+  const cds = Array.from(document.querySelectorAll<HTMLElement>('.cd[data-at]'));
+  const tickCd = () => {
+    const now = Date.now();
+    cds.forEach((el) => {
+      const at = new Date(el.dataset.at || '').getTime();
+      const left = at - now;
+      el.classList.toggle('hot', left > 0 && left < 86400_000);
+      el.textContent = left <= 0 ? '오픈' : left < 86400_000 ? hms(left) : `D-${kstDayDiff(el.dataset.at || '', now)}`;
+    });
+  };
+  if (cds.length > 0) { tickCd(); window.setInterval(tickCd, 1000); }
+
+  // ── 폰 화면: 알림 세 가지가 차례로 내려온다 ─────────────────
+  const phone = document.getElementById('phone');
+  if (phone && !reduce) {
+    const list: { when: string; title: string; body: string }[] = JSON.parse(phone.dataset.notis || '[]');
+    const clocks = ['20:00', '19:30', '19:50'];
+    const noti = $('noti');
+    let k = 0;
+    let started = false;
+    const play = () => {
+      const n = list[k % list.length];
+      $('noti-when').textContent = n.when;
+      $('noti-title').textContent = n.title;
+      $('noti-body').textContent = n.body;
+      $('ph-clock').textContent = clocks[k % clocks.length];
+      noti.classList.remove('drop'); void noti.offsetWidth; noti.classList.add('drop');
+      k += 1;
+    };
+    new IntersectionObserver((entries, io) => {
+      if (entries.some((e) => e.isIntersecting) && !started) {
+        started = true; io.disconnect();
+        play(); window.setInterval(play, 3600);
+      }
+    }, { threshold: 0.4 }).observe(phone);
+  }
+</script>
+
+<style>
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+  .live { display: inline-block; width: 7px; height: 7px; margin-right: 0.6rem; background: #ff5fa2; animation: blink 1.4s steps(2, jump-none) infinite; }
+  @keyframes blink { 50% { opacity: 0.15; } }
+
+  /* ── 무대 ── */
+  .st {
+    position: relative; overflow: hidden; isolation: isolate;
+    min-height: max(660px, calc(100svh - 68px));
+    background: #121215;
+    display: flex; flex-direction: column;
+  }
+  .rig { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .truss line { stroke: #34343b; stroke-width: 1.5; }
+  .lamps rect { fill: #3a3a42; }
+  .beam { fill: #ededea; opacity: 0.045; transform-box: fill-box; transform-origin: 50% 0; animation: sweep 9s ease-in-out infinite alternate; }
+  .beam.b0 { animation-duration: 11s; --a: -6deg; --b: 22deg; }
+  .beam.b1 { animation-duration: 8s; --a: -18deg; --b: 12deg; animation-delay: -3s; }
+  .beam.b2 { animation-duration: 9.5s; --a: -12deg; --b: 18deg; animation-delay: -5s; }
+  .beam.b3 { animation-duration: 12s; --a: -22deg; --b: 6deg; animation-delay: -2s; }
+  @keyframes sweep { from { transform: rotate(var(--a, -14deg)); } to { transform: rotate(var(--b, 14deg)); } }
+  /* 무대 바닥: 뒷벽보다 어두운 단색 면과 경계선 */
+  .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 21%; background: #0b0b0d; border-top: 1px solid #2a2a30; z-index: 0; }
+
+  .st-in {
+    position: relative; z-index: 2; flex: 1;
+    display: grid; grid-template-columns: 1fr minmax(280px, 34%); gap: 3rem; align-items: center;
+    padding: 5.2rem max(24px, calc((100vw - 1180px) / 2)) 7.5rem;
+  }
+  .info { min-width: 0; }
+  .kicker { display: flex; align-items: center; margin: 0 0 1.3rem; font-size: 0.78rem; letter-spacing: .14em; color: #8f8f97; }
+  .kicker b { color: #f4f4f0; font-weight: 500; margin-left: 0.9rem; }
+  .mask { display: block; overflow: hidden; }
+  .rise { display: block; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
+  .st.is-dark .rise { transform: translateY(105%); transition-duration: .22s; transition-timing-function: ease-in; }
+  .st:not(.is-open) .rise { transform: translateY(105%); }
+  .name { margin: 0; font-size: clamp(2.5rem, 7vw, 7rem); line-height: 1; letter-spacing: -.055em; font-weight: 900; overflow-wrap: anywhere; }
+  .name .rise { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; padding-bottom: 0.08em; }
+  .sub { margin: 0.9rem 0 0; font-size: 1.12rem; font-weight: 600; color: #b5b5bd; }
+  .sub .rise { transition-delay: .06s; }
+  .big { display: flex; align-items: baseline; gap: 1.1rem; margin-top: clamp(1.1rem, 3vw, 2.4rem); }
+  .big .n { font-size: clamp(4.2rem, 9.4vw, 9rem); line-height: .85; font-weight: 900; letter-spacing: -.07em; color: #f4f4f0; min-width: 1.2em; }
+  .big .u { font-size: 0.78rem; letter-spacing: .18em; color: #8f8f97; line-height: 1.8; }
+  .big .u b { display: block; font-size: 1rem; letter-spacing: .02em; color: #f4f4f0; font-weight: 700; }
+  .big .u i { display: block; font-style: normal; letter-spacing: .04em; color: #ff5fa2; }
+  .big .u i:empty { display: none; }
+  .act { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.7rem; }
+  .btn { padding: 0.95rem 1.6rem; border-radius: 4px; border: 1px solid #3a3a42; font-weight: 800; font-size: 0.95rem; color: #f4f4f0; text-decoration: none; background: #121215; transition: border-color .15s, transform .15s; }
+  .btn:hover { border-color: #fff; transform: translateY(-2px); }
+  .btn.p { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+  .btn.p:hover { background: #ff7bb2; border-color: #ff7bb2; }
+
+  /* 세트리스트 모양의 공연 선택 */
+  .setlist { list-style: none; margin: 2rem 0 0; padding: 0; max-width: 30rem; border-top: 1px solid #2a2a30; }
+  .setlist button { all: unset; box-sizing: border-box; cursor: pointer; position: relative; display: flex; align-items: baseline; gap: 0.9rem; width: 100%; padding: 0.62rem 0; border-bottom: 1px solid #2a2a30; color: #8f8f97; font-weight: 700; font-size: 0.95rem; transition: color .15s, padding-left .2s; }
+  .setlist button:hover { color: #f4f4f0; padding-left: 0.4rem; }
+  .setlist button[aria-selected="true"] { color: #f4f4f0; }
+  .setlist button:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 2px; }
+  .setlist .no { font-size: 0.75rem; letter-spacing: .08em; }
+  .setlist button[aria-selected="true"] .no { color: #ff5fa2; }
+  .setlist .tt { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .setlist .bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; }
+  .setlist .bar i { display: block; height: 100%; width: 100%; background: #ff5fa2; transform: scaleX(0); transform-origin: 0 50%; }
+  .st.is-running .setlist button[aria-selected="true"] .bar i { animation: fill var(--hold, 6500ms) linear forwards; }
+  @keyframes fill { to { transform: scaleX(1); } }
+
+  /* 포스터가 서 있는 자리 + 핀 조명 */
+  .riser { position: relative; justify-self: end; width: 100%; max-width: 440px; }
+  .pic { position: relative; z-index: 2; display: block; transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .25s; }
+  .pic img { display: block; width: 100%; aspect-ratio: 3 / 4.1; object-fit: cover; background: #151517; }
+  .st.is-dark .pic { opacity: 0; transform: translateY(14px); }
+  .st:not(.is-open) .pic { opacity: 0; transform: translateY(14px); }
+  .pic:hover { transform: translateY(-4px); }
+  /* 위 조명기에서 포스터로 떨어지는 빛: 사다리꼴 단색 면 */
+  .spot { position: absolute; z-index: 1; left: -14%; right: -14%; top: -60vh; bottom: -1.6rem; background: #ff5fa2; opacity: 0; clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%); }
+  .pool { position: absolute; z-index: 1; left: -16%; right: -16%; bottom: -2.6rem; height: 2.4rem; border-radius: 50%; background: #ff5fa2; opacity: 0; }
+  .st.is-cue .spot { animation: cue .7s steps(1, end) forwards; }
+  .st.is-cue .pool { animation: cue-pool .7s steps(1, end) forwards; }
+  .st.is-dark .spot, .st.is-dark .pool { animation: none; opacity: 0; }
+  @keyframes cue { 0% { opacity: 0; } 12% { opacity: .11; } 22% { opacity: .02; } 34% { opacity: .11; } 46% { opacity: .05; } 58%, 100% { opacity: .09; } }
+  @keyframes cue-pool { 0% { opacity: 0; } 12% { opacity: .2; } 22% { opacity: .04; } 34% { opacity: .2; } 46% { opacity: .08; } 58%, 100% { opacity: .16; } }
+
+  /* 객석 */
+  .crowd { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: clamp(64px, 11vw, 120px); z-index: 3; pointer-events: none; }
+  .crowd circle, .crowd rect { fill: #050506; }
+  .crowd line { stroke: #050506; stroke-width: 6; stroke-linecap: round; }
+  .crowd .tip { fill: #c9c9cf; }
+  .stick { transform-box: fill-box; transform-origin: 50% 100%; animation: wave 1.6s ease-in-out infinite alternate; }
+  @keyframes wave { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
+
+  /* 막: 주름은 세로 선으로만 */
+  .curtain { position: absolute; top: 0; bottom: 0; width: 50.5%; z-index: 5; background: #0b0b0d; transition: transform 1s cubic-bezier(.7, 0, .2, 1); }
+  .curtain::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, #1c1c20 0 1px, transparent 1px 44px); }
+  .curtain.cl { left: 0; border-right: 1px solid #2a2a30; }
+  .curtain.cr { right: 0; border-left: 1px solid #2a2a30; }
+  .st.is-open .cl { transform: translateX(-101%); }
+  .st.is-open .cr { transform: translateX(101%); }
+  .st.no-curtain .curtain { display: none; }
+  html:not(.js) .curtain { display: none; }
+  html:not(.js) .rise, html:not(.js) .pic { transform: none !important; opacity: 1 !important; }
+
+  /* ── 전광판 ── */
+  .led { display: flex; align-items: stretch; border-top: 1px solid #2a2a30; border-bottom: 1px solid #2a2a30; background: #0b0b0d; }
+  .led-tag { flex: none; display: flex; align-items: center; padding: 0 1.1rem 0 max(24px, calc((100vw - 1180px) / 2)); font-size: 0.72rem; letter-spacing: .14em; color: #f4f4f0; border-right: 1px solid #2a2a30; }
+  .led-win { overflow: hidden; flex: 1; min-width: 0; }
+  .led-run { display: flex; width: max-content; animation: run 36s linear infinite; }
+  .led-win:hover .led-run, .led-win:focus-within .led-run { animation-play-state: paused; }
+  .led-set { display: flex; }
+  .led-set a { display: block; padding: 0.85rem 1.6rem; font-size: 0.86rem; color: #c9c9cf; text-decoration: none; white-space: nowrap; border-right: 1px solid #1c1c20; }
+  .led-set a:hover { color: #fff; }
+  .led-set b { color: #f4f4f0; margin-right: 0.5rem; }
+  .led-set i { font-style: normal; color: #8f8f97; margin-left: 0.4rem; }
+  @keyframes run { to { transform: translateX(-50%); } }
+
+  /* ── 아래 구역 ── */
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 3.2rem 0 0.8rem; border-bottom: 1px solid #2a2a30; }
+  .sec-head h2 { margin: 0; font-size: 0.82rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .sec-head a { font-size: 0.85rem; color: #8f8f97; text-decoration: none; white-space: nowrap; }
+  .sec-head a:hover { color: #f4f4f0; }
+
+  html.js .rv { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s cubic-bezier(.2, .8, .2, 1); transition-delay: var(--d, 0ms); }
+  html.js .rv.in { opacity: 1; transform: none; }
+
+  .rows a { display: grid; grid-template-columns: 9.5rem 1fr auto; column-gap: 1.6rem; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid #2a2a30; color: #f4f4f0; text-decoration: none; }
+  .rows a:hover .nm { transform: translateX(0.6rem); }
+  .rows .t { font-size: clamp(1.6rem, 3.4vw, 2.6rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; white-space: nowrap; }
+  .rows .t span { display: block; font-size: 0.42em; letter-spacing: .02em; color: #8f8f97; margin-top: 0.35rem; }
+  .rows .nm { min-width: 0; font-size: clamp(1.05rem, 2vw, 1.5rem); font-weight: 800; letter-spacing: -.02em; transition: transform .2s; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rows .nm small { display: block; margin-top: 0.2rem; font-size: 0.82rem; font-weight: 500; letter-spacing: 0; color: #8f8f97; overflow: hidden; text-overflow: ellipsis; }
+  .rows .cd { font-size: 0.95rem; font-weight: 700; padding: 0.35rem 0.7rem; border: 1px solid #3a3a42; border-radius: 4px; color: #c9c9cf; white-space: nowrap; }
+  .rows .cd.hot { border-color: #ff5fa2; color: #ff5fa2; }
+
+  /* 알림 소개 */
+  .app { display: grid; grid-template-columns: 1fr auto; gap: 3rem clamp(2rem, 7vw, 6rem); align-items: center; margin-top: 4.5rem; padding: clamp(1.6rem, 4vw, 3.2rem); border: 1px solid #2a2a30; border-radius: 8px; background: #121215; }
+  .eyebrow { margin: 0 0 1rem; font-size: 0.75rem; letter-spacing: .14em; color: #8f8f97; }
+  .app h2 { margin: 0; font-size: clamp(1.9rem, 4.6vw, 3.4rem); line-height: 1.12; letter-spacing: -.045em; font-weight: 900; }
+  .lead { margin: 1.1rem 0 0; max-width: 34rem; color: #c4c4c8; line-height: 1.7; }
+  .steps { list-style: none; margin: 1.5rem 0 0; padding: 0; max-width: 30rem; border-top: 1px solid #2a2a30; }
+  .steps li { display: flex; gap: 1rem; align-items: baseline; padding: 0.7rem 0; border-bottom: 1px solid #2a2a30; font-weight: 600; font-size: 0.95rem; }
+  .steps span { font-size: 0.75rem; color: #8f8f97; letter-spacing: .08em; }
+  .fine { margin: 1rem 0 0; font-size: 0.8rem; color: #8f8f97; }
+  .phone { position: relative; width: 250px; height: 480px; padding: 2.6rem 0.8rem 0; border: 2px solid #3a3a42; border-radius: 34px; background: #0b0b0d; overflow: hidden; }
+  .ph-notch { position: absolute; top: 0.7rem; left: 50%; width: 72px; height: 18px; margin-left: -36px; border-radius: 9px; background: #1c1c20; }
+  .ph-date { margin: 1.2rem 0 0; text-align: center; font-size: 0.72rem; color: #8f8f97; }
+  .ph-clock { margin: 0.1rem 0 1.4rem; text-align: center; font-size: 3.2rem; font-weight: 800; letter-spacing: -.04em; line-height: 1; color: #f4f4f0; }
+  .noti { display: flex; gap: 0.6rem; padding: 0.7rem; border-radius: 8px; background: #1c1c20; border: 1px solid #2a2a30; }
+  .noti.drop { animation: drop .5s cubic-bezier(.2, .9, .2, 1) both; }
+  @keyframes drop { from { transform: translateY(-140%); opacity: 0; } to { transform: none; opacity: 1; } }
+  .noti-ic { flex: none; width: 28px; height: 28px; border-radius: 6px; background: #0e0e10; border: 2px solid #ff5fa2; }
+  .noti p { margin: 0; }
+  .noti-top { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.66rem; color: #8f8f97; }
+  .noti-top b { color: #c9c9cf; font-weight: 600; }
+  .noti-title { font-size: 0.8rem; font-weight: 800; color: #f4f4f0; line-height: 1.35; margin-top: 0.15rem !important; }
+  .noti-body { font-size: 0.72rem; color: #c4c4c8; line-height: 1.45; margin-top: 0.15rem !important; }
+  .ph-bar { position: absolute; bottom: 0.6rem; left: 50%; width: 90px; height: 4px; margin-left: -45px; border-radius: 2px; background: #3a3a42; }
+
+  .tools { margin-top: 3rem; }
+  .poster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem 0.9rem; padding-top: 1.4rem; }
+  @media (min-width: 720px) { .poster-grid { grid-template-columns: repeat(4, 1fr); } }
+  .card-wrap { transition-property: opacity, transform; }
+  .more { display: block; margin: 2.2rem 0 0.5rem; padding: 1.4rem; border: 1px solid #3a3a42; border-radius: 4px; text-align: center; font-weight: 900; font-size: 1.2rem; color: #f4f4f0; text-decoration: none; }
+  .more:hover { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+
+  @media (max-width: 860px) {
+    .st-in { grid-template-columns: 1fr; gap: 3.4rem; padding: 4.4rem 20px 6rem; }
+    .riser { order: -1; justify-self: center; max-width: min(56vw, 250px); }
+    /* 좁은 화면에선 포스터가 빛을 다 가리지 않게 빛줄기를 더 넓게 편다 */
+    .spot { top: -30vh; left: -42%; right: -42%; clip-path: polygon(47% 0, 53% 0, 94% 100%, 6% 100%); }
+    .pool { left: -36%; right: -36%; }
+    .setlist { margin-top: 1.4rem; }
+    .act .btn { flex: 1 1 auto; text-align: center; }
+    .app { grid-template-columns: 1fr; }
+    .phone { justify-self: center; }
+    .rows a { grid-template-columns: 5.6rem 1fr auto; column-gap: 0.9rem; }
+    .led-tag { padding-left: 20px; }
+  }
+  @media (max-width: 480px) {
+    .rows .cd { font-size: 0.8rem; padding: 0.25rem 0.45rem; }
+    .wrap { padding: 0 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .beam, .stick, .led-run, .live { animation: none; }
+    .rise, .pic, .curtain { transition: none; }
+    .st .spot { opacity: .09; }
+    .st .pool { opacity: .16; }
+  }
+</style>
