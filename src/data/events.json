@@ -7695,10 +7695,10 @@
     "startDate": "2027-01-23",
     "endDate": "2027-01-24",
     "description": "애니송 DJ 이벤트 김치쿠라(KIMCHIKURA)가 일본 애니송 페스티벌 ANISAMA와 함께 여는 이틀짜리 애니송 페스티벌이에요. 2027년 1월 23일(토)·24일(일) 서울 블루스퀘어 우리WON뱅킹홀에서 열려요. 사사키 리코는 1일차, 치하라 미노리는 2일차 출연을 각자 공식 사이트에서 알렸어요. 전체 출연진과 가격은 아직 원문으로 확인하지 못했어요.",
-    "schedule": "1/23(토)·1/24(일) 양일 오후 2시 30분 입장, 오후 4시 시작 (사사키 리코 공식 사이트 공지 기준)",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. NOL 원문 미확인 - 출연 아티스트 공식 공지 기반. 티켓 오픈 시각은 NOL 오픈 예정 목록에 나온 값이고, 선예매·일반예매 구분은 확인하지 못했어요.",
+    "schedule": "1/23(토)·1/24(일) 양일 오후 2시 30분 입장, 오후 4시 시작, 러닝타임 240분 (출연 아티스트 공식 공지·NOL 상품 페이지 기준)",
+    "note": "김치쿠라와 일본 애니송 페스티벌 Animelo Summer Live(애니사마)가 함께 여는 이틀짜리 실내 페스티벌이에요. 1일권 187,000원, 12세 이상 관람, NOL 티켓 단독 판매. 예매는 11/18(수) DAY1 오후 7시, DAY2 오후 8시에 따로 열려요(NOL 상품 페이지 기준). 선예매 여부는 확인하지 못했어요.",
     "ticketingAnnounced": true,
-    "ticketOpenDate": "2026-11-18 오후 7시 (NOL 티켓 단독판매, 오픈 예정 목록 기준)",
+    "ticketOpenDate": "2026-11-18 오후 7시 (DAY1), 오후 8시 (DAY2) - NOL 티켓 단독판매",
     "ticketOpenAt": "2026-11-18T19:00:00+09:00",
     "sources": [
       {
@@ -7712,8 +7712,37 @@
       {
         "label": "NOL 티켓 콘서트 오픈 예정 목록 (KIMCHIKURA x ANISAMA SEOUL 2027, 11.18 19:00, 블루스퀘어 우리WON뱅킹홀)",
         "url": "https://nol.yanolja.com/ticket/display/upcoming?genre=concert"
+      },
+      {
+        "label": "KIMCHIKURA x ANISAMA SEOUL 2027 - NOL 티켓 상품 페이지 (가격·예매 오픈·출연진)",
+        "url": "https://nol.yanolja.com/ticket/products/26016535"
       }
     ],
-    "addedAt": "2026-11-14"
+    "addedAt": "2026-11-14",
+    "ticketOpens": [
+      {
+        "label": "DAY1(1/23) 예매",
+        "at": "2026-11-18T19:00:00+09:00"
+      },
+      {
+        "label": "DAY2(1/24) 예매",
+        "at": "2026-11-18T20:00:00+09:00"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26016535"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-11-14",
+        "text": "NOL 상품 페이지가 열렸어요. 1일권 187,000원, 12세 이상, 러닝타임 240분. 예매는 11/18(수) DAY1 오후 7시, DAY2 오후 8시에 차례로 열려요.",
+        "sourceUrl": "https://nol.yanolja.com/ticket/products/26016535"
+      }
+    ],
+    "posterUrl": "/posters/kimchikura-anisama-seoul-2027-01.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016535_p.gif"
   }
 ]
