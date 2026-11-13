@@ -7656,5 +7656,64 @@
       }
     ],
     "addedAt": "2026-11-13"
+  },
+  {
+    "id": "tiffany-day-seoul-2027-02",
+    "artist": "티파니 데이 (Tiffany Day)",
+    "genre": "팝",
+    "venue": "무신사 개러지",
+    "city": "서울",
+    "startDate": "2027-02-03",
+    "endDate": "2027-02-03",
+    "description": "미국 로스앤젤레스에서 활동하는 싱어송라이터 티파니 데이(Tiffany Day)의 첫 내한공연이에요. 2027년 2월 3일(수) 서울 무신사 개러지에서 열리고, 이틀 뒤 도쿄 공연으로 이어져요. 티켓은 2026년 11월 17일(화) 낮 12시 NOL 티켓에서 열려요. 공연 시작 시각과 가격은 아직 확인하지 못했어요.",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. NOL 원문 미확인 - 보도 기반(공연일·장소는 해외 매체 2곳, 오픈 시각은 Dork 기사와 NOL 오픈 예정 목록이 일치).",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-17 낮 12시",
+    "ticketOpenAt": "2026-11-17T12:00:00+09:00",
+    "sources": [
+      {
+        "label": "Tiffany Day is playing Coachella twice and has announced a spring tour of North America and Asia - Dork (2026-11-12)",
+        "url": "https://readdork.com/news/tiffany-day-playing-coachella-twice-spring-tour"
+      },
+      {
+        "label": "Tiffany Day Takes ‘Halo’ Around The World With Massive 2026–2027 Tour - That Eric Alper (2026-11-12)",
+        "url": "https://www.thatericalper.com/2026/11/12/tiffany-day-takes-halo-around-the-world-with-massive-2026-2027-tour/"
+      },
+      {
+        "label": "NOL 티켓 콘서트 오픈 예정 목록 (티파니 데이 첫 내한공연, 11.17 12:00, 무신사 개러지)",
+        "url": "https://nol.yanolja.com/ticket/display/upcoming?genre=concert"
+      }
+    ],
+    "addedAt": "2026-11-14"
+  },
+  {
+    "id": "kimchikura-anisama-seoul-2027-01",
+    "artist": "KIMCHIKURA x ANISAMA SEOUL 2027 (김치쿠라 x 애니사마)",
+    "genre": "페스티벌",
+    "venue": "블루스퀘어 우리WON뱅킹홀",
+    "city": "서울",
+    "startDate": "2027-01-23",
+    "endDate": "2027-01-24",
+    "description": "애니송 DJ 이벤트 김치쿠라(KIMCHIKURA)가 일본 애니송 페스티벌 ANISAMA와 함께 여는 이틀짜리 애니송 페스티벌이에요. 2027년 1월 23일(토)·24일(일) 서울 블루스퀘어 우리WON뱅킹홀에서 열려요. 사사키 리코는 1일차, 치하라 미노리는 2일차 출연을 각자 공식 사이트에서 알렸어요. 전체 출연진과 가격은 아직 원문으로 확인하지 못했어요.",
+    "schedule": "1/23(토)·1/24(일) 양일 오후 2시 30분 입장, 오후 4시 시작 (사사키 리코 공식 사이트 공지 기준)",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. NOL 원문 미확인 - 출연 아티스트 공식 공지 기반. 티켓 오픈 시각은 NOL 오픈 예정 목록에 나온 값이고, 선예매·일반예매 구분은 확인하지 못했어요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-18 오후 7시 (NOL 티켓 단독판매, 오픈 예정 목록 기준)",
+    "ticketOpenAt": "2026-11-18T19:00:00+09:00",
+    "sources": [
+      {
+        "label": "「KIMCHIKURA x ANISAMA SEOUL 2027」に出演決定 - 茅原実里 공식 사이트 (2026-10-23)",
+        "url": "https://minorichihara.com/blogs/news/202610232000"
+      },
+      {
+        "label": "KIMCHIKURA×ANISAMA SEOUL 2027 출연 공지 - 佐々木李子 공식 사이트 뉴스 (2026-10-23)",
+        "url": "https://sasakirico.com/news.html"
+      },
+      {
+        "label": "NOL 티켓 콘서트 오픈 예정 목록 (KIMCHIKURA x ANISAMA SEOUL 2027, 11.18 19:00, 블루스퀘어 우리WON뱅킹홀)",
+        "url": "https://nol.yanolja.com/ticket/display/upcoming?genre=concert"
+      }
+    ],
+    "addedAt": "2026-11-14"
   }
 ]
