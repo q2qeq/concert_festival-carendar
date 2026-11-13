@@ -1,13 +1,21 @@
 ---
-// 랜딩 개편 시안 "무대" (2026-11-14). 검색에 안 잡히는 시안 주소(/lab/stage/)로만 열린다.
-// 첫 화면을 공연장 무대처럼: 막이 열리고, 조명이 움직이고, 핀 조명이 지금 소개하는 공연 포스터를 비춘다.
-// 사이트 디자인 규칙대로 그라데이션·블러·글로우 없이 단색 면과 선, 움직임만으로 만든다.
+// 랜딩 개편 시안 "무대" v2 (2026-11-14). 검색에 안 잡히는 시안 주소(/lab/stage/)로만 열린다.
+//
+// 참고한 것: DICE(큰 글자와 포스터만으로 끝내는 절제), Kelvin 페스티벌(화면을 꽉 채운 워드마크 위에
+// 포스터를 겹쳐 깊이를 만들고, 정보는 모서리의 작은 블록으로), Paaspop(첫 화면을 하나의 장면으로).
+// 그래서 무대 소품(트러스·막·객석 그림)은 다 걷어내고 세 가지만 남겼다.
+//   1) 빛: 캔버스에 그리는 조명. 색은 그 공연 포스터에서 뽑는다.
+//   2) 글자: 화면 폭을 채우는 아티스트 이름. 빛이 지나갈 때만 밝아진다.
+//   3) 포스터: 무대의 주인공. 포인터를 따라 살짝 기운다.
+// 사이트 공통 규칙(그라데이션·블러 금지)은 이 첫 화면의 조명에 한해 예외로 뒀다.
+import path from 'node:path';
+import sharp from 'sharp';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolStrip from '../../components/ToolStrip.astro';
 import PosterCard from '../../components/PosterCard.astro';
 import RecentIssues from '../../components/RecentIssues.astro';
 import { spotlightEvents, hasTicketsOnSale, ticketOpenInDays, upcomingEvents, upcomingOpenStages } from '../../lib/events';
-import { kstShort, kstLabel } from '../../lib/openPhase';
+import { kstShort } from '../../lib/openPhase';
 
 const all = upcomingEvents();
 const next = all.slice(0, 8);
@@ -18,224 +26,211 @@ function splitName(artist: string) {
   const m = artist.match(/^(.*?)\s*\((.+)\)\s*$/);
   return m ? { name: m[1].trim(), sub: m[2].trim() } : { name: artist, sub: '' };
 }
-const items = picks.map((e) => {
+// 배경에 크게 깔 워드마크: 이름에 들어 있는 로마자 표기를 쓰고, 없으면 첫 단어.
+function wordmark(artist: string) {
+  const latin = artist.match(/[A-Za-z][A-Za-z0-9.&'’-]*(?: [A-Za-z][A-Za-z0-9.&'’-]*)*/g) ?? [];
+  const pick = latin.find((s) => s.length >= 3 && !/^(world|tour|live|concert|in|the)\b/i.test(s));
+  return (pick ?? artist.split(/[\s(]/)[0]).toUpperCase().slice(0, 18);
+}
+// 포스터에서 조명 색을 뽑는다: 작게 줄인 뒤 채도가 높은 픽셀들의 평균 색상(hue)을 쓰고,
+// 밝기는 조명답게 일정하게 맞춘다. 무채색 포스터면 따뜻한 백색 조명.
+async function lightColor(posterUrl: string): Promise<[number, number, number]> {
+  const WARM: [number, number, number] = [255, 226, 190];
+  try {
+    const { data } = await sharp(path.join(process.cwd(), 'public', posterUrl)).resize(24, 32, { fit: 'cover' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    let sx = 0, sy = 0, sw = 0;
+    for (let i = 0; i < data.length; i += 3) {
+      const r = data[i] / 255, g = data[i + 1] / 255, b = data[i + 2] / 255;
+      const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+      if (d < 0.18 || mx < 0.25) continue;
+      const h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
+      const w = d * d; // 선명한 색일수록 크게 반영
+      sx += Math.cos((h * Math.PI) / 3) * w; sy += Math.sin((h * Math.PI) / 3) * w; sw += w;
+    }
+    if (sw < 4) return WARM;
+    const hue = ((Math.atan2(sy, sx) * 180) / Math.PI + 360) % 360;
+    // HSL(h, 62%, 68%) → RGB
+    const s = 0.62, l = 0.68, a = s * Math.min(l, 1 - l);
+    const ch = (n: number) => { const k = (n + hue / 30) % 12; return Math.round(255 * (l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1)))); };
+    return [ch(0), ch(8), ch(4)];
+  } catch {
+    return WARM;
+  }
+}
+
+const items = await Promise.all(picks.map(async (e) => {
   const d = new Date(e.startDate + 'T00:00:00');
   const { name, sub } = splitName(e.artist);
   const open = ticketOpenInDays(e);
   return {
     href: `/events/${e.id}/`,
     name,
+    mark: wordmark(e.artist),
     sub: [sub, e.venue.replace(/\s*\(.*$/, '')].filter(Boolean).join(' · '),
     date: e.startDate,
     dot: `${e.startDate.replace(/-/g, '.')} ${WD[d.getDay()]}`,
     img: e.posterUrl as string,
+    rgb: await lightColor(e.posterUrl as string),
     note: open !== null && open <= 14 ? (open === 0 ? '오늘 티켓오픈' : `티켓오픈 D-${open}`) : hasTicketsOnSale(e) ? '예매 오픈중' : '',
   };
-});
+}));
 const first = items[0];
 
-// 전광판·타임테이블: 공식 공지로 확인된 티켓오픈 단계만
 const opens = upcomingOpenStages(6).map(({ event, stage, multi }) => ({
   href: `/events/${event.id}/`,
   artist: shortName(event.artist),
   label: multi ? stage.label : '티켓 오픈',
   at: stage.at,
   short: kstShort(stage.at),
-  long: kstLabel(stage.at),
   venue: event.venue.replace(/\s*\(.*$/, ''),
 }));
 
-// 객석 실루엣: 머리·어깨를 겹쳐 그린 한 줄. 몇 명은 응원봉을 든다. 자리마다 조금씩 다르게(난수 대신 고정 수열).
-const CROWD_W = 1200;
-const crowd = Array.from({ length: 34 }, (_, i) => {
-  const r = 15 + ((i * 7) % 5) * 1.6;
-  const x = 18 + i * (CROWD_W / 33) + (((i * 13) % 7) - 3) * 2;
-  const y = 74 + ((i * 5) % 6) * 3;
-  return { x, y, r, stick: i % 3 === 1, arm: i % 2 === 0 ? -1 : 1, delay: (i * 137) % 1600 };
-});
-
-// 알림 시안에 돌려 보여줄 문구 (실제 발송 문구와 같은 형식)
 const sample = opens[0];
 const notiName = sample ? `${sample.artist} ${sample.label}` : '티켓 오픈';
 const notiTime = sample ? sample.short.split(' ')[1] : '20:00';
 const notis = [
-  { when: '하루 전', title: notiName, body: `내일 ${notiTime}에 열려요. 로그인과 결제수단을 미리 확인해 두세요.` },
-  { when: '30분 전', title: notiName, body: `오늘 ${notiTime} 오픈, 약 30분 남았어요. 예매 창을 띄워 두세요.` },
-  { when: '10분 전', title: notiName, body: `오늘 ${notiTime} 오픈, 약 10분 남았어요. 예매 창을 띄워 두세요.` },
+  { when: '하루 전', clock: notiTime, title: notiName, body: `내일 ${notiTime}에 열려요. 로그인과 결제수단을 미리 확인해 두세요.` },
+  { when: '30분 전', clock: '19:30', title: notiName, body: `오늘 ${notiTime} 오픈, 약 30분 남았어요. 예매 창을 띄워 두세요.` },
+  { when: '10분 전', clock: '19:50', title: notiName, body: `오늘 ${notiTime} 오픈, 약 10분 남았어요. 예매 창을 띄워 두세요.` },
 ];
+// 필름 그레인: 어두운 그라데이션의 띠(밴딩)를 가리고 화면에 질감을 준다
+const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .5 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>')}")`;
 ---
 <BaseLayout wide noindex title="랜딩 시안 - 무대" description="직관냥 랜딩 개편 시안">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&display=swap" />
   <script is:inline>document.documentElement.classList.add('js');</script>
 
-  {first && (
-    <section class="st" id="st" data-items={JSON.stringify(items)}>
-      <!-- 무대 장치: 트러스와 조명기, 천천히 움직이는 빛줄기 -->
-      <svg class="rig" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
-        <g class="beams">
-          {[150, 420, 780, 1050].map((x, i) => (
-            <polygon class={`beam b${i}`} points={`${x - 7},52 ${x + 7},52 ${x + 150},900 ${x - 150},900`} />
-          ))}
-        </g>
-        <g class="truss">
-          <line x1="0" y1="22" x2="1200" y2="22" />
-          <line x1="0" y1="40" x2="1200" y2="40" />
-          {Array.from({ length: 34 }, (_, i) => (
-            <line x1={i * 36} y1={i % 2 ? 22 : 40} x2={(i + 1) * 36} y2={i % 2 ? 40 : 22} />
-          ))}
-        </g>
-        <g class="lamps">
-          {[150, 420, 600, 780, 1050].map((x) => (
-            <g><rect x={x - 3} y="40" width="6" height="6" /><rect x={x - 11} y="46" width="22" height="12" rx="2" /></g>
-          ))}
-        </g>
-      </svg>
-      <div class="floor" aria-hidden="true"></div>
+  <div class="sg">
+    {first && (
+      <section class="hero" id="hero" data-items={JSON.stringify(items)} style={`--tint: rgb(${first.rgb.join(' ')}); --grain: ${GRAIN}`}>
+        <p class="mark base" aria-hidden="true"><span data-mark>{first.mark}</span></p>
+        <canvas class="lights" id="lights" aria-hidden="true"></canvas>
+        <p class="mark lit" aria-hidden="true"><span data-mark>{first.mark}</span></p>
+        <canvas class="dust" id="dust" aria-hidden="true"></canvas>
+        <div class="grain" aria-hidden="true"></div>
 
-      <div class="st-in">
-        <div class="info">
-          <p class="kicker mono"><span class="live" aria-hidden="true"></span>NOW ON STAGE <b id="st-idx">01</b><span> / {String(items.length).padStart(2, '0')}</span></p>
-          <h1 class="name"><span class="mask"><span class="rise" id="st-name">{first.name}</span></span></h1>
-          <p class="sub"><span class="mask"><span class="rise" id="st-sub">{first.sub}</span></span></p>
-          <div class="big">
-            <div class="n mono" id="st-num" data-date={first.date}>—</div>
-            <div class="u mono">DAYS LEFT<b id="st-dot">{first.dot}</b><i id="st-note">{first.note}</i></div>
-          </div>
-          <div class="act">
-            <a class="btn p" id="st-link" href={first.href}>공연 정보 보기 →</a>
-            <a class="btn" href="/events/">전체 공연 {all.length}개</a>
-          </div>
-          {items.length > 1 && (
-            <ol class="setlist" id="st-tabs" role="tablist" aria-label="지금 많이 보는 공연">
-              {items.map((it, i) => (
-                <li>
-                  <button type="button" role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-i={i}>
-                    <span class="no mono">{String(i + 1).padStart(2, '0')}</span>
-                    <span class="tt">{it.name}</span>
-                    <span class="bar" aria-hidden="true"><i></i></span>
-                  </button>
-                </li>
-              ))}
-            </ol>
-          )}
-        </div>
+        <p class="now"><span class="live" aria-hidden="true"></span>NOW SHOWING <b id="h-idx">01</b> / {String(items.length).padStart(2, '0')}</p>
 
-        <div class="riser">
-          <div class="spot" id="st-spot" aria-hidden="true"></div>
+        <div class="card-wrap">
           <div class="pool" aria-hidden="true"></div>
-          <a class="pic" id="st-pic-link" href={first.href} aria-label={`${first.name} 공연 정보`}>
-            <img id="st-pic" src={first.img} alt={`${first.name} 포스터`} fetchpriority="high" />
+          <a class="card" id="h-card" href={first.href} aria-label={`${first.name} 공연 정보`}>
+            <img id="h-img" src={first.img} alt={`${first.name} 포스터`} fetchpriority="high" />
           </a>
         </div>
-      </div>
 
-      <!-- 객석: 응원봉이 파도처럼 흔들린다 -->
-      <svg class="crowd" viewBox={`0 0 ${CROWD_W} 120`} preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-        {crowd.map((c) => (
-          <g>
-            {c.stick && (
-              <g class="stick" style={`animation-delay:${c.delay}ms`}>
-                <line x1={c.x + c.arm * (c.r + 2)} y1={c.y + 20} x2={c.x + c.arm * (c.r + 9)} y2={c.y - c.r - 12} />
-                <rect class="tip" x={c.x + c.arm * (c.r + 9) - 3.5} y={c.y - c.r - 26} width="7" height="15" rx="3.5" />
-              </g>
-            )}
-            <circle cx={c.x} cy={c.y} r={c.r} />
-            <rect x={c.x - c.r * 1.55} y={c.y + c.r - 3} width={c.r * 3.1} height="70" rx={c.r * 0.9} />
-          </g>
-        ))}
-      </svg>
-
-      <!-- 막 -->
-      <div class="curtain cl" aria-hidden="true"></div>
-      <div class="curtain cr" aria-hidden="true"></div>
-    </section>
-  )}
-
-  <!-- 전광판 -->
-  {opens.length > 0 && (
-    <div class="led" aria-label="다가오는 티켓 오픈">
-      <span class="led-tag mono"><span class="live" aria-hidden="true"></span>TICKET OPEN</span>
-      <div class="led-win">
-        <div class="led-run mono">
-          {[0, 1].map((k) => (
-            <span class="led-set" aria-hidden={k === 1 ? 'true' : undefined}>
-              {opens.map((o) => (
-                <a href={o.href} tabindex={k === 1 ? -1 : undefined}><b>{o.short}</b> {o.artist} <i>{o.label}</i></a>
-              ))}
-            </span>
-          ))}
+        <div class="meta">
+          <div class="who">
+            <h1><span class="mask"><span class="rise" id="h-name">{first.name}</span></span></h1>
+            <p class="sub"><span class="mask"><span class="rise" id="h-sub">{first.sub}</span></span></p>
+            <div class="act">
+              <a class="btn p" id="h-link" href={first.href}>공연 정보 보기</a>
+              <a class="btn" href="/events/">전체 공연 {all.length}개</a>
+            </div>
+          </div>
+          <div class="dday">
+            <p class="dd-label">DAYS LEFT</p>
+            <p class="dd-num" id="h-num" data-date={first.date}>—</p>
+            <p class="dd-date"><span id="h-dot">{first.dot}</span><i id="h-note">{first.note}</i></p>
+          </div>
         </div>
-      </div>
-    </div>
-  )}
 
-  <div class="wrap">
-    {opens.length > 0 && (
-      <section class="tt-sec" aria-labelledby="tt-title">
-        <div class="sec-head rv">
-          <h2 id="tt-title" class="mono">TIMETABLE</h2>
-          <a href="/ticket-open/">티켓오픈 일정 전체 →</a>
-        </div>
-        <div class="rows">
-          {opens.slice(0, 4).map((o, i) => (
-            <a class="rv" style={`--d:${i * 70}ms`} href={o.href}>
-              <span class="t mono">{o.short.split(' ')[0]} <span>{o.short.split(' ')[1]}</span></span>
-              <span class="nm">{o.artist}<small>{o.label} · {o.venue}</small></span>
-              <span class="cd mono" data-at={o.at}>—</span>
-            </a>
-          ))}
-        </div>
+        {items.length > 1 && (
+          <ol class="tabs" id="h-tabs" role="tablist" aria-label="지금 많이 보는 공연">
+            {items.map((it, i) => (
+              <li>
+                <button type="button" role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-i={i}>
+                  <span class="no">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="tt">{it.name}</span>
+                  <span class="bar" aria-hidden="true"><i></i></span>
+                </button>
+              </li>
+            ))}
+          </ol>
+        )}
       </section>
     )}
 
-    <!-- 알림·앱 설치 소개 -->
-    <section class="app" aria-labelledby="app-title">
-      <div class="app-copy rv">
-        <p class="eyebrow mono">TICKET OPEN ALERT</p>
-        <h2 id="app-title">오픈 10분 전,<br />폰이 먼저 알려줘요.</h2>
-        <p class="lead">공연 페이지에서 "오픈 알림 받기"만 눌러 두면 하루 전, 30분 전, 10분 전에 알림이 가요. 가입도 앱 설치도 필요 없어요.</p>
-        <ol class="steps">
-          <li><span class="mono">01</span>보고 싶은 공연의 "오픈 알림 받기"를 눌러요</li>
-          <li><span class="mono">02</span>선예매·일반예매 단계마다 따로 알려드려요</li>
-          <li><span class="mono">03</span>홈 화면에 추가하면 앱처럼 바로 열려요</li>
-        </ol>
-        <div class="act">
-          <a class="btn p" href="/ticket-open/">알림 켤 공연 고르기 →</a>
-          <a class="btn" href="/calendar/">캘린더로 받기</a>
-        </div>
-        <p class="fine">아이폰은 사파리에서 공유 → "홈 화면에 추가"로 설치한 뒤에 알림을 켤 수 있어요.</p>
-      </div>
-      <div class="phone rv" style="--d:120ms" id="phone" data-notis={JSON.stringify(notis)} aria-hidden="true">
-        <div class="ph-notch"></div>
-        <p class="ph-date mono">12월 3일 목요일</p>
-        <p class="ph-clock mono" id="ph-clock">19:50</p>
-        <div class="noti" id="noti">
-          <span class="noti-ic"></span>
-          <div>
-            <p class="noti-top"><b>직관냥</b><span id="noti-when">{notis[2].when}</span></p>
-            <p class="noti-title" id="noti-title">{notis[2].title}</p>
-            <p class="noti-body" id="noti-body">{notis[2].body}</p>
+    {opens.length > 0 && (
+      <div class="led" aria-label="다가오는 티켓 오픈">
+        <span class="led-tag"><span class="live" aria-hidden="true"></span>TICKET OPEN</span>
+        <div class="led-win">
+          <div class="led-run">
+            {[0, 1].map((k) => (
+              <span class="led-set" aria-hidden={k === 1 ? 'true' : undefined}>
+                {opens.map((o) => (
+                  <a href={o.href} tabindex={k === 1 ? -1 : undefined}><b>{o.short}</b>{o.artist}<i>{o.label}</i></a>
+                ))}
+              </span>
+            ))}
           </div>
         </div>
-        <div class="ph-bar"></div>
       </div>
-    </section>
+    )}
 
-    <div class="tools rv"><ToolStrip /></div>
+    <div class="wrap">
+      {opens.length > 0 && (
+        <section class="tt-sec" aria-labelledby="tt-title">
+          <header class="sec-head rv">
+            <h2 id="tt-title">Timetable</h2>
+            <a href="/ticket-open/">티켓오픈 일정 전체</a>
+          </header>
+          <div class="rows">
+            {opens.slice(0, 4).map((o, i) => (
+              <a class="rv" style={`--d:${i * 80}ms`} href={o.href}>
+                <span class="t">{o.short.split(' ')[0]}<small>{o.short.split(' ')[1]}</small></span>
+                <span class="nm">{o.artist}<small>{o.label} · {o.venue}</small></span>
+                <span class="cd" data-at={o.at}>—</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
 
-    <section class="next" aria-labelledby="next-title">
-      <div class="sec-head rv">
-        <h2 id="next-title" class="mono">LINEUP</h2>
-        <a href="/events/">전체 {all.length}개 →</a>
-      </div>
-      <div class="poster-grid">
-        {next.map((e, i) => (
-          <div class="card-wrap rv" style={`--d:${(i % 4) * 70}ms`}><PosterCard event={e} /></div>
-        ))}
-      </div>
-      <a class="more rv" href="/events/">전체 공연 일정 보기 →</a>
-    </section>
+      <section class="app" aria-labelledby="app-title">
+        <div class="app-copy rv">
+          <p class="eyebrow">Ticket open alert</p>
+          <h2 id="app-title">오픈 10분 전,<br />폰이 먼저 알려줘요.</h2>
+          <p class="lead">공연 페이지에서 "오픈 알림 받기"만 눌러 두면 하루 전, 30분 전, 10분 전에 알림이 가요. 가입도 앱 설치도 필요 없어요.</p>
+          <div class="act">
+            <a class="btn p" href="/ticket-open/">알림 켤 공연 고르기</a>
+            <a class="btn" href="/calendar/">캘린더로 받기</a>
+          </div>
+          <p class="fine">홈 화면에 추가하면 앱처럼 열려요. 아이폰은 사파리에서 공유 → "홈 화면에 추가" 뒤에 알림을 켤 수 있어요.</p>
+        </div>
+        <div class="phone rv" style="--d:120ms" id="phone" data-notis={JSON.stringify(notis)} aria-hidden="true">
+          <div class="ph-notch"></div>
+          <p class="ph-date">12월 3일 목요일</p>
+          <p class="ph-clock" id="ph-clock">{notis[2].clock}</p>
+          <div class="noti" id="noti">
+            <img class="noti-ic" src="/icons/icon-192.png" alt="" width="30" height="30" />
+            <div>
+              <p class="noti-top"><b>직관냥</b><span id="noti-when">{notis[2].when}</span></p>
+              <p class="noti-title" id="noti-title">{notis[2].title}</p>
+              <p class="noti-body" id="noti-body">{notis[2].body}</p>
+            </div>
+          </div>
+          <div class="ph-bar"></div>
+        </div>
+      </section>
 
-    <div class="rv"><RecentIssues limit={3} heading="공연 소식·이슈" compact /></div>
+      <div class="tools rv"><ToolStrip /></div>
+
+      <section aria-labelledby="next-title">
+        <header class="sec-head rv">
+          <h2 id="next-title">Lineup</h2>
+          <a href="/events/">전체 {all.length}개</a>
+        </header>
+        <div class="poster-grid">
+          {next.map((e, i) => (
+            <div class="pc rv" style={`--d:${(i % 4) * 80}ms`}><PosterCard event={e} /></div>
+          ))}
+        </div>
+        <a class="more rv" href="/events/">전체 공연 일정 보기</a>
+      </section>
+
+      <div class="rv"><RecentIssues limit={3} heading="공연 소식·이슈" compact /></div>
+    </div>
   </div>
 </BaseLayout>
 
@@ -244,95 +239,268 @@ const notis = [
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (id: string) => document.getElementById(id) as HTMLElement;
+  const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
+  const ease = (p: number) => 1 - Math.pow(1 - p, 3);
 
-  // ── 무대: 막 열기 + 공연 전환 ─────────────────────────────
-  const st = document.getElementById('st');
-  if (st) {
-    type Item = { href: string; name: string; sub: string; date: string; dot: string; img: string; note: string };
-    const items: Item[] = JSON.parse(st.dataset.items || '[]');
-    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('#st-tabs button'));
-    const HOLD = 6500; // 한 공연을 비추는 시간
+  const hero = document.getElementById('hero');
+  if (hero) {
+    type Item = { href: string; name: string; mark: string; sub: string; date: string; dot: string; img: string; rgb: [number, number, number]; note: string };
+    const items: Item[] = JSON.parse(hero.dataset.items || '[]');
+    const tabs = Array.from(hero.querySelectorAll<HTMLButtonElement>('#h-tabs button'));
+    const marks = Array.from(hero.querySelectorAll<HTMLElement>('[data-mark]'));
+    const card = $('h-card');
+    const HOLD = 7000;
     let cur = 0;
-    let timer = 0;
-    let raf = 0;
+    let holdTimer = 0;
+    let numRaf = 0;
+
+    // ── 워드마크: 글자를 하나씩 나눠 넣고 화면 폭에 맞춘다 ─────────
+    const setMark = (text: string) => {
+      marks.forEach((el) => {
+        el.textContent = '';
+        let i = 0;
+        // 단어 단위로 묶어 둔다: 좁은 화면에선 단어마다 줄을 바꿔 글자를 더 크게 쓴다
+        text.split(' ').forEach((word, wi, arr) => {
+          const wd = document.createElement('span');
+          wd.className = 'wd';
+          [...word].forEach((c) => {
+            const ch = document.createElement('span');
+            ch.className = 'ch';
+            ch.style.setProperty('--i', String(i++));
+            ch.textContent = c;
+            wd.append(ch);
+          });
+          el.append(wd);
+          if (wi < arr.length - 1) { const sp = document.createElement('span'); sp.className = 'sp'; sp.innerHTML = '&nbsp;'; el.append(sp); }
+        });
+      });
+      fitMark();
+    };
+    const fitMark = () => {
+      const W = hero.clientWidth, H = hero.clientHeight;
+      marks.forEach((el) => {
+        el.style.fontSize = '100px';
+        const w = el.scrollWidth || 1;
+        const lines = W < 860 ? el.querySelectorAll('.wd').length : 1;
+        const size = Math.min((W * 0.94 * 100) / w, (H * (W < 860 ? 0.36 : 0.62)) / lines);
+        el.style.fontSize = `${size}px`;
+      });
+    };
 
     const daysLeft = (iso: string) => {
       const t = new Date(); t.setHours(0, 0, 0, 0);
       return Math.ceil((new Date(iso + 'T00:00:00').getTime() - t.getTime()) / 86400000);
     };
-    // D-day 숫자가 0에서 올라오며 멈춘다
     const countTo = (n: number) => {
-      const el = $('st-num');
-      cancelAnimationFrame(raf);
+      const el = $('h-num');
+      cancelAnimationFrame(numRaf);
       if (n <= 0) { el.textContent = 'D-DAY'; return; }
       if (reduce) { el.textContent = String(n); return; }
       const t0 = performance.now();
       const step = (t: number) => {
-        const p = Math.min(1, (t - t0) / 700);
-        el.textContent = String(Math.round(n * (1 - Math.pow(1 - p, 3))));
-        if (p < 1) raf = requestAnimationFrame(step);
+        const p = Math.min(1, (t - t0) / 900);
+        el.textContent = String(Math.round(n * ease(p)));
+        if (p < 1) numRaf = requestAnimationFrame(step);
       };
-      raf = requestAnimationFrame(step);
+      numRaf = requestAnimationFrame(step);
     };
     const paint = (i: number) => {
       const it = items[i];
-      $('st-name').textContent = it.name;
-      $('st-sub').textContent = it.sub;
-      $('st-dot').textContent = it.dot;
-      $('st-note').textContent = it.note;
-      $('st-idx').textContent = String(i + 1).padStart(2, '0');
-      ($('st-link') as HTMLAnchorElement).href = it.href;
-      ($('st-pic-link') as HTMLAnchorElement).href = it.href;
-      const img = $('st-pic') as HTMLImageElement;
+      $('h-name').textContent = it.name;
+      $('h-sub').textContent = it.sub;
+      $('h-dot').textContent = it.dot;
+      $('h-note').textContent = it.note;
+      $('h-idx').textContent = String(i + 1).padStart(2, '0');
+      ($('h-link') as HTMLAnchorElement).href = it.href;
+      (card as HTMLAnchorElement).href = it.href;
+      card.setAttribute('aria-label', `${it.name} 공연 정보`);
+      const img = $('h-img') as HTMLImageElement;
       img.src = it.img; img.alt = `${it.name} 포스터`;
+      hero.style.setProperty('--tint', `rgb(${it.rgb.join(' ')})`);
+      setMark(it.mark);
       countTo(daysLeft(it.date));
       tabs.forEach((b, j) => b.setAttribute('aria-selected', String(j === i)));
     };
-    // 전환: 핀 조명이 꺼지고 → 내용이 바뀌고 → 조명이 깜빡이며 다시 켜진다
+
+    // ── 조명 ─────────────────────────────────────────────────────
+    // 저해상도 캔버스에 그리고 CSS로 키워서 흐리게 한다(가볍고, 빛 가장자리가 자연스럽게 번진다).
+    const cv = $('lights') as HTMLCanvasElement;
+    const dv = $('dust') as HTMLCanvasElement;
+    const ctx = cv.getContext('2d')!;
+    const dtx = dv.getContext('2d')!;
+    const SCALE = 0.25;
+    let W = 0, H = 0;
+    // 조명기: x는 천장에서의 위치(0~1). key는 포스터를 비추는 주 조명, 나머지는 배경을 훑는 조명.
+    const beams = [
+      { x: 0.14, key: true, spread: 0.11, amp: 0, speed: 0, phase: 0, on: 0, a: 0 },
+      { x: 0.86, key: true, spread: 0.11, amp: 0, speed: 0, phase: 0, on: 0, a: 0 },
+      { x: 0.04, key: false, spread: 0.06, amp: 0.34, speed: 0.21, phase: 0.0, on: 0, a: 0.5 },
+      { x: 0.5, key: false, spread: 0.07, amp: 0.42, speed: 0.16, phase: 2.1, on: 0, a: 0 },
+      { x: 0.96, key: false, spread: 0.06, amp: 0.34, speed: 0.19, phase: 4.0, on: 0, a: -0.5 },
+    ];
+    const col = { r: items[0].rgb[0], g: items[0].rgb[1], b: items[0].rgb[2] };
+    let colTo = items[0].rgb;
+    let dim = 0, dimTo = 1; // 전체 밝기(암전 ↔ 점등)
+    let gather = 0, gatherTo = 0; // 1이면 모든 조명이 포스터로 모인다
+    const ptr = { x: 0, y: 0, tx: 0, ty: 0 }; // 포인터(-1~1)
+    let target = { x: 0.5, y: 0.5 };
+    let running = false;
+    let last = 0;
+
+    const dust = Array.from({ length: 46 }, () => ({ x: Math.random(), y: Math.random(), vx: (Math.random() - 0.5) * 0.004, vy: -0.002 - Math.random() * 0.004, r: 0.6 + Math.random() * 1.1 }));
+
+    const resize = () => {
+      const r = hero.getBoundingClientRect();
+      W = Math.max(1, Math.round(r.width * SCALE)); H = Math.max(1, Math.round(r.height * SCALE));
+      cv.width = W; cv.height = H;
+      dv.width = Math.round(r.width * 0.5); dv.height = Math.round(r.height * 0.5);
+      const c = card.getBoundingClientRect();
+      target = { x: (c.left + c.width / 2 - r.left) / r.width, y: (c.top + c.height * 0.45 - r.top) / r.height };
+      fitMark();
+    };
+
+    // 느린 기기 보호: 처음 1.5초쯤의 프레임 간격이 길면 무거운 효과(흐림·글자 합성·먼지)를 끈다
+    let frames = 0, slow = 0, lite = false;
+    const draw = (now: number) => {
+      if (!lite && last && frames < 90) {
+        frames += 1;
+        if (now - last > 40) slow += 1;
+        if (frames === 90 && slow > 30) { lite = true; hero.classList.add('is-lite'); }
+      }
+      const dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
+      const t = now / 1000;
+      const k = 1 - Math.pow(0.001, dt); // 프레임률과 무관한 부드러운 추종
+      dim += (dimTo - dim) * (dimTo < dim ? k * 2.2 : k * 0.9);
+      gather += (gatherTo - gather) * k * 1.4;
+      col.r += (colTo[0] - col.r) * k; col.g += (colTo[1] - col.g) * k; col.b += (colTo[2] - col.b) * k;
+      ptr.x += (ptr.tx - ptr.x) * k * 0.8; ptr.y += (ptr.ty - ptr.y) * k * 0.8;
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      const oy = -H * 0.06;
+      const tx = (target.x + ptr.x * 0.03) * W, ty = (target.y + ptr.y * 0.03) * H;
+      const live: { ox: number; ang: number; half: number; pow: number }[] = [];
+      for (const b of beams) {
+        const ox = b.x * W;
+        const toCard = Math.atan2(tx - ox, ty - oy); // 0 = 수직 아래
+        const wander = b.a + Math.sin(t * b.speed * Math.PI * 2 + b.phase) * b.amp + ptr.x * 0.12;
+        const ang = b.key ? toCard : wander + (toCard - wander) * gather;
+        // 주 조명은 포스터 색, 배경 조명은 흰색을 절반 섞어 차분하게
+        const mix = b.key ? 0.15 : 0.55;
+        const r = col.r + (255 - col.r) * mix, g = col.g + (255 - col.g) * mix, bl = col.b + (255 - col.b) * mix;
+        const pow = dim * b.on * (b.key ? 1 : 0.5 + 0.5 * gather);
+        if (pow < 0.004) continue;
+        const L = H * 1.5;
+        const ex = ox + Math.sin(ang) * L, ey = oy + Math.cos(ang) * L;
+        const nx = Math.cos(ang), ny = -Math.sin(ang); // 빛줄기에 수직인 방향
+        for (const [wMul, a] of [[1, 0.2], [0.5, 0.26], [0.18, 0.42]] as const) {
+          const half = L * b.spread * wMul;
+          const grad = ctx.createLinearGradient(ox, oy, ex, ey);
+          grad.addColorStop(0, `rgba(${r | 0},${g | 0},${bl | 0},${a * pow * 1.3})`);
+          grad.addColorStop(0.55, `rgba(${r | 0},${g | 0},${bl | 0},${a * pow * 0.55})`);
+          grad.addColorStop(1, `rgba(${r | 0},${g | 0},${bl | 0},0)`);
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.moveTo(ox - nx * 1.2, oy - ny * 1.2);
+          ctx.lineTo(ox + nx * 1.2, oy + ny * 1.2);
+          ctx.lineTo(ex + nx * half, ey + ny * half);
+          ctx.lineTo(ex - nx * half, ey - ny * half);
+          ctx.closePath();
+          ctx.fill();
+        }
+        live.push({ ox: b.x, ang, half: b.spread, pow });
+      }
+
+      // 빛 속에 떠다니는 먼지: 빛줄기 안에 있을 때만 보인다
+      const DW = dv.width, DH = dv.height;
+      dtx.clearRect(0, 0, DW, DH);
+      for (const p of lite ? [] : dust) {
+        p.x += p.vx * dt * 6; p.y += p.vy * dt * 6;
+        if (p.y < -0.02) { p.y = 1.02; p.x = Math.random(); }
+        if (p.x < -0.02) p.x = 1.02; else if (p.x > 1.02) p.x = -0.02;
+        let lit = 0;
+        for (const b of live) {
+          const dx = (p.x - b.ox) * DW, dy = p.y * DH + DH * 0.06;
+          const off = Math.abs(Math.atan2(dx, dy) - b.ang);
+          if (off < b.half) lit = Math.max(lit, (1 - off / b.half) * b.pow);
+        }
+        if (lit < 0.03) continue;
+        dtx.fillStyle = `rgba(${col.r | 0},${col.g | 0},${col.b | 0},${Math.min(0.75, lit * 0.8)})`;
+        dtx.beginPath(); dtx.arc(p.x * DW, p.y * DH, p.r, 0, 6.283); dtx.fill();
+      }
+
+      // 포스터 기울기
+      card.style.setProperty('--ry', `${(ptr.x * 7).toFixed(2)}deg`);
+      card.style.setProperty('--rx', `${(-ptr.y * 5).toFixed(2)}deg`);
+
+      if (running) requestAnimationFrame(draw);
+    };
+    const start = () => { if (!running && !reduce) { running = true; last = performance.now(); requestAnimationFrame(draw); } };
+    const stop = () => { running = false; };
+
+    // ── 전환: 암전 → 조명이 포스터로 모임 → 새 색으로 점등 ───────────
     const show = (i: number) => {
+      if (i === cur) return;
       cur = i;
-      if (reduce) { paint(i); return; }
-      st.classList.add('is-dark');
+      if (reduce) { paint(i); colTo = items[i].rgb; Object.assign(col, { r: colTo[0], g: colTo[1], b: colTo[2] }); staticFrame(); return; }
+      hero.classList.add('is-out');
+      dimTo = 0; gatherTo = 1;
       window.setTimeout(() => {
         paint(i);
-        st.classList.remove('is-dark');
-        st.classList.remove('is-cue');
-        void st.offsetWidth; // 같은 애니메이션을 다시 시작시키기 위해
-        st.classList.add('is-cue');
-      }, 260);
+        colTo = items[i].rgb;
+        hero.classList.remove('is-out');
+        dimTo = 1;
+        window.setTimeout(() => { gatherTo = 0; }, 900);
+      }, 420);
     };
     const schedule = () => {
-      window.clearTimeout(timer);
+      window.clearTimeout(holdTimer);
       if (reduce || items.length < 2) return;
-      st.style.setProperty('--hold', `${HOLD}ms`);
-      st.classList.remove('is-running'); void st.offsetWidth; st.classList.add('is-running');
-      timer = window.setTimeout(() => { show((cur + 1) % items.length); schedule(); }, HOLD);
+      hero.style.setProperty('--hold', `${HOLD}ms`);
+      hero.classList.remove('is-running'); void hero.offsetWidth; hero.classList.add('is-running');
+      holdTimer = window.setTimeout(() => { show((cur + 1) % items.length); schedule(); }, HOLD);
     };
-    const pause = () => { window.clearTimeout(timer); st.classList.remove('is-running'); };
+    const pause = () => { window.clearTimeout(holdTimer); hero.classList.remove('is-running'); };
+    const staticFrame = () => { beams.forEach((b) => (b.on = 1)); dim = dimTo = 1; resize(); last = performance.now(); draw(last); };
 
     items.forEach((it) => { const im = new Image(); im.src = it.img; });
     tabs.forEach((b) => b.addEventListener('click', () => { show(Number(b.dataset.i)); schedule(); }));
-    st.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') pause(); });
-    st.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') schedule(); });
-    st.addEventListener('focusin', pause);
-    st.addEventListener('focusout', schedule);
-    document.addEventListener('visibilitychange', () => (document.hidden ? pause() : schedule()));
+    hero.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = hero.getBoundingClientRect();
+      ptr.tx = clamp(((e.clientX - r.left) / r.width) * 2 - 1, -1, 1);
+      ptr.ty = clamp(((e.clientY - r.top) / r.height) * 2 - 1, -1, 1);
+    });
+    hero.addEventListener('pointerleave', () => { ptr.tx = 0; ptr.ty = 0; });
+    hero.addEventListener('focusin', pause);
+    hero.addEventListener('focusout', schedule);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) { pause(); stop(); } else { start(); schedule(); } });
+    new IntersectionObserver((en) => { if (en[0].isIntersecting) start(); else stop(); }).observe(hero);
+    window.addEventListener('resize', resize);
+    document.fonts?.ready.then(resize);
 
     paint(0);
-    // 막은 방문(탭)마다 한 번만 연다 - 뒤로 가기로 돌아올 때마다 기다리게 하지 않는다
-    let seen = false;
-    try { seen = sessionStorage.getItem('krconcerts:curtain') === '1'; sessionStorage.setItem('krconcerts:curtain', '1'); } catch { /* 저장소를 못 쓰면 매번 연다 */ }
-    if (reduce || seen) {
-      st.classList.add('is-open', 'no-curtain', 'is-cue');
-      schedule();
+    resize();
+    if (reduce) {
+      hero.classList.add('is-on');
+      staticFrame();
     } else {
-      requestAnimationFrame(() => requestAnimationFrame(() => st.classList.add('is-open')));
-      window.setTimeout(() => { st.classList.add('is-cue'); schedule(); }, 900);
+      // 등장: 조명이 하나씩 켜지고, 그 뒤에 글자와 포스터가 올라온다
+      start();
+      const order = [3, 0, 1, 2, 4];
+      order.forEach((bi, n) => window.setTimeout(() => {
+        const b = beams[bi];
+        b.on = 1;
+        window.setTimeout(() => (b.on = 0.25), 70);
+        window.setTimeout(() => (b.on = 1), 150);
+      }, 150 + n * 130));
+      window.setTimeout(() => hero.classList.add('is-on'), 380);
+      window.setTimeout(schedule, 1400);
     }
   }
 
   // ── 스크롤하면 아래 구역이 차례로 올라온다 ─────────────────
-  const rv = Array.from(document.querySelectorAll<HTMLElement>('.rv'));
+  const rv = Array.from(document.querySelectorAll<HTMLElement>('.sg .rv'));
   if (reduce || !('IntersectionObserver' in window)) {
     rv.forEach((el) => el.classList.add('in'));
   } else {
@@ -343,12 +511,11 @@ const notis = [
   }
 
   // ── 타임테이블 남은 시간 ───────────────────────────────────
-  const cds = Array.from(document.querySelectorAll<HTMLElement>('.cd[data-at]'));
+  const cds = Array.from(document.querySelectorAll<HTMLElement>('.sg .cd[data-at]'));
   const tickCd = () => {
     const now = Date.now();
     cds.forEach((el) => {
-      const at = new Date(el.dataset.at || '').getTime();
-      const left = at - now;
+      const left = new Date(el.dataset.at || '').getTime() - now;
       el.classList.toggle('hot', left > 0 && left < 86400_000);
       el.textContent = left <= 0 ? '오픈' : left < 86400_000 ? hms(left) : `D-${kstDayDiff(el.dataset.at || '', now)}`;
     });
@@ -358,215 +525,202 @@ const notis = [
   // ── 폰 화면: 알림 세 가지가 차례로 내려온다 ─────────────────
   const phone = document.getElementById('phone');
   if (phone && !reduce) {
-    const list: { when: string; title: string; body: string }[] = JSON.parse(phone.dataset.notis || '[]');
-    const clocks = ['20:00', '19:30', '19:50'];
+    const list: { when: string; clock: string; title: string; body: string }[] = JSON.parse(phone.dataset.notis || '[]');
     const noti = $('noti');
     let k = 0;
-    let started = false;
     const play = () => {
       const n = list[k % list.length];
       $('noti-when').textContent = n.when;
       $('noti-title').textContent = n.title;
       $('noti-body').textContent = n.body;
-      $('ph-clock').textContent = clocks[k % clocks.length];
+      $('ph-clock').textContent = n.clock;
       noti.classList.remove('drop'); void noti.offsetWidth; noti.classList.add('drop');
       k += 1;
     };
     new IntersectionObserver((entries, io) => {
-      if (entries.some((e) => e.isIntersecting) && !started) {
-        started = true; io.disconnect();
-        play(); window.setInterval(play, 3600);
-      }
+      if (entries.some((e) => e.isIntersecting)) { io.disconnect(); play(); window.setInterval(play, 3600); }
     }, { threshold: 0.4 }).observe(phone);
   }
 </script>
 
-<style>
-  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
-  .live { display: inline-block; width: 7px; height: 7px; margin-right: 0.6rem; background: #ff5fa2; animation: blink 1.4s steps(2, jump-none) infinite; }
-  @keyframes blink { 50% { opacity: 0.15; } }
+<style is:global>
+  .sg { --disp: 'Anton', 'Black Han Sans', Pretendard, sans-serif; --line: #26262b; --dim: #8f8f97; }
+  .sg .live { display: inline-block; width: 6px; height: 6px; margin-right: 0.7rem; border-radius: 50%; background: #ff5fa2; animation: sg-blink 1.6s steps(2, jump-none) infinite; }
+  @keyframes sg-blink { 50% { opacity: 0.2; } }
 
   /* ── 무대 ── */
-  .st {
-    position: relative; overflow: hidden; isolation: isolate;
-    min-height: max(660px, calc(100svh - 68px));
-    background: #121215;
-    display: flex; flex-direction: column;
+  .sg .hero {
+    position: relative; overflow: hidden;
+    height: max(640px, calc(100svh - 112px));
+    background: #060607;
+    display: grid; grid-template-rows: auto 1fr auto auto;
   }
-  .rig { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-  .truss line { stroke: #34343b; stroke-width: 1.5; }
-  .lamps rect { fill: #3a3a42; }
-  .beam { fill: #ededea; opacity: 0.045; transform-box: fill-box; transform-origin: 50% 0; animation: sweep 9s ease-in-out infinite alternate; }
-  .beam.b0 { animation-duration: 11s; --a: -6deg; --b: 22deg; }
-  .beam.b1 { animation-duration: 8s; --a: -18deg; --b: 12deg; animation-delay: -3s; }
-  .beam.b2 { animation-duration: 9.5s; --a: -12deg; --b: 18deg; animation-delay: -5s; }
-  .beam.b3 { animation-duration: 12s; --a: -22deg; --b: 6deg; animation-delay: -2s; }
-  @keyframes sweep { from { transform: rotate(var(--a, -14deg)); } to { transform: rotate(var(--b, 14deg)); } }
-  /* 무대 바닥: 뒷벽보다 어두운 단색 면과 경계선 */
-  .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 21%; background: #0b0b0d; border-top: 1px solid #2a2a30; z-index: 0; }
-
-  .st-in {
-    position: relative; z-index: 2; flex: 1;
-    display: grid; grid-template-columns: 1fr minmax(280px, 34%); gap: 3rem; align-items: center;
-    padding: 5.2rem max(24px, calc((100vw - 1180px) / 2)) 7.5rem;
+  /* 워드마크: 어두운 바탕 글자(base) 위에 빛(canvas), 그 위에 빛을 받으면 밝아지는 글자(lit) */
+  .sg .mark {
+    position: absolute; left: 0; right: 0; top: 44%; margin: 0; transform: translateY(-50%);
+    display: flex; justify-content: center; pointer-events: none; user-select: none;
+    font-family: var(--disp); font-weight: 400; line-height: 0.86; white-space: nowrap; letter-spacing: -0.01em;
   }
-  .info { min-width: 0; }
-  .kicker { display: flex; align-items: center; margin: 0 0 1.3rem; font-size: 0.78rem; letter-spacing: .14em; color: #8f8f97; }
-  .kicker b { color: #f4f4f0; font-weight: 500; margin-left: 0.9rem; }
-  .mask { display: block; overflow: hidden; }
-  .rise { display: block; transition: transform .5s cubic-bezier(.2, .8, .2, 1); }
-  .st.is-dark .rise { transform: translateY(105%); transition-duration: .22s; transition-timing-function: ease-in; }
-  .st:not(.is-open) .rise { transform: translateY(105%); }
-  .name { margin: 0; font-size: clamp(2.5rem, 7vw, 7rem); line-height: 1; letter-spacing: -.055em; font-weight: 900; overflow-wrap: anywhere; }
-  .name .rise { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; padding-bottom: 0.08em; }
-  .sub { margin: 0.9rem 0 0; font-size: 1.12rem; font-weight: 600; color: #b5b5bd; }
-  .sub .rise { transition-delay: .06s; }
-  .big { display: flex; align-items: baseline; gap: 1.1rem; margin-top: clamp(1.1rem, 3vw, 2.4rem); }
-  .big .n { font-size: clamp(4.2rem, 9.4vw, 9rem); line-height: .85; font-weight: 900; letter-spacing: -.07em; color: #f4f4f0; min-width: 1.2em; }
-  .big .u { font-size: 0.78rem; letter-spacing: .18em; color: #8f8f97; line-height: 1.8; }
-  .big .u b { display: block; font-size: 1rem; letter-spacing: .02em; color: #f4f4f0; font-weight: 700; }
-  .big .u i { display: block; font-style: normal; letter-spacing: .04em; color: #ff5fa2; }
-  .big .u i:empty { display: none; }
-  .act { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.7rem; }
-  .btn { padding: 0.95rem 1.6rem; border-radius: 4px; border: 1px solid #3a3a42; font-weight: 800; font-size: 0.95rem; color: #f4f4f0; text-decoration: none; background: #121215; transition: border-color .15s, transform .15s; }
-  .btn:hover { border-color: #fff; transform: translateY(-2px); }
-  .btn.p { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
-  .btn.p:hover { background: #ff7bb2; border-color: #ff7bb2; }
+  .sg .mark > span { display: block; font-size: 20vw; }
+  .sg .mark .wd { display: inline-block; }
+  .sg .mark.base { color: #121214; z-index: 0; }
+  .sg .mark.lit { color: #77777f; z-index: 2; mix-blend-mode: color-dodge; }
+  .sg .ch { display: inline-block; transform: translateY(18%); opacity: 0; transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease; transition-delay: calc(var(--i) * 34ms); }
+  .sg .hero.is-on .ch { transform: none; opacity: 1; }
+  .sg .hero.is-out .ch { transform: translateY(-14%); opacity: 0; transition-duration: 0.3s, 0.25s; transition-timing-function: ease-in; transition-delay: calc(var(--i) * 12ms); }
+  .sg .lights { position: absolute; inset: -4%; width: 108%; height: 108%; z-index: 1; filter: blur(10px); pointer-events: none; }
+  .sg .hero.is-lite .lights { filter: none; }
+  .sg .hero.is-lite .mark.lit, .sg .hero.is-lite .grain { display: none; }
+  .sg .hero.is-lite .mark.base { color: #1d1d21; }
+  .sg .dust { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+  .sg .grain { position: absolute; inset: 0; z-index: 4; background-image: var(--grain); opacity: 0.07; pointer-events: none; mix-blend-mode: overlay; }
+  /* 아래쪽 글씨가 읽히도록 바닥을 살짝 눌러 준다 */
+  .sg .hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46%; z-index: 4; background: linear-gradient(to top, #060607 8%, rgba(6, 6, 7, 0.72) 42%, rgba(6, 6, 7, 0)); pointer-events: none; }
 
-  /* 세트리스트 모양의 공연 선택 */
-  .setlist { list-style: none; margin: 2rem 0 0; padding: 0; max-width: 30rem; border-top: 1px solid #2a2a30; }
-  .setlist button { all: unset; box-sizing: border-box; cursor: pointer; position: relative; display: flex; align-items: baseline; gap: 0.9rem; width: 100%; padding: 0.62rem 0; border-bottom: 1px solid #2a2a30; color: #8f8f97; font-weight: 700; font-size: 0.95rem; transition: color .15s, padding-left .2s; }
-  .setlist button:hover { color: #f4f4f0; padding-left: 0.4rem; }
-  .setlist button[aria-selected="true"] { color: #f4f4f0; }
-  .setlist button:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 2px; }
-  .setlist .no { font-size: 0.75rem; letter-spacing: .08em; }
-  .setlist button[aria-selected="true"] .no { color: #ff5fa2; }
-  .setlist .tt { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .setlist .bar { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; }
-  .setlist .bar i { display: block; height: 100%; width: 100%; background: #ff5fa2; transform: scaleX(0); transform-origin: 0 50%; }
-  .st.is-running .setlist button[aria-selected="true"] .bar i { animation: fill var(--hold, 6500ms) linear forwards; }
-  @keyframes fill { to { transform: scaleX(1); } }
+  .sg .now { position: relative; z-index: 6; margin: 0; padding: 1.5rem max(24px, calc((100vw - 1180px) / 2)) 0; font-size: 0.72rem; letter-spacing: 0.16em; color: var(--dim); display: flex; align-items: center; }
+  .sg .now b { color: #f4f4f0; font-weight: 600; margin: 0 0.4em 0 0.9em; }
 
-  /* 포스터가 서 있는 자리 + 핀 조명 */
-  .riser { position: relative; justify-self: end; width: 100%; max-width: 440px; }
-  .pic { position: relative; z-index: 2; display: block; transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .25s; }
-  .pic img { display: block; width: 100%; aspect-ratio: 3 / 4.1; object-fit: cover; background: #151517; }
-  .st.is-dark .pic { opacity: 0; transform: translateY(14px); }
-  .st:not(.is-open) .pic { opacity: 0; transform: translateY(14px); }
-  .pic:hover { transform: translateY(-4px); }
-  /* 위 조명기에서 포스터로 떨어지는 빛: 사다리꼴 단색 면 */
-  .spot { position: absolute; z-index: 1; left: -14%; right: -14%; top: -60vh; bottom: -1.6rem; background: #ff5fa2; opacity: 0; clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%); }
-  .pool { position: absolute; z-index: 1; left: -16%; right: -16%; bottom: -2.6rem; height: 2.4rem; border-radius: 50%; background: #ff5fa2; opacity: 0; }
-  .st.is-cue .spot { animation: cue .7s steps(1, end) forwards; }
-  .st.is-cue .pool { animation: cue-pool .7s steps(1, end) forwards; }
-  .st.is-dark .spot, .st.is-dark .pool { animation: none; opacity: 0; }
-  @keyframes cue { 0% { opacity: 0; } 12% { opacity: .11; } 22% { opacity: .02; } 34% { opacity: .11; } 46% { opacity: .05; } 58%, 100% { opacity: .09; } }
-  @keyframes cue-pool { 0% { opacity: 0; } 12% { opacity: .2; } 22% { opacity: .04; } 34% { opacity: .2; } 46% { opacity: .08; } 58%, 100% { opacity: .16; } }
+  /* 포스터 */
+  .sg .card-wrap { position: absolute; z-index: 5; left: 50%; top: 44%; width: min(37vh, 30vw, 380px); transform: translate(-50%, -50%); perspective: 1100px; }
+  .sg .card { display: block; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); translate: 0 26px; scale: 0.96; opacity: 0; transition: opacity 0.7s ease, translate 0.9s cubic-bezier(0.16, 1, 0.3, 1), scale 0.9s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+  .sg .hero.is-on .card { translate: 0 0; scale: 1; opacity: 1; }
+  .sg .hero.is-out .card { opacity: 0; translate: 0 18px; scale: 0.97; transition-duration: 0.3s; }
+  .sg .card img { display: block; width: 100%; aspect-ratio: 3 / 4.1; object-fit: cover; background: #151517; border-radius: 3px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 30px 60px -20px rgba(0, 0, 0, 0.9); }
+  /* 바닥에 고인 빛 */
+  .sg .pool { position: absolute; left: -45%; right: -45%; bottom: -13%; height: 22%; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--tint) 34%, transparent), transparent); opacity: 0; transition: opacity 0.6s ease, background 0.8s; }
+  .sg .hero.is-on .pool { opacity: 1; }
+  .sg .hero.is-out .pool { opacity: 0; transition-duration: 0.25s; }
 
-  /* 객석 */
-  .crowd { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: clamp(64px, 11vw, 120px); z-index: 3; pointer-events: none; }
-  .crowd circle, .crowd rect { fill: #050506; }
-  .crowd line { stroke: #050506; stroke-width: 6; stroke-linecap: round; }
-  .crowd .tip { fill: #c9c9cf; }
-  .stick { transform-box: fill-box; transform-origin: 50% 100%; animation: wave 1.6s ease-in-out infinite alternate; }
-  @keyframes wave { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
+  /* 모서리 정보 블록 */
+  .sg .meta { position: relative; z-index: 6; grid-row: 3; display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; padding: 0 max(24px, calc((100vw - 1180px) / 2)) 1.6rem; }
+  .sg .who { min-width: 0; max-width: 32rem; }
+  .sg .mask { display: block; overflow: hidden; }
+  .sg .rise { display: block; transform: translateY(110%); transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .sg .hero.is-on .rise { transform: none; }
+  .sg .hero.is-out .rise { transform: translateY(-110%); transition: transform 0.3s ease-in; }
+  .sg .who h1 { margin: 0; font-size: clamp(1.7rem, 3.1vw, 2.7rem); line-height: 1.12; letter-spacing: -0.04em; font-weight: 800; }
+  .sg .who h1 .rise { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .sg .sub { margin: 0.45rem 0 0; font-size: 0.98rem; color: #b5b5bd; }
+  .sg .sub .rise { transition-delay: 0.06s; }
+  .sg .act { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem; }
+  .sg .btn { padding: 0.85rem 1.4rem; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.22); font-weight: 700; font-size: 0.92rem; color: #f4f4f0; text-decoration: none; transition: border-color 0.2s, background 0.2s, color 0.2s; }
+  .sg .btn:hover { border-color: #fff; }
+  .sg .btn.p { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+  .sg .btn.p:hover { background: #fff; border-color: #fff; }
+  .sg .dday { flex: none; text-align: right; }
+  .sg .dd-label { margin: 0; font-size: 0.7rem; letter-spacing: 0.18em; color: var(--dim); }
+  .sg .dd-num { margin: 0.1rem 0 0; font-family: var(--disp); font-size: clamp(4.6rem, 9vw, 8rem); line-height: 0.95; color: #f4f4f0; font-variant-numeric: tabular-nums; }
+  .sg .dd-date { margin: 0.3rem 0 0; font-size: 0.85rem; letter-spacing: 0.06em; color: #c9c9cf; }
+  .sg .dd-date i { font-style: normal; color: #ff5fa2; margin-left: 0.8rem; }
+  .sg .dd-date i:empty { display: none; }
 
-  /* 막: 주름은 세로 선으로만 */
-  .curtain { position: absolute; top: 0; bottom: 0; width: 50.5%; z-index: 5; background: #0b0b0d; transition: transform 1s cubic-bezier(.7, 0, .2, 1); }
-  .curtain::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, #1c1c20 0 1px, transparent 1px 44px); }
-  .curtain.cl { left: 0; border-right: 1px solid #2a2a30; }
-  .curtain.cr { right: 0; border-left: 1px solid #2a2a30; }
-  .st.is-open .cl { transform: translateX(-101%); }
-  .st.is-open .cr { transform: translateX(101%); }
-  .st.no-curtain .curtain { display: none; }
-  html:not(.js) .curtain { display: none; }
-  html:not(.js) .rise, html:not(.js) .pic { transform: none !important; opacity: 1 !important; }
+  /* 공연 고르기 */
+  .sg .tabs { position: relative; z-index: 6; grid-row: 4; list-style: none; margin: 0; padding: 0 max(24px, calc((100vw - 1180px) / 2)); display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .sg .tabs button { all: unset; box-sizing: border-box; cursor: pointer; position: relative; display: flex; align-items: baseline; gap: 0.8rem; width: 100%; padding: 1rem 1.2rem 1.1rem 0; color: var(--dim); font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+  .sg .tabs li + li button { padding-left: 1.2rem; border-left: 1px solid rgba(255, 255, 255, 0.1); }
+  .sg .tabs button:hover, .sg .tabs button[aria-selected='true'] { color: #f4f4f0; }
+  .sg .tabs button:focus-visible { outline: 2px solid #ff5fa2; outline-offset: -2px; }
+  .sg .tabs .no { font-family: var(--disp); font-size: 0.95rem; letter-spacing: 0.04em; }
+  .sg .tabs .tt { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sg .tabs .bar { position: absolute; left: 0; right: 0; top: -1px; height: 1px; }
+  .sg .tabs .bar i { display: block; height: 100%; background: #f4f4f0; transform: scaleX(0); transform-origin: 0 50%; }
+  .sg .tabs button[aria-selected='true'] .bar i { transform: scaleX(1); }
+  .sg .hero.is-running .tabs button[aria-selected='true'] .bar i { animation: sg-fill var(--hold, 7000ms) linear both; }
+  @keyframes sg-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  html:not(.js) .sg .ch, html:not(.js) .sg .rise { transform: none; opacity: 1; }
+  html:not(.js) .sg .card { translate: 0 0; scale: 1; opacity: 1; }
 
   /* ── 전광판 ── */
-  .led { display: flex; align-items: stretch; border-top: 1px solid #2a2a30; border-bottom: 1px solid #2a2a30; background: #0b0b0d; }
-  .led-tag { flex: none; display: flex; align-items: center; padding: 0 1.1rem 0 max(24px, calc((100vw - 1180px) / 2)); font-size: 0.72rem; letter-spacing: .14em; color: #f4f4f0; border-right: 1px solid #2a2a30; }
-  .led-win { overflow: hidden; flex: 1; min-width: 0; }
-  .led-run { display: flex; width: max-content; animation: run 36s linear infinite; }
-  .led-win:hover .led-run, .led-win:focus-within .led-run { animation-play-state: paused; }
-  .led-set { display: flex; }
-  .led-set a { display: block; padding: 0.85rem 1.6rem; font-size: 0.86rem; color: #c9c9cf; text-decoration: none; white-space: nowrap; border-right: 1px solid #1c1c20; }
-  .led-set a:hover { color: #fff; }
-  .led-set b { color: #f4f4f0; margin-right: 0.5rem; }
-  .led-set i { font-style: normal; color: #8f8f97; margin-left: 0.4rem; }
-  @keyframes run { to { transform: translateX(-50%); } }
+  .sg .led { display: flex; align-items: stretch; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #060607; }
+  .sg .led-tag { flex: none; display: flex; align-items: center; padding: 0 1.2rem 0 max(24px, calc((100vw - 1180px) / 2)); font-size: 0.7rem; letter-spacing: 0.16em; color: #f4f4f0; border-right: 1px solid var(--line); }
+  .sg .led-win { overflow: hidden; flex: 1; min-width: 0; }
+  .sg .led-run { display: flex; width: max-content; animation: sg-run 40s linear infinite; }
+  .sg .led-win:hover .led-run, .sg .led-win:focus-within .led-run { animation-play-state: paused; }
+  .sg .led-set { display: flex; }
+  .sg .led-set a { display: flex; align-items: baseline; gap: 0.7rem; padding: 0.9rem 1.8rem; font-size: 0.88rem; color: #c9c9cf; text-decoration: none; white-space: nowrap; }
+  .sg .led-set a:hover { color: #fff; }
+  .sg .led-set b { font-family: var(--disp); font-weight: 400; font-size: 1.05rem; letter-spacing: 0.03em; color: #f4f4f0; }
+  .sg .led-set i { font-style: normal; color: var(--dim); font-size: 0.8rem; }
+  @keyframes sg-run { to { transform: translateX(-50%); } }
 
   /* ── 아래 구역 ── */
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 3.2rem 0 0.8rem; border-bottom: 1px solid #2a2a30; }
-  .sec-head h2 { margin: 0; font-size: 0.82rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
-  .sec-head a { font-size: 0.85rem; color: #8f8f97; text-decoration: none; white-space: nowrap; }
-  .sec-head a:hover { color: #f4f4f0; }
+  .sg .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .sg .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; padding: 5rem 0 1rem; border-bottom: 1px solid var(--line); }
+  .sg .sec-head h2 { margin: 0; font-family: var(--disp); font-weight: 400; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 0.9; text-transform: uppercase; letter-spacing: 0.005em; }
+  .sg .sec-head a { font-size: 0.85rem; color: var(--dim); text-decoration: none; white-space: nowrap; padding-bottom: 0.3rem; }
+  .sg .sec-head a:hover { color: #f4f4f0; }
 
-  html.js .rv { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s cubic-bezier(.2, .8, .2, 1); transition-delay: var(--d, 0ms); }
-  html.js .rv.in { opacity: 1; transform: none; }
+  html.js .sg .rv { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); transition-delay: var(--d, 0ms); }
+  html.js .sg .rv.in { opacity: 1; transform: none; }
 
-  .rows a { display: grid; grid-template-columns: 9.5rem 1fr auto; column-gap: 1.6rem; align-items: center; padding: 1.25rem 0; border-bottom: 1px solid #2a2a30; color: #f4f4f0; text-decoration: none; }
-  .rows a:hover .nm { transform: translateX(0.6rem); }
-  .rows .t { font-size: clamp(1.6rem, 3.4vw, 2.6rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; white-space: nowrap; }
-  .rows .t span { display: block; font-size: 0.42em; letter-spacing: .02em; color: #8f8f97; margin-top: 0.35rem; }
-  .rows .nm { min-width: 0; font-size: clamp(1.05rem, 2vw, 1.5rem); font-weight: 800; letter-spacing: -.02em; transition: transform .2s; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .rows .nm small { display: block; margin-top: 0.2rem; font-size: 0.82rem; font-weight: 500; letter-spacing: 0; color: #8f8f97; overflow: hidden; text-overflow: ellipsis; }
-  .rows .cd { font-size: 0.95rem; font-weight: 700; padding: 0.35rem 0.7rem; border: 1px solid #3a3a42; border-radius: 4px; color: #c9c9cf; white-space: nowrap; }
-  .rows .cd.hot { border-color: #ff5fa2; color: #ff5fa2; }
+  .sg .rows a { display: grid; grid-template-columns: 10rem 1fr auto; column-gap: 2rem; align-items: center; padding: 1.3rem 0; border-bottom: 1px solid var(--line); color: #f4f4f0; text-decoration: none; }
+  .sg .rows .t { font-family: var(--disp); font-size: clamp(2.2rem, 4.4vw, 3.4rem); line-height: 1; white-space: nowrap; display: flex; align-items: baseline; gap: 0.6rem; }
+  .sg .rows .t small { font-family: Pretendard, sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--dim); }
+  .sg .rows .nm { min-width: 0; font-size: clamp(1.05rem, 1.9vw, 1.4rem); font-weight: 700; letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+  .sg .rows a:hover .nm { transform: translateX(0.7rem); }
+  .sg .rows .nm small { display: block; margin-top: 0.25rem; font-size: 0.82rem; font-weight: 400; letter-spacing: 0; color: var(--dim); overflow: hidden; text-overflow: ellipsis; }
+  .sg .rows .cd { font-size: 0.85rem; font-weight: 700; font-variant-numeric: tabular-nums; padding: 0.35rem 0.75rem; border: 1px solid #3a3a42; border-radius: 4px; color: #c9c9cf; white-space: nowrap; }
+  .sg .rows .cd.hot { border-color: #ff5fa2; color: #ff5fa2; }
 
-  /* 알림 소개 */
-  .app { display: grid; grid-template-columns: 1fr auto; gap: 3rem clamp(2rem, 7vw, 6rem); align-items: center; margin-top: 4.5rem; padding: clamp(1.6rem, 4vw, 3.2rem); border: 1px solid #2a2a30; border-radius: 8px; background: #121215; }
-  .eyebrow { margin: 0 0 1rem; font-size: 0.75rem; letter-spacing: .14em; color: #8f8f97; }
-  .app h2 { margin: 0; font-size: clamp(1.9rem, 4.6vw, 3.4rem); line-height: 1.12; letter-spacing: -.045em; font-weight: 900; }
-  .lead { margin: 1.1rem 0 0; max-width: 34rem; color: #c4c4c8; line-height: 1.7; }
-  .steps { list-style: none; margin: 1.5rem 0 0; padding: 0; max-width: 30rem; border-top: 1px solid #2a2a30; }
-  .steps li { display: flex; gap: 1rem; align-items: baseline; padding: 0.7rem 0; border-bottom: 1px solid #2a2a30; font-weight: 600; font-size: 0.95rem; }
-  .steps span { font-size: 0.75rem; color: #8f8f97; letter-spacing: .08em; }
-  .fine { margin: 1rem 0 0; font-size: 0.8rem; color: #8f8f97; }
-  .phone { position: relative; width: 250px; height: 480px; padding: 2.6rem 0.8rem 0; border: 2px solid #3a3a42; border-radius: 34px; background: #0b0b0d; overflow: hidden; }
-  .ph-notch { position: absolute; top: 0.7rem; left: 50%; width: 72px; height: 18px; margin-left: -36px; border-radius: 9px; background: #1c1c20; }
-  .ph-date { margin: 1.2rem 0 0; text-align: center; font-size: 0.72rem; color: #8f8f97; }
-  .ph-clock { margin: 0.1rem 0 1.4rem; text-align: center; font-size: 3.2rem; font-weight: 800; letter-spacing: -.04em; line-height: 1; color: #f4f4f0; }
-  .noti { display: flex; gap: 0.6rem; padding: 0.7rem; border-radius: 8px; background: #1c1c20; border: 1px solid #2a2a30; }
-  .noti.drop { animation: drop .5s cubic-bezier(.2, .9, .2, 1) both; }
-  @keyframes drop { from { transform: translateY(-140%); opacity: 0; } to { transform: none; opacity: 1; } }
-  .noti-ic { flex: none; width: 28px; height: 28px; border-radius: 6px; background: #0e0e10; border: 2px solid #ff5fa2; }
-  .noti p { margin: 0; }
-  .noti-top { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.66rem; color: #8f8f97; }
-  .noti-top b { color: #c9c9cf; font-weight: 600; }
-  .noti-title { font-size: 0.8rem; font-weight: 800; color: #f4f4f0; line-height: 1.35; margin-top: 0.15rem !important; }
-  .noti-body { font-size: 0.72rem; color: #c4c4c8; line-height: 1.45; margin-top: 0.15rem !important; }
-  .ph-bar { position: absolute; bottom: 0.6rem; left: 50%; width: 90px; height: 4px; margin-left: -45px; border-radius: 2px; background: #3a3a42; }
+  .sg .app { display: grid; grid-template-columns: 1fr auto; gap: 3rem clamp(2rem, 8vw, 7rem); align-items: center; margin-top: 6rem; padding: 3.5rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .sg .eyebrow { margin: 0 0 1.2rem; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+  .sg .app h2 { margin: 0; font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -0.05em; font-weight: 800; }
+  .sg .lead { margin: 1.3rem 0 0; max-width: 32rem; color: #b5b5bd; line-height: 1.75; }
+  .sg .app .act { margin-top: 1.8rem; }
+  .sg .fine { margin: 1.3rem 0 0; max-width: 32rem; font-size: 0.8rem; line-height: 1.6; color: var(--dim); }
+  .sg .phone { position: relative; width: 256px; height: 500px; padding: 2.8rem 0.8rem 0; border: 1px solid #3a3a42; border-radius: 36px; background: #060607; overflow: hidden; }
+  .sg .ph-notch { position: absolute; top: 0.75rem; left: 50%; width: 76px; height: 20px; margin-left: -38px; border-radius: 10px; background: #17171a; }
+  .sg .ph-date { margin: 1.4rem 0 0; text-align: center; font-size: 0.74rem; color: var(--dim); }
+  .sg .ph-clock { margin: 0.2rem 0 1.6rem; text-align: center; font-family: var(--disp); font-size: 4.2rem; line-height: 1; color: #f4f4f0; font-variant-numeric: tabular-nums; }
+  .sg .noti { display: flex; gap: 0.6rem; padding: 0.7rem; border-radius: 14px; background: #1b1b1f; }
+  .sg .noti.drop { animation: sg-drop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes sg-drop { from { transform: translateY(-150%) scale(0.94); opacity: 0; } to { transform: none; opacity: 1; } }
+  .sg .noti-ic { flex: none; width: 30px; height: 30px; border-radius: 7px; }
+  .sg .noti p { margin: 0; }
+  .sg .noti-top { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.66rem; color: var(--dim); }
+  .sg .noti-top b { color: #c9c9cf; font-weight: 600; }
+  .sg .noti-title { font-size: 0.8rem; font-weight: 700; color: #f4f4f0; line-height: 1.35; margin-top: 0.15rem !important; }
+  .sg .noti-body { font-size: 0.72rem; color: #b5b5bd; line-height: 1.45; margin-top: 0.15rem !important; }
+  .sg .ph-bar { position: absolute; bottom: 0.6rem; left: 50%; width: 96px; height: 4px; margin-left: -48px; border-radius: 2px; background: #3a3a42; }
 
-  .tools { margin-top: 3rem; }
-  .poster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem 0.9rem; padding-top: 1.4rem; }
-  @media (min-width: 720px) { .poster-grid { grid-template-columns: repeat(4, 1fr); } }
-  .card-wrap { transition-property: opacity, transform; }
-  .more { display: block; margin: 2.2rem 0 0.5rem; padding: 1.4rem; border: 1px solid #3a3a42; border-radius: 4px; text-align: center; font-weight: 900; font-size: 1.2rem; color: #f4f4f0; text-decoration: none; }
-  .more:hover { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+  .sg .tools { margin-top: 4rem; }
+  .sg .poster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; padding-top: 1.6rem; }
+  @media (min-width: 720px) { .sg .poster-grid { grid-template-columns: repeat(4, 1fr); } }
+  .sg .more { display: block; margin: 2.4rem 0 0.5rem; padding: 1.3rem; border: 1px solid #3a3a42; border-radius: 4px; text-align: center; font-weight: 700; font-size: 1.05rem; color: #f4f4f0; text-decoration: none; transition: background 0.2s, color 0.2s, border-color 0.2s, opacity 0.7s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+  .sg .more:hover { background: #f4f4f0; border-color: #f4f4f0; color: #0e0e10; }
 
   @media (max-width: 860px) {
-    .st-in { grid-template-columns: 1fr; gap: 3.4rem; padding: 4.4rem 20px 6rem; }
-    .riser { order: -1; justify-self: center; max-width: min(56vw, 250px); }
-    /* 좁은 화면에선 포스터가 빛을 다 가리지 않게 빛줄기를 더 넓게 편다 */
-    .spot { top: -30vh; left: -42%; right: -42%; clip-path: polygon(47% 0, 53% 0, 94% 100%, 6% 100%); }
-    .pool { left: -36%; right: -36%; }
-    .setlist { margin-top: 1.4rem; }
-    .act .btn { flex: 1 1 auto; text-align: center; }
-    .app { grid-template-columns: 1fr; }
-    .phone { justify-self: center; }
-    .rows a { grid-template-columns: 5.6rem 1fr auto; column-gap: 0.9rem; }
-    .led-tag { padding-left: 20px; }
-  }
-  @media (max-width: 480px) {
-    .rows .cd { font-size: 0.8rem; padding: 0.25rem 0.45rem; }
-    .wrap { padding: 0 20px; }
+    .sg .hero { height: auto; min-height: calc(100svh - 68px); }
+    .sg .now { padding: 1.1rem 20px 0; }
+    .sg .mark { top: 24svh; }
+    .sg .mark > span { text-align: center; }
+    .sg .mark .wd { display: block; }
+    .sg .mark .sp { display: none; }
+    .sg .card-wrap { position: relative; grid-row: 2; left: auto; top: auto; transform: none; width: min(56vw, 34svh, 260px); margin: 2.2rem auto 3.4rem; }
+    .sg .hero::after { height: 56%; }
+    .sg .meta { flex-direction: column; align-items: stretch; gap: 1.4rem; padding: 0 20px 1.4rem; }
+    .sg .dday { order: -1; text-align: left; display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; }
+    .sg .dd-label { order: 2; }
+    .sg .dd-num { font-size: 4.4rem; margin: 0; }
+    .sg .dd-date { order: 3; flex-basis: 100%; margin: 0; }
+    .sg .act .btn { flex: 1 1 auto; text-align: center; }
+    .sg .tabs { grid-template-columns: 1fr; padding: 0 20px; }
+    .sg .tabs button { padding: 0.8rem 0; }
+    .sg .tabs li + li button { padding-left: 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .sg .tabs li + li .bar { top: -1px; }
+    .sg .led-tag { padding-left: 20px; }
+    .sg .wrap { padding: 0 20px; }
+    .sg .sec-head { padding-top: 3.6rem; }
+    .sg .rows a { grid-template-columns: 1fr auto; row-gap: 0.4rem; }
+    .sg .rows .t { grid-column: 1 / -1; }
+    .sg .app { grid-template-columns: 1fr; margin-top: 4rem; }
+    .sg .phone { justify-self: center; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .beam, .stick, .led-run, .live { animation: none; }
-    .rise, .pic, .curtain { transition: none; }
-    .st .spot { opacity: .09; }
-    .st .pool { opacity: .16; }
+    .sg .live, .sg .led-run { animation: none; }
+    .sg .ch, .sg .rise, .sg .card, .sg .pool { transition: none; }
+    .sg .dust { display: none; }
   }
 </style>
