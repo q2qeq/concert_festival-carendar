@@ -7755,5 +7755,58 @@
     ],
     "posterUrl": "/posters/kimchikura-anisama-seoul-2027-01.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016535_p.gif"
+  },
+  {
+    "id": "day6-the-present-seoul-2026-12",
+    "artist": "2026 DAY6 Special Concert 'The Present' (데이식스)",
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-12-18",
+    "endDate": "2026-12-20",
+    "description": "데이식스가 연말에 여는 스페셜 콘서트예요. 2026년 12월 18일(금)부터 20일(일)까지 사흘 동안 KSPO DOME에서 열려요. 지난해 같은 이름의 연말 공연에 이어 올해도 열려요.",
+    "schedule": "12/18(금) 오후 7시, 12/19(토) 오후 6시, 12/20(일) 오후 5시 (NOL 티켓 공지 기준)",
+    "note": "전석 154,000원, 만 7세 이상 관람(미취학 아동 입장 불가), NOL 티켓 단독 판매예요. 팬클럽(My Day 6기) 선예매는 11/19(목) 오후 8시~11시 59분(전 회차 1인 1매), 일반 예매는 11/20(금) 오후 8시(회당 1인 2매, 선예매 매수 포함)예요. 선예매 인증은 11/18(수) 오후 11시 59분까지 해야 해요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-19 오후 8시 (팬클럽 선예매), 2026-11-20 오후 8시 (일반) - NOL 티켓 단독판매",
+    "ticketOpenAt": "2026-11-19T20:00:00+09:00",
+    "sources": [
+      {
+        "label": "2026 DAY6 Special Concert 'The Present' 티켓 오픈 공지 - NOL 티켓 상품 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26016335"
+      },
+      {
+        "label": "DAY6 to hold special solo concert 'The Present' at KSPO DOME on December 18~20 - 스포츠경향 (2026-11-12)",
+        "url": "https://sports.khan.co.kr/en/article/202611120000007"
+      }
+    ],
+    "addedAt": "2026-11-15",
+    "ticketOpens": [
+      {
+        "label": "팬클럽 선예매 (My Day 6기)",
+        "at": "2026-11-19T20:00:00+09:00",
+        "until": "2026-11-19T23:59:00+09:00"
+      },
+      {
+        "label": "일반 예매",
+        "at": "2026-11-20T20:00:00+09:00"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26016335"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-11-15",
+        "text": "NOL 상품 페이지에서 전석 154,000원, 팬클럽 선예매 11/19 오후 8시, 일반 예매 11/20 오후 8시가 확인됐어요.",
+        "sourceUrl": "https://nol.yanolja.com/ticket/products/26016335"
+      }
+    ],
+    "posterUrl": "/posters/day6-the-present-seoul-2026-12.webp",
+    "promoBanner": "데이식스 'The Present' 12.18~20 KSPO DOME - 팬클럽 선예매 11/19, 일반 11/20 저녁 8시",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016335_p.gif"
   }
 ]
