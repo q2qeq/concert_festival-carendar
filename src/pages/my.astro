@@ -49,9 +49,11 @@ const list = upcomingEvents();
   .my-news { margin: 0.6rem 0 0; font-size: 0.84rem; font-weight: 700; color: var(--cheese); line-height: 1.5; }
   .my-news small { color: var(--muted); font-weight: 400; margin-right: 0.4rem; }
   .my-alert { margin: 0.8rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem; }
-  .my-alert button { padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.88rem; font-weight: 700; color: var(--ink); background: var(--btn); border: 0; cursor: pointer; }
+  .my-alert button { padding: 0.5rem 0.9rem; border-radius: 4px; font-size: 0.88rem; font-weight: 700; color: var(--ink); background: var(--btn); border: 0; cursor: pointer; }
   .my-alert small { color: var(--muted); }
-  .my-empty { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4rem; padding: 1.6rem 1.2rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: var(--fg-2); line-height: 1.7; }
+  /* display:flex가 hidden 속성을 덮어써서 찜이 없어도 버튼이 보였다 */
+  .my-alert[hidden], .my-empty[hidden] { display: none; }
+  .my-empty { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4rem; padding: 1.6rem 1.2rem; background: var(--card); border-radius: 8px; color: var(--fg-2); line-height: 1.7; }
   .my-empty a { color: var(--cheese); }
 </style>
 

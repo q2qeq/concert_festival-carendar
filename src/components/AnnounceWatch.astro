@@ -1,7 +1,7 @@
 ---
 // '발표 대기' 공연 안내 - 공연장이 아직 안 나왔거나 티켓 오픈 일정이 없는 공연에서, 찜 + 캘린더 구독으로 이어준다.
 // 찜해 두면 /my 와 홈에서 새 소식(updates)이 생겼을 때 알려준다(기존 기능, 전부 브라우저 안에서 계산).
-// 메일·푸시 수집은 하지 않는다. 찜 버튼은 페이지의 기존 찜 버튼(.ab-bookmark)을 그대로 눌러 상태를 공유한다.
+// 메일·푸시 수집은 하지 않는다. 찜은 바로 위 액션바의 찜하기 버튼 하나로 한다(2026-11-14 중복 버튼 제거).
 import type { ConcertEvent } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
@@ -12,38 +12,19 @@ const pending = [venuePending ? '공연장' : '', ticketPending ? '티켓 오픈
 ---
 {show && (
   <section class="announce-watch" aria-label="발표 대기 안내">
-    <p class="aw-text"><b>{pending}은 아직 발표 전이에요.</b> 찜해 두면 새 소식이 올라왔을 때 <a href="/my/">내 찜</a>과 홈에서 알려줘요. 가입은 필요 없어요.</p>
+    <p class="aw-text"><b>{pending}은 아직 발표 전이에요.</b> 위의 ♡ 찜하기를 눌러 두면 새 소식이 올라왔을 때 <a href="/my/">내 찜</a>과 홈에서 알려줘요. 가입은 필요 없어요.</p>
     <div class="aw-acts">
-      <button class="aw-follow" type="button" aria-pressed="false">♡ 찜하고 새 소식 받기</button>
       <a class="aw-cal" href={`https://calendar.google.com/calendar/r?cid=${encodeURIComponent('webcal://jikgwannyang.com/calendar/ticket-open.ics')}`} target="_blank" rel="noopener noreferrer" data-track-kind="calendar">티켓오픈 캘린더 구독</a>
     </div>
   </section>
 )}
-<script>
-  const btn = document.querySelector<HTMLButtonElement>('.aw-follow');
-  if (btn) {
-    const paint = () => {
-      const on = document.querySelector('.ab-bookmark')?.getAttribute('aria-pressed') === 'true';
-      btn.setAttribute('aria-pressed', String(on));
-      btn.textContent = on ? '♥ 찜했어요 - 새 소식을 알려드려요' : '♡ 찜하고 새 소식 받기';
-      btn.classList.toggle('is-on', on);
-    };
-    btn.addEventListener('click', () => {
-      (document.querySelector('.ab-bookmark') as HTMLElement | null)?.click();
-      paint();
-    });
-    window.addEventListener('bookmarks:changed', paint);
-    paint();
-  }
-</script>
 <style>
-  .announce-watch { margin: 1.2rem 0 0; padding: 1rem 1.2rem; border: 1px solid var(--line); border-left: 3px solid var(--cheese); border-radius: 4px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem 1.4rem; }
+  /* 상자·강조 막대 없이 글자만. 아래 '다음 행동' 블록의 선이 구획을 나눈다 */
+  .announce-watch { margin: 1.2rem 0 0; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.4rem 1.4rem; }
   .aw-text { margin: 0; flex: 1 1 20rem; color: var(--fg-2); font-size: 0.92rem; line-height: 1.65; }
   .aw-text b { color: var(--fg); }
+  .aw-text a { color: var(--cheese); }
   .aw-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem 1.1rem; }
-  .aw-follow { all: unset; cursor: pointer; padding: 0.55rem 1rem; border-radius: 4px; background: var(--btn); color: var(--ink); font-weight: 800; font-size: 0.88rem; }
-  .aw-follow.is-on { background: transparent; color: var(--cheese); box-shadow: inset 0 0 0 1px var(--cheese); }
-  .aw-follow:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
-  .aw-cal { color: var(--muted); font-size: 0.85rem; text-decoration: none; }
-  .aw-cal:hover { color: var(--fg); }
+  .aw-cal { padding: 0.5rem 0; color: var(--fg-2); font-size: 0.88rem; font-weight: 600; text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 0.25em; }
+  .aw-cal:hover { color: var(--cheese); text-decoration-color: var(--cheese); }
 </style>
