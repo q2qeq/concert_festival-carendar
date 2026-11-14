@@ -68,26 +68,29 @@ const jsonLd = [
   <section id="start-screen" class="arcade" aria-label="티켓팅 연습 시작 화면">
     <div class="arcade-title">티켓팅 연습</div>
     <div class="arcade-sub">서버 시간 보고 예매하기 → 대기열 → 구역 고르기 → 빈 좌석 잡기</div>
-    <ol class="steps">
-      <li><b>①</b><span>서버 시간 보고<br />예매하기 3번</span></li>
-      <li><b>②</b><span>버튼 반응으로<br />대기 순번 결정</span></li>
-      <li><b>③</b><span>목표 구역<br />빨리 고르기</span></li>
-      <li><b>④</b><span>빈 좌석<br />3라운드</span></li>
-    </ol>
     <div class="plat" role="group" aria-label="연습할 예매처">
       <button type="button" class="chip" data-plat="nol" aria-pressed="false">NOL 티켓</button>
       <button type="button" class="chip" data-plat="yes24" aria-pressed="false">예스24</button>
       <button type="button" class="chip" data-plat="melon" aria-pressed="false">멜론티켓</button>
       <button type="button" class="chip" data-plat="ticketlink" aria-pressed="false">티켓링크</button>
     </div>
-    <button id="g-start" type="button" class="start-btn">▶ START</button>
-    <div class="arcade-best">최고 기록 <b id="start-best">-</b> · Enter 키로도 시작해요</div>
+    <button id="g-start" type="button" class="start-btn">▶ 전체 도전</button>
+    <div class="arcade-best">전체 도전 최고 기록 <b id="start-best">-</b> · Enter 키로도 시작해요</div>
+    <div class="modes" role="group" aria-label="한 단계만 연습">
+      <p class="modes-label">한 단계만 연습하기</p>
+      <div class="modes-row">
+        <button type="button" class="mode" data-mode="btn"><b>예매 버튼</b><span>서버 시간 보고 3번</span><em data-mode-best="btn">-</em></button>
+        <button type="button" class="mode" data-mode="zone"><b>구역 고르기</b><span>목표 구역 2라운드</span><em data-mode-best="zone">-</em></button>
+        <button type="button" class="mode" data-mode="seat"><b>빈 좌석 잡기</b><span>좌석 3라운드</span><em data-mode-best="seat">-</em></button>
+      </div>
+      <p class="modes-note">단계 기록은 단계끼리만 순위를 매겨요. 전체 도전 순위에는 들어가지 않아요.</p>
+    </div>
   </section>
 
   <div id="game-area" hidden>
     <div class="hud">
       <span>단계 <b id="g-stage">-</b></span>
-      <span>점수 <b id="g-score">0</b></span>
+      <span id="hud-score">점수 <b id="g-score">0</b></span>
       <span>최고 <b id="g-best">-</b></span>
     </div>
     <div id="g-msg" class="g-msg"></div>
@@ -101,6 +104,8 @@ const jsonLd = [
     <ul id="g-tips" class="tips"></ul>
     <div class="g-actions">
       <button id="g-retry" type="button" class="btn primary">▶ 다시 도전 (Enter)</button>
+      <button id="g-full" type="button" class="btn" hidden>전체 도전하기</button>
+      <button id="g-menu" type="button" class="btn">단계 고르기</button>
       <button id="g-share" type="button" class="btn">결과 공유하기</button>
     </div>
     <p class="after">
@@ -189,9 +194,6 @@ const jsonLd = [
   .arcade { position: relative; text-align: center; padding: 2rem 1rem 1.6rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.14); background: var(--card); margin-bottom: 1.2rem; overflow: hidden; }
   .arcade-title { font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 900; letter-spacing: -0.02em; color: #fff;}
   .arcade-sub { margin: 0.5rem 0 1.2rem; color: var(--fg-2); font-weight: 700; }
-  .steps { list-style: none; display: flex; justify-content: center; gap: 0.6rem; margin: 0 0 1.2rem; padding: 0; flex-wrap: wrap; }
-  .steps li { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.8rem; border-radius: 8px; background: rgba(255,255,255,0.07); font-size: 0.82rem; color: var(--fg-2); line-height: 1.35; text-align: left; }
-  .steps b { color: #ffd166; font-size: 1.2rem; }
   .plat { display: flex; justify-content: center; gap: 0.4rem; flex-wrap: wrap; margin: 0 0 1.3rem; }
   .chip { padding: 0.4rem 0.85rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.22); background: transparent; color: var(--fg-2); font-size: 0.85rem; font-weight: 700; cursor: pointer; }
   .chip[aria-pressed="true"] { background: #ffd166; color: var(--card); border-color: transparent; }
@@ -199,7 +201,18 @@ const jsonLd = [
   .start-btn:active { transform: translateY(4px);animation: none; }
   @keyframes bob { 50% { transform: translateY(-4px); } }
   .arcade-best { margin-top: 1.1rem; color: var(--muted); font-size: 0.85rem; }
-  .arcade-best b { color: #ffd166; }
+  .arcade-best b { color: var(--fg); font-variant-numeric: tabular-nums; }
+  /* 단계 고르기: 시작 화면 아래쪽, 선으로 구분한 세 칸 */
+  .modes { margin: 1.6rem auto 0; padding-top: 1.2rem; border-top: 1px solid var(--line); max-width: 36rem; }
+  .modes-label { margin: 0 0 0.7rem; font-size: 0.9rem; font-weight: 700; color: var(--fg); }
+  .modes-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .mode { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.8rem 0.4rem; border: 1px solid var(--line-2); border-radius: 4px; background: transparent; color: var(--fg); font: inherit; cursor: pointer; }
+  .mode:hover { border-color: var(--fg-2); }
+  .mode b { font-size: 0.95rem; }
+  .mode span { font-size: 0.75rem; color: var(--muted); }
+  .mode em { font-style: normal; font-size: 0.75rem; color: var(--fg-2); font-variant-numeric: tabular-nums; }
+  .modes-note { margin: 0.7rem 0 0; font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+  @media (max-width: 480px) { .modes-row { grid-template-columns: 1fr; } .mode { flex-direction: row; justify-content: space-between; padding: 0.75rem 0.9rem; } .mode span { flex: 1; text-align: left; margin-left: 0.6rem; } }
   .next-opens { margin-top: 1.8rem; }
   .next-opens h2 { font-size: 1.15rem; margin: 0 0 0.6rem; }
   .next-opens ul { list-style: none; margin: 0 0 0.6rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
@@ -361,6 +374,28 @@ const jsonLd = [
   }
   renderBest();
 
+  const STAGE_BEST_KEY = (m: string) => `krconcerts:practice-best:${m}`;
+  const lowerBetter = (m: Mode) => m === 'btn' || m === 'zone';
+  function getStageBest(m: Mode): number | null {
+    try { const v = localStorage.getItem(STAGE_BEST_KEY(m)); return v === null ? null : Number(v); } catch { return null; }
+  }
+  // 새 기록이 더 좋으면 저장하고 true
+  function setStageBest(m: Mode, v: number): boolean {
+    const old = getStageBest(m);
+    const better = old === null || (lowerBetter(m) ? v < old : v > old);
+    if (better) { try { localStorage.setItem(STAGE_BEST_KEY(m), String(v)); } catch { /* 저장 불가 */ } }
+    return better;
+  }
+  const fmtStage = (m: Mode, v: number) => (m === 'seat' ? `${v}점` : `${v}ms`);
+  function renderStageBest() {
+    document.querySelectorAll<HTMLElement>('[data-mode-best]').forEach((el) => {
+      const m = el.dataset.modeBest as Mode;
+      const v = getStageBest(m);
+      el.textContent = v === null ? '기록 없음' : `최고 ${fmtStage(m, v)}`;
+    });
+  }
+  renderStageBest();
+
   const pad = (n: number, l = 2) => String(n).padStart(l, '0');
   const fmtClock = (ms: number, withMs = true) => {
     const d = new Date(ms);
@@ -437,6 +472,11 @@ const jsonLd = [
   const tag = (tone: Tone, text: string) => `<span class="t-${tone}">${text}</span>`;
 
   // ── 게임 상태 ───────────────────────────────────────────────────────────
+  // full: 전체 도전(순위·최고 기록 집계) / btn·zone·seat: 한 단계만 연습(단계별 순위·기록)
+  type Mode = 'full' | 'btn' | 'zone' | 'seat';
+  const MODE_NAMES: Record<Mode, string> = { full: '전체 도전', btn: '예매 버튼', zone: '구역 고르기', seat: '빈 좌석 잡기' };
+  let mode: Mode = 'full';
+  const pre = (n: number) => (mode === 'full' ? `${n}/3 ` : '');
   let running = false;
   let score = 0;
   let resultText = '';
@@ -463,7 +503,7 @@ const jsonLd = [
   // ── 1단계: 모의 예매 사이트 (3회 시도) ───────────────────────────────────
   // 반환: 이 시도의 유효 반응시간(ms), 놓쳤으면 -1
   async function playButtonAttempt(i: number): Promise<number> {
-    stageEl.textContent = `1/3 예매 버튼 ${i + 1}/${BTN_ATTEMPTS}`;
+    stageEl.textContent = `${pre(1)}예매 버튼 ${i + 1}/${BTN_ATTEMPTS}`;
     attemptNo.textContent = `${i + 1}/${BTN_ATTEMPTS}회`;
     bookBtn.className = 'book is-wait';
     bookBtn.textContent = '오픈 대기중';
@@ -558,13 +598,13 @@ const jsonLd = [
     return { avg, q, pos };
   }
 
-  async function playSite(): Promise<{ q: number; pos: number }> {
+  async function playSite(): Promise<{ q: number; pos: number; avg: number }> {
     seatsEl.hidden = true;
     siteEl.hidden = false;
     queueBox.hidden = true;
     const attempts: number[] = [];
     for (let i = 0; i < BTN_ATTEMPTS; i++) attempts.push(await playButtonAttempt(i));
-    const { q, pos } = computeQueue(attempts);
+    const { q, pos, avg } = computeQueue(attempts);
     stageEl.textContent = '대기열';
     msg.textContent = '예매 버튼 반응으로 대기 순번이 정해졌어요';
     queueBox.hidden = false;
@@ -575,7 +615,7 @@ const jsonLd = [
     addLog(`대기 순번 <b>${pos.toLocaleString()}번째</b> · ${hint}`);
     await sleep(2200);
     siteEl.hidden = true;
-    return { q, pos };
+    return { q, pos, avg };
   }
 
   // ── 2단계: 구역 선택 ────────────────────────────────────────────────
@@ -584,7 +624,7 @@ const jsonLd = [
   const zoneMap = $('zone-map');
   const zoneTarget = $('zone-target');
   async function playZoneRound(idx: number): Promise<void> {
-    stageEl.textContent = `2/3 구역 선택 ${idx + 1}/${ZONE_ROUNDS}`;
+    stageEl.textContent = `${pre(2)}구역 선택 ${idx + 1}/${ZONE_ROUNDS}`;
     feedback('', '');
     const pool = ZONES.filter((z) => !z.floor);
     const target = pool[Math.floor(Math.random() * pool.length)];
@@ -657,7 +697,7 @@ const jsonLd = [
   function resetSeats() { seats.forEach((s) => { s.className = 'seat'; }); }
 
   async function playSeatRound(idx: number, cfg: { n: number; life: number }) {
-    stageEl.textContent = `3/3 좌석 ${idx + 1}라운드`;
+    stageEl.textContent = `${pre(3)}좌석 ${idx + 1}라운드`;
     resetSeats();
     msg.textContent = `좌석 ${idx + 1}라운드 - 곧 열려요. 신호 전에 누르면 감점!`;
     feedback('', '');
@@ -766,34 +806,31 @@ const jsonLd = [
   }
 
   // 순위(상위 N%): 서버가 준비돼 있지 않거나 실패하면 순위 줄만 조용히 숨긴다.
-  async function submitScore(sc: number, got: number, avg: number, btn: number) {
+  // body: 전체 도전은 {score, got, avg, btn}, 단계 연습은 {stage, value, ...}
+  async function submitRank(body: Record<string, unknown>) {
     const rankEl = $('g-rank');
     rankEl.hidden = true;
+    const who = mode === 'full' ? '전체' : `${MODE_NAMES[mode]}만 연습한 사람`;
     try {
       const r = await fetch('/api/score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ score: sc, got, avg, btn }),
+        body: JSON.stringify(body),
       });
       if (!r.ok) return;
       const d = await r.json();
       if (d.estimated) {
-        rankEl.textContent = `상위 약 ${d.top}%`;
+        rankEl.textContent = mode === 'full' ? `상위 약 ${d.top}%` : `${who} 중 상위 약 ${d.top}%`;
         resultText = resultText.replace('\n나도', ` · 상위 약 ${d.top}%\n나도`);
       } else {
-        rankEl.textContent = `전체 ${d.total.toLocaleString()}명 중 상위 ${d.top}%`;
+        rankEl.textContent = `${who} ${d.total.toLocaleString()}명 중 상위 ${d.top}%`;
         resultText = resultText.replace('\n나도', ` · 상위 ${d.top}%\n나도`);
       }
       rankEl.hidden = false;
     } catch { /* 순위 없이도 게임은 정상 */ }
   }
 
-  async function start() {
-    if (running) return;
-    running = true;
-    $('start-screen').hidden = true;
-    $('game-area').hidden = false;
-    $('game-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  function resetRun() {
     score = 0;
     stats.btnMs = []; stats.btnMissed = 0; stats.btnEarly = 0; stats.btnDouble = 0;
     stats.seatRt = []; stats.seatTotal = 0; stats.seatEarly = 0; stats.seatMiss = 0; stats.seatDouble = 0;
@@ -803,25 +840,60 @@ const jsonLd = [
     logList.innerHTML = '';
     logBox.hidden = false;
     feedback('', '');
-    startBtn.disabled = true;
+  }
 
-    const { q: q0, pos } = await playSite();
-    const dq = await playZones();
-    const q = Math.max(0, Math.min(1, q0 + dq));
-
-    // 대기 순번이 좋을수록 빈 좌석이 많고 오래 남는다 (q: 0~1)
-    const rounds = BASE_ROUNDS.map((r) => ({
-      n: Math.max(2, r.n + Math.round(q * 2) - 1),
-      life: Math.round(r.life * (0.75 + 0.5 * q)),
-    }));
+  // 좌석 라운드 설정: q(0~1)가 클수록 빈 좌석이 많고 오래 남는다
+  const seatRounds = (q: number) => BASE_ROUNDS.map((r) => ({
+    n: Math.max(2, r.n + Math.round(q * 2) - 1),
+    life: Math.round(r.life * (0.75 + 0.5 * q)),
+  }));
+  async function playSeats(q: number) {
     seatsEl.hidden = false;
+    const rounds = seatRounds(q);
     for (let i = 0; i < rounds.length; i++) await playSeatRound(i, rounds[i]);
     seatsEl.hidden = true;
+  }
+  const avgOf = (a: number[]) => (a.length ? Math.round(a.reduce((x, y) => x + y, 0) / a.length) : 0);
+
+  async function start(m: Mode = 'full') {
+    if (running) return;
+    running = true;
+    mode = m;
+    // 단계 연습은 주소에 남겨 둔다(새로고침·공유하면 같은 단계로 열림)
+    const url = new URL(location.href);
+    if (m === 'full') url.searchParams.delete('stage'); else url.searchParams.set('stage', m);
+    history.replaceState(null, '', url);
+    $('start-screen').hidden = true;
+    $('game-area').hidden = false;
+    $('hud-score').hidden = m === 'zone'; // 구역 단계는 점수 없이 반응시간만 잰다
+    bestEl.parentElement!.hidden = m !== 'full';
+    $('game-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    resetRun();
+    startBtn.disabled = true;
+
+    if (m === 'full') await finishFull();
+    else await finishStage(m);
+
+    result.hidden = false;
+    stageEl.textContent = '끝';
+    msg.textContent = '끝! 아래 시도 기록과 팁을 확인하세요';
+    feedback('', '');
+    $('g-retry').textContent = m === 'full' ? '▶ 다시 도전 (Enter)' : `▶ ${MODE_NAMES[m]} 다시 (Enter)`;
+    $('g-full').hidden = m === 'full';
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    startBtn.disabled = false;
+    running = false;
+  }
+
+  async function finishFull() {
+    const { q: q0, pos } = await playSite();
+    const dq = await playZones();
+    await playSeats(Math.max(0, Math.min(1, q0 + dq)));
 
     const got = stats.seatRt.length;
-    const seatAvg = got ? Math.round(stats.seatRt.reduce((a, b) => a + b, 0) / got) : 0;
-    const btnAvg = stats.btnMs.length ? Math.round(stats.btnMs.reduce((a, b) => a + b, 0) / stats.btnMs.length) : -1;
-    const zoneAvg = stats.zoneRt.length ? Math.round(stats.zoneRt.reduce((a, b) => a + b, 0) / stats.zoneRt.length) : 0;
+    const seatAvg = avgOf(stats.seatRt);
+    const btnAvg = stats.btnMs.length ? avgOf(stats.btnMs) : -1;
+    const zoneAvg = avgOf(stats.zoneRt);
     const best = getBest();
     const isBest = score > best;
     if (isBest) setBest(score);
@@ -832,6 +904,53 @@ const jsonLd = [
       `대기 ${pos.toLocaleString()}번째 · 예매 버튼 평균 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'}` +
       ` · 구역 평균 ${zoneAvg}ms${stats.zoneMiss ? ` (오클릭 ${stats.zoneMiss})` : ''}` +
       ` · 좌석 ${stats.seatTotal}개 중 ${got}개 · 점수 ${score}점${isBest ? ' · 최고 기록!' : ''}`;
+    renderTips(btnAvg, seatAvg);
+    resultText = `직관냥 ${platformLabel() ? platformLabel() + ' ' : ''}티켓팅 연습 ${grade} · 대기 ${pos.toLocaleString()}번째 · 예매 버튼 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'} · 좌석 ${got}/${stats.seatTotal} · ${score}점\n나도 해보기 ${location.origin}/practice/`;
+    submitRank({ score, got, avg: seatAvg, btn: btnAvg });
+  }
+
+  // 한 단계만 연습: 그 단계의 기록(value)으로 단계별 순위를 매긴다
+  async function finishStage(m: Exclude<Mode, 'full'>) {
+    let value = 0;
+    let grade = '';
+    let detail = '';
+    const body: Record<string, unknown> = { stage: m };
+    if (m === 'btn') {
+      const { pos, avg } = await playSite();
+      value = Math.min(6000, Math.round(avg)); // 놓침 1500ms, 일찍 누름 +150ms가 반영된 평균
+      const j = judgeBtn(value);
+      grade = `예매 버튼 ${value}ms · ${j.label}`;
+      detail = `3번 중 ${stats.btnMs.length}번 성공` +
+        (stats.btnMissed ? ` · 놓침 ${stats.btnMissed}번` : '') +
+        (stats.btnEarly ? ` · 일찍 누름 ${stats.btnEarly}번` : '') +
+        ` · 이 반응이면 대기 ${pos.toLocaleString()}번째쯤이에요`;
+    } else if (m === 'zone') {
+      await playZones();
+      value = avgOf(stats.zoneRt) + stats.zoneMiss * ZONE_WRONG_DELAY;
+      const j = judgeZone(value);
+      grade = `구역 고르기 ${value}ms · ${j.label}`;
+      detail = `평균 ${avgOf(stats.zoneRt)}ms` + (stats.zoneMiss ? ` · 오클릭 ${stats.zoneMiss}번(번당 +${ZONE_WRONG_DELAY}ms)` : ' · 오클릭 없음');
+    } else {
+      await playSeats(0.5); // 앞 단계 없이 시작하므로 중간 순번 기준
+      const got = stats.seatRt.length;
+      value = score;
+      body.got = got;
+      body.avg = avgOf(stats.seatRt);
+      grade = `빈 좌석 ${got}/${stats.seatTotal}개 · ${score}점`;
+      detail = got ? `잡은 좌석 평균 ${avgOf(stats.seatRt)}ms · ${judgeSeat(avgOf(stats.seatRt)).label}` : '이번엔 하나도 못 잡았어요';
+      if (stats.seatMiss) detail += ` · 오클릭 ${stats.seatMiss}번`;
+    }
+    const isBest = setStageBest(m, value);
+    renderStageBest();
+    $('g-grade').textContent = grade;
+    $('g-detail').textContent = detail + (isBest ? ' · 내 최고 기록!' : ` · 내 최고 ${fmtStage(m, getStageBest(m) ?? value)}`);
+    renderTips(stats.btnMs.length ? avgOf(stats.btnMs) : (m === 'btn' ? 9999 : -1), avgOf(stats.seatRt));
+    resultText = `직관냥 티켓팅 연습 · ${grade}\n나도 해보기 ${location.origin}/practice/?stage=${m}`;
+    body.value = value;
+    submitRank(body);
+  }
+
+  function renderTips(btnAvg: number, seatAvg: number) {
     const tipsEl = $('g-tips');
     tipsEl.innerHTML = '';
     buildTips(btnAvg, seatAvg).forEach((t) => {
@@ -839,30 +958,40 @@ const jsonLd = [
       li.textContent = t;
       tipsEl.appendChild(li);
     });
-    result.hidden = false;
-    stageEl.textContent = '끝';
-    msg.textContent = '끝! 아래 시도 기록과 팁을 확인하세요';
-    feedback('', '');
-    resultText = `직관냥 ${platformLabel() ? platformLabel() + ' ' : ''}티켓팅 연습 ${grade} · 대기 ${pos.toLocaleString()}번째 · 예매 버튼 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'} · 좌석 ${got}/${stats.seatTotal} · ${score}점\n나도 해보기 ${location.origin}/practice/`;
-    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    submitScore(score, got, seatAvg, btnAvg);
-    startBtn.disabled = false;
-    startBtn.textContent = '다시 시작';
-    running = false;
   }
 
-  startBtn.addEventListener('click', start);
+  function showMenu() {
+    if (running) return;
+    result.hidden = true;
+    $('game-area').hidden = true;
+    logBox.hidden = true;
+    $('start-screen').hidden = false;
+    const url = new URL(location.href);
+    url.searchParams.delete('stage');
+    history.replaceState(null, '', url);
+    $('start-screen').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  startBtn.addEventListener('click', () => start('full'));
+  document.querySelectorAll<HTMLButtonElement>('.mode').forEach((b) => {
+    b.addEventListener('click', () => start(b.dataset.mode as Mode));
+  });
   // 플래시 게임처럼 Enter/Space로도 바로 시작 (시작 화면 또는 결과 화면이 보일 때만)
   document.addEventListener('keydown', (e) => {
     // 시작 화면이 보이거나, 한 판이 끝나 결과 화면이 떠 있을 때만 (플레이 중엔 무시)
     if (running || ($('start-screen').hidden && result.hidden)) return;
     if (e.key === 'Enter' || e.key === ' ') {
-      if ((e.target as HTMLElement)?.closest?.('.chip, summary, a, input, textarea, #g-share')) return;
+      if ((e.target as HTMLElement)?.closest?.('.chip, .mode, summary, a, input, textarea, #g-share, #g-full, #g-menu')) return;
       e.preventDefault();
-      start();
+      start($('start-screen').hidden ? mode : 'full');
     }
   });
-  $('g-retry').addEventListener('click', start);
+  $('g-retry').addEventListener('click', () => start(mode));
+  $('g-full').addEventListener('click', () => start('full'));
+  $('g-menu').addEventListener('click', showMenu);
+  // /practice/?stage=seat 처럼 들어오면 그 단계를 바로 시작한다
+  const qStage = new URLSearchParams(location.search).get('stage');
+  if (qStage === 'btn' || qStage === 'zone' || qStage === 'seat') start(qStage);
   $('g-share').addEventListener('click', async () => {
     try {
       if (navigator.share) { await navigator.share({ text: resultText }); return; }
