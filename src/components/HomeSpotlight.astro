@@ -38,7 +38,7 @@ const first = items[0];
       <p class="sub" id="sp-sub">{first.sub}</p>
       <div class="big">
         <div class="n mono" id="sp-num" data-date={first.date}>—</div>
-        <div class="u mono">DAYS LEFT<b id="sp-dot">{first.dot}</b><i id="sp-note">{first.note}</i></div>
+        <div class="u mono">일 남음<b id="sp-dot">{first.dot}</b><i id="sp-note">{first.note}</i></div>
       </div>
       <div class="act">
         <a class="btn p" id="sp-link" href={first.href}>공연 정보 보기 →</a>
@@ -110,7 +110,7 @@ const first = items[0];
     color: rgba(255,255,255,0.03); pointer-events: none; white-space: nowrap;
   }
   .info { position: relative; z-index: 2; min-width: 0; }
-  .kicker { display: flex; align-items: baseline; gap: 0.25rem; margin: 0 0 1.4rem; font-size: 0.78rem; font-weight: 500; letter-spacing: .14em; color: var(--muted); }
+  .kicker { display: flex; align-items: baseline; gap: 0.25rem; margin: 0 0 1.4rem; font-size: 0.78rem; font-weight: 500; color: var(--muted); }
   .kicker b { color: var(--cheese); font-weight: 500; }
   .kicker em { font-style: normal; margin-left: 0.9rem; }
   .name {
@@ -121,7 +121,7 @@ const first = items[0];
   .sub { margin: 1rem 0 0; font-size: 1.15rem; font-weight: 600; color: var(--fg-3); }
   .big { display: flex; align-items: baseline; gap: 1.1rem; margin-top: clamp(1.2rem, 3.5vw, 2.8rem); }
   .big .n { font-size: clamp(4.4rem, 10vw, 9.6rem); line-height: .85; font-weight: 900; letter-spacing: -.07em; color: var(--cheese); }
-  .big .u { font-size: 0.78rem; letter-spacing: .18em; color: var(--muted); line-height: 1.8; }
+  .big .u { font-size: 0.78rem; color: var(--muted); line-height: 1.8; }
   .big .u b { display: block; font-size: 1rem; letter-spacing: .02em; color: var(--fg); font-weight: 700; }
   .big .u i { display: block; font-style: normal; letter-spacing: .04em; color: var(--cheese); }
   .big .u i:empty { display: none; }
@@ -147,7 +147,7 @@ const first = items[0];
     }
     .info { display: contents; }
     .pic { grid-area: pic; max-width: none; justify-self: stretch; }
-    .kicker { grid-area: kick; margin: 0; display: block; font-size: 0.7rem; letter-spacing: .1em; line-height: 1.6; align-self: start; }
+    .kicker { grid-area: kick; margin: 0; display: block; font-size: 0.7rem; line-height: 1.6; align-self: start; }
     .kicker em { display: block; margin: 0.15rem 0 0; }
     .big { grid-area: big; margin: 0; flex-direction: column; align-items: flex-start; gap: 0.4rem; align-self: end; }
     .big .n { font-size: clamp(4rem, 21vw, 5.6rem); }

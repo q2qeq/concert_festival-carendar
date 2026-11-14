@@ -52,7 +52,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
   <p class="intro">예매처 공지로 오픈 시각이 확인된 공연만 모아요. 오픈 전에 <a href="/ticketing-clock/">티켓팅 시계</a>를 켜고 <a href="/practice/">연습</a>으로 손을 풀어보세요.</p>
 
   <section aria-label="곧 오픈하는 티켓">
-    <h2 class="sec mono">TICKET OPEN SOON</h2>
+    <h2 class="sec mono">곧 열리는 티켓</h2>
     {soon.length > 0 ? (
       <>
         <ul class="open-list" id="soon-list">
@@ -90,7 +90,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
 
   {recent.length > 0 && (
     <section aria-label="최근 오픈한 티켓">
-      <h2 class="sec mono">RECENTLY OPENED</h2>
+      <h2 class="sec mono">최근에 열린 예매</h2>
       <ul class="plain-list">
         {recent.map((e) => (
           <li>
@@ -145,18 +145,18 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
   .note { margin-top: 1.8rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
   /* ── 랜딩 톤: 큰 시간 숫자 행 ── */
   .intro { max-width: 40rem; color: var(--fg-3); }
-  h2.sec { margin: 2.4rem 0 0; padding-bottom: 0.7rem; border-bottom: 1px solid var(--line); font-size: 0.82rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  h2.sec { margin: 2.4rem 0 0; padding-bottom: 0.7rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; letter-spacing: -.02em; color: var(--fg); font-weight: 800; }
   .open-list { gap: 0; margin: 0 0 1rem; }
   .open-list li { display: grid; grid-template-columns: 8.2em 1fr; font-size: clamp(1.5rem, 3.6vw, 2.6rem); column-gap: 1.6rem; align-items: start; padding: 1.2rem 0.2rem; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; }
-  .open-when { margin: 0; font-weight: 900; letter-spacing: -.05em; line-height: 1.05; white-space: nowrap; }
-  .open-when span { color: var(--muted); }
+  .open-when { margin: 0; font-weight: 900; letter-spacing: -.02em; line-height: 1.05; white-space: nowrap; }
+  .open-when span { color: var(--eye); }
   .open-body { min-width: 0; font-size: 1rem; padding-top: 0.2em; }
   .open-title { font-size: clamp(1.05rem, 2vw, 1.4rem); }
-  .open-left { color: var(--eye); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; }
+  .open-left { color: var(--eye); font-variant-numeric: tabular-nums; font-size: 0.85rem; }
   .oa { border-radius: 4px; }
   .oa.primary { border-color: transparent; }
   .plain-list li, .empty, .note { border-radius: 4px; }
-  .open-list li.grp { display: block; font-size: 0.8rem; letter-spacing: .12em; color: var(--muted); font-weight: 700; padding: 1.4rem 0.2rem 0.3rem; border-bottom: 1px solid var(--line); }
+  .open-list li.grp { display: block; font-size: 0.8rem; color: var(--muted); font-weight: 700; padding: 1.4rem 0.2rem 0.3rem; border-bottom: 1px solid var(--line); }
   .open-stage { font-style: normal; font-size: 0.8em; color: var(--fg-2); font-weight: 700; margin-left: 0.5em; padding: 0.1em 0.45em; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; vertical-align: 0.1em; }
   @media (max-width: 560px) { .open-list li.grp { grid-template-columns: none; } .open-list li { grid-template-columns: 1fr; row-gap: 0.5rem; } .open-body { padding-top: 0; } }
 </style>

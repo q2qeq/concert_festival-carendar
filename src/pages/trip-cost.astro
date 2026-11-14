@@ -78,7 +78,7 @@ const jsonLd = {
   </section>
 
   <section class="faq">
-    <h2 class="sec mono">FAQ</h2>
+    <h2 class="sec mono">자주 묻는 질문</h2>
     {faqs.map((f) => (
       <details>
         <summary>{f.q}</summary>
@@ -174,7 +174,7 @@ const jsonLd = {
   .head h1 { margin: 0 0 0.6rem; }
   .lead { margin: 0 0 1.6rem; color: var(--fg-3); max-width: 40rem; }
   .calc { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.9rem 0.8rem; padding: 1.1rem; border: 1px solid var(--line); border-radius: 4px; }
-  .grp { grid-column: 1 / -1; margin: 0.6rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--card-2); font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .grp { grid-column: 1 / -1; margin: 0.6rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--card-2); font-size: 1.05rem; letter-spacing: -.02em; color: var(--fg); font-weight: 800; }
   .f { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem; color: var(--muted); }
   .f.wide { grid-column: 1 / -1; }
   .f em { font-style: normal; color: var(--faint); }
@@ -194,7 +194,7 @@ const jsonLd = {
   .verdict { margin: 0 0 0.4rem; font-size: clamp(1.4rem, 4.6vw, 2.2rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.15; }
   .sub { margin: 0 0 1.1rem; color: var(--fg-2); }
   .rows { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-  .rows caption { text-align: left; font-size: 0.7rem; letter-spacing: .12em; color: var(--muted); padding-bottom: 0.4rem; }
+  .rows caption { text-align: left; font-size: 0.7rem; color: var(--muted); padding-bottom: 0.4rem; }
   .rows td { padding: 0.5rem 0; border-bottom: 1px solid var(--card-2); }
   .rows td:first-child { width: 9rem; color: var(--fg-2); }
   .rows .bar { padding: 0.5rem 0.8rem; }
@@ -204,7 +204,7 @@ const jsonLd = {
   .actions button { background: var(--btn); color: var(--ink); border: 1px solid var(--btn); border-radius: 4px; padding: 0.6rem 1rem; font: inherit; font-weight: 700; cursor: pointer; }
   .actions button.ghost { background: transparent; color: var(--fg); border-color: var(--line-2); }
   .actions span { color: var(--muted); font-size: 0.84rem; }
-  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; letter-spacing: -.02em; color: var(--fg); font-weight: 800; }
   .faq details { border-bottom: 1px solid var(--card-2); padding: 0.7rem 0; }
   .faq summary { cursor: pointer; color: var(--fg); font-weight: 600; }
   .faq p { margin: 0.5rem 0 0; color: var(--fg-2); font-size: 0.92rem; line-height: 1.6; }

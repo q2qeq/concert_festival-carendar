@@ -28,7 +28,7 @@ function when(iso: string) {
     {opens.length > 0 && (
       <section class="soon" aria-labelledby="soon-title">
         <div class="sec-head">
-          <h2 id="soon-title" class="mono">TICKET OPEN SOON</h2>
+          <h2 id="soon-title" class="mono">곧 열리는 티켓</h2>
           <a href="/ticket-open/">티켓오픈 일정 →</a>
         </div>
         <div class="rows">
@@ -49,7 +49,7 @@ function when(iso: string) {
     {fresh.length > 0 && (
       <section class="fresh" aria-labelledby="fresh-title">
         <div class="sec-head">
-          <h2 id="fresh-title" class="mono">NEW THIS WEEK</h2>
+          <h2 id="fresh-title" class="mono">이번 주 새로 올라온 공연</h2>
           <a href="/events/">이번 주 새로 추가된 공연 {fresh.length}개</a>
         </div>
         <div class="poster-grid">
@@ -72,7 +72,7 @@ function when(iso: string) {
 
     <section class="next" aria-labelledby="next-title">
       <div class="sec-head">
-        <h2 id="next-title" class="mono">UPCOMING</h2>
+        <h2 id="next-title" class="mono">다가오는 공연</h2>
         <a href="/events/">전체 {all.length}개 →</a>
       </div>
       <div class="poster-grid">
@@ -90,7 +90,7 @@ function when(iso: string) {
 <style>
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
   .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 2.8rem 0 0.8rem; border-bottom: 1px solid var(--line); }
-  .sec-head h2 { margin: 0; font-size: 0.82rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .sec-head h2 { margin: 0; font-size: 1.05rem; letter-spacing: -.02em; color: var(--fg); font-weight: 800; }
   .sec-head a { font-size: 0.85rem; color: var(--muted); text-decoration: none; white-space: nowrap; }
   .sec-head a:hover { color: var(--fg); }
 
@@ -106,7 +106,7 @@ function when(iso: string) {
   .rows a { display: grid; font-size: clamp(1.7rem, 4.2vw, 3.6rem); grid-template-columns: 6.9em 1fr auto; column-gap: 1.4rem; align-items: baseline; padding: 1.3rem 0; border-bottom: 1px solid var(--line); color: var(--fg); text-decoration: none; transition: padding-left .2s, color .2s; }
   .rows a:hover { padding-left: .8rem; color: var(--cheese); }
   .rows .t { font-size: 1em; white-space: nowrap; font-weight: 900; letter-spacing: -.05em; line-height: 1; }
-  .rows .t span { color: var(--muted); }
+  .rows .t span { color: var(--eye); }
   .rows .nm { font-size: clamp(1.05rem, 2vw, 1.6rem); font-weight: 700; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .rows .v { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
 

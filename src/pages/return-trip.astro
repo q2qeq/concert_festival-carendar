@@ -59,7 +59,7 @@ const venues = allVenueNames()
   </section>
 
   <section class="venues">
-    <h2 class="sec mono">VENUES</h2>
+    <h2 class="sec mono">공연장별로 보기</h2>
     <ul>
       {venues.map((v) => (
         <li>
@@ -193,16 +193,16 @@ const venues = allVenueNames()
   .verdict.tight { color: #ffb84c; }
   .verdict.bad { color: var(--cheese); }
   .times { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 0.8rem; margin: 0 0 1rem; }
-  .times dt { font-size: 0.7rem; letter-spacing: .1em; color: var(--muted); }
+  .times dt { font-size: 0.7rem; color: var(--muted); }
   .times dd { margin: 0.2rem 0 0; font-size: 1.5rem; font-weight: 900; letter-spacing: -.04em; }
   .advice { margin: 0 0 1.2rem; color: var(--fg-2); }
   .scen { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
-  .scen caption { text-align: left; font-size: 0.7rem; letter-spacing: .12em; color: var(--muted); padding-bottom: 0.4rem; }
+  .scen caption { text-align: left; font-size: 0.7rem; color: var(--muted); padding-bottom: 0.4rem; }
   .scen th { text-align: left; font-weight: 500; color: var(--muted); border-bottom: 1px solid var(--line); padding: 0.35rem 0; }
   .scen td { padding: 0.45rem 0; border-bottom: 1px solid var(--card-2); }
   .scen tr.y td:last-child { color: var(--fg); }
   .scen tr.n td:last-child { color: var(--cheese); }
-  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; letter-spacing: -.02em; color: var(--fg); font-weight: 800; }
   .venues ul { list-style: none; margin: 0; padding: 0; }
   .venues li { display: grid; grid-template-columns: 12rem 1fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--card-2); font-size: 0.9rem; }
   .venues a { color: var(--fg); text-decoration: none; }

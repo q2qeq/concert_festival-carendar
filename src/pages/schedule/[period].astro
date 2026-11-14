@@ -89,7 +89,7 @@ const jsonLd = {
 
   <section class="head">
     <h1>{label} 내한공연 일정</h1>
-    <p class="count mono"><b>{n}</b> SHOWS</p>
+    <p class="count mono"><b>{n}</b>개 공연</p>
   </section>
 
   <p class="lead">
@@ -108,7 +108,7 @@ const jsonLd = {
       {byMonth.map(({ m, items }) => (
         <a class="mcard" href={`/schedule/${m}/`}>
           <span class="mm mono">{m.slice(5)}<small>월</small></span>
-          <span class="mn mono">{items.length} SHOWS</span>
+          <span class="mn mono">{items.length}개</span>
           <span class="mt">{items.slice(0, 3).map((e) => e.artist.replace(/\s*\(.*$/, '')).join(' · ')}{items.length > 3 ? ` 외 ${items.length - 3}` : ''}</span>
         </a>
       ))}
@@ -117,7 +117,7 @@ const jsonLd = {
     <>
       {soon.length > 0 && (
         <section class="soonbox">
-          <h2 class="sec mono">TICKET OPEN SOON</h2>
+          <h2 class="sec mono">곧 열리는 티켓</h2>
           <ul>
             {soon.map((e) => (
               <li><a href={`/events/${e.id}/`}>{e.artist.replace(/\s*\(.*$/, '')} <span class="mono">{ticketStatusText(e).text.replace('티켓오픈 ', '')}</span></a></li>
@@ -174,7 +174,7 @@ const jsonLd = {
   </nav>
 
   <section class="others">
-    <h2 class="sec mono">MORE</h2>
+    <h2 class="sec mono">더 보기</h2>
     <div class="chips">
       {years.map((y) => <a href={`/schedule/${y}/`} class={y === period ? 'on' : ''}>{y}년 전체</a>)}
       {months.filter((m) => !isYear || m.startsWith(period)).map((m) => <a href={`/schedule/${m}/`} class={m === period ? 'on' : ''}>{periodLabel(m)}</a>)}
@@ -191,19 +191,19 @@ const jsonLd = {
 <style>
   .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 0 0 1rem; }
   .head h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1; letter-spacing: -.055em; font-weight: 900; }
-  .count { margin: 0; font-size: 0.78rem; letter-spacing: .14em; color: var(--muted); }
-  .count b { color: var(--cheese); font-size: 1.1rem; letter-spacing: 0; margin-right: 0.3rem; }
+  .count { margin: 0; font-size: 0.9rem; color: var(--muted); }
+  .count b { color: var(--cheese); font-size: 1.1rem; letter-spacing: 0; margin-right: 0.1rem; }
   .lead { max-width: 40rem; color: var(--fg-3); margin: 0 0 1rem; }
   .facts { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.6rem; padding: 0; font-size: 0.78rem; }
   .facts li { padding: 0.3rem 0.65rem; border: 1px solid var(--line-2); border-radius: 4px; color: var(--fg-2); }
   .facts b { color: var(--fg); margin-left: 0.3rem; }
-  .sec { margin: 0 0 0.6rem; font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .sec { margin: 0 0 0.6rem; font-size: 1.05rem; letter-spacing: -.02em; color: var(--fg); font-weight: 800; }
   .soonbox { margin: 0 0 1.6rem; padding: 0.9rem 1rem; border: 1px solid var(--line); border-radius: 4px; }
   .soonbox ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; }
   .soonbox a { color: var(--fg); text-decoration: none; font-weight: 600; }
   .soonbox a span { color: var(--cheese); font-size: 0.82rem; margin-left: 0.3rem; }
   .cal { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 0 0 1.8rem; }
-  .cal th { padding: 0.4rem 0; font-size: 0.72rem; font-weight: 500; letter-spacing: .1em; color: var(--muted); text-align: left; border-bottom: 1px solid var(--line); }
+  .cal th { padding: 0.4rem 0; font-size: 0.72rem; font-weight: 500; color: var(--muted); text-align: left; border-bottom: 1px solid var(--line); }
   .cal th.sun { color: var(--cheese); }
   .cal td { vertical-align: top; height: 5.4rem; padding: 0.35rem 0.4rem; border-bottom: 1px solid var(--card-2); border-right: 1px solid var(--card-2); overflow: hidden; position: relative; }
   .cal td:last-child { border-right: 0; }
@@ -220,7 +220,7 @@ const jsonLd = {
   .row { display: grid; grid-template-columns: 6.2rem 3.5rem 1fr auto; gap: 1rem; align-items: center; padding: 0.9rem 0.2rem; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; transition: background .15s; }
   .row:hover { background: rgba(255,255,255,0.03); }
   .d { white-space: nowrap; font-size: 1.25rem; font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
-  .d small { display: block; font-size: 0.66rem; font-weight: 500; letter-spacing: .12em; color: var(--muted); }
+  .d small { display: block; font-size: 0.66rem; font-weight: 500; color: var(--muted); }
   .th { width: 3.5rem; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; background: var(--card); }
   .th.ph { display: block; }
   .b { min-width: 0; }
@@ -234,7 +234,7 @@ const jsonLd = {
   .mcard:hover { border-color: var(--cheese); }
   .mm { font-size: 2.4rem; font-weight: 900; letter-spacing: -.06em; line-height: 1; }
   .mm small { font-size: 0.9rem; letter-spacing: 0; margin-left: 0.2rem; color: var(--muted); }
-  .mn { font-size: 0.72rem; letter-spacing: .14em; color: var(--cheese); }
+  .mn { font-size: 0.72rem; color: var(--cheese); }
   .mt { font-size: 0.86rem; color: var(--fg-3); line-height: 1.5; }
   .pager { display: flex; justify-content: space-between; margin: 1.8rem 0 0; }
   .pager a { color: var(--fg); text-decoration: none; font-weight: 700; }

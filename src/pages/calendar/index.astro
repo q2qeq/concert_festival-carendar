@@ -38,7 +38,7 @@ const enc = (p: string) => encodeURIComponent(`webcal://jikgwannyang.com${p}`);
   ))}
 
   <section class="genres">
-    <h2 class="sec mono">BY GENRE</h2>
+    <h2 class="sec mono">장르별 캘린더</h2>
     <p class="sub">보고 싶은 장르만 따로 구독할 수 있어요.</p>
     <ul>
       {genres.map((g) => (
@@ -54,7 +54,7 @@ const enc = (p: string) => encodeURIComponent(`webcal://jikgwannyang.com${p}`);
   </section>
 
   <section class="how">
-    <h2 class="sec mono">HOW TO</h2>
+    <h2 class="sec mono">구독 방법</h2>
     <ol>
       <li><b>구글 캘린더</b>: 위 버튼이 안 열리면 "주소 복사" 후 구글 캘린더 → 다른 캘린더 옆 + → <b>URL로 추가</b>에 붙여넣으세요.</li>
       <li><b>아이폰·맥</b>: "애플·기본 캘린더 앱"을 누르면 구독 화면이 열려요.</li>
@@ -85,7 +85,7 @@ const enc = (p: string) => encodeURIComponent(`webcal://jikgwannyang.com${p}`);
   .btn:hover { border-color: #fff; }
   .btn.p { background: var(--btn); border-color: var(--btn); color: var(--ink); }
   .genres { margin-top: 2.4rem; }
-  .sec { margin: 0; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .sec { margin: 0; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; letter-spacing: -.02em; color: var(--fg); font-weight: 800; }
   .sub { color: var(--muted); font-size: 0.88rem; margin: 0.6rem 0 0.3rem; }
   .genres ul { list-style: none; margin: 0; padding: 0; }
   .genres li { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--card-2); }

@@ -29,10 +29,10 @@ const fmt = (iso: string) => `${Number(iso.slice(5, 7))}월 ${Number(iso.slice(8
   <p class="lead">오늘부터 7일 안에 열리는 공연이에요. 이번 주말과 이번 주 티켓오픈도 따로 모았어요.</p>
 
   <div class="wk" id="wk" data-built={builtToday} data-json={JSON.stringify(data)} data-opens={JSON.stringify(opens)}>
-    <section id="sec-today"><h2 class="sec mono">TODAY</h2><ol class="rows" id="l-today" set:html={g.today.map(rowHtml).join('')} /></section>
-    <section id="sec-weekend"><h2 class="sec mono">THIS WEEKEND</h2><ol class="rows" id="l-weekend" set:html={g.weekend.map(rowHtml).join('')} /></section>
-    <section id="sec-others"><h2 class="sec mono">NEXT 7 DAYS</h2><ol class="rows" id="l-others" set:html={g.others.map(rowHtml).join('')} /></section>
-    <section id="sec-opens"><h2 class="sec mono">TICKET OPEN THIS WEEK</h2><ul class="opens" id="l-opens" set:html={op.map(openHtml).join('')} /></section>
+    <section id="sec-today"><h2 class="sec mono">오늘</h2><ol class="rows" id="l-today" set:html={g.today.map(rowHtml).join('')} /></section>
+    <section id="sec-weekend"><h2 class="sec mono">이번 주말</h2><ol class="rows" id="l-weekend" set:html={g.weekend.map(rowHtml).join('')} /></section>
+    <section id="sec-others"><h2 class="sec mono">앞으로 7일</h2><ol class="rows" id="l-others" set:html={g.others.map(rowHtml).join('')} /></section>
+    <section id="sec-opens"><h2 class="sec mono">이번 주 티켓오픈</h2><ul class="opens" id="l-opens" set:html={op.map(openHtml).join('')} /></section>
     <p class="empty" id="empty" hidden>
       앞으로 7일 안에 시작하는 공연이 없어요.
       <span id="next-up">{nextUp ? <>가장 가까운 공연은 <a href={`/events/${nextUp.id}/`}>{nextUp.a}</a>({fmt(nextUp.s)})이에요.</> : ''}</span>
@@ -72,17 +72,17 @@ const fmt = (iso: string) => `${Number(iso.slice(5, 7))}월 ${Number(iso.slice(8
 <style>
   .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 0 0 1rem; }
   .head h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1; letter-spacing: -.055em; font-weight: 900; }
-  .count { margin: 0; font-size: 0.82rem; letter-spacing: .1em; color: var(--muted); }
+  .count { margin: 0; font-size: 0.82rem; color: var(--muted); }
   .lead { max-width: 40rem; color: var(--fg-3); margin: 0 0 1.4rem; }
   .breadcrumb a { color: var(--muted); font-size: 0.9rem; text-decoration: none; }
   .wk section { margin-bottom: 2rem; }
   .wk section[hidden] { display: none; }
-  .sec { margin: 0 0 0.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .sec { margin: 0 0 0.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; letter-spacing: -.02em; color: var(--fg); font-weight: 800; }
   .rows, .opens { list-style: none; margin: 0; padding: 0; }
   .wk :global(.row) { display: grid; grid-template-columns: 6.2rem 3.5rem 1fr auto; gap: 1rem; align-items: center; padding: 0.9rem 0.2rem; border-bottom: 1px solid var(--line); color: inherit; text-decoration: none; }
   .wk :global(.row:hover) { background: rgba(255,255,255,0.03); }
   .wk :global(.d) { white-space: nowrap; font-size: 1.25rem; font-weight: 900; letter-spacing: -.04em; line-height: 1.1; }
-  .wk :global(.d small) { display: block; font-size: 0.66rem; font-weight: 500; letter-spacing: .12em; color: var(--muted); }
+  .wk :global(.d small) { display: block; font-size: 0.66rem; font-weight: 500; color: var(--muted); }
   .wk :global(.th) { width: 3.5rem; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; background: var(--card); display: block; }
   .wk :global(.b) { min-width: 0; }
   .wk :global(.b strong) { display: block; font-size: 1.02rem; line-height: 1.3; }

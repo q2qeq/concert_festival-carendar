@@ -13,12 +13,12 @@ const count = (p: string) => all.filter((e) => e.startDate.startsWith(p)).length
   </section>
   {years.map((y) => (
     <section class="yr">
-      <h2><a href={`/schedule/${y}/`}><span class="mono">{y}</span> 전체 <small class="mono">{count(y)} SHOWS →</small></a></h2>
+      <h2><a href={`/schedule/${y}/`}><span class="mono">{y}</span> 전체 <small class="mono">{count(y)}개 →</small></a></h2>
       <div class="grid">
         {months.filter((m) => m.startsWith(y)).map((m) => (
           <a href={`/schedule/${m}/`}>
             <span class="mm mono">{m.slice(5)}<small>월</small></span>
-            <span class="mn mono">{count(m)} SHOWS</span>
+            <span class="mn mono">{count(m)}개</span>
           </a>
         ))}
       </div>
@@ -31,11 +31,11 @@ const count = (p: string) => all.filter((e) => e.startDate.startsWith(p)).length
   .yr h2 { margin: 2rem 0 0.8rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: clamp(1.6rem, 4.6vw, 2.4rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; }
   .yr h2 a { display: flex; justify-content: space-between; align-items: baseline; color: inherit; text-decoration: none; }
   .yr h2 a:hover { color: var(--cheese); }
-  .yr h2 small { font-size: 0.74rem; font-weight: 500; letter-spacing: .14em; color: var(--muted); }
+  .yr h2 small { font-size: 0.74rem; font-weight: 500; color: var(--muted); }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 0.7rem; }
   .grid a { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem; border: 1px solid var(--line); border-radius: 4px; color: inherit; text-decoration: none; }
   .grid a:hover { border-color: var(--cheese); }
   .mm { font-size: 2rem; font-weight: 900; letter-spacing: -.06em; line-height: 1; }
   .mm small { font-size: 0.85rem; letter-spacing: 0; margin-left: 0.2rem; color: var(--muted); }
-  .mn { font-size: 0.7rem; letter-spacing: .14em; color: var(--cheese); }
+  .mn { font-size: 0.7rem; color: var(--cheese); }
 </style>
