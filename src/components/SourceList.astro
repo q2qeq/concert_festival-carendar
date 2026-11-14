@@ -15,9 +15,9 @@ const { sources } = Astro.props;
 )}
 <style>
   .source-list { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); }
-  .source-list h3 { margin: 0 0 0.5rem; font-size: 0.72rem; font-weight: 600; color: #6f6f77; text-transform: uppercase; letter-spacing: 0.04em; }
+  .source-list h3 { margin: 0 0 0.5rem; font-size: 0.72rem; font-weight: 600; color: var(--faint); text-transform: uppercase; letter-spacing: 0.04em; }
   .source-list ol { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.25rem; }
-  .source-list li { font-size: 0.74rem; color: #6f6f77; line-height: 1.5; }
-  .source-list a { color: #6f6f77; text-decoration: underline; text-decoration-color: rgba(110,106,140,0.4); }
-  .source-list a:hover { color: #8f8f97; }
+  .source-list li { font-size: 0.74rem; color: var(--faint); line-height: 1.5; }
+  .source-list a { color: var(--faint); text-decoration: underline; text-decoration-color: rgba(110,106,140,0.4); }
+  .source-list a:hover { color: var(--muted); }
 </style>

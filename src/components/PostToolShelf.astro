@@ -98,18 +98,18 @@ const lastWide = toolCount % 2 === 1;
 </section>
 <style>
   .tool-shelf { margin: 2.5rem 0 1.5rem; padding-top: 1.6rem; border-top: 1px solid rgba(255,255,255,0.1); }
-  .ts-kicker { margin: 0 0 0.3rem; color: #8f8f97; font-size: 0.8rem; }
-  .tool-shelf h2 { margin: 0 0 0.9rem; font-size: 1.15rem; line-height: 1.35; color: #ededea; }
+  .ts-kicker { margin: 0 0 0.3rem; color: var(--muted); font-size: 0.8rem; }
+  .tool-shelf h2 { margin: 0 0 0.9rem; font-size: 1.15rem; line-height: 1.35; color: var(--fg); }
   .ts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-  .ts-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 0.95rem; border-radius: 8px; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); min-width: 0; transition: border-color .15s; }
-  .ts-card:hover { border-color: #c9c9cf; }
+  .ts-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 0.95rem; border-radius: 8px; text-decoration: none; color: var(--fg); border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); min-width: 0; transition: border-color .15s; }
+  .ts-card:hover { border-color: var(--fg-2); }
   .ts-event { grid-column: 1 / -1; background: rgba(255,255,255,0.07); }
   .ts-wide { grid-column: 1 / -1; }
   .ts-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1; }
   .ts-body strong { font-size: 0.95rem; }
-  .ts-sub { color: #8f8f97; font-size: 0.8rem; line-height: 1.4; overflow-wrap: anywhere; }
-  .ts-go { color: #8f8f97; flex-shrink: 0; }
-  .ts-all { display: inline-block; margin-top: 0.8rem; color: #8f8f97; font-size: 0.85rem; text-decoration: none; }
-  .ts-all:hover { color: #c9c9cf; }
+  .ts-sub { color: var(--muted); font-size: 0.8rem; line-height: 1.4; overflow-wrap: anywhere; }
+  .ts-go { color: var(--muted); flex-shrink: 0; }
+  .ts-all { display: inline-block; margin-top: 0.8rem; color: var(--muted); font-size: 0.85rem; text-decoration: none; }
+  .ts-all:hover { color: var(--fg-2); }
   @media (max-width: 480px) { .ts-grid { grid-template-columns: 1fr; } }
 </style>

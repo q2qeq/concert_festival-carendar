@@ -106,24 +106,24 @@ const others = VENDOR_IDS.filter((x) => x !== id);
 </BaseLayout>
 
 <style>
-  .intro { color: #c4c4c8; line-height: 1.7; }
+  .intro { color: var(--fg-2); line-height: 1.7; }
   .cta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 0.5rem; }
-  .btn { padding: 0.6rem 1.1rem; border-radius: 6px; font-weight: 700; font-size: 0.92rem; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.2); }
-  .btn.primary { background: #ff5fa2; color: #0e0e10; border-color: transparent; }
+  .btn { padding: 0.6rem 1.1rem; border-radius: 6px; font-weight: 700; font-size: 0.92rem; text-decoration: none; color: var(--fg); border: 1px solid rgba(255,255,255,0.2); }
+  .btn.primary { background: var(--btn); color: var(--ink); border-color: transparent; }
   h2 { margin: 1.6rem 0 0.7rem; }
   .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
   .list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; padding: 0.6rem 0.85rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
-  .list a { color: #ededea; text-decoration: none; }
-  .list a:hover { color: #ff5fa2; }
-  .list span { color: #8f8f97; font-size: 0.84rem; }
-  .list .mini { margin-left: auto; color: #c9c9cf; font-size: 0.82rem; }
-  .empty { color: #8f8f97; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
-  .empty a, .others a { color: #ff5fa2; }
+  .list a { color: var(--fg); text-decoration: none; }
+  .list a:hover { color: var(--cheese); }
+  .list span { color: var(--muted); font-size: 0.84rem; }
+  .list .mini { margin-left: auto; color: var(--fg-2); font-size: 0.82rem; }
+  .empty { color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
+  .empty a, .others a { color: var(--cheese); }
   .faq { display: flex; flex-direction: column; gap: 0.6rem; }
   .faq-item { padding: 0.85rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
-  .faq-item summary { cursor: pointer; font-weight: 700; color: #ededea; font-size: 0.94rem; }
-  .faq-item p { margin: 0.6rem 0 0; color: #8f8f97; font-size: 0.88rem; line-height: 1.6; }
-  .others { margin-top: 1.6rem; color: #8f8f97; font-size: 0.88rem; }
+  .faq-item summary { cursor: pointer; font-weight: 700; color: var(--fg); font-size: 0.94rem; }
+  .faq-item p { margin: 0.6rem 0 0; color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+  .others { margin-top: 1.6rem; color: var(--muted); font-size: 0.88rem; }
 </style>
 
 <script>

@@ -37,13 +37,13 @@ const pending = [venuePending ? '공연장' : '', ticketPending ? '티켓 오픈
   }
 </script>
 <style>
-  .announce-watch { margin: 1.2rem 0 0; padding: 1rem 1.2rem; border: 1px solid #2a2a30; border-left: 3px solid #ff5fa2; border-radius: 4px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem 1.4rem; }
-  .aw-text { margin: 0; flex: 1 1 20rem; color: #c4c4c8; font-size: 0.92rem; line-height: 1.65; }
-  .aw-text b { color: #f4f4f0; }
+  .announce-watch { margin: 1.2rem 0 0; padding: 1rem 1.2rem; border: 1px solid var(--line); border-left: 3px solid var(--cheese); border-radius: 4px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem 1.4rem; }
+  .aw-text { margin: 0; flex: 1 1 20rem; color: var(--fg-2); font-size: 0.92rem; line-height: 1.65; }
+  .aw-text b { color: var(--fg); }
   .aw-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem 1.1rem; }
-  .aw-follow { all: unset; cursor: pointer; padding: 0.55rem 1rem; border-radius: 4px; background: #ff5fa2; color: #0e0e10; font-weight: 800; font-size: 0.88rem; }
-  .aw-follow.is-on { background: transparent; color: #ff5fa2; box-shadow: inset 0 0 0 1px #ff5fa2; }
-  .aw-follow:focus-visible { outline: 2px solid #f4f4f0; outline-offset: 2px; }
-  .aw-cal { color: #8f8f97; font-size: 0.85rem; text-decoration: none; }
-  .aw-cal:hover { color: #f4f4f0; }
+  .aw-follow { all: unset; cursor: pointer; padding: 0.55rem 1rem; border-radius: 4px; background: var(--btn); color: var(--ink); font-weight: 800; font-size: 0.88rem; }
+  .aw-follow.is-on { background: transparent; color: var(--cheese); box-shadow: inset 0 0 0 1px var(--cheese); }
+  .aw-follow:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+  .aw-cal { color: var(--muted); font-size: 0.85rem; text-decoration: none; }
+  .aw-cal:hover { color: var(--fg); }
 </style>

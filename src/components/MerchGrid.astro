@@ -61,7 +61,7 @@ const { items, mdUrl, photoUrl, artist } = Astro.props;
 )}
 <style>
   .merch-section { margin: 1.75rem 0; }
-  .merch-section h2 { font-size: 1.05rem; margin: 0 0 0.75rem; color: #dcdcd8; }
+  .merch-section h2 { font-size: 1.05rem; margin: 0 0 0.75rem; color: var(--fg-2); }
   .merch-photo {
     display: block;
     width: 100%;
@@ -85,21 +85,21 @@ const { items, mdUrl, photoUrl, artist } = Astro.props;
   .merch-info { padding: 0.6rem 0.75rem 0.8rem; }
   .merch-label { margin: 0; font-size: 0.88rem; font-weight: 600; }
   .merch-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.3rem 0 0; }
-  .merch-price { font-size: 0.82rem; font-weight: 700; color: #ff5fa2; }
-  .merch-variants { font-size: 0.78rem; color: #8f8f97; }
-  .merch-note { margin: 0.25rem 0 0; font-size: 0.78rem; color: #8f8f97; }
-  .merch-pending { color: #8f8f97; font-size: 0.9rem; margin: 0 0 1rem; }
+  .merch-price { font-size: 0.82rem; font-weight: 700; color: var(--cheese); }
+  .merch-variants { font-size: 0.78rem; color: var(--muted); }
+  .merch-note { margin: 0.25rem 0 0; font-size: 0.78rem; color: var(--muted); }
+  .merch-pending { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
   .merch-cta {
     display: inline-block;
     margin-top: 1rem;
     font-size: 0.88rem;
     font-weight: 600;
-    color: #ededea;
+    color: var(--fg);
     background: transparent;
     border: 1px solid rgba(255,255,255,0.25);
     padding: 0.55rem 1.1rem;
     border-radius: 6px;
     text-decoration: none;
   }
-  .merch-cta:hover { border-color: #ff5fa2; color: #ff5fa2; }
+  .merch-cta:hover { border-color: var(--cheese); color: var(--cheese); }
 </style>

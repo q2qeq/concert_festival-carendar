@@ -75,23 +75,23 @@ function isActive(href: string) {
     top: 0;
     z-index: 40;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-    background: #0e0e10;
+    background: var(--bg);
   }
   .site-header.wide nav { max-width: 1180px; }
   nav { position: relative; max-width: 880px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
   .brand { display: flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
   .links { display: flex; gap: 1.1rem; }
   .links a {
-    color: #8f8f97;
+    color: var(--muted);
     text-decoration: none;
     font-size: 0.9rem;
     padding-bottom: 0.2rem;
     border-bottom: 2px solid transparent;
   }
   .links a:hover { color: #fff; }
-  .links a.has-news::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 5px; border-radius: 50%; background: var(--accent, #ff5fa2); vertical-align: 0.15em; }
+  .links a.has-news::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 5px; border-radius: 50%; background: var(--eye); vertical-align: 0.15em; }
   
-  .links a.active { color: #fff; font-weight: 700; border-bottom-color: var(--accent, #ff5fa2); }
+  .links a.active { color: #fff; font-weight: 700; border-bottom-color: var(--accent, var(--cheese)); }
   .nav-toggle {
     display: none;
     flex-direction: column;
@@ -108,7 +108,7 @@ function isActive(href: string) {
     display: block;
     width: 100%;
     height: 2px;
-    background: #ededea;
+    background: var(--fg);
     border-radius: 2px;
     transition: transform 0.15s, opacity 0.15s;
   }
@@ -126,7 +126,7 @@ function isActive(href: string) {
       right: 0;
       flex-direction: column;
       gap: 0;
-      background: #151517;
+      background: var(--card);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .links.is-open { display: flex; }
@@ -134,6 +134,6 @@ function isActive(href: string) {
       padding: 0.85rem 1.25rem;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .links a.active { border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,95,162,0.08); }
+    .links a.active { border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(239, 138, 58,0.08); }
   }
 </style>

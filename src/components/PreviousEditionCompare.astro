@@ -68,19 +68,19 @@ const maxAttendance = Math.max(0, ...sorted.map((e) => e.attendance ?? 0));
 <style>
   .edition-compare { margin: 1.75rem 0; padding: 1.1rem 1.25rem; background: rgba(126, 217, 87, 0.06); border: 1px solid rgba(126, 217, 87, 0.22); border-radius: 8px; }
   .edition-compare h2 { margin: 0 0 0.8rem; font-size: 1rem; color: #d4f5c1; }
-  .crowd-outlook { margin: 0 0 1rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #dcdcd8; font-size: 0.92rem; line-height: 1.6; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
-  .outlook-badge { flex-shrink: 0; font-size: 0.75rem; font-weight: 700; color: #0e0e10; background: #7ed957; padding: 0.15rem 0.55rem; border-radius: 6px; }
-  .outlook-basis { display: block; width: 100%; font-size: 0.8rem; color: #8f8f97; margin-top: 0.2rem; }
+  .crowd-outlook { margin: 0 0 1rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: var(--fg-2); font-size: 0.92rem; line-height: 1.6; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+  .outlook-badge { flex-shrink: 0; font-size: 0.75rem; font-weight: 700; color: var(--ink); background: #7ed957; padding: 0.15rem 0.55rem; border-radius: 6px; }
+  .outlook-basis { display: block; width: 100%; font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
   .edition-list { display: flex; flex-direction: column; gap: 0.9rem; }
   .edition-item:not(:last-child) { padding-bottom: 0.9rem; border-bottom: 1px dashed rgba(255,255,255,0.1); }
   .edition-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.35rem; }
-  .edition-year { font-weight: 700; color: #ededea; font-size: 0.95rem; }
+  .edition-year { font-weight: 700; color: var(--fg); font-size: 0.95rem; }
   .edition-attendance { font-weight: 700; color: #7ed957; font-size: 0.95rem; }
   .attendance-bar-track { height: 8px; border-radius: 6px; background: rgba(255,255,255,0.08); overflow: hidden; margin-bottom: 0.5rem; }
   .attendance-bar-fill { height: 100%; border-radius: 6px; background: #5fbf45; }
-  .edition-note { margin: 0 0 0.4rem; color: #8f8f97; font-size: 0.82rem; }
-  .edition-scale { margin: 0 0 0.35rem; color: #c4c4c8; font-size: 0.88rem; }
-  .edition-lineup { margin: 0 0 0.4rem; color: #c4c4c8; font-size: 0.9rem; line-height: 1.55; }
-  .edition-source { font-size: 0.82rem; color: #c9c9cf; text-decoration: none; }
+  .edition-note { margin: 0 0 0.4rem; color: var(--muted); font-size: 0.82rem; }
+  .edition-scale { margin: 0 0 0.35rem; color: var(--fg-2); font-size: 0.88rem; }
+  .edition-lineup { margin: 0 0 0.4rem; color: var(--fg-2); font-size: 0.9rem; line-height: 1.55; }
+  .edition-source { font-size: 0.82rem; color: var(--fg-2); text-decoration: none; }
   .edition-source:hover { text-decoration: underline; }
 </style>

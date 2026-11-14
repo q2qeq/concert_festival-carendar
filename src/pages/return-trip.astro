@@ -169,45 +169,45 @@ const venues = allVenueNames()
 </script>
 <style>
   .head h1 { margin: 0 0 0.6rem; }
-  .lead { margin: 0 0 1.6rem; color: #a9a9b0; max-width: 40rem; }
-  .calc { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.9rem 0.8rem; padding: 1.1rem; border: 1px solid #2a2a30; border-radius: 4px; }
-  .f { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem; color: #8f8f97; }
+  .lead { margin: 0 0 1.6rem; color: var(--fg-3); max-width: 40rem; }
+  .calc { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.9rem 0.8rem; padding: 1.1rem; border: 1px solid var(--line); border-radius: 4px; }
+  .f { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem; color: var(--muted); }
   .f.wide { grid-column: 1 / -1; }
-  .f em { font-style: normal; color: #6f6f77; }
-  .f input, .f select { background: #151517; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; padding: 0.7rem 0.75rem; font: inherit; font-size: 1rem; }
-  .f input:focus, .f select:focus { outline: none; border-color: #ff5fa2; }
-  .venue-info { grid-column: 1 / -1; font-size: 0.86rem; color: #a9a9b0; }
+  .f em { font-style: normal; color: var(--faint); }
+  .f input, .f select { background: var(--card); border: 1px solid var(--line-2); border-radius: 4px; color: var(--fg); padding: 0.7rem 0.75rem; font: inherit; font-size: 1rem; }
+  .f input:focus, .f select:focus { outline: none; border-color: var(--cheese); }
+  .venue-info { grid-column: 1 / -1; font-size: 0.86rem; color: var(--fg-3); }
   .venue-info:empty { display: none; }
   .venue-info ul { margin: 0 0 0.4rem; padding-left: 1.1rem; }
   .venue-info p { margin: 0 0 0.4rem; }
-  .venue-info a { color: #f4f4f0; }
+  .venue-info a { color: var(--fg); }
   .route { margin: -0.6rem 0 1.4rem; font-size: 0.9rem; }
-  .route a { display: inline-block; padding: 0.55rem 0.9rem; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; text-decoration: none; font-weight: 700; margin-right: 0.8rem; }
-  .route a:hover { border-color: #ff5fa2; }
-  .route span { color: #8f8f97; font-size: 0.82rem; }
-  .hint { margin: 0.8rem 0 1.4rem; font-size: 0.84rem; color: #8f8f97; }
-  .hint :global(a) { color: #f4f4f0; }
-  .result { padding: 1.2rem; border: 1px solid #3a3a42; border-radius: 4px; margin-bottom: 2rem; }
+  .route a { display: inline-block; padding: 0.55rem 0.9rem; border: 1px solid var(--line-2); border-radius: 4px; color: var(--fg); text-decoration: none; font-weight: 700; margin-right: 0.8rem; }
+  .route a:hover { border-color: var(--cheese); }
+  .route span { color: var(--muted); font-size: 0.82rem; }
+  .hint { margin: 0.8rem 0 1.4rem; font-size: 0.84rem; color: var(--muted); }
+  .hint :global(a) { color: var(--fg); }
+  .result { padding: 1.2rem; border: 1px solid var(--line-2); border-radius: 4px; margin-bottom: 2rem; }
   .verdict { margin: 0 0 1rem; font-size: clamp(1.4rem, 4.6vw, 2.2rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.15; }
-  .verdict.ok { color: #f4f4f0; }
+  .verdict.ok { color: var(--fg); }
   .verdict.tight { color: #ffb84c; }
-  .verdict.bad { color: #ff5fa2; }
+  .verdict.bad { color: var(--cheese); }
   .times { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: 0.8rem; margin: 0 0 1rem; }
-  .times dt { font-size: 0.7rem; letter-spacing: .1em; color: #8f8f97; }
+  .times dt { font-size: 0.7rem; letter-spacing: .1em; color: var(--muted); }
   .times dd { margin: 0.2rem 0 0; font-size: 1.5rem; font-weight: 900; letter-spacing: -.04em; }
-  .advice { margin: 0 0 1.2rem; color: #c4c4c8; }
+  .advice { margin: 0 0 1.2rem; color: var(--fg-2); }
   .scen { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
-  .scen caption { text-align: left; font-size: 0.7rem; letter-spacing: .12em; color: #8f8f97; padding-bottom: 0.4rem; }
-  .scen th { text-align: left; font-weight: 500; color: #8f8f97; border-bottom: 1px solid #2a2a30; padding: 0.35rem 0; }
-  .scen td { padding: 0.45rem 0; border-bottom: 1px solid #202024; }
-  .scen tr.y td:last-child { color: #f4f4f0; }
-  .scen tr.n td:last-child { color: #ff5fa2; }
-  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: 0.8rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .scen caption { text-align: left; font-size: 0.7rem; letter-spacing: .12em; color: var(--muted); padding-bottom: 0.4rem; }
+  .scen th { text-align: left; font-weight: 500; color: var(--muted); border-bottom: 1px solid var(--line); padding: 0.35rem 0; }
+  .scen td { padding: 0.45rem 0; border-bottom: 1px solid var(--card-2); }
+  .scen tr.y td:last-child { color: var(--fg); }
+  .scen tr.n td:last-child { color: var(--cheese); }
+  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
   .venues ul { list-style: none; margin: 0; padding: 0; }
-  .venues li { display: grid; grid-template-columns: 12rem 1fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid #202024; font-size: 0.9rem; }
-  .venues a { color: #f4f4f0; text-decoration: none; }
-  .venues a:hover { color: #ff5fa2; }
-  .venues span { color: #8f8f97; }
-  .note { margin: 1.6rem 0 0; font-size: 0.82rem; color: #8f8f97; line-height: 1.6; }
+  .venues li { display: grid; grid-template-columns: 12rem 1fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--card-2); font-size: 0.9rem; }
+  .venues a { color: var(--fg); text-decoration: none; }
+  .venues a:hover { color: var(--cheese); }
+  .venues span { color: var(--muted); }
+  .note { margin: 1.6rem 0 0; font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
   @media (max-width: 560px) { .venues li { grid-template-columns: 1fr; gap: 0.15rem; } }
 </style>

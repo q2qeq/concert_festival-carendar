@@ -172,43 +172,43 @@ const jsonLd = {
 </script>
 <style>
   .head h1 { margin: 0 0 0.6rem; }
-  .lead { margin: 0 0 1.6rem; color: #a9a9b0; max-width: 40rem; }
-  .calc { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.9rem 0.8rem; padding: 1.1rem; border: 1px solid #2a2a30; border-radius: 4px; }
-  .grp { grid-column: 1 / -1; margin: 0.6rem 0 0; padding-top: 0.8rem; border-top: 1px solid #202024; font-size: 0.8rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
-  .f { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem; color: #8f8f97; }
+  .lead { margin: 0 0 1.6rem; color: var(--fg-3); max-width: 40rem; }
+  .calc { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.9rem 0.8rem; padding: 1.1rem; border: 1px solid var(--line); border-radius: 4px; }
+  .grp { grid-column: 1 / -1; margin: 0.6rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--card-2); font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .f { display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.82rem; color: var(--muted); }
   .f.wide { grid-column: 1 / -1; }
-  .f em { font-style: normal; color: #6f6f77; }
-  .f input, .f select { background: #151517; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; padding: 0.7rem 0.75rem; font: inherit; font-size: 1rem; }
-  .f input:focus, .f select:focus { outline: none; border-color: #ff5fa2; }
-  .venue-info { grid-column: 1 / -1; font-size: 0.86rem; color: #a9a9b0; }
+  .f em { font-style: normal; color: var(--faint); }
+  .f input, .f select { background: var(--card); border: 1px solid var(--line-2); border-radius: 4px; color: var(--fg); padding: 0.7rem 0.75rem; font: inherit; font-size: 1rem; }
+  .f input:focus, .f select:focus { outline: none; border-color: var(--cheese); }
+  .venue-info { grid-column: 1 / -1; font-size: 0.86rem; color: var(--fg-3); }
   .venue-info:empty { display: none; }
   .venue-info ul { margin: 0 0 0.4rem; padding-left: 1.1rem; }
-  .venue-info a { color: #f4f4f0; }
+  .venue-info a { color: var(--fg); }
   .rate-box { grid-column: 1 / -1; display: flex; gap: 0.8rem; align-items: flex-end; flex-wrap: wrap; }
   .rate-box[hidden] { display: none; }
   .rate-box .f { width: 9rem; }
-  .rate-box button { background: transparent; color: #f4f4f0; border: 1px solid #3a3a42; border-radius: 4px; padding: 0.7rem 0.9rem; font: inherit; cursor: pointer; }
-  .rate-box button:hover { border-color: #ff5fa2; }
-  .rate-box p { flex-basis: 100%; margin: 0; font-size: 0.8rem; color: #8f8f97; }
-  .result { padding: 1.2rem; border: 1px solid #3a3a42; border-radius: 4px; margin: 1.4rem 0 2rem; }
+  .rate-box button { background: transparent; color: var(--fg); border: 1px solid var(--line-2); border-radius: 4px; padding: 0.7rem 0.9rem; font: inherit; cursor: pointer; }
+  .rate-box button:hover { border-color: var(--cheese); }
+  .rate-box p { flex-basis: 100%; margin: 0; font-size: 0.8rem; color: var(--muted); }
+  .result { padding: 1.2rem; border: 1px solid var(--line-2); border-radius: 4px; margin: 1.4rem 0 2rem; }
   .verdict { margin: 0 0 0.4rem; font-size: clamp(1.4rem, 4.6vw, 2.2rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.15; }
-  .sub { margin: 0 0 1.1rem; color: #c4c4c8; }
+  .sub { margin: 0 0 1.1rem; color: var(--fg-2); }
   .rows { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-  .rows caption { text-align: left; font-size: 0.7rem; letter-spacing: .12em; color: #8f8f97; padding-bottom: 0.4rem; }
-  .rows td { padding: 0.5rem 0; border-bottom: 1px solid #202024; }
-  .rows td:first-child { width: 9rem; color: #c4c4c8; }
+  .rows caption { text-align: left; font-size: 0.7rem; letter-spacing: .12em; color: var(--muted); padding-bottom: 0.4rem; }
+  .rows td { padding: 0.5rem 0; border-bottom: 1px solid var(--card-2); }
+  .rows td:first-child { width: 9rem; color: var(--fg-2); }
   .rows .bar { padding: 0.5rem 0.8rem; }
   .rows .bar i { display: block; height: 6px; background: #5a5a63; border-radius: 1px; }
-  .rows .amt { text-align: right; white-space: nowrap; color: #f4f4f0; font-weight: 700; }
+  .rows .amt { text-align: right; white-space: nowrap; color: var(--fg); font-weight: 700; }
   .actions { margin: 1rem 0 0; display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
-  .actions button { background: #ff5fa2; color: #0e0e10; border: 1px solid #ff5fa2; border-radius: 4px; padding: 0.6rem 1rem; font: inherit; font-weight: 700; cursor: pointer; }
-  .actions button.ghost { background: transparent; color: #f4f4f0; border-color: #3a3a42; }
-  .actions span { color: #8f8f97; font-size: 0.84rem; }
-  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: 0.8rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
-  .faq details { border-bottom: 1px solid #202024; padding: 0.7rem 0; }
-  .faq summary { cursor: pointer; color: #ededea; font-weight: 600; }
-  .faq p { margin: 0.5rem 0 0; color: #c4c4c8; font-size: 0.92rem; line-height: 1.6; }
-  .note { margin: 1.6rem 0 0; font-size: 0.82rem; color: #8f8f97; line-height: 1.6; }
-  .note a { color: #f4f4f0; }
+  .actions button { background: var(--btn); color: var(--ink); border: 1px solid var(--btn); border-radius: 4px; padding: 0.6rem 1rem; font: inherit; font-weight: 700; cursor: pointer; }
+  .actions button.ghost { background: transparent; color: var(--fg); border-color: var(--line-2); }
+  .actions span { color: var(--muted); font-size: 0.84rem; }
+  .sec { margin: 0 0 0.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: 0.8rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .faq details { border-bottom: 1px solid var(--card-2); padding: 0.7rem 0; }
+  .faq summary { cursor: pointer; color: var(--fg); font-weight: 600; }
+  .faq p { margin: 0.5rem 0 0; color: var(--fg-2); font-size: 0.92rem; line-height: 1.6; }
+  .note { margin: 1.6rem 0 0; font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+  .note a { color: var(--fg); }
   @media (max-width: 560px) { .rows td:first-child { width: 6.5rem; } }
 </style>

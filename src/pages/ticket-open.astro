@@ -120,44 +120,44 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
 </BaseLayout>
 
 <style>
-  .intro { color: #c4c4c8; line-height: 1.7; }
-  .intro a { color: #ff5fa2; }
+  .intro { color: var(--fg-2); line-height: 1.7; }
+  .intro a { color: var(--cheese); }
   h2 { margin: 1.6rem 0 0.7rem; }
   .open-list { list-style: none; margin: 0 0 0.9rem; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
   .open-list li { padding: 0.8rem 0.95rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
   .open-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
-  .open-title { color: #ededea; font-weight: 800; font-size: 1rem; text-decoration: none; min-width: 0; }
-  .open-title:hover { color: #ff5fa2; }
-  .open-left { color: #c9c9cf; font-weight: 700; font-size: 0.86rem; white-space: nowrap; }
-  .open-meta { margin: 0.3rem 0 0.6rem; color: #8f8f97; font-size: 0.84rem; line-height: 1.5; }
+  .open-title { color: var(--fg); font-weight: 800; font-size: 1rem; text-decoration: none; min-width: 0; }
+  .open-title:hover { color: var(--cheese); }
+  .open-left { color: var(--fg-2); font-weight: 700; font-size: 0.86rem; white-space: nowrap; }
+  .open-meta { margin: 0.3rem 0 0.6rem; color: var(--muted); font-size: 0.84rem; line-height: 1.5; }
   .open-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
-  .oa { padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; color: #ededea; border: 1px solid rgba(255,255,255,0.18); background: transparent; cursor: pointer; }
-  .oa.primary { background: #ff5fa2; color: #0e0e10; border-color: transparent; }
+  .oa { padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; color: var(--fg); border: 1px solid rgba(255,255,255,0.18); background: transparent; cursor: pointer; }
+  .oa.primary { background: var(--btn); color: var(--ink); border-color: transparent; }
   .open-actions .bookmark-btn { margin-left: auto; }
   .bulk { margin: 0 0 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-  .bulk small { color: #8f8f97; }
+  .bulk small { color: var(--muted); }
   .plain-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
   .plain-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.7rem; padding: 0.55rem 0.85rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
-  .plain-list a { color: #ededea; text-decoration: none; }
-  .plain-list a:hover { color: #ff5fa2; }
-  .plain-list span { color: #8f8f97; font-size: 0.84rem; }
-  .empty { color: #8f8f97; font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
-  .note { margin-top: 1.8rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #8f8f97; font-size: 0.82rem; line-height: 1.6; }
+  .plain-list a { color: var(--fg); text-decoration: none; }
+  .plain-list a:hover { color: var(--cheese); }
+  .plain-list span { color: var(--muted); font-size: 0.84rem; }
+  .empty { color: var(--muted); font-size: 0.9rem; line-height: 1.6; padding: 0.85rem 1rem; background: rgba(255,255,255,0.04); border-radius: 8px; }
+  .note { margin-top: 1.8rem; padding: 0.9rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
   /* ── 랜딩 톤: 큰 시간 숫자 행 ── */
-  .intro { max-width: 40rem; color: #a9a9b0; }
-  h2.sec { margin: 2.4rem 0 0; padding-bottom: 0.7rem; border-bottom: 1px solid #2a2a30; font-size: 0.82rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
+  .intro { max-width: 40rem; color: var(--fg-3); }
+  h2.sec { margin: 2.4rem 0 0; padding-bottom: 0.7rem; border-bottom: 1px solid var(--line); font-size: 0.82rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
   .open-list { gap: 0; margin: 0 0 1rem; }
-  .open-list li { display: grid; grid-template-columns: 8.2em 1fr; font-size: clamp(1.5rem, 3.6vw, 2.6rem); column-gap: 1.6rem; align-items: start; padding: 1.2rem 0.2rem; border: 0; border-bottom: 1px solid #2a2a30; border-radius: 0; background: transparent; }
+  .open-list li { display: grid; grid-template-columns: 8.2em 1fr; font-size: clamp(1.5rem, 3.6vw, 2.6rem); column-gap: 1.6rem; align-items: start; padding: 1.2rem 0.2rem; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; }
   .open-when { margin: 0; font-weight: 900; letter-spacing: -.05em; line-height: 1.05; white-space: nowrap; }
-  .open-when span { color: #8f8f97; }
+  .open-when span { color: var(--muted); }
   .open-body { min-width: 0; font-size: 1rem; padding-top: 0.2em; }
   .open-title { font-size: clamp(1.05rem, 2vw, 1.4rem); }
-  .open-left { color: #ff5fa2; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; }
+  .open-left { color: var(--eye); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; }
   .oa { border-radius: 4px; }
-  .oa.primary { border-color: #ff5fa2; }
+  .oa.primary { border-color: transparent; }
   .plain-list li, .empty, .note { border-radius: 4px; }
-  .open-list li.grp { display: block; font-size: 0.8rem; letter-spacing: .12em; color: #ff5fa2; font-weight: 700; padding: 1.4rem 0.2rem 0.3rem; border-bottom: 1px solid #2a2a30; }
-  .open-stage { font-style: normal; font-size: 0.8em; color: #c9c9cf; font-weight: 700; margin-left: 0.5em; padding: 0.1em 0.45em; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; vertical-align: 0.1em; }
+  .open-list li.grp { display: block; font-size: 0.8rem; letter-spacing: .12em; color: var(--muted); font-weight: 700; padding: 1.4rem 0.2rem 0.3rem; border-bottom: 1px solid var(--line); }
+  .open-stage { font-style: normal; font-size: 0.8em; color: var(--fg-2); font-weight: 700; margin-left: 0.5em; padding: 0.1em 0.45em; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; vertical-align: 0.1em; }
   @media (max-width: 560px) { .open-list li.grp { grid-template-columns: none; } .open-list li { grid-template-columns: 1fr; row-gap: 0.5rem; } .open-body { padding-top: 0; } }
 </style>
 

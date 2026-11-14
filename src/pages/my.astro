@@ -43,16 +43,16 @@ const list = upcomingEvents();
 </BaseLayout>
 
 <style>
-  .intro { color: #c4c4c8; line-height: 1.7; }
+  .intro { color: var(--fg-2); line-height: 1.7; }
   .my-list { margin-top: 1rem; }
-  .my-open { margin: 0.6rem 0 0; font-size: 0.82rem; font-weight: 700; color: #c9c9cf; }
-  .my-news { margin: 0.6rem 0 0; font-size: 0.84rem; font-weight: 700; color: #ff5fa2; line-height: 1.5; }
-  .my-news small { color: #8f8f97; font-weight: 400; margin-right: 0.4rem; }
+  .my-open { margin: 0.6rem 0 0; font-size: 0.82rem; font-weight: 700; color: var(--fg-2); }
+  .my-news { margin: 0.6rem 0 0; font-size: 0.84rem; font-weight: 700; color: var(--cheese); line-height: 1.5; }
+  .my-news small { color: var(--muted); font-weight: 400; margin-right: 0.4rem; }
   .my-alert { margin: 0.8rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.8rem; }
-  .my-alert button { padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.88rem; font-weight: 700; color: #0e0e10; background: #ff5fa2; border: 0; cursor: pointer; }
-  .my-alert small { color: #8f8f97; }
-  .my-empty { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4rem; padding: 1.6rem 1.2rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: #c4c4c8; line-height: 1.7; }
-  .my-empty a { color: #ff5fa2; }
+  .my-alert button { padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.88rem; font-weight: 700; color: var(--ink); background: var(--btn); border: 0; cursor: pointer; }
+  .my-alert small { color: var(--muted); }
+  .my-empty { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4rem; padding: 1.6rem 1.2rem; background: rgba(255,255,255,0.05); border-radius: 8px; color: var(--fg-2); line-height: 1.7; }
+  .my-empty a { color: var(--cheese); }
 </style>
 
 <script>

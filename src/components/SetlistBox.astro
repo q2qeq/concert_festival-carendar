@@ -35,18 +35,18 @@ const { setlists } = Astro.props;
 )}
 <style>
   .setlist-box { margin: 1.75rem 0; }
-  .setlist-box h2 { margin: 0 0 0.35rem; font-size: 1.05rem; color: #dcdcd8; }
-  .setlist-caveat { margin: 0 0 0.8rem; color: #8f8f97; font-size: 0.85rem; }
+  .setlist-box h2 { margin: 0 0 0.35rem; font-size: 1.05rem; color: var(--fg-2); }
+  .setlist-caveat { margin: 0 0 0.8rem; color: var(--muted); font-size: 0.85rem; }
   .setlist-group { display: flex; flex-direction: column; gap: 0.6rem; }
   .setlist-item { background: rgba(255,255,255,0.04); border-radius: 8px; overflow: hidden; }
   .setlist-item summary {
     cursor: pointer; list-style: none; padding: 0.75rem 1rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem;
   }
   .setlist-item summary::-webkit-details-marker { display: none; }
-  .setlist-label { font-weight: 700; color: #ededea; font-size: 0.92rem; }
-  .setlist-meta { color: #8f8f97; font-size: 0.82rem; }
-  .setlist-count { margin-left: auto; color: #ff5fa2; font-size: 0.82rem; font-weight: 600; }
-  .setlist-songs { margin: 0; padding: 0 1rem 0.9rem 2.1rem; color: #c4c4c8; font-size: 0.9rem; line-height: 1.75; }
-  .setlist-note { margin: 0 1rem 0.8rem; color: #8f8f97; font-size: 0.82rem; }
-  .setlist-source { display: block; margin: 0 1rem 0.9rem; font-size: 0.8rem; color: #c9c9cf; }
+  .setlist-label { font-weight: 700; color: var(--fg); font-size: 0.92rem; }
+  .setlist-meta { color: var(--muted); font-size: 0.82rem; }
+  .setlist-count { margin-left: auto; color: var(--cheese); font-size: 0.82rem; font-weight: 600; }
+  .setlist-songs { margin: 0; padding: 0 1rem 0.9rem 2.1rem; color: var(--fg-2); font-size: 0.9rem; line-height: 1.75; }
+  .setlist-note { margin: 0 1rem 0.8rem; color: var(--muted); font-size: 0.82rem; }
+  .setlist-source { display: block; margin: 0 1rem 0.9rem; font-size: 0.8rem; color: var(--fg-2); }
 </style>

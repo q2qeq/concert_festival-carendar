@@ -248,20 +248,20 @@ const pageDescription = hasParkingFee
 <style>
   .at-a-glance { margin: 1rem 0 0.5rem; padding: 0.8rem 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; }
   .at-a-glance dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.6rem 1rem; margin: 0; }
-  .at-a-glance dt { font-size: 0.74rem; color: #8f8f97; }
-  .at-a-glance dd { margin: 0.1rem 0 0; font-size: 0.92rem; color: #ededea; font-weight: 600; }
-  .glance-note { margin: 0.6rem 0 0; font-size: 0.78rem; color: #8f8f97; line-height: 1.5; }
+  .at-a-glance dt { font-size: 0.74rem; color: var(--muted); }
+  .at-a-glance dd { margin: 0.1rem 0 0; font-size: 0.92rem; color: var(--fg); font-weight: 600; }
+  .glance-note { margin: 0.6rem 0 0; font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
   .glance-note a { color: inherit; }
   .past-list { list-style: none; padding-left: 0 !important; }
   .past-list li { display: flex; gap: 0.7rem; align-items: baseline; }
-  .past-list a { color: #ededea; text-decoration: none; font-weight: 600; }
-  .past-list a:hover { color: #ff5fa2; }
-  .past-list span { color: #8f8f97; font-size: 0.82rem; }
+  .past-list a { color: var(--fg); text-decoration: none; font-weight: 600; }
+  .past-list a:hover { color: var(--cheese); }
+  .past-list span { color: var(--muted); font-size: 0.82rem; }
   .faq details { border-top: 1px solid rgba(255,255,255,0.12); padding: 0.6rem 0; }
-  .faq summary { cursor: pointer; color: #ededea; font-size: 0.94rem; font-weight: 600; }
+  .faq summary { cursor: pointer; color: var(--fg); font-size: 0.94rem; font-weight: 600; }
   .faq details p { margin-top: 0.5rem; }
   .breadcrumb { margin: 0 0 1rem; font-size: 0.88rem; }
-  .breadcrumb a { color: #8f8f97; text-decoration: none; }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
   .breadcrumb a:hover { color: #fff; }
   .intro { padding: 0.25rem 0 0.75rem; }
   .venue-hero {
@@ -274,33 +274,33 @@ const pageDescription = hasParkingFee
   }
   .venue-hero-credit { margin: 0 0 0.9rem; font-size: 0.72rem; color: rgba(169,164,201,0.7); }
   .venue-hero-credit a { color: inherit; }
-  .venue-hero-credit a:hover { color: #c9c9cf; }
+  .venue-hero-credit a:hover { color: var(--fg-2); }
   .intro h1 { margin-bottom: 0.6rem; }
   .city-tag {
     display: inline-block;
     font-size: 0.78rem;
-    color: #c9c9cf;
+    color: var(--fg-2);
     border: 1px solid rgba(255,255,255,0.4);
     padding: 0.2rem 0.6rem;
     border-radius: 6px;
     margin-bottom: 0.5rem;
   }
-  .address { color: #8f8f97; margin: 0; }
+  .address { color: var(--muted); margin: 0; }
   .venue-sightline-section { margin: 1.5rem 0; scroll-margin-top: 5rem; }
-  .venue-sightline-section h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #dcdcd8; }
+  .venue-sightline-section h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: var(--fg-2); }
   .info-block { margin: 1.75rem 0; }
-  .info-block h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: #dcdcd8; }
+  .info-block h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: var(--fg-2); }
   .info-block ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; }
-  .info-block p, .info-block li { color: #c4c4c8; font-size: 0.92rem; line-height: 1.55; margin: 0; }
-  .info-block li strong { color: #ededea; }
+  .info-block p, .info-block li { color: var(--fg-2); font-size: 0.92rem; line-height: 1.55; margin: 0; }
+  .info-block li strong { color: var(--fg); }
   .food-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.5rem 1rem; padding-left: 0 !important; list-style: none; }
   .food-list li { display: flex; flex-direction: column; gap: 0.1rem; }
-  .food-list strong { color: #ededea; font-size: 0.92rem; }
-  .food-list span { color: #8f8f97; font-size: 0.82rem; }
+  .food-list strong { color: var(--fg); font-size: 0.92rem; }
+  .food-list span { color: var(--muted); font-size: 0.82rem; }
   .food-map-links { display: flex; gap: 0.5rem; margin-top: 0.15rem; }
   .food-map-links a {
     font-size: 0.76rem;
-    color: #c9c9cf;
+    color: var(--fg-2);
     text-decoration: none;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.25);
@@ -308,11 +308,11 @@ const pageDescription = hasParkingFee
     border-radius: 6px;
   }
   .food-map-links a:hover { background: rgba(255,255,255,0.16); }
-  .parking-note { margin-top: 0.6rem !important; font-size: 0.78rem !important; color: #8f8f97 !important; }
-  .tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.08); border-radius: 8px; color: #dcdcd8; font-size: 0.85rem; }
+  .parking-note { margin-top: 0.6rem !important; font-size: 0.78rem !important; color: var(--muted) !important; }
+  .tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.08); border-radius: 8px; color: var(--fg-2); font-size: 0.85rem; }
   .event-list { display: flex; flex-direction: column; }
-  .empty { color: #8f8f97; }
+  .empty { color: var(--muted); }
   .return-link { margin: 0.8rem 0 0; font-size: 0.92rem; }
-  .return-link a { color: #f4f4f0; font-weight: 700; }
-  .return-link a:hover { color: #ff5fa2; }
+  .return-link a { color: var(--fg); font-weight: 700; }
+  .return-link a:hover { color: var(--cheese); }
 </style>

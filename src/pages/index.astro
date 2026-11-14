@@ -89,31 +89,31 @@ function when(iso: string) {
 
 <style>
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 2.8rem 0 0.8rem; border-bottom: 1px solid #2a2a30; }
-  .sec-head h2 { margin: 0; font-size: 0.82rem; letter-spacing: .14em; color: #8f8f97; font-weight: 700; }
-  .sec-head a { font-size: 0.85rem; color: #8f8f97; text-decoration: none; white-space: nowrap; }
-  .sec-head a:hover { color: #f4f4f0; }
+  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 2.8rem 0 0.8rem; border-bottom: 1px solid var(--line); }
+  .sec-head h2 { margin: 0; font-size: 0.82rem; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+  .sec-head a { font-size: 0.85rem; color: var(--muted); text-decoration: none; white-space: nowrap; }
+  .sec-head a:hover { color: var(--fg); }
 
-  .cal-sub { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin: 2rem 0 0; padding: 1.2rem 1.4rem; border: 1px solid #2a2a30; border-radius: 4px; }
-  .cal-sub p { margin: 0; flex: 1 1 22rem; color: #c4c4c8; font-size: 0.92rem; line-height: 1.65; }
-  .cal-sub p b { color: #f4f4f0; }
+  .cal-sub { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin: 2rem 0 0; padding: 1.2rem 1.4rem; border: 1px solid var(--line); border-radius: 4px; }
+  .cal-sub p { margin: 0; flex: 1 1 22rem; color: var(--fg-2); font-size: 0.92rem; line-height: 1.65; }
+  .cal-sub p b { color: var(--fg); }
   .cal-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem 1.2rem; }
-  .cal-btn { padding: 0.6rem 1.1rem; border-radius: 4px; background: #ff5fa2; color: #0e0e10; font-weight: 800; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
-  .cal-btn:hover { background: #ff7db4; }
-  .cal-link { color: #8f8f97; font-size: 0.85rem; text-decoration: none; white-space: nowrap; }
-  .cal-link:hover { color: #f4f4f0; }
+  .cal-btn { padding: 0.6rem 1.1rem; border-radius: 4px; background: var(--btn); color: var(--ink); font-weight: 800; font-size: 0.9rem; text-decoration: none; white-space: nowrap; }
+  .cal-btn:hover { background: var(--btn-hi); }
+  .cal-link { color: var(--muted); font-size: 0.85rem; text-decoration: none; white-space: nowrap; }
+  .cal-link:hover { color: var(--fg); }
 
-  .rows a { display: grid; font-size: clamp(1.7rem, 4.2vw, 3.6rem); grid-template-columns: 6.9em 1fr auto; column-gap: 1.4rem; align-items: baseline; padding: 1.3rem 0; border-bottom: 1px solid #2a2a30; color: #f4f4f0; text-decoration: none; transition: padding-left .2s, color .2s; }
-  .rows a:hover { padding-left: .8rem; color: #ff5fa2; }
+  .rows a { display: grid; font-size: clamp(1.7rem, 4.2vw, 3.6rem); grid-template-columns: 6.9em 1fr auto; column-gap: 1.4rem; align-items: baseline; padding: 1.3rem 0; border-bottom: 1px solid var(--line); color: var(--fg); text-decoration: none; transition: padding-left .2s, color .2s; }
+  .rows a:hover { padding-left: .8rem; color: var(--cheese); }
   .rows .t { font-size: 1em; white-space: nowrap; font-weight: 900; letter-spacing: -.05em; line-height: 1; }
-  .rows .t span { color: #8f8f97; }
+  .rows .t span { color: var(--muted); }
   .rows .nm { font-size: clamp(1.05rem, 2vw, 1.6rem); font-weight: 700; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .rows .v { font-size: 0.82rem; color: #8f8f97; white-space: nowrap; }
+  .rows .v { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
 
   .poster-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem 0.9rem; padding-top: 1.4rem; }
   @media (min-width: 720px) { .poster-grid { grid-template-columns: repeat(4, 1fr); } }
-  .more { display: block; margin: 2.2rem 0 0.5rem; padding: 1.4rem; border: 1px solid #3a3a42; border-radius: 4px; text-align: center; font-weight: 900; font-size: 1.2rem; color: #f4f4f0; text-decoration: none; }
-  .more:hover { background: #ff5fa2; border-color: #ff5fa2; color: #0e0e10; }
+  .more { display: block; margin: 2.2rem 0 0.5rem; padding: 1.4rem; border: 1px solid var(--line-2); border-radius: 4px; text-align: center; font-weight: 900; font-size: 1.2rem; color: var(--fg); text-decoration: none; }
+  .more:hover { background: var(--btn); border-color: var(--btn); color: var(--ink); }
 
   @media (max-width: 560px) {
     .rows a { grid-template-columns: 1fr; row-gap: 0.2rem; }

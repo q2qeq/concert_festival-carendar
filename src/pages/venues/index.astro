@@ -116,15 +116,15 @@ const pageDescription = '내한공연·페스티벌이 열리는 공연장을 �
   }
   .region-nav a {
     font-size: 0.82rem;
-    color: #c4c4c8;
+    color: var(--fg-2);
     text-decoration: none;
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.12);
     padding: 0.3rem 0.7rem;
     border-radius: 6px;
   }
-  .region-nav a span { color: #c9c9cf; margin-left: 0.15rem; }
-  .region-nav a:hover { background: rgba(255,95,162,0.14); border-color: rgba(255,95,162,0.4); color: #fff; }
+  .region-nav a span { color: var(--fg-2); margin-left: 0.15rem; }
+  .region-nav a:hover { background: rgba(239, 138, 58,0.14); border-color: rgba(239, 138, 58,0.4); color: #fff; }
   .region-section { margin-top: 2.1rem; scroll-margin-top: 5rem; }
   .region-heading {
     font-size: 1.1rem;
@@ -132,7 +132,7 @@ const pageDescription = '내한공연·페스티벌이 열리는 공연장을 �
     display: flex;
     align-items: baseline;
     gap: 0.55rem;
-    color: #ededea;
+    color: var(--fg);
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 0.5rem;
   }
@@ -169,26 +169,26 @@ const pageDescription = '내한공연·페스티벌이 열리는 공연장을 �
     background: rgba(255,255,255,0.04);
   }
   .venue-card-body { padding: 1rem 1.15rem 0; }
-  .venue-card-body h3 { margin: 0 0 0.3rem; font-size: 1.05rem; color: #ededea; }
-  .venue-card-main:hover h3 { color: #ff5fa2; }
+  .venue-card-body h3 { margin: 0 0 0.3rem; font-size: 1.05rem; color: var(--fg); }
+  .venue-card-main:hover h3 { color: var(--cheese); }
   .venue-city {
     display: inline-block;
     font-size: 0.74rem;
-    color: #c9c9cf;
+    color: var(--fg-2);
     border: 1px solid rgba(255,255,255,0.4);
     padding: 0.15rem 0.55rem;
     border-radius: 6px;
     margin: 0 0 0.4rem;
   }
-  .venue-address { margin: 0 0 0.3rem; color: #8f8f97; font-size: 0.85rem; }
-  .venue-count { margin: 0; color: #c4c4c8; font-size: 0.82rem; }
+  .venue-address { margin: 0 0 0.3rem; color: var(--muted); font-size: 0.85rem; }
+  .venue-count { margin: 0; color: var(--fg-2); font-size: 0.82rem; }
   .venue-photo-credit {
     margin: -0.35rem 1.15rem 0;
     font-size: 0.68rem;
     color: rgba(169,164,201,0.7);
   }
   .venue-photo-credit a { color: inherit; }
-  .venue-photo-credit a:hover { color: #c9c9cf; }
+  .venue-photo-credit a:hover { color: var(--fg-2); }
   .venue-card-links {
     display: flex;
     flex-wrap: wrap;
@@ -199,20 +199,20 @@ const pageDescription = '내한공연·페스티벌이 열리는 공연장을 �
   }
   .venue-card-links a {
     font-size: 0.8rem;
-    color: #c4c4c8;
+    color: var(--fg-2);
     text-decoration: none;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
     padding: 0.32rem 0.7rem;
     border-radius: 6px;
   }
-  .venue-card-links a:hover { background: rgba(255,95,162,0.16); border-color: rgba(255,95,162,0.4); color: #fff; }
+  .venue-card-links a:hover { background: rgba(239, 138, 58,0.16); border-color: rgba(239, 138, 58,0.4); color: #fff; }
   .empty { color: var(--muted); margin-top: 1.5rem; }
 
   /* ── 랜딩 톤 ── */
   .page-intro h1 { margin: 0 0 0.9rem; font-size: clamp(2.1rem, 6vw, 3.6rem); line-height: 1; letter-spacing: -.055em; font-weight: 900; }
-  .page-intro p { max-width: 40rem; color: #a9a9b0; }
+  .page-intro p { max-width: 40rem; color: var(--fg-3); }
   .venue-thumb { height: auto; }
-  .region-heading { display: flex; justify-content: space-between; align-items: baseline; margin: 2.8rem 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: clamp(1.6rem, 4.6vw, 2.6rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; }
-  .region-count { font-size: 0.74rem; font-weight: 500; letter-spacing: .14em; color: #8f8f97; }
+  .region-heading { display: flex; justify-content: space-between; align-items: baseline; margin: 2.8rem 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: clamp(1.6rem, 4.6vw, 2.6rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; }
+  .region-count { font-size: 0.74rem; font-weight: 500; letter-spacing: .14em; color: var(--muted); }
 </style>

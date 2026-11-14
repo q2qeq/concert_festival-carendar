@@ -66,25 +66,25 @@ function fmt(d: Date) {
 </BaseLayout>
 
 <style>
-  .breadcrumb a { color: #8f8f97; font-size: 0.9rem; text-decoration: none; }
-  .post-date { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; color: #8f8f97; font-size: 0.78rem; margin: 1.4rem 0 0.7rem; }
+  .breadcrumb a { color: var(--muted); font-size: 0.9rem; text-decoration: none; }
+  .post-date { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .1em; color: var(--muted); font-size: 0.78rem; margin: 1.4rem 0 0.7rem; }
   h1 { margin: 0 0 0.9rem; font-size: clamp(1.8rem, 4.6vw, 2.9rem); line-height: 1.12; letter-spacing: -.045em; font-weight: 900; }
   .post-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.5rem; }
   .tag {
     font-size: 0.75rem;
-    color: #c9c9cf;
+    color: var(--fg-2);
     border: 1px solid rgba(255,255,255,0.35);
     padding: 0.2rem 0.55rem;
     border-radius: 6px;
   }
-  .prose { margin-top: 1.5rem; color: #dcdcd8; font-size: 1.02rem; line-height: 1.8; }
-  .prose :global(h2) { font-size: 1.25rem; margin: 2rem 0 0.75rem; color: #ededea; }
+  .prose { margin-top: 1.5rem; color: var(--fg-2); font-size: 1.02rem; line-height: 1.8; }
+  .prose :global(h2) { font-size: 1.25rem; margin: 2rem 0 0.75rem; color: var(--fg); }
   .prose :global(p) { margin: 0 0 1rem; }
-  .prose :global(a) { color: #ff5fa2; text-decoration: underline; }
+  .prose :global(a) { color: var(--cheese); text-decoration: underline; }
   .prose :global(img) { display: block; max-width: min(100%, 420px); height: auto; margin: 1.2rem 0 0.4rem; border-radius: 8px; }
-  .prose :global(p > em:only-child) { color: #8f8f97; font-size: 0.85rem; }
+  .prose :global(p > em:only-child) { color: var(--muted); font-size: 0.85rem; }
   .prose :global(ul) { margin: 0 0 1rem; padding-left: 1.3rem; }
   .prose :global(hr) { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0; }
-  .prose :global(em) { color: #8f8f97; font-size: 0.9rem; }
+  .prose :global(em) { color: var(--muted); font-size: 0.9rem; }
   .prose :global(ul), .prose :global(ol) { padding-left: 1.4rem; margin: 0 0 1rem; }
 </style>

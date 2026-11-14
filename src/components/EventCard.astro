@@ -86,7 +86,7 @@ const buzzing = isBuzzing(event);
   .difficulty-normal { color: #7ed957; border: 1px solid rgba(126,217,87,0.4); background: rgba(126,217,87,0.1); }
   .difficulty-easy { color: #ffd166; border: 1px solid rgba(255,209,102,0.4); background: rgba(255,209,102,0.1); }
   .event-card:hover { background: rgba(255,255,255,0.04); }
-  .event-card:hover h3 { color: #ff5fa2; }
+  .event-card:hover h3 { color: var(--cheese); }
   .thumb {
     flex-shrink: 0;
     width: 60px;
@@ -100,14 +100,14 @@ const buzzing = isBuzzing(event);
   }
   .event-card.is-buzzing {
     background: rgba(255,255,255,0.04);
-    border-bottom-color: rgba(255, 95, 162, 0.35);
+    border-bottom-color: rgba(239, 138, 58, 0.35);
   }
   .event-card.is-buzzing:hover { background: rgba(255,255,255,0.04); }
   .buzz-tag {
     font-size: 0.72rem;
     font-weight: 800;
-    color: #0e0e10;
-    background: #ff5fa2;
+    color: var(--ink);
+    background: var(--cheese);
     padding: 0.22rem 0.6rem;
     border-radius: 6px;
     white-space: nowrap;
@@ -117,12 +117,12 @@ const buzzing = isBuzzing(event);
   .event-card.is-cancelled h3 { text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.6); }
   .info { flex: 1; min-width: 0; }
   h3 { margin: 0 0 0.2rem; font-size: 1.05rem; transition: color 0.15s; }
-  .meta { margin: 0; color: #8f8f97; font-size: 0.92rem; }
-  .meta-date, .meta-venue { color: #ededea; font-weight: 700; }
+  .meta { margin: 0; color: var(--muted); font-size: 0.92rem; }
+  .meta-date, .meta-venue { color: var(--fg); font-weight: 700; }
   .tags { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; flex-shrink: 0; }
   .ticket-tag {
     font-size: 0.75rem;
-    color: #c9c9cf;
+    color: var(--fg-2);
     border: 1px solid rgba(255,255,255,0.4);
     padding: 0.25rem 0.6rem;
     border-radius: 6px;
@@ -130,7 +130,7 @@ const buzzing = isBuzzing(event);
   }
   .announced-tag {
     font-size: 0.75rem;
-    color: #c9c9cf;
+    color: var(--fg-2);
     border: 1px dashed rgba(255,255,255,0.5);
     padding: 0.25rem 0.6rem;
     border-radius: 6px;
@@ -139,8 +139,8 @@ const buzzing = isBuzzing(event);
   .new-tag {
     font-size: 0.72rem;
     font-weight: 800;
-    color: #0e0e10;
-    background: #f4f4f0;
+    color: var(--ink);
+    background: var(--fg);
     padding: 0.22rem 0.6rem;
     border-radius: 6px;
     white-space: nowrap;
@@ -148,8 +148,8 @@ const buzzing = isBuzzing(event);
   .fresh-tag {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #0e0e10;
-    background: #ff5fa2;
+    color: var(--ink);
+    background: var(--eye);
     padding: 0.22rem 0.6rem;
     border-radius: 6px;
     white-space: nowrap;
@@ -164,8 +164,8 @@ const buzzing = isBuzzing(event);
   }
   .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); background: rgba(255,184,76,0.1); }
   .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); background: rgba(255,107,107,0.1); }
-  .open-tag { font-size: 0.75rem; font-weight: 700; color: #ededea; border: 1px solid rgba(255,255,255,0.45); padding: 0.25rem 0.6rem; border-radius: 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .open-tag.is-hot { color: #ff5fa2; border-color: #ff5fa2; }
+  .open-tag { font-size: 0.75rem; font-weight: 700; color: var(--fg); border: 1px solid rgba(255,255,255,0.45); padding: 0.25rem 0.6rem; border-radius: 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .open-tag.is-hot { color: var(--eye); border-color: var(--eye); }
 </style>
 
 <script>

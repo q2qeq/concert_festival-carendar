@@ -27,15 +27,15 @@ const count = (p: string) => all.filter((e) => e.startDate.startsWith(p)).length
 </BaseLayout>
 <style>
   .head h1 { margin: 0 0 0.6rem; }
-  .head p { margin: 0 0 1.6rem; color: #a9a9b0; }
-  .yr h2 { margin: 2rem 0 0.8rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a30; font-size: clamp(1.6rem, 4.6vw, 2.4rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; }
+  .head p { margin: 0 0 1.6rem; color: var(--fg-3); }
+  .yr h2 { margin: 2rem 0 0.8rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-size: clamp(1.6rem, 4.6vw, 2.4rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; }
   .yr h2 a { display: flex; justify-content: space-between; align-items: baseline; color: inherit; text-decoration: none; }
-  .yr h2 a:hover { color: #ff5fa2; }
-  .yr h2 small { font-size: 0.74rem; font-weight: 500; letter-spacing: .14em; color: #8f8f97; }
+  .yr h2 a:hover { color: var(--cheese); }
+  .yr h2 small { font-size: 0.74rem; font-weight: 500; letter-spacing: .14em; color: var(--muted); }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr)); gap: 0.7rem; }
-  .grid a { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem; border: 1px solid #2a2a30; border-radius: 4px; color: inherit; text-decoration: none; }
-  .grid a:hover { border-color: #ff5fa2; }
+  .grid a { display: flex; flex-direction: column; gap: 0.3rem; padding: 0.9rem; border: 1px solid var(--line); border-radius: 4px; color: inherit; text-decoration: none; }
+  .grid a:hover { border-color: var(--cheese); }
   .mm { font-size: 2rem; font-weight: 900; letter-spacing: -.06em; line-height: 1; }
-  .mm small { font-size: 0.85rem; letter-spacing: 0; margin-left: 0.2rem; color: #8f8f97; }
-  .mn { font-size: 0.7rem; letter-spacing: .14em; color: #ff5fa2; }
+  .mm small { font-size: 0.85rem; letter-spacing: 0; margin-left: 0.2rem; color: var(--muted); }
+  .mn { font-size: 0.7rem; letter-spacing: .14em; color: var(--cheese); }
 </style>

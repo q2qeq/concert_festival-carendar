@@ -31,14 +31,14 @@ const onOwnPage = ev ? Astro.url.pathname.startsWith(`/events/${ev.id}`) : false
   }
 </script>
 <style>
-  .new-banner { display: flex; align-items: center; gap: 0.5rem; max-width: 1180px; margin: 0 auto; padding: 0.55rem 1.25rem; border-bottom: 1px solid #2a2a30; font-size: 0.9rem; }
+  .new-banner { display: flex; align-items: center; gap: 0.5rem; max-width: 1180px; margin: 0 auto; padding: 0.55rem 1.25rem; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
   .new-banner[hidden] { display: none; }
-  .nb-link { flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.7rem; color: #f4f4f0; text-decoration: none; }
-  .nb-tag { flex: none; padding: 0.12rem 0.5rem; border-radius: 4px; background: #ff5fa2; color: #0e0e10; font-size: 0.72rem; font-weight: 800; }
+  .nb-link { flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.7rem; color: var(--fg); text-decoration: none; }
+  .nb-tag { flex: none; padding: 0.12rem 0.5rem; border-radius: 4px; background: var(--eye); color: var(--ink); font-size: 0.72rem; font-weight: 800; }
   .nb-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
-  .nb-go { flex: none; color: #8f8f97; font-size: 0.82rem; }
-  .nb-link:hover .nb-go { color: #ff5fa2; }
-  .nb-close { all: unset; cursor: pointer; flex: none; padding: 0.2rem 0.4rem; color: #8f8f97; font-size: 0.8rem; }
-  .nb-close:hover { color: #f4f4f0; }
+  .nb-go { flex: none; color: var(--muted); font-size: 0.82rem; }
+  .nb-link:hover .nb-go { color: var(--cheese); }
+  .nb-close { all: unset; cursor: pointer; flex: none; padding: 0.2rem 0.4rem; color: var(--muted); font-size: 0.8rem; }
+  .nb-close:hover { color: var(--fg); }
   @media (max-width: 560px) { .nb-go { display: none; } }
 </style>

@@ -49,9 +49,9 @@ const { event } = Astro.props;
 <style>
   .want { margin: 1rem 0 0; }
   .want[hidden] { display: none; }
-  .want-btn { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1.1rem; border: 1px solid #3a3a42; border-radius: 4px; color: #f4f4f0; font-weight: 700; font-size: 0.92rem; }
-  .want-btn:hover { border-color: #ff5fa2; }
-  .want-btn.is-on { border-color: #ff5fa2; color: #ff5fa2; }
-  .want-count { color: #8f8f97; font-size: 0.85rem; }
-  .want-btn:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 2px; }
+  .want-btn { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.6rem 1.1rem; border: 1px solid var(--line-2); border-radius: 4px; color: var(--fg); font-weight: 700; font-size: 0.92rem; }
+  .want-btn:hover { border-color: var(--cheese); }
+  .want-btn.is-on { border-color: var(--cheese); color: var(--cheese); }
+  .want-count { color: var(--muted); font-size: 0.85rem; }
+  .want-btn:focus-visible { outline: 2px solid var(--cheese); outline-offset: 2px; }
 </style>

@@ -101,7 +101,7 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     transition: transform 0.15s, box-shadow 0.15s;
   }
   .poster-card:hover { transform: translateY(-3px);}
-  .poster-card:hover h3 { color: #ff5fa2; }
+  .poster-card:hover h3 { color: var(--cheese); }
   .poster-card.is-buzzing {}
   .poster-card.is-buzzing:hover {}
   .poster-card-frame {
@@ -118,7 +118,7 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     gap: 0.4rem;
     width: 100%;
     height: 100%;
-    color: #6f6f77;
+    color: var(--faint);
     font-size: 0.82rem;
     font-weight: 600;
     background: #161619;
@@ -140,8 +140,8 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     text-align: center;
     font-size: 0.72rem;
     font-weight: 900;
-    color: #0e0e10;
-    background: #ff5fa2;
+    color: var(--ink);
+    background: var(--btn);
     padding: 0.3rem 0.35rem;
     line-height: 1.2;
   }
@@ -171,7 +171,7 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .poster-card-meta { margin: 0 0 0.4rem; color: #8f8f97; font-size: 0.8rem; }
+  .poster-card-meta { margin: 0 0 0.4rem; color: var(--muted); font-size: 0.8rem; }
   .poster-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .ticket-tag, .announced-tag, .fresh-tag, .status-tag, .difficulty-tag {
     font-size: 0.65rem;
@@ -179,17 +179,17 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     border-radius: 6px;
     white-space: nowrap;
   }
-  .ticket-tag { color: #c9c9cf; border: 1px solid rgba(255,255,255,0.4); }
-  .announced-tag { color: #c9c9cf; border: 1px dashed rgba(255,255,255,0.5); }
-  .fresh-tag { font-weight: 700; color: #0e0e10; background: #ff5fa2; }
-  .new-tag { font-weight: 800; color: #0e0e10; background: #f4f4f0; font-size: 0.65rem; padding: 0.16rem 0.45rem; border-radius: 6px; white-space: nowrap; }
+  .ticket-tag { color: var(--fg-2); border: 1px solid rgba(255,255,255,0.4); }
+  .announced-tag { color: var(--fg-2); border: 1px dashed rgba(255,255,255,0.5); }
+  .fresh-tag { font-weight: 700; color: var(--ink); background: var(--eye); }
+  .new-tag { font-weight: 800; color: var(--ink); background: var(--fg); font-size: 0.65rem; padding: 0.16rem 0.45rem; border-radius: 6px; white-space: nowrap; }
   .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); }
   .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); }
   .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); }
   .difficulty-normal { color: #7ed957; border: 1px solid rgba(126,217,87,0.4); }
   .difficulty-easy { color: #ffd166; border: 1px solid rgba(255,209,102,0.4); }
-  .open-tag { font-size: 0.65rem; font-weight: 700; color: #ededea; border: 1px solid rgba(255,255,255,0.45); padding: 0.16rem 0.45rem; border-radius: 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .open-tag.is-hot { color: #ff5fa2; border-color: #ff5fa2; }
+  .open-tag { font-size: 0.65rem; font-weight: 700; color: var(--fg); border: 1px solid rgba(255,255,255,0.45); padding: 0.16rem 0.45rem; border-radius: 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .open-tag.is-hot { color: var(--eye); border-color: var(--eye); }
 </style>
 
 <script>

@@ -84,23 +84,23 @@ const links = sightlineLinks(defaultQuery);
 </script>
 <style>
   .sightline-search { display: flex; flex-direction: column; gap: 0.65rem; }
-  .sightline-desc { margin: 0; color: #8f8f97; font-size: 0.85rem; line-height: 1.55; }
+  .sightline-desc { margin: 0; color: var(--muted); font-size: 0.85rem; line-height: 1.55; }
   .sightline-row { display: flex; }
   .sightline-input {
     flex: 1;
     min-width: 180px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.16);
-    color: #ededea;
+    color: var(--fg);
     padding: 0.55rem 0.9rem;
     border-radius: 6px;
     font-size: 0.9rem;
   }
-  .sightline-input::placeholder { color: #6f6f77; }
+  .sightline-input::placeholder { color: var(--faint); }
   .sightline-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .sl-link {
     font-size: 0.85rem;
-    color: #c9c9cf;
+    color: var(--fg-2);
     text-decoration: none;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.3);

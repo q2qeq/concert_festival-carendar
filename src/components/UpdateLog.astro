@@ -29,8 +29,8 @@ function fmt(iso: string) {
 )}
 <style>
   .update-log { margin: 1.75rem 0; }
-  .update-log h2 { font-size: 1.05rem; margin: 0 0 0.85rem; color: #dcdcd8; display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
-  .update-log .sub { font-size: 0.78rem; font-weight: 400; color: #8f8f97; }
+  .update-log h2 { font-size: 1.05rem; margin: 0 0 0.85rem; color: var(--fg-2); display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+  .update-log .sub { font-size: 0.78rem; font-weight: 400; color: var(--muted); }
   .update-log-list { list-style: none; margin: 0; padding: 0; border-left: 2px solid rgba(255,255,255,0.1); }
   .update-log-list li { position: relative; padding: 0 0 1rem 1.25rem; display: flex; gap: 0.75rem; }
   .update-log-list li::before {
@@ -41,9 +41,9 @@ function fmt(iso: string) {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #ff5fa2;
+    background: var(--btn);
   }
-  .update-date { flex-shrink: 0; font-weight: 700; color: #ff5fa2; font-size: 0.85rem; min-width: 2.6rem; }
-  .update-text { color: #c4c4c8; font-size: 0.92rem; line-height: 1.55; }
-  .update-source { margin-left: 0.4rem; font-size: 0.82rem; color: #c9c9cf; white-space: nowrap; }
+  .update-date { flex-shrink: 0; font-weight: 700; color: var(--cheese); font-size: 0.85rem; min-width: 2.6rem; }
+  .update-text { color: var(--fg-2); font-size: 0.92rem; line-height: 1.55; }
+  .update-source { margin-left: 0.4rem; font-size: 0.82rem; color: var(--fg-2); white-space: nowrap; }
 </style>

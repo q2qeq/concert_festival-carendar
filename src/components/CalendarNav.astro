@@ -74,7 +74,7 @@ const months = Array.from(monthsMap.values()).sort((a, b) => a.key.localeCompare
       const target = document.querySelector<HTMLElement>(`.card-wrap[data-date="${date}"]`);
       if (!target) return;
       target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      target.style.outline = '3px solid #ff5fa2';
+      target.style.outline = '3px solid var(--cheese)';
       target.style.outlineOffset = '4px';
       target.style.borderRadius = '14px';
       window.setTimeout(() => {
@@ -101,16 +101,16 @@ const months = Array.from(monthsMap.values()).sort((a, b) => a.key.localeCompare
       z-index: 15;
     }
   }
-  .calendar-nav-title { margin: 0 0 0.65rem; font-size: 0.8rem; font-weight: 700; color: #ededea; }
+  .calendar-nav-title { margin: 0 0 0.65rem; font-size: 0.8rem; font-weight: 700; color: var(--fg); }
   .cal-month { margin-bottom: 0.9rem; }
   .cal-month:last-child { margin-bottom: 0; }
-  .cal-month-label { margin: 0 0 0.35rem; font-size: 0.72rem; font-weight: 700; color: #8f8f97; }
+  .cal-month-label { margin: 0 0 0.35rem; font-size: 0.72rem; font-weight: 700; color: var(--muted); }
   .cal-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 2px;
   }
-  .cal-weekday { font-size: 0.6rem; color: #6f6f77; text-align: center; padding-bottom: 2px; }
+  .cal-weekday { font-size: 0.6rem; color: var(--faint); text-align: center; padding-bottom: 2px; }
   .cal-blank { display: block; }
   .cal-day {
     display: flex;
@@ -126,9 +126,9 @@ const months = Array.from(monthsMap.values()).sort((a, b) => a.key.localeCompare
     font-family: inherit;
   }
   button.cal-day.has-event {
-    color: #ededea;
+    color: var(--fg);
     background: rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 -2px 0 #ff5fa2;
+    box-shadow: inset 0 -2px 0 var(--cheese);
     font-weight: 700;
     cursor: pointer;
   }

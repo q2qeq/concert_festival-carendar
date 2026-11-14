@@ -55,7 +55,7 @@ function linkify(text: string) {
     margin: 1.75rem 0;
     padding: 0.2rem 0 0.2rem 1.1rem;
     background: transparent;
-    border-left: 3px solid #ff5fa2;
+    border-left: 3px solid var(--cheese);
     border-radius: 0;
   }
   .character-note-head {
@@ -67,17 +67,17 @@ function linkify(text: string) {
   .character-avatar {
     display: inline-flex;
     flex-shrink: 0;
-    color: #ff5fa2;
+    color: var(--cheese);
   }
   .character-note h2 {
     margin: 0;
     font-size: 1rem;
-    color: #ededea;
+    color: var(--fg);
   }
   .character-note-kicker {
     margin: 0.1rem 0 0;
     font-size: 0.72rem;
-    color: #8f8f97;
+    color: var(--muted);
   }
   .character-note-body {
     display: flex;
@@ -86,9 +86,9 @@ function linkify(text: string) {
   }
   .character-note-body p {
     margin: 0;
-    color: #dcdcd8;
+    color: var(--fg-2);
     font-size: 0.96rem;
     line-height: 1.75;
   }
-  .character-note-body :global(a) { color: #c9c9cf; }
+  .character-note-body :global(a) { color: var(--fg-2); }
 </style>
