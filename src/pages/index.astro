@@ -151,7 +151,6 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
           </div>
         </div>
 
-        {items.length > 1 && <p class="swipe-hint" aria-hidden="true">포스터를 옆으로 밀어 넘겨요</p>}
         {items.length > 1 && (
           <ol class="tabs" id="h-tabs" role="tablist" aria-label="지금 많이 보는 공연">
             {items.map((it, i) => (
@@ -523,9 +522,11 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
 
     // 휴대폰: 옆으로 밀면 포스터가 손가락을 따라 기울고, 충분히 밀었다 놓으면 다음(이전) 공연으로 넘어간다.
     // 세로 스크롤은 막지 않는다(.hero의 touch-action: pan-y).
-    let sx = 0, sy = 0, dx = 0, swiping = false, tracking = false, moved = false;
+    let sx = 0, sy = 0, dx = 0, swiping = false, tracking = false, moved = false, touched = false;
+    const SWIPED_KEY = 'krconcerts:hero-swiped';
     hero.addEventListener('pointerdown', (e) => {
       if (e.pointerType === 'mouse' || items.length < 2) return;
+      touched = true;
       tracking = true; swiping = false; moved = false; sx = e.clientX; sy = e.clientY; dx = 0;
     });
     hero.addEventListener('pointermove', (e) => {
@@ -547,12 +548,35 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
       tracking = false;
       if (swiping) {
         const w = hero.clientWidth || 1;
-        if (Math.abs(dx) > Math.min(70, w * 0.18)) show((cur + (dx < 0 ? 1 : -1) + items.length) % items.length);
+        if (Math.abs(dx) > Math.min(70, w * 0.18)) {
+          show((cur + (dx < 0 ? 1 : -1) + items.length) % items.length);
+          try { localStorage.setItem(SWIPED_KEY, '1'); } catch { /* 저장 못 하면 다음에도 한 번 움찔할 뿐 */ }
+        }
         ptr.tx = 0; ptr.ty = 0; gl?.pointer(0, 0);
         schedule();
       }
       swiping = false;
     };
+    // 밀어서 넘길 수 있다는 걸 글 대신 몸짓으로 알린다: 휴대폰에서 처음 한 번만, 포스터가 왼쪽으로
+    // 살짝 끌렸다가 돌아온다. 한 번이라도 밀어 본 기기, 움직임 줄이기 설정, 이미 만지고 있는 중이면 하지 않는다.
+    const nudge = () => {
+      if (reduce || touched || items.length < 2 || !window.matchMedia('(max-width: 860px)').matches) return;
+      try { if (localStorage.getItem(SWIPED_KEY)) return; } catch { /* 저장소를 못 쓰면 그냥 한다 */ }
+      const r = hero.getBoundingClientRect();
+      if (r.bottom < window.innerHeight * 0.5 || r.top > window.innerHeight * 0.5) return; // 첫 화면을 보고 있을 때만
+      pause();
+      const t0 = performance.now(), D = 1700;
+      const step = (now: number) => {
+        if (touched) return;
+        const p = Math.min(1, (now - t0) / D);
+        // 0 → -0.95(빠르게 끌림) → 잠깐 머묾 → 0(천천히 돌아옴). 무대 쪽이 부드럽게 따라오므로 실제 기울기는 7~8도쯤
+        const v = p < 0.3 ? -0.95 * ease(p / 0.3) : p < 0.45 ? -0.95 : -0.95 * (1 - ease((p - 0.45) / 0.55));
+        ptr.tx = v; gl?.pointer(v, 0);
+        if (p < 1) requestAnimationFrame(step); else { ptr.tx = 0; gl?.pointer(0, 0); schedule(); }
+      };
+      requestAnimationFrame(step);
+    };
+
     hero.addEventListener('pointerup', endSwipe);
     hero.addEventListener('pointercancel', endSwipe);
     // 밀다가 포스터(링크) 위에서 손을 떼도 페이지로 넘어가지 않게
@@ -592,8 +616,9 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
           running = false;
           hero.classList.add('is-gl');
           if (!document.hidden && visible()) handle.start();
+          window.setTimeout(nudge, 2600);
         })
-        .catch(() => { /* WebGL을 못 쓰는 기기: 2D 조명으로 계속 */ });
+        .catch(() => { window.setTimeout(nudge, 1800); /* WebGL을 못 쓰는 기기: 2D 조명으로 계속 */ });
     }
   }
 
@@ -664,7 +689,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
     position: relative; overflow: hidden;
     height: max(640px, calc(100svh - 112px));
     background: var(--bg-deep);
-    display: grid; grid-template-rows: auto 1fr auto auto auto;
+    display: grid; grid-template-rows: auto 1fr auto auto;
   }
   /* 워드마크: 어두운 바탕 글자(base) 위에 빛(canvas), 그 위에 빛을 받으면 밝아지는 글자(lit) */
   .sg .mark {
@@ -730,9 +755,8 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
   .sg .dd-date i { font-style: normal; color: var(--cheese); margin-left: 0.8rem; }
   .sg .dd-date i:empty { display: none; }
 
-  .sg .swipe-hint { display: none; position: relative; z-index: 6; grid-row: 4; margin: 0; padding: 0 20px; text-align: center; font-size: 0.75rem; color: var(--dim); }
   /* 공연 고르기 */
-  .sg .tabs { position: relative; z-index: 6; grid-row: 5; list-style: none; margin: 0; padding: 0 max(24px, calc((100vw - 1180px) / 2)); display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+  .sg .tabs { position: relative; z-index: 6; grid-row: 4; list-style: none; margin: 0; padding: 0 max(24px, calc((100vw - 1180px) / 2)); display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255, 255, 255, 0.1); }
   .sg .tabs button { all: unset; box-sizing: border-box; cursor: pointer; position: relative; display: flex; align-items: baseline; gap: 0.8rem; width: 100%; padding: 1rem 1.2rem 1.1rem 0; color: var(--dim); font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
   .sg .tabs li + li button { padding-left: 1.2rem; border-left: 1px solid rgba(255, 255, 255, 0.1); }
   .sg .tabs button:hover, .sg .tabs button[aria-selected='true'] { color: var(--fg); }
@@ -837,7 +861,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
     .sg .tabs li + li button { padding-left: 0; border-left: 0; }
     .sg .tabs .tt { display: none; }
     .sg .tabs .bar { top: 0; height: 2px; background: var(--line-2); }
-    .sg .swipe-hint { display: block; }
+
     .sg .led-tag { padding-left: 20px; }
     .sg .led-run.one { animation: none; width: auto; }
     .sg .led-run.one .led-set + .led-set { display: none; }
