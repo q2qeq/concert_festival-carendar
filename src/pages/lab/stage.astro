@@ -104,6 +104,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
   <div class="sg">
     {first && (
       <section class="hero" id="hero" data-items={JSON.stringify(items)} style={`--tint: rgb(${first.rgb.join(' ')}); --grain: ${GRAIN}`}>
+        <canvas class="gl" id="gl" aria-hidden="true"></canvas>
         <p class="mark base" aria-hidden="true"><span data-mark>{first.mark}</span></p>
         <canvas class="lights" id="lights" aria-hidden="true"></canvas>
         <p class="mark lit" aria-hidden="true"><span data-mark>{first.mark}</span></p>
@@ -435,8 +436,14 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
 
       if (running) requestAnimationFrame(draw);
     };
-    const start = () => { if (!running && !reduce) { running = true; last = performance.now(); requestAnimationFrame(draw); } };
-    const stop = () => { running = false; };
+    // 3D 무대(WebGL)가 준비되면 2D 조명 대신 그쪽이 그린다
+    let gl: import('../../lib/stageGL').StageHandle | null = null;
+    const start = () => {
+      if (reduce) return;
+      if (gl) { gl.start(); return; }
+      if (!running) { running = true; last = performance.now(); requestAnimationFrame(draw); }
+    };
+    const stop = () => { running = false; gl?.stop(); };
 
     // ── 전환: 암전 → 조명이 포스터로 모임 → 새 색으로 점등 ───────────
     const show = (i: number) => {
@@ -444,6 +451,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
       cur = i;
       if (reduce) { paint(i); colTo = items[i].rgb; Object.assign(col, { r: colTo[0], g: colTo[1], b: colTo[2] }); staticFrame(); return; }
       hero.classList.add('is-out');
+      gl?.show(i);
       dimTo = 0; gatherTo = 1;
       window.setTimeout(() => {
         paint(i);
@@ -470,13 +478,14 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
       const r = hero.getBoundingClientRect();
       ptr.tx = clamp(((e.clientX - r.left) / r.width) * 2 - 1, -1, 1);
       ptr.ty = clamp(((e.clientY - r.top) / r.height) * 2 - 1, -1, 1);
+      gl?.pointer(ptr.tx, ptr.ty);
     });
-    hero.addEventListener('pointerleave', () => { ptr.tx = 0; ptr.ty = 0; });
+    hero.addEventListener('pointerleave', () => { ptr.tx = 0; ptr.ty = 0; gl?.pointer(0, 0); });
     hero.addEventListener('focusin', pause);
     hero.addEventListener('focusout', schedule);
     document.addEventListener('visibilitychange', () => { if (document.hidden) { pause(); stop(); } else { start(); schedule(); } });
     new IntersectionObserver((en) => { if (en[0].isIntersecting) start(); else stop(); }).observe(hero);
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', () => { resize(); gl?.resize(); });
     document.fonts?.ready.then(resize);
 
     paint(0);
@@ -496,6 +505,18 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
       }, 150 + n * 130));
       window.setTimeout(() => hero.classList.add('is-on'), 380);
       window.setTimeout(schedule, 1400);
+      // 3D 무대는 무거워서 첫 화면이 뜬 뒤에 따로 불러온다. 못 불러오면 2D 조명 그대로 둔다.
+      const visible = () => { const r = hero.getBoundingClientRect(); return r.bottom > 0 && r.top < window.innerHeight; };
+      import('../../lib/stageGL')
+        .then((m) => m.createStage($('gl') as HTMLCanvasElement, hero, items, card.parentElement as HTMLElement))
+        .then((handle) => {
+          handle.show(cur);
+          gl = handle;
+          running = false;
+          hero.classList.add('is-gl');
+          if (!document.hidden && visible()) handle.start();
+        })
+        .catch(() => { /* WebGL을 못 쓰는 기기: 2D 조명으로 계속 */ });
     }
   }
 
@@ -572,6 +593,11 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
   .sg .hero.is-lite .lights { filter: none; }
   .sg .hero.is-lite .mark.lit, .sg .hero.is-lite .grain { display: none; }
   .sg .hero.is-lite .mark.base { color: #1d1d21; }
+  /* 3D 무대가 켜지면 2D 조명·글자·포스터 그림은 물러난다(포스터 링크 자리는 남긴다) */
+  .sg .gl { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; opacity: 0; transition: opacity 0.6s ease; pointer-events: none; }
+  .sg .hero.is-gl .gl { opacity: 1; }
+  .sg .hero.is-gl .lights, .sg .hero.is-gl .dust, .sg .hero.is-gl .mark, .sg .hero.is-gl .pool { display: none; }
+  .sg .hero.is-gl .card img { opacity: 0; box-shadow: none; }
   .sg .dust { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
   .sg .grain { position: absolute; inset: 0; z-index: 4; background-image: var(--grain); opacity: 0.07; pointer-events: none; mix-blend-mode: overlay; }
   /* 아래쪽 글씨가 읽히도록 바닥을 살짝 눌러 준다 */
