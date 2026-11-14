@@ -13,6 +13,7 @@ import sharp from 'sharp';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ToolStrip from '../components/ToolStrip.astro';
 import PosterCard from '../components/PosterCard.astro';
+import Mascot from '../components/Mascot.astro';
 import RecentIssues from '../components/RecentIssues.astro';
 import AdSlot from '../components/AdSlot.astro';
 import { spotlightEvents, hasTicketsOnSale, ticketOpenInDays, upcomingEvents, upcomingOpenStages, newlyAddedEvents } from '../lib/events';
@@ -224,7 +225,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
 
       <section class="app" aria-labelledby="app-title">
         <div class="app-copy rv">
-          <p class="eyebrow">티켓오픈 알림</p>
+          <p class="eyebrow"><Mascot size={40} pose="face" who="cheese" />노을이가 챙기는 티켓오픈 알림</p>
           <h2 id="app-title">오픈 10분 전,<br />폰이 먼저 알려줘요.</h2>
           <p class="lead">공연 페이지에서 "오픈 알림 받기"만 눌러 두면 하루 전, 30분 전, 10분 전에 알림이 가요. 가입도 앱 설치도 필요 없어요.</p>
           <div class="act">
@@ -733,7 +734,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
   .sg .rows .cd.hot { border-color: var(--eye); color: var(--eye); }
 
   .sg .app { display: grid; grid-template-columns: 1fr auto; gap: 3rem clamp(2rem, 8vw, 7rem); align-items: center; margin-top: 6rem; padding: 3.5rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .sg .eyebrow { margin: 0 0 1.2rem; font-size: 0.82rem; color: var(--dim); }
+  .sg .eyebrow { margin: 0 0 1.2rem; display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; font-weight: 700; color: var(--fg-2); }
   .sg .app h2 { margin: 0; font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -0.05em; font-weight: 800; }
   .sg .lead { margin: 1.3rem 0 0; max-width: 32rem; color: var(--fg-3); line-height: 1.75; }
   .sg .app .act { margin-top: 1.8rem; }

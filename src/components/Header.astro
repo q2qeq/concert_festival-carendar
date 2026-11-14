@@ -24,7 +24,7 @@ function isActive(href: string) {
 <header class={`site-header${wide ? ' wide' : ''}`}>
   <nav>
     <a class="brand" href="/">
-      <Mascot size={32} pose="face" />
+      <Mascot size={46} pose="face" class="brand-face" />
       <span>{SITE_TITLE}</span>
     </a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="메뉴 열기">
@@ -74,12 +74,18 @@ function isActive(href: string) {
     position: sticky;
     top: 0;
     z-index: 40;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid var(--line);
     background: var(--bg);
   }
   .site-header.wide nav { max-width: 1180px; }
-  nav { position: relative; max-width: 880px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
-  .brand { display: flex; align-items: center; gap: 0.4rem; font-weight: 800; font-size: 1.2rem; color: #fff; text-decoration: none; letter-spacing: -0.02em; }
+  nav { position: relative; max-width: 880px; margin: 0 auto; padding: 0.7rem 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+  /* 로고: 새벽이 얼굴과 이름을 크게. 헤더 높이는 위아래 여백을 줄여 거의 그대로 둔다 */
+  .brand { display: flex; align-items: center; gap: 0.55rem; font-weight: 900; font-size: 1.6rem; line-height: 1; color: var(--fg); text-decoration: none; letter-spacing: -0.04em; }
+  .brand:hover { color: var(--cheese); }
+  @media (max-width: 720px) {
+    .brand { font-size: 1.45rem; }
+    .brand :global(.brand-face) { width: 40px; height: auto; }
+  }
   .links { display: flex; gap: 1.1rem; }
   .links a {
     color: var(--muted);
@@ -88,10 +94,10 @@ function isActive(href: string) {
     padding-bottom: 0.2rem;
     border-bottom: 2px solid transparent;
   }
-  .links a:hover { color: #fff; }
+  .links a:hover { color: var(--fg); }
   .links a.has-news::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 5px; border-radius: 50%; background: var(--eye); vertical-align: 0.15em; }
   
-  .links a.active { color: #fff; font-weight: 700; border-bottom-color: var(--accent, var(--cheese)); }
+  .links a.active { color: var(--fg); font-weight: 700; border-bottom-color: var(--accent, var(--cheese)); }
   .nav-toggle {
     display: none;
     flex-direction: column;

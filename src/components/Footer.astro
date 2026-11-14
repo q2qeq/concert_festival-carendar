@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE } from '../consts';
+import Mascot from './Mascot.astro';
 import { allGenres, genreSlug } from '../lib/events';
 const { wide = false } = Astro.props;
 const year = new Date().getFullYear();
@@ -16,6 +17,7 @@ const genres = allGenres();
         <a href="/events/archive/">지난 공연</a>
       </div>
     )}
+    <div class="sign"><Mascot size={96} pose="watch" /><p><strong>{SITE_TITLE}</strong><br />새벽이와 노을이가 공연 소식을 챙겨요.</p></div>
     <p>&copy; {year} {SITE_TITLE}. 공연 일정은 주최측 사정에 따라 변경될 수 있으니 예매 전 공식 채널에서 최종 확인하세요.</p>
     <p class="credit">일부 공연 데이터 출처: 공연예술통합전산망(KOPIS)</p>
     <div class="links">
@@ -28,14 +30,17 @@ const genres = allGenres();
   </div>
 </footer>
 <style>
-  .site-footer { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 3rem; }
+  .site-footer { border-top: 1px solid var(--line); margin-top: 3rem; }
+  .sign { display: flex; align-items: flex-end; gap: 0.9rem; }
+  .sign p { margin: 0 0 0.3rem; line-height: 1.6; color: var(--fg-3); }
+  .sign strong { font-size: 1.05rem; color: var(--fg); }
   .wrap.wide { max-width: 1180px; }
   .wrap { max-width: 880px; margin: 0 auto; padding: 2rem 1.25rem; color: var(--muted); font-size: 0.85rem; display: flex; flex-direction: column; gap: 1rem; }
   .wrap > p, .wrap > .links { align-self: stretch; }
   .tag-links { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .tag-links-label { font-size: 0.72rem; color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 0.2rem; }
   .tag-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; }
-  .tag-links a:hover { color: #fff; }
+  .tag-links a:hover { color: var(--fg); }
   .links { display: flex; gap: 1rem; white-space: nowrap; flex-wrap: wrap; }
   .links a { color: var(--muted); }
   .credit { font-size: 0.78rem; opacity: 0.7; }

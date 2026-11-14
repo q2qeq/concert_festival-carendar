@@ -12,7 +12,7 @@ interface Props {
   facts: string[];
   title?: string;
 }
-const { facts, title = '직관냥이 짚어주는 포인트' } = Astro.props;
+const { facts, title = '새벽이가 짚어주는 포인트' } = Astro.props;
 
 // Facts may contain simple markdown links, e.g. to cross-link another event
 // page ([평화누리 피크닉 페스티벌](/events/...)). No other markdown is supported -
@@ -32,11 +32,11 @@ function linkify(text: string) {
   <aside class="character-note">
     <div class="character-note-head">
       <span class="character-avatar" aria-hidden="true">
-        <Mascot size={30} pose="face" />
+        <Mascot size={34} pose="face" who="godeung" />
       </span>
       <div>
         <h2>{title}</h2>
-        <p class="character-note-kicker">직관냥이 파본 뒷이야기</p>
+        <p class="character-note-kicker">공연 뒷이야기는 새벽이 담당</p>
       </div>
     </div>
     <div class="character-note-body">

@@ -6,6 +6,7 @@
 // 클릭마다 즉시 피드백(빠름/느림/일찍/더블클릭/오클릭)을 보여주고, 끝나면 시도별 기록과 맞춤 팁을 준다.
 // 자동 예매/매크로가 아니라 순수한 반응속도 연습이다. 최고 기록은 이 기기(localStorage)에만 저장.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Mascot from '../components/Mascot.astro';
 import { upcomingTicketOpens } from '../lib/events';
 
 // 연습을 마친 사람이 바로 이어서 갈 곳: 곧 열리는 티켓 오픈 3건 (2026-11-07 이탈률 개선).
@@ -98,6 +99,13 @@ const jsonLd = [
   </div>
 
   <div id="g-result" class="result" hidden>
+    <!-- 결과에 따라 고양이 한 마리가 반응한다: 잘하면 노을이가 신나고, 보통이면 새벽이가 지켜보고, 느리면 새벽이가 존다 -->
+    <div class="react" aria-hidden="true">
+      <span data-react="good" hidden><Mascot size={110} pose="cheer" who="cheese" /></span>
+      <span data-react="ok" hidden><Mascot size={110} pose="watch" who="godeung" /></span>
+      <span data-react="slow" hidden><Mascot size={110} pose="sleep" who="godeung" /></span>
+      <p id="g-react-line"></p>
+    </div>
     <h2 id="g-grade"></h2>
     <p id="g-detail"></p>
     <p id="g-rank" class="rank" hidden></p>
@@ -237,6 +245,8 @@ const jsonLd = [
   .g-feedback.ok { color: var(--fg-2); background: rgba(255,255,255,0.1); }
   .g-feedback.slow { color: #ffb84c; background: rgba(255,184,76,0.12); }
   .g-feedback.warn { color: #ff7a7a; background: rgba(255,107,107,0.13); }
+  .react { display: flex; align-items: flex-end; gap: 0.9rem; margin-bottom: 0.4rem; }
+  .react p { margin: 0 0 0.5rem; font-size: 0.9rem; color: var(--fg-2); }
   .g-actions { display: flex; gap: 0.6rem; margin: 1rem 0; flex-wrap: wrap; }
   .btn { padding: 0.65rem 1.2rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: var(--fg); font-weight: 700; cursor: pointer; font-size: 0.95rem; }
   .btn.primary { background: var(--btn); color: var(--ink); border-color: transparent; }
@@ -899,6 +909,7 @@ const jsonLd = [
     if (isBest) setBest(score);
     renderBest();
     const grade = gradeFor(score);
+    setReact(score >= 10000 ? 'good' : score >= 3500 ? 'ok' : 'slow');
     $('g-grade').textContent = grade;
     $('g-detail').textContent =
       `대기 ${pos.toLocaleString()}번째 · 예매 버튼 평균 ${btnAvg >= 0 ? btnAvg + 'ms' : '놓침'}` +
@@ -919,6 +930,7 @@ const jsonLd = [
       const { pos, avg } = await playSite();
       value = Math.min(6000, Math.round(avg)); // 놓침 1500ms, 일찍 누름 +150ms가 반영된 평균
       const j = judgeBtn(value);
+      setReact(toneOf(j.tone));
       grade = `예매 버튼 ${value}ms · ${j.label}`;
       detail = `3번 중 ${stats.btnMs.length}번 성공` +
         (stats.btnMissed ? ` · 놓침 ${stats.btnMissed}번` : '') +
@@ -928,6 +940,7 @@ const jsonLd = [
       await playZones();
       value = avgOf(stats.zoneRt) + stats.zoneMiss * ZONE_WRONG_DELAY;
       const j = judgeZone(value);
+      setReact(toneOf(j.tone));
       grade = `구역 고르기 ${value}ms · ${j.label}`;
       detail = `평균 ${avgOf(stats.zoneRt)}ms` + (stats.zoneMiss ? ` · 오클릭 ${stats.zoneMiss}번(번당 +${ZONE_WRONG_DELAY}ms)` : ' · 오클릭 없음');
     } else {
@@ -937,6 +950,8 @@ const jsonLd = [
       body.got = got;
       body.avg = avgOf(stats.seatRt);
       grade = `빈 좌석 ${got}/${stats.seatTotal}개 · ${score}점`;
+      const rate = stats.seatTotal ? got / stats.seatTotal : 0;
+      setReact(rate >= 0.75 ? 'good' : rate >= 0.4 ? 'ok' : 'slow');
       detail = got ? `잡은 좌석 평균 ${avgOf(stats.seatRt)}ms · ${judgeSeat(avgOf(stats.seatRt)).label}` : '이번엔 하나도 못 잡았어요';
       if (stats.seatMiss) detail += ` · 오클릭 ${stats.seatMiss}번`;
     }
@@ -949,6 +964,17 @@ const jsonLd = [
     body.value = value;
     submitRank(body);
   }
+
+  const REACT_LINES: Record<'good' | 'ok' | 'slow', string> = {
+    good: '노을이가 신났어요',
+    ok: '새벽이가 지켜보는 중이에요',
+    slow: '새벽이가 졸고 있어요. 한 번 더 해 볼까요?',
+  };
+  function setReact(tone: 'good' | 'ok' | 'slow') {
+    document.querySelectorAll<HTMLElement>('[data-react]').forEach((el) => { el.hidden = el.dataset.react !== tone; });
+    $('g-react-line').textContent = REACT_LINES[tone];
+  }
+  const toneOf = (t: Tone): 'good' | 'ok' | 'slow' => (t === 'good' ? 'good' : t === 'ok' ? 'ok' : 'slow');
 
   function renderTips(btnAvg: number, seatAvg: number) {
     const tipsEl = $('g-tips');

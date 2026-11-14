@@ -1,4 +1,5 @@
 ---
+import Mascot from '../components/Mascot.astro';
 // 티켓오픈 일정 - 공식 공지로 오픈 시각이 확인된 공연만 모아 보여준다 (없는 시각을 지어내지 않음).
 // 정적 빌드라서 "곧 오픈" 목록은 브라우저에서 아직 안 지난 것만 남기고 카운트다운을 붙인다.
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -49,7 +50,10 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
   description="곧 열리는 내한공연·페스티벌 티켓오픈 일정을 카운트다운과 캘린더 알림으로 한눈에. 오픈 시각은 예매처 공식 공지로 확인된 것만 올려요."
 >
   <h1>티켓오픈 일정</h1>
+  <div class="intro-row">
   <p class="intro">예매처 공지로 오픈 시각이 확인된 공연만 모아요. 오픈 전에 <a href="/ticketing-clock/">티켓팅 시계</a>를 켜고 <a href="/practice/">연습</a>으로 손을 풀어보세요.</p>
+    <figure class="nooeul"><Mascot size={92} pose="wave" who="cheese" /><figcaption>오픈 시각은 노을이가 매일 확인해요</figcaption></figure>
+  </div>
 
   <section aria-label="곧 오픈하는 티켓">
     <h2 class="sec mono">곧 열리는 티켓</h2>
@@ -122,6 +126,11 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
 <style>
   .intro { color: var(--fg-2); line-height: 1.7; }
   .intro a { color: var(--cheese); }
+  .intro-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.2rem; }
+  .intro-row .intro { margin-bottom: 0; }
+  .nooeul { flex: none; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+  .nooeul figcaption { font-size: 0.75rem; color: var(--muted); white-space: nowrap; }
+  @media (max-width: 560px) { .nooeul :global(svg) { width: 70px; height: auto; } .nooeul figcaption { display: none; } }
   h2 { margin: 1.6rem 0 0.7rem; }
   .open-list { list-style: none; margin: 0 0 0.9rem; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
   .open-list li { padding: 0.8rem 0.95rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
