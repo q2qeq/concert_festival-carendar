@@ -302,6 +302,7 @@ const breadcrumbLd = {
     )}
 
     <div class="action-bar" aria-label="빠른 이용">
+      <div class="ab-main">
       {ticketPopoverLinks.length > 0 ? (
         <div class="ab-ticket">
           <button
@@ -321,6 +322,17 @@ const breadcrumbLd = {
           공식 홈페이지·공지
         </a>
       )}
+      <button
+        class="ab-btn ab-bookmark bookmark-btn"
+        type="button"
+        data-bookmark-id={event.id}
+        data-bookmark-label="찜하기"
+        aria-label={`${event.artist} 찜하기`}
+        aria-pressed="false"
+      >♡ 찜하기</button>
+      {status === 'scheduled' && !isPast && <WantButton event={event} />}
+      </div>
+      <div class="ab-links">
       {officialActionUrl && (
         <a class="ab-btn" href={officialActionUrl} target="_blank" rel="noopener noreferrer">공식 홈페이지</a>
       )}
@@ -346,19 +358,10 @@ const breadcrumbLd = {
         </div>
       )}
       <a class="ab-btn" href="#sightline">구역별 시야</a>
-      {status === 'scheduled' && !isPast && (
-        <a class="ab-btn" href={event.ticketOpenAt && new Date(event.ticketOpenAt).getTime() > Date.now() ? `/ticketing-clock/?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}` : '/ticketing-clock'}>티켓팅 시계</a>
-      )}
       {showShuttleSection && (
         <a class="ab-btn" href="#shuttle">셔틀버스</a>
       )}
-      <button
-        class="ab-btn ab-bookmark bookmark-btn"
-        type="button"
-        data-bookmark-id={event.id}
-        aria-label={`${event.artist} 찜하기`}
-        aria-pressed="false"
-      >♡</button>
+      </div>
     </div>
 
     </div>
@@ -375,7 +378,6 @@ const breadcrumbLd = {
     )}
     </div>
 
-    {status === 'scheduled' && !isPast && <WantButton event={event} />}
     <AnnounceWatch event={event} />
 
     <NextSteps event={event} />
@@ -696,44 +698,35 @@ const breadcrumbLd = {
 
   /* Quick actions bar - sticks under the site header so 캘린더/찜/티켓팅 are
      always reachable without hunting through the page. */
-  .action-bar {
-    position: sticky;
-    top: 3.9rem;
-    z-index: 30;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.55rem;
-    margin: 1.1rem 0;
-    padding: 0.6rem;
-    background: rgba(14,14,16, 0.9);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px;
-  }
-  @media (max-width: 640px) {
-    /* 모바일: 칩이 3줄이라 고정하면 화면의 1/6을 덮는다 - 고정 해제, 포스터보다 위에 배치 */
-    .action-bar { position: static; margin: 0.9rem 0; }
-  }
+  /* 빠른 이용: 위 줄은 예매·찜 두 가지만 버튼으로, 아래 줄은 같은 공연 안의 바로가기를 글자 링크로.
+     예전엔 같은 테두리 버튼 7~8개가 나란히 있어 무엇이 주 동작인지 안 보였다(2026-11-14 디자인 리뷰). */
+  .action-bar { display: flex; flex-direction: column; gap: 0.7rem; margin: 1.1rem 0; }
+  .ab-main { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; }
+  .ab-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.2rem; padding-top: 0.55rem; border-top: 1px solid var(--line); }
   .ab-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
     color: var(--fg);
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.14);
-    padding: 0.45rem 0.85rem;
-    border-radius: 6px;
+    background: transparent;
+    border: 1px solid var(--line-2);
+    padding: 0.65rem 1.1rem;
+    border-radius: 4px;
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
   }
-  .ab-btn:hover { background: rgba(255,255,255,0.13); }
+  .ab-main .ab-btn:hover { border-color: var(--fg-2); }
   .ab-primary { background: var(--pink); color: var(--ink); border-color: var(--pink); }
-  .ab-primary:hover { background: var(--pink-hi); }
-  .ab-bookmark { font-size: 1.05rem; padding: 0.4rem 0.7rem; margin-left: auto; }
-  .ab-bookmark.is-bookmarked { color: var(--pink); border-color: var(--line-2); }
+  .ab-main .ab-primary:hover { background: var(--pink-hi); border-color: var(--pink-hi); }
+  .ab-bookmark.is-bookmarked { color: var(--pink); }
+  .ab-main :global(.want) { margin: 0; }
+  /* 아래 줄: 테두리 없는 글자 링크. 손가락으로 누를 높이(44px)는 패딩으로 확보 */
+  .ab-links .ab-btn { border: 0; padding: 0.7rem 0; font-size: 0.88rem; font-weight: 600; color: var(--fg-2); }
+  .ab-links .ab-btn:hover { color: var(--cheese); }
   .ab-calendar { position: relative; }
   .ab-ticket { position: relative; }
 

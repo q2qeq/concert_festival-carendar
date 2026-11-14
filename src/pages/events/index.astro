@@ -250,10 +250,12 @@ for (const e of events) {
     border: 0;
   }
 
-  .period-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: -0.6rem 0 1.4rem; }
+  /* 월 이동은 상자 대신 한 줄 텍스트 링크. 좁은 화면에선 줄을 바꾸지 않고 옆으로 넘긴다 */
+  .period-links { display: flex; align-items: center; gap: 0.2rem 1.1rem; margin: -0.6rem 0 1.4rem; overflow-x: auto; scrollbar-width: none; white-space: nowrap; padding-bottom: 0.2rem; }
+  .period-links::-webkit-scrollbar { display: none; }
   .period-links span { font-size: 0.7rem; color: var(--muted); margin-right: 0.4rem; }
-  .period-links a { padding: 0.3rem 0.65rem; border: 1px solid var(--line-2); border-radius: 4px; color: var(--fg-2); text-decoration: none; font-size: 0.82rem; }
-  .period-links a:hover { border-color: var(--cheese); color: var(--cheese); }
+  .period-links a { flex: none; padding: 0.55rem 0; color: var(--fg-2); text-decoration: none; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+  .period-links a:hover { color: var(--cheese); }
   .finder {
     scroll-margin-top: 5rem;
     background: rgba(255,255,255,0.03);

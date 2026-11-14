@@ -65,7 +65,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
               <p class="open-when mono">{openParts(e.ticketOpenAt as string).md} <span>{openParts(e.ticketOpenAt as string).hm}</span></p>
               <div class="open-body">
               <div class="open-head">
-                <a class="open-title" href={`/events/${e.id}/`}>{e.artist}{e.stageLabel && <em class="open-stage">{e.stageLabel}</em>}</a>
+                <a class="open-title" href={`/events/${e.id}/`}>{e.artist}{e.stageLabel && <>{' '}<em class="open-stage">{e.stageLabel}</em></>}</a>
                 <span class="open-left" data-left></span>
               </div>
               <p class="open-meta">공연 {shortDate(e.startDate)} · {e.venue}</p>
@@ -131,7 +131,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
   .open-left { color: var(--fg-2); font-weight: 700; font-size: 0.86rem; white-space: nowrap; }
   .open-meta { margin: 0.3rem 0 0.6rem; color: var(--muted); font-size: 0.84rem; line-height: 1.5; }
   .open-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
-  .oa { padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; color: var(--fg); border: 1px solid rgba(255,255,255,0.18); background: transparent; cursor: pointer; }
+  .oa { padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; color: var(--fg); border: 1px solid var(--line-2); background: transparent; cursor: pointer; }
   .oa.primary { background: var(--btn); color: var(--ink); border-color: transparent; }
   .open-actions .bookmark-btn { margin-left: auto; }
   .bulk { margin: 0 0 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
@@ -155,9 +155,15 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
   .open-left { color: var(--eye); font-variant-numeric: tabular-nums; font-size: 0.85rem; }
   .oa { border-radius: 4px; }
   .oa.primary { border-color: transparent; }
-  .plain-list li, .empty, .note { border-radius: 4px; }
+  .empty, .note { border-radius: 4px; }
+  /* 목록은 상자를 반복하지 않고 선으로만 나눈다 */
+  .plain-list { gap: 0; }
+  .plain-list li { padding: 0.75rem 0.2rem; background: transparent; border-radius: 0; border-bottom: 1px solid var(--line); }
+  .plain-list span { font-variant-numeric: tabular-nums; }
+  .note { background: transparent; border-top: 1px solid var(--line); border-radius: 0; padding: 1rem 0.2rem 0; }
   .open-list li.grp { display: block; font-size: 0.8rem; color: var(--muted); font-weight: 700; padding: 1.4rem 0.2rem 0.3rem; border-bottom: 1px solid var(--line); }
-  .open-stage { font-style: normal; font-size: 0.8em; color: var(--fg-2); font-weight: 700; margin-left: 0.5em; padding: 0.1em 0.45em; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; vertical-align: 0.1em; }
+  /* 단계 이름은 한 덩어리로 줄바꿈한다("선예/매"처럼 쪼개지지 않게) */
+  .open-stage { display: inline-block; white-space: nowrap; font-style: normal; font-size: 0.8em; color: var(--fg-2); font-weight: 700; padding: 0.1em 0.45em; border: 1px solid var(--line-2); border-radius: 4px; vertical-align: 0.1em; }
   @media (max-width: 560px) { .open-list li.grp { grid-template-columns: none; } .open-list li { grid-template-columns: 1fr; row-gap: 0.5rem; } .open-body { padding-top: 0; } }
 </style>
 

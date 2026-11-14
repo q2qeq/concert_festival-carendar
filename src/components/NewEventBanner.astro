@@ -3,17 +3,20 @@
 // 닫으면 그 공연 id를 이 브라우저에 기억해서 다시 안 보여준다(localStorage). 팝업(모달)은 쓰지 않는다.
 // 해당 공연 페이지 자체에서는 숨긴다.
 import { bannerEvent } from '../lib/events';
+const { wide = false } = Astro.props as { wide?: boolean };
 const ev = bannerEvent();
 const onOwnPage = ev ? Astro.url.pathname.startsWith(`/events/${ev.id}`) : false;
 ---
 {ev && !onOwnPage && (
   <aside class="new-banner" data-banner-id={ev.id} hidden aria-label="신규 공연 알림">
+    <div class:list={['nb-inner', { wide }]}>
     <a class="nb-link" href={`/events/${ev.id}/`}>
       <span class="nb-tag">신규</span>
       <span class="nb-text">{ev.promoBanner}</span>
       <span class="nb-go">자세히 →</span>
     </a>
     <button class="nb-close" type="button" aria-label="알림 닫기">닫기</button>
+    </div>
   </aside>
 )}
 <script>
@@ -31,7 +34,10 @@ const onOwnPage = ev ? Astro.url.pathname.startsWith(`/events/${ev.id}`) : false
   }
 </script>
 <style>
-  .new-banner { display: flex; align-items: center; gap: 0.5rem; max-width: 1180px; margin: 0 auto; padding: 0.55rem 1.25rem; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+  .new-banner { border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+  /* 헤더 메뉴와 같은 폭에 맞춘다(Header.astro nav) */
+  .nb-inner { display: flex; align-items: center; gap: 0.5rem; max-width: var(--max-width); margin: 0 auto; padding: 0.55rem 1.25rem; }
+  .nb-inner.wide { max-width: 1180px; }
   .new-banner[hidden] { display: none; }
   .nb-link { flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.7rem; color: var(--fg); text-decoration: none; }
   .nb-tag { flex: none; padding: 0.12rem 0.5rem; border-radius: 4px; background: var(--eye); color: var(--ink); font-size: 0.72rem; font-weight: 800; }

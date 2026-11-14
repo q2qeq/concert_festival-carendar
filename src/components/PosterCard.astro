@@ -129,8 +129,13 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
-    background: rgba(14,14,16, 0.78);
+    /* 포스터 색과 상관없이 읽히도록 불투명한 바탕을 깐다. 상태 색은 아래에서 덮는다 */
+    background: var(--bg);
+    color: var(--fg);
   }
+  .poster-dday.is-soon { background: var(--bg); color: var(--cheese); }
+  .poster-dday.is-today { background: var(--cheese); color: var(--ink); }
+  .poster-dday.is-past { background: var(--bg); color: var(--muted); }
   .poster-buzz-banner {
     position: absolute;
     left: 0;
@@ -149,10 +154,11 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
     position: absolute;
     top: 0.35rem;
     right: 0.35rem;
-    background: rgba(14,14,16,0.55);
+    background: var(--bg);
     border-radius: 50%;
-    width: 1.9rem;
-    height: 1.9rem;
+    /* 손가락으로 누르기 쉽게 2.5rem(40px) 이상 */
+    width: 2.5rem;
+    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,8 +187,8 @@ const buzzAct = event.festivalHighlight?.[0]?.act ?? null;
   }
   .ticket-tag { color: var(--fg-2); border: 1px solid rgba(255,255,255,0.4); }
   .announced-tag { color: var(--fg-2); border: 1px dashed rgba(255,255,255,0.5); }
-  .fresh-tag { font-weight: 700; color: var(--ink); background: var(--eye); }
-  .new-tag { font-weight: 800; color: var(--ink); background: var(--fg); font-size: 0.65rem; padding: 0.16rem 0.45rem; border-radius: 6px; white-space: nowrap; }
+  .fresh-tag { font-weight: 700; color: var(--eye); border: 1px solid var(--eye); }
+  .new-tag { font-weight: 800; color: var(--ink); background: var(--eye); font-size: 0.65rem; padding: 0.16rem 0.45rem; border-radius: 6px; white-space: nowrap; }
   .status-tag.status-postponed { color: #ffb84c; border: 1px solid rgba(255,184,76,0.4); }
   .status-tag.status-cancelled { color: #ff6b6b; border: 1px solid rgba(255,107,107,0.4); }
   .difficulty-hard { color: #ff8a8a; border: 1px solid rgba(255,138,138,0.4); }

@@ -51,20 +51,16 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
   </a>
 </section>
 <style>
-  .tool-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin: 0 0 1.5rem; }
-  .tool-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.85rem 0.95rem; border-radius: 8px; text-decoration: none; color: var(--fg); border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); transition: border-color .15s, transform .15s; min-width: 0; }
-  .tool-card:hover { transform: translateY(-1px); }
-  .tool-card:last-child:nth-child(odd) { grid-column: 1 / -1; } /* 카드가 홀수 개일 때 마지막 줄을 꽉 채움 */
-  .tool-clock { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); }
-  .tool-practice { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); }
-  .tool-clock:hover { border-color: var(--fg-2); }
-  .tool-practice:hover { border-color: var(--cheese); }
+  /* 같은 테두리 상자를 반복하지 않고, 선으로 나눈 두 줄 목록으로 둔다 */
+  .tool-strip { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.4rem; margin: 0 0 1.5rem; border-top: 1px solid var(--line); }
+  .tool-card { display: flex; align-items: center; gap: 0.7rem; padding: 0.95rem 0.1rem; text-decoration: none; color: var(--fg); border-bottom: 1px solid var(--line); min-width: 0; }
+  .tool-card:hover strong, .tool-card:hover .tool-go { color: var(--cheese); }
   .tool-ico { font-size: 1.6rem; line-height: 1; }
   .tool-body { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1; }
-  .tool-body strong { font-size: 0.98rem; }
+  .tool-body strong { font-size: 0.98rem; transition: color .15s; }
   .tool-sub { color: var(--fg-3); font-size: 0.78rem; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .tool-sub b { color: var(--fg-2); font-variant-numeric: tabular-nums; }
-  .tool-go { color: var(--muted); font-size: 1.1rem; }
+  .tool-go { color: var(--muted); font-size: 1.1rem; transition: color .15s; }
   @media (max-width: 560px) {
     .tool-strip { grid-template-columns: 1fr; }
   }
