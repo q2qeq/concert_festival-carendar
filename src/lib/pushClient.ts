@@ -29,6 +29,27 @@ export function safariUrl(): string {
   return `x-safari-https://${host}${pathname}${search}`;
 }
 
+// 알림 받는 법(/alerts/)에서 지금 기기에 맞는 안내를 고르는 데 쓴다.
+export type DeviceKind =
+  | 'ios-app' // 아이폰: 홈 화면 아이콘으로 연 직관냥(알림 가능)
+  | 'ios-safari' // 아이폰 사파리(홈 화면에 추가부터)
+  | 'ios-other' // 아이폰 크롬·카카오톡·네이버 앱 등(사파리로 옮겨야 함)
+  | 'android-inapp' // 안드로이드 앱 안 브라우저(크롬으로 옮겨야 함)
+  | 'android' // 안드로이드 크롬·삼성 인터넷(바로 가능)
+  | 'desktop';
+export function deviceKind(): DeviceKind {
+  const ua = navigator.userAgent;
+  const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const standalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as { standalone?: boolean }).standalone === true;
+  if (isIOS) {
+    if (standalone) return 'ios-app';
+    if (isInAppBrowser(ua) || /CriOS|FxiOS|EdgiOS|Whale|NAVER|SamsungBrowser/i.test(ua)) return 'ios-other';
+    return 'ios-safari';
+  }
+  if (/Android/i.test(ua)) return isInAppBrowser(ua) ? 'android-inapp' : 'android';
+  return 'desktop';
+}
+
 export function pushSupport(): PushSupport {
   const ua = navigator.userAgent;
   const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);

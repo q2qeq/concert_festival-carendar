@@ -1,0 +1,275 @@
+---
+// 티켓오픈 푸시 알림 받는 법. 기기마다 켜는 방법이 달라서(특히 아이폰은 사파리 → 홈 화면에 추가가 필수)
+// 지금 보고 있는 기기를 알아내 맞는 안내를 위에 먼저 보여 준다. 화면 그림은 AlertGuideShot.astro.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Mascot from '../components/Mascot.astro';
+import AlertGuideShot from '../components/AlertGuideShot.astro';
+---
+<BaseLayout
+  title="티켓오픈 알림 받는 법 - 아이폰·안드로이드 홈 화면 추가와 알림 켜기"
+  description="직관냥 티켓오픈 알림을 켜는 방법. 아이폰은 사파리에서 홈 화면에 추가한 뒤, 안드로이드는 크롬에서 바로 켤 수 있어요. 단계별 그림으로 설명해요."
+>
+  <header class="head">
+    <div>
+      <h1>티켓오픈 알림 받는 법</h1>
+      <p class="lead">
+        공연 페이지의 <b>오픈 알림 받기</b>를 누르면 티켓 오픈 하루 전, 30분 전, 10분 전에 휴대폰으로 알림이 와요.
+        가입은 필요 없어요. 다만 기기마다 켜는 방법이 조금 달라요.
+      </p>
+    </div>
+    <Mascot size={110} pose="wave" who="cheese" class="head-cat" />
+  </header>
+
+  <!-- 지금 기기에 맞춘 안내. 스크립트가 data-now에 맞는 칸만 보여 준다 -->
+  <section class="now" aria-label="지금 기기에 맞는 안내" id="now">
+    <div data-now="ios-other" hidden>
+      <p class="now-tag">지금: 아이폰, 사파리가 아닌 앱</p>
+      <p>아이폰은 <b>사파리</b>에서 직관냥을 홈 화면에 추가해야 알림을 켤 수 있어요. 먼저 사파리로 옮겨 주세요.</p>
+      <div class="acts">
+        <a class="b primary" data-safari href="x-safari-https://jikgwannyang.com/alerts/">Safari로 열기</a>
+        <button class="b" type="button" data-copy>링크 복사</button>
+      </div>
+      <p class="small">버튼이 안 되면 아래 <a href="#ios-0">0단계</a>처럼 앱 메뉴에서 다른 브라우저로 열어 주세요.</p>
+    </div>
+    <div data-now="ios-safari" hidden>
+      <p class="now-tag">지금: 아이폰 사파리</p>
+      <p>잘 오셨어요. 아래 <a href="#ios-1">1단계</a>부터 따라 하면 돼요. 홈 화면에 추가하는 데 30초면 돼요.</p>
+    </div>
+    <div data-now="ios-app" hidden>
+      <p class="now-tag">지금: 홈 화면의 직관냥</p>
+      <p>홈 화면 아이콘으로 열었어요. 이제 알림을 켤 수 있어요. 공연을 골라 <b>오픈 알림 받기</b>를 누르고 "허용"을 눌러 주세요.</p>
+      <div class="acts"><a class="b primary" href="/ticket-open/">알림 켤 공연 고르기</a></div>
+    </div>
+    <div data-now="android-inapp" hidden>
+      <p class="now-tag">지금: 안드로이드, 앱 안 브라우저</p>
+      <p>카카오톡·네이버 앱 안에서는 알림을 켤 수 없어요. 크롬으로 열면 바로 켤 수 있어요.</p>
+      <div class="acts">
+        <a class="b primary" data-chrome href="intent://jikgwannyang.com/alerts/#Intent;scheme=https;package=com.android.chrome;end">크롬으로 열기</a>
+        <button class="b" type="button" data-copy>링크 복사</button>
+      </div>
+    </div>
+    <div data-now="android" hidden>
+      <p class="now-tag">지금: 안드로이드 브라우저</p>
+      <p>바로 켤 수 있어요. 공연을 골라 <b>오픈 알림 받기</b>를 누르고 "허용"을 눌러 주세요.</p>
+      <div class="acts"><a class="b primary" href="/ticket-open/">알림 켤 공연 고르기</a></div>
+    </div>
+    <div data-now="desktop" hidden>
+      <p class="now-tag">지금: 컴퓨터</p>
+      <p>컴퓨터에서도 켤 수 있지만, 브라우저가 켜져 있을 때만 알림이 와요. 휴대폰으로 받으려면 휴대폰에서 이 페이지를 열어 주세요.</p>
+      <div class="acts"><button class="b" type="button" data-copy>이 페이지 링크 복사</button></div>
+    </div>
+    <p class="copied" data-copied role="status" hidden>링크를 복사했어요. 사파리(또는 크롬) 주소창에 붙여 넣어 주세요.</p>
+  </section>
+
+  <nav class="jump" aria-label="기기별 안내">
+    <a href="#ios">아이폰</a>
+    <a href="#android">안드로이드</a>
+    <a href="#desktop">컴퓨터</a>
+    <a href="#trouble">알림이 안 올 때</a>
+  </nav>
+
+  <section id="ios" class="dev">
+    <h2>아이폰</h2>
+    <p class="note">
+      아이폰은 <b>사파리에서 홈 화면에 추가한 직관냥</b>으로만 알림을 받을 수 있어요. 애플이 정한 방식이에요.
+      iOS 16.4 이상이 필요해요(설정 → 일반 → 정보에서 확인).
+    </p>
+
+    <ol class="steps">
+      <li id="ios-0" class="step">
+        <div class="txt">
+          <p class="n">0단계 · 카카오톡·네이버 앱·크롬에서 열었다면</p>
+          <h3>사파리로 옮기기</h3>
+          <p>앱 안에서 열린 화면에서는 홈 화면에 추가가 안 돼요. 오른쪽 아래(또는 위) <b>⋯</b> 메뉴에서 <b>다른 브라우저로 열기</b>(네이버 앱은 <b>기본 브라우저로 열기</b>)를 눌러요.</p>
+          <p>메뉴가 없으면 링크를 복사해서 사파리 주소창에 붙여 넣어도 돼요.</p>
+          <div class="acts">
+            <a class="b" data-safari href="x-safari-https://jikgwannyang.com/alerts/">Safari로 열기</a>
+            <button class="b" type="button" data-copy>링크 복사</button>
+          </div>
+        </div>
+        <AlertGuideShot kind="inapp-menu" caption="카카오톡 안에서 연 화면의 예" />
+      </li>
+      <li id="ios-1" class="step">
+        <div class="txt">
+          <p class="n">1단계</p>
+          <h3>공유 버튼 누르기</h3>
+          <p>사파리 아래쪽 막대 가운데에 있는 <b>네모에 위쪽 화살표</b> 모양 버튼이에요.</p>
+          <p>버튼이 안 보이면 화면을 살짝 위로 올리거나, 주소창 옆 <b>⋯</b>를 누르면 <b>공유</b>가 있어요.</p>
+        </div>
+        <AlertGuideShot kind="ios-share" caption="아래쪽 막대의 공유 버튼" />
+      </li>
+      <li class="step">
+        <div class="txt">
+          <p class="n">2단계</p>
+          <h3>"홈 화면에 추가" 누르기</h3>
+          <p>공유 창을 위로 올려 목록을 내리면 있어요.</p>
+          <p>목록에 없으면 맨 아래 <b>작업 편집</b>을 눌러 "홈 화면에 추가"를 켜 주세요.</p>
+        </div>
+        <AlertGuideShot kind="ios-sheet" caption="공유 창 목록" />
+      </li>
+      <li class="step">
+        <div class="txt">
+          <p class="n">3단계</p>
+          <h3>오른쪽 위 "추가" 누르기</h3>
+          <p>이름은 "직관냥" 그대로 두면 돼요. <b>웹 앱으로 열기</b>가 보이면 켜진 채로 두세요.</p>
+        </div>
+        <AlertGuideShot kind="ios-add" caption="홈 화면에 추가 화면" />
+      </li>
+      <li class="step">
+        <div class="txt">
+          <p class="n">4단계</p>
+          <h3>홈 화면의 직관냥 아이콘으로 열기</h3>
+          <p>홈 화면에 고양이 얼굴 아이콘이 생겨요. <b>앞으로는 이 아이콘으로 열어야</b> 알림을 켤 수 있어요. 사파리로 다시 열면 알림 버튼이 동작하지 않아요.</p>
+        </div>
+        <AlertGuideShot kind="ios-home" caption="홈 화면에 생긴 직관냥" />
+      </li>
+      <li class="step">
+        <div class="txt">
+          <p class="n">5단계</p>
+          <h3>공연에서 "오픈 알림 받기" → "허용"</h3>
+          <p>아이콘으로 연 직관냥에서 공연을 골라 <b>오픈 알림 받기</b>를 누르면 허용 창이 떠요. <b>허용</b>을 누르면 끝이에요.</p>
+          <div class="acts"><a class="b primary" href="/ticket-open/">알림 켤 공연 고르기</a></div>
+        </div>
+        <AlertGuideShot kind="ios-allow" caption="알림 허용 창" />
+      </li>
+    </ol>
+  </section>
+
+  <section id="android" class="dev">
+    <h2>안드로이드</h2>
+    <p class="note">크롬이나 삼성 인터넷에서는 홈 화면에 추가하지 않아도 바로 켤 수 있어요.</p>
+    <ol class="steps">
+      <li class="step">
+        <div class="txt">
+          <p class="n">1단계</p>
+          <h3>크롬(또는 삼성 인터넷)으로 열기</h3>
+          <p>카카오톡·네이버 앱 안에서 열었다면 <b>⋮</b>나 <b>⋯</b> 메뉴의 <b>다른 브라우저로 열기</b>를 눌러요.</p>
+          <div class="acts">
+            <a class="b" data-chrome href="intent://jikgwannyang.com/alerts/#Intent;scheme=https;package=com.android.chrome;end">크롬으로 열기</a>
+          </div>
+        </div>
+        <AlertGuideShot kind="inapp-menu" caption="앱 안에서 연 화면의 예" />
+      </li>
+      <li class="step">
+        <div class="txt">
+          <p class="n">2단계</p>
+          <h3>공연에서 "오픈 알림 받기" → "허용"</h3>
+          <p>허용 창이 화면 아래나 주소창 아래에 떠요. <b>허용</b>을 누르면 끝이에요.</p>
+          <div class="acts"><a class="b primary" href="/ticket-open/">알림 켤 공연 고르기</a></div>
+        </div>
+        <AlertGuideShot kind="android-allow" caption="알림 허용 창" />
+      </li>
+      <li class="step">
+        <div class="txt">
+          <p class="n">해도 되고 안 해도 되는 단계</p>
+          <h3>홈 화면에 추가</h3>
+          <p>자주 열어 본다면 오른쪽 위 <b>⋮</b> → <b>홈 화면에 추가</b>(또는 <b>앱 설치</b>)로 아이콘을 만들어 두면 편해요. 알림은 추가하지 않아도 와요.</p>
+        </div>
+        <AlertGuideShot kind="android-install" caption="크롬 메뉴" />
+      </li>
+    </ol>
+  </section>
+
+  <section id="desktop" class="dev">
+    <h2>컴퓨터</h2>
+    <p>크롬·엣지·웨일·맥 사파리에서 공연의 <b>오픈 알림 받기</b>를 누르고, 주소창 근처에 뜨는 창에서 <b>허용</b>을 누르면 돼요.</p>
+    <p>브라우저를 완전히 닫아 두면 알림이 오지 않을 수 있어요. 오픈 시각을 확실히 챙기려면 휴대폰으로 받는 게 좋아요.</p>
+  </section>
+
+  <section id="trouble" class="dev">
+    <h2>알림이 안 올 때</h2>
+    <dl class="faq">
+      <dt>"허용 안 함"을 눌러 버렸어요</dt>
+      <dd>아이폰은 <b>설정 → 알림 → 직관냥</b>에서 알림 허용을 켜 주세요. 안드로이드는 주소창 왼쪽 아이콘 → <b>권한</b> → <b>알림</b>을 허용으로 바꿔 주세요.</dd>
+      <dt>아이폰인데 "오픈 알림 받기"를 눌러도 안내만 나와요</dt>
+      <dd>사파리나 다른 앱에서 연 상태라서 그래요. <a href="#ios-1">홈 화면에 추가</a>한 뒤, 홈 화면의 직관냥 아이콘으로 열어서 다시 눌러 주세요.</dd>
+      <dt>알림을 켰는데 소리가 안 나요</dt>
+      <dd>집중 모드(방해 금지)나 무음 모드에서는 알림이 조용히 쌓여요. 오픈 시각 전에 꺼 두세요.</dd>
+      <dt>어떤 공연 알림을 켰는지 보고 싶어요</dt>
+      <dd>공연 페이지의 버튼이 <b>오픈 알림 켜짐 ✓</b>으로 바뀌어 있어요. 다시 누르면 꺼져요.</dd>
+      <dt>알림이 어렵다면</dt>
+      <dd><a href="/calendar/">캘린더 구독</a>을 써 보세요. 구글·애플 캘린더에 티켓오픈 일정이 들어가고, 캘린더 앱이 알려 줘요.</dd>
+    </dl>
+  </section>
+</BaseLayout>
+
+<style>
+  .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.2rem; }
+  .head h1 { margin: 0 0 0.6rem; word-break: keep-all; text-wrap: balance; }
+  .lead { margin: 0; color: var(--fg-2); line-height: 1.75; max-width: 36rem; }
+  .head :global(.head-cat) { flex: none; }
+  @media (max-width: 560px) { .head :global(.head-cat) { width: 72px; height: auto; } }
+
+  .now { margin: 1.6rem 0 0; padding: 1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .now [hidden] { display: none; }
+  .now p { margin: 0 0 0.6rem; line-height: 1.7; color: var(--fg-2); }
+  .now b { color: var(--fg); }
+  .now a { color: var(--cheese); }
+  .now-tag { font-size: 0.82rem; font-weight: 700; color: var(--eye) !important; margin-bottom: 0.3rem !important; }
+  .small { font-size: 0.85rem; }
+  .copied { font-size: 0.85rem; color: var(--eye) !important; }
+
+  .acts { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.4rem 0 0.6rem; }
+  .b { display: inline-flex; align-items: center; padding: 0.65rem 1.1rem; border: 1px solid var(--line-2); border-radius: 4px; background: transparent; color: var(--fg) !important; font: inherit; font-size: 0.92rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+  .b:hover { border-color: var(--fg-2); }
+  .b.primary { background: var(--btn); border-color: var(--btn); color: var(--ink) !important; }
+  .b.primary:hover { background: var(--btn-hi); }
+
+  .jump { display: flex; flex-wrap: wrap; gap: 0 1.3rem; margin: 1rem 0 0; }
+  .jump a { padding: 0.6rem 0; color: var(--fg-2); font-weight: 600; text-decoration: none; }
+  .jump a:hover { color: var(--cheese); }
+
+  .dev { margin-top: 2.6rem; scroll-margin-top: 5rem; }
+  .dev h2 { margin: 0 0 0.6rem; font-size: 1.5rem; }
+  .dev > p { color: var(--fg-2); line-height: 1.75; }
+  .note { color: var(--fg-2); line-height: 1.75; }
+  .note b, .dev b { color: var(--fg); }
+  .dev a { color: var(--cheese); }
+
+  .steps { list-style: none; margin: 1rem 0 0; padding: 0; }
+  .step { display: grid; grid-template-columns: 1fr 220px; gap: 1.6rem; align-items: start; padding: 1.4rem 0; border-top: 1px solid var(--line); scroll-margin-top: 5rem; }
+  .step:last-child { border-bottom: 1px solid var(--line); }
+  .txt p { margin: 0 0 0.5rem; color: var(--fg-2); line-height: 1.7; }
+  .txt h3 { margin: 0 0 0.6rem; font-size: 1.2rem; }
+  .n { font-size: 0.82rem; font-weight: 700; color: var(--cheese) !important; margin-bottom: 0.2rem !important; font-variant-numeric: tabular-nums; }
+  @media (max-width: 640px) {
+    .step { grid-template-columns: 1fr; gap: 0.8rem; }
+    .step :global(.shot) { align-items: center; }
+  }
+
+  .faq { margin: 0.6rem 0 0; }
+  .faq dt { margin-top: 1.1rem; font-weight: 700; color: var(--fg); }
+  .faq dd { margin: 0.35rem 0 0; color: var(--fg-2); line-height: 1.7; }
+</style>
+
+<script>
+  import { deviceKind } from '../lib/pushClient';
+  const kind = deviceKind();
+  document.querySelectorAll<HTMLElement>('[data-now]').forEach((el) => { el.hidden = el.dataset.now !== kind; });
+
+  // 지금 페이지 주소로 사파리·크롬 열기 링크를 맞춘다(쿼리·해시 포함)
+  const { host, pathname, search } = location;
+  document.querySelectorAll<HTMLAnchorElement>('[data-safari]').forEach((a) => {
+    // 카카오톡(아이폰)은 자기 방식의 외부 열기 주소가 더 잘 듣는다
+    a.href = /KAKAOTALK/i.test(navigator.userAgent)
+      ? `kakaotalk://web/openExternal?url=${encodeURIComponent(location.href)}`
+      : `x-safari-https://${host}${pathname}${search}`;
+  });
+  document.querySelectorAll<HTMLAnchorElement>('[data-chrome]').forEach((a) => {
+    a.href = `intent://${host}${pathname}${search}#Intent;scheme=https;package=com.android.chrome;end`;
+  });
+
+  const copied = document.querySelector<HTMLElement>('[data-copied]');
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) => {
+    b.addEventListener('click', async () => {
+      const url = `https://${host}/alerts/`;
+      try { await navigator.clipboard.writeText(url); }
+      catch {
+        // 클립보드를 못 쓰는 앱 안 브라우저: 주소를 보여 주고 직접 길게 눌러 복사하게 한다
+        window.prompt('아래 주소를 길게 눌러 복사해 주세요', url);
+        return;
+      }
+      if (copied) { copied.hidden = false; copied.scrollIntoView({ block: 'nearest' }); }
+    });
+  });
+</script>

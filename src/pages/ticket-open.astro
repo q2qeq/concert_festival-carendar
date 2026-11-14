@@ -54,6 +54,8 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
   <p class="intro">예매처 공지로 오픈 시각이 확인된 공연만 모아요. 오픈 전에 <a href="/ticketing-clock/">티켓팅 시계</a>를 켜고 <a href="/practice/">연습</a>으로 손을 풀어보세요.</p>
     <figure class="nooeul"><Mascot size={92} pose="wave" who="cheese" /><figcaption>오픈 시각은 노을이가 매일 확인해요</figcaption></figure>
   </div>
+  <p class="push-guide">휴대폰으로 오픈 알림을 받으려면 각 공연의 <b>알림 받기</b>를 눌러요. 아이폰은 먼저 홈 화면에 추가해야 해요. <a href="/alerts/">알림 받는 법</a></p>
+  <p class="push-msg" data-push-msg role="status" hidden></p>
 
   <section aria-label="곧 오픈하는 티켓">
     <h2 class="sec mono">곧 열리는 티켓</h2>
@@ -77,6 +79,7 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
                 <a class="oa primary" href={clockHref(e)}>시계</a>
                 <a class="oa" href={ticketOpenGoogleUrl(alertOf(e))} target="_blank" rel="noopener noreferrer">구글</a>
                 <a class="oa" href={icsDataUri(ticketOpenIcs([alertOf(e)]))} download={`${e.id}-ticket-open.ics`}>.ics</a>
+                <button class="oa oa-push" type="button" data-push-id={e.id} aria-pressed="false" hidden>알림 받기</button>
                 <button class="bookmark-btn" type="button" data-bookmark-id={e.id} aria-label={`${e.artist} 찜하기`} aria-pressed="false">♡</button>
               </div>
               </div>
@@ -143,6 +146,14 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
   .oa { padding: 0.35rem 0.8rem; border-radius: 6px; font-size: 0.82rem; font-weight: 700; text-decoration: none; color: var(--fg); border: 1px solid var(--line-2); background: transparent; cursor: pointer; }
   .oa.primary { background: var(--btn); color: var(--ink); border-color: transparent; }
   .open-actions .bookmark-btn { margin-left: auto; }
+  .oa-push.is-on { border-color: var(--eye); color: var(--eye); }
+  .oa-push:disabled { opacity: 0.6; cursor: default; }
+  .push-guide { margin: 1rem 0 0; font-size: 0.9rem; color: var(--fg-3); line-height: 1.65; }
+  .push-guide b { color: var(--fg); }
+  .push-guide a { color: var(--cheese); font-weight: 700; white-space: nowrap; }
+  .push-msg { position: sticky; top: 4.6rem; z-index: 5; margin: 0.6rem 0 0; padding: 0.7rem 0.9rem; background: var(--card); border: 1px solid var(--line-2); border-radius: 4px; font-size: 0.88rem; color: var(--fg-2); line-height: 1.55; }
+  .push-msg[hidden] { display: none; }
+  .push-msg a { color: var(--cheese); font-weight: 700; }
   .bulk { margin: 0 0 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
   .bulk small { color: var(--muted); }
   .plain-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
@@ -177,6 +188,43 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
 </style>
 
 <script>
+  import { pushSupport, serverKey, alertEvents, enableAlert, disableAlert } from '../lib/pushClient';
+
+  // 공연마다 '알림 받기'. 지금 기기에서 바로 켤 수 없으면(아이폰 사파리, 앱 안 브라우저 등) 안내 페이지로 보낸다.
+  const pushBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-push-id]'));
+  const pushMsg = document.querySelector<HTMLElement>('[data-push-msg]');
+  const sayPush = (html: string) => { if (!pushMsg) return; pushMsg.innerHTML = html; pushMsg.hidden = !html; };
+  const paintPush = () => {
+    const on = new Set(alertEvents());
+    pushBtns.forEach((b) => {
+      const x = on.has(b.dataset.pushId ?? '');
+      b.classList.toggle('is-on', x);
+      b.setAttribute('aria-pressed', String(x));
+      b.textContent = x ? '알림 켜짐 ✓' : '알림 받기';
+    });
+  };
+  serverKey().then((key) => {
+    if (!key) return; // 서버에 알림 기능이 없으면 버튼을 숨긴 채 둔다
+    pushBtns.forEach((b) => { b.hidden = false; });
+    paintPush();
+  });
+  window.addEventListener('push-alerts:changed', paintPush);
+  const GUIDE_HASH: Record<string, string> = { 'ios-install': '#ios-1', 'inapp-ios': '#ios-0', 'inapp-android': '#android', denied: '#trouble', unsupported: '' };
+  pushBtns.forEach((b) => b.addEventListener('click', async () => {
+    const support = pushSupport();
+    if (support !== 'ok') { location.href = `/alerts/${GUIDE_HASH[support] ?? ''}`; return; }
+    const id = b.dataset.pushId ?? '';
+    const on = alertEvents().includes(id);
+    b.disabled = true;
+    const r = on ? await disableAlert(id) : await enableAlert(id);
+    b.disabled = false;
+    paintPush();
+    if (r === 'on') sayPush('알림을 켰어요. 오픈 하루 전, 30분 전, 10분 전에 이 기기로 알려드려요.');
+    else if (r === 'off') sayPush('이 공연 알림을 껐어요.');
+    else if (r === 'denied') sayPush('알림 권한이 허용되지 않았어요. <a href="/alerts/#trouble">다시 허용하는 방법</a>');
+    else sayPush('알림을 설정하지 못했어요. 잠시 뒤 다시 시도해 주세요.');
+  }));
+
   import { ticketOpenIcs } from '../lib/ticketAlert';
   import { kstDayDiff } from '../lib/openPhase';
 

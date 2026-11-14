@@ -232,7 +232,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
             <a class="btn p" href="/ticket-open/">알림 켤 공연 고르기</a>
             <a class="btn" href="/calendar/">캘린더로 받기</a>
           </div>
-          <p class="fine">홈 화면에 추가하면 앱처럼 열려요. 아이폰은 사파리에서 공유 → "홈 화면에 추가" 뒤에 알림을 켤 수 있어요.</p>
+          <p class="fine">홈 화면에 추가하면 앱처럼 열려요. 아이폰은 사파리에서 홈 화면에 추가한 뒤에 알림을 켤 수 있어요. <a href="/alerts/">알림 받는 법 보기</a></p>
         </div>
         <div class="phone rv" style="--d:120ms" id="phone" data-notis={JSON.stringify(notis)} aria-hidden="true">
           <div class="ph-notch"></div>
@@ -739,6 +739,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
   .sg .lead { margin: 1.3rem 0 0; max-width: 32rem; color: var(--fg-3); line-height: 1.75; }
   .sg .app .act { margin-top: 1.8rem; }
   .sg .fine { margin: 1.3rem 0 0; max-width: 32rem; font-size: 0.8rem; line-height: 1.6; color: var(--dim); }
+  .sg .fine a { color: var(--cheese); font-weight: 700; white-space: nowrap; }
   .sg .phone { position: relative; width: 256px; height: 500px; padding: 2.8rem 0.8rem 0; border: 1px solid var(--line-2); border-radius: 36px; background: var(--bg-deep); overflow: hidden; }
   .sg .ph-notch { position: absolute; top: 0.75rem; left: 50%; width: 76px; height: 20px; margin-left: -38px; border-radius: 10px; background: #17171a; }
   .sg .ph-date { margin: 1.4rem 0 0; text-align: center; font-size: 0.74rem; color: var(--dim); }
