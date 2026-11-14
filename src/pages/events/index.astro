@@ -102,13 +102,13 @@ for (const e of events) {
     ))}
 
     <div class="no-result" id="no-result" hidden>
-      <Mascot size={72} pose="search" />
+      <Mascot size={150} pose="search" />
       <p><strong>조건에 맞는 공연을 못 찾았어요.</strong><br />필터를 풀거나 다른 이름으로 검색해 보세요.</p>
     </div>
 
     {events.length === 0 && (
       <p class="empty">
-        <Mascot size={40} pose="wave" />
+        <Mascot size={52} pose="wave" who="cheese" />
         예정된 공연이 아직 없어요. 새 소식이 들어오면 바로 채울게요.
       </p>
     )}

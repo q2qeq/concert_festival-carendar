@@ -387,7 +387,7 @@ const breadcrumbLd = {
         <h2>라인업{lineupTotal > 0 ? ` (${lineupTotal}팀)` : ''}</h2>
         {event.festivalHighlight && event.festivalHighlight.length > 0 && (
           <div class="lineup-highlight-strip">
-            <p class="lineup-highlight-kicker"><Mascot size={26} pose="cheer" class="lineup-highlight-mascot" />지금 가장 화제인 라인업</p>
+            <p class="lineup-highlight-kicker"><Mascot size={26} pose="face" who="cheese" class="lineup-highlight-mascot" />지금 가장 화제인 라인업</p>
             {event.festivalHighlight.map((h) => (
               <div class="lineup-highlight-item">
                 <span class="lineup-highlight-act">{h.act}</span>

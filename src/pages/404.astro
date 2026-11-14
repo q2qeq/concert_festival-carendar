@@ -4,7 +4,7 @@ import Mascot from '../components/Mascot.astro';
 ---
 <BaseLayout title="페이지를 찾을 수 없어요" description="요청하신 페이지를 찾을 수 없어요. 전체 공연 일정이나 홈으로 이동해 주세요.">
   <section class="nf">
-    <Mascot size={140} pose="shock" />
+    <Mascot size={230} pose="shock" />
     <h1>찾는 페이지가 없어요</h1>
     <p>주소가 바뀌었거나 이미 종료된 공연일 수 있어요.</p>
     <div class="nf-cta">
@@ -19,5 +19,5 @@ import Mascot from '../components/Mascot.astro';
   .nf p { margin: 0; color: var(--muted); }
   .nf-cta { display: flex; gap: 0.6rem; margin-top: 1.2rem; }
   .nf-cta a { padding: 0.6rem 1.1rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); color: var(--fg); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
-  .nf-cta a.primary { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+  .nf-cta a.primary { background: var(--btn); border-color: var(--btn); color: var(--ink); }
 </style>
