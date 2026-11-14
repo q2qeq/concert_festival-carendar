@@ -66,6 +66,11 @@ for (const e of events) {
   const days = (Date.parse(e.startDate) - Date.now()) / 86400000;
   if (days <= 30 && !hasLinks && !e.ticketingAnnounced) add('WARN', e, `공연 ${Math.ceil(days)}일 전인데 예매 링크/공지 정보 없음`);
 
+  // 소개문은 사이트 문체(해요체)로 쓴다. "~이다."·"~열린다."·"~습니다." 같은 문장 끝이 섞이면 알린다.
+  // 명사로 끝나는 짧은 소개("서울 공연.")는 괜찮다.
+  const plain = (e.description ?? '').split(/(?<=[.!?])\s+/).map((t) => t.trim()).filter((t) => /다[.!]?$/.test(t));
+  if (plain.length) add('WARN', e, `소개문(description)이 해요체가 아님: "${plain[0].slice(-24)}" 외 ${plain.length - 1}문장 - "~요."로 바꿔 주세요`);
+
   for (const u of e.updates ?? []) {
     if (!ISO.test(u.date)) add('ERROR', e, `updates 날짜 형식 이상 (${u.date})`);
     else if (u.date > today) add('WARN', e, `updates에 미래 날짜 (${u.date})`);
