@@ -79,15 +79,15 @@ function markTexture(text: string, stacked: boolean): { tex: THREE.Texture; aspe
 export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, items: StageItem[], anchor: HTMLElement): Promise<StageHandle> {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-  renderer.setClearColor(0x050506);
+  renderer.setClearColor(0x070605);
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x050506, 0.022);
+  scene.fog = new THREE.FogExp2(0x070605, 0.022);
   const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 60);
 
   // 벽과 바닥: 빛을 받아야 보이는 어두운 면
-  const wall = new THREE.Mesh(new THREE.PlaneGeometry(60, 24), new THREE.MeshStandardMaterial({ color: 0x1d1d22, roughness: 1, metalness: 0 }));
+  const wall = new THREE.Mesh(new THREE.PlaneGeometry(60, 24), new THREE.MeshStandardMaterial({ color: 0x1f1c19, roughness: 1, metalness: 0 }));
   wall.position.set(0, 8, WALL_Z);
-  const floor = new THREE.Mesh(new THREE.PlaneGeometry(60, 30), new THREE.MeshStandardMaterial({ color: 0x1a1a1e, roughness: 0.5, metalness: 0.15, transparent: true, opacity: 0.8 }));
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(60, 30), new THREE.MeshStandardMaterial({ color: 0x1b1917, roughness: 0.5, metalness: 0.15, transparent: true, opacity: 0.8 }));
   floor.rotation.x = -Math.PI / 2; floor.position.z = 6;
   scene.add(wall, floor, new THREE.AmbientLight(0xffffff, 0.025));
 
@@ -100,10 +100,13 @@ export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, 
   // 포스터: 두께가 있는 판. 그림은 조명과 상관없이 제 색으로 보이게 한다.
   const loader = new THREE.TextureLoader();
   const textures = await Promise.all(items.map((it) => loader.loadAsync(it.img).then((t) => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; })));
-  const face = new THREE.MeshBasicMaterial({ map: textures[0], toneMapped: false });
-  const side = new THREE.MeshBasicMaterial({ color: 0x0c0c0e });
+  // 포스터는 빛줄기보다 나중에 그린다(transparent 큐 + renderOrder). 포스터 앞쪽으로 나온 원뿔 면이
+  // 포스터 위에 덧칠되면 빛이 안 닿는 가운데가 딱딱한 어두운 삼각형으로 보였다.
+  const face = new THREE.MeshBasicMaterial({ map: textures[0], toneMapped: false, transparent: true });
+  const side = new THREE.MeshBasicMaterial({ color: 0x0c0b0a, transparent: true });
   const poster = new THREE.Mesh(new THREE.BoxGeometry(POSTER_W, POSTER_H, 0.05), [side, side, side, side, face, side]);
   poster.position.y = POSTER_H / 2 + 0.03;
+  poster.renderOrder = 5;
   scene.add(poster);
   // 바닥에 비친 포스터: 뒤집은 판을 바닥 아래에 두고, 반투명한 바닥 너머로 비치게 한다
   const fade = (() => {
@@ -149,7 +152,9 @@ export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, 
   const dustGeo = new THREE.BufferGeometry();
   dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
   const dustMat = new THREE.PointsMaterial({ size: 0.05, map: glow, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true });
-  scene.add(new THREE.Points(dustGeo, dustMat));
+  const dustPts = new THREE.Points(dustGeo, dustMat);
+  dustPts.renderOrder = 6;
+  scene.add(dustPts);
 
   // ── 상태 ──
   let cur = 0;
