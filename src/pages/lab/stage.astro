@@ -368,7 +368,8 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
         if (now - last > 40) slow += 1;
         if (frames === 90 && slow > 30) { lite = true; hero.classList.add('is-lite'); }
       }
-      const dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
+      // 시작 직후엔 프레임 시각이 기준 시각보다 앞설 수 있다 → 음수가 되면 계산이 발산하므로 0 이상으로 잡는다
+      const dt = Math.max(0, Math.min(0.05, (now - last) / 1000 || 0.016)); last = now;
       const t = now / 1000;
       const k = 1 - Math.pow(0.001, dt); // 프레임률과 무관한 부드러운 추종
       dim += (dimTo - dim) * (dimTo < dim ? k * 2.2 : k * 0.9);
@@ -512,6 +513,7 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
         .then((handle) => {
           handle.show(cur);
           gl = handle;
+          (window as unknown as { __stage?: unknown }).__stage = handle;
           running = false;
           hero.classList.add('is-gl');
           if (!document.hidden && visible()) handle.start();

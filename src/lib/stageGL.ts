@@ -14,6 +14,7 @@ export interface StageHandle {
   start(): void;
   stop(): void;
   dispose(): void;
+  debug(): unknown;
 }
 
 const POSTER_W = 1.83, POSTER_H = 2.5;
@@ -37,9 +38,12 @@ const coneMaterial = () => new THREE.ShaderMaterial({
     uniform vec3 uColor; uniform float uPower;
     varying vec3 vN; varying vec3 vV; varying float vT;
     void main() {
-      float edge = pow(abs(dot(normalize(vN), normalize(vV))), 1.8);
-      float fall = pow(vT, 1.5);
-      gl_FragColor = vec4(uColor, edge * fall * uPower);
+      // pow()는 밑이 0 이하면 결과가 정의되지 않아 일부 GPU에서 검게 칠해진다 → 범위를 잡아 준다
+      float edge = pow(clamp(abs(dot(normalize(vN), normalize(vV))), 0.0001, 1.0), 1.5);
+      float fall = pow(clamp(vT, 0.0001, 1.0), 1.5);
+      // 조명기 바로 앞(원뿔 꼭짓점 근처)은 서서히 나타나게 해서 덩어리처럼 보이지 않게 한다
+      float near = 1.0 - smoothstep(0.78, 1.0, vT);
+      gl_FragColor = vec4(uColor, clamp(edge * fall * near * uPower, 0.0, 1.0));
     }`,
 });
 
@@ -125,7 +129,7 @@ export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, 
   ];
   const rigs = defs.map((d) => {
     const light = new THREE.SpotLight(0xffffff, 0, 40, d.key ? 0.2 : 0.17, 0.75, 0);
-    light.position.set(d.x, 7.4, d.key ? -1.4 : -0.4);
+    light.position.set(d.x, d.key ? 7.4 : 9, d.key ? -1.4 : -1.2);
     const len = 13;
     const geo = new THREE.ConeGeometry(Math.tan(light.angle) * len, len, 40, 1, true);
     geo.translate(0, -len / 2, 0); // 꼭짓점을 원점으로
@@ -193,7 +197,8 @@ export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, 
   };
 
   const frame = (now: number) => {
-    const dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
+    // 시작 직후엔 프레임 시각이 기준 시각보다 앞설 수 있다 → 음수가 되면 계산이 발산하므로 0 이상으로 잡는다
+    const dt = Math.max(0, Math.min(0.05, (now - last) / 1000 || 0.016)); last = now;
     const t = now / 1000;
     const k = 1 - Math.pow(0.001, dt);
     dim += (dimTo - dim) * (dimTo < dim ? k * 2.4 : k * 0.9);
@@ -235,17 +240,17 @@ export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, 
       if (r.key) {
         r.aim.copy(posterAim);
       } else {
-        v.set(r.ax + Math.sin(t * r.speed * 6.283 + r.phase) * 4.2 + ptr.x * 1.2, 3.2 + Math.cos(t * r.speed * 4.1 + r.phase) * 1.6, WALL_Z);
+        v.set((r.ax + Math.sin(t * r.speed * 6.283 + r.phase) * 4.2) * (stacked ? 0.55 : 1) + ptr.x * 1.2, 3.2 + Math.cos(t * r.speed * 4.1 + r.phase) * 1.6, WALL_Z);
         r.aim.copy(v).lerp(gatherAim, gather);
       }
       r.light.target.position.copy(r.aim);
       r.cone.lookAt(r.aim);
       tmp.copy(col).lerp(white, r.key ? 0.12 : 0.5);
       r.light.color.copy(tmp);
-      r.light.intensity = pow * (r.key ? 5 : 3.4);
+      r.light.intensity = pow * (r.key ? 5 : 3.4) * (stacked ? 0.3 : 1);
       const m = r.cone.material as THREE.ShaderMaterial;
       (m.uniforms.uColor.value as THREE.Color).copy(tmp);
-      m.uniforms.uPower.value = pow * (r.key ? 0.55 : 0.42);
+      m.uniforms.uPower.value = pow * (r.key ? 0.6 : 0.42) * (stacked ? 0.7 : 1);
       (r.lens.material as THREE.SpriteMaterial).color.copy(tmp);
       (r.lens.material as THREE.SpriteMaterial).opacity = pow * 0.9;
     }
@@ -286,5 +291,7 @@ export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, 
     start() { if (!running) { running = true; last = performance.now(); requestAnimationFrame(frame); } },
     stop() { running = false; },
     dispose() { running = false; renderer.dispose(); },
+    // 점검용: 지금 장면 상태를 숫자로 돌려준다
+    debug: () => ({ dim, dimTo, gather, running, cur, flipAt, camZ, lookY, cam: camera.position.toArray(), on: rigs.map((r) => r.on), li: rigs.map((r) => +r.light.intensity.toFixed(2)), posterRot: poster.rotation.y, aspect: camera.aspect, mark: mark.scale.toArray() }),
   };
 }
