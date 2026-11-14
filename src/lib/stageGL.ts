@@ -78,7 +78,8 @@ function markTexture(text: string, stacked: boolean): { tex: THREE.Texture; aspe
 
 export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, items: StageItem[], anchor: HTMLElement): Promise<StageHandle> {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  // 휴대폰은 화소가 많아 2배면 무겁다 → 1.5배로 묶는다
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, window.innerWidth < 860 ? 1.5 : 2));
   renderer.setClearColor(0x070605);
   const scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x070605, 0.022);
@@ -252,10 +253,11 @@ export async function createStage(canvas: HTMLCanvasElement, hero: HTMLElement, 
       r.cone.lookAt(r.aim);
       tmp.copy(col).lerp(white, r.key ? 0.12 : 0.5);
       r.light.color.copy(tmp);
-      r.light.intensity = pow * (r.key ? 5 : 3.4) * (stacked ? 0.3 : 1);
+      // 휴대폰(stacked)은 화면이 작아 빛이 몰려 보이므로 조금만 줄인다(예전 0.3은 무대가 거의 안 보였다)
+      r.light.intensity = pow * (r.key ? 5 : 3.4) * (stacked ? 0.75 : 1);
       const m = r.cone.material as THREE.ShaderMaterial;
       (m.uniforms.uColor.value as THREE.Color).copy(tmp);
-      m.uniforms.uPower.value = pow * (r.key ? 0.6 : 0.42) * (stacked ? 0.7 : 1);
+      m.uniforms.uPower.value = pow * (r.key ? 0.6 : 0.42) * (stacked ? 0.95 : 1);
       (r.lens.material as THREE.SpriteMaterial).color.copy(tmp);
       (r.lens.material as THREE.SpriteMaterial).opacity = pow * 0.9;
     }
