@@ -1,6 +1,6 @@
 ---
 // 직관냥 캐릭터. 그림은 src/lib/mascot.mjs에 있다.
-//   who: duo(둘 다) · godeung(고등어) · cheese(치즈)
+//   who: duo(둘 다) · godeung(고등어 새벽이) · cheese(치즈 노을이)
 //   pose="face"는 얼굴만 그린다(로고처럼 작은 자리용).
 import { mascot } from '../lib/mascot.mjs';
 
@@ -13,7 +13,7 @@ interface Props {
 const { size = 120, class: className = '', pose = 'watch', who = 'duo' } = Astro.props;
 const m = mascot(pose, who);
 const h = Math.round((size * m.h) / m.w);
-const label = who === 'duo' && pose !== 'face' && pose !== 'sleep' ? '직관냥 고양이 고등어와 치즈' : '직관냥 고양이';
+const label = who === 'duo' && pose !== 'face' && pose !== 'sleep' ? '직관냥 고양이 새벽이와 노을이' : '직관냥 고양이';
 ---
 <svg
   class={`mascot-illust ${className}`}
