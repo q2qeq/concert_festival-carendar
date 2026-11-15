@@ -1076,3 +1076,31 @@ YUURI LIVE 2026) / 꽃가마 1건(임윤찬 피아노 리사이틀 김해 - 기�
 참고: audit:events ERROR 0 / WARN 8(cherry-blossom 창원·kana-boon·kopis-PF303596·kopis-PF299848·benny-sings)은 이번 실행과
 무관한 기존 공연이라 고치지 않음. 퀸즈스마일 상세는 정류장 목록 첫 페이지(1/2~3)만 확인함.
 ---
+---
+## 2026-11-15 09:10 KST 실행
+**스캔 방법:** 브라우저 패널(모바일 뷰포트)로 카카오 T 셔틀 목록 API `display/item` 2페이지 22건(상태·배지만 확인, 정류장별 매진 여부는 이번엔 재확인 안 함), 퀸즈스마일 shop 목록 7건(마곡 베페 베이비페어 포함, 상세 페이지는 열지 않음), 꽃가마 메인(임윤찬 리사이틀 김해 1건만 노출).
+
+발견된 후보: 카카오 T 22건(몬스타엑스, Xdinary Heroes, ATEEZ, 마룬5, 기브셔틀 벽화 봉사, 브루노 마스, 데이식스, 요네즈 켄시, 런유니버스페스티벌, COUNTDOWN FANTASY, 히어로 락 페스티벌, SBS 가요대전, 한로로, FKJ, 체리블라썸 창원, 칼리드, 네이버X현대카드 THE SIX, NCT WISH, 엔믹스, 후지이 카제, 이승철, 유우리) / 퀸즈스마일 6건(대구힙합페스티벌, WONDERLIVET, NMIXX, Xdinary Heroes, 몬스타엑스, 유우리) + 마곡 베페 베이비페어(음악 공연 아님) / 꽃가마 1건(임윤찬 - 기존 검토 파일행).
+11/13 대비 변화: 신규 항목 없음. ATEEZ(10000619)가 수요조사 → 예약 판매 중으로 전환. DAY6는 11/14 커밋(49b6453)으로 이미 events.json에 등재돼 있어 후보 파일에서 제거하고 shuttleBus만 보강.
+
+게시함 (0건): 없음.
+
+검토 파일행 (0건): 신규 없음. DAY6 후보 항목은 events.json 등재로 후보 파일에서 제거함.
+
+기존 공연 셔틀 정보 보강 (27항목) - 전부 날짜 일치가 이미 확인된 종료 전 등재 공연:
+- 신규 추가 1: day6-the-present-seoul-2026-12 - 카카오 T 셔틀, https://shuttle.kakaomobility.com/shuttles/demand/10000632 ("26.12.18 - 26.12.20", KSPO DOME, 수요조사. events.json 12/18~20 KSPO DOME와 날짜·장소 일치)
+- 상태 변경 1: shuttle-ateez-world-tour-zero-to-all-2027-01 - https://shuttle.kakaomobility.com/shuttles/10000619 : 수요조사 → 예약 판매 중(목록 ON_SALE). url도 /demand/ 없는 형태로 정정
+- 카카오 T 확인 날짜 2026-11-15로 갱신: monsta-x(10000596), cherry-blossom 창원(10000609), yuuri(10000578), khalid(10000571), fkj(10000570), fujii-kaze(10000625, 수요조사), maroon5(10000586), bruno-mars(10000600, 수요조사), hanroro(10000623), nmixx(10000617), hero-rock(10000616, 수요조사), lee-seung-chul(10000612, 수요조사), kenshi-yonezu(10000618), nct-wish(10000630, 수요조사), countdown-fantasy(10000631), xdinary-heroes(10000610, "매진" 배지 유지·공연 마지막 날, 정류장별 상태는 11/12 기준)
+- jason-mraz·5sos: 카카오 T 목록에서 계속 비노출, 확인 날짜만 갱신
+- 퀸즈스마일 6항목(wonderlivet NDI1, monsta-x NDI4, yuuri NDU4, nmixx NDUw, xdinary NDQy, 대구힙합 NDUz): 목록 계속 노출 확인 문구만 추가(정류장별 상태는 11/12 기준, 상세 미열람)
+
+제외함/드롭 (6건):
+- 런유니버스페스티벌(인제 스피디움) - 러닝/모터스포츠 행사, 음악 공연 아님 → shuttleBus 보강 대상 아님.
+- 네이버 X 현대카드 THE SIX(인스파이어 아레나) - 테니스 대회, 음악 공연 아님 → shuttleBus 보강 대상 아님.
+- [기브셔틀] 벽화 봉사여행(양평, 11/18) - 봉사 버스 → 보강 대상 아님.
+- 2026 마곡 베페 베이비페어(퀸즈스마일, 11/12~15) - 육아 박람회, 음악 공연 아님.
+- SBS 2026 가요대전 30th(킨텍스, 수요조사) - 검토 파일에만 있고 events.json 미등재 → 3-B 대상 아님(검토 파일 상태 그대로).
+- 임윤찬 리사이틀 김해(꽃가마) - events.json 미등재, 기존 검토 파일행 그대로 → 3-B 대상 아님.
+
+참고: audit:events ERROR 0 / WARN 10, 이번 실행과 무관한 기존 경고라 고치지 않음. 이전 작업 공간 /Users/yongjin/.krconcerts-tasks/shuttle-scan-20261113-090338-73810 에 11/13 실행의 미푸시 변경(스테이지됨: DAY6 포스터·events·후보·로그)이 남아 있음 - 건드리지 않음.
+---
