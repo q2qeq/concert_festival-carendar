@@ -4767,7 +4767,7 @@
     "note": "예스24 티켓 기준 스탠딩석·지정석 88,000원, 러닝타임 90분, 7세 이상 관람가. 주최 (주)엠피엠지.",
     "posterUrl": "/posters/kopis-PF299935.webp",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
-    "merchCheckedAt": "2026-11-11",
+    "merchCheckedAt": "2026-11-16",
     "ticketLinks": [
       {
         "vendor": "예스24",
@@ -5072,6 +5072,7 @@
   },
   {
     "id": "zazen-boys-seoul-2026-12",
+    "merchCheckedAt": "2026-11-16",
     "artist": "Zazen Boys (자젠보이즈)",
     "genre": "J-POP",
     "venue": "무신사 개러지 (musinsa garage)",
@@ -7100,6 +7101,7 @@
   },
   {
     "id": "diana-krall-seoul-2026-11",
+    "merchCheckedAt": "2026-11-16",
     "artist": "Diana Krall (다이애나 크롤)",
     "aliases": [
       "다이아나 크롤",
@@ -7214,6 +7216,7 @@
   },
   {
     "id": "tahiti-80-seoul-2026-11",
+    "merchCheckedAt": "2026-11-16",
     "artist": "Tahiti 80 (타히티 80)",
     "aliases": [
       "타히티80",
@@ -7249,6 +7252,7 @@
   },
   {
     "id": "sunny-day-service-seoul-2026-12",
+    "merchCheckedAt": "2026-11-16",
     "artist": "Sunny Day Service (서니 데이 서비스)",
     "aliases": [
       "サニーデイ・サービス",
@@ -7390,6 +7394,7 @@
   },
   {
     "id": "cho-yong-pil-seoul-2026-11",
+    "merchCheckedAt": "2026-11-16",
     "artist": "조용필 & 위대한 탄생",
     "aliases": [
       "조용필",
@@ -7431,6 +7436,7 @@
   },
   {
     "id": "dynamic-duo-seoul-2026-11",
+    "merchCheckedAt": "2026-11-16",
     "artist": "다이나믹 듀오 (Dynamic Duo)",
     "aliases": [
       "다이나믹듀오",
@@ -7467,6 +7473,7 @@
   },
   {
     "id": "rain-the-smoke-seoul-2026-12",
+    "merchCheckedAt": "2026-11-16",
     "artist": "비 (RAIN)",
     "aliases": [
       "정지훈",
