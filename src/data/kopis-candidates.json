@@ -13,188 +13,6 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
-    "id": "kopis-PF303675",
-    "artist": "Vel.R 기획공연, 윤준 X 산하: 여백의 온도",
-    "genre": "콘서트",
-    "venue": "Vel.R 벨르 (구. 벨로주 [홍대])",
-    "city": "서울",
-    "startDate": "2026-11-12",
-    "endDate": "2026-11-12",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303675_261019_105037.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF303265",
-    "artist": "퓨처피어클럽 EP발매 기념 단독 콘서트: No FPC, No LlFE",
-    "genre": "콘서트",
-    "venue": "롤링홀",
-    "city": "서울",
-    "startDate": "2026-11-12",
-    "endDate": "2026-11-12",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303265_261014_104005.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF303455",
-    "artist": "TWLV x nnn: GOOD FRIENDS",
-    "genre": "콘서트",
-    "venue": "롤링홀",
-    "city": "서울",
-    "startDate": "2026-11-13",
-    "endDate": "2026-11-13",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303455_261015_135442.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF302337",
-    "artist": "TOMORROW X TOGETHER WORLD TOUR: STEAL THE WIND [서울]",
-    "genre": "콘서트",
-    "venue": "올림픽공원",
-    "city": "서울",
-    "startDate": "2026-11-13",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302337_261002_130537.gif",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF303843",
-    "artist": "MMA: 멜론뮤직어워드",
-    "genre": "콘서트",
-    "venue": "고척스카이돔",
-    "city": "서울",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303843_261020_102437.png",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF303574",
-    "artist": "Jang Wooyoung Concert",
-    "genre": "콘서트",
-    "venue": "예스24 라이브홀 (구. 악스코리아)",
-    "city": "서울",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303574_261016_130824.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF302644",
-    "artist": "CRAVITY CONCERT: SONOROUS [서울]",
-    "genre": "콘서트",
-    "venue": "올림픽공원",
-    "city": "서울",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302644_261007_100525.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF301093",
-    "artist": "더 보컬 [서울 중구]",
-    "genre": "콘서트",
-    "venue": "공감센터",
-    "city": "서울",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-14",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301093_260916_145903.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF300706",
-    "artist": "Awesome Stage, N.Flying x Hi-Fi Un!corn",
-    "genre": "콘서트",
-    "venue": "벡스코 (BEXCO)",
-    "city": "부산",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF300706_260911_135907.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF299977",
-    "artist": "최유리 콘서트: 머무름 [대구]",
-    "genre": "콘서트",
-    "venue": "엑스코(exco)",
-    "city": "대구",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-14",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299977_260902_164612.gif",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF305194",
-    "artist": "RAI BIRTHDAY LIVE: 백색소음",
-    "genre": "콘서트",
-    "venue": "웨스트브릿지 라이브홀",
-    "city": "서울",
-    "startDate": "2026-11-15",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF305194_261103_102322.png",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF304184",
-    "artist": "신해경 단독 콘서트: 나의 가역반응 사가 [서울]",
-    "genre": "콘서트",
-    "venue": "KT&G 상상마당 라이브홀 [마포]",
-    "city": "서울",
-    "startDate": "2026-11-15",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304184_261022_135804.png",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF303868",
-    "artist": "리릭페이퍼 Lyric Paper Vol.5",
-    "genre": "콘서트",
-    "venue": "Vel.R 벨르 (구. 벨로주 [홍대])",
-    "city": "서울",
-    "startDate": "2026-11-15",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303868_261020_114620.png",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF299576",
-    "artist": "BLU-SWING: Across the Blue [서울]",
-    "genre": "콘서트",
-    "venue": "롤링홀",
-    "city": "서울",
-    "startDate": "2026-11-15",
-    "endDate": "2026-11-15",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299576_260828_103700.jpg",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
     "id": "kopis-PF293396",
     "artist": "제시 골드 (JESSE GOLD) 내한공연",
     "genre": "콘서트",
@@ -949,6 +767,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF306272",
+    "artist": "먼데이프로젝트 시즌9, 민지운 단독 콘서트: COME & CHILL",
+    "genre": "콘서트",
+    "venue": "Vel.R 벨르 (구. 벨로주 [홍대])",
+    "city": "서울",
+    "startDate": "2026-12-07",
+    "endDate": "2026-12-07",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306272_261112_143829.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF304531",
     "artist": "Chanpan autogratis World Tour In Seoul",
     "genre": "콘서트",
@@ -985,6 +816,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304126_261022_111634.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306240",
+    "artist": "Awesome Stage Special Concert: KIMSUNGKYU",
+    "genre": "콘서트",
+    "venue": "KBS스포츠월드(아레나)",
+    "city": "서울",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-12",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306240_261112_133130.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -1102,6 +946,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301303_260918_133748.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306386",
+    "artist": "김반월키 단독 콘서트: 다른 겨울에 접어들 무렵",
+    "genre": "콘서트",
+    "venue": "Vel.R 벨르 (구. 벨로주 [홍대])",
+    "city": "서울",
+    "startDate": "2026-12-13",
+    "endDate": "2026-12-13",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306386_261113_145608.png",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -1417,6 +1274,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF306417",
+    "artist": "FLARE U FANCON TOUR: Where U'RE [서울]",
+    "genre": "콘서트",
+    "venue": "장충체육관",
+    "city": "서울",
+    "startDate": "2026-12-26",
+    "endDate": "2026-12-27",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306417_261113_161502.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF306028",
     "artist": "초록불꽃소년단 연말 단독 콘서트: Dive Or Die",
     "genre": "콘서트",
@@ -1427,6 +1297,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306028_261111_103334.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306190",
+    "artist": "강릉아트센터 송년콘서트 Ⅱ. 정태춘 X 박은옥 콘서트: 나의 시, 나의 노래 [강릉]",
+    "genre": "콘서트",
+    "venue": "강릉아트센터 (구. 강릉문화예술관)",
+    "city": "강릉",
+    "startDate": "2026-12-29",
+    "endDate": "2026-12-29",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306190_261112_104157.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -1521,6 +1404,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF305956",
+    "artist": "박서진 전국투어 콘서트, MY NAME IS SEOJIN: 갓 [전주]",
+    "genre": "콘서트",
+    "venue": "한국소리문화의전당",
+    "city": "전주",
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-10",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF305956_261113_133016.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF305460",
     "artist": "자우림 단독 콘서트: MIDNIGHT EXPRESS 2026-2027 [대구]",
     "genre": "콘서트",
@@ -1570,6 +1466,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303578_261016_131204.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306428",
+    "artist": "HYUKOH 33 TOUR [서울]",
+    "genre": "콘서트",
+    "venue": "올림픽공원",
+    "city": "서울",
+    "startDate": "2027-01-16",
+    "endDate": "2027-01-17",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306428_261113_165359.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
