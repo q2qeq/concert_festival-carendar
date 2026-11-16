@@ -2,11 +2,12 @@
 // '발표 대기' 공연 안내 - 공연장이 아직 안 나왔거나 티켓 오픈 일정이 없는 공연에서, 찜 + 캘린더 구독으로 이어준다.
 // 찜해 두면 /my 와 홈에서 새 소식(updates)이 생겼을 때 알려준다(기존 기능, 전부 브라우저 안에서 계산).
 // 메일·푸시 수집은 하지 않는다. 찜은 바로 위 액션바의 찜하기 버튼 하나로 한다(2026-11-14 중복 버튼 제거).
-import type { ConcertEvent } from '../lib/events';
+import { hasTicketsOnSale, type ConcertEvent } from '../lib/events';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 const venuePending = /추후|미정|미발표/.test(event.venue);
-const ticketPending = !event.ticketOpenAt && !event.ticketingAnnounced;
+// 예매 링크가 이미 걸려 있으면 판매가 시작된 것이므로 '발표 전'이 아니다(2026-11-16: 판매 중인 42개 공연에 잘못 뜨던 문제).
+const ticketPending = !event.ticketOpenAt && !event.ticketOpens?.length && !event.ticketingAnnounced && !hasTicketsOnSale(event);
 const show = (venuePending || ticketPending) && event.endDate >= new Date().toISOString().slice(0, 10) && (event.status ?? 'scheduled') === 'scheduled';
 const pending = [venuePending ? '공연장' : '', ticketPending ? '티켓 오픈 일정' : ''].filter(Boolean).join('과 ');
 ---
