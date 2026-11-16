@@ -7823,5 +7823,34 @@
         "note": "셔틀 스캔으로 확인 (2026-11-15). 수요조사 중인 상품입니다(목록 표기 \"데이식스 스페셜 콘서트\", KSPO DOME, 26.12.18 - 26.12.20)."
       }
     ]
+  },
+  {
+    "id": "sung-si-kyung-yearend-seoul-2026-12",
+    "artist": "2026 성시경 연말 콘서트 〈성시경〉",
+    "aliases": [
+      "성시경",
+      "Sung Si-kyung"
+    ],
+    "genre": "가요",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-12-31",
+    "endDate": "2027-01-03",
+    "description": "성시경이 해마다 여는 연말 콘서트예요. 2026년 12월 31일부터 2027년 1월 3일까지 나흘 동안 KSPO DOME에서 열려요.",
+    "schedule": "12/31(목) 오후 9시, 1/1(금) 오후 7시, 1/2(토) 오후 6시, 1/3(일) 오후 6시, 러닝타임 120분",
+    "note": "NOL 티켓 기준 VIP석 165,000원(현장수령), R석 154,000원(현장수령), S석 143,000원, A석 132,000원, 시야제한석 121,000원, 초등학생 이상 관람가예요.",
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26015783"
+      }
+    ],
+    "sources": [
+      {
+        "label": "2026 성시경 연말 콘서트 〈성시경〉 - NOL 티켓 상품 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26015783"
+      }
+    ],
+    "addedAt": "2026-11-16"
   }
 ]
