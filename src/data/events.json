@@ -4246,7 +4246,7 @@
     "city": "고양",
     "startDate": "2026-11-19",
     "endDate": "2026-11-19",
-    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/13669",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26006756",
     "note": "수능일과 일정이 겹쳐 화제가 된 바 있음 - 날짜 변동 여부 재확인 권장.",
     "description": "호주 팝록 밴드 5 Seconds of Summer의 내한 공연. 국내에도 팬덤이 두터워요.",
     "mdUrl": "https://5sos.com/",
@@ -4342,7 +4342,26 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000629",
         "note": "셔틀 스캔으로 확인 (2026-11-16). 카카오 T 셔틀 목록에서 계속 비노출 - 11/11 \"미개설\"(DROPPED) 전환 뒤 목록 비노출. 셔틀 운행 확정 아님."
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "NO.1 VIP 패키지",
+        "price": 320000
+      },
+      {
+        "label": "스탠딩 R석",
+        "price": 154000
+      },
+      {
+        "label": "스탠딩 S석",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26006756"
+    }
   },
   {
     "id": "christopher-seoul-2026-11",
@@ -4620,7 +4639,26 @@
         "url": "https://queenssmile.co.kr/shop/festival/NDI1/",
         "note": "셔틀 스캔으로 확인 (2026-11-12). 유료 셔틀버스(왕복/편도 티켓 17,000원~). 전 정류장 예약 가능. 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능) 11/15 퀸즈스마일 진행 중인 행사 목록에서 계속 노출 확인(정류장별 상태는 11/12 기준). 2026-11-16 퀸즈스마일 shop 목록에서 계속 노출 확인(정류장별 상태는 11/12 기준)."
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "3일권",
+        "price": 329000
+      },
+      {
+        "label": "2일권",
+        "price": 229000
+      },
+      {
+        "label": "1일권",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59840"
+    }
   },
   {
     "id": "shuttle-monsta-x-world-tour-encore-2026-11",
@@ -4820,7 +4858,26 @@
         "vendor": "티켓링크",
         "url": "https://www.ticketlink.co.kr/product/66073"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 178000
+      },
+      {
+        "label": "R석",
+        "price": 165000
+      },
+      {
+        "label": "S석",
+        "price": 132000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "티켓링크 예매 페이지",
+      "url": "https://www.ticketlink.co.kr/product/66073"
+    }
   },
   {
     "id": "ellegarden-seoul-2026-11",
@@ -4909,7 +4966,22 @@
       }
     ],
     "posterUrl": "/posters/kana-boon-seoul-2026-12.webp",
-    "posterSourceUrl": "https://cdn.slist.kr/news/photo/202608/756295_1159327_638.jpg"
+    "posterSourceUrl": "https://cdn.slist.kr/news/photo/202608/756295_1159327_638.jpg",
+    "prices": [
+      {
+        "label": "스탠딩",
+        "price": 138000
+      },
+      {
+        "label": "지정석",
+        "price": 138000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "KOPIS 공연예술통합전산망",
+      "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF298220"
+    }
   },
   {
     "id": "bluenote-tokyo-lisaono-iksan-2026-11",
@@ -4937,7 +5009,22 @@
         "vendor": "티켓링크",
         "url": "https://www.ticketlink.co.kr/product/65425"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "R석",
+        "price": 30000
+      },
+      {
+        "label": "S석",
+        "price": 20000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "티켓링크 예매 페이지",
+      "url": "https://www.ticketlink.co.kr/product/65425"
+    }
   },
   {
     "id": "pm-kenobi-seoul-2026-11",
@@ -4989,7 +5076,46 @@
     "posterUrl": "/posters/kopis-PF303596.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303596_261016_135100.jpg",
-    "merchCheckedAt": "2026-11-11"
+    "merchCheckedAt": "2026-11-11",
+    "prices": [
+      {
+        "label": "R석",
+        "price": 160000
+      },
+      {
+        "label": "S석",
+        "price": 130000
+      },
+      {
+        "label": "A석",
+        "price": 100000
+      },
+      {
+        "label": "B석",
+        "price": 70000
+      },
+      {
+        "label": "C석",
+        "price": 40000
+      },
+      {
+        "label": "시야방해 R석",
+        "price": 112000
+      },
+      {
+        "label": "시야방해 S석",
+        "price": 91000
+      },
+      {
+        "label": "시야방해 A석",
+        "price": 70000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "KOPIS 공연예술통합전산망",
+      "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF303596"
+    }
   },
   {
     "id": "mass-of-the-fermenting-dregs-seoul-2026-12",
@@ -5180,7 +5306,7 @@
     "city": "고양",
     "startDate": "2026-12-06",
     "endDate": "2026-12-06",
-    "ticketUrl": "https://tickets.interpark.com/contents/notice/detail/14462",
+    "ticketUrl": "https://nol.yanolja.com/ticket/products/26009565",
     "note": "프렌치 하우스·재즈·소울·힙합을 넘나드는 프로듀서 FKJ의 내한 공연입니다.",
     "sources": [
       {
@@ -5215,7 +5341,18 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000570",
         "note": "셔틀 스캔으로 확인 (2026-11-16). 예약 가능 상태. 노선·요금은 예약 화면에서 확인하세요."
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26009565"
+    }
   },
   {
     "id": "zazen-boys-seoul-2026-12",
@@ -5457,7 +5594,18 @@
     "endDate": "2026-12-13",
     "posterUrl": "/posters/kopis-PF299848.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299848_260901_141354.png"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299848_260901_141354.png",
+    "prices": [
+      {
+        "label": "전석 스탠딩",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "KOPIS 공연예술통합전산망",
+      "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF299848"
+    }
   },
   {
     "id": "yuki-kuramoto-gimhae-2026-12",
@@ -5779,7 +5927,22 @@
         "vendor": "예스24",
         "url": "https://ticket.yes24.com/Perf/59777"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 110000
+      },
+      {
+        "label": "일반석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59777"
+    }
   },
   {
     "id": "kawasaki-takaya-seoul-2026-12",
@@ -6603,7 +6766,22 @@
         "text": "NOL 단독 예매 일정이 나왔어요. 국내 멤버십 선예매 12/3(목), 글로벌 멤버십 선예매 12/7(월), 일반예매 12/8(화) 모두 오후 8시예요. 가격은 Sailor석(사운드체크 포함) 209,000원, 일반석 165,000원, 일반예매는 회차당 1인 2매.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26015983"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "Sailor석",
+        "price": 209000
+      },
+      {
+        "label": "일반석",
+        "price": 165000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26015983"
+    }
   },
   {
     "id": "shuttle-xdinary-heroes-impulse-2026-11",
@@ -7325,7 +7503,36 @@
       }
     ],
     "posterUrl": "/posters/steve-gadd-bhg-seoul-2027-01.webp",
-    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_7/open_1105.jpg"
+    "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_7/open_1105.jpg",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 130000
+      },
+      {
+        "label": "R석",
+        "price": 110000
+      },
+      {
+        "label": "S석",
+        "price": 90000
+      },
+      {
+        "label": "A석",
+        "price": 70000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "티켓링크 티켓오픈 공지",
+      "url": "https://www.ticketlink.co.kr/help/notice/66450"
+    },
+    "ticketLinks": [
+      {
+        "vendor": "티켓링크",
+        "url": "https://www.ticketlink.co.kr/product/66914"
+      }
+    ]
   },
   {
     "id": "nct-wish-2nd-concert-tour-seoul-2027-01",
@@ -7389,11 +7596,11 @@
     "startDate": "2027-04-17",
     "endDate": "2027-04-17",
     "ticketOpenAt": "2026-11-30T18:00:00+09:00",
-    "ticketOpenDate": "2026-11-30 오후 6시 (위버스 인증 선예매), 2026-11-30 오후 8시 (일반예매, 멜론티켓 단독)",
+    "ticketOpenDate": "2026-11-30 오후 6시 (YOASOBI GLOBAL MEMBERSHIP 선예매), 2026-11-30 오후 8시 (일반예매, 멜론티켓 단독)",
     "ticketingAnnounced": true,
     "ticketOpens": [
       {
-        "label": "위버스 인증 선예매",
+        "label": "멤버십 선예매",
         "at": "2026-11-30T18:00:00+09:00",
         "until": "2026-11-30T18:59:00+09:00"
       },
@@ -7410,17 +7617,17 @@
     ],
     "presale": [
       {
-        "title": "위버스 인증 선예매 (멜론티켓)",
-        "detail": "멜론티켓에서 위버스 인증을 미리 마친 사람만 들어갈 수 있어요. 선예매는 11월 30일(월) 오후 6시부터 6시 59분까지 59분 동안만 열리고, 선예매와 일반예매를 합쳐 한 사람이 3매까지 살 수 있어요.",
-        "howTo": "인증 기간은 11월 16일(월) 오후 8시부터 11월 30일(월) 오후 6시 59분까지예요. 멜론티켓 공연 페이지의 인증 버튼에서 진행해요. 어떤 위버스 멤버십이 인증 대상인지는 멜론티켓 페이지에서 직접 확인하세요.",
+        "title": "YOASOBI GLOBAL MEMBERSHIP 선예매 (멜론티켓)",
+        "detail": "위버스샵에서 YOASOBI GLOBAL MEMBERSHIP(25,000원, 가입일로부터 365일)을 산 회원 가운데 멜론티켓에서 사전 인증을 마친 사람만 참여할 수 있어요. 선예매는 11월 30일(월) 오후 6시부터 6시 59분까지이고, 선예매와 일반예매를 합쳐 한 사람이 3매까지 살 수 있어요. 공연 당일까지 멤버십이 유지돼야 선예매 티켓이 유효해요.",
+        "howTo": "1) 위버스에 가입하고 YOASOBI 커뮤니티에 들어가요. 2) 위버스샵에서 YOASOBI GLOBAL MEMBERSHIP을 사요. 3) 11월 30일(월) 오후 6시 59분까지 멜론티켓 공연 페이지의 멤버십 인증 버튼에서 멤버십에 가입한 위버스 계정으로 인증해요. 멜론티켓 본인 명의 ID 하나에 위버스 계정 하나만 인증되고, 한 번 인증하면 수정·취소가 안 돼요. 한국 페이지에서 인증하면 한국 페이지에서만, 글로벌 페이지에서 인증하면 글로벌 페이지에서만 선예매할 수 있어요.",
         "date": "2026-11-30 오후 6시 ~ 6시 59분",
-        "url": "https://ticket.melon.com/performance/index.htm?prodId=214279"
+        "url": "https://weverse.io/yoasobi/notice/40746"
       }
     ],
     "officialUrl": "https://www.yoasobi-music.jp/news/588606",
     "posterUrl": "/posters/yoasobi-korea-2027-04.webp",
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/11/202611161527131165a448-6f59-4b25-acad-2a15b165dea5.jpg",
-    "note": "선예매는 멜론티켓에서 위버스 인증을 마쳐야 참여할 수 있어요(인증 마감 11월 30일 오후 6시 59분). 오후 7시부터 7시 59분까지는 일반예매 준비로 판매가 잠시 멈춰요. 무통장 입금은 쓸 수 없고, 예매·취소는 관람 전날 오전 11시까지예요.",
+    "note": "선예매는 YOASOBI GLOBAL MEMBERSHIP 회원이 멜론티켓에서 사전 인증을 마쳐야 참여할 수 있어요(인증 마감 11월 30일 오후 6시 59분). 오후 7시부터 7시 59분까지는 일반예매 준비로 판매가 잠시 멈춰요. 무통장 입금은 쓸 수 없고, 예매·취소는 관람 전날 오전 11시까지예요. 전석 지정좌석이고 당일 입장은 오후 5시 30분부터예요. 배송 티켓은 2027년 3월 30일부터 차례로 발송돼요.",
     "description": "일본 듀오 요아소비의 'YOASOBI 11-CITY ASIA-OCEANIA TOUR 2026-2027 \"초행성\" in Goyang'이 2027년 4월 17일(토) 오후 7시 30분 고양종합운동장 주경기장에서 열려요. 2023년 12월(고려대 화정체육관), 2024년 12월(인스파이어 아레나)에 이은 세 번째 내한이고, 한국에서 여는 첫 스타디움 공연이자 투어의 마지막 공연이에요. 멜론티켓 기준 가격은 SR석 187,000원, R석 154,000원, S석 143,000원이고, 관람시간 120분, 8세 이상 관람가예요. 주최는 LIVET, 주관은 원더로크예요.",
     "sources": [
       {
@@ -7430,6 +7637,14 @@
       {
         "label": "멜론티켓 - YOASOBI \"초행성\" in Goyang 예매 페이지",
         "url": "https://ticket.melon.com/performance/index.htm?prodId=214279"
+      },
+      {
+        "label": "위버스 공지 - YOASOBI GLOBAL MEMBERSHIP 회원 선예매 안내(2026-11-16)",
+        "url": "https://weverse.io/yoasobi/notice/40746"
+      },
+      {
+        "label": "위버스샵 - YOASOBI GLOBAL MEMBERSHIP",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/200/sales/51448"
       },
       {
         "label": "LIVET 공식 예매 링크 페이지",
@@ -7445,6 +7660,11 @@
       }
     ],
     "updates": [
+      {
+        "date": "2026-11-17",
+        "text": "선예매 자격을 확인했어요. 위버스샵에서 파는 YOASOBI GLOBAL MEMBERSHIP(25,000원) 회원이 멜론티켓에서 사전 인증을 해야 하고, 공연 당일까지 멤버십이 유지돼야 해요. 좌석은 전석 지정좌석이에요.",
+        "sourceUrl": "https://weverse.io/yoasobi/notice/40746"
+      },
       {
         "date": "2026-11-17",
         "text": "공연장이 고양종합운동장 주경기장으로 확정됐어요(공식 사이트 11월 16일 공지). 공연은 오후 7시 30분 시작, 가격은 SR 187,000원·R 154,000원·S 143,000원이에요. 티켓은 멜론티켓 단독으로 11월 30일(월) 오후 6시 위버스 인증 선예매, 오후 8시 일반예매 순서로 열려요. 포스터도 한국 공연용으로 바꿨어요.",
@@ -7522,7 +7742,7 @@
       }
     ],
     "funFacts": [
-      "요아소비가 한국에서 스타디움 공연을 여는 건 이번이 처음이에요. 2023년 체육관, 2024년 아레나에 이어 세 번째 내한에서 스타디움으로 올라왔어요.",
+      "요아소비가 한국에서 스타디움 공연을 여는 건 이번이 처음이에요. 주최사 LIVET은 J-POP 아티스트가 고양종합운동장에서 공연하는 것도 처음이라고 소개했어요.",
       "2023년 첫 내한은 두 날 합쳐 약 9천 명이었는데, 2024년 두 번째 내한은 약 2만 6천 명으로 커졌어요. 뉴시스는 2008년 아라시 공연 이후 J팝 공연에 3만 명에 근접한 관객이 모인 것은 처음이라고 전했어요.",
       "2024년 인스파이어 아레나 공연에는 7일 뉴진스, 8일 악뮤가 게스트로 올라 이쿠라와 함께 무대를 꾸몄어요. 프로듀서 아야세가 한국어 편지를 직접 읽기도 했어요.",
       "이번 투어는 일본 5개 도시(돔)와 해외 6개 도시를 도는 '초행성'이고, 고양 공연이 투어 전체의 마지막 공연이에요."
@@ -7596,7 +7816,9 @@
     "pricesSource": {
       "label": "멜론티켓 예매 페이지",
       "url": "https://ticket.melon.com/performance/index.htm?prodId=214285"
-    }
+    },
+    "posterUrl": "/posters/yonyon-seoul-2026-12.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/11/202611100941080bf4d7e9-ea0e-4aea-b3d3-813ce2104911.jpg"
   },
   {
     "id": "shuttle-countdown-fantasy-2026-2027",
@@ -7966,7 +8188,30 @@
     "posterUrl": "/posters/stacey-kent-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299001_260820_150851.jpg",
-    "merchCheckedAt": "2026-11-14"
+    "merchCheckedAt": "2026-11-14",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 121000
+      },
+      {
+        "label": "R석",
+        "price": 99000
+      },
+      {
+        "label": "S석",
+        "price": 77000
+      },
+      {
+        "label": "A석",
+        "price": 66000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/L0000146"
+    }
   },
   {
     "id": "diana-krall-seoul-2026-11",
@@ -8241,7 +8486,18 @@
     ],
     "posterUrl": "/posters/sunny-day-service-seoul-2026-12.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298542_260814_131523.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298542_260814_131523.gif",
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26011116"
+    }
   },
   {
     "id": "benny-sings-seoul-2026-12",
@@ -8270,7 +8526,18 @@
     ],
     "posterUrl": "/posters/benny-sings-seoul-2026-12.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301059_260916_133638.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301059_260916_133638.jpg",
+    "prices": [
+      {
+        "label": "전석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "KOPIS 공연예술통합전산망",
+      "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF301059"
+    }
   },
   {
     "id": "cutie-street-goyang-2027-01",
@@ -8823,7 +9090,7 @@
     "city": "서울",
     "startDate": "2027-02-03",
     "endDate": "2027-02-03",
-    "description": "미국 로스앤젤레스에서 활동하는 싱어송라이터 티파니 데이(Tiffany Day)의 첫 내한공연이에요. 2027년 2월 3일(수) 서울 무신사 개러지에서 열리고, 이틀 뒤 도쿄 공연으로 이어져요. 티켓은 2026년 11월 17일(화) 낮 12시 NOL 티켓에서 열려요. 공연 시작 시각과 가격은 아직 확인하지 못했어요.",
+    "description": "미국 로스앤젤레스에서 활동하는 싱어송라이터 티파니 데이(Tiffany Day)의 첫 내한공연이에요. 2027년 2월 3일(수) 서울 무신사 개러지에서 열리고, 이틀 뒤 도쿄 공연으로 이어져요. 티켓은 2026년 11월 17일(화) 낮 12시 NOL 티켓에서 열려요. 공연은 오후 8시에 시작해요. 가격은 아직 확인하지 못했어요.",
     "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. NOL 원문 미확인 - 보도 기반(공연일·장소는 해외 매체 2곳, 오픈 시각은 Dork 기사와 NOL 오픈 예정 목록이 일치).",
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-11-17 낮 12시",
@@ -8842,7 +9109,15 @@
         "url": "https://nol.yanolja.com/ticket/display/upcoming?genre=concert"
       }
     ],
-    "addedAt": "2026-11-14"
+    "addedAt": "2026-11-14",
+    "ticketLinks": [
+      {
+        "vendor": "NOL 티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26016602"
+      }
+    ],
+    "posterUrl": "/posters/tiffany-day-seoul-2027-02.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016602_p.gif"
   },
   {
     "id": "kimchikura-anisama-seoul-2027-01",
@@ -8976,7 +9251,18 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000632",
         "note": "셔틀 스캔으로 확인 (2026-11-16). 수요조사 중인 상품입니다(목록 표기 \"데이식스 스페셜 콘서트\", KSPO DOME, 26.12.18 - 26.12.20)."
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "전석",
+        "price": 154000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26016335"
+    }
   },
   {
     "id": "sung-si-kyung-yearend-seoul-2026-12",
