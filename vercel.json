@@ -6,8 +6,8 @@
     { "source": "/events/kopis-PF304185/", "destination": "/events/kenshi-yonezu-ghost-incheon-2027-01/", "permanent": true },
     { "source": "/events/kopis-PF299935", "destination": "/events/ellegarden-seoul-2026-11/", "permanent": true },
     { "source": "/events/kopis-PF299935/", "destination": "/events/ellegarden-seoul-2026-11/", "permanent": true },
-    { "source": "/venues/김해문화의전당 마루홀/", "destination": "/venues/gimhae-arts-center-maru/", "permanent": true },
-    { "source": "/venues/김해문화의전당 마루홀", "destination": "/venues/gimhae-arts-center-maru/", "permanent": true },
+    { "source": "/venues/%EA%B9%80%ED%95%B4%EB%AC%B8%ED%99%94%EC%9D%98%EC%A0%84%EB%8B%B9%20%EB%A7%88%EB%A3%A8%ED%99%80/", "destination": "/venues/gimhae-arts-center-maru/", "permanent": true },
+    { "source": "/venues/%EA%B9%80%ED%95%B4%EB%AC%B8%ED%99%94%EC%9D%98%EC%A0%84%EB%8B%B9%20%EB%A7%88%EB%A3%A8%ED%99%80", "destination": "/venues/gimhae-arts-center-maru/", "permanent": true },
     {
       "source": "/:path((?!api(?:/|$)|_astro/|_vercel/)[^.]*[^/.])",
       "destination": "/:path/",
