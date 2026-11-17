@@ -41,7 +41,8 @@ export interface VenueInfo {
   // '어디가 잘 보인다' 같은 평가는 공식 근거가 없으면 쓰지 않는다(후기 검색으로 넘긴다).
   seating?: {
     // 'hall'은 고정 객석이 없는 전시장: floors에 홀 이름·면적·규격을 적는다.
-    unit?: 'floor' | 'hall';
+    // 'room'은 층 구분 없는 한 공간(클럽·소극장): floors에 공연장 하나와 등록 객석 수를 적는다.
+    unit?: 'floor' | 'hall' | 'room';
     summary?: string;
     floors: Array<{ name: string; seats: string; note?: string }>;
     notes?: string[];
