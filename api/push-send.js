@@ -6,8 +6,11 @@
 //   하루 전(24시간 이내) · 30분 전 · 10분 전
 // 호출이 몇 분 늦어도 문구가 틀리지 않도록 "N분 전" 대신 실제 오픈 시각과 남은 시간을 적는다.
 // 같은 단계·같은 구간은 Redis 키(push:sent:...)로 한 번만 나가게 막는다.
+// 같은 호출에서 공연 요청(api/request.js)도 확인한다: /request-index.json에 요청한 이름과 맞는 공연이
+// 올라왔으면 기다리던 구독에 한 번 알리고 그 요청을 닫는다.
 import webpush from 'web-push';
 import { redis, redisAvailable } from './_redis.js';
+import { matches } from './_match.js';
 
 const PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY;
 const PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY;
@@ -47,6 +50,69 @@ export function message(stage, nowMs) {
   };
 }
 
+export function requestMessage(e) {
+  const [, m, d] = e.d.split('-').map(Number);
+  return {
+    title: `찾던 공연이 올라왔어요: ${e.a.replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim()}`,
+    body: `${m}월 ${d}일 · ${e.v}. 들어가서 티켓오픈 알림을 켜 두세요.`,
+    url: `/events/${e.id}/`,
+    tag: `req-${e.id}`,
+  };
+}
+
+// 요청한 공연이 올라왔는지 보고 알린다. 맞는 공연이 여럿이면 가장 가까운 날짜 하나만 알린다.
+async function sendRequests(dry, out) {
+  const [pending] = await redis([['SMEMBERS', 'req:pending']]);
+  if (!pending || pending.length === 0) return;
+  const r = await fetch(`${SITE}/request-index.json`, { cache: 'no-store' });
+  if (!r.ok) return;
+  const index = (await r.json()).sort((a, b) => a.d.localeCompare(b.d));
+  const skips = await redis(pending.map((k) => ['SMEMBERS', `req:skip:${k}`]));
+
+  for (const [i, key] of pending.entries()) {
+    const skip = new Set(skips[i] ?? []);
+    const ev = index.find((e) => !skip.has(e.id) && matches(key, e.k));
+    if (!ev) continue;
+    const [hashes] = await redis([['SMEMBERS', `req:wait:${key}`]]);
+    if (dry) { out.requests += 1; out.sent += hashes?.length ?? 0; continue; }
+    const [locked] = await redis([['SET', `req:sent:${key}:${ev.id}`, '1', 'NX', 'EX', 7 * 86400]]);
+    if (!locked) continue;
+    out.requests += 1;
+
+    const dead = [];
+    if (hashes && hashes.length > 0) {
+      const [subs] = await redis([['MGET', ...hashes.map((h) => `push:sub:${h}`)]]);
+      const payload = JSON.stringify(requestMessage(ev));
+      await Promise.all(hashes.map(async (h, j) => {
+        if (!subs[j]) { dead.push(h); return; }
+        try {
+          await webpush.sendNotification(JSON.parse(subs[j]), payload, { TTL: 3 * 86400, urgency: 'normal' });
+          out.sent += 1;
+        } catch (e) {
+          if (e?.statusCode === 404 || e?.statusCode === 410) dead.push(h);
+          else out.failed += 1;
+        }
+      }));
+    }
+    // 요청을 닫는다. 요청 수(req:count)는 수요 집계로 남긴다.
+    await redis([
+      ['SREM', 'req:pending', key],
+      ['DEL', `req:wait:${key}`, `req:skip:${key}`],
+      ['HSET', 'req:done', key, ev.id],
+    ]);
+    const live = (hashes ?? []).filter((h) => !dead.includes(h));
+    if (live.length > 0) {
+      const left = await redis(live.flatMap((h) => [['SREM', `req:subq:${h}`, key], ['SCARD', `req:subq:${h}`], ['SCARD', `push:subev:${h}`]]));
+      const empty = live.filter((_, j) => !Number(left[j * 3 + 1]) && !Number(left[j * 3 + 2]));
+      if (empty.length > 0) await redis([['DEL', ...empty.flatMap((h) => [`push:sub:${h}`, `req:subq:${h}`])]]);
+    }
+    if (dead.length > 0) {
+      out.removed += dead.length;
+      await redis([['DEL', ...dead.flatMap((h) => [`push:sub:${h}`, `push:subev:${h}`, `req:subq:${h}`])]]);
+    }
+  }
+}
+
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (!PUBLIC_KEY || !PRIVATE_KEY || !TOKEN || !redisAvailable()) return res.status(503).json({ error: 'unavailable' });
@@ -61,7 +127,7 @@ export default async function handler(req, res) {
     const now = Date.now();
     webpush.setVapidDetails('https://jikgwannyang.com/contact/', PUBLIC_KEY, PRIVATE_KEY);
 
-    const out = { due: 0, sent: 0, failed: 0, removed: 0, dry };
+    const out = { due: 0, requests: 0, sent: 0, failed: 0, removed: 0, dry };
     for (const s of stages) {
       const at = new Date(s.at).getTime();
       const w = windowOf(at - now);
@@ -103,6 +169,8 @@ export default async function handler(req, res) {
         ]);
       }
     }
+    // 요청 확인이 실패해도 티켓오픈 발송 결과는 그대로 돌려준다
+    await sendRequests(dry, out).catch(() => { out.failed += 1; });
     return res.status(200).json(out);
   } catch {
     return res.status(502).json({ error: 'send_error' });

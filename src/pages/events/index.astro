@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PosterCard from '../../components/PosterCard.astro';
+import RequestEvent from '../../components/RequestEvent.astro';
 import Mascot from '../../components/Mascot.astro';
 import CalendarNav from '../../components/CalendarNav.astro';
 import AdSlot from '../../components/AdSlot.astro';
@@ -105,6 +106,7 @@ for (const e of events) {
       <Mascot size={150} pose="search" />
       <p><strong>조건에 맞는 공연을 못 찾았어요.</strong><br />필터를 풀거나 다른 이름으로 검색해 보세요.</p>
     </div>
+    <div id="req-wrap" hidden><RequestEvent /></div>
 
     {events.length === 0 && (
       <p class="empty">
@@ -191,6 +193,11 @@ for (const e of events) {
     if (noResult) {
       const anyCard = Array.from(cards).some((c) => c.style.display !== 'none');
       noResult.hidden = anyCard;
+      // 이름으로 찾다가 못 찾았을 때만 공연 요청 상자를 보여 주고, 검색어를 옮겨 적는다
+      const reqWrap = document.getElementById('req-wrap');
+      const reqInput = document.getElementById('req-name') as HTMLInputElement | null;
+      if (reqWrap) reqWrap.hidden = anyCard || activeSearch.trim().length < 2;
+      if (reqInput && !anyCard && activeSearch.trim() && document.activeElement !== reqInput) reqInput.value = activeSearch.trim();
     }
     document.querySelectorAll<HTMLElement>('.month-group').forEach((section) => {
       const visible = Array.from(section.querySelectorAll<HTMLElement>('.card-wrap')).filter(

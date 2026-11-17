@@ -227,12 +227,17 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
         <div class="app-copy rv">
           <p class="eyebrow"><Mascot size={40} pose="face" who="cheese" />노을이가 챙기는 티켓오픈 알림</p>
           <h2 id="app-title">오픈 10분 전,<br />폰이 먼저 알려줘요.</h2>
-          <p class="lead">공연 페이지에서 "오픈 알림 받기"만 눌러 두면 하루 전, 30분 전, 10분 전에 알림이 가요. 가입도 앱 설치도 필요 없어요.</p>
+          <p class="lead">공연마다 하루 전, 30분 전, 10분 전에 알림이 가요. 가입은 필요 없어요.</p>
+          <ol class="how" id="how">
+            <li id="how-pre" hidden><b id="how-pre-t"></b><span id="how-pre-d"></span></li>
+            <li><b>공연 고르기</b><span>티켓오픈 예정 목록이나 공연 페이지를 열어요.</span></li>
+            <li><b>"오픈 알림 받기" 누르기</b><span>알림 허용 창이 뜨면 "허용"을 눌러요.</span></li>
+          </ol>
           <div class="act">
             <a class="btn p" href="/ticket-open/">알림 켤 공연 고르기</a>
             <a class="btn" href="/calendar/">캘린더로 받기</a>
           </div>
-          <p class="fine">홈 화면에 추가하면 앱처럼 열려요. 아이폰은 사파리에서 홈 화면에 추가한 뒤에 알림을 켤 수 있어요. <a href="/alerts/">알림 받는 법 보기</a></p>
+          <p class="fine" id="how-fine">아이폰은 사파리에서 홈 화면에 추가한 뒤에 알림을 켤 수 있어요. <a href="/alerts/">기기별 알림 받는 법</a></p>
         </div>
         <div class="phone rv" style="--d:120ms" id="phone" data-notis={JSON.stringify(notis)} aria-hidden="true">
           <div class="ph-notch"></div>
@@ -274,6 +279,28 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
 
 <script>
   import { hms, kstDayDiff } from '../lib/openPhase';
+  import { deviceKind, chromeIntentUrl, safariUrl } from '../lib/pushClient';
+
+  // 알림 받는 법: 지금 기기에서 알림을 켜기 전에 꼭 해야 하는 일이 있으면 맨 앞 단계로 보여 준다.
+  // 바로 켤 수 있는 기기(안드로이드 크롬, PC, 홈 화면의 직관냥)는 두 단계만 보인다.
+  {
+    const pre = document.getElementById('how-pre');
+    const fine = document.getElementById('how-fine');
+    const t = document.getElementById('how-pre-t');
+    const d = document.getElementById('how-pre-d');
+    const kind = deviceKind();
+    const set = (title: string, html: string) => {
+      if (!pre || !t || !d) return;
+      t.textContent = title;
+      d.innerHTML = html;
+      pre.hidden = false;
+    };
+    if (kind === 'ios-safari') set('홈 화면에 추가하기', '아이폰은 공유 버튼 → "홈 화면에 추가"를 한 뒤, 그 아이콘으로 열어야 알림이 와요. <a href="/alerts/#ios-1">그림으로 보기</a>');
+    else if (kind === 'ios-other') set('사파리로 열기', `아이폰은 사파리에서 홈 화면에 추가해야 알림이 와요. <a href="${safariUrl()}">사파리로 열기</a> · <a href="/alerts/">자세히</a>`);
+    else if (kind === 'android-inapp') set('크롬으로 열기', `앱 안에서 열린 화면에서는 알림이 안 와요. <a href="${chromeIntentUrl()}">크롬으로 열기</a>`);
+    // 기기에 맞는 안내를 위에 띄웠거나 아이폰이 아니면, 아이폰용 작은 글씨는 필요 없다
+    if (fine && kind !== 'desktop') fine.innerHTML = '<a href="/alerts/">기기별 알림 받는 법</a>';
+  }
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (id: string) => document.getElementById(id) as HTMLElement;
@@ -815,6 +842,14 @@ const GRAIN = `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://
   .sg .app h2 { margin: 0; font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -0.05em; font-weight: 800; }
   .sg .lead { margin: 1.3rem 0 0; max-width: 32rem; color: var(--fg-3); line-height: 1.75; }
   .sg .app .act { margin-top: 1.8rem; }
+  .sg .how { list-style: none; counter-reset: how; margin: 1.6rem 0 0; padding: 0; max-width: 32rem; display: grid; gap: 0.9rem; }
+  .sg .how li { counter-increment: how; display: grid; grid-template-columns: 1.9rem 1fr; column-gap: 0.7rem; row-gap: 0.15rem; }
+  .sg .how li[hidden] { display: none; }
+  .sg .how li::before { content: counter(how); grid-row: span 2; width: 1.9rem; height: 1.9rem; border-radius: 50%; border: 1px solid var(--line-2); display: grid; place-items: center; font-size: 0.82rem; font-weight: 700; color: var(--fg-2); font-variant-numeric: tabular-nums; }
+  .sg .how b { font-size: 0.95rem; color: var(--fg); }
+  .sg .how span { font-size: 0.86rem; line-height: 1.6; color: var(--fg-3); }
+  .sg .how a { color: var(--cheese); font-weight: 700; }
+  .sg .how #how-pre::before { border-color: var(--cheese); color: var(--cheese); }
   .sg .fine { margin: 1.3rem 0 0; max-width: 32rem; font-size: 0.8rem; line-height: 1.6; color: var(--dim); }
   .sg .fine a { color: var(--cheese); font-weight: 700; white-space: nowrap; }
   .sg .phone { position: relative; width: 256px; height: 500px; padding: 2.8rem 0.8rem 0; border: 1px solid var(--line-2); border-radius: 36px; background: var(--bg-deep); overflow: hidden; }

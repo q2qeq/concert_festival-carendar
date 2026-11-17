@@ -99,17 +99,34 @@ async function post(subscription: PushSubscription, event: string, action: 'add'
 
 export type ToggleResult = 'on' | 'off' | 'denied' | 'error';
 
+// 이 브라우저의 푸시 구독을 가져오거나 새로 만든다. 권한을 거절하면 'denied'.
+// 반드시 클릭 같은 사용자 동작 안에서 호출한다(권한 요청 창이 그래야 뜬다).
+export async function ensureSubscription(): Promise<PushSubscription | 'denied' | null> {
+  const key = await serverKey();
+  if (!key) return null;
+  const perm = await Notification.requestPermission();
+  if (perm !== 'granted') return 'denied';
+  const reg = await navigator.serviceWorker.register('/sw.js');
+  await navigator.serviceWorker.ready;
+  return (await reg.pushManager.getSubscription())
+    ?? (await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(key) }));
+}
+
+// 공연 요청("찾는 공연이 없나요?")으로 알림을 기다리는 이름들. 서버가 돌려준 비교 키 목록을 그대로 둔다.
+const REQ_KEY = 'krconcerts:push-requests';
+export function requestedKeys(): string[] {
+  try { const v = JSON.parse(localStorage.getItem(REQ_KEY) ?? '[]'); return Array.isArray(v) ? v : []; } catch { return []; }
+}
+export function saveRequestedKeys(keys: string[]) {
+  try { localStorage.setItem(REQ_KEY, JSON.stringify(keys)); } catch { /* 저장소를 못 쓰면 목록만 안 보인다 */ }
+}
+
 // 반드시 클릭 같은 사용자 동작 안에서 호출한다(권한 요청 창이 그래야 뜬다).
 export async function enableAlert(eventId: string): Promise<ToggleResult> {
   try {
-    const key = await serverKey();
-    if (!key) return 'error';
-    const perm = await Notification.requestPermission();
-    if (perm !== 'granted') return 'denied';
-    const reg = await navigator.serviceWorker.register('/sw.js');
-    await navigator.serviceWorker.ready;
-    const sub = (await reg.pushManager.getSubscription())
-      ?? (await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(key) }));
+    const sub = await ensureSubscription();
+    if (!sub) return 'error';
+    if (sub === 'denied') return 'denied';
     const events = await post(sub, eventId, 'add');
     if (!events) return 'error';
     saveAlertEvents(events);
@@ -127,8 +144,8 @@ export async function disableAlert(eventId: string): Promise<ToggleResult> {
       const events = await post(sub, eventId, 'remove');
       if (!events) return 'error';
       saveAlertEvents(events);
-      // 켜 둔 공연이 없으면 브라우저 구독도 해지한다
-      if (events.length === 0) await sub.unsubscribe().catch(() => {});
+      // 켜 둔 공연도 기다리는 공연 요청도 없으면 브라우저 구독도 해지한다
+      if (events.length === 0 && requestedKeys().length === 0) await sub.unsubscribe().catch(() => {});
     } else {
       saveAlertEvents(alertEvents().filter((x) => x !== eventId));
     }

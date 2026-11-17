@@ -1,4 +1,5 @@
 ---
+import RequestEvent from '../components/RequestEvent.astro';
 import Mascot from '../components/Mascot.astro';
 // 티켓오픈 일정 - 공식 공지로 오픈 시각이 확인된 공연만 모아 보여준다 (없는 시각을 지어내지 않음).
 // 정적 빌드라서 "곧 오픈" 목록은 브라우저에서 아직 안 지난 것만 남기고 카운트다운을 붙인다.
@@ -122,6 +123,8 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
       </ul>
     </section>
   )}
+
+  <RequestEvent />
 
   <p class="note">오픈 시각은 예매처 사정으로 바뀔 수 있어요. 예매 전에 꼭 공식 공지를 다시 확인하세요. 새 오픈 소식은 직관냥이 매일 확인해 이 페이지에 올려요.</p>
 </BaseLayout>

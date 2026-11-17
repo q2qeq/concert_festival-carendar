@@ -1,0 +1,168 @@
+---
+// "찾는 공연이 없나요?" - 아티스트 이름을 받아 두었다가 그 공연이 올라오면 푸시로 알린다(api/request.js).
+// 검색 결과가 비었을 때와 티켓오픈 목록 끝처럼, 찾다가 못 찾은 자리에만 둔다. 한 페이지에 하나만.
+// 보내기 전에 /request-index.json으로 이미 있는 공연인지 먼저 보여 준다.
+// 아직 발표 안 된 공연은 올릴 수 없으니 "추가해 드려요"가 아니라 "올라오면 알려드려요"로만 약속한다.
+interface Props { title?: string; inputId?: string }
+const { title = '찾는 공연이 없나요?', inputId = 'req-name' } = Astro.props;
+---
+<section class="reqbox" aria-labelledby={`${inputId}-h`}>
+  <h2 class="req-h" id={`${inputId}-h`}>{title}</h2>
+  <p class="req-p">아티스트 이름을 남겨 주세요. 공연이 올라오면 이 기기로 알림을 보내드려요. 아직 발표되지 않은 공연은 공식 발표가 난 뒤에 올라와요.</p>
+  <form class="req-f" novalidate>
+    <label class="sr" for={inputId}>아티스트 이름</label>
+    <input id={inputId} name="name" type="text" maxlength="60" autocomplete="off" placeholder="예: 콜드플레이, Coldplay" />
+    <button type="submit">요청하기</button>
+  </form>
+  <div class="req-msg" role="status" aria-live="polite"></div>
+  <div class="req-mine" hidden>
+    <p>알림 기다리는 이름</p>
+    <ul></ul>
+  </div>
+</section>
+
+<script>
+  import { norm, matches } from '../../api/_match.js';
+  import { pushSupport, serverKey, ensureSubscription, requestedKeys, saveRequestedKeys } from '../lib/pushClient';
+
+  type Item = { id: string; a: string; d: string; v: string; k: string[] };
+  const box = document.querySelector<HTMLElement>('.reqbox');
+  if (box) {
+    const form = box.querySelector<HTMLFormElement>('.req-f')!;
+    const input = form.querySelector<HTMLInputElement>('input')!;
+    const btn = form.querySelector<HTMLButtonElement>('button')!;
+    const msg = box.querySelector<HTMLElement>('.req-msg')!;
+    const mine = box.querySelector<HTMLElement>('.req-mine')!;
+    const list = mine.querySelector<HTMLUListElement>('ul')!;
+    const NAMES = 'krconcerts:req-names'; // 비교 키 -> 방문자가 적은 이름(이 브라우저에만)
+    const SENT = 'krconcerts:req-sent'; // 알림 없이 보낸 요청(같은 이름을 두 번 세지 않게)
+    const read = <T,>(k: string, d: T): T => { try { return JSON.parse(localStorage.getItem(k) ?? '') ?? d; } catch { return d; } };
+    const write = (k: string, v: unknown) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* 무시 */ } };
+
+    // 클릭 안에서 권한 창을 띄워야 해서, 목록과 서버 키는 미리 받아 둔다
+    let index: Item[] | null = null;
+    fetch('/request-index.json').then((r) => (r.ok ? r.json() : [])).then((d: Item[]) => { index = d; }).catch(() => { index = []; });
+    if (pushSupport() === 'ok') serverKey();
+
+    const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+    const md = (iso: string) => { const [, m, d] = iso.split('-').map(Number); return `${m}월 ${d}일`; };
+    const say = (html: string) => { msg.innerHTML = html; };
+
+    const paintMine = () => {
+      const keys = requestedKeys();
+      const names = read<Record<string, string>>(NAMES, {});
+      mine.hidden = keys.length === 0;
+      list.innerHTML = keys.map((k) => `<li><span>${esc(names[k] ?? k)}</span><button type="button" data-k="${esc(k)}">알림 취소</button></li>`).join('');
+    };
+    paintMine();
+
+    async function post(body: Record<string, unknown>) {
+      const r = await fetch('/api/request', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      if (!r.ok) throw new Error(String(r.status));
+      return (await r.json()) as { ok: boolean; requests?: string[] };
+    }
+
+    let forced: { key: string; skip: string[] } | null = null;
+
+    async function send(name: string, key: string, skip: string[]) {
+      btn.disabled = true;
+      try {
+        const support = pushSupport();
+        let sub: PushSubscription | 'denied' | null = null;
+        if (support === 'ok') sub = await ensureSubscription().catch(() => null);
+        if (sub && sub !== 'denied') {
+          const d = await post({ name, action: 'add', subscription: sub.toJSON(), skip });
+          saveRequestedKeys(d.requests ?? []);
+          write(NAMES, { ...read<Record<string, string>>(NAMES, {}), [key]: name });
+          paintMine();
+          say(`요청했어요. <b>${esc(name)}</b> 공연이 올라오면 이 기기로 알림을 보낼게요.`);
+        } else {
+          const sent = read<string[]>(SENT, []);
+          if (!sent.includes(key)) {
+            await post({ name, action: 'add', skip });
+            write(SENT, [...sent, key].slice(-50));
+          }
+          const why = support === 'ios-install' || support === 'inapp-ios'
+            ? '아이폰은 홈 화면에 추가한 직관냥에서 요청해야 알림이 와요. <a href="/alerts/">알림 받는 법</a>'
+            : support === 'inapp-android'
+              ? '앱 안에서 열린 화면이라 알림을 보낼 수 없어요. 크롬으로 열어 다시 요청하면 알림이 와요.'
+              : sub === 'denied' || support === 'denied'
+                ? '알림이 차단돼 있어서 올라와도 알려드릴 수는 없어요. 브라우저 설정에서 알림을 허용하면 받을 수 있어요.'
+                : '이 브라우저에서는 알림을 보낼 수 없어서, 올라왔는지는 여기서 다시 찾아봐 주세요.';
+          say(`요청은 받았어요. ${why}`);
+        }
+        input.value = '';
+        forced = null;
+      } catch (e) {
+        say(String((e as Error).message) === '429'
+          ? '요청이 너무 많아요. 잠시 뒤에 다시 해 주세요.'
+          : '지금은 요청을 받지 못했어요. 잠시 뒤에 다시 해 주세요.');
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const name = input.value.replace(/\s+/g, ' ').trim();
+      const key = norm(name);
+      if (key.length < 2) { say('아티스트 이름을 두 글자 이상 적어 주세요.'); input.focus(); return; }
+      if (/https?:|www\./i.test(name)) { say('주소 말고 아티스트 이름만 적어 주세요.'); return; }
+      if (forced?.key === key) { send(name, key, forced.skip); return; }
+      const hits = (index ?? []).filter((e) => matches(key, e.k)).slice(0, 3);
+      if (hits.length > 0) {
+        forced = { key, skip: hits.map((e) => e.id) };
+        say(`이미 올라온 공연이 있어요.<ul>${hits.map((e) => `<li><a href="/events/${e.id}/">${esc(e.a)}</a> <small>${md(e.d)} · ${esc(e.v)}</small></li>`).join('')}</ul>찾는 공연이 아니면 <b>요청하기</b>를 한 번 더 눌러 주세요.`);
+        return;
+      }
+      send(name, key, []);
+    });
+
+    list.addEventListener('click', async (ev) => {
+      const b = (ev.target as HTMLElement).closest<HTMLButtonElement>('button[data-k]');
+      if (!b) return;
+      const key = b.dataset.k ?? '';
+      const name = read<Record<string, string>>(NAMES, {})[key] ?? key;
+      b.disabled = true;
+      try {
+        const reg = await navigator.serviceWorker?.getRegistration();
+        const sub = await reg?.pushManager.getSubscription();
+        let keys = requestedKeys().filter((k) => k !== key);
+        if (sub) keys = (await post({ name, action: 'remove', subscription: sub.toJSON() })).requests ?? [];
+        saveRequestedKeys(keys);
+        paintMine();
+        say(`<b>${esc(name)}</b> 알림을 취소했어요.`);
+      } catch {
+        b.disabled = false;
+        say('지금은 취소하지 못했어요. 잠시 뒤에 다시 해 주세요.');
+      }
+    });
+  }
+</script>
+
+<style>
+  .reqbox { margin: 2rem 0 0; padding: 1.3rem 1.3rem 1.2rem; border: 1px solid var(--line-2); border-radius: 8px; }
+  .req-h { margin: 0; font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--fg); }
+  .req-p { margin: 0.45rem 0 0; font-size: 0.88rem; line-height: 1.65; color: var(--fg-3); }
+  .req-f { display: flex; gap: 0.5rem; margin-top: 0.95rem; }
+  .req-f input { flex: 1 1 auto; min-width: 0; padding: 0.75rem 0.9rem; border-radius: 4px; border: 1px solid var(--line-2); background: var(--card, transparent); color: var(--fg); font: inherit; font-size: 0.95rem; }
+  .req-f input::placeholder { color: var(--faint); }
+  .req-f input:focus { outline: none; border-color: var(--cheese); }
+  .req-f button { flex: none; padding: 0.75rem 1.1rem; border-radius: 4px; border: 0; background: var(--btn); color: var(--ink); font: inherit; font-weight: 700; font-size: 0.92rem; cursor: pointer; }
+  .req-f button:disabled { opacity: 0.6; cursor: default; }
+  .req-msg { font-size: 0.86rem; line-height: 1.65; color: var(--fg-2); }
+  .req-msg:not(:empty) { margin-top: 0.8rem; }
+  .req-msg a { color: var(--cheese); font-weight: 700; }
+  .req-msg ul { margin: 0.4rem 0; padding-left: 1.1rem; }
+  .req-msg small { color: var(--muted); }
+  .req-mine { margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px solid var(--line); }
+  .req-mine p { margin: 0 0 0.4rem; font-size: 0.8rem; color: var(--muted); }
+  .req-mine ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+  .req-mine li { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--fg-2); }
+  .req-mine button { all: unset; cursor: pointer; font-size: 0.8rem; color: var(--muted); text-decoration: underline; }
+  .req-mine button:hover { color: var(--cheese); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  @media (max-width: 480px) {
+    .req-f { flex-direction: column; }
+  }
+</style>

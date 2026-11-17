@@ -69,13 +69,14 @@ export default async function handler(req, res) {
         ['EXPIRE', `push:ev:${event}`, TTL],
       ]);
     } else {
-      const [, , left] = await redis([
+      const [, , left, reqs] = await redis([
         ['SREM', `push:subev:${h}`, event],
         ['SREM', `push:ev:${event}`, h],
         ['SCARD', `push:subev:${h}`],
+        ['SCARD', `req:subq:${h}`],
       ]);
-      // 켜 둔 공연이 하나도 없으면 구독 정보 자체를 지운다
-      if (!Number(left)) await redis([['DEL', `push:sub:${h}`, `push:subev:${h}`]]);
+      // 켜 둔 공연도, 기다리는 공연 요청(api/request.js)도 없으면 구독 정보 자체를 지운다
+      if (!Number(left) && !Number(reqs)) await redis([['DEL', `push:sub:${h}`, `push:subev:${h}`]]);
     }
     const [events] = await redis([['SMEMBERS', `push:subev:${h}`]]);
     return res.status(200).json({ ok: true, events: events ?? [] });
