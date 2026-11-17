@@ -25,6 +25,7 @@
 - `npm run build` — events.json·글·페이지를 바꿨으면 반드시 통과해야 한다.
 - `npm run audit:posts` — 글을 쓰거나 고쳤으면 ERROR 0이어야 한다.
 - `npm run audit:events` — 공연을 추가·수정했으면 ERROR가 없어야 한다.
+- `npm run og:cards -- <공연 id>` — 공연을 새로 넣었거나 공연명·날짜·공연장·티켓오픈·포스터를 바꿨으면 그 공연의 공유 카드(`public/og/`)를 다시 만들어 같이 커밋한다. 이 맥의 한글 글꼴로 그리기 때문에 Vercel 빌드에서는 만들어지지 않는다.
 
 ## git 규칙 (모든 세션)
 

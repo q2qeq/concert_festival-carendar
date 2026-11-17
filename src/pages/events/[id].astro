@@ -172,8 +172,16 @@ const EVENT_STATUS_MAP = {
   postponed: 'https://schema.org/EventPostponed',
   cancelled: 'https://schema.org/EventCancelled',
 };
-// 포스터가 없으면 scripts/make-share-card.mjs 가 만든 글자 카드(public/og)를 공유 이미지로 쓴다.
-const shareImage = event.posterUrl ?? (existsSync(`public/og/${event.id}.png`) ? `/og/${event.id}.png` : undefined);
+// 공유 썸네일: scripts/make-share-card.mjs 가 만든 가로 카드(public/og, 포스터+날짜+티켓오픈)를 먼저 쓴다.
+// 세로 포스터를 그대로 쓰면 X가 가운데만 잘라 보여 준다. 카드가 없으면(지난 공연 등) 포스터를 쓴다.
+const ogCard = ['jpg', 'png'].find((ext) => existsSync(`public/og/${event.id}.${ext}`));
+const shareImage = ogCard ? `/og/${event.id}.${ogCard}` : event.posterUrl;
+// X(트위터) 공유: 글머리는 공연명·날짜, 링크 카드가 나머지를 보여 준다.
+const shareUrl = new URL(`/events/${event.id}/`, Astro.site).href;
+const md = (iso: string) => `${Number(iso.slice(5, 7))}/${Number(iso.slice(8, 10))}`;
+const shareWhen = event.startDate === event.endDate ? md(event.startDate) : `${md(event.startDate)}~${md(event.endDate)}`;
+const shareText = `${event.artist} ${shareWhen} ${event.venue}`;
+const xShareHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
 const status = event.status ?? 'scheduled';
 const isPast = event.endDate < new Date().toISOString().slice(0, 10);
 
@@ -357,6 +365,8 @@ const breadcrumbLd = {
           <AddToCalendar event={event} />
         </div>
       )}
+      <a class="ab-btn" href={xShareHref} target="_blank" rel="noopener noreferrer" data-track-kind="share">X에 공유</a>
+      <button class="ab-btn" type="button" id="copy-link" data-url={shareUrl}>링크 복사</button>
       <a class="ab-btn" href="#sightline">구역별 시야</a>
       {showShuttleSection && (
         <a class="ab-btn" href="#shuttle">셔틀버스</a>
@@ -622,6 +632,17 @@ const breadcrumbLd = {
     });
   }
   setupActionPopover('calendar-toggle', 'calendar-popover');
+  // 링크 복사: 복사되면 버튼 글자를 잠깐 바꿔 알려 준다
+  const copyBtn = document.getElementById('copy-link');
+  copyBtn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(copyBtn.dataset.url ?? location.href);
+      copyBtn.textContent = '복사됐어요';
+    } catch {
+      copyBtn.textContent = '복사하지 못했어요';
+    }
+    setTimeout(() => { copyBtn.textContent = '링크 복사'; }, 1800);
+  });
   setupActionPopover('ticket-toggle', 'ticket-popover');
 
   // 모바일 하단 고정 예매 버튼: 액션바가 화면 위로 지나가면 보이고, 다시 보이면 숨긴다.

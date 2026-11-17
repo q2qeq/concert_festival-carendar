@@ -115,6 +115,7 @@ const jsonLd = [
       <button id="g-full" type="button" class="btn" hidden>전체 도전하기</button>
       <button id="g-menu" type="button" class="btn">단계 고르기</button>
       <button id="g-share" type="button" class="btn">결과 공유하기</button>
+      <button id="g-share-x" type="button" class="btn">X에 공유</button>
     </div>
     <p class="after">
       진짜 티켓팅 전에는 <a href="/ticketing-clock/">티켓팅 시계</a>로 오픈 시각을 맞추고,
@@ -1007,7 +1008,7 @@ const jsonLd = [
     // 시작 화면이 보이거나, 한 판이 끝나 결과 화면이 떠 있을 때만 (플레이 중엔 무시)
     if (running || ($('start-screen').hidden && result.hidden)) return;
     if (e.key === 'Enter' || e.key === ' ') {
-      if ((e.target as HTMLElement)?.closest?.('.chip, .mode, summary, a, input, textarea, #g-share, #g-full, #g-menu')) return;
+      if ((e.target as HTMLElement)?.closest?.('.chip, .mode, summary, a, input, textarea, #g-share, #g-share-x, #g-full, #g-menu')) return;
       e.preventDefault();
       start($('start-screen').hidden ? mode : 'full');
     }
@@ -1018,6 +1019,13 @@ const jsonLd = [
   // /practice/?stage=seat 처럼 들어오면 그 단계를 바로 시작한다
   const qStage = new URLSearchParams(location.search).get('stage');
   if (qStage === 'btn' || qStage === 'zone' || qStage === 'seat') start(qStage);
+  // X 공유: 결과 문구 끝의 주소는 url로 따로 넘겨 링크 카드가 붙게 한다
+  $('g-share-x').addEventListener('click', () => {
+    const m = resultText.match(/^([\s\S]*?)\n나도 해보기 (\S+)$/);
+    const text = m ? `${m[1]}\n나도 해보기` : resultText;
+    const url = m ? m[2] : `${location.origin}/practice/`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank', 'noopener');
+  });
   $('g-share').addEventListener('click', async () => {
     try {
       if (navigator.share) { await navigator.share({ text: resultText }); return; }
