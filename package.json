@@ -23,6 +23,7 @@
     "audit:posts": "node scripts/audit-posts.mjs",
     "posts:cancel": "node scripts/cancel-ticket-posts.mjs",
     "clicks:report": "node scripts/click-report.mjs",
+    "requests:report": "node scripts/request-report.mjs",
     "popular:events": "node scripts/popular-events.mjs",
     "og:cards": "node scripts/make-share-card.mjs",
     "promo:copy": "node scripts/promo-copy.mjs"
