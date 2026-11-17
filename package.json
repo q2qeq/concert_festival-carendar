@@ -18,6 +18,8 @@
     "indexnow:ping": "node scripts/indexnow-ping.mjs",
     "posters:cache": "node scripts/cache-posters.mjs",
     "audit:events": "node scripts/audit-events.mjs",
+    "events:gaps": "node scripts/event-gaps.mjs",
+    "prices:sync": "node scripts/sync-prices.mjs",
     "audit:posts": "node scripts/audit-posts.mjs",
     "clicks:report": "node scripts/click-report.mjs",
     "popular:events": "node scripts/popular-events.mjs",

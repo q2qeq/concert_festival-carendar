@@ -5127,7 +5127,18 @@
         "vendor": "롯데콘서트홀",
         "url": "https://www.lotteconcerthall.com/product/performance/261233"
       }
-    ]
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연예술통합전산망 공연 정보",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF303596"
+      },
+      {
+        "label": "블루노트 도쿄 올스타 재즈 오케스트라 with LISA ONO 내한공연 - 롯데콘서트홀",
+        "url": "https://www.lotteconcerthall.com/product/performance/261233"
+      }
+    ],
+    "description": "블루노트 도쿄 올스타 재즈 오케스트라가 보사노바 가수 리사 오노와 함께하는 내한공연이에요. 2026년 12월 2일(수)과 3일(목) 저녁 7시 30분, 롯데콘서트홀에서 열려요."
   },
   {
     "id": "mass-of-the-fermenting-dregs-seoul-2026-12",
@@ -5627,7 +5638,18 @@
         "vendor": "29CM",
         "url": "https://ticket.29cm.co.kr/catalog/4173556"
       }
-    ]
+    ],
+    "sources": [
+      {
+        "label": "KOPIS 공연예술통합전산망 공연 정보",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF299848"
+      },
+      {
+        "label": "홈커밍스 내한 공연 - 멜론티켓 예매 페이지",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213806"
+      }
+    ],
+    "description": "일본 밴드 홈커밍스(Homecomings)의 내한 공연 'You are you, even if no one fill in about you.'예요. 2026년 12월 13일(일) 오후 5시 무신사 개러지에서 스탠딩으로 열려요."
   },
   {
     "id": "yuki-kuramoto-gimhae-2026-12",
@@ -6867,6 +6889,10 @@
       {
         "label": "2026 히어로 락 페스티벌 - 인천 | 기획공연 - 인디스트릿(공식)",
         "url": "https://indistreet.com/programs/2026-%ED%9E%88%EC%96%B4%EB%A1%9C-%EB%9D%BD-%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C-%EC%9D%B8%EC%B2%9C-yntyxr79guen72ibt5msl7go"
+      },
+      {
+        "label": "2026 히어로 락 페스티벌 - 인천 (일반티켓) - 멜론티켓 예매 페이지",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214275"
       }
     ],
     "shuttleBus": [
@@ -6875,7 +6901,35 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000616",
         "note": "셔틀 스캔으로 확인 (2026-11-16). 수요조사 중인 상품입니다."
       }
-    ]
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214275"
+      }
+    ],
+    "prices": [
+      {
+        "label": "3일권",
+        "price": 129000
+      },
+      {
+        "label": "2일권",
+        "price": 119000
+      },
+      {
+        "label": "1일권",
+        "price": 77000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=214275"
+    },
+    "posterUrl": "/posters/shuttle-hero-rock-festival-incheon-2026-12.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/11/202611061445322039bbbf-3d81-4641-8b39-9258ed47dab0.jpg",
+    "description": "2026년 12월 18일(금)부터 20일(일)까지 사흘 동안 인천 송도컨벤시아에서 열리는 실내 록 페스티벌이에요. 예매는 멜론티켓에서 하고, 1일권·2일권·3일권으로 나뉘어요."
   },
   {
     "id": "shuttle-lee-seung-chul-40th-concert-2026-12",
@@ -6944,7 +6998,7 @@
     "city": "대구",
     "startDate": "2026-12-25",
     "endDate": "2026-12-26",
-    "ticketUrl": "https://koreagenda.com/ko/events/event-2026-8772f6",
+    "ticketUrl": "https://ticket.melon.com/performance/index.htm?prodId=213665",
     "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 바비·애쉬아일랜드·콜드·던말릭 등이 출연하는 크리스마스 힙합 페스티벌.",
     "sources": [
       {
@@ -6958,6 +7012,10 @@
       {
         "label": "대구 힙합 페스티벌 - koreagenda.com (예매/일정)",
         "url": "https://koreagenda.com/ko/events/event-2026-8772f6"
+      },
+      {
+        "label": "2026 대구힙합페스티벌 - 멜론티켓 예매 페이지",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213665"
       }
     ],
     "shuttleBus": [
@@ -6968,7 +7026,23 @@
       }
     ],
     "posterUrl": "/posters/shuttle-daegu-hiphop-festival-2026-12.webp",
-    "posterSourceUrl": "https://kopis.or.kr/upload/pfmPoster/PF_PF298256_260811_144755.png"
+    "posterSourceUrl": "https://kopis.or.kr/upload/pfmPoster/PF_PF298256_260811_144755.png",
+    "prices": [
+      {
+        "label": "양일권",
+        "price": 200000
+      },
+      {
+        "label": "일일권",
+        "price": 109000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213665"
+    },
+    "description": "2026년 12월 25일(금)과 26일(토) 대구 엑스코 동관에서 열리는 힙합 페스티벌이에요. 예매는 멜론티켓에서 하고, 일일권과 양일권이 있어요."
   },
   {
     "id": "shuttle-akmu-concert-tour-gangneung-2026-11",
@@ -7585,6 +7659,10 @@
       {
         "label": "NCT WISH Announces Stops For 2nd Concert Tour 'INTO THE WISH : Face Our WISH' - Soompi",
         "url": "https://www.soompi.com/article/1876986wpp/nct-wish-announces-stops-for-2nd-concert-tour-into-the-wish-face-our-wish"
+      },
+      {
+        "label": "NCT WISH 2nd CONCERT TOUR 'INTO THE WISH : Face Our WISH' IN SEOUL - 멜론티켓 예매 페이지",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214071"
       }
     ],
     "schedule": "1/15(금) 18:00, 1/16(토) 17:00",
@@ -7602,7 +7680,34 @@
         "text": "가격은 VIP 22만 원·일반 16만 5천 원(공식 공지). 스페셜타임스 11/4 보도 기준 두 회차 모두 전석 매진.",
         "sourceUrl": "https://www.specialtimes.co.kr/news/articleView.html?idxno=481423"
       }
-    ]
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214071"
+      }
+    ],
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 220000
+      },
+      {
+        "label": "일반석",
+        "price": 165000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "위버스 공식 공지",
+      "url": "https://weverse.io/nctwish/notice/40039"
+    },
+    "ticketingAnnounced": true,
+    "ticketOpenAt": "2026-11-04T20:00:00+09:00",
+    "ticketOpenDate": "2026-11-04 오후 8시 (일반예매, 멜론티켓)",
+    "posterUrl": "/posters/nct-wish-2nd-concert-tour-seoul-2027-01.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/11/20261102145708e3d2981a-1920-407b-af17-48aff15992c0.jpg",
+    "description": "NCT WISH의 두 번째 콘서트 투어 'INTO THE WISH : Face Our WISH' 서울 공연이에요. 2027년 1월 15일(금) 오후 6시, 16일(토) 오후 5시에 고척스카이돔에서 열리고, 예매는 멜론티켓에서 해요."
   },
   {
     "id": "yoasobi-korea-2027-04",

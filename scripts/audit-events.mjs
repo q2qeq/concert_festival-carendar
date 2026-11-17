@@ -64,7 +64,13 @@ for (const e of events) {
   if (e.ticketingAnnounced && !e.ticketOpenDate && !hasLinks) add('INFO', e, `티켓팅 공지 표시만 있고 오픈 일정·링크 없음`);
   // 곧 열리는 공연인데 예매처가 없으면 사용자에게 가장 아픈 구멍이다.
   const days = (Date.parse(e.startDate) - Date.now()) / 86400000;
-  if (days <= 30 && !hasLinks && !e.ticketingAnnounced) add('WARN', e, `공연 ${Math.ceil(days)}일 전인데 예매 링크/공지 정보 없음`);
+  if (days <= 60 && !hasLinks && !(e.ticketOpenAt && Date.parse(e.ticketOpenAt) >= Date.now())) add('WARN', e, `공연 ${Math.ceil(days)}일 전인데 예매 링크 없음 - npm run events:gaps 의 찾는 순서대로 확인`);
+  // 공지·오픈 예정 글을 예매 버튼으로 쓰면 글이 내려갔을 때 엉뚱한 목록으로 넘어간다(5SOS·FKJ, 2026-11-17).
+  for (const u of [e.ticketUrl, ...(e.ticketLinks ?? []).map((t) => t.url)].filter(Boolean)) {
+    if (/\/contents\/notice\/|ticket\.yes24\.com\/Notice|\/csoon\/|\/help\/notice\/|\/display\/upcoming/.test(u)) add('WARN', e, `예매 링크가 공지 주소임 - 상품 페이지로 바꾸고 공지는 sources로: ${u}`);
+  }
+  // 가격은 note가 아니라 prices에 있어야 화면에 나온다.
+  if (hasLinks && !(e.prices?.length)) add('INFO', e, `예매 중인데 티켓 가격(prices) 없음`);
 
   // 소개문은 사이트 문체(해요체)로 쓴다. "~이다."·"~열린다."·"~습니다." 같은 문장 끝이 섞이면 알린다.
   // 명사로 끝나는 짧은 소개("서울 공연.")는 괜찮다.
