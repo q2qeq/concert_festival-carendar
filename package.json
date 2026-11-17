@@ -21,6 +21,7 @@
     "events:gaps": "node scripts/event-gaps.mjs",
     "prices:sync": "node scripts/sync-prices.mjs",
     "audit:posts": "node scripts/audit-posts.mjs",
+    "posts:cancel": "node scripts/cancel-ticket-posts.mjs",
     "clicks:report": "node scripts/click-report.mjs",
     "popular:events": "node scripts/popular-events.mjs",
     "og:cards": "node scripts/make-share-card.mjs",

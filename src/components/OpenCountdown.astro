@@ -97,7 +97,12 @@ const bigText = phase.kind === 'before'
       <li><span class="mono">10분 전</span> 손 풀고 예매 창 띄우기 <a href="/practice/">30초 연습</a></li>
     </ul>
 
-    <p class="oc-note">오픈 시각은 공식 공지 기준이에요. 실제 오픈은 예매처 서버시간을 따르니 정각 직전엔 티켓팅 시계를 같이 켜두세요.</p>
+    <ul class="oc-steps" data-oc-cancel hidden={!!cur}>
+      <li>취소표는 몇 초 만에 다시 나가요. 뜨는 순간 누르는 손 풀기 <a href="/practice/?stage=cancel">취켓팅 연습</a></li>
+      <li>새로고침이 느리면 놓쳐요. 와이파이와 데이터 중 빠른 쪽 확인 <a href="/internet-speed/">속도 측정</a></li>
+    </ul>
+
+    <p class="oc-note" data-oc-note hidden={!cur}>오픈 시각은 공식 공지 기준이에요. 실제 오픈은 예매처 서버시간을 따르니 정각 직전엔 티켓팅 시계를 같이 켜두세요.</p>
   </section>
 )}
 
@@ -130,7 +135,7 @@ const bigText = phase.kind === 'before'
   .oc-push-msg[hidden] { display: none; }
   .oc-push-msg a { color: var(--cheese); font-weight: 700; white-space: nowrap; }
   .oc-steps { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; gap: 0.3rem; font-size: 0.85rem; color: var(--fg-2); }
-  .oc-steps[hidden] { display: none; }
+  .oc-steps[hidden], .oc-note[hidden] { display: none; }
   .oc-steps span { display: inline-block; min-width: 4.2em; color: var(--muted); font-size: 0.78rem; }
   .oc-steps a { color: var(--cheese); margin-left: 0.3rem; }
   .oc-note { margin: 0.8rem 0 0; font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
@@ -223,6 +228,8 @@ const bigText = phase.kind === 'before'
     const alert = root.querySelector<HTMLAnchorElement>('[data-oc-alert]');
     const pushBtn = root.querySelector<HTMLButtonElement>('[data-oc-push]');
     const steps = root.querySelector<HTMLElement>('[data-oc-steps]');
+    const cancelSteps = root.querySelector<HTMLElement>('[data-oc-cancel]');
+    const note = root.querySelector<HTMLElement>('[data-oc-note]');
     const items = Array.from(root.querySelectorAll<HTMLElement>('[data-oc-stage]'));
     const vendorText = when?.textContent?.match(/ · ([^·]+)$/)?.[1] ?? '';
     let lastKey = '';
@@ -248,6 +255,8 @@ const bigText = phase.kind === 'before'
           if (alert) alert.hidden = true;
           if (pushBtn) pushBtn.hidden = true;
           if (steps) steps.hidden = true;
+          if (cancelSteps) cancelSteps.hidden = false;
+          if (note) note.hidden = true;
           root.classList.remove('is-hot');
         } else {
           const s = stages[p.index];
@@ -259,6 +268,8 @@ const bigText = phase.kind === 'before'
           }
           if (alert) { alert.href = s.alert; alert.hidden = p.kind === 'live'; }
           if (steps) steps.hidden = p.kind === 'live';
+          if (cancelSteps) cancelSteps.hidden = true;
+          if (note) note.hidden = false;
           if (p.kind === 'live') {
             if (kicker) kicker.textContent = '지금 예매 진행 중';
             if (big) big.textContent = '지금 오픈';
