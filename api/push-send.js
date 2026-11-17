@@ -1,5 +1,8 @@
-// 티켓오픈 푸시 발송 (Vercel Serverless Function). GitHub Actions가 5분마다 호출한다.
+// 티켓오픈 푸시 발송 (Vercel Serverless Function).
+// Upstash QStash 일정이 5분마다 호출한다(scripts/qstash-schedule.mjs). GitHub Actions도 예비로 부르지만
+// GitHub schedule은 몇 시간씩 밀려서(2026-11-13~17에 3~7시간 간격) 그것만으로는 30분·10분 전 알림이 빠졌다.
 //   POST /api/push-send   헤더 Authorization: Bearer <PUSH_SEND_TOKEN>
+//                         또는 QStash가 붙이는 Upstash-Signature(QSTASH_CURRENT/NEXT_SIGNING_KEY로 확인)
 //   ?dry=1 이면 보낼 대상만 세고 실제로 보내지 않는다(발송 기록도 남기지 않는다).
 // 사이트가 빌드 때 만든 /ticket-opens.json(공식 공지로 확인된 오픈 시각만 담김)을 읽어서
 // 오픈까지 남은 시간이 아래 구간에 들어온 단계마다 한 번씩 보낸다.
@@ -8,6 +11,7 @@
 // 같은 단계·같은 구간은 Redis 키(push:sent:...)로 한 번만 나가게 막는다.
 // 같은 호출에서 공연 요청(api/request.js)도 확인한다: /request-index.json에 요청한 이름과 맞는 공연이
 // 올라왔으면 기다리던 구독에 한 번 알리고 그 요청을 닫는다.
+import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
 import webpush from 'web-push';
 import { redis, redisAvailable } from './_redis.js';
 import { matches } from './_match.js';
@@ -17,6 +21,36 @@ const PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY;
 const TOKEN = process.env.PUSH_SEND_TOKEN;
 const SITE = process.env.PUSH_SITE_URL || 'https://jikgwannyang.com';
 const MIN = 60_000;
+const QSTASH_KEYS = [process.env.QSTASH_CURRENT_SIGNING_KEY, process.env.QSTASH_NEXT_SIGNING_KEY].filter(Boolean);
+
+const b64url = (buf) => Buffer.from(buf).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+// QStash 서명(JWT HS256) 확인. 본문은 비어 있다(일정 호출이라 보내는 내용이 없다).
+export function qstashSigned(sig, rawBody, keys = QSTASH_KEYS, nowSec = Math.floor(Date.now() / 1000)) {
+  if (typeof sig !== 'string' || keys.length === 0) return false;
+  const parts = sig.split('.');
+  if (parts.length !== 3) return false;
+  let claims;
+  try { claims = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8')); } catch { return false; }
+  const okKey = keys.some((k) => {
+    const want = Buffer.from(b64url(createHmac('sha256', k).update(`${parts[0]}.${parts[1]}`).digest()));
+    const got = Buffer.from(parts[2]);
+    return want.length === got.length && timingSafeEqual(want, got);
+  });
+  if (!okKey) return false;
+  if (claims.iss !== 'Upstash') return false;
+  if (typeof claims.sub !== 'string' || !claims.sub.startsWith(`${SITE}/api/push-send`)) return false;
+  if (typeof claims.exp === 'number' && nowSec > claims.exp + 60) return false;
+  if (typeof claims.nbf === 'number' && nowSec < claims.nbf - 60) return false;
+  const bodyHash = b64url(createHash('sha256').update(rawBody ?? '').digest());
+  return String(claims.body ?? '').replace(/=+$/, '') === bodyHash;
+}
+
+function authorized(req) {
+  if (TOKEN && req.headers.authorization === `Bearer ${TOKEN}`) return true;
+  const raw = typeof req.body === 'string' ? req.body : '';
+  return qstashSigned(req.headers['upstash-signature'], raw);
+}
 
 // 남은 시간(ms)으로 어느 구간인지 고른다. 이미 열렸으면 null.
 export function windowOf(msLeft) {
@@ -46,7 +80,8 @@ export function message(stage, nowMs) {
     title: `${stage.artist} ${what}`,
     body,
     url: `/events/${stage.id}/`,
-    tag: `open-${stage.id}`,
+    // 단계마다 이름표를 다르게: 같으면 iOS 알림 센터에서 앞 단계 알림이 지워지고 마지막 것만 남는다
+    tag: `open-${stage.id}-${at}-${w}`,
   };
 }
 
@@ -117,7 +152,7 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (!PUBLIC_KEY || !PRIVATE_KEY || !TOKEN || !redisAvailable()) return res.status(503).json({ error: 'unavailable' });
   if (req.method !== 'POST') return res.status(405).json({ error: 'method_not_allowed' });
-  if (req.headers.authorization !== `Bearer ${TOKEN}`) return res.status(401).json({ error: 'unauthorized' });
+  if (!authorized(req)) return res.status(401).json({ error: 'unauthorized' });
   const dry = req.query?.dry !== undefined;
 
   try {

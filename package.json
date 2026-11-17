@@ -26,7 +26,8 @@
     "requests:report": "node scripts/request-report.mjs",
     "popular:events": "node scripts/popular-events.mjs",
     "og:cards": "node scripts/make-share-card.mjs",
-    "promo:copy": "node scripts/promo-copy.mjs"
+    "promo:copy": "node scripts/promo-copy.mjs",
+    "push:schedule": "node scripts/qstash-schedule.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {
