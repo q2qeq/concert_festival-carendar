@@ -10,11 +10,11 @@ interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
 const sameDay = sameDayEvents(event);
-const returnHref = getVenueInfo(event.venue) ? `/return-trip/?venue=${encodeURIComponent(event.venue)}` : '/return-trip/';
+const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIComponent(event.venue)}` : '/return-trip/';
 const sameVenue = sameVenueUpcoming(event);
 const hasOpen = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
 const clockHref = hasOpen
-  ? `/ticketing-clock?open=${encodeURIComponent(event.ticketOpenAt as string)}&artist=${encodeURIComponent(event.artist)}`
+  ? `/ticketing-clock/#open=${encodeURIComponent(event.ticketOpenAt as string)}&artist=${encodeURIComponent(event.artist)}`
   : '/ticketing-clock';
 const alertEvent = hasOpen ? { id: event.id, artist: event.artist, ticketOpenAt: event.ticketOpenAt as string } : null;
 const googleHref = alertEvent ? ticketOpenGoogleUrl(alertEvent) : '';

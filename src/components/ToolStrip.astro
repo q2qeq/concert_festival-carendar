@@ -106,7 +106,7 @@ const opens = upcomingTicketOpens(3).map((e) => ({ id: e.id, artist: e.artist, a
     const left = new Date(next.at).getTime() - now;
     clockSub.innerHTML = `오픈 <b>${fmt(left)}</b> · `;
     clockSub.appendChild(document.createTextNode(next.artist));
-    clockCard.href = `/ticketing-clock/?open=${encodeURIComponent(next.at)}&artist=${encodeURIComponent(next.artist)}`;
+    clockCard.href = `/ticketing-clock/#open=${encodeURIComponent(next.at)}&artist=${encodeURIComponent(next.artist)}`;
   }
   tick();
   setInterval(tick, 1000);

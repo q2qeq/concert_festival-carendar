@@ -58,8 +58,8 @@ const others = VENDOR_IDS.filter((x) => x !== id);
   <p class="intro">{v.name} 예매 오픈 순간에 맞춰 누를 수 있게 정확한 시각을 보여줘요. <strong>자동 예매가 아니라 수동 클릭용 시계</strong>예요.</p>
 
   <div class="cta">
-    <a class="btn primary" href={`/ticketing-clock/?platform=${id}`}>시계 켜기</a>
-    <a class="btn" href={`/practice/?platform=${id}`}>연습하기</a>
+    <a class="btn primary" href={`/ticketing-clock/#platform=${id}`}>시계 켜기</a>
+    <a class="btn" href={`/practice/#platform=${id}`}>연습하기</a>
     <a class="btn" href={v.home} target="_blank" rel="noopener noreferrer">{v.short} 열기 ↗</a>
   </div>
 
@@ -70,7 +70,7 @@ const others = VENDOR_IDS.filter((x) => x !== id);
         <li data-open-at={e.ticketOpenAt}>
           <a href={`/events/${e.id}/`}><strong>{e.artist}</strong></a>
           <span>{e.ticketOpenDate ?? e.ticketOpenAt}</span>
-          <a class="mini" href={`/ticketing-clock/?platform=${id}&open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>카운트다운</a>
+          <a class="mini" href={`/ticketing-clock/#platform=${id}&open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>카운트다운</a>
         </li>
       ))}
     </ul>

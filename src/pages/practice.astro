@@ -181,7 +181,7 @@ const jsonLd = [
       <ul>
         {nextOpens.map((e) => (
           <li>
-            <a href={`/ticketing-clock/?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>
+            <a href={`/ticketing-clock/#open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>
               <strong>{e.artist}</strong>
               <span>{e.ticketOpenDate ?? e.ticketOpenAt}</span>
             </a>
@@ -449,7 +449,7 @@ const jsonLd = [
   let platform: string | null = null;
   try { platform = localStorage.getItem(PLATFORM_KEY); } catch { /* 저장 불가 환경이면 기억만 안 된다 */ }
   // 예매처별 안내 페이지에서 ?platform=yes24 로 들어오면 그 예매처를 고른 상태로 시작
-  const qp = new URLSearchParams(window.location.search).get('platform');
+  const qp = new URLSearchParams(`${window.location.search.slice(1)}&${window.location.hash.slice(1)}`).get('platform');
   if (qp && PLATFORM_NAMES[qp]) {
     platform = qp;
     try { localStorage.setItem(PLATFORM_KEY, qp); } catch { /* 저장 불가 환경이면 이번 방문에만 적용 */ }

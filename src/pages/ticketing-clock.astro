@@ -114,7 +114,7 @@ const jsonLd = {
       <ul class="sched-list" id="open-list">
         {opens.map((e) => (
           <li data-open-at={e.ticketOpenAt}>
-            <a class="sched-main" href={`/ticketing-clock/?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>
+            <a class="sched-main" href={`/ticketing-clock/#open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`}>
               <strong>{e.artist}</strong>
               <span class="sched-when">{e.ticketOpenDate ?? e.ticketOpenAt}</span>
             </a>
@@ -457,7 +457,7 @@ const jsonLd = {
   // ── 카운트다운 대상 (URL ?open=&artist= 또는 직접 입력) ───────────────────
   let target: { at: number; artist: string } | null = null;
   function readTargetFromUrl() {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(`${window.location.search.slice(1)}&${window.location.hash.slice(1)}`);
     const openParam = params.get('open');
     if (!openParam) return;
     const at = new Date(openParam).getTime();
@@ -465,6 +465,10 @@ const jsonLd = {
     target = { at, artist: params.get('artist') ?? '' };
   }
   readTargetFromUrl();
+  // 이 페이지 안의 일정 목록이 #open= 링크라서, 해시만 바뀌면 새로 불러와 그 공연으로 맞춘다
+  window.addEventListener('hashchange', () => {
+    if (new URLSearchParams(window.location.hash.slice(1)).get('open')) window.location.reload();
+  });
 
   // ── 소리·진동 (사용자가 켰을 때만. 브라우저 정책상 켜는 클릭에서 오디오를 연다) ──
   let soundOn = false;
@@ -551,10 +555,11 @@ const jsonLd = {
     if (isNaN(ms)) return;
     target = { at: ms, artist: name };
     lastBeepSec = -1; firedOpen = false;
-    const url = new URL(window.location.href);
-    url.searchParams.set('open', iso);
-    if (name) url.searchParams.set('artist', name); else url.searchParams.delete('artist');
-    history.replaceState(null, '', url);
+    // 공유 링크는 #open=&artist= 해시로 남긴다(쿼리 주소가 구글 크롤 대상으로 쌓이지 않게)
+    const hp = new URLSearchParams(window.location.hash.slice(1));
+    hp.set('open', iso);
+    if (name) hp.set('artist', name); else hp.delete('artist');
+    history.replaceState(null, '', `${window.location.pathname}#${hp.toString()}`);
     refreshShare();
     document.getElementById('clock-stage')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
@@ -646,7 +651,7 @@ const jsonLd = {
     });
   });
   // 예매처별 안내 페이지에서 ?platform=yes24 로 들어오면 그 예매처를 선택해둔다
-  const qp = new URLSearchParams(window.location.search).get('platform');
+  const qp = new URLSearchParams(`${window.location.search.slice(1)}&${window.location.hash.slice(1)}`).get('platform');
   if (qp && PLATFORM_NAMES[qp]) {
     try { localStorage.setItem(PLATFORM_KEY, qp); } catch { /* 저장 불가 환경이면 이번 방문에만 적용 */ }
   }

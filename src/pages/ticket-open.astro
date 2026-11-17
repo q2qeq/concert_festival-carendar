@@ -41,7 +41,7 @@ const shortDate = (iso: string) => {
   return `${d.getMonth() + 1}.${d.getDate()}`;
 };
 const clockHref = (e: { ticketOpenAt?: string; artist: string }) =>
-  `/ticketing-clock/?open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`;
+  `/ticketing-clock/#open=${encodeURIComponent(e.ticketOpenAt as string)}&artist=${encodeURIComponent(e.artist)}`;
 const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLabel?: string }) =>
   ({ id: e.id, artist: e.stageLabel ? `${e.artist} ${e.stageLabel}` : e.artist, ticketOpenAt: e.ticketOpenAt as string });
 ---

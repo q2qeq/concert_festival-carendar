@@ -47,7 +47,7 @@ if (primary) {
 
   if (nextStage) {
     cards.push({
-      href: `/ticketing-clock?open=${encodeURIComponent(nextStage.at)}&artist=${encodeURIComponent(primary.artist)}`,
+      href: `/ticketing-clock/#open=${encodeURIComponent(nextStage.at)}&artist=${encodeURIComponent(primary.artist)}`,
       title: '오픈 카운트다운',
       sub: `${nextStage.label} ${fmtStage(nextStage.at)}까지`,
     });
@@ -58,8 +58,8 @@ if (primary) {
 
   if (venueKnown) {
     const v = encodeURIComponent(primary.venue);
-    cards.push({ href: `/return-trip/?venue=${v}`, title: '막차 계산기', sub: `${primary.venue}에서 공연 끝나고 집 가기` });
-    cards.push({ href: `/trip-cost/?venue=${v}`, title: '직관 비용 계산기', sub: '티켓·교통·숙박·굿즈 합계' });
+    cards.push({ href: `/return-trip/#venue=${v}`, title: '막차 계산기', sub: `${primary.venue}에서 공연 끝나고 집 가기` });
+    cards.push({ href: `/trip-cost/#venue=${v}`, title: '직관 비용 계산기', sub: '티켓·교통·숙박·굿즈 합계' });
   }
 
   // 자리가 남으면 오픈 직전에 쓸 점검 도구로 채운다.

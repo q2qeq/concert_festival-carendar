@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 export const SITE_URL = 'https://jikgwannyang.com';
@@ -47,6 +48,38 @@ for (const e of events) {
   }
 }
 
+// noindex 페이지(얇은 태그·일정 목록 등)는 사이트맵에 넣지 않는다. 페이지가 스스로 noindex를 정하므로
+// 빌드가 끝난 뒤 HTML을 보고 사이트맵에서 지운다. sitemap 통합보다 뒤에 둬야 한다.
+function sitemapDropNoindex() {
+  return {
+    name: 'sitemap-drop-noindex',
+    hooks: {
+      'astro:build:done': ({ dir, logger }) => {
+        const out = fileURLToPath(dir);
+        const files = readdirSync(out).filter((f) => /^sitemap-\d+\.xml$/.test(f));
+        let dropped = 0;
+        for (const f of files) {
+          const p = path.join(out, f);
+          const xml = readFileSync(p, 'utf8');
+          const next = xml.replace(/<url>.*?<\/url>/gs, (block) => {
+            const loc = block.match(/<loc>([^<]+)<\/loc>/)?.[1];
+            if (!loc) return block;
+            const rel = decodeURIComponent(new URL(loc).pathname);
+            const html = path.join(out, rel, 'index.html');
+            if (existsSync(html) && /<meta name="robots" content="noindex/.test(readFileSync(html, 'utf8'))) {
+              dropped++;
+              return '';
+            }
+            return block;
+          });
+          if (next !== xml) writeFileSync(p, next);
+        }
+        logger.info(`noindex 페이지 ${dropped}개를 사이트맵에서 뺐어요`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
   site: SITE_URL,
   integrations: [
@@ -59,6 +92,7 @@ export default defineConfig({
       },
     }),
     mdx(),
+    sitemapDropNoindex(),
   ],
   // 옛 주소 리디렉션(/game, kopis-PF304185, kopis-PF299935)은 vercel.json에서 진짜 301/308로 처리한다.
   // Astro redirects는 정적 빌드에서 200 + meta refresh 페이지를 만들어 서치콘솔에 '대체 페이지'로 남았다.

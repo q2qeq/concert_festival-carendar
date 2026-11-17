@@ -82,7 +82,8 @@ const jsonLd = {
   })),
 };
 ---
-<BaseLayout title={title} description={description}>
+{/* 공연이 2건 이하인 기간 목록은 얇아서 색인에서 뺀다(사이트맵에서도 빠짐, astro.config의 sitemap 정리 참고). 링크는 따라간다. */}
+<BaseLayout title={title} description={description} noindex={n < 3}>
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
   <p class="breadcrumb"><a href="/schedule/">← 월별 일정</a></p>

@@ -29,7 +29,7 @@ const ended = event.endDate < today || (event.status ?? 'scheduled') !== 'schedu
 const show = stages.length > 0 && !ended && (variant === 'post' || phase.kind !== 'after');
 
 const clockHref = (at: string) =>
-  `/ticketing-clock/?open=${encodeURIComponent(at)}&artist=${encodeURIComponent(shortName)}${vendor ? `&platform=${vendor}` : ''}`;
+  `/ticketing-clock/#open=${encodeURIComponent(at)}&artist=${encodeURIComponent(shortName)}${vendor ? `&platform=${vendor}` : ''}`;
 const data = stages.map((s) => ({
   ...s,
   when: kstLabel(s.at),

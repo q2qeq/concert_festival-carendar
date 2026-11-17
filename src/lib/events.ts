@@ -251,7 +251,7 @@ export interface ConcertEvent {
   // Machine-readable ISO 8601 version of the same ticket-open moment (e.g.
   // "2026-10-07T12:00:00+09:00"), only set when the source notice states an exact
   // time. Powers the "티켓팅 시계로 준비하기" link on the event page (links to
-  // /ticketing-clock?open=...&artist=... for a synced countdown) - purely
+  // /ticketing-clock/#open=...&artist=... for a synced countdown) - purely
   // additive, ticketOpenDate above still carries the human-readable label.
   ticketOpenAt?: string;
   // 선예매·일반예매처럼 오픈이 여러 단계일 때 단계별 시각 (공식 공지에 시각이 나온 것만).

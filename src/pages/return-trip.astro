@@ -93,7 +93,7 @@ const venues = allVenueNames()
     for (const k of ['start', 'runtime', 'extra', 'exit', 'buffer', 'last', 'home']) if (saved[k] !== undefined) $(k).value = saved[k];
     if (saved.venue !== undefined) $('venue').value = saved.venue;
   } catch {}
-  const q = new URLSearchParams(location.search);
+  const q = new URLSearchParams(`${location.search.slice(1)}&${location.hash.slice(1)}`);
   const qv = q.get('venue');
   if (qv) {
     const hit = venues.find((v) => v.name === qv || v.slug === qv);

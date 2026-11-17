@@ -29,7 +29,8 @@ const otherGenres = allGenres().filter((g) => g !== genre);
 const pageTitle = `${genre} 공연 일정 모음`;
 const pageDescription = `${genre} 내한공연·페스티벌 일정을 한 곳에서 확인하세요. 예매 오픈일부터 D-day, 티켓팅 팁까지 한눈에 모아뒀어요.`;
 ---
-<BaseLayout title={pageTitle} description={pageDescription}>
+{/* 예정 공연이 2건 이하인 장르 목록은 얇아서 색인에서 뺀다(사이트맵에서도 빠짐). 링크는 따라간다. */}
+<BaseLayout title={pageTitle} description={pageDescription} noindex={events.length < 3}>
   <p class="breadcrumb"><a href="/events/">← 전체 일정</a></p>
 
   <section class="intro">

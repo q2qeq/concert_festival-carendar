@@ -54,21 +54,25 @@ const domestic = isDomestic(event);
 const aliases = artistAliases(event);
 // 이름에 연도가 이미 들어 있으면(예: "NOL FESTIVAL 2026") 제목에서 연도를 또 붙이지 않는다.
 const yp = event.artist.includes(eventYear) ? '' : ` ${eventYear}`;
+// 같은 아티스트가 여러 도시에서 공연하면(유키 구라모토 김해·대구 등) 제목이 똑같아져 구글이 중복으로 본다.
+// 그럴 때만 연도 뒤에 도시를 붙인다.
+const sameArtistCount = events.filter((x) => x.artist === event.artist).length;
+const cityPart = sameArtistCount > 1 ? ` ${event.city}` : '';
 const titleIsPast = event.endDate < new Date().toISOString().slice(0, 10);
 const opensLater = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
 const pageTitle = (event.genre === '페스티벌'
-  ? `${event.artist}${yp} 라인업·티켓 예매처 정리`
+  ? `${event.artist}${yp}${cityPart} 라인업·티켓 예매처 정리`
   : domestic
     ? titleIsPast
-      ? `${event.artist}${yp} 콘서트 정보·셋리스트`
+      ? `${event.artist}${yp}${cityPart} 콘서트 정보·셋리스트`
       : opensLater
-        ? `${event.artist}${yp} 콘서트 일정·티켓오픈·예매처`
-        : `${event.artist}${yp} 콘서트 일정·예매처·좌석 시야`
+        ? `${event.artist}${yp}${cityPart} 콘서트 일정·티켓오픈·예매처`
+        : `${event.artist}${yp}${cityPart} 콘서트 일정·예매처·좌석 시야`
     : titleIsPast
-      ? `${event.artist} 내한${yp} 공연 정보·셋리스트`
+      ? `${event.artist} 내한${yp}${cityPart} 공연 정보·셋리스트`
       : opensLater
-        ? `${event.artist} 내한${yp} 티켓오픈 일정·예매처`
-        : `${event.artist} 내한${yp} 예매처·좌석·시야 정리`);
+        ? `${event.artist} 내한${yp}${cityPart} 티켓오픈 일정·예매처`
+        : `${event.artist} 내한${yp}${cityPart} 예매처·좌석·시야 정리`);
 
 const pageDescription = (event.description
   ? `${event.description} (${dateLabel}, ${event.venue})`
