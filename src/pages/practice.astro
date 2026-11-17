@@ -32,6 +32,10 @@ const faq = [
     a: '네. 단계 고르기에서 예매 버튼만 고르면 버튼이 열리는 순간부터 누를 때까지 걸린 시간을 ms로 재요. 콘서트가 아니라 수강신청이나 명절 기차표 예매를 앞두고 손을 풀 때도 같아요.',
   },
   {
+    q: '취켓팅 연습도 할 수 있나요?',
+    a: '네. 한 단계만 연습하기에서 취켓팅을 고르면 매진된 좌석표에 취소표가 한 자리씩 잠깐 떴다가 사라져요. 여덟 번 뜨는 동안 몇 번 잡는지와 반응속도를 재요. 실제 취소표가 풀리는 시각과 규칙은 예매처와 공연마다 달라서, 여기서는 기다리다가 뜨는 순간 누르는 손만 연습해요.',
+  },
+  {
     q: '서버 시간은 어디서 확인하나요?',
     a: '예매처 화면이나 별도 서버 시간 확인 사이트로 볼 수 있어요. 직관냥 티켓팅 시계는 표준시에 동기화해서 오픈 직전까지 켜두기 좋아요.',
   },
@@ -87,6 +91,7 @@ const jsonLd = [
         <button type="button" class="mode" data-mode="btn"><b>예매 버튼</b><span>서버 시간 보고 3번</span><em data-mode-best="btn">-</em></button>
         <button type="button" class="mode" data-mode="zone"><b>구역 고르기</b><span>목표 구역 2라운드</span><em data-mode-best="zone">-</em></button>
         <button type="button" class="mode" data-mode="seat"><b>빈 좌석 잡기</b><span>좌석 3라운드</span><em data-mode-best="seat">-</em></button>
+        <button type="button" class="mode" data-mode="cancel"><b>취켓팅</b><span>취소표 8번</span><em data-mode-best="cancel">-</em></button>
       </div>
       <p class="modes-note">단계 기록은 단계끼리만 순위를 매겨요. 전체 도전 순위에는 들어가지 않아요.</p>
     </div>
@@ -218,7 +223,8 @@ const jsonLd = [
   /* 단계 고르기: 시작 화면 아래쪽, 선으로 구분한 세 칸 */
   .modes { margin: 1.6rem auto 0; padding-top: 1.2rem; border-top: 1px solid var(--line); max-width: 36rem; }
   .modes-label { margin: 0 0 0.7rem; font-size: 0.9rem; font-weight: 700; color: var(--fg); }
-  .modes-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .modes-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+  @media (max-width: 760px) { .modes-row { grid-template-columns: repeat(2, 1fr); } }
   .mode { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.8rem 0.4rem; border: 1px solid var(--line-2); border-radius: 4px; background: transparent; color: var(--fg); font: inherit; cursor: pointer; }
   .mode:hover { border-color: var(--fg-2); }
   .mode b { font-size: 0.95rem; }
@@ -401,7 +407,7 @@ const jsonLd = [
     if (better) { try { localStorage.setItem(STAGE_BEST_KEY(m), String(v)); } catch { /* 저장 불가 */ } }
     return better;
   }
-  const fmtStage = (m: Mode, v: number) => (m === 'seat' ? `${v}점` : `${v}ms`);
+  const fmtStage = (m: Mode, v: number) => (m === 'seat' || m === 'cancel' ? `${v}점` : `${v}ms`);
   function renderStageBest() {
     document.querySelectorAll<HTMLElement>('[data-mode-best]').forEach((el) => {
       const m = el.dataset.modeBest as Mode;
@@ -488,8 +494,9 @@ const jsonLd = [
 
   // ── 게임 상태 ───────────────────────────────────────────────────────────
   // full: 전체 도전(순위·최고 기록 집계) / btn·zone·seat: 한 단계만 연습(단계별 순위·기록)
-  type Mode = 'full' | 'btn' | 'zone' | 'seat';
-  const MODE_NAMES: Record<Mode, string> = { full: '전체 도전', btn: '예매 버튼', zone: '구역 고르기', seat: '빈 좌석 잡기' };
+  // cancel: 취켓팅 - 매진된 좌석표에서 취소표가 한 자리씩 잠깐 뜨는 걸 잡는다(전체 도전에는 없음)
+  type Mode = 'full' | 'btn' | 'zone' | 'seat' | 'cancel';
+  const MODE_NAMES: Record<Mode, string> = { full: '전체 도전', btn: '예매 버튼', zone: '구역 고르기', seat: '빈 좌석 잡기', cancel: '취켓팅' };
   let mode: Mode = 'full';
   const pre = (n: number) => (mode === 'full' ? `${n}/3 ` : '');
   let running = false;
@@ -798,6 +805,67 @@ const jsonLd = [
     await sleep(900);
   }
 
+  // ── 취켓팅: 매진된 좌석표에서 취소표 잡기 ───────────────────────────────
+  // 언제 어디에 뜰지 모르는 한 자리를 기다렸다가 잡는다. 실제 취소표가 풀리는 시각·규칙은
+  // 예매처마다 달라서 흉내 내지 않고, "기다리다 뜨는 순간 누르기"만 연습한다.
+  const CANCEL_SEATS = 8;
+  async function playCancel() {
+    seatsEl.hidden = false;
+    resetSeats();
+    stageEl.textContent = '취켓팅';
+    feedback('', '');
+    let current: HTMLButtonElement | null = null;
+    let t0 = 0;
+    let miss = 0;
+    let settle: () => void = () => {};
+    grid.onpointerdown = (e) => {
+      const seat = (e.target as HTMLElement).closest?.('.seat') as HTMLButtonElement | null;
+      if (!seat) return;
+      if (seat === current && seat.classList.contains('open')) {
+        const rt = performance.now() - t0;
+        stats.seatRt.push(rt);
+        const pts = Math.max(50, Math.round(1000 - rt * 0.5));
+        addScore(pts);
+        seat.classList.remove('open');
+        seat.classList.add('got');
+        const j = judgeSeat(rt);
+        feedback(j.tone, `${j.label} · ${Math.round(rt)}ms (+${pts}점)`);
+        settle();
+      } else if (!seat.classList.contains('got')) {
+        miss++;
+        feedback('warn', seat.classList.contains('lost') ? '방금 다른 사람이 가져간 자리예요' : '매진된 좌석이에요 - 초록색이 뜰 때만 누르세요');
+      }
+    };
+    for (let i = 0; i < CANCEL_SEATS; i++) {
+      msg.textContent = `취소표 기다리는 중… (${i + 1}/${CANCEL_SEATS}) 초록색이 뜨면 바로 눌러요`;
+      await sleep(1200 + Math.random() * 3300);
+      const free = seats.filter((s) => s.className === 'seat');
+      const seat = free[Math.floor(Math.random() * free.length)];
+      current = seat;
+      seat.classList.add('open');
+      t0 = performance.now();
+      const life = 650 + Math.random() * 400;
+      await new Promise<void>((r) => {
+        const timer = setTimeout(() => {
+          if (seat.classList.contains('open')) {
+            seat.classList.remove('open');
+            seat.classList.add('lost');
+            feedback('slow', '놓쳤어요 - 다른 사람이 먼저 잡았어요');
+          }
+          r();
+        }, life);
+        settle = () => { clearTimeout(timer); r(); };
+      });
+      stats.seatTotal++;
+    }
+    grid.onpointerdown = null;
+    stats.seatMiss += miss;
+    const got = stats.seatRt.length;
+    addLog(`취켓팅 · 취소표 ${CANCEL_SEATS}번 중 ${got}번 잡음` + (got ? ` (평균 ${avgOf(stats.seatRt)}ms)` : '') + (miss ? ` · ${tag('warn', `헛클릭 ${miss}회`)}` : ''));
+    await sleep(600);
+    seatsEl.hidden = true;
+  }
+
   function gradeFor(total: number) {
     if (total >= 13000) return '피켓팅 신';
     if (total >= 10000) return '티켓팅 고수';
@@ -948,6 +1016,17 @@ const jsonLd = [
       setReact(toneOf(j.tone));
       grade = `구역 고르기 ${value}ms · ${j.label}`;
       detail = `평균 ${avgOf(stats.zoneRt)}ms` + (stats.zoneMiss ? ` · 오클릭 ${stats.zoneMiss}번(번당 +${ZONE_WRONG_DELAY}ms)` : ' · 오클릭 없음');
+    } else if (m === 'cancel') {
+      await playCancel();
+      const got = stats.seatRt.length;
+      value = score;
+      body.got = got;
+      body.avg = avgOf(stats.seatRt);
+      grade = `취켓팅 ${got}/${stats.seatTotal}번 · ${score}점`;
+      const rate = got / CANCEL_SEATS;
+      setReact(rate >= 0.75 ? 'good' : rate >= 0.4 ? 'ok' : 'slow');
+      detail = got ? `잡은 취소표 평균 ${avgOf(stats.seatRt)}ms · ${judgeSeat(avgOf(stats.seatRt)).label}` : '이번엔 한 장도 못 잡았어요';
+      if (stats.seatMiss) detail += ` · 헛클릭 ${stats.seatMiss}번`;
     } else {
       await playSeats(0.5); // 앞 단계 없이 시작하므로 중간 순번 기준
       const got = stats.seatRt.length;
@@ -1022,7 +1101,7 @@ const jsonLd = [
   $('g-menu').addEventListener('click', showMenu);
   // /practice/?stage=seat 처럼 들어오면 그 단계를 바로 시작한다
   const qStage = new URLSearchParams(location.search).get('stage');
-  if (qStage === 'btn' || qStage === 'zone' || qStage === 'seat') start(qStage);
+  if (qStage === 'btn' || qStage === 'zone' || qStage === 'seat' || qStage === 'cancel') start(qStage);
   // X 공유: 결과 문구 끝의 주소는 url로 따로 넘겨 링크 카드가 붙게 한다
   $('g-share-x').addEventListener('click', () => {
     const m = resultText.match(/^([\s\S]*?)\n나도 해보기 (\S+)$/);

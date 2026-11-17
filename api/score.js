@@ -82,20 +82,22 @@ function topPercent(hist, bucket, lowerIsBetter = false) {
 //   btn : 예매 버튼 3회 평균 반응(ms). 놓친 시도는 1500ms, 일찍 누른 횟수마다 +150ms. 작을수록 좋다.
 //   zone: 구역 2라운드 평균 반응(ms) + 오클릭 1회당 500ms. 작을수록 좋다.
 //   seat: 빈 좌석 3라운드 점수(중간 순번 기준, 최대 12석). 클수록 좋다.
+//   cancel: 취켓팅(취소표 잡기) 점수. 한 자리씩 8번 뜬다(최대 8석). 클수록 좋다.
 const STAGES = {
   btn: { bucket: 20, max: 6000, min: 40, lower: true, mean: 380, sd: 180 },
   zone: { bucket: 50, max: 20000, min: 200, lower: true, mean: 1400, sd: 500 },
   seat: { bucket: 200, max: 12000, min: 0, lower: false, mean: 6000, sd: 2500 },
+  cancel: { bucket: 200, max: 8000, min: 0, lower: false, mean: 3200, sd: 1800 },
 };
-const STAGE_SEATS = 12;
+const STAGE_SEATS = { seat: 12, cancel: 8 };
 
 async function stageRank(res, stage, b) {
   const cfg = STAGES[stage];
   const value = Number(b.value);
   let valid = Number.isInteger(value) && value >= cfg.min && value <= cfg.max;
-  if (stage === 'seat') {
+  if (stage === 'seat' || stage === 'cancel') {
     const got = Number(b.got), avg = Number(b.avg);
-    valid = valid && Number.isInteger(got) && got >= 0 && got <= STAGE_SEATS && value <= got * 1000 &&
+    valid = valid && Number.isInteger(got) && got >= 0 && got <= STAGE_SEATS[stage] && value <= got * 1000 &&
       (got === 0 || (Number.isFinite(avg) && avg >= 60 && avg <= 3000));
   }
   if (!valid) return res.status(400).json({ error: 'invalid_score' });
