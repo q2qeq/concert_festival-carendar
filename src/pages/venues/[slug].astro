@@ -80,12 +80,18 @@ const jsonLd: object[] = [
 const hasParking = Boolean(info?.parking);
 // "주차장 요금"을 제목에 쓰려면 실제로 요금·팁 정보가 있어야 한다. 주차 가능 여부만 아는 곳은 문구를 낮춘다.
 const hasParkingFee = Boolean(info?.parkingTips?.length) || /\d\s*원/.test(info?.parking ?? '');
-const pageTitle = hasParkingFee
+// 셔틀 안내가 교통 정보에 실제로 적혀 있는 곳만 제목에 '셔틀버스'를 넣는다(없는 정보를 제목으로 약속하지 않는다).
+const hasShuttleInfo = (info?.transit ?? []).some((t) => t.includes('셔틀'));
+const pageTitle = hasShuttleInfo && hasParkingFee
+  ? `${venueName} 셔틀버스·주차 요금·오시는 길`
+  : hasParkingFee
   ? `${venueName} 주차장 요금·주차 팁·오시는 길`
   : hasParking
     ? `${venueName} 주차·오시는 길·좌석·시야 정보`
     : `${venueName} 오시는 길·좌석·시야 정보`;
-const pageDescription = hasParkingFee
+const pageDescription = hasShuttleInfo && hasParkingFee
+  ? `${venueName} 공연 보러 갈 때 셔틀버스 타는 곳과 운행 안내, 주차장 요금과 주차 팁, 구역별 시야, 예정된 공연 목록을 정리했어요.`
+  : hasParkingFee
   ? `${venueName} 공연 보러 갈 때 주차장 요금과 주차 팁, 대중교통 오시는 길, 주변 편의시설, 예정된 공연 목록을 정리했어요.`
   : hasParking
     ? `${venueName} 공연 관람 전 알아두면 좋은 주차 안내와 오시는 길, 구역별 시야, 예정된 공연 목록이에요.`
