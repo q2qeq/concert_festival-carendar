@@ -64,7 +64,7 @@ const idx = months.indexOf(period);
 const prev = !isYear && idx > 0 ? months[idx - 1] : null;
 const next = !isYear && idx >= 0 && idx < months.length - 1 ? months[idx + 1] : null;
 
-const title = isYear ? `${period} 내한공연·페스티벌 일정 총정리 (${n}개)` : `${label} 내한공연·페스티벌 일정 (${n}개) - 티켓오픈·예매처`;
+const title = isYear ? `${period}년 내한공연 일정 - 월별 콘서트·페스티벌 ${n}개 총정리` : `${label} 내한공연·페스티벌 일정 (${n}개) - 티켓오픈·예매처`;
 const description = isYear
   ? `${period}년에 예정된 내한공연과 페스티벌 ${n}개를 월별로 정리했어요. 티켓오픈 일정과 예매 상태, 공연장을 한눈에 확인하세요.`
   : `${label}에 열리는 내한공연·페스티벌 ${n}개를 날짜순으로 정리했어요. 예매 오픈 여부, 티켓오픈 일시, 공연장을 한눈에 확인하세요.`;
@@ -111,6 +111,29 @@ const jsonLd = {
           <span class="mn mono">{items.length}개</span>
           <span class="mt">{items.slice(0, 3).map((e) => e.artist.replace(/\s*\(.*$/, '')).join(' · ')}{items.length > 3 ? ` 외 ${items.length - 3}` : ''}</span>
         </a>
+      ))}
+    </section>
+    <section class="yearlist">
+      {byMonth.filter(({ items }) => items.length > 0).map(({ m, items }) => (
+        <>
+          <h2 class="sec"><a href={`/schedule/${m}/`}>{periodLabel(m)}</a> <small>{items.length}개</small></h2>
+          <ol class="rows">
+            {items.map((e) => {
+              const d = dayParts(e);
+              const st = ticketStatusText(e);
+              return (
+                <li>
+                  <a class="row" href={`/events/${e.id}/`}>
+                    <span class="d mono">{d.md}<small>{d.wd}</small></span>
+                    {e.posterUrl ? <img class="th" src={e.posterUrl} alt="" loading="lazy" width="56" height="76" /> : <span class="th ph" aria-hidden="true"></span>}
+                    <span class="b"><strong>{e.artist}</strong><em>{e.venue} · {e.city} · {e.genre}</em></span>
+                    <span class={`st st-${st.tone}`}>{st.text}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </>
       ))}
     </section>
   ) : (
@@ -231,6 +254,11 @@ const jsonLd = {
   .st-soon { color: var(--eye); }
   .months { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.8rem; }
   .mcard { display: flex; flex-direction: column; gap: 0.4rem; padding: 1rem; border: 1px solid var(--line); border-radius: 4px; color: inherit; text-decoration: none; }
+  .yearlist { margin-top: 2.2rem; }
+  .yearlist .sec { margin-top: 1.8rem; }
+  .yearlist .sec a { color: inherit; text-decoration: none; }
+  .yearlist .sec a:hover { color: var(--cheese); }
+  .yearlist .sec small { margin-left: 0.4rem; font-size: 0.8rem; font-weight: 500; color: var(--muted); }
   .mcard:hover { border-color: var(--cheese); }
   .mm { font-size: 2.4rem; font-weight: 900; letter-spacing: -.06em; line-height: 1; }
   .mm small { font-size: 0.9rem; letter-spacing: 0; margin-left: 0.2rem; color: var(--muted); }

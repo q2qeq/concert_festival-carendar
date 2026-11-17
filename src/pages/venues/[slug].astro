@@ -46,6 +46,10 @@ const faqs: Array<{ q: string; a: string }> = [];
 if (info?.address) faqs.push({ q: `${venueName} 주소가 어떻게 되나요?`, a: info.address });
 if (info?.transit?.length) faqs.push({ q: `${venueName}에 대중교통으로 어떻게 가나요?`, a: info.transit.join(' / ') });
 if (info?.parking) faqs.push({ q: `${venueName}에 주차할 수 있나요?`, a: [info.parking, ...(info.parkingTips ?? [])].join(' ') });
+if (info?.seating) faqs.push({
+  q: `${venueName} 좌석은 몇 석이고 층별로 어떻게 나뉘나요?`,
+  a: `${info.seating.floors.map((f) => `${f.name} ${f.seats}`).join(', ')}이에요. ${info.seating.summary ?? ''} (${info.seating.source.label} 기준, ${info.seating.checkedAt} 확인)`,
+});
 if (info?.capacity) faqs.push({ q: `${venueName}은 몇 명까지 들어가나요?`, a: `${info.capacity}${info.capacityNote ? ` ${info.capacityNote}` : ''}` });
 if (isShuttleLikely(venueName)) faqs.push({ q: `${venueName} 공연에 셔틀버스가 있나요?`, a: '공연마다 달라요. 공연 상세 페이지의 셔틀 안내와 예매처 공지를 먼저 확인하고, 없으면 카카오 T 셔틀·콘서트 셔틀 업체에서 검색해 보세요.' });
 if (info?.coinLocker) faqs.push({ q: `${venueName}에 코인락커가 있나요?`, a: info.coinLocker });
@@ -82,14 +86,19 @@ const hasParking = Boolean(info?.parking);
 const hasParkingFee = Boolean(info?.parkingTips?.length) || /\d\s*원/.test(info?.parking ?? '');
 // 셔틀 안내가 교통 정보에 실제로 적혀 있는 곳만 제목에 '셔틀버스'를 넣는다(없는 정보를 제목으로 약속하지 않는다).
 const hasShuttleInfo = (info?.transit ?? []).some((t) => t.includes('셔틀'));
-const pageTitle = hasShuttleInfo && hasParkingFee
+const seating = info?.seating;
+const pageTitle = seating
+  ? `${venueName} 시야·좌석 배치도 - 층별 좌석 수·오시는 길`
+  : hasShuttleInfo && hasParkingFee
   ? `${venueName} 셔틀버스·주차 요금·오시는 길`
   : hasParkingFee
   ? `${venueName} 주차장 요금·주차 팁·오시는 길`
   : hasParking
     ? `${venueName} 주차·오시는 길·좌석·시야 정보`
     : `${venueName} 오시는 길·좌석·시야 정보`;
-const pageDescription = hasShuttleInfo && hasParkingFee
+const pageDescription = seating
+  ? `${venueName} 좌석 배치를 층별로 정리했어요. ${seating.floors.map((f) => `${f.name} ${f.seats}`).join(', ')}. 구역별 시야 후기 검색과 오시는 길, 예정된 공연도 함께 봐요.`
+  : hasShuttleInfo && hasParkingFee
   ? `${venueName} 공연 보러 갈 때 셔틀버스 타는 곳과 운행 안내, 주차장 요금과 주차 팁, 구역별 시야, 예정된 공연 목록을 정리했어요.`
   : hasParkingFee
   ? `${venueName} 공연 보러 갈 때 주차장 요금과 주차 팁, 대중교통 오시는 길, 주변 편의시설, 예정된 공연 목록을 정리했어요.`
@@ -133,7 +142,25 @@ const pageDescription = hasShuttleInfo && hasParkingFee
   <p class="return-link"><a href={`/return-trip/?venue=${encodeURIComponent(venueName)}`}>공연 끝나고 막차 탈 수 있을까? 막차 계산하기 →</a></p>
 
   <section class="venue-sightline-section" id="sightline">
-    <h2>구역별 시야 (View Guide)</h2>
+    <h2>{seating ? '좌석 배치와 구역별 시야' : '구역별 시야'}</h2>
+    {seating && (
+      <div class="seating">
+        {seating.summary && <p class="seating-summary">{seating.summary}</p>}
+        <table class="seating-table">
+          <thead><tr><th scope="col">층</th><th scope="col">좌석 수</th><th scope="col">구성</th></tr></thead>
+          <tbody>
+            {seating.floors.map((f) => (
+              <tr><th scope="row">{f.name}</th><td class="seats">{f.seats}</td><td>{f.note ?? ''}</td></tr>
+            ))}
+          </tbody>
+        </table>
+        {seating.notes && <ul class="seating-notes">{seating.notes.map((t) => <li>{t}</li>)}</ul>}
+        <p class="seating-source">
+          {seating.checkedAt} 확인 · 출처: <a href={seating.source.url} target="_blank" rel="noopener noreferrer">{seating.source.label}</a>
+        </p>
+        <h3>실제 관람 후기로 시야 확인하기</h3>
+      </div>
+    )}
     <SightlineSearch venue={venueName} />
   </section>
 
@@ -293,6 +320,24 @@ const pageDescription = hasShuttleInfo && hasParkingFee
   }
   .address { color: var(--muted); margin: 0; }
   .venue-sightline-section { margin: 1.5rem 0; scroll-margin-top: 5rem; }
+  .seating-summary { margin: 0 0 0.8rem; color: var(--fg-2); line-height: 1.7; }
+  .seating-table { width: 100%; border-collapse: collapse; margin: 0 0 0.9rem; font-size: 0.92rem; }
+  .seating-table th, .seating-table td { padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.6; }
+  .seating-table thead th { color: var(--muted); font-size: 0.78rem; font-weight: 600; border-bottom-color: var(--line-2); }
+  .seating-table tbody th { white-space: nowrap; font-weight: 700; color: var(--fg); }
+  .seating-table .seats { white-space: nowrap; color: var(--fg); font-variant-numeric: tabular-nums; }
+  .seating-table td { color: var(--fg-3); }
+  .seating-notes { margin: 0 0 0.7rem; padding-left: 1.1rem; color: var(--fg-3); font-size: 0.9rem; line-height: 1.7; }
+  .seating-source { margin: 0 0 1.4rem; font-size: 0.78rem; color: var(--muted); }
+  .seating-source a { color: inherit; }
+  .seating h3 { margin: 0 0 0.5rem; font-size: 0.95rem; color: var(--fg-2); }
+  @media (max-width: 560px) {
+    .seating-table thead { display: none; }
+    .seating-table tr { display: grid; grid-template-columns: auto 1fr; gap: 0 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+    .seating-table th, .seating-table td { padding: 0; border: 0; }
+    .seating-table td:last-child { grid-column: 1 / -1; margin-top: 0.25rem; font-size: 0.86rem; }
+    .seating-table td:last-child:empty { display: none; }
+  }
   .venue-sightline-section h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: var(--fg-2); }
   .info-block { margin: 1.75rem 0; }
   .info-block h2 { font-size: 1.05rem; margin: 0 0 0.6rem; color: var(--fg-2); }

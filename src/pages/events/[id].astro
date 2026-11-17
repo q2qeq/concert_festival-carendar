@@ -187,6 +187,13 @@ const xShareHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(s
 const status = event.status ?? 'scheduled';
 const isPast = event.endDate < new Date().toISOString().slice(0, 10);
 
+// 끝난 공연으로 검색해 들어온 사람에게 다음에 볼 공연을 맨 위에서 바로 보여 준다.
+const todayISO = new Date().toISOString().slice(0, 10);
+const nextAfterPast = status === 'scheduled' && isPast
+  ? relatedEvents(event, 8).filter((e) => e.endDate >= todayISO && (e.status ?? 'scheduled') === 'scheduled').slice(0, 3)
+      .sort((a, b) => a.startDate.localeCompare(b.startDate))
+  : [];
+
 // 모바일 하단 고정 예매 버튼 - 액션바가 화면 밖으로 나가면 나타난다.
 const openUpcoming = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
 const mobileCtaKind: 'links' | 'official' | 'clock' | null =
@@ -290,6 +297,19 @@ const breadcrumbLd = {
 
     <div class="ev-oc"><OpenCountdown event={event} variant="page" /></div>
 
+    {status === 'scheduled' && isPast && (
+      <div class="status-banner status-past">
+        <p>이 공연은 끝났어요. 지난 공연 기록으로 남겨 둔 페이지예요.</p>
+        {nextAfterPast.length > 0 ? (
+          <ul>
+            {nextAfterPast.map((e) => (
+              <li><a href={`/events/${e.id}/`}>{e.artist.replace(/\s*\(.*$/, '')}<span>{md(e.startDate)} · {e.venue}</span></a></li>
+            ))}
+          </ul>
+        ) : null}
+        <p class="more"><a href="/events/">예정된 공연 전체 보기</a></p>
+      </div>
+    )}
     {status === 'postponed' && (
       <p class="status-banner status-postponed">
         이 공연은 연기되었습니다. 재개최 일정이 정해지지 않았다면 아래 안내를 확인하세요.
@@ -710,6 +730,14 @@ const breadcrumbLd = {
     font-weight: 600;
     font-size: 0.95rem;
   }
+  .status-past { border: 1px solid var(--line-2); color: var(--fg-2); }
+  .status-past p { margin: 0; }
+  .status-past ul { list-style: none; margin: 0.6rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; font-weight: 400; }
+  .status-past li a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; color: var(--fg); text-decoration: none; font-weight: 700; }
+  .status-past li a:hover { color: var(--cheese); }
+  .status-past li span { color: var(--muted); font-size: 0.82rem; font-weight: 400; }
+  .status-past .more { margin-top: 0.6rem; font-size: 0.85rem; font-weight: 400; }
+  .status-past .more a { color: var(--cheese); }
   .status-postponed { background: rgba(255, 184, 76, 0.14); color: #ffb84c; }
   .status-cancelled { background: rgba(255, 95, 95, 0.14); color: #ff6b6b; }
   .status-announced { background: rgba(255,255,255, 0.14); color: var(--fg-2); }

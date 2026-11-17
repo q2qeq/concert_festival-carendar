@@ -126,6 +126,16 @@ const jsonLd = [
       <button id="g-share" type="button" class="btn">결과 공유하기</button>
       <button id="g-share-x" type="button" class="btn">X에 공유</button>
     </div>
+    {nextOpens.length > 0 && (
+      <div class="real-next">
+        <p>곧 열리는 진짜 티켓팅</p>
+        <ul>
+          {nextOpens.map((e) => (
+            <li><a href={`/events/${e.id}/`}>{e.artist.replace(/\s*\(.*$/, '')}<span>{e.ticketOpenDate ?? e.ticketOpenAt}</span></a></li>
+          ))}
+        </ul>
+      </div>
+    )}
     <p class="after">
       진짜 티켓팅 전에는 <a href="/ticketing-clock/">티켓팅 시계</a>로 오픈 시각을 맞추고,
       <a href="/my/">내 찜</a>에서 일정을 확인하세요.
@@ -232,6 +242,12 @@ const jsonLd = [
   .mode em { font-style: normal; font-size: 0.75rem; color: var(--fg-2); font-variant-numeric: tabular-nums; }
   .modes-note { margin: 0.7rem 0 0; font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
   @media (max-width: 480px) { .modes-row { grid-template-columns: 1fr; } .mode { flex-direction: row; justify-content: space-between; padding: 0.75rem 0.9rem; } .mode span { flex: 1; text-align: left; margin-left: 0.6rem; } }
+  .real-next { margin: 1rem 0 0; padding-top: 0.9rem; border-top: 1px solid var(--line); }
+  .real-next p { margin: 0 0 0.4rem; font-weight: 700; color: var(--fg); }
+  .real-next ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+  .real-next a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.6rem; color: var(--fg); text-decoration: none; font-weight: 600; }
+  .real-next a:hover { color: var(--cheese); }
+  .real-next span { color: var(--eye); font-size: 0.82rem; font-weight: 400; }
   .next-opens { margin-top: 1.8rem; }
   .next-opens h2 { font-size: 1.15rem; margin: 0 0 0.6rem; }
   .next-opens ul { list-style: none; margin: 0 0 0.6rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
