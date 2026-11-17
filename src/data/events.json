@@ -4969,7 +4969,7 @@
     "posterSourceUrl": "https://cdn.slist.kr/news/photo/202608/756295_1159327_638.jpg",
     "prices": [
       {
-        "label": "스탠딩",
+        "label": "스탠딩석",
         "price": 138000
       },
       {
@@ -4979,9 +4979,15 @@
     ],
     "pricesCheckedAt": "2026-11-17",
     "pricesSource": {
-      "label": "KOPIS 공연예술통합전산망",
-      "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF298220"
-    }
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59553"
+    },
+    "ticketLinks": [
+      {
+        "vendor": "예스24 티켓",
+        "url": "https://ticket.yes24.com/Perf/59553"
+      }
+    ]
   },
   {
     "id": "bluenote-tokyo-lisaono-iksan-2026-11",
@@ -5113,9 +5119,15 @@
     ],
     "pricesCheckedAt": "2026-11-17",
     "pricesSource": {
-      "label": "KOPIS 공연예술통합전산망",
-      "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF303596"
-    }
+      "label": "롯데콘서트홀 공연 페이지",
+      "url": "https://www.lotteconcerthall.com/product/performance/261233"
+    },
+    "ticketLinks": [
+      {
+        "vendor": "롯데콘서트홀",
+        "url": "https://www.lotteconcerthall.com/product/performance/261233"
+      }
+    ]
   },
   {
     "id": "mass-of-the-fermenting-dregs-seoul-2026-12",
@@ -5597,15 +5609,25 @@
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299848_260901_141354.png",
     "prices": [
       {
-        "label": "전석 스탠딩",
+        "label": "스탠딩석",
         "price": 88000
       }
     ],
     "pricesCheckedAt": "2026-11-17",
     "pricesSource": {
-      "label": "KOPIS 공연예술통합전산망",
-      "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF299848"
-    }
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213806"
+    },
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213806"
+      },
+      {
+        "vendor": "29CM",
+        "url": "https://ticket.29cm.co.kr/catalog/4173556"
+      }
+    ]
   },
   {
     "id": "yuki-kuramoto-gimhae-2026-12",
