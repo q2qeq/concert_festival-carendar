@@ -1,0 +1,35 @@
+---
+// 티켓 가격 - 예매처 상품 페이지에서 확인한 등급별 정가만 보여준다(할인가·수수료 제외).
+// 확인한 날짜와 출처를 같이 적는다. 가격이 없는 공연은 섹션 자체를 그리지 않는다.
+import type { ConcertEvent } from '../lib/events';
+interface Props { event: ConcertEvent }
+const { event } = Astro.props;
+const prices = event.prices ?? [];
+const won = (n: number) => `${n.toLocaleString('ko-KR')}원`;
+const checked = event.pricesCheckedAt ? `${Number(event.pricesCheckedAt.slice(5, 7))}월 ${Number(event.pricesCheckedAt.slice(8, 10))}일` : '';
+---
+{prices.length > 0 && (
+  <section class="price-box" id="price">
+    <h2>티켓 가격</h2>
+    <dl>
+      {prices.map((p) => (
+        <div><dt>{p.label}</dt><dd>{won(p.price)}</dd></div>
+      ))}
+    </dl>
+    <p class="price-note">
+      정가 기준이에요. 예매 수수료와 할인은 예매처에서 확인하세요.
+      {event.pricesSource && <> {checked && `${checked}에 `}<a href={event.pricesSource.url} target="_blank" rel="noopener noreferrer">{event.pricesSource.label}</a>에서 확인했어요.</>}
+      {' '}<a href={`/trip-cost/`}>직관 비용 계산기</a>로 교통·숙박까지 더해 볼 수 있어요.
+    </p>
+  </section>
+)}
+<style>
+  .price-box { margin: 1.75rem 0; }
+  .price-box h2 { margin: 0 0 0.6rem; font-size: 1.05rem; color: var(--fg-2); }
+  .price-box dl { margin: 0; border-top: 1px solid var(--line); }
+  .price-box dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+  .price-box dt { color: var(--fg); font-size: 0.95rem; }
+  .price-box dd { margin: 0; color: var(--fg); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .price-note { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
+  .price-note a { color: var(--cheese); }
+</style>

@@ -257,6 +257,11 @@ export interface ConcertEvent {
   // 선예매·일반예매처럼 오픈이 여러 단계일 때 단계별 시각 (공식 공지에 시각이 나온 것만).
   // 있으면 빌드 시 ticketOpenAt을 "다음 단계" 시각으로 맞춘다 - 아래 events 로딩부 참고.
   ticketOpens?: TicketOpenStage[];
+  // 등급별 티켓 정가(원). 예매처 상품 페이지에서 확인한 것만 넣고, 확인 날짜와 출처를 같이 적는다.
+  // 공연 페이지의 '티켓 가격' 표(PriceBox)와 구조화 데이터의 가격 범위에 쓰인다.
+  prices?: { label: string; price: number }[];
+  pricesCheckedAt?: string; // YYYY-MM-DD
+  pricesSource?: { label: string; url: string };
   // Editorial judgment on how hard tickets are to get, grounded in a real,
   // citable signal (e.g. a past/this-year sale selling out immediately, a
   // small venue vs a huge-demand artist). This is commentary, like

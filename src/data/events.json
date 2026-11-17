@@ -4362,7 +4362,7 @@
       }
     ],
     "schedule": "2026.11.19(목), 20(금) 오후 8시",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 R석 176,000원, S석 154,000원, A석 132,000원, B석 110,000원, C석 99,000원이에요(예스24 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "'SJF at the Theater 2026' 시리즈로 열리는 Christopher 단독 공연. 세종문화회관 대극장에서 이틀간(11/19~20) 열려요.",
     "sources": [
       {
@@ -4372,7 +4372,34 @@
     ],
     "posterUrl": "/posters/christopher-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260813/20260813-59732.jpg",
-    "merchCheckedAt": "2026-11-14"
+    "merchCheckedAt": "2026-11-14",
+    "prices": [
+      {
+        "label": "R석",
+        "price": 176000
+      },
+      {
+        "label": "S석",
+        "price": 154000
+      },
+      {
+        "label": "A석",
+        "price": 132000
+      },
+      {
+        "label": "B석",
+        "price": 110000
+      },
+      {
+        "label": "C석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59732"
+    }
   },
   {
     "id": "wonderlivet-2026-11",
@@ -4603,7 +4630,7 @@
     "city": "인천",
     "startDate": "2026-11-21",
     "endDate": "2026-11-22",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-12). 올해 초 서울 KSPO DOME에서 시작해 일본 아레나 투어, 멕시코·브라질 등 남미를 돈 월드투어의 앙코르 공연. 티켓 예매 세부 일정은 아직 공식 발표 전.",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-12). 올해 초 서울 KSPO DOME에서 시작해 일본 아레나 투어, 멕시코·브라질 등 남미를 돈 월드투어의 앙코르 공연. 티켓 예매 세부 일정은 아직 공식 발표 전. 가격은 VIP석 198,000원, 일반석 154,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "sources": [
       {
         "label": "몬스타엑스, 월드투어 앵콜콘 확정...11월 인스파이어 아레나 개최 - 한강타임즈",
@@ -4634,7 +4661,22 @@
         "vendor": "NOL티켓(인터파크)",
         "url": "https://nol.yanolja.com/ticket/products/26013132"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 198000
+      },
+      {
+        "label": "일반석",
+        "price": 154000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26013132"
+    }
   },
   {
     "id": "cherry-blossom-music-concert-winter-changwon-2026-11",
@@ -4677,7 +4719,18 @@
         "label": "Instagram",
         "url": "https://www.instagram.com/cbmfestival/"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "정규 티켓",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213803"
+    }
   },
   {
     "id": "kazumi-tateishi-trio-suwon-2026-11",
@@ -4713,7 +4766,26 @@
         "vendor": "예스24",
         "url": "https://ticket.yes24.com/Perf/60194"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 88000
+      },
+      {
+        "label": "R석",
+        "price": 77000
+      },
+      {
+        "label": "S석",
+        "price": 66000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60194"
+    }
   },
   {
     "id": "yuki-kajiura-live-seoul-2026-11",
@@ -4787,7 +4859,22 @@
         "label": "Japanese band ELLEGARDEN returns with 22-year-old tour, only overseas show in November - 씨네플레이",
         "url": "https://www.cineplay.co.kr/en-us/articles/29303"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 88000
+      },
+      {
+        "label": "지정석",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59771"
+    }
   },
   {
     "id": "kana-boon-seoul-2026-12",
@@ -4863,7 +4950,7 @@
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-09-18 저녁 6시",
     "ticketOpenAt": "2026-09-18T18:00:00+09:00",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 전석 88,000원이에요(멜론티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "재일교포 래퍼 PM Kenobi의 첫 내한 공연. Luci Gang과 함께 홍대 롤링홀에서 열려요.",
     "sources": [
       {
@@ -4878,7 +4965,18 @@
         "vendor": "멜론티켓",
         "url": "https://ticket.melon.com/performance/index.htm?prodId=213872"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "전석",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213872"
+    }
   },
   {
     "id": "kopis-PF303596",
@@ -4919,7 +5017,18 @@
         "vendor": "멜론티켓",
         "url": "https://ticket.melon.com/performance/index.htm?prodId=213843"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "전석",
+        "price": 77000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213843"
+    }
   },
   {
     "id": "shuttle-yuuri-live-seoul-2026-12",
@@ -4930,7 +5039,7 @@
     "startDate": "2026-12-05",
     "endDate": "2026-12-06",
     "ticketUrl": "https://nol.yanolja.com/ticket/products/26010352",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "note": "가격은 R석 165,000원, S석 154,000원, A석 143,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "officialUrl": "https://www.yuuriweb.com/",
     "description": "'드라이플라워'로 빌보드 재팬 연간 1위에 오른 일본 싱어송라이터 유우리(優里/YUURI)의 단독 내한 콘서트. 인천 인스파이어 아레나에서 이틀간 열려요.",
     "funFacts": [
@@ -4975,7 +5084,26 @@
         "text": "NOL티켓 기준 R 16.5만·S 15.4만·A 14.3만 원. 2024년 예스24 라이브홀, 2025년 KSPO DOME에 이은 세 번째 내한.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26010352"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "R석",
+        "price": 165000
+      },
+      {
+        "label": "S석",
+        "price": 154000
+      },
+      {
+        "label": "A석",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26010352"
+    }
   },
   {
     "id": "shuttle-khalid-2026-12",
@@ -4986,7 +5114,7 @@
     "startDate": "2026-12-05",
     "endDate": "2026-12-05",
     "ticketUrl": "https://nol.yanolja.com/ticket/products/26009919",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02). 기존 ticketUrl이 2018년 첫 내한(블루스퀘어, 판매종료) 상품 페이지로 잘못 연결되어 있던 것을 MD 굿즈 워치 중 발견해 2026년 공연 상품 페이지로 교정함 (2026-11-03).",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02). 기존 ticketUrl이 2018년 첫 내한(블루스퀘어, 판매종료) 상품 페이지로 잘못 연결되어 있던 것을 MD 굿즈 워치 중 발견해 2026년 공연 상품 페이지로 교정함 (2026-11-03). 가격은 Khalid Meet & Greet Experience 609,000원, Khalid VIP Merch Package 336,000원, 스탠딩석 154,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "officialSns": [
       {
         "label": "X (Twitter)",
@@ -5023,7 +5151,26 @@
       }
     ],
     "posterUrl": "/posters/shuttle-khalid-2026-12.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26009919_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26009919_p.gif",
+    "prices": [
+      {
+        "label": "Khalid Meet & Greet Experience",
+        "price": 609000
+      },
+      {
+        "label": "Khalid VIP Merch Package",
+        "price": 336000
+      },
+      {
+        "label": "스탠딩석",
+        "price": 154000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26009919"
+    }
   },
   {
     "id": "fkj-tyber-tour-korea-2026-12",
@@ -5079,7 +5226,7 @@
     "city": "서울",
     "startDate": "2026-12-06",
     "endDate": "2026-12-06",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 스탠딩석 99,000원이에요(예스24 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "무카이 슈토쿠(전 넘버걸)가 이끄는 일본 록밴드 Zazen Boys의 'MATSURI SESSION IN SEOUL 2026' 단독 내한공연.",
     "ticketLinks": [
       {
@@ -5094,7 +5241,18 @@
       }
     ],
     "posterUrl": "/posters/zazen-boys-seoul-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260901/20260901-59963.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260901/20260901-59963.jpg",
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59963"
+    }
   },
   {
     "id": "jane-remover-seoul-2026-12",
@@ -5111,7 +5269,7 @@
       }
     ],
     "schedule": "2026년 12월 11일(금) 오후 8시",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 스탠딩석 99,000원이에요(예스24 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "Jane Remover(제인 리무버)의 단독 내한 공연 'Live Exhibit in Seoul'. 무신사 개러지에서 열리고, 미성년자 관람불가(성인인증 필요) 공연이에요.",
     "sources": [
       {
@@ -5120,7 +5278,18 @@
       }
     ],
     "posterUrl": "/posters/jane-remover-seoul-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260914/20260914-60113.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260914/20260914-60113.jpg",
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60113"
+    }
   },
   {
     "id": "kopis-domi-jdbeck-2026-12",
@@ -5130,7 +5299,7 @@
     "city": "서울",
     "startDate": "2026-12-12",
     "endDate": "2026-12-12",
-    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연. 포스터는 2026-08-12 내한 발표 보도(더팩트) 이미지. 국내 주최는 엠피엠지뮤직·민트페이퍼. 예매는 NOL 티켓 단독(회차별 1인 4매)이에요.",
+    "note": "KOPIS(공연예술통합전산망) 등록 정보 기준. 해외 아티스트 내한 공연. 포스터는 2026-08-12 내한 발표 보도(더팩트) 이미지. 국내 주최는 엠피엠지뮤직·민트페이퍼. 예매는 NOL 티켓 단독(회차별 1인 4매)이에요. 가격은 R석 110,000원, S석 99,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "미국 재즈·퓨전 듀오 DOMi & JD BECK의 내한 공연. 그래미 수상 프로듀서들과의 협업으로 주목받았어요.",
     "officialUrl": "https://www.domiandjdbeck.com/tour/",
     "posterUrl": "/posters/kopis-domi-jdbeck-2026-12.webp",
@@ -5169,7 +5338,22 @@
         "vendor": "NOL티켓",
         "url": "https://nol.yanolja.com/ticket/products/26012221"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "R석",
+        "price": 110000
+      },
+      {
+        "label": "S석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26012221"
+    }
   },
   {
     "id": "bbc-philharmonic-seoul-2026-12",
@@ -5197,7 +5381,30 @@
         "vendor": "NOL티켓(인터파크)",
         "url": "https://nol.yanolja.com/ticket/products/26012634"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "R석",
+        "price": 240000
+      },
+      {
+        "label": "S석",
+        "price": 180000
+      },
+      {
+        "label": "A석",
+        "price": 120000
+      },
+      {
+        "label": "B석",
+        "price": 80000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26012634"
+    }
   },
   {
     "id": "mulasaki-ima-seoul-2026-12",
@@ -5223,7 +5430,22 @@
       }
     ],
     "posterUrl": "/posters/mulasaki-ima-seoul-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260915/20260915-60203.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260915/20260915-60203.jpg",
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 99000
+      },
+      {
+        "label": "지정석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60203"
+    }
   },
   {
     "id": "kopis-PF299848",
@@ -5270,7 +5492,34 @@
         "text": "유키 구라모토가 12월 한국에서 공연을 네 차례 열어요. 'Peacefully' 콘서트가 김해(12/15)·대구(12/16)에서 열리고, 크리스마스에는 서울 롯데콘서트홀(12/25, 낮·저녁 2회)과 용인포은아트홀(12/26)에서 '유키 구라모토와 친구들' 공연도 예정돼 있어요.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26014232"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "R석",
+        "price": 90000
+      },
+      {
+        "label": "S석",
+        "price": 80000
+      },
+      {
+        "label": "A석",
+        "price": 70000
+      },
+      {
+        "label": "B석",
+        "price": 60000
+      },
+      {
+        "label": "C석",
+        "price": 50000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26014068"
+    }
   },
   {
     "id": "yuki-kuramoto-daegu-2026-12",
@@ -5305,7 +5554,34 @@
         "text": "유키 구라모토가 12월 한국에서 공연을 네 차례 열어요. 'Peacefully' 콘서트가 김해(12/15)·대구(12/16)에서 열리고, 크리스마스에는 서울 롯데콘서트홀(12/25, 낮·저녁 2회)과 용인포은아트홀(12/26)에서 '유키 구라모토와 친구들' 공연도 예정돼 있어요.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26014232"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "R석",
+        "price": 90000
+      },
+      {
+        "label": "S석",
+        "price": 80000
+      },
+      {
+        "label": "A석",
+        "price": 70000
+      },
+      {
+        "label": "B석",
+        "price": 60000
+      },
+      {
+        "label": "C석",
+        "price": 50000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26013986"
+    }
   },
   {
     "id": "nee-seoul-2026-12",
@@ -5333,7 +5609,18 @@
         "vendor": "멜론티켓",
         "url": "https://ticket.melon.com/performance/index.htm?prodId=213863"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "전석 스탠딩",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213863"
+    }
   },
   {
     "id": "luck-life-seoul-2026-12",
@@ -5361,7 +5648,26 @@
         "vendor": "멜론티켓",
         "url": "https://ticket.melon.com/performance/index.htm?prodId=213903"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "SVIP",
+        "price": 198000
+      },
+      {
+        "label": "VIP",
+        "price": 154000
+      },
+      {
+        "label": "일반석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213903"
+    }
   },
   {
     "id": "penthouse-seoul-2026-12",
@@ -5371,7 +5677,7 @@
     "city": "서울",
     "startDate": "2026-12-19",
     "endDate": "2026-12-19",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 지정석 121,000원, 스탠딩석 110,000원이에요(예스24 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "일본 시티팝/소울 밴드 Penthouse(펜트하우스)의 단독 내한공연 'Penthouse ONE MAN LIVE TOUR 2026 「Neon Garden」 in Seoul'.",
     "ticketLinks": [
       {
@@ -5386,7 +5692,22 @@
       }
     ],
     "posterUrl": "/posters/penthouse-seoul-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260825/20260825-59886.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260825/20260825-59886.jpg",
+    "prices": [
+      {
+        "label": "지정석",
+        "price": 121000
+      },
+      {
+        "label": "스탠딩석",
+        "price": 110000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59886"
+    }
   },
   {
     "id": "ron-braunton-jazz-christmas-suwon-2026-12",
@@ -5396,7 +5717,7 @@
     "city": "수원",
     "startDate": "2026-12-19",
     "endDate": "2026-12-19",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 R석 69,000원, S석 59,000원, A석 49,000원이에요(예스24 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "재즈 보컬리스트 론 브랜튼(Ron Braunton)의 '재즈 크리스마스' 내한 공연.",
     "ticketLinks": [
       {
@@ -5411,7 +5732,26 @@
       }
     ],
     "posterUrl": "/posters/ron-braunton-jazz-christmas-suwon-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-59993.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-59993.jpg",
+    "prices": [
+      {
+        "label": "R석",
+        "price": 69000
+      },
+      {
+        "label": "S석",
+        "price": 59000
+      },
+      {
+        "label": "A석",
+        "price": 49000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59993"
+    }
   },
   {
     "id": "raintree-seoul-2026-12",
@@ -5449,7 +5789,7 @@
     "city": "서울",
     "startDate": "2026-12-20",
     "endDate": "2026-12-20",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 지정석 121,000원, 스탠딩석 110,000원이에요(예스24 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "일본 아티스트 카와사키 타카야(Kawasaki Takaya)의 단독 내한공연 'KAWASAKI TAKAYA LIVE IN SEOUL 2026'.",
     "ticketLinks": [
       {
@@ -5464,7 +5804,22 @@
       }
     ],
     "posterUrl": "/posters/kawasaki-takaya-seoul-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260810/20260810-59669.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260810/20260810-59669.jpg",
+    "prices": [
+      {
+        "label": "지정석",
+        "price": 121000
+      },
+      {
+        "label": "스탠딩석",
+        "price": 110000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59669"
+    }
   },
   {
     "id": "ron-braunton-jazz-christmas-incheon-2026-12",
@@ -5489,7 +5844,26 @@
       }
     ],
     "posterUrl": "/posters/ron-braunton-jazz-christmas-incheon-2026-12.webp",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-59997.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260929/20260929-59997.jpg",
+    "prices": [
+      {
+        "label": "R석",
+        "price": 69000
+      },
+      {
+        "label": "S석",
+        "price": 59000
+      },
+      {
+        "label": "A석",
+        "price": 49000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/59997"
+    }
   },
   {
     "id": "fujii-kaze-2027-01",
@@ -5506,7 +5880,7 @@
       }
     ],
     "officialUrl": "https://fujiikaze.com/tour/",
-    "note": "티켓 오픈은 2026년 6월 17일에 이미 진행됐어요. 일반예매 좌석은 멜론티켓에서 실시간으로 확인하세요.",
+    "note": "티켓 오픈은 2026년 6월 17일에 이미 진행됐어요. 일반예매 좌석은 멜론티켓에서 실시간으로 확인하세요. 가격은 플로어 FR 210,000원, 플로어 SR 198,000원, 플로어 R 187,000원, 지정석 S 165,000원, 지정석 A 154,000원, 지정석 B 132,000원이에요(멜론티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "일본 싱어송라이터 후지이 카제의 3집 'Prema' 월드투어 서울 공연. 'Matsuri', 'Shinunoga E-Wa' 등으로 알려져 있어요. 2024년 12월 매진을 기록한 고척돔 공연 이후 약 2년 만에 같은 무대로 돌아오는 세 번째 내한이에요.",
     "funFacts": [
       "2024년 12월, 아시아 투어의 마지막 도시로 고척돔에 섰고 이 공연은 매진을 기록했어요. 이번이 세 번째 내한이고, 같은 고척돔으로 돌아오는 거예요.",
@@ -5591,7 +5965,38 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000625",
         "note": "셔틀 스캔으로 확인 (2026-11-16). 수요조사 중인 상품입니다. 카카오 T 목록 표기는 \"후제이 카제\"(동일 아티스트의 표기 변형)."
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "플로어 FR",
+        "price": 210000
+      },
+      {
+        "label": "플로어 SR",
+        "price": 198000
+      },
+      {
+        "label": "플로어 R",
+        "price": 187000
+      },
+      {
+        "label": "지정석 S",
+        "price": 165000
+      },
+      {
+        "label": "지정석 A",
+        "price": 154000
+      },
+      {
+        "label": "지정석 B",
+        "price": 132000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213396"
+    }
   },
   {
     "id": "aosaka-seoul-2027-01",
@@ -5604,7 +6009,7 @@
     "city": "서울",
     "startDate": "2027-01-09",
     "endDate": "2027-01-09",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 스탠딩석 88,000원이에요(예스24 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "일본 슈게이즈 밴드 kurayamisaka와 한국 슈게이즈 아티스트 파란노을(parannoul)의 합동 공연 'Aosaka'. 2027-01-09(토) 오후 6시 30분, KT&G 상상마당 홍대 라이브홀. 주최/기획 하이징크스(주).",
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-09-17 낮 12:00",
@@ -5622,7 +6027,18 @@
         "vendor": "예스24",
         "url": "https://ticket.yes24.com/Perf/60147"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60147"
+    }
   },
   {
     "id": "humpback-seoul-2027-01",
@@ -5661,7 +6077,22 @@
         "text": "소속 매니지먼트·레이블을 VAP에서 소니뮤직 산하 'Echoes'로 옮긴다고 발표했어요. 이적 후 첫 작품으로 3rd 미니앨범 'やわらかな洞窟'(10월 14일 발매)를 냈고, 'HELLO ANEW TOUR 2026-2027'은 11월 1일 오사카에서 시작해 서울이 일정상 마지막이에요.",
         "sourceUrl": "https://lp.p.pia.jp/article/news/511052/index.html"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 132000
+      },
+      {
+        "label": "지정석",
+        "price": 132000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60207"
+    }
   },
   {
     "id": "shuttle-maroon5-seoul-2027-01",
@@ -5672,7 +6103,7 @@
     "startDate": "2027-01-27",
     "endDate": "2027-01-27",
     "ticketUrl": "https://nol.yanolja.com/ticket/products/26011315",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-09-02)",
+    "note": "가격은 EARLY ENTRY PACKAGE 350,000원, LOVE IS LIKE VIP PACKAGE 425,000원, 스탠딩 P 167,000원, 스탠딩 R 143,000원, 지정석 P 242,000원, 지정석 R 220,000원, 지정석 S 187,000원, 지정석 A 154,000원, 지정석 B 132,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "officialSns": [
       {
         "label": "Instagram",
@@ -5742,7 +6173,50 @@
         "url": "https://shuttle.kakaomobility.com/shuttles/10000586",
         "note": "셔틀 스캔으로 확인 (2026-11-16). 예약 가능 상태(서울/수도권·경기·인천 다수 정류장). 노선·요금은 예약 화면에서 확인하세요."
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "EARLY ENTRY PACKAGE",
+        "price": 350000
+      },
+      {
+        "label": "LOVE IS LIKE VIP PACKAGE",
+        "price": 425000
+      },
+      {
+        "label": "스탠딩 P",
+        "price": 167000
+      },
+      {
+        "label": "스탠딩 R",
+        "price": 143000
+      },
+      {
+        "label": "지정석 P",
+        "price": 242000
+      },
+      {
+        "label": "지정석 R",
+        "price": 220000
+      },
+      {
+        "label": "지정석 S",
+        "price": 187000
+      },
+      {
+        "label": "지정석 A",
+        "price": 154000
+      },
+      {
+        "label": "지정석 B",
+        "price": 132000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26011315"
+    }
   },
   {
     "id": "all-eyes-seoul-2027-01",
@@ -5774,7 +6248,22 @@
         "vendor": "예스24",
         "url": "https://ticket.yes24.com/Perf/60411"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 121000
+      },
+      {
+        "label": "지정석",
+        "price": 121000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60411"
+    }
   },
   {
     "id": "bruno-mars-goyang-2027-05",
@@ -5784,7 +6273,7 @@
     "city": "고양",
     "startDate": "2027-05-21",
     "endDate": "2027-05-30",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 G1 280,000원, G2 250,000원, G3 169,000원, 지정석 P 250,000원, 지정석 R 220,000원, 지정석 S 187,000원, 지정석 A 165,000원, 지정석 B 143,000원, 지정석 C 132,000원, 지정석 D 99,000원, 스탠딩 121,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "브루노 마스(Bruno Mars)의 'The Romantic Tour' 내한공연. 2027년 5월 21·22·25·26일 고양종합운동장 4회로 시작했다가 5월 29·30일 2회가 추가돼 총 6회로 진행되고, 2023년 잠실 공연 이후 약 4년 만이에요. 라이브네이션 코리아 주최. 아티스트·라이브네이션 선예매는 2026-09-11 낮 12시, NOL 일반예매는 2026-09-14 낮 12시부터예요.",
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-09-11 낮 12시 (아티스트·라이브네이션 선예매), 2026-09-14 낮 12시 (일반예매)",
@@ -5813,7 +6302,58 @@
         "vendor": "NOL티켓(인터파크)",
         "url": "https://nol.yanolja.com/ticket/products/26012591"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "G1",
+        "price": 280000
+      },
+      {
+        "label": "G2",
+        "price": 250000
+      },
+      {
+        "label": "G3",
+        "price": 169000
+      },
+      {
+        "label": "지정석 P",
+        "price": 250000
+      },
+      {
+        "label": "지정석 R",
+        "price": 220000
+      },
+      {
+        "label": "지정석 S",
+        "price": 187000
+      },
+      {
+        "label": "지정석 A",
+        "price": 165000
+      },
+      {
+        "label": "지정석 B",
+        "price": 143000
+      },
+      {
+        "label": "지정석 C",
+        "price": 132000
+      },
+      {
+        "label": "지정석 D",
+        "price": 99000
+      },
+      {
+        "label": "스탠딩",
+        "price": 121000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26012591"
+    }
   },
   {
     "id": "shuttle-hanroro-5th-question-mark-2027-01",
@@ -5872,7 +6412,26 @@
         "text": "NOL 티켓 상품 페이지에 가격(스탠딩·2층 143,000원, 3층 132,000원)과 러닝타임 120분, 전체관람가, 티켓 12월 8일 일괄 배송이 올라왔어요. 장소는 '네이버 아레나 앳 인스파이어((구)인스파이어 아레나)'로 표기돼 있어요.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26015537"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 143000
+      },
+      {
+        "label": "2층 지정좌석",
+        "price": 143000
+      },
+      {
+        "label": "3층 지정좌석",
+        "price": 132000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26015537"
+    }
   },
   {
     "id": "shuttle-2026-incheon-airport-sky-festival-2026-11",
@@ -5929,7 +6488,7 @@
     "startDate": "2026-11-27",
     "endDate": "2026-11-29",
     "ticketUrl": "https://nol.yanolja.com/ticket/products/26013946",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 엔믹스의 데뷔 첫 월드투어를 마무리하는 피날레 단독 콘서트.",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 엔믹스의 데뷔 첫 월드투어를 마무리하는 피날레 단독 콘서트. 가격은 지정석 154,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "sources": [
       {
         "label": "엔믹스, 11월 인천 인스파이어 아레나 3회차 전석 매진 - JTBC",
@@ -5954,7 +6513,18 @@
     ],
     "merchCheckedAt": "2026-11-11",
     "posterUrl": "/posters/shuttle-nmixx-world-tour-zero-frontier-finale-2026-11.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013946_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013946_p.gif",
+    "prices": [
+      {
+        "label": "지정석",
+        "price": 154000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26013946"
+    }
   },
   {
     "id": "shuttle-ateez-world-tour-zero-to-all-2027-01",
@@ -6116,7 +6686,7 @@
     "startDate": "2026-12-12",
     "endDate": "2026-12-12",
     "officialUrl": "https://www.inspireresorts.com/ko/entertainment/performance/2026-lee-seung-chul-40th-concert-incheon",
-    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 데뷔 40주년을 맞은 이승철의 단독 콘서트.",
+    "note": "셔틀 스캔으로 자동 발견·게시됨 (2026-11-02). 데뷔 40주년을 맞은 이승철의 단독 콘서트. 가격은 FS석 198,000원, VIP석 187,000원, R석 165,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "sources": [
       {
         "label": "2026 이승철 40주년 콘서트 [THE VOICE: LEE SEUNG CHUL] - INSPIRE Entertainment Resort 공식",
@@ -6145,7 +6715,26 @@
         "vendor": "NOL티켓",
         "url": "https://nol.yanolja.com/ticket/products/26011556"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "FS석",
+        "price": 198000
+      },
+      {
+        "label": "VIP석",
+        "price": 187000
+      },
+      {
+        "label": "R석",
+        "price": 165000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26011556"
+    }
   },
   {
     "id": "shuttle-daegu-hiphop-festival-2026-12",
@@ -6254,7 +6843,22 @@
         "vendor": "예스24",
         "url": "https://ticket.yes24.com/Perf/60949"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "1층 스탠딩석",
+        "price": 99000
+      },
+      {
+        "label": "2층 자유석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60949"
+    }
   },
   {
     "id": "sophie-powers-seoul-2026-12",
@@ -6282,7 +6886,26 @@
         "vendor": "예스24",
         "url": "https://ticket.yes24.com/Perf/60948"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "SVIP석",
+        "price": 120000
+      },
+      {
+        "label": "VIP석",
+        "price": 80000
+      },
+      {
+        "label": "일반석",
+        "price": 60000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60948"
+    }
   },
   {
     "id": "cho-q-may-seoul-2027-01",
@@ -6318,7 +6941,26 @@
       }
     ],
     "posterUrl": "/posters/cho-q-may-seoul-2027-01.webp",
-    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202610/20261029/20261029-60901.jpg"
+    "posterSourceUrl": "https://stkfile.yes24.com/upload2/PerfBlog/202610/20261029/20261029-60901.jpg",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 110000
+      },
+      {
+        "label": "스탠딩석",
+        "price": 99000
+      },
+      {
+        "label": "지정석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60901"
+    }
   },
   {
     "id": "yukiguni-seoul-2026-12",
@@ -6328,7 +6970,7 @@
     "city": "서울",
     "startDate": "2026-12-17",
     "endDate": "2026-12-17",
-    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요.",
+    "note": "가격은 스탠딩 66,000원이에요(멜론티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "일본 밴드 유키구니(雪国)의 2번째 EP 발매 기념 투어 서울 공연. 유령서점(Ghost Bookstore)과 함께하는 특별한 무대예요. 2026-12-17(목) 20시, 얼라이브홀(서울 마포구 독막로7길 20 지층).",
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-11-06 오후 8시",
@@ -6346,7 +6988,18 @@
         "vendor": "멜론티켓",
         "url": "https://ticket.melon.com/performance/index.htm?prodId=214216"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩",
+        "price": 66000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=214216"
+    }
   },
   {
     "id": "jeffbernat-seoul-2027-02",
@@ -6374,7 +7027,22 @@
         "vendor": "예스24",
         "url": "https://ticket.yes24.com/Perf/61043"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 110000
+      },
+      {
+        "label": "지정석",
+        "price": 110000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/61043"
+    }
   },
   {
     "id": "kenshi-yonezu-ghost-incheon-2027-01",
@@ -6398,7 +7066,7 @@
         "url": "https://nol.yanolja.com/ticket/products/26015024"
       }
     ],
-    "note": "1/14(목) 19:30, 1/16(토)·1/17(일) 19:00, 총 3회 공연이에요(15일은 쉬어요). 티켓은 2026년 10월 22일 낮 12시에 NOL 티켓 단독으로 이미 오픈됐어요. 남은 좌석·취소표는 NOL에서 확인하세요.",
+    "note": "1/14(목) 19:30, 1/16(토)·1/17(일) 19:00, 총 3회 공연이에요(15일은 쉬어요). 티켓은 2026년 10월 22일 낮 12시에 NOL 티켓 단독으로 이미 오픈됐어요. 남은 좌석·취소표는 NOL에서 확인하세요. 가격은 플로어석 172,000원, 지정석 P 165,000원, 지정석 R 154,000원, 지정석 S 143,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "일본 싱어송라이터 요네즈 켄시의 월드투어 'KENSHI YONEZU 2026-2027 WORLD TOUR / GHOST' 인천 공연. 2025년 3월 같은 인스파이어 아레나에서 가진 첫 내한(2회) 이후 약 2년 만이고, 이번엔 서울권 공연 규모를 3일로 늘렸어요. 라이브네이션코리아 주최.",
     "funFacts": [
       "2025년 3월 첫 내한 때는 인스파이어 아레나에서 2회 공연으로 약 2만 명을 모았는데, 이번엔 3회로 늘어났어요.",
@@ -6441,7 +7109,30 @@
       }
     ],
     "posterUrl": "/posters/kenshi-yonezu-ghost-incheon-2027-01.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015024_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015024_p.gif",
+    "prices": [
+      {
+        "label": "플로어석",
+        "price": 172000
+      },
+      {
+        "label": "지정석 P",
+        "price": 165000
+      },
+      {
+        "label": "지정석 R",
+        "price": 154000
+      },
+      {
+        "label": "지정석 S",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26015024"
+    }
   },
   {
     "id": "katseye-seoul-2027-02",
@@ -6514,7 +7205,38 @@
         "label": "일반예매",
         "at": "2026-11-12T12:00:00+09:00"
       }
-    ]
+    ],
+    "prices": [
+      {
+        "label": "스탠딩",
+        "price": 165000
+      },
+      {
+        "label": "지정석 P",
+        "price": 176000
+      },
+      {
+        "label": "지정석 R",
+        "price": 165000
+      },
+      {
+        "label": "지정석 S",
+        "price": 154000
+      },
+      {
+        "label": "지정석 A",
+        "price": 143000
+      },
+      {
+        "label": "지정석 B",
+        "price": 132000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26015604"
+    }
   },
   {
     "id": "damien-rice-seoul-2027-02",
@@ -6530,7 +7252,7 @@
         "url": "https://nol.yanolja.com/ticket/products/26015096"
       }
     ],
-    "note": "2/27(토) 19:00, 2/28(일) 14:30·19:00 총 3회예요. 티켓은 2026년 10월 23일 낮 12시에 NOL 티켓과 GS아트센터 홈페이지에서 이미 오픈됐어요. 남은 좌석·취소표는 NOL에서 확인하세요.",
+    "note": "2/27(토) 19:00, 2/28(일) 14:30·19:00 총 3회예요. 티켓은 2026년 10월 23일 낮 12시에 NOL 티켓과 GS아트센터 홈페이지에서 이미 오픈됐어요. 남은 좌석·취소표는 NOL에서 확인하세요. 가격은 R석 176,000원, S석 154,000원, A석 132,000원, B석 110,000원이에요(NOL 티켓 예매 페이지 기준, 2026-11-17 확인).",
     "description": "아일랜드 싱어송라이터 데미안 라이스의 데뷔 앨범 'O' 발매 25주년 기념 월드투어(25개 도시) 서울 공연. 약 2년 만의 단독 내한이고 주최는 프라이빗커브예요.",
     "funFacts": [
       "2002년 데뷔 앨범 'O' 25주년을 기념한 투어로, 전 세계 25개 도시를 돌아요.",
@@ -6558,7 +7280,30 @@
       }
     ],
     "posterUrl": "/posters/damien-rice-seoul-2027-02.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015096_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015096_p.gif",
+    "prices": [
+      {
+        "label": "R석",
+        "price": 176000
+      },
+      {
+        "label": "S석",
+        "price": 154000
+      },
+      {
+        "label": "A석",
+        "price": 132000
+      },
+      {
+        "label": "B석",
+        "price": 110000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26015096"
+    }
   },
   {
     "id": "steve-gadd-bhg-seoul-2027-01",
@@ -6794,7 +7539,26 @@
     ],
     "addedAt": "2026-11-09",
     "promoBanner": "요아소비 고양종합운동장 확정 - 11/30(월) 오후 6시 선예매, 8시 일반예매",
-    "featuredUntil": "2026-11-30"
+    "featuredUntil": "2026-11-30",
+    "prices": [
+      {
+        "label": "SR석",
+        "price": 187000
+      },
+      {
+        "label": "R석",
+        "price": 154000
+      },
+      {
+        "label": "S석",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=214279"
+    }
   },
   {
     "id": "yonyon-seoul-2026-12",
@@ -6821,7 +7585,18 @@
         "url": "https://ticket.melon.com/performance/index.htm?prodId=214285"
       }
     ],
-    "addedAt": "2026-11-11"
+    "addedAt": "2026-11-11",
+    "prices": [
+      {
+        "label": "전석",
+        "price": 55000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=214285"
+    }
   },
   {
     "id": "shuttle-countdown-fantasy-2026-2027",
@@ -6862,7 +7637,20 @@
       }
     ],
     "addedAt": "2026-11-11",
-    "promoBanner": "카운트다운 판타지 2026-2027 - 12.31(목) 킨텍스, 카카오 T 셔틀 예약 오픈"
+    "promoBanner": "카운트다운 판타지 2026-2027 - 12.31(목) 킨텍스, 카카오 T 셔틀 예약 오픈",
+    "prices": [
+      {
+        "label": "1일권",
+        "price": 121000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26014568"
+    },
+    "posterUrl": "/posters/shuttle-countdown-fantasy-2026-2027.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26014568_p.gif"
   },
   {
     "id": "txt-steal-the-wind-seoul-2026-11",
@@ -7116,7 +7904,30 @@
     "posterUrl": "/posters/kings-of-convenience-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF295591_260708_125621.png",
-    "merchCheckedAt": "2026-11-14"
+    "merchCheckedAt": "2026-11-14",
+    "prices": [
+      {
+        "label": "R석",
+        "price": 143000
+      },
+      {
+        "label": "S석",
+        "price": 132000
+      },
+      {
+        "label": "A석",
+        "price": 110000
+      },
+      {
+        "label": "B석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213500"
+    }
   },
   {
     "id": "stacey-kent-seoul-2026-11",
@@ -7195,7 +8006,34 @@
     ],
     "posterUrl": "/posters/diana-krall-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297759_260805_134746.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297759_260805_134746.jpg",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 165000
+      },
+      {
+        "label": "R석",
+        "price": 143000
+      },
+      {
+        "label": "S석",
+        "price": 132000
+      },
+      {
+        "label": "A석",
+        "price": 110000
+      },
+      {
+        "label": "B석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213652"
+    }
   },
   {
     "id": "slowdive-seoul-2026-12",
@@ -7234,7 +8072,26 @@
     "posterUrl": "/posters/slowdive-seoul-2026-12.webp",
     "addedAt": "2026-11-12",
     "promoBanner": "슬로우다이브 내한 - 12.8(화) KBS아레나",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299778_260831_160438.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299778_260831_160438.gif",
+    "prices": [
+      {
+        "label": "스탠딩",
+        "price": 132000
+      },
+      {
+        "label": "지정석 P",
+        "price": 143000
+      },
+      {
+        "label": "지정석 R",
+        "price": 132000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26012276"
+    }
   },
   {
     "id": "beabadoobee-seoul-2027-03",
@@ -7270,7 +8127,34 @@
     "posterUrl": "/posters/beabadoobee-seoul-2027-03.webp",
     "addedAt": "2026-11-12",
     "promoBanner": "비바두비 첫 내한 - 2027.3.23(화) 올림픽홀",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303466_261015_141109.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303466_261015_141109.gif",
+    "prices": [
+      {
+        "label": "Beabadoobee Early Entry Package",
+        "price": 272000
+      },
+      {
+        "label": "Beabadoobee Gold Seat Package",
+        "price": 294000
+      },
+      {
+        "label": "스탠딩",
+        "price": 110000
+      },
+      {
+        "label": "지정석 P",
+        "price": 132000
+      },
+      {
+        "label": "지정석 R",
+        "price": 121000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26014497"
+    }
   },
   {
     "id": "tahiti-80-seoul-2026-11",
@@ -7306,7 +8190,18 @@
     ],
     "posterUrl": "/posters/tahiti-80-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303937_261020_171413.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303937_261020_171413.gif",
+    "prices": [
+      {
+        "label": "스탠딩",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26015105"
+    }
   },
   {
     "id": "sunny-day-service-seoul-2026-12",
@@ -7412,7 +8307,18 @@
     "posterUrl": "/posters/cutie-street-goyang-2027-01.webp",
     "addedAt": "2026-11-12",
     "promoBanner": "큐티 스트리트 한국 단독 - 2027.1.23(토) 킨텍스",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299233_260824_143416.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299233_260824_143416.jpg",
+    "prices": [
+      {
+        "label": "전석",
+        "price": 135000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213705"
+    }
   },
   {
     "id": "roy-kim-roy-seoul-2026-11",
@@ -7448,7 +8354,22 @@
     ],
     "posterUrl": "/posters/roy-kim-roy-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301234_261006_164647.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301234_261006_164647.gif",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 165000
+      },
+      {
+        "label": "R석",
+        "price": 154000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26013078"
+    }
   },
   {
     "id": "cho-yong-pil-seoul-2026-11",
@@ -7490,7 +8411,30 @@
     "posterUrl": "/posters/cho-yong-pil-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "promoBanner": "조용필 & 위대한 탄생 서울 - 11.27(금)~29(일) KSPO DOME",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301499_260921_170434.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF301499_260921_170434.jpg",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 176000
+      },
+      {
+        "label": "R석",
+        "price": 165000
+      },
+      {
+        "label": "S석",
+        "price": 143000
+      },
+      {
+        "label": "A석",
+        "price": 110000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60153"
+    }
   },
   {
     "id": "dynamic-duo-seoul-2026-11",
@@ -7527,7 +8471,18 @@
     ],
     "posterUrl": "/posters/dynamic-duo-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302131_260930_140740.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302131_260930_140740.gif",
+    "prices": [
+      {
+        "label": "지정석",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26013810"
+    }
   },
   {
     "id": "rain-the-smoke-seoul-2026-12",
@@ -7564,7 +8519,30 @@
     ],
     "posterUrl": "/posters/rain-the-smoke-seoul-2026-12.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302170_260930_155921.jpg"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302170_260930_155921.jpg",
+    "prices": [
+      {
+        "label": "VVIP석",
+        "price": 198000
+      },
+      {
+        "label": "VIP석",
+        "price": 165000
+      },
+      {
+        "label": "R석",
+        "price": 143000
+      },
+      {
+        "label": "S석",
+        "price": 110000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60211"
+    }
   },
   {
     "id": "davichi-in-our-scenes-seoul-2026-12",
@@ -7600,7 +8578,30 @@
     ],
     "posterUrl": "/posters/davichi-in-our-scenes-seoul-2026-12.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302745_261007_145954.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302745_261007_145954.gif",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 176000
+      },
+      {
+        "label": "R석",
+        "price": 165000
+      },
+      {
+        "label": "S석",
+        "price": 154000
+      },
+      {
+        "label": "A석",
+        "price": 132000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26014056"
+    }
   },
   {
     "id": "jaurim-midnight-express-seoul-2026-12",
@@ -7635,7 +8636,26 @@
     ],
     "posterUrl": "/posters/jaurim-midnight-express-seoul-2026-12.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304645_261028_104244.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304645_261028_104244.gif",
+    "prices": [
+      {
+        "label": "스탠딩",
+        "price": 143000
+      },
+      {
+        "label": "SR석",
+        "price": 154000
+      },
+      {
+        "label": "R석",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26015207"
+    }
   },
   {
     "id": "jyp-wet-seoul-2026-12",
@@ -7674,7 +8694,26 @@
     ],
     "posterUrl": "/posters/jyp-wet-seoul-2026-12.webp",
     "addedAt": "2026-11-12",
-    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302732_261007_142711.gif"
+    "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302732_261007_142711.gif",
+    "prices": [
+      {
+        "label": "SR석",
+        "price": 165000
+      },
+      {
+        "label": "R석",
+        "price": 143000
+      },
+      {
+        "label": "S석",
+        "price": 121000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26014222"
+    }
   },
   {
     "id": "epik-high-kspo-seoul-2027-01",
@@ -7707,7 +8746,28 @@
         "url": "https://sports.khan.co.kr/en/article/202609291423007"
       }
     ],
-    "addedAt": "2026-11-12"
+    "addedAt": "2026-11-12",
+    "prices": [
+      {
+        "label": "R석",
+        "price": 176000
+      },
+      {
+        "label": "S석",
+        "price": 165000
+      },
+      {
+        "label": "A석",
+        "price": 154000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=213943"
+    },
+    "posterUrl": "/posters/epik-high-kspo-seoul-2027-01.webp",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/10/20261014095525b3c3f0d2-b2c2-4419-aeb8-c29f73e75c68.jpg"
   },
   {
     "id": "koresawa-seoul-2027-02",
@@ -7732,7 +8792,28 @@
         "url": "https://ticket.yes24.com/Perf/60647"
       }
     ],
-    "addedAt": "2026-11-13"
+    "addedAt": "2026-11-13",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 110000
+      },
+      {
+        "label": "스탠딩석",
+        "price": 99000
+      },
+      {
+        "label": "지정석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60647"
+    },
+    "posterUrl": "/posters/koresawa-seoul-2027-02.webp",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202610/20261014/20261014-60647_1.jpg"
   },
   {
     "id": "tiffany-day-seoul-2027-02",
@@ -7820,7 +8901,22 @@
       }
     ],
     "posterUrl": "/posters/kimchikura-anisama-seoul-2027-01.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016535_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016535_p.gif",
+    "prices": [
+      {
+        "label": "스탠딩",
+        "price": 187000
+      },
+      {
+        "label": "지정석",
+        "price": 187000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26016535"
+    }
   },
   {
     "id": "day6-the-present-seoul-2026-12",
@@ -7909,6 +9005,35 @@
         "url": "https://nol.yanolja.com/ticket/products/26015783"
       }
     ],
-    "addedAt": "2026-11-16"
+    "addedAt": "2026-11-16",
+    "prices": [
+      {
+        "label": "VIP석(현장수령)",
+        "price": 165000
+      },
+      {
+        "label": "R석(현장수령)",
+        "price": 154000
+      },
+      {
+        "label": "S석",
+        "price": 143000
+      },
+      {
+        "label": "A석",
+        "price": 132000
+      },
+      {
+        "label": "시야제한석",
+        "price": 121000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-17",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26015783"
+    },
+    "posterUrl": "/posters/sung-si-kyung-yearend-seoul-2026-12.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015783_p.gif"
   }
 ]

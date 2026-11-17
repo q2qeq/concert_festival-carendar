@@ -17,6 +17,7 @@ import Mascot from '../../components/Mascot.astro';
 import NextSteps from '../../components/NextSteps.astro';
 import WantButton from '../../components/WantButton.astro';
 import AnnounceWatch from '../../components/AnnounceWatch.astro';
+import PriceBox from '../../components/PriceBox.astro';
 import OpenCountdown from '../../components/OpenCountdown.astro';
 import { existsSync } from 'node:fs';
 import { postsMentioningEvent, postsMentioningVenue, postDateLabel } from '../../lib/posts';
@@ -147,6 +148,7 @@ const mentionedIn = [...mentionedEvent, ...mentionedVenue].slice(0, 4);
 // 흥미도 높은 걸 위로: 라인업·셋리스트를 먼저, 직관냥 포인트 같은 부가 정보는
 // 뒤로 두는 순서가 실제 페이지 본문 순서와 맞춰져 있다.
 const tocItems = [
+  event.prices && event.prices.length > 0 && { id: 'price', label: '티켓 가격' },
   isFestival && { id: 'lineup', label: '라인업' },
   event.setlists && event.setlists.length > 0 && { id: 'setlist', label: '셋리스트' },
   !isFestival && { id: 'fanchant', label: '떼창·콜 가이드' },
@@ -225,10 +227,14 @@ const jsonLd = {
   ...(event.officialUrl ? { sameAs: [event.officialUrl] } : {}),
   ...(ticketLinks.length > 0 && status === 'scheduled'
     ? {
+        // 가격을 확인한 공연은 등급별 정가의 최저~최고를 함께 적는다(확인 안 된 가격은 넣지 않는다).
         offers: ticketLinks.map((t) => ({
-          '@type': 'Offer',
+          '@type': event.prices?.length ? 'AggregateOffer' : 'Offer',
           url: t.url,
           availability: 'https://schema.org/InStock',
+          ...(event.prices?.length
+            ? { priceCurrency: 'KRW', lowPrice: Math.min(...event.prices.map((x) => x.price)), highPrice: Math.max(...event.prices.map((x) => x.price)) }
+            : {}),
           ...(event.ticketOpenAt ? { validFrom: event.ticketOpenAt } : {}),
         })),
       }
@@ -389,6 +395,8 @@ const breadcrumbLd = {
     </div>
 
     <AnnounceWatch event={event} />
+
+    <PriceBox event={event} />
 
     <NextSteps event={event} />
 
