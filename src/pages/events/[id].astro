@@ -202,7 +202,7 @@ const mobileCtaKind: 'links' | 'official' | 'clock' | null =
   : fallbackPrimaryUrl ? 'official'
   : openUpcoming ? 'clock'
   : null;
-const mobileClockHref = `/ticketing-clock/?open=${encodeURIComponent(event.ticketOpenAt ?? '')}&artist=${encodeURIComponent(event.artist)}`;
+const mobileClockHref = `/ticketing-clock/#open=${encodeURIComponent(event.ticketOpenAt ?? '')}&artist=${encodeURIComponent(event.artist)}`;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -326,7 +326,7 @@ const breadcrumbLd = {
             {' '}
             <a
               class="clock-link"
-              href={`/ticketing-clock/?open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}`}
+              href={`/ticketing-clock/#open=${encodeURIComponent(event.ticketOpenAt)}&artist=${encodeURIComponent(event.artist)}`}
             >
               티켓팅 시계로 준비하기 →
             </a>
@@ -337,7 +337,7 @@ const breadcrumbLd = {
 
     <div class="action-bar" aria-label="빠른 이용">
       <div class="ab-main">
-      {ticketPopoverLinks.length > 0 ? (
+      {isPast && status === 'scheduled' ? null : ticketPopoverLinks.length > 0 ? (
         <div class="ab-ticket">
           <button
             class="ab-btn ab-primary"

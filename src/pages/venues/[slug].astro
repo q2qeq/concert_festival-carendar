@@ -47,7 +47,7 @@ if (info?.address) faqs.push({ q: `${venueName} 주소가 어떻게 되나요?`,
 if (info?.transit?.length) faqs.push({ q: `${venueName}에 대중교통으로 어떻게 가나요?`, a: info.transit.join(' / ') });
 if (info?.parking) faqs.push({ q: `${venueName}에 주차할 수 있나요?`, a: [info.parking, ...(info.parkingTips ?? [])].join(' ') });
 if (info?.seating) faqs.push({
-  q: `${venueName} 좌석은 몇 석이고 층별로 어떻게 나뉘나요?`,
+  q: info.seating.unit === 'hall' ? `${venueName} 홀은 얼마나 큰가요?` : `${venueName} 좌석은 몇 석이고 층별로 어떻게 나뉘나요?`,
   a: `${info.seating.floors.map((f) => `${f.name} ${f.seats}`).join(', ')}이에요. ${info.seating.summary ?? ''} (${info.seating.source.label} 기준, ${info.seating.checkedAt} 확인)`,
 });
 if (info?.capacity) faqs.push({ q: `${venueName}은 몇 명까지 들어가나요?`, a: `${info.capacity}${info.capacityNote ? ` ${info.capacityNote}` : ''}` });
@@ -87,8 +87,11 @@ const hasParkingFee = Boolean(info?.parkingTips?.length) || /\d\s*원/.test(info
 // 셔틀 안내가 교통 정보에 실제로 적혀 있는 곳만 제목에 '셔틀버스'를 넣는다(없는 정보를 제목으로 약속하지 않는다).
 const hasShuttleInfo = (info?.transit ?? []).some((t) => t.includes('셔틀'));
 const seating = info?.seating;
+const byHall = seating?.unit === 'hall';
 const pageTitle = seating
-  ? `${venueName} 시야·좌석 배치도 - 층별 좌석 수·오시는 길`
+  ? byHall
+    ? `${venueName} 시야·홀별 크기(${seating.floors[0].name}~${seating.floors[seating.floors.length - 1].name})·주차·오시는 길`
+    : `${venueName} 시야·좌석 배치도 - 층별 좌석 수·오시는 길`
   : hasShuttleInfo && hasParkingFee
   ? `${venueName} 셔틀버스·주차 요금·오시는 길`
   : hasParkingFee
@@ -97,7 +100,9 @@ const pageTitle = seating
     ? `${venueName} 주차·오시는 길·좌석·시야 정보`
     : `${venueName} 오시는 길·좌석·시야 정보`;
 const pageDescription = seating
-  ? `${venueName} 좌석 배치를 층별로 정리했어요. ${seating.floors.map((f) => `${f.name} ${f.seats}`).join(', ')}. 구역별 시야 후기 검색과 오시는 길, 예정된 공연도 함께 봐요.`
+  ? byHall
+    ? `${venueName} 콘서트 가기 전에 볼 홀별 크기와 천장 높이(${seating.floors.map((f) => `${f.name} ${f.seats}`).join(', ')}), 구역별 시야 후기 검색, 주차와 오시는 길, 예정된 공연을 정리했어요.`
+    : `${venueName} 좌석 배치를 층별로 정리했어요. ${seating.floors.map((f) => `${f.name} ${f.seats}`).join(', ')}. 구역별 시야 후기 검색과 오시는 길, 예정된 공연도 함께 봐요.`
   : hasShuttleInfo && hasParkingFee
   ? `${venueName} 공연 보러 갈 때 셔틀버스 타는 곳과 운행 안내, 주차장 요금과 주차 팁, 구역별 시야, 예정된 공연 목록을 정리했어요.`
   : hasParkingFee
@@ -139,15 +144,15 @@ const pageDescription = seating
   </section>
 
   <RouteFinder venue={venueName} address={info?.address} />
-  <p class="return-link"><a href={`/return-trip/?venue=${encodeURIComponent(venueName)}`}>공연 끝나고 막차 탈 수 있을까? 막차 계산하기 →</a></p>
+  <p class="return-link"><a href={`/return-trip/#venue=${encodeURIComponent(venueName)}`}>공연 끝나고 막차 탈 수 있을까? 막차 계산하기 →</a></p>
 
   <section class="venue-sightline-section" id="sightline">
-    <h2>{seating ? '좌석 배치와 구역별 시야' : '구역별 시야'}</h2>
+    <h2>{seating ? (byHall ? '홀별 크기와 구역별 시야' : '좌석 배치와 구역별 시야') : '구역별 시야'}</h2>
     {seating && (
       <div class="seating">
         {seating.summary && <p class="seating-summary">{seating.summary}</p>}
         <table class="seating-table">
-          <thead><tr><th scope="col">층</th><th scope="col">좌석 수</th><th scope="col">구성</th></tr></thead>
+          <thead><tr><th scope="col">{byHall ? '홀' : '층'}</th><th scope="col">{byHall ? '면적' : '좌석 수'}</th><th scope="col">{byHall ? '크기' : '구성'}</th></tr></thead>
           <tbody>
             {seating.floors.map((f) => (
               <tr><th scope="row">{f.name}</th><td class="seats">{f.seats}</td><td>{f.note ?? ''}</td></tr>
