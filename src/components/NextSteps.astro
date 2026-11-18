@@ -1,69 +1,92 @@
 ---
-// 공연 상세 페이지의 "다음 행동" 블록 - 이 페이지에서 답을 얻은 사람이 바로
-// 이어서 할 만한 일(도구 / 오픈 알림 / 같은 날·같은 공연장 공연)을 한곳에 모은다.
-// 이탈률 개선용 (2026-11-02). 목록은 실제 데이터에 있는 것만 보여주고, 없으면 그 구역을 숨긴다.
-// 버튼·글자 링크·밑줄 링크가 섞여 헷갈린다는 피드백으로 모두 LinkRow 한 모양으로 통일했다(2026-11-18).
+// 공연 상세 페이지의 "지금 할 일" 한 문장. 도구를 나열하지 않고 공연 상태에 맞는 한 가지만 권한다.
+//   티켓 오픈 전·오픈 중: 그리지 않는다. 상단 카운트다운(OpenCountdown)이 시계·알림·연습을 안내한다.
+//   예매 중: 취소표 → 취켓팅 연습
+//   공연 7일 전부터 마지막 날까지: 돌아오는 차편 → 막차 계산
+//   끝났거나 연기·취소, 예매 링크가 없는 공연: 그리지 않는다.
+// 예전에는 도구 링크 묶음이 모든 공연에 똑같이 나와서 도구 페이지를 옮겨 놓은 것처럼 보였다(2026-11-18).
+// 나머지 도구는 질문이 생기는 자리에 둔다: 비용 계산기는 가격표 밑, 막차 계산기는 공연장 정보.
+// 정적 빌드라 두 문장을 모두 그려 두고, 브라우저가 오늘 날짜로 보여 줄 것을 다시 고른다.
 import type { ConcertEvent } from '../lib/events';
-import { sameDayEvents, sameVenueUpcoming } from '../lib/events';
+import { ticketOpenStages, hasTicketsOnSale } from '../lib/events';
 import { getVenueInfo } from '../lib/venues';
-import { ticketOpenIcs, ticketOpenGoogleUrl, icsDataUri } from '../lib/ticketAlert';
-import LinkList from './LinkList.astro';
-import LinkRow from './LinkRow.astro';
+import { nextStepKind } from '../lib/nextStep';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
-const sameDay = sameDayEvents(event);
+const stages = ticketOpenStages(event);
+const scheduled = (event.status ?? 'scheduled') === 'scheduled';
+const onSale = hasTicketsOnSale(event);
+const built = nextStepKind({ start: event.startDate, end: event.endDate, stages, onSale }, Date.now());
 const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIComponent(event.venue)}` : '/return-trip/';
-const sameVenue = sameVenueUpcoming(event);
-const hasOpen = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
-const clockHref = hasOpen
-  ? `/ticketing-clock/#open=${encodeURIComponent(event.ticketOpenAt as string)}&artist=${encodeURIComponent(event.artist)}`
-  : '/ticketing-clock';
-const alertEvent = hasOpen ? { id: event.id, artist: event.artist, ticketOpenAt: event.ticketOpenAt as string } : null;
-const googleHref = alertEvent ? ticketOpenGoogleUrl(alertEvent) : '';
-const icsHref = alertEvent ? icsDataUri(ticketOpenIcs([alertEvent])) : '';
-const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
-const dayLabel = (iso: string) => {
-  const d = new Date(iso + 'T00:00:00');
-  return `${d.getMonth() + 1}월 ${d.getDate()}일 (${WEEKDAYS[d.getDay()]})`;
-};
 ---
-<div class="next-steps">
-  {alertEvent && (
-    <LinkList title="티켓 오픈 알림">
-      <LinkRow href={googleHref} external title="구글 캘린더에 추가" sub="오픈 10분 전과 하루 전에 알려 줘요" />
-      <LinkRow href={icsHref} download={`${event.id}-ticket-open.ics`} title="캘린더 파일 받기" sub="애플 캘린더 등에서 쓰는 .ics 파일이에요" />
-    </LinkList>
-  )}
-
-  <LinkList title="직관 준비 도구">
-    <LinkRow href={clockHref} title={hasOpen ? '이 공연 오픈 카운트다운' : '티켓팅 시계'} sub="오픈 순간을 밀리초까지" />
-    <LinkRow href="/practice/" title="티켓팅 연습" sub="30초 손풀기 게임" />
-    <LinkRow href="/internet-speed/" title="인터넷 속도 측정" sub="내 인터넷 속도, 10초면 확인돼요" />
-    <LinkRow href={returnHref} title="막차 계산기" sub="공연 끝나고 집에 갈 수 있을까" />
-    <LinkRow href="/trip-cost/" title="직관 비용 계산기" sub="티켓·교통·숙박·굿즈 총비용" />
-    <LinkRow href="/my/" title="내 찜 모아보기" sub="찜한 공연을 한곳에서" />
-  </LinkList>
-
-  {(sameDay.length > 0 || sameVenue.length > 0) && (
-    <div class:list={['ns-events', { 'two-up': sameDay.length > 0 && sameVenue.length > 0 }]}>
-      {sameDay.length > 0 && (
-        <LinkList title="같은 날 열리는 공연" columns={1}>
-          {sameDay.map((e) => <LinkRow href={`/events/${e.id}/`} title={e.artist} sub={e.venue} />)}
-        </LinkList>
-      )}
-      {sameVenue.length > 0 && (
-        <LinkList title={`${event.venue}의 다음 공연`} columns={1}>
-          {sameVenue.map((e) => <LinkRow href={`/events/${e.id}/`} title={e.artist} sub={dayLabel(e.startDate)} />)}
-        </LinkList>
-      )}
+{scheduled && (
+  <section
+    class="now"
+    aria-label="지금 할 일"
+    data-now
+    data-start={event.startDate}
+    data-end={event.endDate}
+    data-on-sale={onSale ? '1' : '0'}
+    data-stages={JSON.stringify(stages)}
+    hidden={built.kind === 'none'}
+  >
+    <div class="now-item" data-now-kind="sale" hidden={built.kind !== 'sale'}>
+      <div class="now-text">
+        <p class="now-k">예매 중 · 공연까지 <span class="mono" data-now-days>{built.days}</span>일</p>
+        <p class="now-s">매진이어도 취소표는 예고 없이 풀려요</p>
+        <p class="now-sub">뜨는 순간 누를 수 있게 손을 풀어 두세요.</p>
+      </div>
+      <a class="now-btn" href="/practice/?stage=cancel">취켓팅 연습하기</a>
     </div>
-  )}
-</div>
-<style>
-  .next-steps { display: flex; flex-direction: column; gap: 2rem; margin: 2.5rem 0 0; }
-  .ns-events { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem 2.4rem; align-items: start; }
-  @media (min-width: 640px) {
-    .ns-events.two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    <div class="now-item" data-now-kind="week" hidden={built.kind !== 'week'}>
+      <div class="now-text">
+        <p class="now-k">공연 주간</p>
+        <p class="now-s" data-now-week>
+          {built.days > 0 ? <>공연이 <em class="mono">{built.days}일</em> 남았어요</> : <>오늘 공연이에요</>}
+        </p>
+        <p class="now-sub">{event.venue}에서 돌아오는 차편을 먼저 확인하세요. <a href="#venue">공연장 가는 길</a></p>
+      </div>
+      <a class="now-btn" href={returnHref}>막차 계산하기</a>
+    </div>
+  </section>
+)}
+<script>
+  import { nextStepKind } from '../lib/nextStep';
+  const box = document.querySelector<HTMLElement>('[data-now]');
+  if (box) {
+    let stages = [];
+    try { stages = JSON.parse(box.dataset.stages ?? '[]'); } catch { /* 빌드 시점 표시를 그대로 둔다 */ }
+    const now = nextStepKind({ start: box.dataset.start ?? '', end: box.dataset.end ?? '', stages, onSale: box.dataset.onSale === '1' }, Date.now());
+    box.hidden = now.kind === 'none';
+    box.querySelectorAll<HTMLElement>('[data-now-kind]').forEach((el) => { el.hidden = el.dataset.nowKind !== now.kind; });
+    const days = box.querySelector('[data-now-days]');
+    if (days) days.textContent = String(now.days);
+    const week = box.querySelector('[data-now-week]');
+    if (week && now.kind === 'week') {
+      week.textContent = '';
+      if (now.days > 0) {
+        const em = document.createElement('em');
+        em.className = 'mono';
+        em.textContent = `${now.days}일`;
+        week.append('공연이 ', em, ' 남았어요');
+      } else {
+        week.textContent = '오늘 공연이에요';
+      }
+    }
   }
+</script>
+<style>
+  .now { margin: 2rem 0 0; padding: 1.1rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .now-item { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.9rem 1.5rem; }
+  .now-item[hidden] { display: none; }
+  .now-text { flex: 1 1 18rem; min-width: 0; }
+  .now-k { margin: 0; font-size: 0.8rem; color: var(--muted); }
+  .now-s { margin: 0.15rem 0 0; font-size: 1.25rem; font-weight: 800; line-height: 1.35; letter-spacing: -0.02em; text-wrap: balance; color: var(--fg); }
+  .now-s :global(em) { font-style: normal; color: var(--cheese); }
+  .now-sub { margin: 0.3rem 0 0; font-size: 0.86rem; color: var(--fg-3); }
+  .now-sub a { color: var(--fg-2); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 0.2em; white-space: nowrap; }
+  .now-sub a:hover { color: var(--cheese); text-decoration-color: var(--cheese); }
+  .now-btn { display: inline-flex; align-items: center; padding: 0.65rem 1.1rem; border-radius: 4px; background: var(--btn); color: var(--ink); font-size: 0.92rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .now-btn:hover { background: var(--btn-hi); }
 </style>

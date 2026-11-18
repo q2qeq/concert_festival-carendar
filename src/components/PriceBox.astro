@@ -20,6 +20,10 @@ const checked = event.pricesCheckedAt ? `${Number(event.pricesCheckedAt.slice(5,
       정가 기준이에요. 예매 수수료와 할인은 예매처에서 확인하세요.
       {event.pricesSource && <> {checked && `${checked}에 `}<a href={event.pricesSource.url} target="_blank" rel="noopener noreferrer">{event.pricesSource.label}</a>에서 확인했어요.</>}
     </p>
+    <p class="aside-line">
+      <span>교통·숙박까지 더하면 얼마일까요?</span>
+      <a href={`/trip-cost/#venue=${encodeURIComponent(event.venue)}`}>직관 비용 계산 →</a>
+    </p>
   </section>
 )}
 <style>
@@ -33,4 +37,7 @@ const checked = event.pricesCheckedAt ? `${Number(event.pricesCheckedAt.slice(5,
   /* 출처 표시는 안내문의 일부라 눈에 띄는 색을 쓰지 않는다 */
   .price-note a { color: var(--fg-2); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 0.2em; }
   .price-note a:hover { color: var(--cheese); text-decoration-color: var(--cheese); }
+  .aside-line { margin: 0.7rem 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; font-size: 0.92rem; color: var(--fg-2); }
+  .aside-line a { color: var(--cheese); font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .aside-line a:hover { text-decoration: underline; }
 </style>

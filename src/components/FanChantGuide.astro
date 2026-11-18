@@ -5,9 +5,8 @@
 //   2) 그 외엔 유튜브 검색 딥링크 하나만 제공 - 떼창 가이드는 대부분 영상으로
 //      존재하므로 유튜브 하나면 충분하다.
 // 페스티벌 페이지에서는 이 컴포넌트 자체를 렌더링하지 않는다 (events/[id].astro).
+// 공연 페이지의 한 줄 안내(가격표 밑 비용 계산, 공연장 정보의 막차)와 같은 모양을 쓴다: 회색 문장 + 주황 링크.
 import type { FanChantGuideEntry } from '../lib/events';
-import LinkList from './LinkList.astro';
-import LinkRow from './LinkRow.astro';
 interface Props {
   artist: string;
   guides?: FanChantGuideEntry[];
@@ -16,7 +15,21 @@ const { artist, guides = [] } = Astro.props;
 const query = `${artist} 떼창 가이드`;
 const ytUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
 ---
-<LinkList title="떼창·콜 가이드">
-  {guides.map((g) => <LinkRow href={g.url} external title={g.title} sub={g.note} />)}
-  <LinkRow href={ytUrl} external title="유튜브에서 떼창 가이드 찾기" sub={`'${query}' 검색 결과로 이동해요`} />
-</LinkList>
+<div class="fanchant">
+  {guides.map((g) => (
+    <p class="aside-line">
+      <span>{g.note ?? '확인된 응원법이 있어요.'}</span>
+      <a href={g.url} target="_blank" rel="noopener noreferrer">{g.title} ↗</a>
+    </p>
+  ))}
+  <p class="aside-line">
+    <span>{guides.length > 0 ? '영상으로 보고 싶다면' : '떼창이 궁금하다면'}</span>
+    <a href={ytUrl} target="_blank" rel="noopener noreferrer">유튜브에서 '{query}' 찾기 ↗</a>
+  </p>
+</div>
+<style>
+  .fanchant { display: grid; gap: 0.35rem; }
+  .aside-line { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; font-size: 0.92rem; color: var(--fg-2); }
+  .aside-line a { color: var(--cheese); font-weight: 700; text-decoration: none; }
+  .aside-line a:hover { text-decoration: underline; }
+</style>

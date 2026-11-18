@@ -23,7 +23,7 @@ import { existsSync } from 'node:fs';
 import { postsMentioningEvent, postsMentioningVenue, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
 import { isShuttleLikely, getVenueInfo, venueSlug } from '../../lib/venues';
-import { latestUpdateISO, events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents, isDomestic, artistAliases } from '../../lib/events';
+import { latestUpdateISO, events, festivalLineupDays, allTicketLinks, festivalHighlightSet, isBuzzing, relatedEvents, sameDayEvents, sameVenueUpcoming, isDomestic, artistAliases } from '../../lib/events';
 
 export function getStaticPaths() {
   return events.map((e) => ({ params: { id: e.id }, props: { event: e } }));
@@ -134,7 +134,11 @@ const isFestival = event.genre === '페스티벌';
 const highlightSet = festivalHighlightSet(event);
 const buzzing = isBuzzing(event);
 const buzzHeadlineAct = event.festivalHighlight?.[0]?.act ?? null;
-const related = relatedEvents(event);
+// 관련 공연: 같은 날 공연 → 같은 공연장의 다음 공연 → 비슷한 공연 순서로 한 목록에 모은다.
+// 예전에는 앞의 둘이 가격표 바로 아래에 글자 링크로 따로 있었다(2026-11-18에 합침).
+const related = [...sameDayEvents(event), ...sameVenueUpcoming(event), ...relatedEvents(event)]
+  .filter((e, i, all) => all.findIndex((x) => x.id === e.id) === i)
+  .slice(0, 6);
 const lastUpdated = latestUpdateISO(event);
 // 큰 제목 + 보조(한글 병기) 분리: "Fujii Kaze (후지이 카제)" → 제목 / 부제
 const nameMatch = event.artist.match(/^(.*?)\s*\((.+)\)\s*$/);

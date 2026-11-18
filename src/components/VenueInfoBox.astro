@@ -12,6 +12,11 @@ const info = getVenueInfo(venue);
 
   <RouteFinder venue={venue} address={info?.address} />
 
+  <p class="aside-line">
+    <span>공연 끝나고 집에 갈 수 있을까요?</span>
+    <a href={info ? `/return-trip/#venue=${encodeURIComponent(venue)}` : '/return-trip/'}>막차 계산 →</a>
+  </p>
+
   <div class="venue-block venue-sightline" id="sightline">
     <h3>구역별 시야 (View Guide)</h3>
     <SightlineSearch venue={venue} />
@@ -90,6 +95,9 @@ const info = getVenueInfo(venue);
   .venue-box h2 { font-size: 1.05rem; margin: 0 0 0.5rem; color: var(--fg-2); }
   .venue-address { margin: 0 0 1rem; color: var(--muted); font-size: 0.9rem; }
   .venue-sightline { scroll-margin-top: 7rem; }
+  .aside-line { margin: 0 0 1.1rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; font-size: 0.92rem; color: var(--fg-2); }
+  .aside-line a { color: var(--cheese); font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .aside-line a:hover { text-decoration: underline; }
   .venue-block { margin: 0 0 1.1rem; }
   .venue-block:last-of-type { margin-bottom: 0; }
   .venue-block h3 { font-size: 0.88rem; margin: 0 0 0.4rem; color: var(--cheese); text-transform: uppercase; letter-spacing: 0.03em; }
