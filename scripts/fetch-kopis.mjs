@@ -113,6 +113,7 @@
 import { writeFile, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { homedir } from 'node:os';
 import { JPOP_ARTISTS } from './jpop-artists.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -614,7 +615,7 @@ async function main() {
   if (DRY_RUN) {
     // Dry-run diagnostic dump goes OUTSIDE the repo (home dir, not mnt/) so it's
     // never mistaken for a real repo change and never touched by git.
-    const dryRunOut = path.join(process.env.HOME, 'kopis-dry-run-candidates.json');
+    const dryRunOut = path.join(homedir(), 'kopis-dry-run-candidates.json');
     await writeFile(dryRunOut, JSON.stringify({ jpopAdded, candidates }, null, 2) + '\n');
     console.log(`--dry-run: NOT writing kopis-candidates.json or events.json. Full preview written to ${dryRunOut} instead.`);
   } else {

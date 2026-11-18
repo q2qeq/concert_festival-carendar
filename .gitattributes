@@ -1,0 +1,3 @@
+# 윈도에서 받아도 줄바꿈을 LF로 유지한다(스크립트가 쓰는 events.json 등과 diff가 어긋나지 않게).
+* text=auto eol=lf
+*.sh text eol=lf

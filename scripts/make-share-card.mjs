@@ -8,8 +8,8 @@
  *
  * 사용:  npm run og:cards                  예정 공연 전부
  *        npm run og:cards -- <id> [<id>]   지정한 공연만
- * 글꼴은 이 컴퓨터(macOS)의 Apple SD Gothic Neo를 쓴다. 서버(Vercel)에는 한글 글꼴이 없어서
- * 빌드 때 만들지 않고, 여기서 만들어 PNG를 커밋하는 방식이다.
+ * 글꼴은 맥이면 Apple SD Gothic Neo, 윈도면 기본 한글 글꼴인 맑은 고딕을 쓴다(글자 모양만 조금 다르다).
+ * 서버(Vercel)에는 한글 글꼴이 없어서 빌드 때 만들지 않고, 작업하는 컴퓨터에서 만들어 커밋하는 방식이다.
  */
 import { readFileSync, mkdirSync, writeFileSync, existsSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -19,7 +19,7 @@ import sharp from 'sharp';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const events = JSON.parse(readFileSync(join(root, 'src/data/events.json'), 'utf8'));
 const today = new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10);
-const FONT = "'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif";
+const FONT = "'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif";
 // 색은 사이트와 같은 값을 쓰도록 BaseLayout의 :root 변수에서 읽는다(값을 여기 따로 적지 않는다).
 const layout = readFileSync(join(root, 'src/layouts/BaseLayout.astro'), 'utf8');
 const C = Object.fromEntries([...layout.matchAll(/--([a-z0-9-]+):\s*(#[0-9a-fA-F]{3,8})\s*;/g)].map((m) => [m[1], m[2]]));

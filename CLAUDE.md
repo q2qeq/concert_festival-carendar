@@ -17,7 +17,7 @@
 | 인기 공연 디벨롭 절차 | `docs/popular-event-routine.md` |
 | 스케줄 작업 상세 프롬프트·작업 로그 | `.routines/` (git에 안 올라가는 로컬 폴더, 메인 체크아웃에만 있음) |
 | 스케줄 작업 등록 | `~/.claude/scheduled-tasks/<작업>/SKILL.md` |
-| 다른 컴퓨터에서 작업하기 | `docs/new-machine.md` |
+| 다른 컴퓨터(윈도)에서 작업하기 | `docs/new-machine.md` |
 
 ## 검사 명령
 
@@ -27,7 +27,7 @@
 - `npm run audit:posts` — 글을 쓰거나 고쳤으면 ERROR 0이어야 한다.
 - `npm run audit:events` — 공연을 추가·수정했으면 ERROR가 없어야 한다.
 - `npm run events:gaps` — 공연을 추가·수정했으면 그 공연에 `!!` 빈틈이 남지 않았는지 본다(아래 "공연 정보 보강").
-- `npm run og:cards -- <공연 id>` — 공연을 새로 넣었거나 공연명·날짜·공연장·티켓오픈·포스터를 바꿨으면 그 공연의 공유 카드(`public/og/`)를 다시 만들어 같이 커밋한다. 이 맥의 한글 글꼴로 그리기 때문에 Vercel 빌드에서는 만들어지지 않는다.
+- `npm run og:cards -- <공연 id>` — 공연을 새로 넣었거나 공연명·날짜·공연장·티켓오픈·포스터를 바꿨으면 그 공연의 공유 카드(`public/og/`)를 다시 만들어 같이 커밋한다. 작업하는 컴퓨터의 한글 글꼴(맥 Apple SD Gothic Neo, 윈도 맑은 고딕)로 그리기 때문에 Vercel 빌드에서는 만들어지지 않는다.
 
 ## git 규칙 (모든 세션)
 
