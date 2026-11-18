@@ -4091,6 +4091,14 @@
       {
         "label": "Jason Mraz Setlist - Brooklyn Paramount (setlist.fm)",
         "url": "https://www.setlist.fm/setlist/jason-mraz/2026/brooklyn-paramount-brooklyn-ny-1377c571.html"
+      },
+      {
+        "label": "제이슨 므라즈, 돌아온 '사랑 전도사' - 연합뉴스(K-VIBE)",
+        "url": "https://korean-vibe.com/article/179540106734333"
+      },
+      {
+        "label": "Jason Mraz Setlist (2026-11-14) - setlist.fm",
+        "url": "https://www.setlist.fm/setlist/jason-mraz/2026/kintex-hall-1-goyang-si-south-korea-4b773b86.html"
       }
     ],
     "officialSns": [
@@ -4101,6 +4109,39 @@
     ],
     "merchCheckedAt": "2026-11-14",
     "setlists": [
+      {
+        "label": "고양 킨텍스 공연 셋리스트",
+        "date": "2026-11-14",
+        "venue": "KINTEX 제1전시장",
+        "songs": [
+          "You and I Both",
+          "Living in the Moment",
+          "Let's See What the Night Can Do",
+          "Curbside Prophet",
+          "The Remedy (I Won't Worry)",
+          "3 Things",
+          "Good Old Daze",
+          "Look for the Good",
+          "Bella Luna",
+          "Lucky",
+          "Life Is Wonderful",
+          "Make It Mine",
+          "I Feel Like Dancing",
+          "Butterfly",
+          "Details in the Fabric",
+          "Love Someone",
+          "Unfold",
+          "A Beautiful Mess",
+          "Song for a Friend",
+          "93 Million Miles",
+          "Have It All",
+          "I Won't Give Up",
+          "(앙코르) No Plans",
+          "(앙코르) I'm Yours"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/jason-mraz/2026/kintex-hall-1-goyang-si-south-korea-4b773b86.html",
+        "note": "setlist.fm 등록 기준이에요. 등록 목록에 두 번 적힌 곡은 한 번만 옮겨서 중간 순서는 정확하지 않을 수 있어요."
+      },
       {
         "label": "2026 투어 - 브루클린 파라마운트 공연",
         "date": "2026-06-10",
@@ -4143,6 +4184,11 @@
         "date": "2026-11-13",
         "text": "NOL 티켓 예매 페이지의 입장 안내에 공연 당일(11/14) 오후 2시에 머천다이즈 샵·티켓 박스·물품보관소가 열린다고 나와 있어요. 스탠딩 대기 장소는 오후 5시, 입장은 오후 6시부터예요. 어떤 상품을 얼마에 파는지는 공지에서 확인하지 못했어요.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26006423"
+      },
+      {
+        "date": "2026-11-18",
+        "text": "공연이 끝났어요. 전석 스탠딩으로 약 5천 명이 모였고 약 2시간 동안 20곡 넘게 불렀다고 연합뉴스가 전했어요. 아시아 투어의 마지막 공연이었어요.",
+        "sourceUrl": "https://korean-vibe.com/article/179540106734333"
       }
     ]
   },
@@ -7041,6 +7087,14 @@
       {
         "label": "Xdinary Heroes Concert 〈IMPULSE〉 - NOL 티켓",
         "url": "https://nol.yanolja.com/ticket/products/26014103"
+      },
+      {
+        "label": "엑디즈, 단독 콘서트 '임펄스' 성료 - 아주경제",
+        "url": "https://www.ajunews.com/view/20261116111338890"
+      },
+      {
+        "label": "Xdinary Heroes Setlist (2026-11-15) - setlist.fm",
+        "url": "https://www.setlist.fm/setlist/xdinary-heroes/2026/inspire-arena-incheon-south-korea-3b7c5428.html"
       }
     ],
     "merchCheckedAt": "2026-11-15",
@@ -7057,7 +7111,53 @@
       }
     ],
     "posterUrl": "/posters/shuttle-xdinary-heroes-impulse-2026-11.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26014103_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26014103_p.gif",
+    "setlists": [
+      {
+        "label": "인천 공연 마지막 날 셋리스트",
+        "date": "2026-11-15",
+        "venue": "인스파이어 아레나",
+        "songs": [
+          "Give Up the Ghost",
+          "Strawberry Cake",
+          "Bicycle",
+          "Freddy",
+          "u and me in arguments",
+          "Love in dystopia",
+          "Helium Balloon",
+          "Paranoid",
+          "Breathe in, Breathe out",
+          "Beautiful Life",
+          "소년만화 (Boy Comics)",
+          "No Cool Kids Zone",
+          "Break the Brake",
+          "AGAIN? AGAIN!",
+          "Night of Fireworks",
+          "You Right There",
+          "Walking to the Moon",
+          "PLUTO",
+          "Voyager",
+          "Obsessed with Youth",
+          "Money on My Mind",
+          "Rise High Rise",
+          "Slashhh!",
+          "Spoiler!!!",
+          "FiRE (My Sweet Misery)",
+          "ICU",
+          "Save me"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/xdinary-heroes/2026/inspire-arena-incheon-south-korea-3b7c5428.html",
+        "note": "setlist.fm 등록 기준이에요. 19번째 곡까지는 보도된 순서와 맞고, 그 뒤는 등록 목록에 겹친 곡이 있어 순서가 정확하지 않을 수 있어요."
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-11-18",
+        "text": "사흘 공연이 끝났어요. 신보 'IMPULSE' 수록곡 전곡을 불렀고 'Give Up The Ghost'로 시작했다고 보도됐어요. 다섯 명 체제로 연 첫 콘서트였어요.",
+        "sourceUrl": "https://www.ajunews.com/view/20261116111338890"
+      }
+    ],
+    "description": "엑스디너리 히어로즈의 단독 콘서트 'IMPULSE'예요. 11월 13~15일 인천 인스파이어 아레나에서 사흘 동안 열렸어요."
   },
   {
     "id": "shuttle-hero-rock-festival-incheon-2026-12",
@@ -8250,6 +8350,18 @@
       {
         "label": "TXT kick off new world tour 'STEAL THE WIND' in Seoul - 스포츠경향",
         "url": "https://sports.khan.co.kr/en/article/202609150712007"
+      },
+      {
+        "label": "TXT Kicks Off New World Tour in Seoul - 톱스타뉴스",
+        "url": "https://global.topstarnews.net/en/articleView.html?idxno=16277515"
+      },
+      {
+        "label": "서울 피날레 공연 리뷰 - 텐아시아",
+        "url": "https://www.tenasia.co.kr/article/2026111576704"
+      },
+      {
+        "label": "TOMORROW X TOGETHER Setlist (2026-11-15) - setlist.fm",
+        "url": "https://www.setlist.fm/setlist/tomorrow-x-together/2026/kspo-dome-seoul-south-korea-6b7e7a26.html"
       }
     ],
     "posterUrl": "/posters/txt-steal-the-wind-seoul-2026-11.webp",
@@ -8262,6 +8374,11 @@
         "date": "2026-11-13",
         "text": "위버스 공지(11/10)로 공식 상품 판매 방식이 나왔어요. 위버스샵에서 사고 현장에서 받는 방식은 11/13(금) 11:30~18:00, 11/14(토) 10:30~17:00, 11/15(일) 09:30~16:00에 주문할 수 있고, 공연장 반경 40km 안에서만 구매돼요. 결제 전에 수령 시간을 골라야 해요. 현장 구매 부스와 수령 부스는 11/13 12:00~18:30, 11/14 11:00~17:30, 11/15 10:00~16:30에 올림픽수영장 야외(KSPO DOME 2-3 게이트 방면)에서 운영해요. 품절되면 일찍 마감될 수 있고 쇼핑백은 주지 않아요. 응원봉은 Ver.2만 무선 연출이 돼요.",
         "sourceUrl": "https://weverse.io/txt/notice/40871"
+      },
+      {
+        "date": "2026-11-18",
+        "text": "서울 3회 공연이 끝났어요. 사흘 동안 약 3만 2천 명이 관람했고 위버스로 약 83개 국가·지역에 중계됐다고 보도됐어요. 다음 날 나온 미니 9집 'PERFECT STORM' 여섯 곡을 무대에서 먼저 공개했어요. 투어는 11월 20~22일 마카오로 이어져요.",
+        "sourceUrl": "https://global.topstarnews.net/en/articleView.html?idxno=16277515"
       }
     ],
     "merch": [
@@ -8386,7 +8503,48 @@
         "url": "https://shop.weverse.io/ko/shop/KRW/artists/3/sales/73923"
       }
     ],
-    "mdUrl": "https://shop.weverse.io/ko/shop/KRW/artists/3/categories/927?subCategoryId=8519"
+    "mdUrl": "https://shop.weverse.io/ko/shop/KRW/artists/3/categories/927?subCategoryId=8519",
+    "setlists": [
+      {
+        "label": "서울 공연 마지막 날 셋리스트",
+        "date": "2026-11-15",
+        "venue": "KSPO DOME",
+        "songs": [
+          "Storm Is...",
+          "Take Me to Nirvana",
+          "Setsuna Hanabi",
+          "Bed of Thorns",
+          "Dream of Mine",
+          "Stick With You",
+          "Hate It or Love It",
+          "Tinnitus (돌멩이가 되고 싶어)",
+          "The Killa (I Belong to You) - 수빈·연준",
+          "Quarter Life - 범규·태현·휴닝카이",
+          "Thursday's Child Has Far To Go",
+          "Sweetest Escape - 연준·태현·휴닝카이",
+          "Touch the Sky - 수빈·범규",
+          "So What",
+          "Higher Love",
+          "Ice Cream - 연준 솔로",
+          "Fxxking Star - 연준 솔로",
+          "Beautiful Strangers",
+          "Deja Vu",
+          "Sugar Rush Ride",
+          "Good Boy Gone Bad",
+          "0X1=LOVESONG (I Know I Love You)",
+          "9와 4분의 3 승강장에서 너를 기다려 (Run Away)",
+          "Angel Bite",
+          "어느날 머리에서 뿔이 자랐다 (CROWN)",
+          "(앙코르) Cat & Dog",
+          "(앙코르) Kitto Zutto",
+          "(앙코르) LO$ER=LO♡ER",
+          "(앙코르) Blue Spring",
+          "(앙코르) MOA Diary (두밧두 와리와리)"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/tomorrow-x-together/2026/kspo-dome-seoul-south-korea-6b7e7a26.html",
+        "note": "setlist.fm 등록 기준이에요. 텐아시아 리뷰의 곡 순서와 맞춰 봤어요."
+      }
+    ]
   },
   {
     "id": "yung-kai-seoul-2026-11",
