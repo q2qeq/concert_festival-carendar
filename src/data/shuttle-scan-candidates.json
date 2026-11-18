@@ -132,5 +132,39 @@
         "url": "https://ggoggama.com/yunchanlim/"
       }
     ]
+  },
+  {
+    "artist": "더보이즈 (THE BOYZ) 2026 콘서트 ‘ZENERATION Ⅲ’",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2026-12-24",
+    "endDate": "2026-12-27",
+    "genre": "가요",
+    "note": "직접 게시 보류 (2026-11-18): 카카오 T 셔틀 목록에 \"더보이즈 콘서트\"(KSPO DOME, 수요조사, id 10000633)가 새로 올라옴. 스포츠경향(2026-11-13)이 12/24(목) 오후 7시 30분, 25(금) 오후 6시, 26(토) 오후 5시, 27(일) 오후 4시 KSPO DOME으로 보도했고 events.json에 같은 공연은 없음(12/24~26 박진영은 올림픽홀, KSPO DOME은 12/18~20 데이식스·12/31~1/3 성시경으로 날짜가 안 겹침). 하지만 예매처 상품 페이지와 티켓 오픈 공지를 찾지 못해 날짜 근거가 기사뿐이라 5단계(예매처 공연일시 직접 확인) 미충족. 카카오 T 수요조사 상세는 로그인해야 열려 날짜를 못 읽음. 다음 실행에서 예매 페이지가 보이면 2026-12-24(목) 요일 대조 후 게시할 것.",
+    "sources": [
+      {
+        "label": "THE BOYZ to hold December solo concert ‘ZENERATION Ⅲ’ - 스포츠경향 (2026-11-13)",
+        "url": "https://sports.khan.co.kr/en/article/202611132030007"
+      },
+      {
+        "label": "카카오 T 셔틀 - 더보이즈 콘서트 수요조사 (로그인 필요)",
+        "url": "https://shuttle.kakaomobility.com/shuttles/demand/10000633"
+      }
+    ]
+  },
+  {
+    "artist": "WATERBOMB SEOUL 2027 (워터밤 서울 2027)",
+    "venue": "미확인",
+    "city": "미확인",
+    "startDate": "2027-07-24",
+    "endDate": "2027-07-25",
+    "genre": "페스티벌",
+    "note": "직접 게시 보류 (2026-11-18): 퀸즈스마일 shop에 \"WATERBOMB SEOUL 2027\"(2027.07.24 - 2027.07.25, 표시 \"Tickets\", GA 그린/옐로우 티켓 상품)이 새로 올라옴. 셔틀이 아니라 티켓 판매 상품이고, 개최 장소가 페이지에 없으며, 퀸즈스마일 1곳 말고는 2027년 일정을 확인한 출처가 없음(웹 검색 결과는 전부 2026년 행사). 2곳 이상 교차 확인·장소 확인 미충족. 공식 발표가 나오면 장소와 날짜를 대조해 게시할 것. 2026년 행사(7/24~26 킨텍스)와 혼동 주의.",
+    "sources": [
+      {
+        "label": "WATERBOMB SEOUL 2027 티켓 - 퀸즈스마일 (2027.07.24 - 2027.07.25)",
+        "url": "https://queenssmile.co.kr/shop/festival/NDYy/"
+      }
+    ]
   }
 ]
