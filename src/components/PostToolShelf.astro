@@ -52,7 +52,8 @@ if (primary) {
       sub: `${nextStage.label} ${fmtStage(nextStage.at)}까지`,
     });
     cards.push({ href: '/practice/', title: '티켓팅 연습', sub: '오픈 전 30초 손풀기 게임' });
-  } else if (hasTicketsOnSale(primary)) {
+  } else if (hasTicketsOnSale(primary) && primary.saleState !== 'closed') {
+    // 판매 종료를 확인한 공연에는 취켓팅을 권하지 않는다
     cards.push({ href: '/ticketing-clock/', title: '티켓팅 시계', sub: '취소표 잡을 때 서버 시간 확인' });
     cards.push({ href: '/practice/?stage=cancel', title: '취켓팅 연습', sub: '취소표가 뜨는 순간 잡는 손 풀기' });
   }

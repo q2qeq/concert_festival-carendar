@@ -5,6 +5,7 @@
 //   오픈이 지남(예매 중): 취소표 → 취켓팅 연습
 //   공연 7일 전부터 마지막 날까지: 돌아오는 차편 → 막차 계산. 연습은 보조 링크로 남긴다.
 //   끝났거나 연기·취소된 공연: 그리지 않는다.
+//   예매처에서 판매 종료를 확인한 공연(saleState: closed): 연습을 권하지 않는다. 공연 주간의 막차 안내만 남긴다.
 // 연습 안내는 예정 공연이면 늘 하나 있다: 오픈 전이면 티켓팅 연습, 지났으면 취켓팅 연습(lib/nextStep.ts).
 // 예전에는 도구 링크 묶음이 모든 공연에 똑같이 나와서 도구 페이지를 옮겨 놓은 것처럼 보였다(2026-11-18).
 // 나머지 도구는 질문이 생기는 자리에 둔다: 비용 계산기는 가격표 밑, 막차 계산기는 공연장 정보.
@@ -19,7 +20,8 @@ const { event } = Astro.props;
 const stages = ticketOpenStages(event);
 const scheduled = (event.status ?? 'scheduled') === 'scheduled';
 const onSale = hasTicketsOnSale(event);
-const built = nextStepKind({ start: event.startDate, end: event.endDate, stages, onSale }, Date.now());
+const closed = event.saleState === 'closed';
+const built = nextStepKind({ start: event.startDate, end: event.endDate, stages, onSale, closed }, Date.now());
 const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIComponent(event.venue)}` : '/return-trip/';
 ---
 {scheduled && (
@@ -30,6 +32,7 @@ const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIC
     data-start={event.startDate}
     data-end={event.endDate}
     data-on-sale={onSale ? '1' : '0'}
+    data-closed={closed ? '1' : '0'}
     data-stages={JSON.stringify(stages)}
     hidden={built.kind === 'none'}
   >
@@ -71,7 +74,7 @@ const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIC
   if (box) {
     let stages = [];
     try { stages = JSON.parse(box.dataset.stages ?? '[]'); } catch { /* 빌드 시점 표시를 그대로 둔다 */ }
-    const now = nextStepKind({ start: box.dataset.start ?? '', end: box.dataset.end ?? '', stages, onSale: box.dataset.onSale === '1' }, Date.now());
+    const now = nextStepKind({ start: box.dataset.start ?? '', end: box.dataset.end ?? '', stages, onSale: box.dataset.onSale === '1', closed: box.dataset.closed === '1' }, Date.now());
     box.hidden = now.kind === 'none';
     box.querySelectorAll<HTMLElement>('[data-now-kind]').forEach((el) => { el.hidden = el.dataset.nowKind !== now.kind; });
     box.querySelectorAll<HTMLElement>('[data-now-practice]').forEach((el) => { el.hidden = el.dataset.nowPractice !== now.practice; });

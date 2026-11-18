@@ -11,6 +11,7 @@ export interface NextStepInput {
   end: string;
   stages: StageLite[];
   onSale: boolean; // 예매처 상품 링크가 있는지
+  closed?: boolean; // 예매처에서 판매 종료를 확인했는지(saleState: closed). 살 수 없으니 연습을 권하지 않는다
 }
 
 // none: 그리지 않음(끝난 공연, 또는 상단 카운트다운이 안내하는 오픈 전·오픈 중)
@@ -20,7 +21,7 @@ export interface NextStepInput {
 export type NextStep = {
   kind: 'none' | 'soon' | 'sale' | 'week';
   days: number;
-  practice: 'ticketing' | 'cancel';
+  practice: 'ticketing' | 'cancel' | 'none';
 };
 
 // 공연 시작 이 날수 전부터는 예매보다 가는 길·막차가 급하다.
@@ -34,10 +35,11 @@ export function nextStepKind(e: NextStepInput, nowMs: number): NextStep {
   const days = Math.max(0, isoDay(e.start) - today);
   const phase = e.stages.length > 0 ? openPhase(e.stages, nowMs).kind : null;
   const opened = e.onSale || phase === 'after';
-  const practice = opened ? 'cancel' : 'ticketing';
+  const practice = e.closed ? 'none' : opened ? 'cancel' : 'ticketing';
   if (!e.start || !e.end || isoDay(e.end) < today) return { kind: 'none', days, practice };
   // 오픈 전·오픈 중에는 상단 카운트다운이 시계와 티켓팅 연습을 안내한다.
   if (phase === 'before' || phase === 'live') return { kind: 'none', days, practice };
   if (isoDay(e.start) - today <= WEEK_DAYS) return { kind: 'week', days, practice };
+  if (e.closed) return { kind: 'none', days, practice };
   return { kind: opened ? 'sale' : 'soon', days, practice };
 }

@@ -83,7 +83,11 @@ const pageDescription = (event.description
 // 토글+팝오버 방식으로, 예매 가능한 모든 사이트를 검색해서 한 번에 목록으로
 // 보여준다(사이트 개수만큼 버튼을 늘어놓지 않는다).
 const ticketLinks = allTicketLinks(event);
-const ticketPopoverLinks = [
+// 예매처에서 판매 종료를 확인한 공연(saleState: closed)은 예매 버튼을 숨긴다. 버튼을 눌러도 살 수 없는 페이지로 가기 때문이다(2026-11-18).
+// 공연 전날·당일에 온라인 판매가 마감된 경우가 대부분이라, 공연이 끝난 뒤에는 '지난 공연' 안내가 대신한다.
+const saleClosed = event.saleState === 'closed' && !titleIsPast && (event.status ?? 'scheduled') === 'scheduled';
+const saleCheckedLabel = event.saleCheckedAt ? `${Number(event.saleCheckedAt.slice(5, 7))}월 ${Number(event.saleCheckedAt.slice(8, 10))}일` : '';
+const openPopoverLinks = [
   ...ticketLinks.map((t) => ({
     // 레거시 ticketUrl 필드는 vendor가 이미 "티켓 예매"로 채워져 있어(allTicketLinks
     // 참고) 뒤에 "예매"를 또 붙이면 "티켓 예매 예매"처럼 중복된다 - vendor가 이미
@@ -99,6 +103,7 @@ const ticketPopoverLinks = [
     .filter((p) => p.url)
     .map((p) => ({ label: `${p.title} (선예매)`, url: p.url as string })),
 ];
+const ticketPopoverLinks = saleClosed ? [] : openPopoverLinks;
 
 // MD·팬클럽은 "예매"는 아니지만 자주 같이 필요한 액션이라, 있을 때만 액션바에
 // 각자 작은 버튼으로 노출한다.
@@ -108,7 +113,7 @@ const fanclubActionUrl = event.fanclubUrl ?? null;
 // 예매 가능한 링크가 하나도 없을 때(티켓 오픈 전 페스티벌 등)는 공식
 // 홈페이지를 대표 액션으로 쓴다.
 const fallbackPrimaryUrl =
-  ticketPopoverLinks.length === 0 && event.officialUrl ? event.officialUrl : null;
+  ticketPopoverLinks.length === 0 && event.officialUrl && !saleClosed ? event.officialUrl : null;
 
 // 공식 홈페이지는, 이미 대표 액션(fallbackPrimaryUrl)으로 쓰인 게 아니라면
 // 티켓 팝오버와 별개로 항상 눌러볼 수 있게 노출한다.
@@ -240,13 +245,13 @@ const jsonLd = {
   ...(event.posterUrl ? { image: new URL(event.posterUrl, Astro.site).toString() } : {}),
   url: new URL(Astro.url.pathname, Astro.site).toString(),
   ...(event.officialUrl ? { sameAs: [event.officialUrl] } : {}),
-  ...(ticketLinks.length > 0 && status === 'scheduled'
+  ...(ticketLinks.length > 0 && status === 'scheduled' && !saleClosed
     ? {
         // 가격을 확인한 공연은 등급별 정가의 최저~최고를 함께 적는다(확인 안 된 가격은 넣지 않는다).
         offers: ticketLinks.map((t) => ({
           '@type': event.prices?.length ? 'AggregateOffer' : 'Offer',
           url: t.url,
-          availability: 'https://schema.org/InStock',
+          availability: event.saleState === 'soldout' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
           ...(event.prices?.length
             ? { priceCurrency: 'KRW', lowPrice: Math.min(...event.prices.map((x) => x.price)), highPrice: Math.max(...event.prices.map((x) => x.price)) }
             : {}),
@@ -317,6 +322,11 @@ const breadcrumbLd = {
         ) : null}
         <p class="more"><a href="/events/">예정된 공연 전체 보기</a></p>
       </div>
+    )}
+    {saleClosed && (
+      <p class="status-banner status-closed">
+        온라인 예매가 끝났어요.{saleCheckedLabel && ` ${saleCheckedLabel}에 예매처에서 확인했어요.`} 현장 판매 여부는 주최 측 공지를 확인하세요.
+      </p>
     )}
     {status === 'postponed' && (
       <p class="status-banner status-postponed">
@@ -739,6 +749,7 @@ const breadcrumbLd = {
     font-size: 0.95rem;
   }
   .status-past { border: 1px solid var(--line-2); color: var(--fg-2); }
+  .status-closed { border: 1px solid var(--line-2); color: var(--fg-2); font-weight: 500; }
   .status-past p { margin: 0; }
   .status-past ul { list-style: none; margin: 0.6rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; font-weight: 400; }
   .status-past li a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; color: var(--fg); text-decoration: none; font-weight: 700; }
