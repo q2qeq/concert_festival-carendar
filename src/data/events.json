@@ -9469,5 +9469,61 @@
     },
     "posterUrl": "/posters/sung-si-kyung-yearend-seoul-2026-12.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26015783_p.gif"
+  },
+  {
+    "id": "son-tae-jin-bon-voyage-seoul-2027-01",
+    "artist": "2027 손태진 전국투어 콘서트 ‘Bon Voyage’ - 서울",
+    "aliases": [
+      "손태진",
+      "Son Tae-jin"
+    ],
+    "genre": "가요",
+    "venue": "올림픽공원 內 올림픽홀",
+    "city": "서울",
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-10",
+    "description": "손태진이 2027년 전국투어 ‘Bon Voyage’를 서울에서 시작해요. 2027년 1월 9일(토)과 10일(일) 이틀 동안 올림픽공원 올림픽홀에서 열려요. 전석 지정좌석이고 8세 이상 관람할 수 있어요.",
+    "schedule": "1/9(토) 오후 6시, 1/10(일) 오후 4시, 러닝타임 150분 (NOL 티켓 상품 페이지 기준)",
+    "note": "NOL 상품 페이지(2026-11-18 확인): 팬카페(손샤인 T등급) 선예매 인증 11/17 14:00~11/20 23:59, 선예매 11/19 19:00~11/20 23:59(회차당 1인 2매), 일반 예매 11/23 19:00(회차당 1인 8매, 선예매 포함). 상세 이미지에는 일반 예매가 \"오후 8시\"로 적혀 있어 페이지 상단·보도(오후 7시)와 다름 - 상단 카운터 기준으로 19:00을 넣음. 가격은 최저가 121,000원만 페이지 데이터로 확인, 등급별 가격표는 예매 전이라 화면에 없음 → 예매 열리면 prices 채울 것. 일반 예매는 티켓링크에서도 한다고 보도됐으나 상품 주소 미확인.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-19 오후 7시 (팬카페 선예매), 2026-11-23 오후 7시 (일반)",
+    "ticketOpenAt": "2026-11-19T19:00:00+09:00",
+    "ticketOpens": [
+      {
+        "label": "팬카페 선예매 (손샤인 T등급)",
+        "at": "2026-11-19T19:00:00+09:00",
+        "until": "2026-11-20T23:59:00+09:00"
+      },
+      {
+        "label": "일반 예매",
+        "at": "2026-11-23T19:00:00+09:00"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26016461"
+      }
+    ],
+    "sources": [
+      {
+        "label": "2027 손태진 전국투어 콘서트 ‘Bon Voyage’ - 서울 - NOL 티켓 상품 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26016461"
+      },
+      {
+        "label": "Son Tae-jin ‘Brilliant Voyage’…2027 nationwide tour concert sets sail - 스포츠경향 (2026-11-11)",
+        "url": "https://sports.khan.co.kr/en/article/202611111420007"
+      }
+    ],
+    "updates": [
+      {
+        "date": "2026-11-18",
+        "text": "NOL 상품 페이지에서 팬카페 선예매 11/19 오후 7시, 일반 예매 11/23 오후 7시, 회차 시각과 러닝타임 150분이 확인됐어요.",
+        "sourceUrl": "https://nol.yanolja.com/ticket/products/26016461"
+      }
+    ],
+    "addedAt": "2026-11-18",
+    "posterUrl": "/posters/son-tae-jin-bon-voyage-seoul-2027-01.webp",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016461_p.gif"
   }
 ]
