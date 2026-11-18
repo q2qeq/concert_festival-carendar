@@ -39,7 +39,7 @@ npm run popular:events -- "<CSV 경로>" 12 --must=<꼭 포함할 공연 id>
 ## 5. 마무리
 
 1. `npm run build`가 통과하는지 확인한다.
-2. 커밋하고 main에 푸시한다 (`.claude/` 제외, force push 금지).
+2. 커밋하고 main에 푸시한다 (`.claude/`는 skills·tools·launch.json만, force push 금지).
 3. 공연마다 따로 커밋하면 충돌과 번호 겹침이 줄어든다.
 
 ## 한계

@@ -5,7 +5,11 @@ dist/
 .env.local
 .DS_Store
 .vercel
-.claude/settings.local.json
+# .claude/ 는 스킬·도구·미리보기 설정만 올린다(다른 컴퓨터에서도 쓰게). 나머지는 이 컴퓨터 전용.
+.claude/*
+!.claude/skills/
+!.claude/tools/
+!.claude/launch.json
 
 # 예약 작업(루틴) 프롬프트와 작업 로그 - 저장소에는 올리지 않는다
 .routines/

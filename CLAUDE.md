@@ -17,6 +17,7 @@
 | 인기 공연 디벨롭 절차 | `docs/popular-event-routine.md` |
 | 스케줄 작업 상세 프롬프트·작업 로그 | `.routines/` (git에 안 올라가는 로컬 폴더, 메인 체크아웃에만 있음) |
 | 스케줄 작업 등록 | `~/.claude/scheduled-tasks/<작업>/SKILL.md` |
+| 다른 컴퓨터에서 작업하기 | `docs/new-machine.md` |
 
 ## 검사 명령
 
@@ -39,7 +40,7 @@
 
 - `git commit --amend`, `git add -A`/`git add .`, `git reset --hard`, `git checkout -- <파일>`/`git checkout .`, `git stash`, force push를 쓰지 않는다. 메시지를 고치고 싶으면 새 커밋을 쌓는다.
 - 바꾼 파일만 이름을 지정해 `git add` 한다. 커밋 전에 `git diff --staged`로 내가 안 건드린 내용이 섞이지 않았는지 본다.
-- `.claude/`, `.routines/`, `.env*`는 커밋하지 않는다.
+- `.routines/`, `.env*`는 커밋하지 않는다. `.claude/`는 `skills/`·`tools/`·`launch.json`만 커밋하고 나머지(설정·worktrees)는 올리지 않는다(.gitignore가 막아 준다).
 - 커밋 메시지는 한국어로, 무엇을 왜 바꿨는지 쓴다. 끝에 하네스가 알려 주는 `Co-Authored-By` 줄을 붙인다.
 - 사람이 하는 세션은 작업이 끝나면 묻지 않고 커밋하고 `main`에 푸시한다. 푸시 전에 `git pull --rebase origin main`을 한다.
 
