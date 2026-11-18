@@ -4921,10 +4921,50 @@
         "date": "2026-11-18",
         "text": "몬스타엑스 공식 X에 앵콜 공연 공식 MD 안내가 올라왔어요(11월 13일 게시). 인스파이어 몰 OFFICIAL MD BOOTH에서 11월 21일(토) 낮 12시~오후 5시, 22일(일) 오전 10시~오후 3시에 현장 판매해요. 응원봉 VER.3(46,000원)부터 윈드브레이커(138,000원)까지 19종이고, 결제는 원화 현금·카드만 돼요. 옵션별 1인 5개까지(랜덤 포토카드 팩은 10개) 살 수 있고, 한 번에 7만 원 이상 결제하면 포토카드 5종 중 1종을 랜덤으로 줘요(응원봉·건전지 금액 제외). 일회용 쇼핑백은 주지 않으니 가방을 챙기는 게 좋아요. 온라인 판매 안내는 확인하지 못했어요.",
         "sourceUrl": "https://x.com/OfficialMONSTAX/status/2121120885235122336"
+      },
+      {
+        "date": "2026-11-19",
+        "text": "22일(일) 공연은 엠넷플러스에서 온라인으로 생중계돼요(일간스포츠 11월 10일 보도). 21일 공연 중계는 기사에 나와 있지 않아요.",
+        "sourceUrl": "https://isplus.com/article/view/isp202611100094"
       }
     ],
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-19",
+    "facts": {
+      "runningTime": "120분",
+      "age": "7세 이상",
+      "items": [
+        {
+          "label": "시작 시각",
+          "value": "21일(토) 오후 6시 · 22일(일) 오후 4시"
+        },
+        {
+          "label": "구매 제한",
+          "value": "회차별 1인 2매 (선예매 1매 포함)"
+        },
+        {
+          "label": "예매 마감",
+          "value": "21일 공연은 당일 오전 10시, 22일 공연은 당일 오전 8시까지 (잔여석에 한해)"
+        },
+        {
+          "label": "취소 마감",
+          "value": "21일 공연은 20일(금) 오후 5시, 22일 공연은 21일(토) 오전 11시. 그 뒤에 산 표는 취소·환불 불가"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "10월 26일 뒤 예매분은 현장 수령만"
+        },
+        {
+          "label": "무통장 입금",
+          "value": "예매 당일 밤 11시 59분까지"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26013132"
+      }
+    }
   },
   {
     "id": "cherry-blossom-music-concert-winter-changwon-2026-11",
@@ -8871,7 +8911,36 @@
       "url": "https://ticket.melon.com/performance/index.htm?prodId=213500"
     },
     "saleState": "closed",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "setlists": [
+      {
+        "label": "서울 공연 (2026년 11월 18일)",
+        "date": "2026-11-18",
+        "venue": "세종문화회관 대극장",
+        "songs": [
+          "Comb My Hair",
+          "Rocky Trail",
+          "Cayman Islands",
+          "Love Is No Big Truth",
+          "The Weight of My Words",
+          "Summer on the Westhill",
+          "Gold in the Air of Summer",
+          "Fugitive",
+          "Misread",
+          "Homesick",
+          "Know-How",
+          "Mrs. Cold",
+          "Fever",
+          "Boat Behind",
+          "Rule My World",
+          "I'd Rather Dance With You",
+          "(앙코르) 24-25",
+          "(앙코르) Catholic Country"
+        ],
+        "note": "setlist.fm에 등록된 내용이에요(11월 19일 확인). 5~9번째 곡은 첼로·베이스와, 10~12번째 곡은 둘이서만, 13~16번째 곡은 드럼·베이스와 함께 연주했다고 적혀 있어요. 팬이 올린 기록이라 실제와 다른 곳이 있을 수 있어요.",
+        "sourceUrl": "https://www.setlist.fm/setlist/kings-of-convenience/2026/sejong-center-for-the-performing-arts-seoul-south-korea-6b7ab6c2.html"
+      }
+    ]
   },
   {
     "id": "stacey-kent-seoul-2026-11",
@@ -9386,7 +9455,40 @@
       "url": "https://nol.yanolja.com/ticket/products/26013078"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-19",
+    "facts": {
+      "age": "만 7세 이상",
+      "items": [
+        {
+          "label": "시작 시각",
+          "value": "20일(금) 오후 8시 · 21일(토) 오후 6시 · 22일(일) 오후 5시"
+        },
+        {
+          "label": "구매 제한",
+          "value": "회차당 1인 4매 (팬클럽 선예매 매수 포함)"
+        },
+        {
+          "label": "무통장 입금",
+          "value": "예매 당일 밤 11시 59분까지 (지나면 자동 취소)"
+        },
+        {
+          "label": "예매대기",
+          "value": "예매대기·동일좌석 재예매 서비스를 쓸 수 없는 공연"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26013078"
+      }
+    },
+    "updates": [
+      {
+        "date": "2026-11-19",
+        "text": "예매처 공지에 따르면 시야제한으로 판매를 미뤄 뒀던 좌석이 11월 2일 오후 7시에 추가로 열렸어요. 1층 1·2·14·15구역과 2층 25·26·41·42구역의 일부 좌석이고 세 회차 모두 같아요. 무대 구조물 때문에 시야가 가릴 수 있고, 그 이유로는 당일 취소·환불이 안 된다고 적혀 있어요. 11월 19일 아침 기준 예매 버튼은 열려 있고 잔여석 수는 안내하지 않는 상품이에요.",
+        "sourceUrl": "https://nol.yanolja.com/ticket/products/26013078"
+      }
+    ]
   },
   {
     "id": "cho-yong-pil-seoul-2026-11",
@@ -9894,6 +9996,31 @@
     "pricesSource": {
       "label": "NOL 티켓 예매 페이지",
       "url": "https://nol.yanolja.com/ticket/products/26016602"
+    },
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-19",
+    "facts": {
+      "startTime": "오후 8시",
+      "age": "만 15세 이상",
+      "items": [
+        {
+          "label": "좌석",
+          "value": "전석 스탠딩"
+        },
+        {
+          "label": "티켓 배송",
+          "value": "2027년 1월 13일~15일 일괄 배송"
+        },
+        {
+          "label": "결제",
+          "value": "무통장 입금 불가"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26016602"
+      }
     }
   },
   {
@@ -10488,7 +10615,9 @@
         "text": "예스24 예매 페이지에서 공연 일시(2026년 11월 21일(토) 오후 5시, 22일(일) 오후 4시)와 장소(엑스코 서관 1홀), 가격을 확인했어요.",
         "sourceUrl": "https://ticket.yes24.com/Perf/60018"
       }
-    ]
+    ],
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-19"
   },
   {
     "id": "shuttle-akmu-concert-encore-goyang-2027-01",
@@ -10561,6 +10690,8 @@
     "posterUrl": "/posters/shuttle-akmu-concert-encore-goyang-2027-01.webp",
     "promoBanner": "악뮤 '소문의 낙원' 앙코르 - 2027.1.2(토)~3(일) 킨텍스 제1전시장, 예스24 예매 중",
     "addedAt": "2026-11-18",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261106/20261106-60840_1.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261106/20261106-60840_1.jpg",
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-19"
   }
 ]
