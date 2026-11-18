@@ -9238,7 +9238,7 @@
     "city": "서울",
     "startDate": "2027-02-03",
     "endDate": "2027-02-03",
-    "description": "미국 로스앤젤레스에서 활동하는 싱어송라이터 티파니 데이(Tiffany Day)의 첫 내한공연이에요. 2027년 2월 3일(수) 서울 무신사 개러지에서 열리고, 이틀 뒤 도쿄 공연으로 이어져요. 티켓은 2026년 11월 17일(화) 낮 12시 NOL 티켓에서 열려요. 공연은 오후 8시에 시작해요. 가격은 아직 확인하지 못했어요.",
+    "description": "미국 로스앤젤레스에서 활동하는 싱어송라이터 티파니 데이(Tiffany Day)의 첫 내한공연이에요. 2027년 2월 3일(수) 서울 무신사 개러지에서 열리고, 이틀 뒤 도쿄 공연으로 이어져요. 티켓은 2026년 11월 17일(화) 낮 12시 NOL 티켓에서 열려요. 공연은 오후 8시에 시작해요. 스탠딩석 99,000원이에요.",
     "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. NOL 원문 미확인 - 보도 기반(공연일·장소는 해외 매체 2곳, 오픈 시각은 Dork 기사와 NOL 오픈 예정 목록이 일치).",
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-11-17 낮 12시",
@@ -9265,7 +9265,18 @@
       }
     ],
     "posterUrl": "/posters/tiffany-day-seoul-2027-02.webp",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016602_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016602_p.gif",
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-18",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26016602"
+    }
   },
   {
     "id": "kimchikura-anisama-seoul-2027-01",
@@ -9525,5 +9536,236 @@
     "addedAt": "2026-11-18",
     "posterUrl": "/posters/son-tae-jin-bon-voyage-seoul-2027-01.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016461_p.gif"
+  },
+  {
+    "id": "hayley-williams-seoul-2027-03",
+    "artist": "헤일리 윌리엄스 (Hayley Williams)",
+    "aliases": [
+      "파라모어",
+      "Paramore",
+      "The Hayley Williams Show"
+    ],
+    "genre": "팝/락",
+    "venue": "예스24 라이브홀",
+    "city": "서울",
+    "startDate": "2027-03-01",
+    "endDate": "2027-03-01",
+    "description": "미국 록 밴드 파라모어(Paramore)의 보컬 헤일리 윌리엄스의 첫 단독 내한공연 \"The Hayley Williams Show\"예요. 2027년 3월 1일(월) 오후 6시 예스24 라이브홀에서 열려요. 파라모어로도 한국 공연을 한 적이 없어서, 이번이 한국에서 하는 첫 무대예요. 예스24 티켓 단독 판매이고, 아티스트 선예매는 11월 18일 낮 12시, 일반 예매는 11월 20일 낮 12시에 열려요.",
+    "schedule": "3/1(월) 오후 6시, 관람시간 120분, 미취학 아동 입장 불가",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 아티스트 선예매 참여 방법은 공식 홈페이지(hayleywilliams.hq.fan/asia-27)에 안내돼 있어요. 주최 프라이빗커브.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-18 낮 12시 (아티스트 선예매), 2026-11-20 낮 12시 (일반) - 예스24 티켓 단독판매",
+    "ticketOpenAt": "2026-11-18T12:00:00+09:00",
+    "ticketOpens": [
+      {
+        "label": "아티스트 선예매",
+        "at": "2026-11-18T12:00:00+09:00",
+        "until": "2026-11-19T23:59:00+09:00"
+      },
+      {
+        "label": "일반 예매",
+        "at": "2026-11-20T12:00:00+09:00"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/61203"
+      }
+    ],
+    "officialUrl": "https://hayleywilliams.hq.fan/asia-27",
+    "prices": [
+      {
+        "label": "스탠딩석(1층)",
+        "price": 132000
+      },
+      {
+        "label": "지정석(2층)",
+        "price": 143000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-18",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/61203"
+    },
+    "posterUrl": "/posters/hayley-williams-seoul-2027-03.webp",
+    "sources": [
+      {
+        "label": "헤일리 윌리엄스 첫 단독 내한공연 “The Hayley Williams Show” Live in South Korea 티켓 오픈 안내 - YES24 티켓 공지사항 (2026-11-17)",
+        "url": "https://ticket.yes24.com/Notice#id=18855"
+      },
+      {
+        "label": "헤일리 윌리엄스 첫 단독 내한공연 - YES24 티켓 상품 페이지",
+        "url": "https://ticket.yes24.com/Perf/61203"
+      }
+    ],
+    "addedAt": "2026-11-18",
+    "promoBanner": "헤일리 윌리엄스(파라모어) 첫 내한 - 2027.3.1(월) 예스24 라이브홀, 일반 예매 11/20 낮 12시",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261117/20261117-61203.jpg"
+  },
+  {
+    "id": "2slimey-seoul-2026-12",
+    "artist": "2slimey (baby selects \"2slimey\" Live in Seoul)",
+    "genre": "팝/힙합",
+    "venue": "스페이스브릭",
+    "city": "서울",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-04",
+    "description": "베이비셀렉츠가 여는 2slimey의 서울 공연이에요. 2026년 12월 4일(금) 오후 8시 홍대 스페이스브릭에서 열리고, 오프닝은 치트키가 맡아요. 예스24 티켓 단독 판매로 11월 18일 오후 6시에 예매가 열려요.",
+    "schedule": "12/4(금) 오후 8시, 러닝타임 90분, 만 19세 이상",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 예매가는 88,000원이고 현장 판매가는 98,000원이에요(공지 기준). 주최·주관 베이비셀렉츠.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-18 오후 6시 - 예스24 티켓 단독판매",
+    "ticketOpenAt": "2026-11-18T18:00:00+09:00",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/61183"
+      }
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석(예매)",
+        "price": 88000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-18",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/61183"
+    },
+    "posterUrl": "/posters/2slimey-seoul-2026-12.webp",
+    "sources": [
+      {
+        "label": "baby selects “2slimey” Live in Seoul 티켓 오픈 안내 - YES24 티켓 공지사항 (2026-11-16)",
+        "url": "https://ticket.yes24.com/Notice#id=18849"
+      },
+      {
+        "label": "baby selects “2slimey” Live in Seoul - YES24 티켓 상품 페이지",
+        "url": "https://ticket.yes24.com/Perf/61183"
+      }
+    ],
+    "addedAt": "2026-11-18",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261116/20261116-61183.jpg"
+  },
+  {
+    "id": "asian-kung-fu-generation-goyang-2027-05",
+    "artist": "ASIAN KUNG-FU GENERATION (아시안 쿵푸 제너레이션)",
+    "aliases": [
+      "아지캉",
+      "AKG",
+      "아시안쿵푸제너레이션",
+      "ASIAN KUNG-FU GENERATION 30th Anniversary Extra Show in Korea"
+    ],
+    "genre": "J-POP",
+    "venue": "킨텍스 제2전시장 10홀",
+    "city": "고양",
+    "startDate": "2027-05-22",
+    "endDate": "2027-05-22",
+    "description": "일본 4인조 록 밴드 아시안 쿵푸 제너레이션의 결성 30주년 기념 한국 공연 \"30th Anniversary Extra Show in Korea\"예요. 2027년 5월 22일(토) 오후 6시 킨텍스 HALL 10에서 열려요. 전석 125,000원이고, 멜론티켓 단독 판매로 11월 27일(금) 오후 8시에 예매가 열려요.",
+    "schedule": "5/22(토) 오후 6시 시작(입장 오후 4시 30분, 공식 포스터 기준), 관람시간 90분, 8세 이상",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 주최 LIVET, 주관 원더로크.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-27 오후 8시 - 멜론티켓 단독판매",
+    "ticketOpenAt": "2026-11-27T20:00:00+09:00",
+    "ticketLinks": [
+      {
+        "vendor": "멜론티켓",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214339"
+      }
+    ],
+    "prices": [
+      {
+        "label": "전석",
+        "price": 125000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-18",
+    "pricesSource": {
+      "label": "멜론티켓 예매 페이지",
+      "url": "https://ticket.melon.com/performance/index.htm?prodId=214339"
+    },
+    "posterUrl": "/posters/asian-kung-fu-generation-goyang-2027-05.webp",
+    "sources": [
+      {
+        "label": "ASIAN KUNG-FU GENERATION 30th Anniversary Extra Show in Korea 티켓 오픈 안내 - 멜론티켓 (2026-11-16)",
+        "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=13313"
+      },
+      {
+        "label": "ASIAN KUNG-FU GENERATION 30th Anniversary Extra Show in Korea - 멜론티켓 상품 페이지",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214339"
+      }
+    ],
+    "addedAt": "2026-11-18",
+    "promoBanner": "아시안 쿵푸 제너레이션 30주년 한국 공연 - 2027.5.22(토) 킨텍스, 예매 11/27 오후 8시",
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/11/20261116211246fac82f08-db01-4ca6-9c01-c58fe8a78a26.png"
+  },
+  {
+    "id": "tori-kelly-seoul-2027-05",
+    "artist": "토리 켈리 (Tori Kelly)",
+    "aliases": [
+      "God Must Really Love Me World Tour"
+    ],
+    "genre": "팝",
+    "venue": "블루스퀘어 우리WON뱅킹홀",
+    "city": "서울",
+    "startDate": "2027-05-31",
+    "endDate": "2027-05-31",
+    "description": "미국 싱어송라이터 토리 켈리의 월드투어 \"God Must Really Love Me World Tour\" 서울 공연이에요. 2027년 5월 31일(월) 오후 8시 블루스퀘어 우리WON뱅킹홀에서 열려요. 자카르타에서 서울, 도쿄로 이어지는 아시아 일정의 하나예요. NOL 티켓 단독 판매이고, 아티스트 선예매는 11월 18일 오전 10시, 일반 예매는 11월 20일 낮 12시에 열려요.",
+    "schedule": "5/31(월) 오후 8시, 만 12세 이상",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 아티스트 선예매는 아티스트 주관이라 참여 방법은 아티스트 공식 채널에서 확인해야 해요.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-18 오전 10시 (아티스트 선예매), 2026-11-20 낮 12시 (일반) - NOL 티켓 단독판매",
+    "ticketOpenAt": "2026-11-18T10:00:00+09:00",
+    "ticketOpens": [
+      {
+        "label": "아티스트 선예매",
+        "at": "2026-11-18T10:00:00+09:00",
+        "until": "2026-11-19T22:00:00+09:00"
+      },
+      {
+        "label": "일반 예매",
+        "at": "2026-11-20T12:00:00+09:00"
+      }
+    ],
+    "ticketLinks": [
+      {
+        "vendor": "NOL티켓",
+        "url": "https://nol.yanolja.com/ticket/products/26016644"
+      }
+    ],
+    "prices": [
+      {
+        "label": "스탠딩",
+        "price": 99000
+      },
+      {
+        "label": "지정석",
+        "price": 110000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-18",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26016644"
+    },
+    "posterUrl": "/posters/tori-kelly-seoul-2027-05.webp",
+    "sources": [
+      {
+        "label": "Tori Kelly - God Must Really Love Me World Tour - NOL 티켓 상품 페이지 (오픈 일정·가격·공연 시각)",
+        "url": "https://nol.yanolja.com/ticket/products/26016644"
+      },
+      {
+        "label": "Tori Kelly to Tour Europe, North America and Asia Through June 2027 - BroadwayWorld (2026-11-16)",
+        "url": "https://www.broadwayworld.com/bwwmusic/article/Tori-Kelly-to-Tour-Europe-North-America-and-Asia-Through-June-2027-20261116"
+      },
+      {
+        "label": "Tori Kelly Takes 'God Must Really Love Me' Around The World With Massive 2027 Tour - That Eric Alper (2026-11-17)",
+        "url": "https://www.thatericalper.com/2026/11/17/tori-kelly-takes-god-must-really-love-me-around-the-world-with-massive-2027-tour/"
+      }
+    ],
+    "addedAt": "2026-11-18",
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016644_p.gif"
   }
 ]
