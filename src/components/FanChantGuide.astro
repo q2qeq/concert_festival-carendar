@@ -1,13 +1,13 @@
 ---
-// 떼창/콜 파트 안내 - 유튜브 검색 링크 하나로 단순화 (기존의 입력창+3개 검색
-// 링크 박스는 과했다는 피드백으로 축소). 우리가 직접 떼창 타이밍·가사를
-// 만들어내는 건 절대 하지 않는다 - 대신:
+// 떼창/콜 파트 안내. 우리가 직접 떼창 타이밍·가사를 만들어내는 건 절대 하지 않는다 - 대신:
 //   1) event.fanChantGuide - 실제로 확인된 공식 응원법/콜 가이드가 있을 때만
 //      노출 (fanchant-watch-list.mjs가 채운다).
 //   2) 그 외엔 유튜브 검색 딥링크 하나만 제공 - 떼창 가이드는 대부분 영상으로
 //      존재하므로 유튜브 하나면 충분하다.
 // 페스티벌 페이지에서는 이 컴포넌트 자체를 렌더링하지 않는다 (events/[id].astro).
 import type { FanChantGuideEntry } from '../lib/events';
+import LinkList from './LinkList.astro';
+import LinkRow from './LinkRow.astro';
 interface Props {
   artist: string;
   guides?: FanChantGuideEntry[];
@@ -16,30 +16,7 @@ const { artist, guides = [] } = Astro.props;
 const query = `${artist} 떼창 가이드`;
 const ytUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
 ---
-<div class="fanchant-line">
-  {guides.length > 0 && (
-    <div class="fanchant-official">
-      {guides.map((g) => (
-        <a class="fanchant-official-link" href={g.url} target="_blank" rel="noopener noreferrer">
-          {g.title}{g.note && <span class="fanchant-official-note"> · {g.note}</span>} ↗
-        </a>
-      ))}
-    </div>
-  )}
-  <p class="fanchant-yt-line">
-    떼창·콜 가이드가 궁금하다면 —{' '}
-    <a class="fanchant-yt" href={ytUrl} target="_blank" rel="noopener noreferrer">
-      유튜브에서 "{query}" 검색 →
-    </a>
-  </p>
-</div>
-<style>
-  .fanchant-line { margin: 1.5rem 0; }
-  .fanchant-official { display: flex; flex-direction: column; gap: 0.4rem; margin: 0 0 0.6rem; }
-  .fanchant-official-link { font-size: 0.9rem; font-weight: 700; color: var(--cheese); text-decoration: none; }
-  .fanchant-official-link:hover { text-decoration: underline; }
-  .fanchant-official-note { font-weight: 400; color: var(--muted); }
-  .fanchant-yt-line { margin: 0; color: var(--fg-2); font-size: 0.9rem; }
-  .fanchant-yt { color: var(--cheese); font-weight: 700; text-decoration: none; }
-  .fanchant-yt:hover { text-decoration: underline; }
-</style>
+<LinkList title="떼창·콜 가이드">
+  {guides.map((g) => <LinkRow href={g.url} external title={g.title} sub={g.note} />)}
+  <LinkRow href={ytUrl} external title="유튜브에서 떼창 가이드 찾기" sub={`'${query}' 검색 결과로 이동해요`} />
+</LinkList>

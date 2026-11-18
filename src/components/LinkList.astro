@@ -1,0 +1,22 @@
+---
+// LinkRow 묶음. 제목과 위쪽 선을 '티켓 가격' 표와 맞춰 공연 페이지의 구역들이 한 서식으로 읽히게 한다.
+interface Props {
+  title: string;
+  columns?: 1 | 2;
+}
+const { title, columns = 2 } = Astro.props;
+---
+<section class="link-list">
+  <h2>{title}</h2>
+  <div class:list={['ll-rows', { 'two-col': columns === 2 }]}>
+    <slot />
+  </div>
+</section>
+<style>
+  .link-list { min-width: 0; }
+  .link-list h2 { margin: 0 0 0.6rem; font-size: 1.05rem; color: var(--fg-2); }
+  .ll-rows { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--line); }
+  @media (min-width: 640px) {
+    .ll-rows.two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.4rem; }
+  }
+</style>

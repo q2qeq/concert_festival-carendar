@@ -1,11 +1,14 @@
 ---
-// 공연 상세 페이지 상단 "다음 행동" 블록 - 이 페이지에서 답을 얻은 사람이 바로
-// 이어서 할 만한 일(티켓팅 시계 / 같은 날·같은 공연장 공연 / 내 찜)을 한곳에 모은다.
-// 이탈률 개선용 (2026-11-02). 목록은 실제 데이터에 있는 것만 보여주고, 없으면 그 줄을 숨긴다.
+// 공연 상세 페이지의 "다음 행동" 블록 - 이 페이지에서 답을 얻은 사람이 바로
+// 이어서 할 만한 일(도구 / 오픈 알림 / 같은 날·같은 공연장 공연)을 한곳에 모은다.
+// 이탈률 개선용 (2026-11-02). 목록은 실제 데이터에 있는 것만 보여주고, 없으면 그 구역을 숨긴다.
+// 버튼·글자 링크·밑줄 링크가 섞여 헷갈린다는 피드백으로 모두 LinkRow 한 모양으로 통일했다(2026-11-18).
 import type { ConcertEvent } from '../lib/events';
 import { sameDayEvents, sameVenueUpcoming } from '../lib/events';
 import { getVenueInfo } from '../lib/venues';
 import { ticketOpenIcs, ticketOpenGoogleUrl, icsDataUri } from '../lib/ticketAlert';
+import LinkList from './LinkList.astro';
+import LinkRow from './LinkRow.astro';
 interface Props { event: ConcertEvent }
 const { event } = Astro.props;
 
@@ -19,59 +22,48 @@ const clockHref = hasOpen
 const alertEvent = hasOpen ? { id: event.id, artist: event.artist, ticketOpenAt: event.ticketOpenAt as string } : null;
 const googleHref = alertEvent ? ticketOpenGoogleUrl(alertEvent) : '';
 const icsHref = alertEvent ? icsDataUri(ticketOpenIcs([alertEvent])) : '';
-const shortDate = (iso: string) => {
+const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
+const dayLabel = (iso: string) => {
   const d = new Date(iso + 'T00:00:00');
-  return `${d.getMonth() + 1}.${d.getDate()}`;
+  return `${d.getMonth() + 1}월 ${d.getDate()}일 (${WEEKDAYS[d.getDay()]})`;
 };
 ---
-<section class="next-steps" aria-label="다음 행동">
-  <div class="ns-actions">
-    <a class="ns-btn ns-primary" href={clockHref}>
-      {hasOpen ? '이 공연 오픈 카운트다운' : '티켓팅 시계 켜기'}
-    </a>
-    <a class="ns-btn" href="/practice/">티켓팅 연습하기</a>
-    <a class="ns-btn" href="/internet-speed/">인터넷 속도 측정</a>
-    <a class="ns-btn" href={returnHref}>막차 계산</a>
-    <a class="ns-btn" href="/my/">내 찜 모아보기</a>
-  </div>
+<div class="next-steps">
   {alertEvent && (
-    <div class="ns-row">
-      <span class="ns-label">오픈 알림 (10분 전·하루 전)</span>
-      <div class="ns-links">
-        <a href={googleHref} target="_blank" rel="noopener noreferrer">구글 캘린더</a>
-        <a href={icsHref} download={`${event.id}-ticket-open.ics`}>.ics 파일</a>
-      </div>
+    <LinkList title="티켓 오픈 알림">
+      <LinkRow href={googleHref} external title="구글 캘린더에 추가" sub="오픈 10분 전과 하루 전에 알려 줘요" />
+      <LinkRow href={icsHref} download={`${event.id}-ticket-open.ics`} title="캘린더 파일 받기" sub="애플 캘린더 등에서 쓰는 .ics 파일이에요" />
+    </LinkList>
+  )}
+
+  <LinkList title="직관 준비 도구">
+    <LinkRow href={clockHref} title={hasOpen ? '이 공연 오픈 카운트다운' : '티켓팅 시계'} sub="오픈 순간을 밀리초까지" />
+    <LinkRow href="/practice/" title="티켓팅 연습" sub="30초 손풀기 게임" />
+    <LinkRow href="/internet-speed/" title="인터넷 속도 측정" sub="내 인터넷 속도, 10초면 확인돼요" />
+    <LinkRow href={returnHref} title="막차 계산기" sub="공연 끝나고 집에 갈 수 있을까" />
+    <LinkRow href="/trip-cost/" title="직관 비용 계산기" sub="티켓·교통·숙박·굿즈 총비용" />
+    <LinkRow href="/my/" title="내 찜 모아보기" sub="찜한 공연을 한곳에서" />
+  </LinkList>
+
+  {(sameDay.length > 0 || sameVenue.length > 0) && (
+    <div class:list={['ns-events', { 'two-up': sameDay.length > 0 && sameVenue.length > 0 }]}>
+      {sameDay.length > 0 && (
+        <LinkList title="같은 날 열리는 공연" columns={1}>
+          {sameDay.map((e) => <LinkRow href={`/events/${e.id}/`} title={e.artist} sub={e.venue} />)}
+        </LinkList>
+      )}
+      {sameVenue.length > 0 && (
+        <LinkList title={`${event.venue}의 다음 공연`} columns={1}>
+          {sameVenue.map((e) => <LinkRow href={`/events/${e.id}/`} title={e.artist} sub={dayLabel(e.startDate)} />)}
+        </LinkList>
+      )}
     </div>
   )}
-  {sameDay.length > 0 && (
-    <div class="ns-row">
-      <span class="ns-label">같은 날 열리는 공연</span>
-      <div class="ns-links">
-        {sameDay.map((e) => <a href={`/events/${e.id}/`}>{e.artist}</a>)}
-      </div>
-    </div>
-  )}
-  {sameVenue.length > 0 && (
-    <div class="ns-row">
-      <span class="ns-label">{event.venue}의 다음 공연</span>
-      <div class="ns-links">
-        {sameVenue.map((e) => <a href={`/events/${e.id}/`}>{e.artist} <small>{shortDate(e.startDate)}</small></a>)}
-      </div>
-    </div>
-  )}
-</section>
+</div>
 <style>
-  /* 상자 안에 상자를 넣지 않는다: 위아래 선으로만 묶고, 주 동작(시계) 하나만 버튼, 나머지는 글자 링크 */
-  .next-steps { margin: 1.4rem 0 1.4rem; padding: 0.9rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .ns-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.2rem; }
-  .ns-btn { padding: 0.7rem 0; font-size: 0.88rem; font-weight: 600; text-decoration: none; color: var(--fg-2); }
-  .ns-btn:hover { color: var(--cheese); }
-  .ns-primary { padding: 0.65rem 1.1rem; margin-right: 0.3rem; border-radius: 4px; font-weight: 700; background: var(--btn); color: var(--ink); }
-  .ns-primary:hover { color: var(--ink); background: var(--btn-hi); }
-  .ns-row { margin-top: 0.6rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem; }
-  .ns-label { color: var(--muted); font-size: 0.82rem; }
-  .ns-links { display: flex; flex-wrap: wrap; gap: 0 0.9rem; }
-  .ns-links a { padding: 0.45rem 0; font-size: 0.88rem; color: var(--fg); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 0.25em; }
-  .ns-links a:hover { color: var(--cheese); text-decoration-color: var(--cheese); }
-  .ns-links small { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .next-steps { display: flex; flex-direction: column; gap: 2rem; margin: 2.5rem 0 0; }
+  .ns-events { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem 2.4rem; align-items: start; }
+  @media (min-width: 640px) {
+    .ns-events.two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
 </style>
