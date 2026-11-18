@@ -261,6 +261,11 @@ export interface ConcertEvent {
   // 공연 페이지의 '티켓 가격' 표(PriceBox)와 구조화 데이터의 가격 범위에 쓰인다.
   prices?: { label: string; price: number }[];
   pricesCheckedAt?: string; // YYYY-MM-DD
+  // 예매처 상품 페이지를 실제로 열어 확인한 판매 상태(2026-11-18). 추측으로 넣지 않는다.
+  //   upcoming: 오픈 예정 · open: 예매 가능 · soldout: 전 회차·전 등급 잔여 0 · closed: 판매 종료
+  // 글을 취켓팅으로 바꾸기 전에 확인하고 saleCheckedAt(확인한 날)과 같이 적는다(npm run posts:cancel 이 읽는다).
+  saleState?: 'upcoming' | 'open' | 'soldout' | 'closed';
+  saleCheckedAt?: string; // YYYY-MM-DD
   pricesSource?: { label: string; url: string };
   // Editorial judgment on how hard tickets are to get, grounded in a real,
   // citable signal (e.g. a past/this-year sale selling out immediately, a
