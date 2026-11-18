@@ -24,6 +24,7 @@
     "posts:cancel": "node scripts/cancel-ticket-posts.mjs",
     "posts:after": "node scripts/after-show-posts.mjs",
     "clicks:report": "node scripts/click-report.mjs",
+    "posts:week": "node scripts/posts-week.mjs",
     "requests:report": "node scripts/request-report.mjs",
     "popular:events": "node scripts/popular-events.mjs",
     "og:cards": "node scripts/make-share-card.mjs",
