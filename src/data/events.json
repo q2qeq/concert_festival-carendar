@@ -4347,7 +4347,7 @@
         "url": "https://x.com/5sos"
       }
     ],
-    "merchCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-19",
     "setlists": [
       {
         "label": "EVERYONE'S A STAR! World Tour - 비에하스 아레나 공연",
@@ -4444,7 +4444,7 @@
     ],
     "posterUrl": "/posters/christopher-seoul-2026-11.webp",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202608/20260813/20260813-59732.jpg",
-    "merchCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-19",
     "prices": [
       {
         "label": "R석",
@@ -4994,7 +4994,7 @@
     ],
     "posterUrl": "/posters/cherry-blossom-music-concert-winter-changwon-2026-11.webp",
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/08/202608241326143d42ff3b-131e-4369-9ec8-5d50f6ab5c33.jpg",
-    "merchCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-19",
     "shuttleBus": [
       {
         "operator": "카카오 T 셔틀",
@@ -5168,7 +5168,7 @@
     "note": "예스24 티켓 기준 스탠딩석·지정석 88,000원, 러닝타임 90분, 7세 이상 관람가. 주최 (주)엠피엠지.",
     "posterUrl": "/posters/kopis-PF299935.webp",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
-    "merchCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-19",
     "ticketLinks": [
       {
         "vendor": "예스24",
@@ -7182,7 +7182,7 @@
         "note": "셔틀 스캔으로 확인 (2026-11-18). 퀸즈스마일 shop 목록에 계속 노출. 유료 셔틀버스(왕복/편도 티켓 17,000원~, 요금·정류장별 예약 가능 여부는 11/12 확인 기준). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
-    "merchCheckedAt": "2026-11-11",
+    "merchCheckedAt": "2026-11-19",
     "posterUrl": "/posters/shuttle-nmixx-world-tour-zero-frontier-finale-2026-11.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013946_p.gif",
     "prices": [
@@ -8979,7 +8979,7 @@
     "posterUrl": "/posters/stacey-kent-seoul-2026-11.webp",
     "addedAt": "2026-11-12",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299001_260820_150851.jpg",
-    "merchCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-19",
     "prices": [
       {
         "label": "VIP석",
@@ -9008,7 +9008,7 @@
   },
   {
     "id": "diana-krall-seoul-2026-11",
-    "merchCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-19",
     "artist": "Diana Krall (다이애나 크롤)",
     "aliases": [
       "다이아나 크롤",
@@ -9202,7 +9202,7 @@
   },
   {
     "id": "tahiti-80-seoul-2026-11",
-    "merchCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-19",
     "artist": "Tahiti 80 (타히티 80)",
     "aliases": [
       "타히티80",
@@ -9416,7 +9416,7 @@
     "city": "서울",
     "startDate": "2026-11-20",
     "endDate": "2026-11-22",
-    "merchCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-19",
     "description": "로이킴의 첫 KSPO DOME 단독 공연 '2026-27 로이킴 LIVE TOUR [R:O:Y] in SEOUL'이에요. 처음엔 21·22일 이틀이었는데 매진되면서 20일 공연이 추가됐고, 추가 회차까지 모두 매진됐다고 보도됐어요. 서울 공연 뒤 아시아 투어로 이어져요.",
     "schedule": "11/20(금) 오후 8시, 11/21(토) 오후 6시, 11/22(일) 오후 5시",
     "note": "KOPIS 등록 기준 VIP석 165,000원, R석 154,000원, 만 7세 이상. 주최 CJ ENM·들(DEUL). 예매는 NOL티켓. 3회 모두 매진 보도(2026-10-14) - 취소표는 NOL에서 확인하세요.",
@@ -9492,7 +9492,7 @@
   },
   {
     "id": "cho-yong-pil-seoul-2026-11",
-    "merchCheckedAt": "2026-11-16",
+    "merchCheckedAt": "2026-11-19",
     "artist": "조용필 & 위대한 탄생",
     "aliases": [
       "조용필",
