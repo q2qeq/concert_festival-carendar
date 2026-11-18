@@ -199,6 +199,8 @@ const shareText = `${event.artist} ${shareWhen} ${event.venue}`;
 const xShareHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
 const status = event.status ?? 'scheduled';
 const isPast = event.endDate < new Date().toISOString().slice(0, 10);
+// D-100 이상은 휴대폰의 좁은 칸에서 "D-"와 숫자가 두 줄로 갈라져 글자를 줄인다.
+const ddayDigits = String(Math.abs(Math.ceil((Date.parse(`${event.startDate}T00:00:00+09:00`) - Date.now()) / 86400_000))).length;
 
 // 끝난 공연으로 검색해 들어온 사람에게 다음에 볼 공연을 맨 위에서 바로 보여 준다.
 const todayISO = new Date().toISOString().slice(0, 10);
@@ -300,7 +302,7 @@ const breadcrumbLd = {
         {buzzing && <b>{buzzHeadlineAct ? `${buzzHeadlineAct} 화제` : '화제의 공연'}</b>}
       </p>
       <h1 class={heroName.length > 22 ? 'long' : undefined}>{heroName}{heroSub && <small>{heroSub}</small>}</h1>
-      <div class="ev-big">
+      <div class:list={['ev-big', { 'is-long': ddayDigits >= 3 }]}>
         <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
         <p class="ev-when mono">{whenLabel}<span>{event.venue}</span></p>
       </div>
@@ -691,7 +693,8 @@ const breadcrumbLd = {
   });
   setupActionPopover('ticket-toggle', 'ticket-popover');
 
-  // 모바일 하단 고정 예매 버튼: 액션바가 화면 위로 지나가면 보이고, 다시 보이면 숨긴다.
+  // 모바일 하단 고정 예매 버튼: 액션바가 화면에 없으면 보이고, 보이면 숨긴다.
+  // 티켓오픈 카운트다운이 있는 공연은 액션바가 첫 화면 아래에 있어서, 지나간 뒤에만 띄우면 첫 화면에 예매 버튼이 없다.
   (() => {
     const bar = document.querySelector<HTMLElement>('.ev-info .action-bar');
     const cta = document.getElementById('m-cta');
@@ -700,7 +703,7 @@ const breadcrumbLd = {
     const toggle = document.getElementById('m-toggle');
     const close = () => { if (sheet) sheet.hidden = true; toggle?.setAttribute('aria-expanded', 'false'); };
     const io = new IntersectionObserver(([entry]) => {
-      const show = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      const show = !entry.isIntersecting;
       cta.hidden = !show;
       document.body.classList.toggle('has-mcta', show);
       if (!show) close();
@@ -976,7 +979,8 @@ const breadcrumbLd = {
     .ev-kicker { grid-area: kick; margin: 0; font-size: 0.7rem; line-height: 1.7; align-self: start; }
     .ev-kicker b { display: block; margin: 0.1rem 0 0; }
     .ev-big { grid-area: big; flex-direction: column; align-items: flex-start; gap: 0.4rem; margin: 0; align-self: end; }
-    .dday-badge.big { font-size: clamp(3.4rem, 18vw, 5rem); }
+    .dday-badge.big { font-size: clamp(3.4rem, 18vw, 5rem); white-space: nowrap; }
+    .ev-big.is-long .dday-badge.big { font-size: clamp(2.5rem, 12.5vw, 3.8rem); }
     .event-header h1 { grid-area: name; margin-top: 1.2rem; font-size: clamp(2.1rem, 10.5vw, 3.2rem); }
     .event-header h1.long { font-size: clamp(1.5rem, 7.2vw, 2.1rem); }
     .ev-info .action-bar { grid-area: act; margin: 1.1rem 0 0; }

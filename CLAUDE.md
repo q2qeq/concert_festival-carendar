@@ -15,6 +15,8 @@
 | 블로그 글 | `src/content/posts/*.mdx` → `/blog/<파일 이름>/` |
 | 블로그 글 규칙 | `docs/blog-post-rules.md` |
 | 인기 공연 디벨롭 절차 | `docs/popular-event-routine.md` |
+| 공연 상세 셀프 점검 | `docs/event-page-review.md` |
+| 성과 기준·효과 판정 | `.claude/skills/traffic-feedback/SKILL.md` 4-0절 |
 | 스케줄 작업 상세 프롬프트·작업 로그 | `.routines/` (git에 안 올라가는 로컬 폴더, 메인 체크아웃에만 있음) |
 | 스케줄 작업 등록 | `~/.claude/scheduled-tasks/<작업>/SKILL.md` |
 | 다른 컴퓨터(윈도)에서 작업하기 | `docs/new-machine.md` |
