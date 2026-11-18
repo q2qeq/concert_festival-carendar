@@ -9027,7 +9027,7 @@
     "endDate": "2026-12-12",
     "description": "네덜란드 싱어송라이터·프로듀서 베니싱스의 내한 공연 'BENNY SINGS LIVE IN SEOUL'이에요. 무신사 개러지에서 스탠딩으로 열려요.",
     "schedule": "12/12(토) 오후 8시, 러닝타임 90분, 전체 관람가",
-    "note": "KOPIS 등록 기준 전석 99,000원(얼리버드 88,000원은 9/28 판매 종료). 주최 김밥레코즈. 29CM에서 판매하고, 일반 예매 페이지 주소는 확인되는 대로 추가할게요.",
+    "note": "KOPIS 등록 기준 전석 99,000원(얼리버드 88,000원은 판매 종료). 주최 김밥레코즈. 일반 예매는 주최사 쇼핑몰(김밥레코즈) 상품 페이지에서 확인(2026-11-19, 99,000원, 구매 가능). 29CM 일반 예매 상품 주소는 못 찾음.",
     "sources": [
       {
         "label": "KOPIS 공연DB - 베니싱스 내한공연 BENNY SINGS LIVE IN SEOUL (PF301059)",
@@ -9036,6 +9036,10 @@
       {
         "label": "29CM 티켓 - [얼리버드] 베니싱스 내한공연 (2026. 12. 12 무신사 개러지)",
         "url": "https://ticket.29cm.co.kr/catalog/4207822"
+      },
+      {
+        "label": "[일반 예매] 12월 12일 (토) Benny Sings Live In Seoul - 김밥레코즈 쇼핑몰 상품 페이지",
+        "url": "https://gimbabrecords2.com/product/detail.html?product_no=3615"
       }
     ],
     "posterUrl": "/posters/benny-sings-seoul-2026-12.webp",
@@ -9051,7 +9055,15 @@
     "pricesSource": {
       "label": "KOPIS 공연예술통합전산망",
       "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF301059"
-    }
+    },
+    "ticketLinks": [
+      {
+        "vendor": "김밥레코즈",
+        "url": "https://gimbabrecords2.com/product/detail.html?product_no=3615"
+      }
+    ],
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-19"
   },
   {
     "id": "cutie-street-goyang-2027-01",
@@ -9887,7 +9899,7 @@
     "endDate": "2027-01-10",
     "description": "손태진이 2027년 전국투어 ‘Bon Voyage’를 서울에서 시작해요. 2027년 1월 9일(토)과 10일(일) 이틀 동안 올림픽공원 올림픽홀에서 열려요. 전석 지정좌석이고 8세 이상 관람할 수 있어요.",
     "schedule": "1/9(토) 오후 6시, 1/10(일) 오후 4시, 러닝타임 150분 (NOL 티켓 상품 페이지 기준)",
-    "note": "NOL 상품 페이지(2026-11-18 확인): 팬카페(손샤인 T등급) 선예매 인증 11/17 14:00~11/20 23:59, 선예매 11/19 19:00~11/20 23:59(회차당 1인 2매), 일반 예매 11/23 19:00(회차당 1인 8매, 선예매 포함). 상세 이미지에는 일반 예매가 \"오후 8시\"로 적혀 있어 페이지 상단·보도(오후 7시)와 다름 - 상단 카운터 기준으로 19:00을 넣음. 가격은 최저가 121,000원만 페이지 데이터로 확인, 등급별 가격표는 예매 전이라 화면에 없음 → 예매 열리면 prices 채울 것. 일반 예매는 티켓링크에서도 한다고 보도됐으나 상품 주소 미확인.",
+    "note": "NOL 상품 페이지(2026-11-18 확인): 팬카페(손샤인 T등급) 선예매 인증 11/17 14:00~11/20 23:59, 선예매 11/19 19:00~11/20 23:59(회차당 1인 2매), 일반 예매 11/23 19:00(회차당 1인 8매, 선예매 포함). 상세 이미지에는 일반 예매가 \"오후 8시\"로 적혀 있어 페이지 상단·보도(오후 7시)와 다름 - 상단 카운터 기준으로 19:00을 넣음. 등급별 가격(VIP 165,000 / R 143,000 / S 121,000)은 2026-11-19 상품 페이지 가격 줄에서 확인. 일반 예매는 티켓링크에서도 한다고 보도됐으나 상품 주소 미확인.",
     "ticketingAnnounced": true,
     "ticketOpenDate": "2026-11-19 오후 7시 (팬카페 선예매), 2026-11-23 오후 7시 (일반)",
     "ticketOpenAt": "2026-11-19T19:00:00+09:00",
@@ -9929,7 +9941,26 @@
     "posterUrl": "/posters/son-tae-jin-bon-voyage-seoul-2027-01.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016461_p.gif",
     "saleState": "upcoming",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-19",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 165000
+      },
+      {
+        "label": "R석",
+        "price": 143000
+      },
+      {
+        "label": "S석",
+        "price": 121000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-19",
+    "pricesSource": {
+      "label": "NOL 티켓 예매 페이지",
+      "url": "https://nol.yanolja.com/ticket/products/26016461"
+    }
   },
   {
     "id": "hayley-williams-seoul-2027-03",
@@ -9996,7 +10027,9 @@
     ],
     "addedAt": "2026-11-18",
     "promoBanner": "헤일리 윌리엄스(파라모어) 첫 내한 - 2027.3.1(월) 예스24 라이브홀, 일반 예매 11/20 낮 12시",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261117/20261117-61203.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261117/20261117-61203.jpg",
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-19"
   },
   {
     "id": "2slimey-seoul-2026-12",
@@ -10041,7 +10074,9 @@
       }
     ],
     "addedAt": "2026-11-18",
-    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261116/20261116-61183.jpg"
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261116/20261116-61183.jpg",
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-19"
   },
   {
     "id": "asian-kung-fu-generation-goyang-2027-05",
@@ -10160,7 +10195,9 @@
       }
     ],
     "addedAt": "2026-11-18",
-    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016644_p.gif"
+    "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016644_p.gif",
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-19"
   },
   {
     "id": "shuttle-akmu-concert-daegu-2026-11",
