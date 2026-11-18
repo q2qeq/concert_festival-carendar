@@ -1,9 +1,11 @@
 ---
 // 공연 상세 페이지의 "지금 할 일" 한 문장. 도구를 나열하지 않고 공연 상태에 맞는 한 가지만 권한다.
-//   티켓 오픈 전·오픈 중: 그리지 않는다. 상단 카운트다운(OpenCountdown)이 시계·알림·연습을 안내한다.
-//   예매 중: 취소표 → 취켓팅 연습
-//   공연 7일 전부터 마지막 날까지: 돌아오는 차편 → 막차 계산
-//   끝났거나 연기·취소, 예매 링크가 없는 공연: 그리지 않는다.
+//   티켓 오픈 전·오픈 중: 그리지 않는다. 상단 카운트다운(OpenCountdown)이 시계·알림·티켓팅 연습을 안내한다.
+//   오픈 일정 발표 전: 티켓팅 연습
+//   오픈이 지남(예매 중): 취소표 → 취켓팅 연습
+//   공연 7일 전부터 마지막 날까지: 돌아오는 차편 → 막차 계산. 연습은 보조 링크로 남긴다.
+//   끝났거나 연기·취소된 공연: 그리지 않는다.
+// 연습 안내는 예정 공연이면 늘 하나 있다: 오픈 전이면 티켓팅 연습, 지났으면 취켓팅 연습(lib/nextStep.ts).
 // 예전에는 도구 링크 묶음이 모든 공연에 똑같이 나와서 도구 페이지를 옮겨 놓은 것처럼 보였다(2026-11-18).
 // 나머지 도구는 질문이 생기는 자리에 둔다: 비용 계산기는 가격표 밑, 막차 계산기는 공연장 정보.
 // 정적 빌드라 두 문장을 모두 그려 두고, 브라우저가 오늘 날짜로 보여 줄 것을 다시 고른다.
@@ -31,6 +33,14 @@ const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIC
     data-stages={JSON.stringify(stages)}
     hidden={built.kind === 'none'}
   >
+    <div class="now-item" data-now-kind="soon" hidden={built.kind !== 'soon'}>
+      <div class="now-text">
+        <p class="now-k">티켓 오픈 전</p>
+        <p class="now-s">티켓 오픈 일정은 아직 발표 전이에요</p>
+        <p class="now-sub">열리는 날 바로 누를 수 있게 미리 손을 풀어 두세요.</p>
+      </div>
+      <a class="now-btn" href="/practice/">티켓팅 연습하기</a>
+    </div>
     <div class="now-item" data-now-kind="sale" hidden={built.kind !== 'sale'}>
       <div class="now-text">
         <p class="now-k">예매 중 · 공연까지 <span class="mono" data-now-days>{built.days}</span>일</p>
@@ -45,7 +55,11 @@ const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIC
         <p class="now-s" data-now-week>
           {built.days > 0 ? <>공연이 <em class="mono">{built.days}일</em> 남았어요</> : <>오늘 공연이에요</>}
         </p>
-        <p class="now-sub">{event.venue}에서 돌아오는 차편을 먼저 확인하세요. <a href="#venue">공연장 가는 길</a></p>
+        <p class="now-sub">
+          {event.venue}에서 돌아오는 차편을 먼저 확인하세요. <a href="#venue">공연장 가는 길</a>
+          <span data-now-practice="cancel" hidden={built.practice !== 'cancel'}> · 취소표를 노린다면 <a href="/practice/?stage=cancel">취켓팅 연습</a></span>
+          <span data-now-practice="ticketing" hidden={built.practice !== 'ticketing'}> · 예매 전이라면 <a href="/practice/">티켓팅 연습</a></span>
+        </p>
       </div>
       <a class="now-btn" href={returnHref}>막차 계산하기</a>
     </div>
@@ -60,6 +74,7 @@ const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIC
     const now = nextStepKind({ start: box.dataset.start ?? '', end: box.dataset.end ?? '', stages, onSale: box.dataset.onSale === '1' }, Date.now());
     box.hidden = now.kind === 'none';
     box.querySelectorAll<HTMLElement>('[data-now-kind]').forEach((el) => { el.hidden = el.dataset.nowKind !== now.kind; });
+    box.querySelectorAll<HTMLElement>('[data-now-practice]').forEach((el) => { el.hidden = el.dataset.nowPractice !== now.practice; });
     const days = box.querySelector('[data-now-days]');
     if (days) days.textContent = String(now.days);
     const week = box.querySelector('[data-now-week]');
