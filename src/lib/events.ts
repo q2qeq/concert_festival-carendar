@@ -267,6 +267,17 @@ export interface ConcertEvent {
   saleState?: 'upcoming' | 'open' | 'soldout' | 'closed';
   saleCheckedAt?: string; // YYYY-MM-DD
   pricesSource?: { label: string; url: string };
+  // 관람 조건(2026-11-19). 예매처 상품 페이지·공식 공지를 실제로 열어 확인한 것만 넣고 확인 날짜와 출처를 같이 적는다.
+  // startTime·runningTime·age는 첫 화면 날짜 아래에, items는 가격표 위 '예매 전 확인' 표(EventFacts)에 나온다.
+  // startTime은 "오후 7시 30분"처럼 적는다(화면에서 "시작"을 붙인다). 날짜마다 시각이 다르면 비워 두고 items에 적는다.
+  facts?: {
+    startTime?: string;
+    runningTime?: string;
+    age?: string;
+    items?: { label: string; value: string }[];
+    checkedAt: string; // YYYY-MM-DD
+    source: { label: string; url: string };
+  };
   // Editorial judgment on how hard tickets are to get, grounded in a real,
   // citable signal (e.g. a past/this-year sale selling out immediately, a
   // small venue vs a huge-demand artist). This is commentary, like

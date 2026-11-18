@@ -18,6 +18,7 @@ import NextSteps from '../../components/NextSteps.astro';
 import WantButton from '../../components/WantButton.astro';
 import AnnounceWatch from '../../components/AnnounceWatch.astro';
 import PriceBox from '../../components/PriceBox.astro';
+import EventFacts from '../../components/EventFacts.astro';
 import OpenCountdown from '../../components/OpenCountdown.astro';
 import { existsSync } from 'node:fs';
 import { postsMentioningEvent, postsMentioningVenue, postDateLabel } from '../../lib/posts';
@@ -161,6 +162,7 @@ const mentionedIn = [...mentionedEvent, ...mentionedVenue].slice(0, 4);
 // 흥미도 높은 걸 위로: 라인업·셋리스트를 먼저, 직관냥 포인트 같은 부가 정보는
 // 뒤로 두는 순서가 실제 페이지 본문 순서와 맞춰져 있다.
 const tocItems = [
+  event.facts?.items?.length && !titleIsPast && (event.status ?? 'scheduled') === 'scheduled' && { id: 'facts', label: saleClosed ? '관람 전 확인' : '예매 전 확인' },
   event.prices && event.prices.length > 0 && { id: 'price', label: '티켓 가격' },
   isFestival && { id: 'lineup', label: '라인업' },
   event.setlists && event.setlists.length > 0 && { id: 'setlist', label: '셋리스트' },
@@ -201,6 +203,10 @@ const status = event.status ?? 'scheduled';
 const isPast = event.endDate < new Date().toISOString().slice(0, 10);
 // D-100 이상은 휴대폰의 좁은 칸에서 "D-"와 숫자가 두 줄로 갈라져 글자를 줄인다.
 const ddayDigits = String(Math.abs(Math.ceil((Date.parse(`${event.startDate}T00:00:00+09:00`) - Date.now()) / 86400_000))).length;
+// 관람 조건은 앞으로 갈 수 있는 공연에만 보여 준다. 첫 화면에는 시작 시각과 길이·연령을 두 줄로 나눠 좁은 칸에서도 갈라지지 않게 한다.
+const showFacts = status === 'scheduled' && !isPast;
+const factStart = showFacts && event.facts?.startTime ? `${event.facts.startTime} 시작` : '';
+const factMeta = showFacts ? [event.facts?.runningTime, event.facts?.age].filter(Boolean).join(' · ') : '';
 
 // 끝난 공연으로 검색해 들어온 사람에게 다음에 볼 공연을 맨 위에서 바로 보여 준다.
 const todayISO = new Date().toISOString().slice(0, 10);
@@ -304,7 +310,11 @@ const breadcrumbLd = {
       <h1 class={heroName.length > 22 ? 'long' : undefined}>{heroName}{heroSub && <small>{heroSub}</small>}</h1>
       <div class:list={['ev-big', { 'is-long': ddayDigits >= 3 }]}>
         <div class="dday-badge big" data-dday-start={event.startDate} data-dday-end={event.endDate} data-status={status}>—</div>
-        <p class="ev-when mono">{whenLabel}<span>{event.venue}</span></p>
+        <p class="ev-when mono">
+          {whenLabel}<span>{event.venue}</span>
+          {factStart && <span class="ev-fact">{factStart}</span>}
+          {factMeta && <span class="ev-fact">{factMeta}</span>}
+        </p>
       </div>
       {lastUpdated && <p class="last-updated">최근 업데이트 {lastUpdated.slice(5).replace('-', '.')}</p>}
       {event.description && <p class="event-description">{event.description}</p>}
@@ -435,6 +445,8 @@ const breadcrumbLd = {
     </div>
 
     <AnnounceWatch event={event} />
+
+    {showFacts && <EventFacts event={event} heading={saleClosed ? '관람 전 확인' : '예매 전 확인'} />}
 
     <PriceBox event={event} />
 
@@ -964,6 +976,9 @@ const breadcrumbLd = {
   .dday-badge.big.is-postponed, .dday-badge.big.is-cancelled { background: none; }
   .ev-when { margin: 0; font-size: 0.95rem; font-weight: 700; line-height: 1.55; color: var(--fg); }
   .ev-when span { display: block; font-weight: 500; color: var(--muted); }
+  .ev-when .ev-fact { color: var(--fg); font-size: 0.8rem; font-weight: 700; line-height: 1.5; }
+  .ev-when span + .ev-fact { margin-top: 0.45rem; }
+  .ev-when .ev-fact + .ev-fact { margin-top: 0; }
   .event-description { margin: 0.6rem 0 0; color: var(--fg-3); }
   .ev-pic { position: sticky; top: 5rem; }
   .ev-pic .poster { width: 100%; max-width: none; margin: 0; border-radius: 2px; }

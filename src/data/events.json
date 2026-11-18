@@ -4715,7 +4715,31 @@
       "url": "https://ticket.yes24.com/Perf/59840"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "startTime": "낮 12시",
+      "runningTime": "총 600분",
+      "age": "8세 이상",
+      "items": [
+        {
+          "label": "구매 제한",
+          "value": "회차별 1인 4매"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "모바일 티켓"
+        },
+        {
+          "label": "판매·취소 마감",
+          "value": "각 공연 전날 오전 11시"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "예스24 티켓 예매 페이지",
+        "url": "https://ticket.yes24.com/Perf/59840"
+      }
+    }
   },
   {
     "id": "shuttle-monsta-x-world-tour-encore-2026-11",
@@ -5065,7 +5089,27 @@
       "url": "https://www.ticketlink.co.kr/product/66073"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "startTime": "오후 6시",
+      "runningTime": "120분",
+      "age": "만 8세 이상",
+      "items": [
+        {
+          "label": "구매 제한",
+          "value": "1인 4매"
+        },
+        {
+          "label": "예매 수수료",
+          "value": "장당 2,000원"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "티켓링크 예매 페이지",
+        "url": "https://www.ticketlink.co.kr/product/66073"
+      }
+    }
   },
   {
     "id": "ellegarden-seoul-2026-11",
@@ -5448,7 +5492,34 @@
       "url": "https://nol.yanolja.com/ticket/products/26010352"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "runningTime": "90분",
+      "age": "만 7세 이상",
+      "items": [
+        {
+          "label": "토요일 시작",
+          "value": "12월 5일 오후 6시"
+        },
+        {
+          "label": "일요일 시작",
+          "value": "12월 6일 오후 5시"
+        },
+        {
+          "label": "예매 마감",
+          "value": "토요일 공연은 전날 오후 5시, 일요일 공연은 전날 오전 11시"
+        },
+        {
+          "label": "이용 제한",
+          "value": "예매대기·동일좌석 재예매 서비스 제외"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26010352"
+      }
+    }
   },
   {
     "id": "shuttle-khalid-2026-12",
@@ -5915,7 +5986,31 @@
       "url": "https://nol.yanolja.com/ticket/products/26014068"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "startTime": "오후 7시 30분",
+      "runningTime": "100분",
+      "age": "만 7세 이상",
+      "items": [
+        {
+          "label": "인터미션",
+          "value": "15분 (러닝타임에 포함)"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "배송 (11월 24~26일 일괄 배송)"
+        },
+        {
+          "label": "예매 마감",
+          "value": "공연 전날 오후 5시"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26014068"
+      }
+    }
   },
   {
     "id": "yuki-kuramoto-daegu-2026-12",
@@ -5979,7 +6074,31 @@
       "url": "https://nol.yanolja.com/ticket/products/26013986"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "startTime": "오후 7시 30분",
+      "runningTime": "100분",
+      "age": "만 7세 이상",
+      "items": [
+        {
+          "label": "인터미션",
+          "value": "15분 (러닝타임에 포함)"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "배송 (11월 24~26일 일괄 배송)"
+        },
+        {
+          "label": "예매 마감",
+          "value": "공연 전날 오후 5시"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26013986"
+      }
+    }
   },
   {
     "id": "nee-seoul-2026-12",
@@ -6417,7 +6536,34 @@
       "url": "https://ticket.melon.com/performance/index.htm?prodId=213396"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "startTime": "오후 6시",
+      "age": "8세 이상",
+      "items": [
+        {
+          "label": "구매 제한",
+          "value": "회원별 1인 4매"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "12월 8일부터 순차 배송"
+        },
+        {
+          "label": "입장",
+          "value": "실물(종이) 티켓만 가능"
+        },
+        {
+          "label": "본인 확인",
+          "value": "플로어 FR·SR은 티켓 이름과 같은 사진 신분증 필요, 대표 예매자 참석 필수"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "멜론티켓 예매 페이지",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213396"
+      }
+    }
   },
   {
     "id": "aosaka-seoul-2027-01",
@@ -6641,7 +6787,30 @@
       "url": "https://nol.yanolja.com/ticket/products/26011315"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "startTime": "오후 8시",
+      "age": "만 12세 이상",
+      "items": [
+        {
+          "label": "티켓 수령",
+          "value": "배송 (1월 4~8일 일괄 배송)"
+        },
+        {
+          "label": "예매 마감",
+          "value": "공연 전날 오후 5시"
+        },
+        {
+          "label": "결제",
+          "value": "무통장 입금 불가"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26011315"
+      }
+    }
   },
   {
     "id": "all-eyes-seoul-2027-01",
@@ -6862,7 +7031,34 @@
       "url": "https://nol.yanolja.com/ticket/products/26015537"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "runningTime": "120분",
+      "age": "전체관람가",
+      "items": [
+        {
+          "label": "토요일 시작",
+          "value": "1월 2일 오후 6시"
+        },
+        {
+          "label": "일요일 시작",
+          "value": "1월 3일 오후 5시"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "배송 (12월 8~10일 일괄 배송)"
+        },
+        {
+          "label": "예매 마감",
+          "value": "토요일 공연은 전날 오후 5시, 일요일 공연은 전날 오전 11시"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26015537"
+      }
+    }
   },
   {
     "id": "shuttle-2026-incheon-airport-sky-festival-2026-11",
@@ -8218,7 +8414,31 @@
       "url": "https://ticket.melon.com/performance/index.htm?prodId=214279"
     },
     "saleState": "upcoming",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "startTime": "오후 7시 30분",
+      "runningTime": "120분",
+      "age": "8세 이상",
+      "items": [
+        {
+          "label": "구매 제한",
+          "value": "1인 3매 (선예매 포함)"
+        },
+        {
+          "label": "예매·취소 마감",
+          "value": "공연 전날 오전 11시"
+        },
+        {
+          "label": "결제",
+          "value": "무통장 입금 불가"
+        }
+      ],
+      "checkedAt": "2026-11-19",
+      "source": {
+        "label": "멜론티켓 예매 페이지",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=214279"
+      }
+    }
   },
   {
     "id": "yonyon-seoul-2026-12",

@@ -60,6 +60,7 @@ function gapsOf(e) {
   if (e.prices?.length && e.pricesCheckedAt && (Date.parse(today) - Date.parse(e.pricesCheckedAt)) / 86400000 > 45 && days > 0) {
     g.push({ key: 'old-price', level: 'low', msg: `가격 확인한 지 45일 넘음(${e.pricesCheckedAt})` });
   }
+  if (!e.facts && links.some(isProduct)) g.push({ key: 'no-facts', level: 'low', msg: '관람 조건(facts: 시작 시각·러닝타임·연령·매수 제한) 없음. 예매처 상품 페이지에서 확인해 넣기' });
   if (!e.posterUrl) g.push({ key: 'no-poster', level: links.length ? 'mid' : 'low', msg: '포스터 없음' });
   if (!e.description) g.push({ key: 'no-desc', level: 'mid', msg: '소개(description) 없음' });
   if (!e.sources?.length) g.push({ key: 'no-source', level: 'mid', msg: '출처(sources) 없음' });

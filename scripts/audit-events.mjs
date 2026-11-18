@@ -45,6 +45,11 @@ for (const e of events) {
   if (!active) continue;
 
   if (!e.sources || e.sources.length === 0) add('WARN', e, `출처(sources) 없음`);
+  if (e.facts) {
+    if (!ISO.test(e.facts.checkedAt ?? '')) add('ERROR', e, `facts.checkedAt(확인한 날짜) 없음`);
+    if (!e.facts.source?.url || !e.facts.source?.label) add('ERROR', e, `facts.source(출처) 없음`);
+    if (/시작$/.test(e.facts.startTime ?? '')) add('ERROR', e, `facts.startTime에 "시작"을 빼고 적기 (화면에서 붙음)`);
+  }
   // 자동 게시(셔틀 스캔)는 지난해 공연을 올해로 잘못 올린 사례가 있었다(테디 스윔스 2025-11-15 -> 2026으로 게시).
   // 출처·예매 링크 URL 어디에도 공연 연도 단서(2026/2027, NOL 상품번호 26xxxxxx)가 없으면 사람이 날짜를 대조해야 한다.
   if (/자동 발견|자동 게시/.test(e.note ?? '')) {

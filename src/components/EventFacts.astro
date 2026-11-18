@@ -1,0 +1,39 @@
+---
+// 예매 전 확인 - 예매처 상품 페이지에서 확인한 관람 조건(매수 제한, 예매 마감, 수령 방법 등)을 보여준다.
+// 시작 시각·러닝타임·관람 연령은 첫 화면 날짜 아래에 나오고, 여기에는 그 출처와 나머지 항목을 둔다.
+// 확인한 날짜와 출처를 같이 적는다. facts가 없는 공연은 아무것도 그리지 않는다.
+import type { ConcertEvent } from '../lib/events';
+interface Props { event: ConcertEvent; heading?: string }
+const { event, heading = '예매 전 확인' } = Astro.props;
+const facts = event.facts;
+const items = facts?.items ?? [];
+const checked = facts ? `${Number(facts.checkedAt.slice(5, 7))}월 ${Number(facts.checkedAt.slice(8, 10))}일` : '';
+---
+{facts && (
+  <section class="facts-box" id="facts">
+    {items.length > 0 && (
+      <>
+        <h2>{heading}</h2>
+        <dl>
+          {items.map((x) => (
+            <div><dt>{x.label}</dt><dd>{x.value}</dd></div>
+          ))}
+        </dl>
+      </>
+    )}
+    <p class="facts-note">
+      {checked}에 <a href={facts.source.url} target="_blank" rel="noopener noreferrer">{facts.source.label}</a>에서 확인했어요.
+    </p>
+  </section>
+)}
+<style>
+  .facts-box { margin: 1.75rem 0; }
+  .facts-box h2 { margin: 0 0 0.6rem; font-size: 1.05rem; color: var(--fg-2); }
+  .facts-box dl { margin: 0; border-top: 1px solid var(--line); }
+  .facts-box dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+  .facts-box dt { color: var(--fg-3); font-size: 0.92rem; white-space: nowrap; }
+  .facts-box dd { margin: 0; color: var(--fg); font-weight: 700; font-size: 0.95rem; text-align: right; word-break: keep-all; }
+  .facts-note { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
+  .facts-note a { color: var(--fg-2); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 0.2em; }
+  .facts-note a:hover { color: var(--cheese); text-decoration-color: var(--cheese); }
+</style>
