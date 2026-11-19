@@ -13,45 +13,6 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
-    "id": "kopis-PF293396",
-    "artist": "제시 골드 (JESSE GOLD) 내한공연",
-    "genre": "콘서트",
-    "venue": "롤링홀",
-    "city": "서울",
-    "startDate": "2026-11-16",
-    "endDate": "2026-11-16",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF293396_260611_112055.gif",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF302689",
-    "artist": "Venna live in Seoul",
-    "genre": "콘서트",
-    "venue": "KT&G 상상마당 라이브홀 [마포]",
-    "city": "서울",
-    "startDate": "2026-11-17",
-    "endDate": "2026-11-17",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF302689_261007_124959.gif",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
-    "id": "kopis-PF304252",
-    "artist": "보통의 정서 단독공연: 널 기다렸던 밤",
-    "genre": "콘서트",
-    "venue": "카페 언플러그드",
-    "city": "서울",
-    "startDate": "2026-11-18",
-    "endDate": "2026-11-18",
-    "ticketUrl": "",
-    "officialUrl": "",
-    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304252_261023_104549.gif",
-    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
-  },
-  {
     "id": "kopis-PF305565",
     "artist": "제3회 정필링 온 더 웨이브 단독콘서트",
     "genre": "콘서트",
@@ -585,6 +546,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF306701",
+    "artist": "ONE HOUR [부산] (12월)",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 라이브홀 [부산]",
+    "city": "서울",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-18",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306701_261117_134833.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF306040",
     "artist": "S,LO,W SERIES. 03: 올드 잉글리쉬 쉽독 x 더 베인 x 다섯",
     "genre": "콘서트",
@@ -647,6 +621,32 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF297746_260805_132158.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306461",
+    "artist": "브로큰 발렌타인, Valentine’s Day CHUNCHEON",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 [춘천]",
+    "city": "서울",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-05",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306461_261116_111217.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306456",
+    "artist": "블루화 단독 콘서트: Painted by Blue",
+    "genre": "콘서트",
+    "venue": "프리즘홀 (프리즘플러스)",
+    "city": "서울",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-05",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306456_261116_110332.jpg",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -816,6 +816,32 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF304126_261022_111634.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306729",
+    "artist": "ONEWE SEASON LIVE, 冬花: ONE moment WE bloom",
+    "genre": "콘서트",
+    "venue": "예스24 라이브홀 (구. 악스코리아)",
+    "city": "서울",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-13",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306729_261117_145818.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306661",
+    "artist": "찬민 EP 발매기념 단독공연: 呼吸法 호흡법",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 라이브홀 [마포]",
+    "city": "서울",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-13",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306661_261117_104256.png",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
@@ -1118,6 +1144,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF306765",
+    "artist": "9와 숫자들 연말공연: 상상 and the Numbers",
+    "genre": "콘서트",
+    "venue": "KT&G 상상마당 라이브홀 [마포]",
+    "city": "서울",
+    "startDate": "2026-12-20",
+    "endDate": "2026-12-20",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306765_261118_103613.png",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF304897",
     "artist": "낫띵스 카브드 인 스톤 첫 한국 단독 공연 Nothing’s Carved In Stone: ONE MAN LIVE [서울]",
     "genre": "콘서트",
@@ -1313,6 +1352,19 @@
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
+    "id": "kopis-PF306659",
+    "artist": "닐로 연말 단독 콘서트, Our Season: Stay",
+    "genre": "콘서트",
+    "venue": "롤링홀",
+    "city": "서울",
+    "startDate": "2026-12-31",
+    "endDate": "2026-12-31",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306659_261117_104224.jpg",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
     "id": "kopis-PF305975",
     "artist": "이영현 콘서트: 나의 노래가 필요한 너에게 - 울림 [부산]",
     "genre": "콘서트",
@@ -1375,6 +1427,19 @@
     "ticketUrl": "",
     "officialUrl": "",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF298249_260811_142226.gif",
+    "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
+  },
+  {
+    "id": "kopis-PF306686",
+    "artist": "Madmans Esprit ONEMAN LIVE: severance [서울]",
+    "genre": "콘서트",
+    "venue": "웨스트브릿지 라이브홀",
+    "city": "서울",
+    "startDate": "2027-01-02",
+    "endDate": "2027-01-02",
+    "ticketUrl": "",
+    "officialUrl": "",
+    "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF306686_261117_131202.gif",
     "note": "KOPIS 자동 수집 후보 - 실제 게시 전 events.json에 직접 옮기고 링크를 보강하세요."
   },
   {
