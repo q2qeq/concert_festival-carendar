@@ -6991,7 +6991,15 @@
       "url": "https://nol.yanolja.com/ticket/products/26012591"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "youtubeVideos": [
+      {
+        "title": "Bruno Mars - Risk It All [Live From The Romantic Tour]",
+        "videoId": "aFbueod4reQ",
+        "note": "고양에서 열리는 The Romantic Tour의 공식 라이브 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=aFbueod4reQ"
+      }
+    ]
   },
   {
     "id": "shuttle-hanroro-5th-question-mark-2027-01",
@@ -7198,7 +7206,15 @@
     },
     "description": "엔믹스의 첫 월드투어 'EPISODE 1: ZERO FRONTIER'를 마무리하는 피날레 공연이에요. 11월 27~29일 사흘 동안 인천 인스파이어 아레나에서 열려요. 2025년 11월 같은 인스파이어 아레나에서 출발해 유럽·북미·아시아 17개 도시에서 21회 공연을 하고, 시작한 곳에서 투어를 닫는 셈이에요.",
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "youtubeVideos": [
+      {
+        "title": "NMIXX 'RICO' Live Clip @ZERO FRONTIER IN INCHEON",
+        "videoId": "Jc_iytoDc7M",
+        "note": "2025년 11월 같은 공연장에서 열린 투어 첫 공연의 공식 라이브 클립이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=Jc_iytoDc7M"
+      }
+    ]
   },
   {
     "id": "shuttle-ateez-world-tour-zero-to-all-2027-01",
@@ -7947,7 +7963,15 @@
       "url": "https://nol.yanolja.com/ticket/products/26015024"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "youtubeVideos": [
+      {
+        "title": "KENSHI YONEZU 2026-2027 WORLD TOUR / GHOST",
+        "videoId": "dyVaeESxQho",
+        "note": "라이브네이션 UK가 올린 이번 월드투어 안내 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=dyVaeESxQho"
+      }
+    ]
   },
   {
     "id": "katseye-seoul-2027-02",
@@ -8053,7 +8077,15 @@
       "url": "https://nol.yanolja.com/ticket/products/26015604"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "youtubeVideos": [
+      {
+        "title": "\"Unloveu\" (Live from THE WILDWORLD TOUR) | KATSEYE",
+        "videoId": "IYxWaWNdTNo",
+        "note": "서울 공연이 포함된 THE WILDWORLD TOUR의 공식 라이브 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=IYxWaWNdTNo"
+      }
+    ]
   },
   {
     "id": "damien-rice-seoul-2027-02",
@@ -8254,7 +8286,15 @@
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/11/20261102145708e3d2981a-1920-407b-af17-48aff15992c0.jpg",
     "description": "NCT WISH의 두 번째 콘서트 투어 'INTO THE WISH : Face Our WISH' 서울 공연이에요. 2027년 1월 15일(금) 오후 6시, 16일(토) 오후 5시에 고척스카이돔에서 열리고, 예매는 멜론티켓에서 해요.",
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "youtubeVideos": [
+      {
+        "title": "NCT WISH 1st CONCERT TOUR 'INTO THE WISH : Our WISH' Recap Video",
+        "videoId": "pzLTGAwn0a4",
+        "note": "이번 공연이 아니라 지난 첫 번째 콘서트 투어를 돌아보는 공식 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=pzLTGAwn0a4"
+      }
+    ]
   },
   {
     "id": "yoasobi-korea-2027-04",
@@ -8334,6 +8374,11 @@
       }
     ],
     "updates": [
+      {
+        "date": "2026-11-19",
+        "text": "이번 투어 오사카 공연의 'KILLA' 공식 라이브 영상과 투어 관련 공식 영상 2편을 이 페이지에 올렸어요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=1n-iLgXo9aY"
+      },
       {
         "date": "2026-11-17",
         "text": "선예매 자격을 확인했어요. 위버스샵에서 파는 YOASOBI GLOBAL MEMBERSHIP(25,000원) 회원이 멜론티켓에서 사전 인증을 해야 하고, 공연 당일까지 멤버십이 유지돼야 해요. 좌석은 전석 지정좌석이에요.",
@@ -8478,7 +8523,27 @@
         "label": "멜론티켓 예매 페이지",
         "url": "https://ticket.melon.com/performance/index.htm?prodId=214279"
       }
-    }
+    },
+    "youtubeVideos": [
+      {
+        "title": "YOASOBI 「KILLA」 at 교세라 돔 오사카 (DOME TOUR 2026 초행성)",
+        "videoId": "1n-iLgXo9aY",
+        "note": "이번 투어 오사카 공연의 공식 라이브 영상이에요. YOASOBI 공식 채널에 2026년 11월 11일 올라왔어요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=1n-iLgXo9aY"
+      },
+      {
+        "title": "투어 개막일 영상 「ライブの気持ち高める動画」",
+        "videoId": "L0xNDliV5BY",
+        "note": "아야세가 직접 찍고 편집해 투어 개막에 맞춰 공식 채널에 올린 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=L0xNDliV5BY"
+      },
+      {
+        "title": "삿포로 길거리 라이브(Spotted:) 비하인드",
+        "videoId": "06jxNAQ56zs",
+        "note": "이쿠라가 직접 촬영·편집한 브이로그예요. 삿포로 길거리 라이브의 뒷이야기를 담았어요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=06jxNAQ56zs"
+      }
+    ]
   },
   {
     "id": "yonyon-seoul-2026-12",
@@ -9900,7 +9965,15 @@
     "posterUrl": "/posters/epik-high-kspo-seoul-2027-01.webp",
     "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/10/20261014095525b3c3f0d2-b2c2-4419-aeb8-c29f73e75c68.jpg",
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "youtubeVideos": [
+      {
+        "title": "에픽하이 콘서트 미니필름",
+        "videoId": "70N8q_YNVgc",
+        "note": "이번 KSPO DOME 콘서트를 알리며 OURS Co. 채널에 올라온 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=70N8q_YNVgc"
+      }
+    ]
   },
   {
     "id": "koresawa-seoul-2027-02",
@@ -10170,7 +10243,15 @@
       "url": "https://nol.yanolja.com/ticket/products/26016335"
     },
     "saleState": "upcoming",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "youtubeVideos": [
+      {
+        "title": "[LIVE] Lovin' the Christmas | 2025 DAY6 Special Concert 'The Present'",
+        "videoId": "wiEvZ8HNQRE",
+        "note": "지난해 같은 이름의 연말 공연 공식 라이브 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=wiEvZ8HNQRE"
+      }
+    ]
   },
   {
     "id": "sung-si-kyung-yearend-seoul-2026-12",
@@ -10376,7 +10457,15 @@
     "promoBanner": "헤일리 윌리엄스(파라모어) 첫 내한 - 2027.3.1(월) 예스24 라이브홀, 일반 예매 11/20 낮 12시",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261117/20261117-61203.jpg",
     "saleState": "open",
-    "saleCheckedAt": "2026-11-19"
+    "saleCheckedAt": "2026-11-19",
+    "youtubeVideos": [
+      {
+        "title": "\"The Hayley Williams Show\" Live in the US (Tour Diary)",
+        "videoId": "96I8cIrtpG0",
+        "note": "내한 공연과 같은 이름의 미국 투어를 담은 공식 투어 다이어리예요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=96I8cIrtpG0"
+      }
+    ]
   },
   {
     "id": "2slimey-seoul-2026-12",
@@ -10475,7 +10564,15 @@
     ],
     "addedAt": "2026-11-18",
     "promoBanner": "아시안 쿵푸 제너레이션 30주년 한국 공연 - 2027.5.22(토) 킨텍스, 예매 11/27 오후 8시",
-    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/11/20261116211246fac82f08-db01-4ca6-9c01-c58fe8a78a26.png"
+    "posterSourceUrl": "https://cdnticket.melon.co.kr/resource/image/upload/product/2026/11/20261116211246fac82f08-db01-4ca6-9c01-c58fe8a78a26.png",
+    "youtubeVideos": [
+      {
+        "title": "「アフターダーク」 from 30th Anniversary Special Concert \"Thirty Revolutions\"",
+        "videoId": "R_qmxWtpnWI",
+        "note": "결성 30주년 기념 콘서트의 공식 라이브 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=R_qmxWtpnWI"
+      }
+    ]
   },
   {
     "id": "tori-kelly-seoul-2027-05",
@@ -10617,7 +10714,15 @@
       }
     ],
     "saleState": "open",
-    "saleCheckedAt": "2026-11-19"
+    "saleCheckedAt": "2026-11-19",
+    "youtubeVideos": [
+      {
+        "title": "AKMU 콘서트를 엄청 잘 즐기는 방법에 대하여",
+        "videoId": "NgmngjnkP-0",
+        "note": "'소문의 낙원' 콘서트를 앞두고 AKMU 공식 채널에 올라온 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=NgmngjnkP-0"
+      }
+    ]
   },
   {
     "id": "shuttle-akmu-concert-encore-goyang-2027-01",
@@ -10692,6 +10797,14 @@
     "addedAt": "2026-11-18",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261106/20261106-60840_1.jpg",
     "saleState": "open",
-    "saleCheckedAt": "2026-11-19"
+    "saleCheckedAt": "2026-11-19",
+    "youtubeVideos": [
+      {
+        "title": "AKMU 콘서트를 엄청 잘 즐기는 방법에 대하여",
+        "videoId": "NgmngjnkP-0",
+        "note": "'소문의 낙원' 콘서트를 앞두고 AKMU 공식 채널에 올라온 영상이에요.",
+        "sourceUrl": "https://www.youtube.com/watch?v=NgmngjnkP-0"
+      }
+    ]
   }
 ]
