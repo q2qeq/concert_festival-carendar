@@ -10258,7 +10258,7 @@
       "url": "https://nol.yanolja.com/ticket/products/26016335"
     },
     "saleState": "upcoming",
-    "saleCheckedAt": "2026-11-18",
+    "saleCheckedAt": "2026-11-20",
     "youtubeVideos": [
       {
         "title": "[LIVE] Lovin' the Christmas | 2025 DAY6 Special Concert 'The Present'",
@@ -10266,7 +10266,21 @@
         "note": "지난해 같은 이름의 연말 공연 공식 라이브 영상이에요.",
         "sourceUrl": "https://www.youtube.com/watch?v=wiEvZ8HNQRE"
       }
-    ]
+    ],
+    "facts": {
+      "age": "만 7세 이상",
+      "items": [
+        {
+          "label": "구매 제한",
+          "value": "팬클럽 선예매 전 회차 1인 1매 · 일반 예매 회당 1인 2매"
+        }
+      ],
+      "checkedAt": "2026-11-20",
+      "source": {
+        "label": "NOL 티켓 상품 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26016335"
+      }
+    }
   },
   {
     "id": "sung-si-kyung-yearend-seoul-2026-12",
@@ -10383,8 +10397,8 @@
     "addedAt": "2026-11-18",
     "posterUrl": "/posters/son-tae-jin-bon-voyage-seoul-2027-01.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26016461_p.gif",
-    "saleState": "upcoming",
-    "saleCheckedAt": "2026-11-19",
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-20",
     "prices": [
       {
         "label": "VIP석",
@@ -10403,6 +10417,15 @@
     "pricesSource": {
       "label": "NOL 티켓 예매 페이지",
       "url": "https://nol.yanolja.com/ticket/products/26016461"
+    },
+    "facts": {
+      "runningTime": "150분",
+      "age": "8세 이상",
+      "checkedAt": "2026-11-20",
+      "source": {
+        "label": "NOL 티켓 상품 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26016461"
+      }
     }
   },
   {
