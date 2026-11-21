@@ -121,8 +121,19 @@ export function saveRequestedKeys(keys: string[]) {
   try { localStorage.setItem(REQ_KEY, JSON.stringify(keys)); } catch { /* 저장소를 못 쓰면 목록만 안 보인다 */ }
 }
 
+// 어느 화면에서 알림을 켰는지 센다(/api/click, 종류 push:on, 호스트 칸에 화면 이름). npm run clicks:report에 나온다.
+// 연습 페이지 → 알림 흐름처럼 붙잡는 장치가 실제로 알림을 만드는지 보려는 것이다.
+function countAlertOn(eventId: string, source: string) {
+  const body = JSON.stringify({ kind: 'push:on', event: eventId, host: source || 'unknown' });
+  try {
+    if (navigator.sendBeacon?.('/api/click', new Blob([body], { type: 'text/plain' }))) return;
+    void fetch('/api/click', { method: 'POST', body, keepalive: true, headers: { 'Content-Type': 'text/plain' } });
+  } catch { /* 집계 실패는 무시 */ }
+}
+
 // 반드시 클릭 같은 사용자 동작 안에서 호출한다(권한 요청 창이 그래야 뜬다).
-export async function enableAlert(eventId: string): Promise<ToggleResult> {
+// source: 알림을 켠 화면 이름(event, ticket-open, practice-result, practice-list 등, 소문자·숫자·하이픈).
+export async function enableAlert(eventId: string, source = ''): Promise<ToggleResult> {
   try {
     const sub = await ensureSubscription();
     if (!sub) return 'error';
@@ -130,6 +141,7 @@ export async function enableAlert(eventId: string): Promise<ToggleResult> {
     const events = await post(sub, eventId, 'add');
     if (!events) return 'error';
     saveAlertEvents(events);
+    countAlertOn(eventId, source);
     return 'on';
   } catch {
     return 'error';

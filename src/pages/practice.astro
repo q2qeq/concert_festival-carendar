@@ -129,11 +129,16 @@ const jsonLd = [
     {nextOpens.length > 0 && (
       <div class="real-next">
         <p>곧 열리는 진짜 티켓팅</p>
+        <p class="real-sub">알림을 켜 두면 오픈 하루 전, 30분 전, 10분 전에 알려드려요.</p>
         <ul>
           {nextOpens.map((e) => (
-            <li><a href={`/events/${e.id}/`}>{e.artist.replace(/\s*\(.*$/, '')}<span>{e.ticketOpenDate ?? e.ticketOpenAt}</span></a></li>
+            <li>
+              <a href={`/events/${e.id}/`}>{e.artist.replace(/\s*\(.*$/, '')}<span>{e.ticketOpenDate ?? e.ticketOpenAt}</span></a>
+              <button class="pa-push" type="button" data-push-id={e.id} data-push-source="practice-result" aria-pressed="false" hidden>알림 받기</button>
+            </li>
           ))}
         </ul>
+        <p class="push-msg" data-push-msg role="status" hidden></p>
       </div>
     )}
     <p class="after">
@@ -185,10 +190,12 @@ const jsonLd = [
               <strong>{e.artist}</strong>
               <span>{e.ticketOpenDate ?? e.ticketOpenAt}</span>
             </a>
+            <button class="pa-push" type="button" data-push-id={e.id} data-push-source="practice-list" aria-pressed="false" hidden>알림 받기</button>
           </li>
         ))}
       </ul>
-      <p><a href="/ticket-open/">티켓오픈 일정 전체 보기</a></p>
+      <p class="push-msg" data-push-msg role="status" hidden></p>
+      <p><a href="/ticket-open/">티켓오픈 일정 전체 보기</a> · <a href="/alerts/">알림 받는 법</a></p>
     </section>
   )}
 
@@ -248,6 +255,16 @@ const jsonLd = [
   .real-next a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.6rem; color: var(--fg); text-decoration: none; font-weight: 600; }
   .real-next a:hover { color: var(--cheese); }
   .real-next span { color: var(--eye); font-size: 0.82rem; font-weight: 400; }
+  .real-next .real-sub { margin: 0 0 0.6rem; font-weight: 400; color: var(--muted); font-size: 0.85rem; }
+  .real-next li { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+  .next-opens li { display: flex; align-items: center; gap: 0.6rem; }
+  .next-opens li a { flex: 1; min-width: 0; }
+  .pa-push { flex: none; padding: 0.35rem 0.8rem; border-radius: 6px; font: inherit; font-size: 0.82rem; font-weight: 700; color: var(--fg); border: 1px solid var(--line-2); background: transparent; cursor: pointer; }
+  .pa-push:hover { border-color: var(--fg-2); }
+  .pa-push.is-on { border-color: var(--eye); color: var(--eye); }
+  .pa-push:disabled { opacity: 0.6; cursor: default; }
+  .push-msg { margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--fg-2); }
+  .push-msg a { color: var(--cheese); }
   .next-opens { margin-top: 1.8rem; }
   .next-opens h2 { font-size: 1.15rem; margin: 0 0 0.6rem; }
   .next-opens ul { list-style: none; margin: 0 0 0.6rem; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
@@ -341,6 +358,12 @@ const jsonLd = [
   .zone-legend { margin: 0.5rem 0 0; font-size: 0.8rem; color: var(--faint); text-align: center; }
   .zone-load { padding: 2.2rem 1rem; text-align: center; color: var(--muted); }
 </style>
+
+<script>
+  // 곧 열리는 오픈 목록(결과 화면·페이지 아래)의 '알림 받기'. 켠 화면은 data-push-source로 센다.
+  import { wirePushButtons } from '../lib/pushButtons';
+  wirePushButtons('practice');
+</script>
 
 <script>
   const COLS = 16, ROWS = 10;
@@ -1114,7 +1137,7 @@ const jsonLd = [
     // 시작 화면이 보이거나, 한 판이 끝나 결과 화면이 떠 있을 때만 (플레이 중엔 무시)
     if (running || ($('start-screen').hidden && result.hidden)) return;
     if (e.key === 'Enter' || e.key === ' ') {
-      if ((e.target as HTMLElement)?.closest?.('.chip, .mode, summary, a, input, textarea, #g-share, #g-share-x, #g-full, #g-menu')) return;
+      if ((e.target as HTMLElement)?.closest?.('.chip, .mode, summary, a, button, input, textarea, #g-share, #g-share-x, #g-full, #g-menu')) return;
       e.preventDefault();
       start($('start-screen').hidden ? mode : 'full');
     }

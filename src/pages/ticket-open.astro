@@ -191,42 +191,8 @@ const alertOf = (e: { id: string; artist: string; ticketOpenAt?: string; stageLa
 </style>
 
 <script>
-  import { pushSupport, serverKey, alertEvents, enableAlert, disableAlert } from '../lib/pushClient';
-
-  // 공연마다 '알림 받기'. 지금 기기에서 바로 켤 수 없으면(아이폰 사파리, 앱 안 브라우저 등) 안내 페이지로 보낸다.
-  const pushBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-push-id]'));
-  const pushMsg = document.querySelector<HTMLElement>('[data-push-msg]');
-  const sayPush = (html: string) => { if (!pushMsg) return; pushMsg.innerHTML = html; pushMsg.hidden = !html; };
-  const paintPush = () => {
-    const on = new Set(alertEvents());
-    pushBtns.forEach((b) => {
-      const x = on.has(b.dataset.pushId ?? '');
-      b.classList.toggle('is-on', x);
-      b.setAttribute('aria-pressed', String(x));
-      b.textContent = x ? '알림 켜짐 ✓' : '알림 받기';
-    });
-  };
-  serverKey().then((key) => {
-    if (!key) return; // 서버에 알림 기능이 없으면 버튼을 숨긴 채 둔다
-    pushBtns.forEach((b) => { b.hidden = false; });
-    paintPush();
-  });
-  window.addEventListener('push-alerts:changed', paintPush);
-  const GUIDE_HASH: Record<string, string> = { 'ios-install': '#ios-1', 'inapp-ios': '#ios-0', 'inapp-android': '#android', denied: '#trouble', unsupported: '' };
-  pushBtns.forEach((b) => b.addEventListener('click', async () => {
-    const support = pushSupport();
-    if (support !== 'ok') { location.href = `/alerts/${GUIDE_HASH[support] ?? ''}`; return; }
-    const id = b.dataset.pushId ?? '';
-    const on = alertEvents().includes(id);
-    b.disabled = true;
-    const r = on ? await disableAlert(id) : await enableAlert(id);
-    b.disabled = false;
-    paintPush();
-    if (r === 'on') sayPush('알림을 켰어요. 오픈 하루 전, 30분 전, 10분 전에 이 기기로 알려드려요.');
-    else if (r === 'off') sayPush('이 공연 알림을 껐어요.');
-    else if (r === 'denied') sayPush('알림 권한이 허용되지 않았어요. <a href="/alerts/#trouble">다시 허용하는 방법</a>');
-    else sayPush('알림을 설정하지 못했어요. 잠시 뒤 다시 시도해 주세요.');
-  }));
+  import { wirePushButtons } from '../lib/pushButtons';
+  wirePushButtons('ticket-open');
 
   import { ticketOpenIcs } from '../lib/ticketAlert';
   import { kstDayDiff } from '../lib/openPhase';

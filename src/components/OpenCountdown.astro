@@ -205,7 +205,7 @@ const bigText = phase.kind === 'before'
       }
       const on = alertEvents().includes(id);
       btn.disabled = true;
-      const result = on ? await disableAlert(id) : await enableAlert(id);
+      const result = on ? await disableAlert(id) : await enableAlert(id, 'event');
       btn.disabled = false;
       paint();
       if (result === 'on') say('알림을 켰어요. 오픈 하루 전, 30분 전, 10분 전에 이 기기로 알려드려요.');

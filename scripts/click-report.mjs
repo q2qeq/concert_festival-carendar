@@ -26,7 +26,10 @@ if (!res.ok) {
   console.error(`조회 실패: HTTP ${res.status} ${await res.text()}`);
   process.exit(1);
 }
-const allRows = (await res.json()).rows.map(([day, kind, event, host, n]) => ({ day, kind, event, host, n }));
+const fetched = (await res.json()).rows.map(([day, kind, event, host, n]) => ({ day, kind, event, host, n }));
+// push:on은 링크 클릭이 아니라 '알림 켜기'다(host 칸 = 켠 화면). 따로 보여 주고 클릭 합계에서는 뺀다.
+const alertRows = fetched.filter((r) => r.kind === 'push:on');
+const allRows = fetched.filter((r) => r.kind !== 'push:on');
 const kstDay = (offset) => new Date(Date.now() + 9 * 3600000 - offset * 86400000).toISOString().slice(0, 10);
 const rows = allRows.filter((r) => r.day > kstDay(days));
 
@@ -63,6 +66,16 @@ console.log('[공연별 클릭: 예매 / 셔틀 / 그 밖]');
   .slice(0, 20)
   .forEach(([id, x]) => console.log(`  ${String(x.ticket).padStart(4)} / ${String(x.shuttle).padStart(3)} / ${String(x.other).padStart(3)}  ${id}`));
 console.log();
+
+{
+  const recentAlerts = alertRows.filter((r) => r.day > kstDay(days));
+  const total = recentAlerts.reduce((a, r) => a + r.n, 0);
+  const bySrc = new Map();
+  for (const r of recentAlerts) bySrc.set(r.host, (bySrc.get(r.host) ?? 0) + r.n);
+  console.log(`[알림 켜기: 켠 화면별] 최근 ${days}일 ${total}회 (2026-11-21부터 셈. event=공연 페이지, practice-*=연습 페이지)`);
+  [...bySrc.entries()].sort((a, b) => b[1] - a[1]).forEach(([k, n]) => console.log(`  ${String(n).padStart(5)}  ${k}`));
+  console.log();
+}
 
 for (const [title, key, limit] of [['링크 종류', 'kind', 20], ['목적지 호스트', 'host', 15], ['공연별 상위', 'event', 20], ['날짜별', 'day', days]]) {
   console.log(`[${title}]`);
