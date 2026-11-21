@@ -465,6 +465,12 @@ const jsonLd = {
     target = { at, artist: params.get('artist') ?? '' };
   }
   readTargetFromUrl();
+  // 예전 ?open=&artist= 쿼리 주소로 들어오면 주소창을 #해시 주소로 바꿔 둔다.
+  // 공유·북마크가 다시 쿼리 주소로 퍼지면 네이버가 같은 설명문 문서로 계속 모은다(2026-11-21 '동일 설명문' 경고).
+  if (window.location.search) {
+    const merged = new URLSearchParams(`${window.location.search.slice(1)}&${window.location.hash.slice(1)}`);
+    history.replaceState(null, '', `${window.location.pathname}${[...merged.keys()].length ? `#${merged.toString()}` : ''}`);
+  }
   // 이 페이지 안의 일정 목록이 #open= 링크라서, 해시만 바뀌면 새로 불러와 그 공연으로 맞춘다
   window.addEventListener('hashchange', () => {
     if (new URLSearchParams(window.location.hash.slice(1)).get('open')) window.location.reload();

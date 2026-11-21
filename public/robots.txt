@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
+# 도구 페이지의 예전 쿼리 주소(?open=·?venue= 등)는 본 페이지와 내용·설명문이 같다.
+# 내부 링크는 2026-11-17에 #해시로 바꿨고, 이미 수집된 쿼리 주소는 여기서 막아 색인에서 빠지게 한다.
+Disallow: /ticketing-clock?
+Disallow: /ticketing-clock/?
+Disallow: /return-trip?
+Disallow: /return-trip/?
+Disallow: /trip-cost?
+Disallow: /trip-cost/?
 
 Sitemap: https://jikgwannyang.com/sitemap-index.xml
