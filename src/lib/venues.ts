@@ -77,6 +77,8 @@ const VENUE_SLUG_MAP: Record<string, string> = {
   '킨텍스 제2전시장': 'kintex-hall2',
   'KSPO DOME': 'kspo-dome',
   '올림픽공원': 'olympic-park',
+  '올림픽홀': 'olympic-hall',
+  '블루스퀘어 우리WON뱅킹홀': 'bluesquare-woori-won-banking-hall',
   'KINTEX': 'kintex',
   '킨텍스 제1전시장': 'kintex-hall1',
   '인스파이어 아레나': 'inspire-arena',
@@ -131,7 +133,8 @@ const VENUE_ALIASES: Record<string, string> = {
   '엑스코 (EXCO) 동관': '엑스코(EXCO)',
   'KT&G 상상마당 라이브홀 [마포]': 'KT&G 상상마당 홍대 라이브홀',
   // 올림픽공원 안의 공연장들은 교통·주차 정보가 같아서 올림픽공원 페이지로 묶는다.
-  '올림픽공원 內 올림픽홀': '올림픽공원',
+  // 올림픽홀은 객석·출입구·가까운 주차장이 달라서 따로 뺐다(2026-11-21).
+  '올림픽공원 內 올림픽홀': '올림픽홀',
   '티켓링크 라이브 아레나 (올림픽공원)': '올림픽공원',
   '티켓링크 라이브 아레나 (구 올림픽공원 핸드볼경기장)': '올림픽공원',
   '킨텍스 제2전시장 9홀': '킨텍스 제2전시장',
