@@ -4350,6 +4350,39 @@
     "merchCheckedAt": "2026-11-19",
     "setlists": [
       {
+        "label": "고양 공연 (2026년 11월 19일)",
+        "date": "2026-11-19",
+        "venue": "킨텍스 제1전시장 1홀",
+        "songs": [
+          "NOT OK",
+          "No. 1 Obsession",
+          "Teeth",
+          "Easier",
+          "More",
+          "istillfeelthesame",
+          "No Shame",
+          "She's Kinda Hot",
+          "Boyband",
+          "Telephone Busy",
+          "Evolve",
+          "Bad Omens",
+          "Ghost of You",
+          "I'm Scared I'll Never Sleep Again",
+          "Amnesia",
+          "High",
+          "Babylon (시크릿 송)",
+          "English Love Affair",
+          "Voodoo Doll",
+          "Don't Stop",
+          "Jet Black Heart",
+          "She Looks So Perfect",
+          "Everyone's a Star!",
+          "Youngblood"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/5-seconds-of-summer/2026/kintex-hall-1-goyang-si-south-korea-4b7727aa.html",
+        "note": "setlist.fm에 올라온 고양 공연 기록이에요(2026-11-21 확인). 팬들이 올리는 기록이라 뒤에 고쳐질 수 있어요."
+      },
+      {
         "label": "EVERYONE'S A STAR! World Tour - 비에하스 아레나 공연",
         "date": "2026-07-09",
         "venue": "Viejas Arena, San Diego, CA, USA",
@@ -9153,7 +9186,26 @@
       "url": "https://ticket.melon.com/performance/index.htm?prodId=213652"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-21",
+    "facts": {
+      "startTime": "오후 6시",
+      "age": "만 7세 이상 (2019년 이전 출생)",
+      "items": [
+        {
+          "label": "티켓 수령",
+          "value": "현장 수령만 가능 (예스24 기준)"
+        },
+        {
+          "label": "예매 마감",
+          "value": "공연 당일 시작 2시간 전까지 예매 가능 (예스24 기준)"
+        }
+      ],
+      "checkedAt": "2026-11-21",
+      "source": {
+        "label": "YES24 티켓 상품 페이지",
+        "url": "https://ticket.yes24.com/Perf/59429"
+      }
+    }
   },
   {
     "id": "slowdive-seoul-2026-12",
@@ -10209,6 +10261,10 @@
       {
         "label": "DAY6 to hold special solo concert 'The Present' at KSPO DOME on December 18~20 - 스포츠경향 (2026-11-12)",
         "url": "https://sports.khan.co.kr/en/article/202611120000007"
+      },
+      {
+        "label": "TV리포트 - 데이식스 연말콘 전회 전석 매진 (2026-11-21)",
+        "url": "https://tvreport.co.kr/music/article/1092639/"
       }
     ],
     "addedAt": "2026-11-15",
@@ -10234,6 +10290,11 @@
         "date": "2026-11-15",
         "text": "NOL 상품 페이지에서 전석 154,000원, 팬클럽 선예매 11/19 오후 8시, 일반 예매 11/20 오후 8시가 확인됐어요.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26016335"
+      },
+      {
+        "date": "2026-11-21",
+        "text": "소속사 JYP엔터테인먼트가 11/19 팬클럽 선예매와 11/20 일반 예매 뒤 3회 공연이 모두 전석 매진됐다고 밝혔어요. 올해도 KSPO DOME 객석을 360도로 여는 공연이에요. 같은 날 NOL 상품 페이지의 예매하기 버튼은 살아 있어서, 취소표가 나오면 살 수 있어요.",
+        "sourceUrl": "https://tvreport.co.kr/music/article/1092639/"
       }
     ],
     "posterUrl": "/posters/day6-the-present-seoul-2026-12.webp",
@@ -10257,8 +10318,8 @@
       "label": "NOL 티켓 예매 페이지",
       "url": "https://nol.yanolja.com/ticket/products/26016335"
     },
-    "saleState": "upcoming",
-    "saleCheckedAt": "2026-11-20",
+    "saleState": "open",
+    "saleCheckedAt": "2026-11-21",
     "youtubeVideos": [
       {
         "title": "[LIVE] Lovin' the Christmas | 2025 DAY6 Special Concert 'The Present'",
@@ -10273,9 +10334,21 @@
         {
           "label": "구매 제한",
           "value": "팬클럽 선예매 전 회차 1인 1매 · 일반 예매 회당 1인 2매"
+        },
+        {
+          "label": "결제",
+          "value": "무통장 입금 불가 (11/19~12/20)"
+        },
+        {
+          "label": "티켓",
+          "value": "모바일 티켓만 제공 · 보내기 기능 없음 · 예매자 본인만 입장(신분증 확인)"
+        },
+        {
+          "label": "예매대기",
+          "value": "예매대기·동일좌석 재예매 서비스를 쓸 수 없는 공연"
         }
       ],
-      "checkedAt": "2026-11-20",
+      "checkedAt": "2026-11-21",
       "source": {
         "label": "NOL 티켓 상품 페이지",
         "url": "https://nol.yanolja.com/ticket/products/26016335"
