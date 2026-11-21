@@ -5522,7 +5522,7 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-21",
     "posterUrl": "/posters/shuttle-yuuri-live-seoul-2026-12.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26010352_p.gif",
     "shuttleBus": [
@@ -5690,7 +5690,7 @@
         "url": "https://www.instagram.com/frenchkiwijuice/"
       }
     ],
-    "merchCheckedAt": "2026-11-03",
+    "merchCheckedAt": "2026-11-21",
     "description": "프랑스 멀티 인스트루멘탈리스트 FKJ의 세 번째 정규앨범 'Tyber'를 지원하는 아시아 7개 도시 투어 서울 공연.",
     "funFacts": [
       "라이브가 독특해요 - 반주 없이 색소폰·키보드·기타를 오가며 루프 페달로 쌓아 올려서, 혼자서 풀 밴드 사운드를 만들어내요.",
@@ -5723,7 +5723,7 @@
   },
   {
     "id": "zazen-boys-seoul-2026-12",
-    "merchCheckedAt": "2026-11-16",
+    "merchCheckedAt": "2026-11-21",
     "artist": "Zazen Boys (자젠보이즈)",
     "genre": "J-POP",
     "venue": "무신사 개러지 (musinsa garage)",
@@ -5793,7 +5793,8 @@
     "pricesSource": {
       "label": "예스24 티켓 예매 페이지",
       "url": "https://ticket.yes24.com/Perf/60113"
-    }
+    },
+    "merchCheckedAt": "2026-11-21"
   },
   {
     "id": "kopis-domi-jdbeck-2026-12",
@@ -5859,7 +5860,8 @@
       "url": "https://nol.yanolja.com/ticket/products/26012221"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-21"
   },
   {
     "id": "bbc-philharmonic-seoul-2026-12",
@@ -9265,7 +9267,8 @@
       "url": "https://nol.yanolja.com/ticket/products/26012276"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-21"
   },
   {
     "id": "beabadoobee-seoul-2027-03",
@@ -9383,7 +9386,7 @@
   },
   {
     "id": "sunny-day-service-seoul-2026-12",
-    "merchCheckedAt": "2026-11-16",
+    "merchCheckedAt": "2026-11-21",
     "artist": "Sunny Day Service (서니 데이 서비스)",
     "aliases": [
       "サニーデイ・サービス",
@@ -9741,7 +9744,7 @@
   },
   {
     "id": "rain-the-smoke-seoul-2026-12",
-    "merchCheckedAt": "2026-11-16",
+    "merchCheckedAt": "2026-11-21",
     "artist": "비 (RAIN)",
     "aliases": [
       "정지훈",
