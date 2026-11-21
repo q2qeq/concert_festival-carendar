@@ -37,11 +37,27 @@ const openEvents = events
 function fmt(d: Date) {
   return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
 }
+const ymd = (d: Date) => d.toISOString().slice(0, 10);
+const updated = post.data.updatedDate && ymd(post.data.updatedDate) > ymd(post.data.pubDate) ? post.data.updatedDate : undefined;
+const postImage = post.body?.match(/!\[[^\]]*\]\((\/[^)\s]+)\)/)?.[1];
+// 글 게시일·수정일을 검색엔진에 알린다. 화면의 날짜와 같은 값에서 만든다.
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: ymd(post.data.pubDate),
+  dateModified: ymd(updated ?? post.data.pubDate),
+  ...(postImage ? { image: new URL(postImage, Astro.site).toString() } : {}),
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+  publisher: { '@type': 'Organization', name: '직관냥', url: new URL('/', Astro.site).toString() },
+};
 ---
-<BaseLayout title={post.data.title} description={post.data.description} image={post.body?.match(/!\[[^\]]*\]\((\/[^)\s]+)\)/)?.[1]}>
+<BaseLayout title={post.data.title} description={post.data.description} image={postImage}>
   <article class="post">
     <p class="breadcrumb"><a href="/blog/">← 이슈 목록</a></p>
-    <p class="post-date">{fmt(post.data.pubDate)}</p>
+    <p class="post-date">{fmt(post.data.pubDate)}{updated && <> · {fmt(updated)} 수정</>}</p>
+    <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
     <h1>{post.data.title}</h1>
     {post.data.tags && post.data.tags.length > 0 && (
       <div class="post-tags">

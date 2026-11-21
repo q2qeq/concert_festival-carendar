@@ -954,14 +954,23 @@ const jsonLd = [
   }
   const avgOf = (a: number[]) => (a.length ? Math.round(a.reduce((x, y) => x + y, 0) / a.length) : 0);
 
+  // 단계는 주소의 해시(#stage=)에 적는다. 쿼리(?stage=)로 적으면 복사·공유된 주소를 구글이 따로 크롤링한다.
+  // 예전 쿼리 주소로 들어오면 해시로 옮긴다.
+  function setStageInUrl(stage: string | null) {
+    const url = new URL(location.href);
+    url.searchParams.delete('stage');
+    const hp = new URLSearchParams(url.hash.slice(1));
+    if (stage) hp.set('stage', stage); else hp.delete('stage');
+    url.hash = hp.toString();
+    history.replaceState(null, '', url.hash ? url : url.pathname + url.search);
+  }
+
   async function start(m: Mode = 'full') {
     if (running) return;
     running = true;
     mode = m;
     // 단계 연습은 주소에 남겨 둔다(새로고침·공유하면 같은 단계로 열림)
-    const url = new URL(location.href);
-    if (m === 'full') url.searchParams.delete('stage'); else url.searchParams.set('stage', m);
-    history.replaceState(null, '', url);
+    setStageInUrl(m === 'full' ? null : m);
     $('start-screen').hidden = true;
     $('game-area').hidden = false;
     $('hud-score').hidden = m === 'zone'; // 구역 단계는 점수 없이 반응시간만 잰다
@@ -1060,7 +1069,7 @@ const jsonLd = [
     $('g-grade').textContent = grade;
     $('g-detail').textContent = detail + (isBest ? ' · 내 최고 기록!' : ` · 내 최고 ${fmtStage(m, getStageBest(m) ?? value)}`);
     renderTips(stats.btnMs.length ? avgOf(stats.btnMs) : (m === 'btn' ? 9999 : -1), avgOf(stats.seatRt));
-    resultText = `직관냥 티켓팅 연습 · ${grade}\n나도 해보기 ${location.origin}/practice/?stage=${m}`;
+    resultText = `직관냥 티켓팅 연습 · ${grade}\n나도 해보기 ${location.origin}/practice/#stage=${m}`;
     body.value = value;
     submitRank(body);
   }
@@ -1092,9 +1101,7 @@ const jsonLd = [
     $('game-area').hidden = true;
     logBox.hidden = true;
     $('start-screen').hidden = false;
-    const url = new URL(location.href);
-    url.searchParams.delete('stage');
-    history.replaceState(null, '', url);
+    setStageInUrl(null);
     $('start-screen').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -1115,9 +1122,14 @@ const jsonLd = [
   $('g-retry').addEventListener('click', () => start(mode));
   $('g-full').addEventListener('click', () => start('full'));
   $('g-menu').addEventListener('click', showMenu);
-  // /practice/?stage=seat 처럼 들어오면 그 단계를 바로 시작한다
-  const qStage = new URLSearchParams(location.search).get('stage');
-  if (qStage === 'btn' || qStage === 'zone' || qStage === 'seat' || qStage === 'cancel') start(qStage);
+  // /practice/#stage=seat 처럼(예전 ?stage= 주소도 받는다) 들어오면 그 단계를 바로 시작한다
+  // 내부 링크는 해시(#stage=)를 쓴다. 쿼리 주소는 구글이 따로 크롤링해서 2026-11-21에 바꿨다.
+  const startFromUrl = () => {
+    const qStage = new URLSearchParams(`${location.search.slice(1)}&${location.hash.slice(1)}`).get('stage');
+    if (qStage === 'btn' || qStage === 'zone' || qStage === 'seat' || qStage === 'cancel') start(qStage);
+  };
+  startFromUrl();
+  window.addEventListener('hashchange', startFromUrl);
   // X 공유: 결과 문구 끝의 주소는 url로 따로 넘겨 링크 카드가 붙게 한다
   $('g-share-x').addEventListener('click', () => {
     const m = resultText.match(/^([\s\S]*?)\n나도 해보기 (\S+)$/);

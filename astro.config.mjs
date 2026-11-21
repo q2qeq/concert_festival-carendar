@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import { readFileSync, readdirSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { venueSlug } from './src/lib/venues.ts';
 
 export const SITE_URL = 'https://jikgwannyang.com';
 
@@ -14,22 +15,41 @@ const isDate = (v) => typeof v === 'string' && /^\d{4}-\d{2}-\d{2}/.test(v);
 const latest = (dates) => dates.filter(isDate).map((d) => d.slice(0, 10)).sort().at(-1);
 
 const events = JSON.parse(readFileSync(path.join(process.cwd(), 'src/data/events.json'), 'utf8'));
+// 공연 페이지에 보이는 사실(가격표·판매 상태·관람 조건·소식)을 확인하거나 넣은 날
+const eventDates = (e) => [
+  e.addedAt,
+  e.enrichmentCheckedAt,
+  e.merchCheckedAt,
+  e.pricesCheckedAt,
+  e.saleCheckedAt,
+  e.facts?.checkedAt,
+  ...(e.updates ?? []).map((u) => u.date),
+];
 for (const e of events) {
-  const d = latest([
-    e.addedAt,
-    e.enrichmentCheckedAt,
-    e.merchCheckedAt,
-    ...(e.updates ?? []).map((u) => u.date),
-  ]);
+  const d = latest(eventDates(e));
   if (d) lastmodByPath.set(`/events/${e.id}/`, d);
+}
+
+// 공연장 페이지: 공연장 정보(주차·좌석)를 확인한 날과, 그 공연장 공연 목록이 바뀐 날(공연 추가) 중 늦은 날.
+// 공연장 이름 → 주소 변환은 페이지와 같은 함수를 쓴다(별칭 처리 포함).
+const venueInfo = JSON.parse(readFileSync(path.join(process.cwd(), 'src/data/venues.json'), 'utf8'));
+for (const [name, v] of Object.entries(venueInfo)) {
+  const own = [v.parkingCheckedAt, v.seating?.checkedAt];
+  const listed = events.filter((e) => venueSlug(e.venue) === venueSlug(name)).map((e) => e.addedAt);
+  const d = latest([...own, ...listed]);
+  if (d) lastmodByPath.set(`/venues/${venueSlug(name)}/`, d);
 }
 
 const postsDir = path.join(process.cwd(), 'src/content/posts');
 for (const file of readdirSync(postsDir)) {
   const m = file.match(/^(.+)\.mdx?$/);
   if (!m) continue;
-  const fm = readFileSync(path.join(postsDir, file), 'utf8').match(/^pubDate:\s*["']?(\d{4}-\d{2}-\d{2})/m);
-  if (fm) lastmodByPath.set(`/blog/${m[1]}/`, fm[1]);
+  const src = readFileSync(path.join(postsDir, file), 'utf8');
+  const d = latest([
+    src.match(/^pubDate:\s*["']?(\d{4}-\d{2}-\d{2})/m)?.[1],
+    src.match(/^updatedDate:\s*["']?(\d{4}-\d{2}-\d{2})/m)?.[1],
+  ]);
+  if (d) lastmodByPath.set(`/blog/${m[1]}/`, d);
 }
 
 // 개인용 페이지(브라우저 저장소로만 내용이 채워짐)는 색인 대상이 아니다

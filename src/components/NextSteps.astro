@@ -50,7 +50,7 @@ const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIC
         <p class="now-s">매진이어도 취소표는 예고 없이 풀려요</p>
         <p class="now-sub">뜨는 순간 누를 수 있게 손을 풀어 두세요.</p>
       </div>
-      <a class="now-btn" href="/practice/?stage=cancel">취켓팅 연습하기</a>
+      <a class="now-btn" href="/practice/#stage=cancel">취켓팅 연습하기</a>
     </div>
     <div class="now-item" data-now-kind="week" hidden={built.kind !== 'week'}>
       <div class="now-text">
@@ -60,7 +60,7 @@ const returnHref = getVenueInfo(event.venue) ? `/return-trip/#venue=${encodeURIC
         </p>
         <p class="now-sub">
           {event.venue}에서 돌아오는 차편을 먼저 확인하세요. <a href="#venue">공연장 가는 길</a>
-          <span data-now-practice="cancel" hidden={built.practice !== 'cancel'}> · 취소표를 노린다면 <a href="/practice/?stage=cancel">취켓팅 연습</a></span>
+          <span data-now-practice="cancel" hidden={built.practice !== 'cancel'}> · 취소표를 노린다면 <a href="/practice/#stage=cancel">취켓팅 연습</a></span>
           <span data-now-practice="ticketing" hidden={built.practice !== 'ticketing'}> · 예매 전이라면 <a href="/practice/">티켓팅 연습</a></span>
         </p>
       </div>

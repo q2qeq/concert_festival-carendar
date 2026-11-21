@@ -8,5 +8,8 @@ Disallow: /return-trip?
 Disallow: /return-trip/?
 Disallow: /trip-cost?
 Disallow: /trip-cost/?
+# 취켓팅 연습 링크(?stage=cancel)도 2026-11-21에 #해시로 바꿨다.
+Disallow: /practice?
+Disallow: /practice/?
 
 Sitemap: https://jikgwannyang.com/sitemap-index.xml

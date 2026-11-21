@@ -2,7 +2,7 @@
 // 빌드(서버)와 브라우저 양쪽에서 쓴다. 날짜는 모두 KST 기준이다.
 //
 // 연습 안내 규칙(2026-11-18): 예정 공연 페이지에는 연습 안내가 늘 하나 있다.
-//   티켓 오픈이 아직 안 왔으면 티켓팅 연습(/practice/), 왔으면 취켓팅 연습(/practice/?stage=cancel).
+//   티켓 오픈이 아직 안 왔으면 티켓팅 연습(/practice/), 왔으면 취켓팅 연습(/practice/#stage=cancel).
 //   "왔다"는 오픈 단계가 모두 지났거나 예매처 상품 링크가 걸려 있다는 뜻이다.
 import { openPhase, type StageLite } from './openPhase';
 

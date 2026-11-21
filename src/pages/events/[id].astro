@@ -228,7 +228,10 @@ const mobileClockHref = `/ticketing-clock/#open=${encodeURIComponent(event.ticke
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'MusicEvent',
-  name: event.artist,
+  // 이벤트 이름은 아티스트 이름만이 아니라 공연을 가리키게 한다(화면 제목과 같은 재료).
+  name: event.genre === '페스티벌'
+    ? `${event.artist}${yp}${cityPart}`
+    : `${event.artist} ${domestic ? '콘서트' : '내한공연'}${yp}${cityPart}`,
   eventStatus: EVENT_STATUS_MAP[status],
   ...(status === 'postponed'
     ? { previousStartDate: event.startDate }
@@ -253,13 +256,18 @@ const jsonLd = {
   ...(event.posterUrl ? { image: new URL(event.posterUrl, Astro.site).toString() } : {}),
   url: new URL(Astro.url.pathname, Astro.site).toString(),
   ...(event.officialUrl ? { sameAs: [event.officialUrl] } : {}),
-  ...(ticketLinks.length > 0 && status === 'scheduled' && !saleClosed
+  ...(ticketLinks.length > 0 && status === 'scheduled' && !saleClosed && !isPast && event.saleState !== 'closed'
     ? {
         // 가격을 확인한 공연은 등급별 정가의 최저~최고를 함께 적는다(확인 안 된 가격은 넣지 않는다).
         offers: ticketLinks.map((t) => ({
           '@type': event.prices?.length ? 'AggregateOffer' : 'Offer',
           url: t.url,
-          availability: event.saleState === 'soldout' ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
+          // 화면의 판매 상태와 맞춘다: 매진 → SoldOut, 오픈 전(예매처 확인 또는 오픈 시각이 아직) → PreOrder
+          availability: event.saleState === 'soldout'
+            ? 'https://schema.org/SoldOut'
+            : event.saleState === 'upcoming' || (event.saleState !== 'open' && opensLater)
+              ? 'https://schema.org/PreOrder'
+              : 'https://schema.org/InStock',
           ...(event.prices?.length
             ? { priceCurrency: 'KRW', lowPrice: Math.min(...event.prices.map((x) => x.price)), highPrice: Math.max(...event.prices.map((x) => x.price)) }
             : {}),

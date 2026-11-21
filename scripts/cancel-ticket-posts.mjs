@@ -1,5 +1,5 @@
 // 블로그 글의 연습 안내가 티켓 오픈 상태와 맞는지 본다.
-//   오픈 전 → 티켓팅 연습(/practice/) · 오픈이 지남 → 취켓팅 연습(/practice/?stage=cancel)
+//   오픈 전 → 티켓팅 연습(/practice/) · 오픈이 지남 → 취켓팅 연습(/practice/#stage=cancel)
 // 글 본문에 처음 나오는 다가오는 공연(/events/<id>/)을 그 글의 공연으로 본다(PostToolShelf와 같은 기준).
 //
 // 출력:
@@ -65,7 +65,7 @@ for (const f of fs.readdirSync(POSTS).filter((n) => /\.mdx?$/.test(n))) {
   const primary = linked[0];
   if (!primary) continue;
   const st = stateOf(primary);
-  const hasCancel = src.includes('/practice/?stage=cancel');
+  const hasCancel = src.includes('/practice/#stage=cancel');
   const when = st.last !== undefined ? `마지막 오픈 ${kst(st.last)} KST` : '오픈 시각 없음 · 예매 중';
   const row = `${name} → ${primary.id} (${when}, 공연 ${primary.startDate}) [${checkedLabel(primary, st)}]`;
   if (st.future || primary.saleState === 'upcoming') {

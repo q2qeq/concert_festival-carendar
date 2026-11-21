@@ -18,6 +18,8 @@ const pageTitle = title === SITE_TITLE ? title : `${title} | ${SITE_TITLE}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = image ? new URL(image, Astro.site).toString() : undefined;
 const isHome = Astro.url.pathname === '/';
+// 404 페이지는 없는 주소마다 그대로 나간다. 캐노니컬을 /404/로 걸지 않는다.
+const isNotFound = /^\/404(\.html|\/)?$/.test(Astro.url.pathname);
 const websiteLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -49,7 +51,7 @@ const adsenseEnabled = ADSENSE_PUBLISHER_ID.length > 0;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
+    {!isNotFound && <link rel="canonical" href={canonicalURL} />}
     {noindex && <meta name="robots" content="noindex, follow" />}
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
