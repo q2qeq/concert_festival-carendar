@@ -30,7 +30,8 @@
     "og:cards": "node scripts/make-share-card.mjs",
     "promo:copy": "node scripts/promo-copy.mjs",
     "push:schedule": "node scripts/qstash-schedule.mjs",
-    "push:report": "node scripts/push-report.mjs"
+    "push:report": "node scripts/push-report.mjs",
+    "visits:report": "node scripts/visit-report.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {
