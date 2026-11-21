@@ -470,7 +470,7 @@
     "id": "back-number-2026-09",
     "artist": "back number (백넘버)",
     "genre": "J-POP",
-    "venue": "KINTEX",
+    "venue": "킨텍스 제2전시장 9홀",
     "city": "고양",
     "startDate": "2026-09-12",
     "endDate": "2026-09-13",
@@ -493,6 +493,10 @@
       {
         "label": "'日 국민밴드' 백넘버, 첫 내한공연 확정 - 노컷뉴스",
         "url": "https://www.nocutnews.co.kr/news/6502357"
+      },
+      {
+        "label": "백넘버 서울 공연 상품 페이지(장소: 킨텍스 제2전시장 9홀) - 예스24",
+        "url": "https://ticket.yes24.com/Perf/58079"
       }
     ],
     "ticketLinks": [
@@ -1919,7 +1923,7 @@
     "id": "lany-2026-10",
     "artist": "LANY (레이니)",
     "genre": "팝",
-    "venue": "KINTEX",
+    "venue": "킨텍스 제2전시장 9홀",
     "city": "고양",
     "startDate": "2026-10-03",
     "endDate": "2026-10-03",
@@ -4071,7 +4075,7 @@
     "id": "jason-mraz-2026-11",
     "artist": "Jason Mraz (제이슨 므라즈)",
     "genre": "팝",
-    "venue": "KINTEX",
+    "venue": "킨텍스 제1전시장",
     "city": "고양",
     "startDate": "2026-11-14",
     "endDate": "2026-11-14",
@@ -4293,7 +4297,7 @@
     "id": "5-seconds-of-summer-2026-11",
     "artist": "5 Seconds of Summer (파이브 세컨즈 오브 서머)",
     "genre": "팝/락",
-    "venue": "KINTEX",
+    "venue": "킨텍스 제1전시장 1홀",
     "city": "고양",
     "startDate": "2026-11-19",
     "endDate": "2026-11-19",
@@ -4339,6 +4343,10 @@
       {
         "label": "5SOS 내한 킨텍스 11월 19일 공연 안내 - 스포츠경향 영문판",
         "url": "https://sports.khan.co.kr/en/article/202604300217007/"
+      },
+      {
+        "label": "5 Seconds Of Summer 내한공연 상품 페이지(장소: 킨텍스 제1전시장 1홀) - NOL",
+        "url": "https://nol.yanolja.com/ticket/products/26006756"
       }
     ],
     "officialSns": [
