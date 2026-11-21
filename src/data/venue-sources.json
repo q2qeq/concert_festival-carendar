@@ -4,7 +4,7 @@
   "인스파이어 아레나": { "urls": ["https://www.inspireresorts.com/ko/about-us/getting-here", "https://www.inspireresorts.com/ko/entertainment/inspire-arena/arena-facilities", "https://www.incheon.go.kr/culture/CU020901/view?fcltySn=68"], "lastChecked": "2026-11-19" },
   "예스24 라이브홀": { "urls": ["https://yes24livehall.com/ko/guide/index.php", "https://yes24livehall.com/ko/guide/faq.php"], "lastChecked": "2026-11-10" },
   "예스24 원더로크홀": { "urls": ["https://www.wanderlochhall.com/"], "lastChecked": "2026-11-10" },
-  "KINTEX": { "urls": ["https://www.kintex.com/web/ko/service/facilities2.do?gubun=A05004", "https://www.kintex.com/web/ko/service/parking_user.do"], "lastChecked": "2026-11-10" },
+  "KINTEX": { "urls": ["https://www.kintex.com/web/ko/service/facilities2.do?gubun=A05004", "https://www.kintex.com/web/ko/service/parking_user.do", "https://www.kintex.com/web/ko/html/facility/exhibition_overview.do"], "lastChecked": "2026-11-21" },
   "킨텍스 제1전시장": { "urls": ["https://www.kintex.com/web/ko/html/facility/exhibition_overview.do", "https://www.kintex.com/web/ko/service/parking_user.do"], "lastChecked": "2026-11-21" },
   "KBS스포츠월드(아레나)": { "urls": ["https://kbsarena.com/intro/viewKBSarena.do"], "lastChecked": "2026-11-10" },
   "고양종합운동장": { "urls": ["https://m.gys.or.kr/page/facilities/sports/stadium.php"], "lastChecked": "2026-11-10" },

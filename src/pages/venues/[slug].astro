@@ -28,11 +28,14 @@ export function getStaticPaths() {
 const { venueName } = Astro.props as { venueName: string };
 const info = getVenueInfo(venueName);
 const slug = venueSlug(venueName);
-const venueEvents = upcomingEvents().filter((e) => venueSlug(e.venue) === slug);
+// 안내 페이지(parts가 있는 곳)는 안에 있는 공연장들의 공연까지 모아 보여 준다.
+const parts = info?.parts ?? [];
+const slugsHere = new Set([slug, ...parts.map((p) => venueSlug(p.name))]);
+const venueEvents = upcomingEvents().filter((e) => slugsHere.has(venueSlug(e.venue)));
 const city = venueEvents[0]?.city;
 const guidePosts = await postsMentioningVenue(slug, 4);
 // 지난 공연 - 이 공연장이 어떤 공연을 치러 왔는지 보여주는 이력(최근 순, 최대 8건).
-const pastHere = pastEvents().filter((e) => venueSlug(e.venue) === slug).reverse().slice(0, 8);
+const pastHere = pastEvents().filter((e) => slugsHere.has(venueSlug(e.venue))).reverse().slice(0, 8);
 // 같은 지역의 다른 공연장 - 주소 앞부분(시/도)이 같은 곳.
 const region = regionOf(info?.address);
 const sameRegion = Array.from(new Set(allVenueNames().map(venueSlug)))
@@ -89,7 +92,9 @@ const hasShuttleInfo = (info?.transit ?? []).some((t) => t.includes('셔틀'));
 const seating = info?.seating;
 const byHall = seating?.unit === 'hall';
 const byRoom = seating?.unit === 'room';
-const pageTitle = seating
+const pageTitle = parts.length > 0
+  ? `${venueName} ${parts.map((p) => p.name.replace(/^킨텍스\s*/, '')).join('·')} 구분·오시는 길·공연 일정`
+  : seating
   ? byHall
     ? `${venueName} 시야·홀별 크기(${seating.floors[0].name}~${seating.floors[seating.floors.length - 1].name})·주차·오시는 길`
     : byRoom
@@ -104,7 +109,9 @@ const pageTitle = seating
   : hasParking
     ? `${venueName} 주차·오시는 길·좌석·시야 정보`
     : `${venueName} 오시는 길·좌석·시야 정보`;
-const pageDescription = seating
+const pageDescription = parts.length > 0
+  ? `${venueName}에는 ${parts.map((p) => p.name).join('과 ')}이 따로 있어요. 공연이 어느 전시장인지 확인하는 법, 전시장별 홀 크기·주차·오시는 길 페이지, 두 곳의 예정 공연을 한곳에 모았어요.`
+  : seating
   ? byHall
     ? `${venueName} 콘서트 가기 전에 볼 홀별 크기와 천장 높이(${seating.floors.map((f) => `${f.name} ${f.seats}`).join(', ')}), 구역별 시야 후기 검색, 주차와 오시는 길, 예정된 공연을 정리했어요.`
     : byRoom
@@ -149,6 +156,18 @@ const pageDescription = seating
     </dl>
     {info?.capacityNote && <p class="glance-note">{info.capacityNote}{info.capacitySource && <> · 출처: <a href={info.capacitySource.url} target="_blank" rel="noopener noreferrer">{info.capacitySource.label}</a></>}</p>}
   </section>
+
+  {parts.length > 0 && (
+    <section class="venue-parts" aria-label={`${venueName} 안의 공연장`}>
+      <h2>어느 전시장인지 먼저 확인하세요</h2>
+      <p>티켓이나 예매처 상품 페이지의 공연장 이름에 전시장과 홀 번호가 적혀 있어요. 홀 크기, 주차, 가까운 역이 전시장마다 달라요.</p>
+      <ul>
+        {parts.map((p) => (
+          <li><a href={`/venues/${venueSlug(p.name)}/`}>{p.name}</a><span>{p.note}</span></li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   <RouteFinder venue={venueName} address={info?.address} />
   <p class="return-link"><a href={`/return-trip/#venue=${encodeURIComponent(venueName)}`}>공연 끝나고 막차 탈 수 있을까? 막차 계산하기 →</a></p>
@@ -375,6 +394,14 @@ const pageDescription = seating
   .tip { margin-top: 1rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.08); border-radius: 8px; color: var(--fg-2); font-size: 0.85rem; }
   .event-list { display: flex; flex-direction: column; }
   .empty { color: var(--muted); }
+  .venue-parts { margin: 1.2rem 0; padding: 0.9rem 1rem; border: 1px solid var(--line); border-radius: 8px; }
+  .venue-parts h2 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+  .venue-parts p { margin: 0 0 0.6rem; color: var(--fg-2); font-size: 0.9rem; }
+  .venue-parts ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+  .venue-parts li { display: flex; flex-direction: column; gap: 0.1rem; }
+  .venue-parts a { color: var(--fg); font-weight: 700; text-decoration: none; }
+  .venue-parts a:hover { color: var(--cheese); }
+  .venue-parts span { color: var(--muted); font-size: 0.85rem; }
   .return-link { margin: 0.8rem 0 0; font-size: 0.92rem; }
   .return-link a { color: var(--fg); font-weight: 700; }
   .return-link a:hover { color: var(--cheese); }
