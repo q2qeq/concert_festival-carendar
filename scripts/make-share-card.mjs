@@ -53,7 +53,12 @@ const kst = (iso) => new Date(new Date(iso).getTime() + 9 * 3600_000);
 const md = (d) => `${d.getUTCMonth() + 1}.${d.getUTCDate()}(${dow[d.getUTCDay()]})`;
 const hm = (d) => `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`;
 // 티켓 상태 한 줄. 다음에 열리는 단계가 있으면 그 시각, 다 지났으면 '예매 중', 정보가 없으면 '발표 전'.
+// 공연 페이지와 같은 기준: 취소·종료된 공연과 예매처에서 판매 종료를 확인한 공연은 '예매 중'으로 쓰지 않는다(2026-11-21).
+// 매진은 금방 바뀌고 카드는 매일 다시 만들지 않으므로 카드에 적지 않는다.
 function status(e) {
+  if (e.status === 'cancelled') return { text: '공연 취소', on: false };
+  if (e.endDate < today) return { text: '공연 종료', on: false };
+  if (e.saleState === 'closed') return { text: '온라인 예매 종료', on: false };
   if (/추후|미정|미발표/.test(e.venue)) return { text: '공연장·티켓 일정 발표 전', on: false };
   const stages = e.ticketOpens?.length ? e.ticketOpens : e.ticketOpenAt ? [{ label: '', at: e.ticketOpenAt }] : [];
   const next = stages.filter((s) => new Date(s.at).getTime() > Date.now()).sort((a, b) => a.at.localeCompare(b.at))[0];
@@ -98,7 +103,18 @@ function svg(e, withPoster) {
 
 const args = process.argv.slice(2);
 const isRecent = (e) => e.addedAt && (new Date(today) - new Date(e.addedAt)) / 86400000 <= 7;
-const targets = args.length
+// --refresh: 카드 문구가 날짜 때문에 바뀌었을 공연만 다시 만든다. 최근 14일 안에 공연이 끝났거나
+// 티켓 오픈 단계가 지난 공연 중 카드가 이미 있는 것. 카드의 '티켓오픈 ○.○'·'예매 중'이 낡지 않게
+// 매일 도는 티켓오픈 워치가 돌린다(2026-11-21).
+const recentlyPassed = (iso) => {
+  const t = new Date(iso).getTime();
+  return t <= Date.now() && Date.now() - t <= 14 * 86400_000;
+};
+const stagesOf = (e) => (e.ticketOpens?.length ? e.ticketOpens.map((s) => s.at) : e.ticketOpenAt ? [e.ticketOpenAt] : []);
+const hasCard = (e) => ['jpg', 'png'].some((ext) => existsSync(join(root, `public/og/${e.id}.${ext}`)));
+const targets = args[0] === '--refresh'
+  ? events.filter((e) => hasCard(e) && (recentlyPassed(`${e.endDate}T23:59:59+09:00`) || stagesOf(e).some(recentlyPassed)))
+  : args.length
   ? events.filter((e) => args.includes(e.id))
   : events.filter((e) => e.endDate >= today && e.status !== 'cancelled');
 mkdirSync(join(root, 'public/og'), { recursive: true });
