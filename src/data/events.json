@@ -11008,7 +11008,8 @@
     "shuttleBus": [
       {
         "operator": "퀸즈스마일",
-        "note": "목록에서 셔틀 등록 확인, 개별 페이지 URL 미확인 (2026-11-21)"
+        "url": "https://queenssmile.co.kr/shop/festival/NDY3/",
+        "note": "셔틀 스캔으로 확인 (2026-11-21). 12/05(토)·12/06(일) 서울권 셔틀버스 상품이 올라와 있어요. 노선/운행시간·요금 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
     "posterUrl": "/posters/shuttle-akmu-concert-daejeon-2026-12.webp",
