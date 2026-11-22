@@ -11024,5 +11024,84 @@
     "saleState": "open",
     "saleCheckedAt": "2026-11-21",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202609/20260909/20260909-60019_1.jpg"
+  },
+  {
+    "id": "indigo-la-end-seoul-2027-02",
+    "artist": "indigo la End (인디고 라 엔드)",
+    "aliases": [
+      "인디고 라 엔드",
+      "Blue Laundry"
+    ],
+    "genre": "J-POP",
+    "venue": "예스24 원더로크홀",
+    "city": "서울",
+    "startDate": "2027-02-13",
+    "endDate": "2027-02-13",
+    "description": "일본 밴드 indigo la End의 한국 단독 공연 \"ONEMAN LIVE in KOREA 「Blue Laundry」\"예요. 2027년 2월 13일(토) 오후 6시 예스24 원더로크홀에서 열리고, 관람 시간은 약 90분이에요. 예스24 티켓 단독 판매이고 티켓은 12월 2일(수) 오후 8시에 열려요. 스탠딩석과 지정석 모두 99,000원이에요.",
+    "schedule": "2/13(토) 오후 6시, 약 90분, 8세 이상",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 주최 LIVET, 주관 원더로크.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-12-02 오후 8시 - 예스24 티켓 단독판매",
+    "ticketOpenAt": "2026-12-02T20:00:00+09:00",
+    "ticketLinks": [
+      {
+        "vendor": "예스24",
+        "url": "https://ticket.yes24.com/Perf/60869"
+      }
+    ],
+    "prices": [
+      {
+        "label": "스탠딩석",
+        "price": 99000
+      },
+      {
+        "label": "지정석",
+        "price": 99000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-22",
+    "pricesSource": {
+      "label": "예스24 티켓 예매 페이지",
+      "url": "https://ticket.yes24.com/Perf/60869"
+    },
+    "posterUrl": "/posters/indigo-la-end-seoul-2027-02.webp",
+    "facts": {
+      "startTime": "오후 6시",
+      "runningTime": "90분",
+      "age": "8세 이상",
+      "items": [
+        {
+          "label": "구매 제한",
+          "value": "1인 3매"
+        },
+        {
+          "label": "예매·취소 마감",
+          "value": "관람 전일 오전 11시"
+        },
+        {
+          "label": "티켓 배송",
+          "value": "일괄배송, 2027년 1월 20일부터 순차 배송"
+        }
+      ],
+      "checkedAt": "2026-11-22",
+      "source": {
+        "label": "예스24 티켓 예매 페이지",
+        "url": "https://ticket.yes24.com/Perf/60869"
+      }
+    },
+    "sources": [
+      {
+        "label": "indigo la End ONEMAN LIVE in KOREA 「Blue Laundry」 티켓 오픈 안내 - YES24 티켓 공지사항 (2026-11-21)",
+        "url": "https://ticket.yes24.com/Notice#id=18877"
+      },
+      {
+        "label": "indigo la End ONEMAN LIVE in KOREA 「Blue Laundry」 - YES24 티켓 상품 페이지",
+        "url": "https://ticket.yes24.com/Perf/60869"
+      }
+    ],
+    "addedAt": "2026-11-22",
+    "saleState": "upcoming",
+    "saleCheckedAt": "2026-11-22",
+    "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261120/20261120-60869.jpg"
   }
 ]
