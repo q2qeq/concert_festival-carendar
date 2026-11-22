@@ -19,9 +19,12 @@ const related = await relatedPosts(post, 4);
 
 // 본문에 링크된 공연 중 티켓오픈 시각이 확인된 공연 (본문에 나온 순서, 최대 2개).
 // 오픈 전이면 카운트다운, 오픈 후 30일 안이면 취소표 안내로 글 상단에 붙는다.
+// 공연 후기 글에는 붙이지 않는다. 끝난 공연을 다루면서 본문 끝에 다음 공연을 링크하는데,
+// 그 공연의 박스가 맨 위로 올라와 글 주제를 가렸다(2026-11-23 원더리벳 후기).
 const body = post.body ?? '';
 const nowMs = Date.now();
-const openEvents = events
+const isReview = post.data.tags?.includes('공연 후기') ?? false;
+const openEvents = isReview ? [] : events
   .map((e) => ({ e, pos: body.indexOf(`/events/${e.id}/`) }))
   .filter(({ e, pos }) => {
     if (pos < 0) return false;

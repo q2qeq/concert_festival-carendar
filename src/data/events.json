@@ -4783,9 +4783,81 @@
     },
     "setlists": [
       {
-        "label": "ReoNa (첫날 리벳 스테이지, 첫 한국 라이브)",
+        "label": "THE ORAL CIGARETTES",
         "date": "2026-11-20",
-        "venue": "킨텍스 제2전시장 LIVET STAGE",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "OVERNIGHT",
+          "What you want",
+          "LIMIT",
+          "ERASE",
+          "ENEMY",
+          "BUG",
+          "UNDER and OVER",
+          "Kantannakoto",
+          "DUNK",
+          "Kyouran Hey Kids!!",
+          "LOVE",
+          "Kyouran Hey Kids!!"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/the-oral-cigarettes/2026/kintex-hall-7-8-goyang-si-south-korea-3715dc7.html"
+      },
+      {
+        "label": "호시마치 스이세이",
+        "date": "2026-11-20",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "Prima Donna",
+          "Mou Dou Natte mo Ii ya",
+          "Yoru ni Saku",
+          "Zombie Zombie Zombie",
+          "GUM&DROP",
+          "Caramel Pain",
+          "Moonlight",
+          "Stellar Stellar",
+          "Datte Boku wa",
+          "BIBBIDIBA",
+          "soirée"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/hoshimachi-suisei/2026/kintex-hall-7-8-goyang-si-south-korea-b715db2.html"
+      },
+      {
+        "label": "amazarashi",
+        "date": "2026-11-20",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "Word Processor",
+          "Kisetsu wa Tsugitsugi Shindeiku",
+          "Kanashimi sae Otonabite",
+          "Ameotoko",
+          "Boku ga Shinou to Omotta no wa",
+          "Crown Shinsha de Katte Ageru",
+          "Antinomy",
+          "Sora ni Utaeba"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/amazarashi/2026/kintex-hall-7-8-goyang-si-south-korea-b715dba.html"
+      },
+      {
+        "label": "Da-iCE",
+        "date": "2026-11-20",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "TERMINAL",
+          "BACK TO BACK",
+          "CITRUS",
+          "I wonder",
+          "Uraraka",
+          "DREAMIN' ON",
+          "Unlimited",
+          "Star Mine",
+          "Nonfictions"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/daice/2026/kintex-hall-7-8-goyang-si-south-korea-1b715dbc.html"
+      },
+      {
+        "label": "ReoNa",
+        "date": "2026-11-20",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
         "songs": [
           "GG",
           "ないない",
@@ -4796,6 +4868,245 @@
           "ANIMA"
         ],
         "sourceUrl": "https://prtimes.jp/main/html/rd/p/000005075.000013546.html"
+      },
+      {
+        "label": "쏜애플",
+        "date": "2026-11-20",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
+        "songs": [
+          "Planetarium",
+          "Extinction",
+          "The Taste of Pomegranate",
+          "Luminescence",
+          "Acacia",
+          "A Day of Mercury",
+          "Red Peter",
+          "Blue Spring"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/thornapple/2026/kintex-hall-10-goyang-si-south-korea-13715dad.html"
+      },
+      {
+        "label": "CLAN QUEEN",
+        "date": "2026-11-20",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
+        "songs": [
+          "Guernica",
+          "Kyuuseishu",
+          "Trickster",
+          "Tenshi to Akuma",
+          "Foundation",
+          "Ichijiku",
+          "Searchlight",
+          "Odo Rakuen",
+          "WARNING!!",
+          "Jihaku"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/clan-queen/2026/kintex-hall-10-goyang-si-south-korea-13715db9.html"
+      },
+      {
+        "label": "[Alexandros]",
+        "date": "2026-11-21",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "Girl A",
+          "Adventure",
+          "Koeru",
+          "Arpeggio",
+          "Senkou",
+          "ENDROLL",
+          "Kaze ni Natte",
+          "starrrrrrr",
+          "spy",
+          "Wataridori",
+          "SNOW SOUND"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/alexandros/2026/kintex-hall-7-8-goyang-si-south-korea-13715dc5.html"
+      },
+      {
+        "label": "Roselia",
+        "date": "2026-11-21",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "R",
+          "Nesshoku Starmine",
+          "Ishizue no Hanakanmuri",
+          "BLACK SHOUT",
+          "ZEAL of proud",
+          "Neo-Aspect",
+          "FIRE BIRD"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/roselia/2026/kintex-hall-7-8-goyang-si-south-korea-1b715d9c.html"
+      },
+      {
+        "label": "MyGO!!!!!",
+        "date": "2026-11-21",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "Hitoshizuku",
+          "Ichijitsu Senshuu",
+          "Sepia",
+          "Kokoro",
+          "Shoumei Sanka",
+          "Silhouette Dance",
+          "Sasurai",
+          "Otoichie"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/mygo/2026/kintex-hall-7-8-goyang-si-south-korea-3715d9f.html"
+      },
+      {
+        "label": "SAMBOMASTER",
+        "date": "2026-11-21",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
+        "songs": [
+          "Kanousei",
+          "Hajimatteiku Takamatteiku",
+          "Hikari no Rock",
+          "Seishun Kyousoukyoku",
+          "Sekai wa Sore wo Ai to Yobundaze",
+          "Kodoku to Rendezvous",
+          "Love Song",
+          "Future is Yours",
+          "Kagayakidashite Hashitteku",
+          "Dekikkonai wo Yaranakucha",
+          "Hanataba",
+          "Rock 'n' Roll Is Not Dead"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/sambomaster/2026/kintex-hall-10-goyang-si-south-korea-3715d93.html"
+      },
+      {
+        "label": "FREDERIC",
+        "date": "2026-11-21",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
+        "songs": [
+          "Only Wonder",
+          "KITAKU BEATS",
+          "Junkie",
+          "CYAN",
+          "Hyouhyou to Emotion",
+          "Nonsense Nonsense",
+          "Oddloop",
+          "Happiness",
+          "Sparkle Dancer"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/frederic/2026/kintex-hall-10-goyang-si-south-korea-13715da1.html"
+      },
+      {
+        "label": "indigo la End",
+        "date": "2026-11-21",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
+        "songs": [
+          "Yogisha wa Hashiru",
+          "Namae wa Kataomoi",
+          "Kagerou",
+          "Haruka na Saitei",
+          "Jikken Mae",
+          "Touri Koi",
+          "Natsu Yoru no Magic",
+          "Unpublished Manuscript"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/indigo-la-end/2026/kintex-hall-10-goyang-si-south-korea-1b715da4.html"
+      },
+      {
+        "label": "CHiCO with HoneyWorks",
+        "date": "2026-11-21",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
+        "songs": [
+          "Senjou no Hana",
+          "Kessen Spirit",
+          "Love Whistle",
+          "Watashi, Idol Sengen",
+          "Sekai wa Koi ni Ochiteiru",
+          "Kyou mo Sakura Mau Akatsuki ni",
+          "Ai no Scenario",
+          "Pride Kakumei"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/chico-with-honeyworks/2026/kintex-hall-10-goyang-si-south-korea-3715da3.html"
+      },
+      {
+        "label": "QWER",
+        "date": "2026-11-22",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "SHOW DOWN",
+          "OVERDRIVE",
+          "Discord",
+          "T.B.H",
+          "Picaresque",
+          "BANI BANI",
+          "My Name is Malguem",
+          "Dear",
+          "D-Day",
+          "Dreamer"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/qwer/2026/kintex-hall-7-8-goyang-si-south-korea-3b715c6c.html"
+      },
+      {
+        "label": "CANDY TUNE",
+        "date": "2026-11-22",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "Et cetera LOVE YOU",
+          "Hissatsu Azato Pose",
+          "Ai Shichattemasu♡",
+          "Super Yuushou Tune!",
+          "Soui♡So Free",
+          "Special Kanshasai",
+          "Levechi Kawaii!",
+          "Kiss Me Patissier",
+          "Bai Bai FIGHT!"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/candy-tune/2026/kintex-hall-7-8-goyang-si-south-korea-2b715c76.html"
+      },
+      {
+        "label": "험브레더즈",
+        "date": "2026-11-22",
+        "venue": "킨텍스 제2전시장 원더 스테이지",
+        "songs": [
+          "Ginga Kousoku",
+          "⚡",
+          "DANCING IN THE ROOM",
+          "Final boyfriend",
+          "Joushiki no Hanchuu",
+          "World Is Mine",
+          "BGM ni Narunayo",
+          "Forever Song",
+          "Guitar"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/humbreaders/2026/kintex-hall-7-8-goyang-si-south-korea-2b715c6a.html"
+      },
+      {
+        "label": "Chevon",
+        "date": "2026-11-22",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
+        "songs": [
+          "Lamipus",
+          "Banquet",
+          "Judenchuu",
+          "Knock Boots",
+          "Alpaca Syndrome",
+          "Meimei",
+          "MUSASHI",
+          "FLASH BACK!!!!!!!!",
+          "Dance Decadence"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/chevon/2026/kintex-hall-10-goyang-si-south-korea-33715c75.html"
+      },
+      {
+        "label": "SWEET STEADY",
+        "date": "2026-11-22",
+        "venue": "킨텍스 제2전시장 리벳 스테이지",
+        "songs": [
+          "Hajimari no Aizu",
+          "Suisute Time",
+          "Call me, Tell me",
+          "Choudai HAPPY!",
+          "Heart Rescue Me",
+          "DASH!!!",
+          "Sweet Cafe",
+          "Heart no Mahou",
+          "SWEET STEP"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/sweet-steady/2026/kintex-hall-10-goyang-si-south-korea-3b715c60.html"
       }
     ]
   },
