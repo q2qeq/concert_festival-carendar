@@ -6289,7 +6289,8 @@
     "pricesSource": {
       "label": "예스24 티켓 예매 페이지",
       "url": "https://ticket.yes24.com/Perf/60203"
-    }
+    },
+    "merchCheckedAt": "2026-11-23"
   },
   {
     "id": "kopis-PF299848",
@@ -6639,7 +6640,8 @@
       "url": "https://ticket.yes24.com/Perf/59886"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-23"
   },
   {
     "id": "ron-braunton-jazz-christmas-suwon-2026-12",
@@ -7912,7 +7914,8 @@
     },
     "description": "이승철의 데뷔 40주년 전국투어 'THE VOICE : LEE SEUNG CHUL'의 인천 공연이에요. 투어는 7월 청주에서 시작했고, 하반기에는 광주·대전·대구·인천·부산을 돌아 12월 4~6일 서울 KSPO DOME 공연으로 이어져요. 인천 공연은 인스파이어 아레나에서 열려요.",
     "saleState": "soldout",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-23"
   },
   {
     "id": "shuttle-daegu-hiphop-festival-2026-12",
@@ -9823,7 +9826,8 @@
       }
     ],
     "saleState": "open",
-    "saleCheckedAt": "2026-11-19"
+    "saleCheckedAt": "2026-11-19",
+    "merchCheckedAt": "2026-11-23"
   },
   {
     "id": "cutie-street-goyang-2027-01",
@@ -10199,7 +10203,8 @@
       "url": "https://nol.yanolja.com/ticket/products/26014056"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-23"
   },
   {
     "id": "jaurim-midnight-express-seoul-2026-12",
@@ -10255,7 +10260,8 @@
       "url": "https://nol.yanolja.com/ticket/products/26015207"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "merchCheckedAt": "2026-11-23"
   },
   {
     "id": "jyp-wet-seoul-2026-12",
