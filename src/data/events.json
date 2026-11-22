@@ -4780,7 +4780,24 @@
         "label": "예스24 티켓 예매 페이지",
         "url": "https://ticket.yes24.com/Perf/59840"
       }
-    }
+    },
+    "setlists": [
+      {
+        "label": "ReoNa (첫날 리벳 스테이지, 첫 한국 라이브)",
+        "date": "2026-11-20",
+        "venue": "킨텍스 제2전시장 LIVET STAGE",
+        "songs": [
+          "GG",
+          "ないない",
+          "生命線",
+          "Debris",
+          "Amore",
+          "unknown",
+          "ANIMA"
+        ],
+        "sourceUrl": "https://prtimes.jp/main/html/rd/p/000005075.000013546.html"
+      }
+    ]
   },
   {
     "id": "shuttle-monsta-x-world-tour-encore-2026-11",
