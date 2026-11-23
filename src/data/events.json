@@ -11438,5 +11438,126 @@
     "saleState": "upcoming",
     "saleCheckedAt": "2026-11-22",
     "posterSourceUrl": "https://tkfile.yes24.com/upload2/PerfBlog/202611/20261120/20261120-60869.jpg"
+  },
+  {
+    "id": "the-oral-cigarettes-seoul-2027-04",
+    "artist": "THE ORAL CIGARETTES (디 오럴 시가렛츠)",
+    "aliases": [
+      "디 오럴 시가렛츠",
+      "오럴 시가렛츠",
+      "WHAT'S GOOD? ASIA"
+    ],
+    "genre": "J-POP",
+    "venue": "예스24 라이브홀",
+    "city": "서울",
+    "startDate": "2027-04-03",
+    "endDate": "2027-04-03",
+    "description": "일본 4인조 록 밴드 THE ORAL CIGARETTES의 첫 내한 단독 공연 \"WHAT'S GOOD? ASIA in Seoul\"이에요. 2027년 4월 3일(토) 오후 6시 예스24 라이브홀에서 열리고, 관람 시간은 약 90분이에요. 예스24 티켓 단독 판매이고 티켓은 12월 11일(금) 오후 6시에 열려요. 1층 스탠딩과 2층 좌석 모두 110,000원이에요.",
+    "schedule": "4/3(토) 오후 6시, 약 90분, 초등학생 이상",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 주최 엠피엠지, 주관 더 볼트·민트페이퍼. 예스24 상품 페이지는 공지 등록 시점(11/23)에 아직 연결되지 않음.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-12-11 오후 6시 - 예스24 티켓 단독판매",
+    "ticketOpenAt": "2026-12-11T18:00:00+09:00",
+    "prices": [
+      {
+        "label": "1층 스탠딩",
+        "price": 110000
+      },
+      {
+        "label": "2층 지정석",
+        "price": 110000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-24",
+    "pricesSource": {
+      "label": "YES24 티켓 공지사항",
+      "url": "https://ticket.yes24.com/Notice#id=18878"
+    },
+    "facts": {
+      "startTime": "오후 6시",
+      "runningTime": "90분",
+      "age": "초등학생 이상",
+      "items": [
+        {
+          "label": "구매 제한",
+          "value": "1인 2매"
+        }
+      ],
+      "checkedAt": "2026-11-24",
+      "source": {
+        "label": "YES24 티켓 공지사항",
+        "url": "https://ticket.yes24.com/Notice#id=18878"
+      }
+    },
+    "sources": [
+      {
+        "label": "THE ORAL CIGARETTES 'WHAT'S GOOD? ASIA' in Seoul 티켓 오픈 안내 - YES24 티켓 공지사항 (2026-11-23)",
+        "url": "https://ticket.yes24.com/Notice#id=18878"
+      }
+    ],
+    "addedAt": "2026-11-24",
+    "promoBanner": "THE ORAL CIGARETTES 첫 내한 단독 - 2027.4.3(토) 예스24 라이브홀, 티켓 12/11(금) 18시"
+  },
+  {
+    "id": "myth-and-roid-seoul-2026-12",
+    "artist": "MYTH & ROID (미스 앤 로이드)",
+    "aliases": [
+      "미스 앤 로이드",
+      "미스앤로이드",
+      "I know your fire"
+    ],
+    "genre": "J-POP",
+    "venue": "KT&G 상상마당 홍대 라이브홀",
+    "city": "서울",
+    "startDate": "2026-12-25",
+    "endDate": "2026-12-25",
+    "description": "일본 음악 유닛 MYTH & ROID의 투어 \"MYTH & ROID Tour 2026-2027 「I know your fire」\" 서울 공연이에요. 2026년 12월 25일 오후 5시 30분 KT&G 상상마당 홍대 라이브홀에서 열리고, 관람 시간은 약 100분이에요. 티켓링크 단독 판매이고 티켓은 11월 25일(수) 오후 7시에 열려요. VIP석 108,000원, 일반석 77,000원이에요.",
+    "schedule": "12/25 오후 5시 30분, 약 100분(예정), 연 9세 이상",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 티켓링크 공지에는 \"2026년 12월 25일(토)\"로 적혀 있지만 12/25는 금요일이에요. 날짜(12/25 서울)는 투어 보도(4Gamers)와 일치해 날짜만 쓰고 요일은 적지 않음. 주최·주관 코에, 협찬 CAT Entertainment. 공지의 예매하기 버튼은 티켓링크 /product/67252 - 오픈(11/25 19시) 뒤 상품 페이지를 열어 대조하고 ticketLinks에 넣을 것.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-11-25 오후 7시 - 티켓링크 단독판매",
+    "ticketOpenAt": "2026-11-25T19:00:00+09:00",
+    "prices": [
+      {
+        "label": "VIP석",
+        "price": 108000
+      },
+      {
+        "label": "일반석",
+        "price": 77000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-24",
+    "pricesSource": {
+      "label": "티켓링크 공지사항",
+      "url": "https://www.ticketlink.co.kr/help/notice/66619"
+    },
+    "facts": {
+      "startTime": "오후 5시 30분",
+      "runningTime": "100분(예정)",
+      "age": "연 9세 이상",
+      "items": [
+        {
+          "label": "할인",
+          "value": "현역 병사(사회복무요원 포함) 본인 30%"
+        }
+      ],
+      "checkedAt": "2026-11-24",
+      "source": {
+        "label": "티켓링크 공지사항",
+        "url": "https://www.ticketlink.co.kr/help/notice/66619"
+      }
+    },
+    "sources": [
+      {
+        "label": "MYTH & ROID Tour 2026-2027 「I know your fire」in Seoul 티켓오픈 안내 - 티켓링크 공지사항 (2026-11-23)",
+        "url": "https://www.ticketlink.co.kr/help/notice/66619"
+      },
+      {
+        "label": "MYTH & ROID 「I know your fire」 아시아 투어 일정 - 4Gamers",
+        "url": "https://www.4gamers.com.tw/news/detail/82878/myth-and-roid-tour-2026-2027-i-know-your-fire-taipei-clapper-studio"
+      }
+    ],
+    "addedAt": "2026-11-24"
   }
 ]
