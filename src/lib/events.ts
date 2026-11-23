@@ -162,6 +162,7 @@ export interface ConcertEvent {
   // 검색에서 쓰이는 다른 표기(띄어쓰기·철자 변형). 한글 이름의 붙여 쓴 표기는
   // artistAliases()가 자동으로 만들고, 여기에는 자동으로 못 만드는 것만 직접 적는다.
   aliases?: string[];
+  titleName?: string; // 페이지 제목에만 쓰는 짧은 이름(artist에 투어명까지 길게 들어간 경우)
   genre: string;
   venue: string;
   city: string;

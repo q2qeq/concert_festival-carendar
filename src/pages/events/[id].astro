@@ -61,23 +61,42 @@ const sameArtistCount = events.filter((x) => x.artist === event.artist).length;
 const cityPart = sameArtistCount > 1 ? ` ${event.city}` : '';
 const titleIsPast = event.endDate < new Date().toISOString().slice(0, 10);
 const opensLater = Boolean(event.ticketOpenAt) && new Date(event.ticketOpenAt as string).getTime() > Date.now();
+// 끝난 공연 제목은 페이지에 실제로 있는 것만 약속한다(셋리스트·굿즈·셔틀). 예전에는 셋리스트가 없어도 "셋리스트"를 달았다.
+// 네이버 7일 자료(2026-11-23)에서 끝난 공연이 "5sos 내한 굿즈·셔틀"로 노출 4천 건에 클릭 0.4~0.6%였다.
+const pastExtras = [
+  (event.setlists?.length ?? 0) > 0 ? '셋리스트' : '',
+  (event.merch?.length ?? 0) > 0 || event.mdUrl ? '굿즈' : '',
+  (event.shuttleBus?.length ?? 0) > 0 ? '셔틀' : '',
+].filter(Boolean);
+const pastTail = ['정보', ...pastExtras].join('·');
+// 아티스트 칸에 투어 이름까지 길게 들어간 공연은 titleName(짧은 이름)으로 제목만 줄인다.
+const titleName = event.titleName ?? event.artist;
 const pageTitle = (event.genre === '페스티벌'
   ? `${event.artist}${yp}${cityPart} 라인업·티켓 예매처 정리`
   : domestic
     ? titleIsPast
-      ? `${event.artist}${yp}${cityPart} 콘서트 정보·셋리스트`
+      ? `${titleName}${yp}${cityPart} 콘서트 ${pastTail}`
       : opensLater
         ? `${event.artist}${yp}${cityPart} 콘서트 일정·티켓오픈·예매처`
         : `${event.artist}${yp}${cityPart} 콘서트 일정·예매처·좌석 시야`
     : titleIsPast
-      ? `${event.artist} 내한${yp}${cityPart} 공연 정보·셋리스트`
+      ? `${titleName} 내한${yp}${cityPart} 공연 ${pastTail}`
       : opensLater
         ? `${event.artist} 내한${yp}${cityPart} 티켓오픈 일정·예매처`
         : `${event.artist} 내한${yp}${cityPart} 예매처·좌석·시야 정리`);
 
+// 소개문이 짧으면(60자 미만) 페이지에 있는 정보 종류를 한 줄 덧붙여 검색 결과 설명이 비지 않게 한다.
+const descExtras = [
+  (event.setlists?.length ?? 0) > 0 ? '셋리스트' : '',
+  (event.shuttleBus?.length ?? 0) > 0 ? '셔틀버스 안내' : '',
+  (event.merch?.length ?? 0) > 0 || event.mdUrl ? 'MD·굿즈' : '',
+].filter(Boolean);
+const descTail = (event.description ?? '').length < 60 && descExtras.length > 0
+  ? ` ${descExtras.join(', ')} 정보를 정리했어요.`
+  : '';
 const pageDescription = (event.description
-  ? `${event.description} (${dateLabel}, ${event.venue})`
-  : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}`);
+  ? `${event.description} (${dateLabel}, ${event.venue})${descTail}`
+  : `${event.artist} ${event.city} 공연 - ${dateLabel}, ${event.venue}${descTail}`);
 
 // 한 공연을 여러 사이트에서 판매하는 경우(예: 인터파크 + NOL티켓) 벤더별로
 // 링크를 전부 모은다 - 액션바의 "티켓 예매" 버튼은 캘린더 추가와 같은
