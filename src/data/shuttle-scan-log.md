@@ -1077,6 +1077,77 @@ YUURI LIVE 2026) / 꽃가마 1건(임윤찬 피아노 리사이틀 김해 - 기�
 무관한 기존 공연이라 고치지 않음. 퀸즈스마일 상세는 정류장 목록 첫 페이지(1/2~3)만 확인함.
 ---
 ---
+## 2026-11-13 09:40 KST 실행
+> 2026-11-23 추가: 이 실행은 작업 공간에 커밋되지 않은 채 남아 main에 반영되지 않았어요. 데이터 변경은 이후 실행이 더 최신 내용으로 덮었기 때문에 기록만 옮겨 둬요.
+
+**스캔 방법:** 브라우저 패널로 카카오 T 셔틀(목록 API `display/item` 2페이지 22건, 판매 중 13건은 `item/{id}/route-group`으로
+정류장별 매진 여부 확인, 상태가 바뀐 에이티즈는 `/shuttles/10000619` 화면을 직접 열람), 퀸즈스마일(queenssmile.co.kr/shop/, 모바일
+뷰포트 - SHOP 상세 6개 전부 열어 첫 페이지 정류장의 SOLD OUT 표시 대조, Xdinary Heroes는 스크린샷으로 SOLD OUT 위치 확인),
+꽃가마(ggoggama.com - 랜딩 그대로, 임윤찬 김해 링크 1건뿐) 순.
+카카오 T 수요조사 개별 페이지(`/shuttles/demand/{id}`)는 오늘 `item/{id}/demand` API가 401(로그인 필요)을 돌려줘 화면이 비어 있었음
+→ 수요조사 6건은 목록 API의 상태값(DEMAND)으로만 확인함.
+
+발견된 후보: 카카오 T 22건(Xdinary Heroes, 몬스타엑스, 에이티즈, 마룬5, [기브셔틀]벽화봉사(11/18), 브루노 마스, 데이식스 스페셜 콘서트,
+요네즈 켄시, 런유니버스페스티벌, COUNTDOWN FANTASY 2026-2027, 히어로 락 페스티벌-인천, SBS 2026 가요대전 30th, 한로로, FKJ,
+체리블라썸-창원, 칼리드, 네이버X현대카드 THE SIX, NCT WISH, 엔믹스, 후지이 카제, 이승철, 유우리) / 퀸즈스마일 7건(대구힙합페스티벌,
+WONDERLIVET, NMIXX FINALE INCHEON, Xdinary Heroes IMPULSE, MONSTA X ENCORE, YUURI LIVE 2026 + 마곡 베페 베이비페어) /
+꽃가마 1건(임윤찬 피아노 리사이틀 김해 - 기존 검토 파일행).
+11/12 대비 변화: 카카오 T 목록 구성은 22건 그대로. 에이티즈(10000619)가 수요조사 → 판매 중(ON_SALE)으로 전환.
+
+게시함 (1건):
+- DAY6 (데이식스) 2026 Special Concert 'The Present' (KSPO DOME, 2026-12-18~20, genre 가요, id shuttle-day6-special-concert-the-present-2026-12)
+  - 11/12 검토 파일행이었던 후보. 오늘 NOL 상품 페이지가 열려 있어 5단계 조건을 채움. 출처: NOL 상품 페이지 + 스타뉴스(2026-11-11 발행,
+  "December 18 to 20 ... KSPO DOME", NOL 예매, 선예매 19일·일반 20일 오후 8시) + 카카오 T 수요조사 목록(데이식스 스페셜 콘서트 / KSPO DOME).
+  / **날짜 확인: https://nol.yanolja.com/ticket/products/26016335 - "기간 2026.12.18 ~ 2026.12.20", "공연일정: 2026.12.18 FRI 7PM /
+  12.19 SAT 6PM / 12.20 SUN 5PM (KST)", "공연장소: KSPO DOME". 2026-12-18은 달력으로 금요일(오늘 2026-11-13 금요일 + 35일)이라 요일 일치.
+  같은 페이지의 "팬클럽 선예매 2026년 11월 19일 (목) 8PM - 11:59PM", "일반 예매 2026년 11월 20일 (금) 8PM"도 요일 일치.** 포스터에도
+  "2026.12.18 FRI 7PM | 12.19 SAT 6PM | 12.20 SUN 5PM / KSPO DOME" 표기 확인.
+  - 중복 판정: events.json의 DAY6 관련 항목은 day6-5th-fanmeeting-2026-10(인스파이어 아레나, 10/23~25 - 팬미팅, 날짜·장소 모두 다름)뿐.
+  12월 KSPO DOME 등재 공연은 다비치(12/12~13)뿐이라 12/18~20과 겹치지 않음. 같은 날짜대의 자우림(올림픽홀)·히어로 락 페스티벌
+  (송도컨벤시아)은 공연장·아티스트가 다른 별개 공연. → 신규 확정.
+  - 같이 넣은 것: ticketUrl·ticketLinks(NOL), ticketOpens(팬클럽 선예매 11/19 20:00~23:59, 일반예매 11/20 20:00), shuttleBus(카카오 T
+  수요조사), 포스터(NOL 이미지 캐시), addedAt 2026-11-13, promoBanner. 가격(전석 154,000원)은 NOL 페이지에서 읽은 값.
+  - 스포츠경향 기사(11/12 실행 때 확인)는 이번 실행에서 다시 열지 않아 sources에 넣지 않음.
+
+검토 파일행 (0건): 없음. (DAY6는 게시하면서 shuttle-scan-candidates.json에서 뺌)
+
+기존 공연 셔틀 정보 보강 (23개 공연, shuttleBus 26항목 - 신규 게시한 DAY6 1항목 포함) - 전부 날짜 일치가 이미 확인된 종료 전 등재 공연:
+- 상태가 바뀌어 note 수정 (3항목):
+  - shuttle-ateez-world-tour-zero-to-all-2027-01 - 카카오 T, https://shuttle.kakaomobility.com/shuttles/10000619 : 수요조사 → 예약 열림
+    (정류장 27곳 전부 AVAILABLE, 화면에서 "예약" 버튼 확인). 도착지 표기가 "NAVER ARENA at INSPIRE"로 바뀌어 있었음(주소는 인스파이어
+    엔터테인먼트 리조트 그대로 - 같은 공연장의 표기 변형).
+  - shuttle-xdinary-heroes-impulse-2026-11 - 카카오 T, https://shuttle.kakaomobility.com/shuttles/10000610 : 매진 15곳(강남·마곡·서울역·
+    신도림·왕십리·백석·부평·대구 2·대전 2·부산 2·천안·청주), 일부 매진 6곳(노원·사당·잠실·합정·미금·영통). 11/12에 일부 매진이던
+    광주·전주는 오늘 AVAILABLE.
+  - shuttle-xdinary-heroes-impulse-2026-11 - 퀸즈스마일, https://queenssmile.co.kr/shop/festival/NDQy/ : 11/13(금) 탭 기준 합정·신도림·
+    사당·왕십리·부평·부산 SOLD OUT, 서울역·노원·잠실·수원 예약 가능. 11/12 기록(합정·신도림·서울·잠실·수원 매진)과 다름 - 스크린샷으로
+    SOLD OUT 표시가 합정·신도림·사당 카드에 있고 서울역 카드에는 없는 것을 확인함.
+- 상태 그대로라 확인 날짜만 2026-11-13으로 갱신 (22항목): jason-mraz-2026-11(10000615 - 오늘도 목록에 없음), 5-seconds-of-summer-2026-11
+  (10000629 - 오늘도 목록에 없음), wonderlivet-2026-11(퀸즈 NDI1), shuttle-monsta-x-world-tour-encore-2026-11(카카오 10000596·퀸즈 NDI4),
+  cherry-blossom-music-concert-winter-changwon-2026-11(10000609), shuttle-yuuri-live-seoul-2026-12(카카오 10000578·퀸즈 NDU4),
+  shuttle-khalid-2026-12(10000571), fkj-tyber-tour-korea-2026-12(10000570), fujii-kaze-2027-01(10000625 수요조사),
+  shuttle-maroon5-seoul-2027-01(10000586), bruno-mars-goyang-2027-05(10000600 수요조사), shuttle-hanroro-5th-question-mark-2027-01
+  (10000623), shuttle-nmixx-world-tour-zero-frontier-finale-2026-11(카카오 10000617·퀸즈 NDUw), shuttle-hero-rock-festival-incheon-2026-12
+  (10000616 수요조사), shuttle-lee-seung-chul-40th-concert-2026-12(10000612 수요조사), shuttle-daegu-hiphop-festival-2026-12(퀸즈 NDUz),
+  kenshi-yonezu-ghost-incheon-2027-01(10000618), nct-wish-2nd-concert-tour-seoul-2027-01(10000630 수요조사),
+  shuttle-countdown-fantasy-2026-2027(10000631)
+- 신규 게시와 함께 넣음 (1항목): shuttle-day6-special-concert-the-present-2026-12 - 카카오 T,
+  https://shuttle.kakaomobility.com/shuttles/demand/10000632 (목록 상태 수요조사. 개별 페이지는 11/12 실행에서 열람, 오늘은 로그인 필요로 빈 화면)
+- 카카오 T 판매 중 항목은 Xdinary Heroes를 빼고 전부 route-group 전 정류장 AVAILABLE(매진 없음). 퀸즈스마일은 Xdinary Heroes를 뺀 5건
+  모두 첫 페이지에 SOLD OUT 표시 없음.
+
+제외함/드롭 (5건):
+- 런유니버스페스티벌(인제 스피디움) - 러닝/모터스포츠 행사, 음악 공연 아님 → shuttleBus 보강 대상 아님.
+- 네이버 X 현대카드 THE SIX(인스파이어 아레나) - 테니스 대회, 음악 공연 아님 → shuttleBus 보강 대상 아님.
+- [기브셔틀] 벽화 봉사여행(양평, 11/18) - 봉사 버스 → shuttleBus 보강 대상 아님.
+- 2026 마곡 베페 베이비페어(퀸즈스마일, 2026.11.12~11.15, 칩 표기 F&B) - 육아 박람회, 셔틀 상품도 아님 → 대상 아님.
+- SBS 2026 가요대전 30th(킨텍스, 12/24~25, 카카오 T 수요조사) - 검토 파일에만 있고 events.json 미등재 → 3-B 대상 아님(검토 파일 상태 그대로).
+- (참고) 임윤찬 피아노 리사이틀 김해(꽃가마) - 기존 검토 파일행 그대로, 새 변화 없음.
+
+참고: audit:events ERROR 0 / WARN 10(cherry-blossom 창원·kana-boon·kopis-PF303596·kopis-PF299848·steve-gadd-bhg·benny-sings)은
+이번 실행과 무관한 기존 공연이라 고치지 않음. 새로 게시한 DAY6에는 WARN/ERROR 없음(INFO: 소개 없음 1건). 퀸즈스마일 상세는
+정류장 목록 첫 페이지와 기본 선택 회차만 확인함.
+---
 ## 2026-11-15 09:10 KST 실행
 **스캔 방법:** 브라우저 패널(모바일 뷰포트)로 카카오 T 셔틀 목록 API `display/item` 2페이지 22건(상태·배지만 확인, 정류장별 매진 여부는 이번엔 재확인 안 함), 퀸즈스마일 shop 목록 7건(마곡 베페 베이비페어 포함, 상세 페이지는 열지 않음), 꽃가마 메인(임윤찬 리사이틀 김해 1건만 노출).
 
@@ -1158,6 +1229,30 @@ YUURI LIVE 2026) / 꽃가마 1건(임윤찬 피아노 리사이틀 김해 - 기�
 
 참고: audit:events ERROR 0 / WARN 4(이번 실행과 무관한 기존 경고). 이전 작업 공간 /Users/yongjin/.krconcerts-tasks/shuttle-scan-20261113-090338-73810 에 11/13 실행의 미푸시 변경이 계속 남아 있음 - 건드리지 않음.
 ---
+---
+## 2026-11-19 09:55 KST 실행
+> 2026-11-23 추가: 이 실행은 작업 공간에 커밋되지 않은 채 남아 main에 반영되지 않았어요. 데이터 변경은 이후 실행이 더 최신 내용으로 덮었기 때문에 기록만 옮겨 둬요.
+**스캔 방법:** 카카오 T 셔틀 목록 API `display/item` 2페이지 22건(상태·배지만 확인; 개별 URL은 `/shuttles/{id}` 패턴), 퀸즈스마일 shop 메인 페이지 데이터 7건(행사 id·기간, 상세 미열람), 꽃가마 메인(임윤찬 리사이틀 김해 1건 외 없음). 이번 실행은 브라우저 패널 호출이 승인되지 않아 개별 셔틀 페이지를 열지 못했고, 정류장별 매진 여부(노선 API 경로 미확인)는 재확인하지 못함 - 목록에 보이는 상태만 반영.
+
+발견된 후보: 카카오 T 22건(런유니버스페스티벌, 요네즈 켄시, COUNTDOWN FANTASY, 몬스타엑스, 히어로 락 페스티벌, ATEEZ, 한로로, 엔믹스, 마룬5, SBS 가요대전, 브루노 마스, 데이식스, 더보이즈, 악뮤(킨텍스), FKJ, 칼리드, 체리블라썸 창원, 네이버X현대카드 THE SIX, NCT WISH, 후지이 카제, 이승철, 유우리) / 퀸즈스마일 7건(WATERBOMB SEOUL 2027, 악뮤 대구, 대구힙합페스티벌, WONDERLIVET, NMIXX, 몬스타엑스, 유우리) / 꽃가마 1건(임윤찬).
+11/18 대비 변화: 신규 항목 없음, 상태 변화 없음. 카카오 T 목록에서 [기브셔틀] 벽화 봉사여행(11/18 종료)이 빠짐.
+
+게시함 (0건): 없음.
+
+검토 파일행 (0건): 신규 없음. 기존 후보(더보이즈 10000633 수요조사, WATERBOMB SEOUL 2027, SBS 가요대전, 임윤찬)는 상태 그대로 - 더보이즈 예매처 상품 페이지는 이번 실행에서 다시 찾아보지 않음.
+
+기존 공연 셔틀 정보 보강 (shuttleBus 25항목 확인 날짜 2026-11-19로 갱신, 신규 추가 0, 상태 변경 0):
+- 카카오 T(목록 노출·상태 동일): monsta-x 10000596(판매 중), cherry-blossom 창원 10000609('매진' 배지 유지 - 정류장별 매진은 11/18 확인이라고 note에 명시), yuuri 10000578, khalid 10000571, fkj 10000570, maroon5 10000586, hanroro 10000623, nmixx 10000617, ateez 10000619, kenshi-yonezu 10000618, countdown-fantasy 10000631(이상 판매 중), fujii-kaze 10000625, bruno-mars 10000600, hero-rock 10000616, lee-seung-chul 10000612, nct-wish 10000630, day6 10000632, akmu 앙코르 10000634(이상 수요조사)
+- 5-seconds-of-summer-2026-11(10000629): 목록 비노출 유지, 날짜만 갱신(공연 당일 11/19)
+- 퀸즈스마일 6항목(wonderlivet NDI1, monsta-x NDI4, yuuri NDU4, nmixx NDUw, 대구힙합 NDUz, 악뮤 대구 NDY0): shop 목록 노출·기간이 events.json과 일치(WONDERLIVET 11/20~22, MONSTA X 11/21~22, YUURI 12/5~6, NMIXX 11/27~29, 대구힙합 12/25~26, 악뮤 대구 11/21~22)
+
+제외함/드롭 (6건):
+- 런유니버스페스티벌(인제 스피디움) - 러닝 행사, 음악 공연 아님 → shuttleBus 보강 대상 아님.
+- 네이버 X 현대카드 THE SIX(인스파이어 아레나) - 테니스 대회 → 보강 대상 아님.
+- 2026 SBS 가요대전 30th(킨텍스, 판매 중, 10000624) - events.json 미등재, 기존 검토 파일행(genre 확정 불가) 그대로 → 3-B 대상 아님.
+- 더보이즈 콘서트(KSPO DOME, 수요조사, 10000633) - events.json 미등재, 11/18 검토 파일행 그대로 → 3-B 대상 아님.
+- WATERBOMB SEOUL 2027(퀸즈스마일, 2027.07.24~25) - events.json 미등재, 11/18 검토 파일행 그대로 → 3-B 대상 아님.
+- 임윤찬 리사이틀 김해(꽃가마, 11/26) - events.json 미등재, 기존 검토 파일행 그대로.
 ---
 ## 2026-11-21 16:55 KST 실행
 **스캔 방법:** 11/20 15:24에 시작했으나 중간에 기기가 잠들어 11/21에 이어서 마침(11/19 실행은 미푸시 작업 공간으로 남아 있어 origin/main 기준 직전 실행은 11/18). 카카오 T 셔틀 목록 API `display/item` 2페이지를 11/20(23건)·11/21(23건) 두 번 읽었고, 아래는 11/21 기준. 상태가 바뀐 4건(10000632·10000616·10000630·10000596)과 체리블라썸(10000609)은 `item/{id}/route-group`으로 정류장별 상태 확인. 수요조사 상세(`item/{id}/demand`)는 로그인 없이는 401. 퀸즈스마일 shop 목록 11건(WebFetch, 제목·기간·분류만 보임 - 개별 링크·상태 미노출, 브라우저로는 intro 페이지로 넘어가 목록을 못 읽음). 꽃가마 메인(임윤찬 리사이틀 김해 1건 외 현재 상품 없음).
