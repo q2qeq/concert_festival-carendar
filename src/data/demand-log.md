@@ -5,3 +5,4 @@
 
 2026-11-10 | 7일 방문자 637 | 상위: fujii-kaze-2027-01(151), 5-seconds-of-summer-2026-11(28), jujutsu-kaisen-in-concert-seoul-2026-11(19) | 부여: 없음(5SOS 28명으로 30명 기준 미달) | 해제: 없음 | 현재 demand: fujii-kaze-2027-01 | 활성 고정: kenshi-yonezu-ghost-incheon-2027-01(~11/20), yoasobi-korea-2027-04(~11/23) — 2개 동시 유효(코드는 featuredUntil이 가장 이른 kenshi만 인정, 교체 불필요)
 2026-11-16 | 7일 방문자 638 | 상위: yuki-kuramoto-daegu-2026-12(24), 5-seconds-of-summer-2026-11(21), fujii-kaze-2027-01(20) | 부여: 없음(상위 3개 모두 30명 미달) | 해제: fujii-kaze-2027-01(20명, 기준 미달) | 현재 demand: 없음 | 활성 고정: kenshi-yonezu-ghost-incheon-2027-01(~11/20), yoasobi-korea-2027-04(~11/23) — 2개 동시 유효(코드는 이른 kenshi만 인정)
+2026-11-23 | 7일 방문자 약 760(경로별 합계, 직전 7일 약 650) | 상위: yoasobi-korea-2027-04(50), wonderlivet-2026-11(42, 11/22 종료라 제외), 5-seconds-of-summer-2026-11(26) | 부여: yoasobi-korea-2027-04 | 해제: 없음 | 현재 demand: yoasobi-korea-2027-04 | 활성 고정: yoasobi-korea-2027-04(~11/30) (kenshi featuredUntil 11/20 만료로 삭제)

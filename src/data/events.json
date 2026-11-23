@@ -8249,7 +8249,6 @@
   },
   {
     "id": "kenshi-yonezu-ghost-incheon-2027-01",
-    "featuredUntil": "2026-11-20",
     "artist": "요네즈 켄시 (米津玄師 / Kenshi Yonezu)",
     "genre": "J-POP",
     "venue": "인스파이어 아레나",
@@ -8687,6 +8686,7 @@
   },
   {
     "id": "yoasobi-korea-2027-04",
+    "demand": "high",
     "artist": "요아소비 (YOASOBI)",
     "aliases": [
       "YOASOBI",
