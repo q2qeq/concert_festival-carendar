@@ -30,6 +30,10 @@ description: 직관냥(jikgwannyang.com)의 네이버 서치어드바이저·구
   - 주의: 유입원 이름은 `google.com`이다(`www.google.com`으로 거르면 0건). 네이버는 `m.search.naver.com`과 `search.naver.com`을 더한다. 주소에는 끝 슬래시가 없다(`/practice`).
   - 주의: `day`로 나누면 날짜가 UTC 자정 기준으로 맞춰진다(KST 오전 9시 경계). 일별 숫자는 대시보드와 조금 다를 수 있으니 기간 합계는 `since`를 KST 자정(전날 15:00Z)으로 준 합계 호출로 낸다.
   - 커넥터로 안 나오는 것: 이탈률, Speed Insights. 필요하면 그것만 대시보드에서 본다.
+  - **일별 기록(2026-11-24~)**: Vercel Hobby 플랜은 최근 31일만 조회돼서 한 달 지난 숫자는 사라진다. 그래서 `src/data/traffic-daily.csv`(date,visitors,pageviews,naver,google,other)에 하루 한 줄씩 쌓는다. 분석을 돌릴 때마다 마지막 줄 다음 날부터 어제까지 비어 있는 날을 채운다.
+    - 호출 3번: `aggregate_pageviews` by `["day"]`(전체) · 같은 호출에 filter `referrerHostname in ('m.search.naver.com','search.naver.com')` · filter `referrerHostname eq 'google.com'`. `other` = 전체 − 네이버 − 구글(직접·기타).
+    - 날짜는 UTC 일 경계(KST 오전 9시) 그대로 적는다. 오늘은 하루가 안 끝났으니 넣지 않는다. 빠진 날이 있으면 31일 안일 때 같은 호출로 채우고, 31일이 지났으면 못 채운 것이니 빈 채로 둔다.
+    - 주간 곡선은 월~일로 묶어서 본다(톱니 같은 주간 리듬 때문에 일별로는 추세가 안 보인다).
 - 대시보드(Chrome): 프로젝트 `concert-festival-carendar` > Analytics. 방문자·페이지뷰·상위 페이지·Referrers·국가·디바이스.
 - 알려진 제약: 페이지별 필터는 URL 파라미터/행 클릭으로 잘 안 먹는다. 안 되면 상위 페이지 표를 그대로 읽는다. 커스텀 이벤트는 Pro 전용이라 비어 있다.
 - 커스텀 이벤트 대신 `npm run clicks:report -- 28` 으로 예매처·캘린더 구독 클릭을 본다. 테스트 클릭(ticket:nol / bruno-mars 1건)은 제외.
