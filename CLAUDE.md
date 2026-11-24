@@ -17,7 +17,7 @@
 | 인기 공연 디벨롭 절차 | `docs/popular-event-routine.md` |
 | 공연 상세 셀프 점검 | `docs/event-page-review.md` |
 | 성과 기준·효과 판정 | `.claude/skills/traffic-feedback/SKILL.md` 4-0절 |
-| 일별 방문자·유입원 기록(성장 곡선용, Vercel은 31일만 보관) | `src/data/traffic-daily.csv`, 채우는 법은 같은 스킬 2절 |
+| 일별 방문자·유입원 기록(성장 곡선용, Vercel은 31일만 보관) | `src/data/traffic-daily.csv`, 매일 GitHub Action(`traffic-daily.yml`, 시크릿 `VERCEL_TOKEN`)이 한 줄씩 추가. 빠진 날은 스킬 2절 |
 | 스케줄 작업 상세 프롬프트·작업 로그 | `.routines/` (git에 안 올라가는 로컬 폴더, 메인 체크아웃에만 있음) |
 | 스케줄 작업 등록 | `~/.claude/scheduled-tasks/<작업>/SKILL.md` |
 | 다른 컴퓨터(윈도)에서 작업하기 | `docs/new-machine.md` |
