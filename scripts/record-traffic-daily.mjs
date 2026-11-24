@@ -39,7 +39,16 @@ const earliest = dayStr(Date.parse(todayUtc) - 30 * DAY);
 let from = last ? dayStr(Date.parse(last) + DAY) : earliest;
 if (from < earliest) from = earliest;
 if (from > yesterday) {
-  console.log(`채울 날이 없어요(마지막 ${last}, 어제 ${yesterday}).`);
+  // 채울 날이 없어도 토큰·접근 권한이 살아 있는지 가볍게 한 번 확인한다(만료·권한 오류를 조용히 지나치지 않으려고).
+  const probe = await fetch(
+    `${base}/v1/query/web-analytics/visits/count?${new URLSearchParams({ teamId, projectId, since: `${yesterday}T00:00:00.000Z` })}`,
+    { headers: { Authorization: `Bearer ${token}` } },
+  );
+  if (!probe.ok) {
+    console.error(`Vercel 접근 확인 실패: HTTP ${probe.status} ${(await probe.text()).slice(0, 300)}`);
+    process.exit(1);
+  }
+  console.log(`채울 날이 없어요(마지막 ${last}, 어제 ${yesterday}). Vercel 접근은 정상입니다.`);
   process.exit(0);
 }
 
