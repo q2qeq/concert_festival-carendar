@@ -41,7 +41,7 @@ if (from < earliest) from = earliest;
 if (from > yesterday) {
   // 채울 날이 없어도 토큰·접근 권한이 살아 있는지 가볍게 한 번 확인한다(만료·권한 오류를 조용히 지나치지 않으려고).
   const probe = await fetch(
-    `${base}/v1/query/web-analytics/visits/count?${new URLSearchParams({ teamId, projectId, since: `${yesterday}T00:00:00.000Z` })}`,
+    `${base}/v1/query/web-analytics/visits/count?${new URLSearchParams({ teamId, projectId, since: `${yesterday}T00:00:00.000Z`, until: `${yesterday}T23:59:59.000Z` })}`,
     { headers: { Authorization: `Bearer ${token}` } },
   );
   if (!probe.ok) {
