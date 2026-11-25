@@ -7627,6 +7627,11 @@
         "operator": "카카오 T 셔틀",
         "url": "https://shuttle.kakaomobility.com/shuttles/10000619",
         "note": "셔틀 스캔으로 확인 (2026-11-21). 예약 가능 상태(11/15에 수요조사에서 판매 중으로 바뀜). 노선·요금은 예약 화면에서 확인하세요."
+      },
+      {
+        "operator": "퀸즈스마일",
+        "url": "https://queenssmile.co.kr/shop/festival/NDYw/",
+        "note": "셔틀 스캔으로 확인 (2026-11-25). 퀸즈스마일 SHOP에 '에이티즈 콘서트 유료 셔틀 버스'로 새로 등록됨(2027.01.22~01.24). 노선·요금은 상세 페이지에서 확인하세요."
       }
     ],
     "posterUrl": "/posters/shuttle-ateez-world-tour-zero-to-all-2027-01.webp",

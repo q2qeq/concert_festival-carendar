@@ -238,5 +238,28 @@
         "url": "https://queenssmile.co.kr/shop/"
       }
     ]
+  },
+  {
+    "artist": "JX 2027 TOUR ENCORE CONCERT <CORE> in BUSAN (김재중 & 김준수)",
+    "venue": "벡스코 제1전시장 1·2홀",
+    "city": "부산",
+    "startDate": "2027-01-01",
+    "endDate": "2027-01-03",
+    "genre": "가요",
+    "note": "직접 게시 보류 (2026-11-25): 카카오 T 셔틀에 'JX 콘서트'(10000637, 부산 BEXCO, 수요조사)가 새로 올라옴. 싱글리스트·브레이크뉴스·톱스타뉴스(모두 2026-11-20, 원문 확인)가 2027.1.1(금)~3(일) 벡스코 제1전시장 1·2홀, NOL 티켓, 팬클럽 선예매 11/27(금) 20:00, 일반 예매 11/30(월) 20:00으로 일치. 2027-01-01은 달력상 금요일로 맞음. 기존 shuttle-jx-core-incheon-2026-10(인스파이어 아레나 10/9~11)과 날짜·도시가 달라 별개 공연. 예매처(NOL) 상품 페이지를 찾지 못해 날짜 근거가 기사뿐이라 5단계 미충족. 선예매가 11/27이라 티켓오픈 워치가 NOL 상품 페이지를 찾으면 바로 게시할 것(셔틀: 카카오 T https://shuttle.kakaomobility.com/shuttles/demand/10000637 수요조사).",
+    "sources": [
+      {
+        "label": "싱글리스트 - 김재중·김준수 JX, 내년 1월 부산서 앙코르 콘서트 (2026-11-20)",
+        "url": "https://www.slist.kr/news/articleView.html?idxno=783477"
+      },
+      {
+        "label": "브레이크뉴스 - JX 김재중·김준수, 내년 1월 부산 앙코르 콘서트 개최 (2026-11-20)",
+        "url": "http://www.breaknews.com/1252756"
+      },
+      {
+        "label": "톱스타뉴스 - 김재중·김준수 JX, 2027년 1월 부산 앙코르 콘서트 확정 (2026-11-20)",
+        "url": "https://www.topstarnews.net/news/articleView.html?idxno=16281586"
+      }
+    ]
   }
 ]
