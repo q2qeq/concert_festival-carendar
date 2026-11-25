@@ -1188,13 +1188,21 @@ const jsonLd = [
       try {
         const clone = svg.cloneNode(true) as SVGSVGElement;
         const vb = (svg.getAttribute('viewBox') || '0 0 100 100').split(/\s+/).map(Number);
-        const cw = 540, ch = Math.round((cw * vb[3]) / vb[2]);
+        // 포즈마다 그림 비율이 다르다(자는 포즈는 납작, 응원 포즈는 키가 큼). 같은 칸 안에 비율대로 맞추고
+        // 발 높이를 땅선에 맞춰, 어떤 결과든 고양이가 비슷한 크기로 같은 자리에 선다.
+        const BOX_W = 700, BOX_H = 600, GROUND = 920;
+        const sc = Math.min(BOX_W / vb[2], BOX_H / vb[3]);
+        const cw = Math.round(vb[2] * sc), ch = Math.round(vb[3] * sc);
         clone.setAttribute('width', String(cw)); clone.setAttribute('height', String(ch));
         clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
         const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)], { type: 'image/svg+xml' }));
         const img = new Image();
         await new Promise<void>((ok, fail) => { img.onload = () => ok(); img.onerror = () => fail(new Error('svg')); img.src = url; });
-        ctx.drawImage(img, (W - cw) / 2, 320, cw, ch);
+        // 땅 그림자(단색 타원): 고양이가 허공에 떠 보이지 않게 한다
+        ctx.fillStyle = line;
+        ctx.beginPath(); ctx.ellipse(W / 2, GROUND + 6, Math.min(cw, 520) / 2 + 30, 22, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(img, (W - cw) / 2, GROUND - ch, cw, ch);
         URL.revokeObjectURL(url);
       } catch { /* 그림을 못 그려도 글자 카드는 만든다 */ }
     }
@@ -1204,11 +1212,11 @@ const jsonLd = [
     let gs = 132;
     ctx.fillStyle = fg;
     do { ctx.font = `800 ${gs}px ${font}`; gs -= 6; } while (ctx.measureText(grade).width > W - 160 && gs > 48);
-    ctx.fillText(grade, W / 2, 1080);
+    ctx.fillText(grade, W / 2, 1100);
 
     const rankEl = $('g-rank');
     const rank = rankEl.hidden ? '' : (rankEl.textContent?.trim() || '');
-    if (rank) { ctx.fillStyle = cheese; ctx.font = `700 64px ${font}`; ctx.fillText(rank, W / 2, 1190); }
+    if (rank) { ctx.fillStyle = cheese; ctx.font = `700 64px ${font}`; ctx.fillText(rank, W / 2, 1205); }
 
     const parts = ($('g-detail').textContent || '').split(' · ').map((s) => s.trim()).filter(Boolean).slice(0, 6);
     ctx.fillStyle = fg2; ctx.font = `500 44px ${font}`;
