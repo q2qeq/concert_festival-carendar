@@ -11621,5 +11621,155 @@
     ],
     "addedAt": "2026-11-24",
     "posterSourceUrl": "https://image.toast.com/aaaaab/ticketlink/TKL_10/main1120(3).jpg"
+  },
+  {
+    "id": "i-musici-seoul-2027-01",
+    "artist": "이 무지치 (I Musici)",
+    "aliases": [
+      "I Musici",
+      "이무지치",
+      "이 무지치 신년음악회",
+      "창단 75주년 기념 이 무지치 신년음악회"
+    ],
+    "genre": "클래식",
+    "venue": "예술의전당 콘서트홀",
+    "city": "서울",
+    "startDate": "2027-01-12",
+    "endDate": "2027-01-12",
+    "description": "이탈리아 실내악단 이 무지치의 창단 75주년 기념 신년음악회예요. 2027년 1월 12일(화) 오후 7시 30분 예술의전당 콘서트홀에서 열리고, 비발디 '사계'를 비롯해 코렐리·제미니아니·하이든 작품을 연주해요. 바이올리니스트 김연아가 게스트로 함께해요. R석 130,000원부터 B석 50,000원까지예요.",
+    "schedule": "1/12(화) 오후 7시 30분, 95분, 초등학생 이상",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 예술의전당 공연 페이지(SN=82302)에서 공연명·일시·장소·가격 확인. 주최 크레디아뮤직앤아티스트. 공식 예매처는 예술의전당·클럽발코니·NOL·예스24·티켓링크(예술의전당·NOL·예스24·클럽발코니 좌석 연동). 티켓 오픈 11/3 16시는 검색 스니펫(NOL)에서만 봐서 ticketOpenAt은 넣지 않음. NOL 상품 26015678(검색 결과)은 Chrome 연결이 없어 대조 못 함 - 다음 실행에서 대조 후 ticketLinks에 추가할 것. 예스24 검색 페이지는 내장 브라우저에서 오류.",
+    "ticketLinks": [
+      {
+        "vendor": "예술의전당",
+        "url": "https://www.sac.or.kr/site/main/show/show_view?SN=82302"
+      }
+    ],
+    "prices": [
+      {
+        "label": "R석",
+        "price": 130000
+      },
+      {
+        "label": "S석",
+        "price": 100000
+      },
+      {
+        "label": "A석",
+        "price": 70000
+      },
+      {
+        "label": "B석",
+        "price": 50000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-26",
+    "pricesSource": {
+      "label": "예술의전당 공연 정보",
+      "url": "https://www.sac.or.kr/site/main/show/show_view?SN=82302"
+    },
+    "facts": {
+      "startTime": "오후 7시 30분",
+      "runningTime": "95분",
+      "age": "초등학생 이상",
+      "items": [
+        {
+          "label": "예매처",
+          "value": "예술의전당·클럽발코니·NOL·예스24·티켓링크 (예매처별 배정 좌석이 달라요. 예술의전당·NOL·예스24·클럽발코니는 좌석 연동)"
+        }
+      ],
+      "checkedAt": "2026-11-26",
+      "source": {
+        "label": "예술의전당 공연 정보",
+        "url": "https://www.sac.or.kr/site/main/show/show_view?SN=82302"
+      }
+    },
+    "sources": [
+      {
+        "label": "창단 75주년 기념 이 무지치 신년음악회 - 예술의전당 공연 정보",
+        "url": "https://www.sac.or.kr/site/main/show/show_view?SN=82302"
+      }
+    ],
+    "addedAt": "2026-11-26",
+    "posterUrl": "/posters/i-musici-seoul-2027-01.webp",
+    "posterSourceUrl": "https://www.sac.or.kr//site/main/file/thumbnail/uu/da2f244851eb4d4a9b22d61c08bcd23f"
+  },
+  {
+    "id": "i-musici-iksan-2027-01",
+    "artist": "이 무지치 (I Musici)",
+    "aliases": [
+      "I Musici",
+      "이무지치",
+      "이 무지치 신년음악회 - 익산"
+    ],
+    "genre": "클래식",
+    "venue": "익산예술의전당 대공연장",
+    "city": "익산",
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-09",
+    "description": "이탈리아 실내악단 이 무지치의 신년음악회 익산 공연이에요. 2027년 1월 9일(토) 오후 4시 익산예술의전당 대공연장에서 열리고, 관람 시간은 인터미션 15분을 포함해 95분이에요. 티켓링크 단독 판매이고 티켓은 12월 2일(수) 오후 4시에 열려요. R석 50,000원, S석 30,000원이에요.",
+    "schedule": "1/9(토) 오후 4시, 95분(인터미션 15분), 초등학생 이상",
+    "note": "티켓오픈 공지 워치로 막 발견한 공연이라 상세 정보(포스터·셋리스트 등)는 아직 부족해요 - 확인되는 대로 채워 넣을게요. 티켓링크 공지 66639(11/25 등록)와 공지에 연결된 상품 67350(상품명 '이 무지치 신년음악회 - 익산', 공지 placeName 익산예술의전당 대공연장)을 대조해 ticketLinks에 넣음. 상품 이미지는 기본 더미라 포스터 없음.",
+    "ticketingAnnounced": true,
+    "ticketOpenDate": "2026-12-02 오후 4시 - 티켓링크 단독판매",
+    "ticketOpenAt": "2026-12-02T16:00:00+09:00",
+    "ticketLinks": [
+      {
+        "vendor": "티켓링크",
+        "url": "https://www.ticketlink.co.kr/product/67350"
+      }
+    ],
+    "saleState": "upcoming",
+    "saleCheckedAt": "2026-11-26",
+    "prices": [
+      {
+        "label": "R석",
+        "price": 50000
+      },
+      {
+        "label": "S석",
+        "price": 30000
+      }
+    ],
+    "pricesCheckedAt": "2026-11-26",
+    "pricesSource": {
+      "label": "티켓링크 공지사항",
+      "url": "https://www.ticketlink.co.kr/help/notice/66639"
+    },
+    "facts": {
+      "startTime": "오후 4시",
+      "runningTime": "95분(인터미션 15분)",
+      "age": "초등학생 이상",
+      "items": [
+        {
+          "label": "결제",
+          "value": "카드 결제만 가능(무통장입금 불가)"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "공연 당일 1시간 전부터 현장 매표소"
+        },
+        {
+          "label": "할인",
+          "value": "조기예매 30% (12/13까지, 아이디당 4매)"
+        }
+      ],
+      "checkedAt": "2026-11-26",
+      "source": {
+        "label": "티켓링크 공지사항",
+        "url": "https://www.ticketlink.co.kr/help/notice/66639"
+      }
+    },
+    "sources": [
+      {
+        "label": "[단독판매] 이 무지치 신년음악회 - 익산 티켓오픈 안내 - 티켓링크 공지사항 (2026-11-25)",
+        "url": "https://www.ticketlink.co.kr/help/notice/66639"
+      },
+      {
+        "label": "창단 75주년 기념 이 무지치 신년음악회(서울) - 예술의전당 공연 정보",
+        "url": "https://www.sac.or.kr/site/main/show/show_view?SN=82302"
+      }
+    ],
+    "addedAt": "2026-11-26"
   }
 ]
