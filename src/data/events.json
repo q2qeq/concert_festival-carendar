@@ -9848,6 +9848,11 @@
       {
         "date": "2026-11-19",
         "text": "NOL이 예매자에게 교통편 안내 문자를 보냈어요. 공항화물청사역 2번 출구에서 아레나까지 무료 순환 셔틀이 다니고, 카카오 T 유료 셔틀은 수도권 14곳·지방 9개 도시에서 출발해요. 아레나 주차장이 매우 붐빌 예정이라 셔틀 이용을 권했어요."
+      },
+      {
+        "date": "2026-11-26",
+        "text": "공식 온라인 스토어가 일본 투어(2026 TOUR / GHOST) 굿즈의 수주 생산 판매를 시작했어요. 1차 접수는 11/26 12:00~12/4 23:59, 2차는 12/5~12/20이고, 12/24 19:00부터는 남은 재고를 팔아요. 일본 밖에서는 배송대행(tenso.com)을 이용해야 해요.",
+        "sourceUrl": "https://shop.kenshiyonezu.jp/blogs/news/20261126"
       }
     ],
     "posterUrl": "/posters/kenshi-yonezu-ghost-incheon-2027-01.webp",
@@ -9883,6 +9888,40 @@
         "videoId": "dyVaeESxQho",
         "note": "라이브네이션 UK가 올린 이번 월드투어 안내 영상이에요.",
         "sourceUrl": "https://www.youtube.com/watch?v=dyVaeESxQho"
+      }
+    ],
+    "mdUrl": "https://shop.kenshiyonezu.jp/collections/26-ghost",
+    "merch": [
+      {
+        "label": "일본 투어 GHOST 굿즈 온라인 수주 생산 (사전 주문)",
+        "variants": "1차 11/26 12:00~12/4 23:59 · 2차 12/5 0:00~12/20 23:59",
+        "url": "https://shop.kenshiyonezu.jp/blogs/news/20261126",
+        "note": "일본 투어(2026 TOUR / GHOST) 상품이에요. 인천 공연 현장 MD는 아직 발표를 확인하지 못했어요. 1차는 2027년 1월 하순, 2차는 2월 하순부터 차례로 발송돼요. 일본 밖에서는 배송대행 tenso.com(무료 가입·본인 확인, 해외 배송 요금 별도)을 거쳐야 받을 수 있어요. 일본 국내 배송료는 900엔이고, 상품 하나당 1인 3개까지(랜덤 상품 '리이슈 올스타즈'는 6개까지)예요."
+      },
+      {
+        "label": "GHOST 재킷",
+        "price": "¥15,000",
+        "url": "https://shop.kenshiyonezu.jp/collections/26-ghost"
+      },
+      {
+        "label": "보르조이 Zip Hoody",
+        "price": "¥12,000",
+        "url": "https://shop.kenshiyonezu.jp/collections/26-ghost"
+      },
+      {
+        "label": "보르조이 스웨트",
+        "price": "¥8,800",
+        "url": "https://shop.kenshiyonezu.jp/collections/26-ghost"
+      },
+      {
+        "label": "GHOST 게임 셔츠 (BLACK·WHITE)",
+        "price": "¥7,800",
+        "url": "https://shop.kenshiyonezu.jp/collections/26-ghost"
+      },
+      {
+        "label": "보르조이 T",
+        "price": "¥5,000",
+        "url": "https://shop.kenshiyonezu.jp/collections/26-ghost"
       }
     ]
   },
