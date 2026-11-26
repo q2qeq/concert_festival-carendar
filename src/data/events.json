@@ -6429,7 +6429,7 @@
         "note": "셔틀 스캔으로 확인 (2026-11-21). 퀸즈스마일 shop 목록에 계속 노출. 유료 셔틀버스(왕복/편도 티켓 17,000원~, 요금·정류장별 예약 가능 여부는 11/12 확인 기준). 노선/운행시간 및 예약·취소·환불 규정은 예약 페이지에서 확인 (변동 가능)"
       }
     ],
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "posterUrl": "/posters/shuttle-nmixx-world-tour-zero-frontier-finale-2026-11.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26013946_p.gif",
     "prices": [
@@ -6457,7 +6457,7 @@
   },
   {
     "id": "tahiti-80-seoul-2026-11",
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "artist": "Tahiti 80 (타히티 80)",
     "aliases": [
       "타히티80",
@@ -6506,7 +6506,7 @@
   },
   {
     "id": "cho-yong-pil-seoul-2026-11",
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "artist": "조용필 & 위대한 탄생",
     "aliases": [
       "조용필",
@@ -6573,7 +6573,7 @@
   },
   {
     "id": "dynamic-duo-seoul-2026-11",
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "artist": "다이나믹 듀오 (Dynamic Duo)",
     "aliases": [
       "다이나믹듀오",
@@ -6638,7 +6638,7 @@
     "note": "예스24 티켓 기준 스탠딩석·지정석 88,000원, 러닝타임 90분, 7세 이상 관람가. 주최 (주)엠피엠지.",
     "posterUrl": "/posters/kopis-PF299935.webp",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF299935_260902_151618.jpg",
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "ticketLinks": [
       {
         "vendor": "예스24",
@@ -6675,7 +6675,13 @@
       "url": "https://ticket.yes24.com/Perf/59771"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "officialSns": [
+      {
+        "label": "Instagram - 더 볼트(주최사) @thevault.live.kr",
+        "url": "https://www.instagram.com/thevault.live.kr/"
+      }
+    ]
   },
   {
     "id": "bluenote-tokyo-lisaono-iksan-2026-11",
@@ -6770,7 +6776,7 @@
     "posterUrl": "/posters/kopis-PF303596.webp",
     "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요.",
     "posterSourceUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF303596_261016_135100.jpg",
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "prices": [
       {
         "label": "R석",
@@ -6830,7 +6836,7 @@
   },
   {
     "id": "sunny-day-service-seoul-2026-12",
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "artist": "Sunny Day Service (서니 데이 서비스)",
     "aliases": [
       "サニーデイ・サービス",
@@ -7059,7 +7065,7 @@
       }
     ],
     "enrichmentCheckedAt": "2026-09-03",
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "posterUrl": "/posters/shuttle-yuuri-live-seoul-2026-12.webp",
     "posterSourceUrl": "https://ticketimage.interpark.com/Play/image/large/26/26010352_p.gif",
     "shuttleBus": [
@@ -7472,7 +7478,7 @@
         "url": "https://www.instagram.com/frenchkiwijuice/"
       }
     ],
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "description": "프랑스 멀티 인스트루멘탈리스트 FKJ의 세 번째 정규앨범 'Tyber'를 지원하는 아시아 7개 도시 투어 서울 공연.",
     "funFacts": [
       "라이브가 독특해요 - 반주 없이 색소폰·키보드·기타를 오가며 루프 페달로 쌓아 올려서, 혼자서 풀 밴드 사운드를 만들어내요.",
@@ -7505,7 +7511,7 @@
   },
   {
     "id": "zazen-boys-seoul-2026-12",
-    "merchCheckedAt": "2026-11-21",
+    "merchCheckedAt": "2026-11-26",
     "artist": "Zazen Boys (자젠보이즈)",
     "genre": "J-POP",
     "venue": "무신사 개러지 (musinsa garage)",
