@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_TITLE } from '../consts';
-import Mascot from '../components/Mascot.astro';
 ---
 <BaseLayout title="소개">
   <h1>{SITE_TITLE} 소개</h1>
@@ -17,7 +16,7 @@ import Mascot from '../components/Mascot.astro';
 
   <h2>새벽이와 노을이</h2>
   <div class="mascot-showcase">
-    <Mascot size={250} />
+    <img class="cats" src="/mascot/groom.webp" width="320" height="164" alt="새벽이가 눈 감은 노을이의 머리를 핥아 주는 모습" />
     <p>
       고등어가 <strong>새벽이</strong>, 치즈가 <strong>노을이</strong>예요.
       공연 뒷이야기는 새벽이가, 티켓오픈 소식은 노을이가 챙겨요.
@@ -33,6 +32,7 @@ import Mascot from '../components/Mascot.astro';
     margin-top: 1rem;
   }
   .mascot-showcase p { margin: 0; }
+  .cats { width: min(320px, 100%); height: auto; flex-shrink: 0; }
   @media (max-width: 520px) {
     .mascot-showcase { flex-direction: column; align-items: flex-start; }
   }
