@@ -123,7 +123,9 @@ const openPopoverLinks = [
     .filter((p) => p.url)
     .map((p) => ({ label: `${p.title} (선예매)`, url: p.url as string })),
 ];
-const ticketPopoverLinks = saleClosed ? [] : openPopoverLinks;
+// 취소된 공연도 살 수 있는 것이 없으니 예매 버튼을 숨긴다(2026-11-27, PM Kenobi 취소 때 버튼이 남아 있었다).
+const isCancelled = (event.status ?? 'scheduled') === 'cancelled';
+const ticketPopoverLinks = saleClosed || isCancelled ? [] : openPopoverLinks;
 
 // MD·팬클럽은 "예매"는 아니지만 자주 같이 필요한 액션이라, 있을 때만 액션바에
 // 각자 작은 버튼으로 노출한다.
@@ -133,7 +135,7 @@ const fanclubActionUrl = event.fanclubUrl ?? null;
 // 예매 가능한 링크가 하나도 없을 때(티켓 오픈 전 페스티벌 등)는 공식
 // 홈페이지를 대표 액션으로 쓴다.
 const fallbackPrimaryUrl =
-  ticketPopoverLinks.length === 0 && event.officialUrl && !saleClosed ? event.officialUrl : null;
+  ticketPopoverLinks.length === 0 && event.officialUrl && !saleClosed && !isCancelled ? event.officialUrl : null;
 
 // 공식 홈페이지는, 이미 대표 액션(fallbackPrimaryUrl)으로 쓰인 게 아니라면
 // 티켓 팝오버와 별개로 항상 눌러볼 수 있게 노출한다.

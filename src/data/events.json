@@ -6445,7 +6445,7 @@
     },
     "description": "엔믹스의 첫 월드투어 'EPISODE 1: ZERO FRONTIER'를 마무리하는 피날레 공연이에요. 11월 27~29일 사흘 동안 인천 인스파이어 아레나에서 열려요. 2025년 11월 같은 인스파이어 아레나에서 출발해 유럽·북미·아시아 17개 도시에서 21회 공연을 하고, 시작한 곳에서 투어를 닫는 셈이에요.",
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18",
+    "saleCheckedAt": "2026-11-27",
     "youtubeVideos": [
       {
         "title": "NMIXX 'RICO' Live Clip @ZERO FRONTIER IN INCHEON",
@@ -6453,7 +6453,41 @@
         "note": "2025년 11월 같은 공연장에서 열린 투어 첫 공연의 공식 라이브 클립이에요.",
         "sourceUrl": "https://www.youtube.com/watch?v=Jc_iytoDc7M"
       }
-    ]
+    ],
+    "facts": {
+      "age": "만 7세 이상",
+      "items": [
+        {
+          "label": "시작 시각",
+          "value": "27일(금) 오후 7시 · 28일(토) 오후 5시 · 29일(일) 오후 4시"
+        },
+        {
+          "label": "구매 제한",
+          "value": "회차당 1인 2매 (이미 예매한 매수 포함)"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "모바일티켓 전용 (실물 티켓 배송·현장 수령 없음)"
+        },
+        {
+          "label": "당일 구매",
+          "value": "현장 판매 없음. 남은 좌석은 공연 시작 전까지 온라인으로 구매"
+        },
+        {
+          "label": "무통장 입금",
+          "value": "이 공연 예매에는 쓸 수 없어요"
+        },
+        {
+          "label": "예매대기",
+          "value": "예매대기·동일좌석 재예매 서비스 이용 제한"
+        }
+      ],
+      "checkedAt": "2026-11-27",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26013946"
+      }
+    }
   },
   {
     "id": "tahiti-80-seoul-2026-11",
@@ -6501,8 +6535,24 @@
       "label": "NOL 티켓 예매 페이지",
       "url": "https://nol.yanolja.com/ticket/products/26015105"
     },
-    "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleState": "closed",
+    "saleCheckedAt": "2026-11-27",
+    "facts": {
+      "startTime": "오후 8시",
+      "runningTime": "135분",
+      "age": "15세 이상",
+      "items": [
+        {
+          "label": "예매 마감",
+          "value": "월~토요일 공연은 전날 오후 5시까지 (이 공연은 온라인 판매 종료)"
+        }
+      ],
+      "checkedAt": "2026-11-27",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26015105"
+      }
+    }
   },
   {
     "id": "cho-yong-pil-seoul-2026-11",
@@ -6569,7 +6619,34 @@
       "url": "https://ticket.yes24.com/Perf/60153"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-18",
+    "facts": {
+      "runningTime": "총 130분",
+      "age": "8세 이상",
+      "items": [
+        {
+          "label": "시작 시각",
+          "value": "27일(금) 오후 7시 · 28일(토) 오후 6시 · 29일(일) 오후 5시"
+        },
+        {
+          "label": "구매 제한",
+          "value": "회차별 1인 4매"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "현장 수령만 가능"
+        },
+        {
+          "label": "무통장 입금",
+          "value": "예매 당일 밤 11시 29분까지"
+        }
+      ],
+      "checkedAt": "2026-11-27",
+      "source": {
+        "label": "YES24 티켓 예매 페이지",
+        "url": "https://ticket.yes24.com/Perf/60153"
+      }
+    }
   },
   {
     "id": "dynamic-duo-seoul-2026-11",
@@ -6619,7 +6696,29 @@
       "url": "https://nol.yanolja.com/ticket/products/26013810"
     },
     "saleState": "open",
-    "saleCheckedAt": "2026-11-18"
+    "saleCheckedAt": "2026-11-27",
+    "facts": {
+      "age": "만 7세 이상",
+      "items": [
+        {
+          "label": "시작 시각",
+          "value": "27일(금) 오후 8시 · 28일(토) 오후 6시 · 29일(일) 오후 5시"
+        },
+        {
+          "label": "예매 마감",
+          "value": "관람 4시간 전까지"
+        },
+        {
+          "label": "예매대기",
+          "value": "예매대기·동일좌석 재예매 서비스 이용 제한"
+        }
+      ],
+      "checkedAt": "2026-11-27",
+      "source": {
+        "label": "NOL 티켓 예매 페이지",
+        "url": "https://nol.yanolja.com/ticket/products/26013810"
+      }
+    }
   },
   {
     "id": "ellegarden-seoul-2026-11",
@@ -6681,7 +6780,27 @@
         "label": "Instagram - 더 볼트(주최사) @thevault.live.kr",
         "url": "https://www.instagram.com/thevault.live.kr/"
       }
-    ]
+    ],
+    "facts": {
+      "startTime": "오후 6시",
+      "runningTime": "90분 (인터미션 없음)",
+      "age": "7세 이상",
+      "items": [
+        {
+          "label": "구매 제한",
+          "value": "회차별 1인 2매"
+        },
+        {
+          "label": "티켓 수령",
+          "value": "현장 수령만 가능"
+        }
+      ],
+      "checkedAt": "2026-11-27",
+      "source": {
+        "label": "YES24 티켓 예매 페이지",
+        "url": "https://ticket.yes24.com/Perf/59771"
+      }
+    }
   },
   {
     "id": "bluenote-tokyo-lisaono-iksan-2026-11",
@@ -6724,6 +6843,22 @@
     "pricesSource": {
       "label": "티켓링크 예매 페이지",
       "url": "https://www.ticketlink.co.kr/product/65425"
+    },
+    "facts": {
+      "startTime": "오후 4시",
+      "runningTime": "90분 (인터미션 15분)",
+      "age": "초등학생 이상",
+      "items": [
+        {
+          "label": "티켓",
+          "value": "관람객 1인당 1매가 필요해요"
+        }
+      ],
+      "checkedAt": "2026-11-27",
+      "source": {
+        "label": "티켓링크 예매 페이지",
+        "url": "https://www.ticketlink.co.kr/product/65425"
+      }
     }
   },
   {
@@ -6738,11 +6873,15 @@
     "ticketOpenDate": "2026-09-18 저녁 6시",
     "ticketOpenAt": "2026-09-18T18:00:00+09:00",
     "note": "가격은 전석 88,000원이에요(멜론티켓 예매 페이지 기준, 2026-11-17 확인).",
-    "description": "재일교포 래퍼 PM Kenobi의 첫 내한 공연. Luci Gang과 함께 홍대 롤링홀에서 열려요.",
+    "description": "재일교포 래퍼 PM Kenobi의 첫 내한 공연은 취소됐어요. 11월 28일(토) 홍대 롤링홀에서 열릴 예정이었어요. 예매한 티켓은 일괄 취소 뒤 전액 환불돼요. 직접 취소하면 수수료가 붙으니 일괄 취소를 기다려 주세요.",
     "sources": [
       {
         "label": "멜론티켓 - PM Kenobi(피엠 케노비) Live in Seoul 티켓 오픈 안내",
         "url": "https://ticket.melon.com/csoon/detail.htm?csoonId=12845"
+      },
+      {
+        "label": "멜론티켓 - PM Kenobi 공연 취소 안내 (예매 페이지)",
+        "url": "https://ticket.melon.com/performance/index.htm?prodId=213872"
       }
     ],
     "posterUrl": "/posters/pm-kenobi-seoul-2026-11.webp",
@@ -6763,7 +6902,17 @@
     "pricesSource": {
       "label": "멜론티켓 예매 페이지",
       "url": "https://ticket.melon.com/performance/index.htm?prodId=213872"
-    }
+    },
+    "status": "cancelled",
+    "saleState": "closed",
+    "saleCheckedAt": "2026-11-27",
+    "updates": [
+      {
+        "date": "2026-11-27",
+        "text": "주최사 IRRELEVANT MUSIC이 11월 28일 공연 취소를 알렸어요. 예매 티켓은 일괄 취소 후 전액 환불되고, 완료되면 알림톡으로 안내해요. 무통장을 뺀 결제수단은 자동 취소돼요(카드·휴대폰·카카오페이는 영업일 기준 최대 7일). 무통장은 취소 내역에서 환불계좌를 입력해야 하고 3~5일이 걸려요. 직접 취소하면 취소 수수료가 부과돼요. 문의는 멜론티켓 고객센터 1899-0042예요.",
+        "sourceUrl": "https://ticket.melon.com/performance/index.htm?prodId=213872"
+      }
+    ]
   },
   {
     "id": "kopis-PF303596",
