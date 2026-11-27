@@ -11490,7 +11490,7 @@
       {
         "title": "YOASOBI GLOBAL MEMBERSHIP 선예매 (멜론티켓)",
         "detail": "위버스샵에서 YOASOBI GLOBAL MEMBERSHIP(25,000원, 가입일로부터 365일)을 산 회원 가운데 멜론티켓에서 사전 인증을 마친 사람만 참여할 수 있어요. 선예매는 11월 30일(월) 오후 6시부터 6시 59분까지이고, 선예매와 일반예매를 합쳐 한 사람이 3매까지 살 수 있어요. 공연 당일까지 멤버십이 유지돼야 선예매 티켓이 유효해요.",
-        "howTo": "1) 위버스에 가입하고 YOASOBI 커뮤니티에 들어가요. 2) 위버스샵에서 YOASOBI GLOBAL MEMBERSHIP을 사요. 3) 11월 30일(월) 오후 6시 59분까지 멜론티켓 공연 페이지의 멤버십 인증 버튼에서 멤버십에 가입한 위버스 계정으로 인증해요. 멜론티켓 본인 명의 ID 하나에 위버스 계정 하나만 인증되고, 한 번 인증하면 수정·취소가 안 돼요. 한국 페이지에서 인증하면 한국 페이지에서만, 글로벌 페이지에서 인증하면 글로벌 페이지에서만 선예매할 수 있어요.",
+        "howTo": "1) 위버스에 가입하고 YOASOBI 커뮤니티에 들어가요. 2) 위버스샵에서 YOASOBI GLOBAL MEMBERSHIP을 사요(11월 24일 리뉴얼). 이미 회원이면 먼저 유효기간을 확인해요. 갱신 가능 기간(만료 60일 전~만료 후 30일)이 아닐 때 사면 남은 유효기간이 사라져요. 3) 11월 30일(월) 오후 6시 59분까지 멜론티켓 공연 페이지의 멤버십 인증 버튼에서 멤버십에 가입한 위버스 계정으로 인증해요. 멜론티켓 본인 명의 ID 하나에 위버스 계정 하나만 인증되고, 한 번 인증하면 수정·취소가 안 돼요. 한국 페이지에서 인증하면 한국 페이지에서만, 글로벌 페이지에서 인증하면 글로벌 페이지에서만 선예매할 수 있어요.",
         "date": "2026-11-30 오후 6시 ~ 6시 59분",
         "url": "https://weverse.io/yoasobi/notice/40746"
       }
@@ -11514,8 +11514,8 @@
         "url": "https://weverse.io/yoasobi/notice/40746"
       },
       {
-        "label": "위버스샵 - YOASOBI GLOBAL MEMBERSHIP",
-        "url": "https://shop.weverse.io/ko/shop/KRW/artists/200/sales/51448"
+        "label": "위버스샵 - YOASOBI GLOBAL MEMBERSHIP (리뉴얼 상품)",
+        "url": "https://shop.weverse.io/ko/shop/KRW/artists/200/sales/75302"
       },
       {
         "label": "LIVET 공식 예매 링크 페이지",
@@ -11528,9 +11528,27 @@
       {
         "label": "YOASOBI、ツアータイトル変更を発表 - オリコン",
         "url": "https://news.yahoo.co.jp/articles/20c54d485087a6a5eb14b95e7e53012019441801"
+      },
+      {
+        "label": "위버스 공지 - 리뉴얼 된 YOASOBI GLOBAL MEMBERSHIP 가입 및 갱신 안내(2026-11-24)",
+        "url": "https://weverse.io/yoasobi/notice/41122"
+      },
+      {
+        "label": "YOASOBI 공식 사이트 - 해외 공연 굿즈 라인업 공개(2026-11-26)",
+        "url": "https://www.yoasobi-music.jp/news/588923"
       }
     ],
     "updates": [
+      {
+        "date": "2026-11-27",
+        "text": "위버스 글로벌 멤버십이 11월 24일 리뉴얼되면서 예전 상품 페이지는 판매를 멈췄어요. 새 상품도 25,000원, 가입일 포함 365일이에요. 이미 회원이라면 주의하세요. 갱신 가능 기간(만료 60일 전~만료 후 30일)이 아닐 때 새로 사면 기존 유효기간이 무효가 되고 갱신으로 인정되지 않아요. 선예매 사전 인증과 구매는 11월 30일 오후 6시 59분까지예요.",
+        "sourceUrl": "https://weverse.io/yoasobi/notice/41122"
+      },
+      {
+        "date": "2026-11-27",
+        "text": "공식 사이트가 11월 26일 이번 투어 해외 공연의 굿즈 라인업을 공개했고, 대상에 고양 공연도 들어 있어요. 판매 가격·일시·방법은 지역별 공식 SNS로 나중에 알린다고 해요.",
+        "sourceUrl": "https://www.yoasobi-music.jp/news/588923"
+      },
       {
         "date": "2026-11-19",
         "text": "이번 투어 오사카 공연의 'KILLA' 공식 라이브 영상과 투어 관련 공식 영상 2편을 이 페이지에 올렸어요.",
@@ -11650,13 +11668,13 @@
         "price": 143000
       }
     ],
-    "pricesCheckedAt": "2026-11-17",
+    "pricesCheckedAt": "2026-11-27",
     "pricesSource": {
       "label": "멜론티켓 예매 페이지",
       "url": "https://ticket.melon.com/performance/index.htm?prodId=214279"
     },
     "saleState": "upcoming",
-    "saleCheckedAt": "2026-11-18",
+    "saleCheckedAt": "2026-11-27",
     "facts": {
       "startTime": "오후 7시 30분",
       "runningTime": "120분",
@@ -11675,7 +11693,7 @@
           "value": "무통장 입금 불가"
         }
       ],
-      "checkedAt": "2026-11-19",
+      "checkedAt": "2026-11-27",
       "source": {
         "label": "멜론티켓 예매 페이지",
         "url": "https://ticket.melon.com/performance/index.htm?prodId=214279"
