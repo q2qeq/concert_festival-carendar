@@ -208,7 +208,7 @@ const bigText = phase.kind === 'before'
       const result = on ? await disableAlert(id) : await enableAlert(id, 'event');
       btn.disabled = false;
       paint();
-      if (result === 'on') say('알림을 켰어요. 오픈 하루 전, 30분 전, 10분 전에 이 기기로 알려드려요.');
+      if (result === 'on') say('알림을 켰어요. 오픈 하루 전, 30분 전, 10분 전과 새 소식이 올라올 때 이 기기로 알려드려요.');
       else if (result === 'off') say('이 공연 알림을 껐어요.');
       else if (result === 'denied') say('알림 권한이 허용되지 않아 켜지 못했어요.', { text: '다시 허용하는 방법', href: '/alerts/#trouble' });
       else say('알림을 설정하지 못했어요. 잠시 뒤 다시 시도해 주세요.');

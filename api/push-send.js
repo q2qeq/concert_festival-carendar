@@ -9,6 +9,7 @@
 //   하루 전(24시간 이내) · 30분 전 · 10분 전
 // 호출이 몇 분 늦어도 문구가 틀리지 않도록 "N분 전" 대신 실제 오픈 시각과 남은 시간을 적는다.
 // 같은 단계·같은 구간은 Redis 키(push:sent:...)로 한 번만 나가게 막는다.
+// 같은 호출에서 알림을 켠 공연의 새 소식과 공연 전날 안내도 보낸다(/push-events.json, 아래 eventAlerts).
 // 같은 호출에서 공연 요청(api/request.js)도 확인한다: /request-index.json에 요청한 이름과 맞는 공연이
 // 올라왔으면 기다리던 구독에 한 번 알리고 그 요청을 닫는다.
 import { createHash, createHmac, timingSafeEqual } from 'node:crypto';
@@ -95,6 +96,72 @@ export function requestMessage(e) {
   };
 }
 
+// 알림을 켠 공연의 소식·전날 안내. 밤에는 보내지 않는다(KST 9~22시, 전날 안내는 10~21시).
+//   소식: 가장 최근 updates 날짜가 오늘이나 어제면 그 날짜당 한 번
+//   전날: 첫 공연일 하루 전에 한 번(예정 상태 공연만)
+// 돌려주는 key는 발송 기록(push:sent:...) 이름이다.
+export function eventAlerts(e, nowMs) {
+  const kst = new Date(nowMs + 9 * 3600_000);
+  const today = kst.toISOString().slice(0, 10);
+  const hour = kst.getUTCHours();
+  const dayStr = (offset) => new Date(nowMs + 9 * 3600_000 + offset * 86400_000).toISOString().slice(0, 10);
+  const out = [];
+  if (e.news && (e.news.d === today || e.news.d === dayStr(-1)) && hour >= 9 && hour < 22) {
+    out.push({
+      key: `push:sent:${e.id}:news:${e.news.d}`,
+      ttl: 12 * 3600,
+      msg: { title: `${e.artist} 새 소식`, body: e.news.t, url: `/events/${e.id}/#updates`, tag: `news-${e.id}-${e.news.d}` },
+    });
+  }
+  if (e.status === 'scheduled' && e.start === dayStr(1) && hour >= 10 && hour < 21) {
+    out.push({
+      key: `push:sent:${e.id}:d1:${e.start}`,
+      ttl: 12 * 3600,
+      msg: { title: `${e.artist} 공연이 내일이에요`, body: '공연장 가는 길, 셔틀, MD 안내를 미리 확인해 두세요.', url: `/events/${e.id}/`, tag: `d1-${e.id}-${e.start}` },
+    });
+  }
+  return out;
+}
+
+async function sendEventAlerts(nowMs, dry, out) {
+  const r = await fetch(`${SITE}/push-events.json`, { cache: 'no-store' });
+  if (!r.ok) return;
+  const list = await r.json();
+  const due = list.flatMap((e) => eventAlerts(e, nowMs).map((a) => ({ ...a, id: e.id })));
+  for (const a of due) {
+    if (dry) {
+      const [seen, n] = await redis([['EXISTS', a.key], ['SCARD', `push:ev:${a.id}`]]);
+      if (!Number(seen) && Number(n) > 0) { out.news += 1; out.sent += Number(n); }
+      continue;
+    }
+    const [hashes] = await redis([['SMEMBERS', `push:ev:${a.id}`]]);
+    if (!hashes || hashes.length === 0) continue; // 구독이 없으면 기록도 남기지 않는다(나중에 켠 사람이 받게)
+    const [locked] = await redis([['SET', a.key, '1', 'NX', 'EX', 3 * 86400]]);
+    if (!locked) continue;
+    out.news += 1;
+    const [subs] = await redis([['MGET', ...hashes.map((h) => `push:sub:${h}`)]]);
+    const payload = JSON.stringify(a.msg);
+    const dead = [];
+    await Promise.all(hashes.map(async (h, i) => {
+      if (!subs[i]) { dead.push(h); return; }
+      try {
+        await webpush.sendNotification(JSON.parse(subs[i]), payload, { TTL: a.ttl, urgency: 'normal' });
+        out.sent += 1;
+      } catch (err) {
+        if (err?.statusCode === 404 || err?.statusCode === 410) dead.push(h);
+        else out.failed += 1;
+      }
+    }));
+    if (dead.length > 0) {
+      out.removed += dead.length;
+      await redis([
+        ['SREM', `push:ev:${a.id}`, ...dead],
+        ['DEL', ...dead.flatMap((h) => [`push:sub:${h}`, `push:subev:${h}`])],
+      ]);
+    }
+  }
+}
+
 // 요청한 공연이 올라왔는지 보고 알린다. 맞는 공연이 여럿이면 가장 가까운 날짜 하나만 알린다.
 async function sendRequests(dry, out) {
   const [pending] = await redis([['SMEMBERS', 'req:pending']]);
@@ -162,7 +229,7 @@ export default async function handler(req, res) {
     const now = Date.now();
     webpush.setVapidDetails('https://jikgwannyang.com/contact/', PUBLIC_KEY, PRIVATE_KEY);
 
-    const out = { due: 0, requests: 0, sent: 0, failed: 0, removed: 0, dry };
+    const out = { due: 0, news: 0, requests: 0, sent: 0, failed: 0, removed: 0, dry };
     for (const s of stages) {
       const at = new Date(s.at).getTime();
       const w = windowOf(at - now);
@@ -204,7 +271,8 @@ export default async function handler(req, res) {
         ]);
       }
     }
-    // 요청 확인이 실패해도 티켓오픈 발송 결과는 그대로 돌려준다
+    // 소식·전날 안내나 요청 확인이 실패해도 티켓오픈 발송 결과는 그대로 돌려준다
+    await sendEventAlerts(now, dry, out).catch(() => { out.failed += 1; });
     await sendRequests(dry, out).catch(() => { out.failed += 1; });
     return res.status(200).json(out);
   } catch {
