@@ -9007,7 +9007,48 @@
     "endDate": "2026-12-24",
     "addedAt": "2026-11-26",
     "posterUrl": "http://www.kopis.or.kr/upload/pfmPoster/PF_PF307421_261125_131356.jpg",
-    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 설명/펀팩트/선예매 등 상세 정보는 아직 없어요 - 필요하면 직접 보강해주세요."
+    "note": "KOPIS 공공데이터로 자동 수집된 공연입니다 (매칭 아티스트 포함 자동 게시). 2026-11-28 티켓오픈 워치가 KOPIS 예매처 바로가기로 티켓링크 상품 67221을 찾아 공연명·날짜·공연장을 대조함. 출연진 표기는 KOPIS의 '이경서 등'뿐이라 장르(J-POP 자동 분류)는 확인하지 못함.",
+    "description": "김천시문화예술회관이 기획한 크리스마스이브 콘서트예요. 2026년 12월 24일(목) 저녁 7시 김천시문화예술회관 대공연장에서 열리고, 예매는 티켓링크에서 해요.",
+    "ticketLinks": [
+      {
+        "vendor": "티켓링크",
+        "url": "https://www.ticketlink.co.kr/product/67221"
+      }
+    ],
+    "prices": [
+      {
+        "label": "R석",
+        "price": "30,000원"
+      },
+      {
+        "label": "S석",
+        "price": "20,000원"
+      }
+    ],
+    "pricesCheckedAt": "2026-11-28",
+    "pricesSource": {
+      "label": "KOPIS 공연 정보",
+      "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF307421"
+    },
+    "facts": {
+      "startTime": "저녁 7시",
+      "age": "만 7세 이상",
+      "checkedAt": "2026-11-28",
+      "source": {
+        "label": "KOPIS 공연 정보",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF307421"
+      }
+    },
+    "sources": [
+      {
+        "label": "KOPIS 공연 정보 (PF307421)",
+        "url": "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id=PF307421"
+      },
+      {
+        "label": "티켓링크 예매 페이지",
+        "url": "https://www.ticketlink.co.kr/product/67221"
+      }
+    ]
   },
   {
     "id": "shuttle-daegu-hiphop-festival-2026-12",
