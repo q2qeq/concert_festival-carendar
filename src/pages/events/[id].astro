@@ -20,6 +20,7 @@ import AnnounceWatch from '../../components/AnnounceWatch.astro';
 import PriceBox from '../../components/PriceBox.astro';
 import EventFacts from '../../components/EventFacts.astro';
 import OpenCountdown from '../../components/OpenCountdown.astro';
+import OpenLiveBoard from '../../components/OpenLiveBoard.astro';
 import { existsSync } from 'node:fs';
 import { postsMentioningEvent, postsMentioningVenue, postDateLabel } from '../../lib/posts';
 import EventCard from '../../components/EventCard.astro';
@@ -349,7 +350,7 @@ const breadcrumbLd = {
       {event.description && <p class="event-description">{event.description}</p>}
     </header>
 
-    <div class="ev-oc"><OpenCountdown event={event} variant="page" /></div>
+    <div class="ev-oc"><OpenCountdown event={event} variant="page" /><OpenLiveBoard event={event} /></div>
 
     {status === 'scheduled' && isPast && (
       <div class="status-banner status-past">

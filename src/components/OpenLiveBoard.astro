@@ -1,0 +1,289 @@
+---
+// 티켓 오픈 실황판. 오픈 당일 방문자가 "대기번호가 몇 번이었는지", "잡았는지"를 익명으로 한 번씩 눌러
+// 서로의 상황을 보는 곳이다. 숫자는 /api/live(Redis)에 구간별로만 센다. 누가 눌렀는지는 저장하지 않는다.
+// 정적 빌드라 기본은 숨김이고, 브라우저가 지금 시각으로 단계를 고른다:
+//   오픈 1시간 전 ~ 정각: "정각부터 여기서 모아요" 안내만
+//   정각 ~ 24시간 뒤: 제보 버튼 + 집계 막대(15초마다 새로 읽음)
+//   그 뒤 30일: 제보가 3건 이상 모였으면 읽기 전용 기록으로 남김
+// 서버 저장소가 없으면(503) 통째로 숨긴다.
+import type { ConcertEvent } from '../lib/events';
+import { ticketOpenStages } from '../lib/events';
+import { kstLabel } from '../lib/openPhase';
+
+interface Props { event: ConcertEvent }
+const { event } = Astro.props;
+
+const nowMs = Date.now();
+const today = new Date(nowMs + 9 * 3600_000).toISOString().slice(0, 10);
+const KEEP_MS = 30 * 86400_000;
+const stages = ticketOpenStages(event).map((s) => ({ label: s.label, at: s.at, when: kstLabel(s.at) }));
+const ended = event.endDate < today || (event.status ?? 'scheduled') !== 'scheduled';
+const show = !ended && stages.some((s) => new Date(s.at).getTime() > nowMs - KEEP_MS);
+const shortName = event.artist.replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+const shareUrl = `https://jikgwannyang.com/events/${event.id}/`;
+
+const Q = [
+  ['none', '대기 없이 바로'],
+  ['1k', '1천 명 안쪽'],
+  ['10k', '1천~1만'],
+  ['50k', '1만~5만'],
+  ['100k', '5만~10만'],
+  ['over', '10만 넘게'],
+];
+const R = [
+  ['got', '잡았어요'],
+  ['trying', '아직 도전 중'],
+  ['fail', '매진·실패'],
+];
+---
+{show && (
+  <section
+    class="lb"
+    id="live"
+    aria-label="티켓 오픈 실황판"
+    data-lb={event.id}
+    data-stages={JSON.stringify(stages)}
+    data-name={shortName}
+    data-url={shareUrl}
+    hidden
+  >
+    <div class="lb-head">
+      <h2>오픈 실황판</h2>
+      <p class="lb-status" data-lb-status></p>
+    </div>
+    <p class="lb-sub" data-lb-sub></p>
+
+    <div class="lb-body" data-lb-body>
+      <fieldset class="lb-group" data-kind="q">
+        <legend>대기번호가 몇 번이었어요?</legend>
+        <div class="lb-opts">
+          {Q.map(([v, label]) => (
+            <button type="button" class="lb-opt" data-value={v} aria-pressed="false">
+              <span class="lb-bar" aria-hidden="true"></span>
+              <span class="lb-label">{label}</span>
+              <span class="lb-pct mono"></span>
+            </button>
+          ))}
+        </div>
+        <p class="lb-n" data-lb-n></p>
+      </fieldset>
+
+      <fieldset class="lb-group" data-kind="r">
+        <legend>결과는요?</legend>
+        <div class="lb-opts">
+          {R.map(([v, label]) => (
+            <button type="button" class="lb-opt" data-value={v} aria-pressed="false">
+              <span class="lb-bar" aria-hidden="true"></span>
+              <span class="lb-label">{label}</span>
+              <span class="lb-pct mono"></span>
+            </button>
+          ))}
+        </div>
+        <p class="lb-n" data-lb-n></p>
+      </fieldset>
+
+      <div class="lb-foot">
+        <p>누가 눌렀는지는 저장하지 않아요. 한 기기에서 한 번씩 세고, 답은 다시 눌러 바꿀 수 있어요.</p>
+        <a class="lb-share" data-lb-share href="#" target="_blank" rel="noopener noreferrer" data-track-kind="share">X에 현황 공유</a>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .lb { border: 1px solid var(--line-2); border-radius: 8px; background: var(--card); padding: 1rem 1.1rem; margin: 0 0 1.4rem; }
+  .lb[hidden] { display: none; }
+  .lb-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; }
+  .lb h2 { margin: 0; font-size: 1.1rem; }
+  .lb-status { margin: 0; font-size: 0.8rem; color: var(--muted); display: inline-flex; align-items: center; gap: 0.4rem; }
+  .lb-status.is-live { color: var(--eye); }
+  .lb-status.is-live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--eye); }
+  .lb-sub { margin: 0.3rem 0 0; font-size: 0.9rem; color: var(--fg-2); line-height: 1.55; }
+  .lb-body[hidden] { display: none; }
+  .lb-group { border: 0; padding: 0; margin: 1rem 0 0; min-width: 0; }
+  .lb-group legend { padding: 0; font-size: 0.92rem; font-weight: 700; color: var(--fg); margin-bottom: 0.5rem; }
+  .lb-opts { display: grid; gap: 0.35rem; }
+  .lb-opt { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--line-2); border-radius: 6px; background: none; color: var(--fg-2); font: inherit; font-size: 0.9rem; text-align: left; cursor: pointer; }
+  .lb-opt:hover:not(:disabled) { border-color: var(--cheese); }
+  .lb-opt:focus-visible { outline: 2px solid var(--cheese); outline-offset: 2px; }
+  .lb-opt:disabled { cursor: default; }
+  .lb-opt.is-mine { border-color: var(--fg); color: var(--fg); font-weight: 700; }
+  .lb-bar { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--line); transition: width 0.4s ease; }
+  .lb-opt.is-mine .lb-bar { background: var(--line-2); }
+  .lb-label, .lb-pct { position: relative; }
+  .lb-pct { color: var(--fg-3); font-size: 0.85rem; white-space: nowrap; }
+  .lb-n { margin: 0.4rem 0 0; font-size: 0.8rem; color: var(--muted); }
+  .lb-foot { margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 0.6rem 1rem; flex-wrap: wrap; }
+  .lb-foot p { margin: 0; font-size: 0.78rem; color: var(--muted); line-height: 1.5; flex: 1 1 18rem; }
+  .lb-share { font-size: 0.85rem; font-weight: 700; color: var(--cheese); text-decoration: none; white-space: nowrap; }
+  .lb-share:hover { text-decoration: underline; }
+  .mono { font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .lb-bar { transition: none; } }
+</style>
+
+<script>
+  type Stage = { label: string; at: string; when: string };
+  type Counts = { q: Record<string, number>; r: Record<string, number> };
+  type Mine = Record<string, { q?: string; r?: string }>;
+
+  const TEASE_MS = 3600_000; // 오픈 1시간 전부터 안내
+  const OPEN_MS = 24 * 3600_000; // 정각부터 24시간 제보
+  const KEEP_MS = 30 * 86400_000; // 그 뒤 30일은 기록으로
+  const MIN_SHOW = 3; // 이보다 적으면 비율을 안 보여준다
+  const KEY = 'krconcerts:live';
+
+  const readMine = (): Mine => { try { const v = JSON.parse(localStorage.getItem(KEY) ?? '{}'); return v && typeof v === 'object' ? v : {}; } catch { return {}; } };
+  const writeMine = (v: Mine) => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch { /* 무시 */ } };
+  const sum = (o: Record<string, number>) => Object.values(o).reduce((a, b) => a + b, 0);
+
+  // 지금 보여줄 단계: 이미 정각이 지났거나 1시간 안에 열리는 단계 중 가장 늦은 것
+  function pickStage(stages: Stage[], now: number) {
+    let pick = -1;
+    stages.forEach((s, i) => { if (new Date(s.at).getTime() - TEASE_MS <= now) pick = i; });
+    if (pick < 0) return null;
+    const at = new Date(stages[pick].at).getTime();
+    const mode = now < at ? 'tease' : now < at + OPEN_MS ? 'open' : now < at + OPEN_MS + KEEP_MS ? 'past' : 'gone';
+    return { index: pick, stage: stages[pick], at, mode } as const;
+  }
+
+  function setup(root: HTMLElement) {
+    const id = root.dataset.lb || '';
+    const stages: Stage[] = JSON.parse(root.dataset.stages || '[]');
+    const name = root.dataset.name || '';
+    const url = root.dataset.url || location.href;
+    const status = root.querySelector<HTMLElement>('[data-lb-status]')!;
+    const sub = root.querySelector<HTMLElement>('[data-lb-sub]')!;
+    const body = root.querySelector<HTMLElement>('[data-lb-body]')!;
+    const share = root.querySelector<HTMLAnchorElement>('[data-lb-share]')!;
+    const groups = Array.from(root.querySelectorAll<HTMLFieldSetElement>('.lb-group'));
+    let counts: Counts = { q: {}, r: {} };
+    let cur = pickStage(stages, Date.now());
+    let timer = 0;
+    let busy = false;
+
+    const boardKey = () => `${id}:${cur?.index ?? 0}`;
+    const multi = stages.length > 1;
+
+    function paint() {
+      if (!cur) return;
+      const mine = readMine()[boardKey()] ?? {};
+      const open = cur.mode === 'open';
+      const label = multi ? `${cur.stage.label} ` : '';
+      if (cur.mode === 'tease') {
+        status.textContent = '오픈 전';
+        status.classList.remove('is-live');
+        sub.textContent = `${label}${cur.stage.when} 정각부터 여기서 대기번호와 결과를 모아요. 예매 창 옆에 이 페이지를 켜 두세요.`;
+        body.hidden = true;
+        return;
+      }
+      body.hidden = false;
+      status.textContent = open ? '제보 받는 중' : '지난 오픈 기록';
+      status.classList.toggle('is-live', open);
+      sub.textContent = open
+        ? `${label}${cur.stage.when} 오픈. 다른 사람들은 몇 번이었는지 눌러서 같이 봐요.`
+        : `${label}${cur.stage.when} 오픈 때 모인 제보예요.`;
+
+      for (const g of groups) {
+        const kind = g.dataset.kind as 'q' | 'r';
+        const c = counts[kind] ?? {};
+        const total = sum(c);
+        const enough = total >= MIN_SHOW;
+        g.querySelectorAll<HTMLButtonElement>('.lb-opt').forEach((btn) => {
+          const v = btn.dataset.value || '';
+          const n = c[v] ?? 0;
+          const pct = total ? Math.round((n / total) * 100) : 0;
+          const isMine = mine[kind] === v;
+          btn.classList.toggle('is-mine', isMine);
+          btn.setAttribute('aria-pressed', String(isMine));
+          btn.disabled = !open;
+          btn.querySelector<HTMLElement>('.lb-bar')!.style.width = enough ? `${pct}%` : '0';
+          btn.querySelector<HTMLElement>('.lb-pct')!.textContent = enough ? `${pct}%` : '';
+        });
+        const n = g.querySelector<HTMLElement>('[data-lb-n]')!;
+        n.textContent = total === 0
+          ? (open ? '아직 제보가 없어요. 첫 제보를 남겨 주세요.' : '')
+          : enough ? `제보 ${total}건` : `제보 ${total}건 · ${MIN_SHOW}건부터 비율을 보여드려요`;
+      }
+
+      // 공유 문구: 대기번호 제보에서 가장 많은 구간
+      const q = counts.q ?? {};
+      const qt = sum(q);
+      const top = Object.entries(q).sort((a, b) => b[1] - a[1])[0];
+      const topLabel = top ? groups[0].querySelector<HTMLElement>(`[data-value="${top[0]}"] .lb-label`)?.textContent : '';
+      const text = qt >= MIN_SHOW && top && topLabel
+        ? `${name} ${label}티켓팅 대기번호 제보 ${qt}건 중 '${topLabel}'이 ${Math.round((top[1] / qt) * 100)}%예요. 직관냥 오픈 실황판`
+        : `${name} ${label}티켓팅, 다들 대기번호 몇 번이에요? 직관냥 오픈 실황판`;
+      share.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url + '#live')}`;
+    }
+
+    async function load(): Promise<boolean> {
+      if (!cur) return false;
+      try {
+        const r = await fetch(`/api/live?event=${encodeURIComponent(id)}&stage=${cur.index}`);
+        if (!r.ok) return false;
+        counts = await r.json();
+        return true;
+      } catch { return false; }
+    }
+
+    function schedule() {
+      window.clearTimeout(timer);
+      if (!cur || document.hidden) return;
+      const now = Date.now();
+      const next = pickStage(stages, now);
+      if (!next || next.index !== cur.index || next.mode !== cur.mode) { start(); return; }
+      if (cur.mode === 'tease') { timer = window.setTimeout(schedule, Math.min(cur.at - now + 50, 30_000)); return; }
+      if (cur.mode !== 'open') return;
+      // 오픈 직후 3시간은 15초마다, 그 뒤엔 1분마다 새로 읽는다
+      const every = now < cur.at + 3 * 3600_000 ? 15_000 : 60_000;
+      timer = window.setTimeout(async () => { if (await load()) paint(); schedule(); }, every);
+    }
+
+    async function start() {
+      cur = pickStage(stages, Date.now());
+      if (!cur || cur.mode === 'gone') { root.hidden = true; return; }
+      const ok = await load();
+      if (!ok) { root.hidden = true; return; } // 저장소가 없으면 숨긴다
+      if (cur.mode === 'past' && sum(counts.q) + sum(counts.r) < MIN_SHOW) { root.hidden = true; return; }
+      root.hidden = false;
+      paint();
+      schedule();
+    }
+
+    root.addEventListener('click', async (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.lb-opt');
+      if (!btn || btn.disabled || busy || !cur || cur.mode !== 'open') return;
+      const kind = btn.closest<HTMLElement>('.lb-group')?.dataset.kind as 'q' | 'r';
+      const value = btn.dataset.value || '';
+      const all = readMine();
+      const mine = all[boardKey()] ?? {};
+      const prev = mine[kind];
+      if (prev === value) return;
+      // 화면 먼저 바꾸고 서버 숫자로 맞춘다
+      counts[kind] = { ...counts[kind], [value]: (counts[kind][value] ?? 0) + 1 };
+      if (prev) counts[kind][prev] = Math.max((counts[kind][prev] ?? 0) - 1, 0);
+      all[boardKey()] = { ...mine, [kind]: value };
+      writeMine(all);
+      paint();
+      busy = true;
+      try {
+        const r = await fetch('/api/live', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ event: id, stage: cur.index, kind, value, prev: prev ?? null }),
+        });
+        if (r.ok) { counts = await r.json(); paint(); }
+      } catch { /* 실패해도 화면은 그대로 둔다 */ }
+      busy = false;
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { window.clearTimeout(timer); return; }
+      if (!root.hidden || cur?.mode === 'tease') load().then((ok) => { if (ok) paint(); schedule(); });
+    });
+
+    start();
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-lb]').forEach(setup);
+</script>
