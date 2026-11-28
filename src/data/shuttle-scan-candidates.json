@@ -261,5 +261,73 @@
         "url": "https://www.topstarnews.net/news/articleView.html?idxno=16281586"
       }
     ]
+  },
+  {
+    "artist": "SUPER JUNIOR-D&E (슈퍼주니어-D&E) - 2027 LIVE TOUR D&ESTIVAL: The 15/15",
+    "venue": "인스파이어 아레나",
+    "city": "인천",
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-10",
+    "genre": "가요",
+    "note": "직접 게시 보류 (2026-11-27): 카카오 T 셔틀 목록에 \"SUPER JUNIOR-D＆E LIVE TOUR\"(네이버 아레나 앳 인스파이어, 수요조사, id 10000641)가 새로 올라옴. 검색 결과에 보인 NOL 상품(26016656) 요약은 2027.1.9(토) 18시·1.10(일) 16시, 일반 예매 12/2(수) 20:00, VIP 198,000원·일반 168,000원. 2027-01-09는 달력상 토요일로 맞음. 날짜는 검색 결과 요약으로만 봤고, NOL 상품 페이지는 Claude in Chrome이 연결되지 않아 직접 열지 못함(5단계 연도·날짜 직접 확인 미충족). 다음 실행이나 티켓오픈 워치가 예매 페이지에서 공연일시를 읽으면 게시할 것. (셔틀: 카카오 T https://shuttle.kakaomobility.com/shuttles/demand/10000641 수요조사)",
+    "sources": [
+      {
+        "label": "NOL 티켓 - 2027 SUPER JUNIOR-D&E CONCERT (검색 결과로만 확인, 미열람)",
+        "url": "https://nol.yanolja.com/ticket/products/26016656"
+      }
+    ]
+  },
+  {
+    "artist": "태연 (TAEYEON) - 7th CONCERT F.L.Y. in Seoul",
+    "venue": "KSPO DOME",
+    "city": "서울",
+    "startDate": "2027-01-15",
+    "endDate": "2027-01-17",
+    "genre": "가요",
+    "note": "직접 게시 보류 (2026-11-27): 카카오 T 셔틀 목록에 \"태연 콘서트\"(서울 올림픽공원 KSPO DOME, 수요조사, id 10000638)가 새로 올라옴. 스포츠경향(영문, 2026-11-18) 요약으로 2027.1.15~17 KSPO DOME 일곱 번째 단독 콘서트, 이후 마카오·방콕·홍콩·타이베이·도쿄 아시아 투어. 예매처 상품 페이지를 찾지 못함. 날짜는 검색 결과 요약으로만 봤고, NOL 상품 페이지는 Claude in Chrome이 연결되지 않아 직접 열지 못함(5단계 연도·날짜 직접 확인 미충족). 다음 실행이나 티켓오픈 워치가 예매 페이지에서 공연일시를 읽으면 게시할 것. (셔틀: 카카오 T https://shuttle.kakaomobility.com/shuttles/demand/10000638 수요조사)",
+    "sources": [
+      {
+        "label": "Sports Kyunghyang - Taeyeon to stage her seventh solo concert (2026-11-18, 검색 결과로만 확인)",
+        "url": "https://sports.khan.co.kr/en/article/202611181415007"
+      }
+    ]
+  },
+  {
+    "artist": "XIA (김준수) - 2026 XIA Musical Concert with Orchestra Vol.9",
+    "venue": "티켓링크 라이브 아레나",
+    "city": "서울",
+    "startDate": "2026-12-18",
+    "endDate": "2026-12-20",
+    "genre": "가요",
+    "note": "직접 게시 보류 (2026-11-27): 카카오 T 셔틀 목록에 \"XIA 뮤지컬콘서트\"(올림픽공원 티켓링크 라이브 아레나, 수요조사, id 10000639)가 새로 올라옴. 검색 결과 요약(위버스 공지·NOL 26016270)으로 12/18(금) 19:30·12/19(토) 18:00·12/20(일) 17:00, 2022년 Vol.8 이후 4년 만. 2026-12-18은 금요일로 맞음. 뮤지컬 넘버 콘서트라 장르를 가요로 둘지도 사람이 확인 필요. 날짜는 검색 결과 요약으로만 봤고, NOL 상품 페이지는 Claude in Chrome이 연결되지 않아 직접 열지 못함(5단계 연도·날짜 직접 확인 미충족). 다음 실행이나 티켓오픈 워치가 예매 페이지에서 공연일시를 읽으면 게시할 것. (셔틀: 카카오 T https://shuttle.kakaomobility.com/shuttles/demand/10000639 수요조사)",
+    "sources": [
+      {
+        "label": "위버스 김준수 공지 - 2026 XIA Musical Concert with Orchestra Vol.9 공연 상세 안내 (검색 결과로만 확인)",
+        "url": "https://weverse.io/kimjunsu/notice/40165"
+      },
+      {
+        "label": "NOL 티켓 상품 26016270 (검색 결과로만 확인, 미열람)",
+        "url": "https://nol.yanolja.com/ticket/products/26016270"
+      }
+    ]
+  },
+  {
+    "artist": "RESCENE (리센느) - 2027 RESCENE CONCERT IN SEOUL",
+    "venue": "올림픽홀",
+    "city": "서울",
+    "startDate": "2027-02-19",
+    "endDate": "2027-02-21",
+    "genre": "가요",
+    "note": "직접 게시 보류 (2026-11-27): 카카오 T 셔틀 목록에 \"리센느 콘서트\"(올림픽공원 올림픽홀, 수요조사, id 10000640)가 새로 올라옴. 검색 결과 요약(스포츠경향 영문·일간스포츠, 2026-11-11)으로 첫 단독 콘서트 2027.2.19~21 올림픽홀, 쿠팡플레이 발표. 예매처 상품 페이지를 찾지 못함. 기존 jimff-onesummernight-kpop-season2-2026-09(제천, 2026-09-04~05 합동 공연)과 날짜·형식이 달라 별개. 날짜는 검색 결과 요약으로만 봤고, NOL 상품 페이지는 Claude in Chrome이 연결되지 않아 직접 열지 못함(5단계 연도·날짜 직접 확인 미충족). 다음 실행이나 티켓오픈 워치가 예매 페이지에서 공연일시를 읽으면 게시할 것. (셔틀: 카카오 T https://shuttle.kakaomobility.com/shuttles/demand/10000640 수요조사)",
+    "sources": [
+      {
+        "label": "Sports Kyunghyang - Rescene to hold first solo concert in February (2026-11-11, 검색 결과로만 확인)",
+        "url": "https://sports.khan.co.kr/en/article/202611110910007"
+      },
+      {
+        "label": "일간스포츠 (2026-11-11, 검색 결과로만 확인)",
+        "url": "https://isplus.com/article/view/isp202611110038"
+      }
+    ]
   }
 ]
