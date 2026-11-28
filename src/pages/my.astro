@@ -23,6 +23,8 @@ const list = upcomingEvents();
     <small>캘린더 앱에 넣으면 오픈 하루 전·10분 전에 알려줘요.</small>
   </p>
 
+  <p class="my-wrap"><a href="/2026/">2026 직관 정산</a> 올해 다녀온 공연으로 정산 카드를 만들어 보세요.</p>
+
   <div id="my-list" class="my-list">
     {list.map((e) => (
       <div class="my-item" data-id={e.id} data-start={e.startDate} data-open-at={e.ticketOpenAt ?? ''} data-artist={e.artist} hidden>
@@ -55,6 +57,8 @@ const list = upcomingEvents();
   .my-alert[hidden], .my-empty[hidden] { display: none; }
   .my-empty { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.4rem; padding: 1.6rem 1.2rem; background: var(--card); border-radius: 8px; color: var(--fg-2); line-height: 1.7; }
   .my-empty a { color: var(--cheese); }
+  .my-wrap { margin: 0 0 1rem; font-size: 0.9rem; color: var(--fg-2); }
+  .my-wrap a { color: var(--cheese); font-weight: 700; margin-right: 0.3rem; }
 </style>
 
 <script>

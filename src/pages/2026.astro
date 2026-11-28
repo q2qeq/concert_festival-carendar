@@ -1,0 +1,546 @@
+---
+// 2026 직관 정산 - 올해 다녀온 공연을 고르면 횟수·공연장·티켓값 합계를 담은 공유 카드(1080x1350 PNG)를 만들어 준다.
+// 고른 목록·가격·직접 넣은 공연은 이 브라우저(localStorage 'krconcerts:wrap2026')에만 저장하고 서버로 보내지 않는다.
+// 서버로 가는 건 '올해의 공연'으로 고른 공연 id 하나뿐(/api/vote, 공연별 표 수만 센다).
+// 사이트에 공연이 쌓인 게 2026년 8월부터라 그 전 공연은 "목록에 없는 공연"으로 직접 넣게 한다.
+// 티켓값은 우리가 추정하지 않는다: 공연 데이터에 확인된 가격(prices)이 있으면 고르게 하고, 없으면 직접 적게 한다.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sortedEvents, isDomestic } from '../lib/events';
+
+const YEAR = '2026';
+const today = new Date(Date.now() + 9 * 3600_000).toISOString().slice(0, 10);
+const short = (s: string) => s.replace(/\s*\(.*?\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+const kind = (g: string) => (g === '페스티벌' ? 'fest' : isDomestic({ genre: g } as never) ? 'kr' : 'intl');
+
+const list = sortedEvents()
+  .filter((e) => e.startDate.startsWith(YEAR) && (e.status ?? 'scheduled') === 'scheduled')
+  .reverse()
+  .map((e) => ({
+    id: e.id,
+    a: short(e.artist),
+    d: e.startDate,
+    v: e.venue,
+    k: kind(e.genre),
+    up: e.startDate > today,
+    p: (e.prices ?? []).map((p) => [p.label, p.price] as [string, number]),
+  }));
+
+const months = [...new Set(list.map((e) => e.d.slice(0, 7)))];
+const byMonth = months.map((m) => ({ m, label: `${Number(m.slice(5))}월`, items: list.filter((e) => e.d.startsWith(m)) }));
+const count = (k: string) => list.filter((e) => e.k === k).length;
+const venueCount = new Set(list.map((e) => e.v)).size;
+const md = (d: string) => `${Number(d.slice(5, 7))}.${d.slice(8, 10)}`;
+const won = (n: number) => `${n.toLocaleString('ko-KR')}원`;
+---
+<BaseLayout
+  title="2026 직관 정산 - 올해 다녀온 공연 카드 만들기"
+  description="올해 다녀온 콘서트·내한공연·페스티벌을 고르면 직관 횟수, 공연장 수, 티켓값 합계를 담은 정산 카드를 만들어 드려요. 독자 투표로 뽑는 2026 올해의 공연도 함께 볼 수 있어요."
+>
+  <header class="wp-head">
+    <h1>2026 직관 정산</h1>
+    <p class="lead">올해 다녀온 공연을 고르면 몇 번 갔는지, 티켓에 얼마 썼는지 정산 카드로 만들어 드려요. 고른 내용은 이 기기에만 저장되고, 로그인은 필요 없어요.</p>
+  </header>
+
+  <div class="wp-grid">
+    <section class="wp-pickers" aria-label="다녀온 공연 고르기">
+      <div class="wp-tools">
+        <label class="wp-search">
+          <span>공연 찾기</span>
+          <input type="search" id="wp-q" placeholder="아티스트·공연장 이름" autocomplete="off" />
+        </label>
+        <p class="wp-hint">직관냥에 올라온 {YEAR}년 공연 {list.length}개예요. 가격은 예매처에서 확인된 것만 고를 수 있어요.</p>
+      </div>
+
+      {byMonth.map((g) => (
+        <section class="wp-month" data-month={g.m}>
+          <h2>{g.label}</h2>
+          <ul>
+            {g.items.map((e) => (
+              <li class="wp-item" data-id={e.id} data-q={`${e.a} ${e.v}`.toLowerCase()}>
+                <button type="button" class="wp-pick" aria-pressed="false">
+                  <span class="wp-date">{md(e.d)}</span>
+                  <span class="wp-name">{e.a}</span>
+                  <span class="wp-venue">{e.v}{e.up && ' · 예정'}</span>
+                </button>
+                <div class="wp-extra" hidden>
+                  {e.p.length > 0 ? (
+                    <select class="wp-price" aria-label={`${e.a} 티켓 가격`}>
+                      <option value="">가격은 빼고 셀게요</option>
+                      {e.p.map(([label, price], i) => <option value={i}>{label} {won(price)}</option>)}
+                    </select>
+                  ) : (
+                    <input class="wp-price-in" type="number" inputmode="numeric" min="0" step="1000" placeholder="티켓값(원) 직접 입력" aria-label={`${e.a} 티켓값`} />
+                  )}
+                  <label class="wp-best"><input type="radio" name="wp-best" value={e.id} /> 올해의 공연</label>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+
+      <section class="wp-custom" aria-label="목록에 없는 공연">
+        <h2>목록에 없는 공연</h2>
+        <p class="wp-hint">상반기 공연처럼 여기 없는 공연은 이름과 티켓값을 적어 넣으세요. 카드에만 들어가요.</p>
+        <form id="wp-add" class="wp-add">
+          <input name="name" type="text" maxlength="40" placeholder="공연 이름" required aria-label="공연 이름" />
+          <input name="price" type="number" inputmode="numeric" min="0" step="1000" placeholder="티켓값(원)" aria-label="티켓값" />
+          <button type="submit">추가</button>
+        </form>
+        <ul id="wp-custom-list" class="wp-custom-list"></ul>
+      </section>
+    </section>
+
+    <aside class="wp-result" id="wp-result" aria-label="정산 결과">
+      <div class="wp-sticky">
+        <p class="wp-sum" id="wp-sum">위 목록에서 다녀온 공연을 눌러 주세요.</p>
+        <canvas id="wp-card" width="1080" height="1350" aria-label="2026 직관 정산 카드 미리보기"></canvas>
+        <div class="wp-actions">
+          <button type="button" class="wp-btn wp-primary" id="wp-save">이미지 저장</button>
+          <button type="button" class="wp-btn" id="wp-share" hidden>공유하기</button>
+          <a class="wp-btn" id="wp-x" href="#" target="_blank" rel="noopener noreferrer" data-track-kind="share">X에 공유</a>
+        </div>
+        <p class="wp-note">카드 이미지는 이 기기에서 바로 만들어져요. 고른 공연 목록은 서버로 보내지 않아요.</p>
+      </div>
+    </aside>
+  </div>
+
+  <a class="wp-jump" id="wp-jump" href="#wp-result" hidden></a>
+
+  <section class="wp-vote" id="vote" aria-label="올해의 공연 투표">
+    <h2>독자가 뽑은 {YEAR} 올해의 공연</h2>
+    <p class="wp-hint">다녀온 공연 옆 '올해의 공연'을 고르면 한 표가 들어가요. 표 수만 세고 누가 골랐는지는 저장하지 않아요. 다시 고르면 표가 옮겨가요.</p>
+    <p class="wp-vote-state" id="wp-vote-state">투표 현황을 불러오는 중이에요.</p>
+    <ol class="wp-rank" id="wp-rank"></ol>
+  </section>
+
+  <section class="wp-stats" aria-label={`${YEAR}년 직관냥 공연 기록`}>
+    <h2>직관냥에 올라온 {YEAR}년 공연</h2>
+    <p>
+      {YEAR}년에 직관냥이 정리한 공연은 {list.length}개예요. 해외 아티스트 내한공연 {count('intl')}개, 국내 가수 공연 {count('kr')}개, 페스티벌 {count('fest')}개이고,
+      공연장은 {venueCount}곳이에요. 직관냥은 {YEAR}년 8월부터 공연을 모으기 시작해서 그 전 공연은 들어 있지 않아요.
+    </p>
+    <ul class="wp-months">
+      {byMonth.slice().reverse().map((g) => <li><span>{g.label}</span><b>{g.items.length}개</b></li>)}
+    </ul>
+  </section>
+
+  <script type="application/json" id="wp-data" set:html={JSON.stringify({ year: YEAR, list })} />
+</BaseLayout>
+
+<style>
+  .wp-head h1 { margin: 0.4rem 0 0.4rem; }
+  .lead { color: var(--fg-2); line-height: 1.7; max-width: 46rem; margin: 0 0 1.4rem; }
+  .wp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 340px); gap: 2rem; align-items: start; }
+  .wp-sticky { position: sticky; top: 5rem; }
+  .wp-tools { display: grid; gap: 0.5rem; margin-bottom: 0.4rem; }
+  .wp-search { display: grid; gap: 0.35rem; font-size: 0.85rem; color: var(--fg-3); }
+  .wp-search input, .wp-add input, .wp-price, .wp-price-in { font: inherit; font-size: 0.92rem; color: var(--fg); background: var(--card); border: 1px solid var(--line-2); border-radius: 6px; padding: 0.6rem 0.75rem; }
+  .wp-search input:focus, .wp-add input:focus, .wp-price:focus, .wp-price-in:focus { outline: 2px solid var(--cheese); outline-offset: 1px; }
+  .wp-hint { margin: 0; font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+  .wp-month h2, .wp-custom h2 { font-size: 1rem; margin: 1.4rem 0 0.5rem; color: var(--fg-2); }
+  .wp-month ul, .wp-custom-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+  .wp-month[hidden], .wp-item[hidden] { display: none; }
+  .wp-item { border: 1px solid var(--line); border-radius: 6px; }
+  .wp-item.is-on { border-color: var(--fg-2); background: var(--card); }
+  .wp-pick { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 3.2rem minmax(0, 1fr); column-gap: 0.6rem; width: 100%; padding: 0.6rem 0.75rem; }
+  .wp-pick:focus-visible { outline: 2px solid var(--cheese); outline-offset: 2px; border-radius: 6px; }
+  .wp-pick:hover .wp-name { color: var(--cheese); }
+  .wp-date { grid-row: span 2; color: var(--cheese); font-weight: 700; font-variant-numeric: tabular-nums; padding-top: 0.05rem; }
+  .wp-name { font-weight: 700; color: var(--fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .wp-venue { font-size: 0.8rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .wp-item.is-on .wp-name::before { content: '✓ '; color: var(--fg); }
+  .wp-extra { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; padding: 0 0.75rem 0.7rem 4.55rem; }
+  .wp-extra[hidden] { display: none; }
+  .wp-price, .wp-price-in { padding: 0.45rem 0.6rem; font-size: 0.85rem; max-width: 100%; }
+  .wp-best { font-size: 0.85rem; color: var(--fg-2); display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer; }
+  .wp-best input { accent-color: var(--cheese); }
+  .wp-add { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.6rem; }
+  .wp-add input[name='name'] { flex: 1 1 12rem; }
+  .wp-add input[name='price'] { flex: 0 1 9rem; }
+  .wp-add button, .wp-btn { font: inherit; font-size: 0.9rem; font-weight: 700; color: var(--fg); background: none; border: 1px solid var(--line-2); border-radius: 6px; padding: 0.6rem 0.9rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+  .wp-add button:hover, .wp-btn:hover { border-color: var(--fg-2); }
+  .wp-custom-list { margin-top: 0.6rem; }
+  .wp-custom-list li { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; border: 1px solid var(--line); border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem; }
+  .wp-custom-list button { all: unset; cursor: pointer; color: var(--muted); font-size: 0.82rem; }
+  .wp-custom-list button:hover { color: var(--cheese); }
+  .wp-sum { margin: 0 0 0.7rem; color: var(--fg-2); font-size: 0.92rem; line-height: 1.6; }
+  .wp-sum b { color: var(--fg); }
+  #wp-card { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+  .wp-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.7rem; }
+  .wp-actions .wp-btn { flex: 1 1 auto; }
+  .wp-btn[hidden] { display: none; }
+  .wp-jump { display: none; }
+  .wp-primary { background: var(--btn); border-color: var(--btn); color: var(--ink); }
+  .wp-primary:hover { background: var(--btn-hi); border-color: var(--btn-hi); }
+  .wp-note { margin: 0.6rem 0 0; font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+  .wp-vote, .wp-stats { margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1.4rem; }
+  .wp-vote h2, .wp-stats h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+  .wp-vote-state { margin: 0.8rem 0 0; color: var(--fg-2); font-size: 0.92rem; }
+  .wp-rank { margin: 0.8rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; counter-reset: rank; }
+  .wp-rank li { counter-increment: rank; display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; gap: 0.6rem; align-items: baseline; padding: 0.55rem 0; border-bottom: 1px solid var(--line); }
+  .wp-rank li::before { content: counter(rank); color: var(--fg-3); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .wp-rank a { color: var(--fg); font-weight: 700; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .wp-rank a:hover { color: var(--cheese); }
+  .wp-rank span { color: var(--fg-3); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .wp-rank li.is-mine a { text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 0.25em; }
+  .wp-stats p { color: var(--fg-2); line-height: 1.75; margin: 0; max-width: 46rem; }
+  .wp-months { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; }
+  .wp-months li { display: flex; gap: 0.4rem; font-size: 0.9rem; color: var(--fg-3); }
+  .wp-months b { color: var(--fg); font-variant-numeric: tabular-nums; }
+  @media (max-width: 860px) {
+    .wp-grid { grid-template-columns: 1fr; }
+    .wp-result { scroll-margin-top: 4.5rem; }
+    .wp-jump:not([hidden]) { position: fixed; left: 1rem; right: 1rem; bottom: calc(0.8rem + env(safe-area-inset-bottom)); z-index: 20; display: block; text-align: center; padding: 0.85rem 1rem; border-radius: 6px; background: var(--btn); color: var(--ink); font-weight: 700; text-decoration: none; }
+    .wp-sticky { position: static; }
+    #wp-card { max-width: 360px; margin: 0 auto; }
+    .wp-extra { padding-left: 0.75rem; }
+  }
+</style>
+
+<script>
+  type Item = { id: string; a: string; d: string; v: string; k: 'kr' | 'intl' | 'fest'; up: boolean; p: [string, number][] };
+  type State = { picks: Record<string, number | null>; custom: { name: string; price: number | null }[]; best: string | null; voted: string | null };
+
+  const KEY = 'krconcerts:wrap2026';
+  const { year, list } = JSON.parse(document.getElementById('wp-data')!.textContent || '{}') as { year: string; list: Item[] };
+  const byId = new Map(list.map((e) => [e.id, e]));
+  const SITE = 'jikgwannyang.com/2026';
+
+  const load = (): State => {
+    try {
+      const v = JSON.parse(localStorage.getItem(KEY) ?? '{}');
+      return { picks: v.picks ?? {}, custom: Array.isArray(v.custom) ? v.custom : [], best: v.best ?? null, voted: v.voted ?? null };
+    } catch { return { picks: {}, custom: [], best: null, voted: null }; }
+  };
+  const state = load();
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch { /* 저장 못 해도 화면은 그대로 */ } };
+  // 목록에서 사라진 공연(취소 등)은 버린다
+  for (const id of Object.keys(state.picks)) if (!byId.has(id)) delete state.picks[id];
+  if (state.best && !(state.best in state.picks)) state.best = null;
+
+  const won = (n: number) => `${n.toLocaleString('ko-KR')}원`;
+  const md = (d: string) => `${Number(d.slice(5, 7))}.${d.slice(8, 10)}`;
+
+  // 가격: 공연 데이터의 가격표 번호(0 이상) 또는 직접 넣은 금액(음수로 저장해 구분)
+  function priceOf(id: string): number | null {
+    const v = state.picks[id];
+    if (v == null) return null;
+    if (v < 0) return -v;
+    return byId.get(id)?.p[v]?.[1] ?? null;
+  }
+
+  function summary() {
+    const picked = Object.keys(state.picks).filter((id) => byId.has(id)).map((id) => byId.get(id)!).sort((a, b) => a.d.localeCompare(b.d));
+    const prices = [...picked.map((e) => priceOf(e.id)), ...state.custom.map((c) => c.price)].filter((p): p is number => p != null && p > 0);
+    const venues = new Map<string, number>();
+    picked.forEach((e) => venues.set(e.v, (venues.get(e.v) ?? 0) + 1));
+    const topVenue = [...venues].sort((a, b) => b[1] - a[1])[0];
+    return {
+      picked,
+      total: picked.length + state.custom.length,
+      spend: prices.reduce((a, b) => a + b, 0),
+      priced: prices.length,
+      venues: venues.size,
+      topVenue: topVenue && topVenue[1] > 1 ? topVenue : null,
+      intl: picked.filter((e) => e.k === 'intl').length,
+      kr: picked.filter((e) => e.k === 'kr').length,
+      fest: picked.filter((e) => e.k === 'fest').length,
+      best: state.best ? byId.get(state.best) ?? null : null,
+    };
+  }
+
+  // ── 카드 그리기 (색은 사이트 CSS 변수에서 읽는다) ──
+  const canvas = document.getElementById('wp-card') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  const css = getComputedStyle(document.documentElement);
+  const C = (name: string) => css.getPropertyValue(name).trim();
+  const FONT = getComputedStyle(document.body).fontFamily;
+  const icon = new Image();
+  icon.src = '/icons/icon-192.png';
+
+  function fit(text: string, max: number) {
+    if (ctx.measureText(text).width <= max) return text;
+    let t = text;
+    while (t.length > 1 && ctx.measureText(t + '…').width > max) t = t.slice(0, -1);
+    return t + '…';
+  }
+  const font = (px: number, weight = 700) => { ctx.font = `${weight} ${px}px ${FONT}`; };
+
+  function draw() {
+    const s = summary();
+    const W = 1080, H = 1350, X = 84, R = W - 84;
+    ctx.fillStyle = C('--bg');
+    ctx.fillRect(0, 0, W, H);
+    ctx.textBaseline = 'alphabetic';
+
+    // 머리
+    if (icon.complete && icon.naturalWidth) ctx.drawImage(icon, X, 70, 68, 68);
+    ctx.fillStyle = C('--fg');
+    font(40, 800);
+    ctx.textAlign = 'left';
+    ctx.fillText('직관냥', X + 86, 118);
+    ctx.textAlign = 'right';
+    ctx.fillStyle = C('--fg-2');
+    font(36, 700);
+    ctx.fillText(`${year} 직관 정산`, R, 118);
+    ctx.textAlign = 'left';
+
+    // 큰 숫자
+    ctx.fillStyle = C('--fg-3');
+    font(38, 600);
+    ctx.fillText('올해 다녀온 공연', X, 225);
+    ctx.fillStyle = C('--fg');
+    font(190, 900);
+    const n = String(s.total);
+    ctx.fillText(n, X - 6, 400);
+    const nw = ctx.measureText(n).width;
+    font(76, 800);
+    ctx.fillText('회', X + nw + 8, 400);
+
+    const bits = [s.venues ? `공연장 ${s.venues}곳` : '', s.intl ? `내한 ${s.intl}` : '', s.kr ? `국내 ${s.kr}` : '', s.fest ? `페스티벌 ${s.fest}` : '']
+      .filter(Boolean).join('  ·  ');
+    ctx.fillStyle = C('--fg-2');
+    font(36, 600);
+    if (bits) ctx.fillText(fit(bits, R - X), X, 470);
+
+    let y = 520;
+    const rule = () => { ctx.fillStyle = C('--line-2'); ctx.fillRect(X, y, R - X, 2); y += 66; };
+    rule();
+
+    // 티켓값
+    if (s.spend > 0) {
+      ctx.fillStyle = C('--fg-3');
+      font(34, 600);
+      ctx.fillText(s.priced < s.total ? `티켓값 합계 (가격을 넣은 ${s.priced}개)` : '티켓값 합계', X, y);
+      ctx.fillStyle = C('--fg');
+      font(68, 800);
+      ctx.fillText(won(s.spend), X, y + 76);
+      y += 146;
+    }
+    // 올해의 공연
+    if (s.best) {
+      ctx.fillStyle = C('--fg-3');
+      font(34, 600);
+      ctx.fillText('올해의 공연', X, y);
+      ctx.fillStyle = C('--fg');
+      font(54, 800);
+      ctx.fillText(fit(s.best.a, R - X), X, y + 66);
+      y += 112;
+    }
+    if (s.spend > 0 || s.best) { y -= 8; rule(); }
+
+    // 다녀온 공연 목록 (남은 높이만큼)
+    const rows: [string, string][] = [
+      ...s.picked.map((e) => [md(e.d), e.a] as [string, string]),
+      ...state.custom.map((c) => ['', c.name] as [string, string]),
+    ];
+    const ROW = 58;
+    // 마지막 줄 바닥선이 1225를 넘지 않게(아래 주소 줄과 겹치지 않게)
+    const room = Math.max(0, Math.floor((1225 - (y - 20)) / ROW) + 1);
+    const show = rows.length > room ? rows.slice(0, Math.max(room - 1, 0)) : rows;
+    font(36, 600);
+    show.forEach(([d, name], i) => {
+      const ry = y - 20 + i * ROW;
+      if (d) { ctx.fillStyle = C('--cheese'); font(32, 700); ctx.fillText(d, X, ry); }
+      ctx.fillStyle = C('--fg');
+      font(34, 600);
+      ctx.fillText(fit(name, R - X - 130), X + 130, ry);
+    });
+    if (rows.length > show.length) {
+      ctx.fillStyle = C('--fg-3');
+      font(34, 600);
+      ctx.fillText(`외 ${rows.length - show.length}개`, X + 130, y - 20 + show.length * ROW);
+    }
+    if (rows.length === 0) {
+      ctx.fillStyle = C('--muted');
+      font(36, 600);
+      ctx.fillText('다녀온 공연을 골라 주세요', X, y);
+    }
+
+    // 바닥
+    ctx.fillStyle = C('--fg-3');
+    font(30, 600);
+    ctx.fillText(SITE, X, H - 64);
+    if (s.topVenue) {
+      ctx.textAlign = 'right';
+      ctx.fillText(fit(`제일 많이 간 곳 ${s.topVenue[0]}`, 560), R, H - 64);
+      ctx.textAlign = 'left';
+    }
+
+    // 모바일: 목록 아래 카드로 내려가는 바(카드가 화면에 보이면 숨김)
+    const jump = document.getElementById('wp-jump')!;
+    jump.textContent = `${s.total}개 골랐어요 · 카드 보기`;
+    jumpWanted = s.total > 0;
+    paintJump();
+
+    // 요약 문장·공유 문구
+    const sum = document.getElementById('wp-sum')!;
+    sum.innerHTML = s.total === 0
+      ? '위 목록에서 다녀온 공연을 눌러 주세요.'
+      : `올해 <b>${s.total}번</b> 다녀왔어요${s.spend ? `. 티켓값은 <b>${won(s.spend)}</b>` : ''}${s.priced && s.priced < s.total ? ` (가격을 넣은 ${s.priced}개 기준)` : ''}.`;
+    const text = s.total
+      ? `${year}년에 공연 ${s.total}번 다녀왔어요${s.best ? `. 올해의 공연은 ${s.best.a}` : ''}. 직관냥 ${year} 직관 정산`
+      : `${year} 직관 정산 카드 만들기 - 직관냥`;
+    (document.getElementById('wp-x') as HTMLAnchorElement).href =
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(`https://${SITE}/`)}`;
+  }
+
+  // 카드 영역이 보이는 동안엔 아래 바를 숨긴다
+  let jumpWanted = false;
+  let resultVisible = false;
+  function paintJump() { document.getElementById('wp-jump')!.hidden = !jumpWanted || resultVisible || matchMedia('(min-width: 861px)').matches; }
+  new IntersectionObserver((es) => { resultVisible = es[0].isIntersecting; paintJump(); }).observe(document.getElementById('wp-result')!);
+
+  // ── 목록 ──
+  const items = Array.from(document.querySelectorAll<HTMLLIElement>('.wp-item'));
+  function paintItem(li: HTMLLIElement) {
+    const id = li.dataset.id || '';
+    const on = id in state.picks;
+    li.classList.toggle('is-on', on);
+    li.querySelector('.wp-pick')!.setAttribute('aria-pressed', String(on));
+    li.querySelector<HTMLElement>('.wp-extra')!.hidden = !on;
+    const v = state.picks[id];
+    const sel = li.querySelector<HTMLSelectElement>('.wp-price');
+    if (sel) sel.value = v != null && v >= 0 ? String(v) : '';
+    const inp = li.querySelector<HTMLInputElement>('.wp-price-in');
+    if (inp) inp.value = v != null && v < 0 ? String(-v) : '';
+    const radio = li.querySelector<HTMLInputElement>('input[name="wp-best"]');
+    if (radio) radio.checked = state.best === id;
+  }
+  items.forEach(paintItem);
+
+  document.querySelector('.wp-pickers')!.addEventListener('click', (ev) => {
+    const btn = (ev.target as HTMLElement).closest<HTMLButtonElement>('.wp-pick');
+    if (!btn) return;
+    const li = btn.closest<HTMLLIElement>('.wp-item')!;
+    const id = li.dataset.id || '';
+    if (id in state.picks) {
+      delete state.picks[id];
+      if (state.best === id) state.best = null; // 표는 그대로 둔다(다른 걸 고르면 옮겨간다)
+    } else {
+      state.picks[id] = null;
+    }
+    save(); paintItem(li); draw();
+  });
+  document.querySelector('.wp-pickers')!.addEventListener('change', (ev) => {
+    const t = ev.target as HTMLInputElement | HTMLSelectElement;
+    const li = t.closest<HTMLLIElement>('.wp-item');
+    if (!li) return;
+    const id = li.dataset.id || '';
+    if (t.classList.contains('wp-price')) state.picks[id] = t.value === '' ? null : Number(t.value);
+    if (t.classList.contains('wp-price-in')) { const n = Math.round(Number(t.value)); state.picks[id] = n > 0 ? -Math.min(n, 10_000_000) : null; }
+    if (t instanceof HTMLInputElement && t.name === 'wp-best' && t.checked) { state.best = id; vote(id); }
+    save(); draw();
+  });
+
+  // 검색
+  const q = document.getElementById('wp-q') as HTMLInputElement;
+  q.addEventListener('input', () => {
+    const term = q.value.trim().toLowerCase();
+    items.forEach((li) => { li.hidden = !!term && !(li.dataset.q || '').includes(term); });
+    document.querySelectorAll<HTMLElement>('.wp-month').forEach((m) => {
+      m.hidden = !m.querySelector('.wp-item:not([hidden])');
+    });
+  });
+
+  // 직접 추가
+  const customList = document.getElementById('wp-custom-list')!;
+  function paintCustom() {
+    customList.textContent = '';
+    state.custom.forEach((c, i) => {
+      const li = document.createElement('li');
+      const span = document.createElement('span');
+      span.textContent = c.price ? `${c.name} · ${won(c.price)}` : c.name;
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.textContent = '빼기';
+      del.addEventListener('click', () => { state.custom.splice(i, 1); save(); paintCustom(); draw(); });
+      li.append(span, del);
+      customList.append(li);
+    });
+  }
+  paintCustom();
+  document.getElementById('wp-add')!.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    const f = ev.target as HTMLFormElement;
+    const name = String(new FormData(f).get('name') || '').trim().slice(0, 40);
+    const price = Math.round(Number(new FormData(f).get('price') || 0));
+    if (!name || state.custom.length >= 50) return;
+    state.custom.push({ name, price: price > 0 ? Math.min(price, 10_000_000) : null });
+    f.reset();
+    save(); paintCustom(); draw();
+  });
+
+  // ── 저장·공유 ──
+  const fileName = `직관정산-${year}.png`;
+  const blob = () => new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/png'));
+  document.getElementById('wp-save')!.addEventListener('click', async () => {
+    const b = await blob();
+    if (!b) return;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(b);
+    a.download = fileName;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  });
+  const shareBtn = document.getElementById('wp-share') as HTMLButtonElement;
+  try {
+    const probe = new File([new Blob()], fileName, { type: 'image/png' });
+    shareBtn.hidden = !(navigator.canShare && navigator.canShare({ files: [probe] }));
+  } catch { shareBtn.hidden = true; }
+  shareBtn.addEventListener('click', async () => {
+    const b = await blob();
+    if (!b) return;
+    try {
+      await navigator.share({ files: [new File([b], fileName, { type: 'image/png' })], text: `${year} 직관 정산 https://${SITE}/` });
+    } catch { /* 사용자가 닫은 경우 */ }
+  });
+
+  // ── 올해의 공연 투표 ──
+  const voteState = document.getElementById('wp-vote-state')!;
+  const rank = document.getElementById('wp-rank')!;
+  const MIN_VOTES = 10;
+  function paintVotes(d: { total: number; top: [string, number][] }) {
+    const known = d.top.filter(([id]) => byId.has(id));
+    const total = known.reduce((a, [, n]) => a + n, 0);
+    rank.textContent = '';
+    if (total < MIN_VOTES) {
+      voteState.textContent = total === 0
+        ? '아직 표가 없어요. 다녀온 공연 중 하나를 올해의 공연으로 골라 주세요.'
+        : `지금까지 ${total}표 모였어요. ${MIN_VOTES}표가 모이면 순위를 보여드려요.`;
+      return;
+    }
+    voteState.textContent = `지금까지 ${total}표 모였어요.`;
+    known.slice(0, 10).forEach(([id, n]) => {
+      const e = byId.get(id)!;
+      const li = document.createElement('li');
+      if (id === state.voted) li.classList.add('is-mine');
+      const a = document.createElement('a');
+      a.href = `/events/${id}/`;
+      a.textContent = e.a;
+      const span = document.createElement('span');
+      span.textContent = `${Math.round((n / total) * 100)}%`;
+      li.append(a, span);
+      rank.append(li);
+    });
+  }
+  async function vote(id: string) {
+    if (state.voted === id) return;
+    const prev = state.voted;
+    state.voted = id;
+    save();
+    try {
+      const r = await fetch('/api/vote', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ year, event: id, prev }) });
+      if (r.ok) paintVotes(await r.json());
+    } catch { /* 실패해도 화면은 그대로 */ }
+  }
+  fetch(`/api/vote?year=${year}`)
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then(paintVotes)
+    .catch(() => { document.getElementById('vote')!.hidden = true; });
+
+  draw();
+  icon.addEventListener('load', draw);
+  document.fonts?.ready.then(draw);
+</script>
