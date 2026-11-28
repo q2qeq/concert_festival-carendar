@@ -23,6 +23,7 @@
     "audit:posts": "node scripts/audit-posts.mjs",
     "posts:cancel": "node scripts/cancel-ticket-posts.mjs",
     "posts:after": "node scripts/after-show-posts.mjs",
+    "setlists:due": "node scripts/setlists-due.mjs",
     "clicks:report": "node scripts/click-report.mjs",
     "posts:week": "node scripts/posts-week.mjs",
     "requests:report": "node scripts/request-report.mjs",

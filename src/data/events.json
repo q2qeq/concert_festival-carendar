@@ -5811,6 +5811,37 @@
         "text": "예매처 공지에 따르면 시야제한으로 판매를 미뤄 뒀던 좌석이 11월 2일 오후 7시에 추가로 열렸어요. 1층 1·2·14·15구역과 2층 25·26·41·42구역의 일부 좌석이고 세 회차 모두 같아요. 무대 구조물 때문에 시야가 가릴 수 있고, 그 이유로는 당일 취소·환불이 안 된다고 적혀 있어요. 11월 19일 아침 기준 예매 버튼은 열려 있고 잔여석 수는 안내하지 않는 상품이에요.",
         "sourceUrl": "https://nol.yanolja.com/ticket/products/26013078"
       }
+    ],
+    "setlists": [
+      {
+        "label": "2026 서울 공연 첫날 셋리스트",
+        "date": "2026-11-20",
+        "venue": "KSPO DOME",
+        "songs": [
+          "When You Are Down",
+          "Love Love Love",
+          "Bom Bom Bom",
+          "The Black Between the Stars",
+          "As Is",
+          "When Spring Comes",
+          "Only Then",
+          "Suddenly",
+          "No Words Can Say",
+          "The Great Dipper",
+          "Linger On",
+          "It'll Be Alright",
+          "Sparkle (RADWIMPS 커버)",
+          "What happened (김현철 커버)",
+          "WE GO HIGH",
+          "Follow Me",
+          "Smile Boy (이승기 커버)",
+          "CRY OUT LOUD",
+          "(앵콜) If You Ask Me What Love Is",
+          "(앵콜) Home"
+        ],
+        "note": "출처에 영어 곡명으로 올라와 있어 그대로 옮겼어요. 21·22일 셋리스트는 아직 올라오지 않았어요.",
+        "sourceUrl": "https://www.setlist.fm/setlist/roy-kim/2026/kspo-dome-seoul-south-korea-1b7ac9b4.html"
+      }
     ]
   },
   {
@@ -6037,7 +6068,85 @@
         "label": "NOL 티켓 예매 페이지",
         "url": "https://nol.yanolja.com/ticket/products/26013132"
       }
-    }
+    },
+    "setlists": [
+      {
+        "label": "2026 인천 앙코르 첫날 셋리스트",
+        "date": "2026-11-21",
+        "venue": "인스파이어 아레나",
+        "songs": [
+          "DRAMARAMA",
+          "Love Killa",
+          "Rush Hour",
+          "LONE RANGER",
+          "That's My Girl",
+          "MIDDLE OF THE NIGHT",
+          "baby blue",
+          "heal",
+          "MAGIC",
+          "Do What I Want",
+          "Tuscan Leather",
+          "Type X",
+          "NO AIR (형원)",
+          "Around & Go (셔누)",
+          "Breathe (셔누·형원)",
+          "So Good (기현)",
+          "Reaching (민혁)",
+          "STING (주헌)",
+          "Touch the sky (주헌)",
+          "Autobahn",
+          "Burning Up",
+          "BEASTMODE",
+          "Alligator",
+          "Shoot Out",
+          "(앵콜) Oh My",
+          "(앵콜) Rodeo",
+          "(앵콜) White Love",
+          "(앵콜) Sweet Night, Sweet Morning"
+        ],
+        "note": "중간 영상(VCR) 곡은 출처에 곡명이 없어 뺐어요.",
+        "sourceUrl": "https://www.setlist.fm/setlist/monsta-x/2026/inspire-arena-incheon-south-korea-537ed771.html"
+      },
+      {
+        "label": "2026 인천 앙코르 둘째 날 셋리스트",
+        "date": "2026-11-22",
+        "venue": "인스파이어 아레나",
+        "songs": [
+          "DRAMARAMA",
+          "Love Killa",
+          "Rush Hour",
+          "LONE RANGER",
+          "That's My Girl",
+          "MIDDLE OF THE NIGHT",
+          "baby blue",
+          "heal",
+          "MAGIC",
+          "Do What I Want",
+          "Tuscan Leather",
+          "Type X",
+          "Crescendo",
+          "NO AIR (형원)",
+          "Around & Go (셔누)",
+          "Breathe (셔누·형원)",
+          "So Good (기현)",
+          "Reaching (민혁)",
+          "STING (주헌)",
+          "Touch the sky (주헌)",
+          "Autobahn",
+          "Burning Up",
+          "BEASTMODE",
+          "Alligator",
+          "Shoot Out",
+          "(앵콜) Oh My",
+          "(앵콜) Rodeo",
+          "(앵콜) ZONE",
+          "(앵콜) White Love",
+          "(앵콜) Sweet Night, Sweet Morning"
+        ],
+        "note": "첫날보다 'Crescendo'와 앵콜 'ZONE'이 더 있어요. 중간 영상(VCR) 곡은 출처에 곡명이 없어 뺐어요.",
+        "sourceUrl": "https://www.setlist.fm/setlist/monsta-x/2026/inspire-arena-incheon-south-korea-4b7ed776.html"
+      }
+    ]
   },
   {
     "id": "cherry-blossom-music-concert-winter-changwon-2026-11",
@@ -6303,7 +6412,39 @@
         "label": "티켓링크 예매 페이지",
         "url": "https://www.ticketlink.co.kr/product/66073"
       }
-    }
+    },
+    "setlists": [
+      {
+        "label": "2026 서울 공연 셋리스트",
+        "date": "2026-11-22",
+        "venue": "연세대학교 대강당",
+        "songs": [
+          "black rose",
+          "Kotonohoka Yawarakai",
+          "ray of earth",
+          "Hikidashide Hakkoushiteiru",
+          "Toki no Mukou Maboroshi no Sora",
+          "Hachigatsu no Organ",
+          "longing",
+          "eternal blue",
+          "Pandora hearts expanded",
+          "everytime you kissed me",
+          "moonlight melody",
+          "Kanata",
+          "Walpurgis no Kaiten battle theme",
+          "Numquam vincar",
+          "The main theme of \"L.O.R.D: Legend of Ravaging Dynasties\"",
+          "from the edge",
+          "stone cold",
+          "ZODIACAL SIGN",
+          "Yume no Tsubasa",
+          "(앵콜) Parade",
+          "(앵콜) lighthouse",
+          "(앵콜) Sokyu No Fanfare"
+        ],
+        "sourceUrl": "https://www.setlist.fm/setlist/yuki-kajiura/2026/yonsei-university-main-auditorium-seoul-south-korea-5b7ac7f8.html"
+      }
+    ]
   },
   {
     "id": "diana-krall-seoul-2026-11",
@@ -6391,7 +6532,32 @@
         "label": "YES24 티켓 상품 페이지",
         "url": "https://ticket.yes24.com/Perf/59429"
       }
-    }
+    },
+    "setlists": [
+      {
+        "label": "2026 서울 공연 셋리스트",
+        "date": "2026-11-22",
+        "venue": "세종문화회관 대극장",
+        "songs": [
+          "Almost Like Being in Love",
+          "Let's Fall in Love",
+          "All or Nothing at All",
+          "Honeysuckle Rose",
+          "I've Got You Under My Skin",
+          "A Case of You",
+          "This Can't Be Love",
+          "The Girl in the Other Room",
+          "The Look of Love",
+          "Just You, Just Me",
+          "I Was Doing All Right",
+          "(앵콜) Mr. Soul",
+          "(앵콜) Twist Again",
+          "(앵콜) Music, Maestro, Please"
+        ],
+        "note": "'A Case of You' 중간에 'River' 한 소절과 징글벨을 넣었다고 적혀 있어요.",
+        "sourceUrl": "https://www.setlist.fm/setlist/diana-krall/2026/sejong-center-for-the-performing-arts-seoul-south-korea-637ab69f.html"
+      }
+    ]
   },
   {
     "id": "shuttle-nmixx-world-tour-zero-frontier-finale-2026-11",
@@ -6487,7 +6653,50 @@
         "label": "NOL 티켓 예매 페이지",
         "url": "https://nol.yanolja.com/ticket/products/26013946"
       }
-    }
+    },
+    "setlists": [
+      {
+        "label": "2026 인천 피날레 첫날 셋리스트",
+        "date": "2026-11-27",
+        "venue": "인스파이어 아레나",
+        "songs": [
+          "O.O",
+          "Phoenix",
+          "Run for Roses",
+          "Soñar (Breaker)",
+          "RICO",
+          "See that?",
+          "TANK",
+          "DASH",
+          "TIC TIC",
+          "MEXE",
+          "PAXXWORD",
+          "Young, Dumb, Stupid",
+          "Break the Wall",
+          "High Horse",
+          "SPINNIN′ ON IT",
+          "KNOW ABOUT ME",
+          "Red light sign, but we go",
+          "DICE",
+          "Papillon",
+          "Slingshot",
+          "Reality Hurts",
+          "Love Me Like This",
+          "Blue Valentine",
+          "Heavy Serenade",
+          "Birthday Wish",
+          "Sing to the Moon (릴리·해원)",
+          "Hot 'n Unbothered (설윤·배이)",
+          "WHIP (지우·규진)",
+          "(앵콜) Funky Glitter Christmas",
+          "(앵콜) Moving On",
+          "(앵콜) ADORE U",
+          "(앵콜) Party O'Clock"
+        ],
+        "note": "'TIC TIC'·'MEXE'는 파블로 비타르와 함께했다고 적혀 있어요. 28·29일 공연은 순서가 다를 수 있어요.",
+        "sourceUrl": "https://www.setlist.fm/setlist/nmixx/2026/inspire-arena-incheon-south-korea-3371e839.html"
+      }
+    ]
   },
   {
     "id": "tahiti-80-seoul-2026-11",

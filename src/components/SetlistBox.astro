@@ -4,16 +4,25 @@
 // the setlist is from (see SetlistEntry) so readers don't mistake it for a
 // guaranteed Korea-show setlist unless it explicitly is one.
 import type { SetlistEntry } from '../lib/events';
-interface Props { setlists: SetlistEntry[] }
-const { setlists } = Astro.props;
+// 공연 기간 안 날짜(date)가 적힌 항목은 이 공연의 실제 셋리스트다(공연 다음날 채움, npm run setlists:due).
+// 그런 항목이 있으면 맨 위로 올리고 첫 항목을 펼쳐 둔다. 제목·안내도 '미리보기'가 아니라 '이번 공연'으로 바뀐다.
+interface Props { setlists: SetlistEntry[]; startDate?: string; endDate?: string }
+const { setlists: raw, startDate, endDate } = Astro.props;
+const isThisShow = (s: SetlistEntry) =>
+  Boolean(startDate && endDate && /^\d{4}-\d{2}-\d{2}$/.test(s.date ?? '') && (s.date as string) >= startDate && (s.date as string) <= endDate);
+const own = raw.filter(isThisShow).sort((a, b) => String(a.date).localeCompare(String(b.date)));
+const setlists = [...own, ...raw.filter((s) => !isThisShow(s))];
+const hasOwn = own.length > 0;
 ---
 {setlists.length > 0 && (
   <section class="setlist-box">
-    <h2>셋리스트 미리보기</h2>
-    <p class="setlist-caveat">실제 이번 공연 셋리스트는 투어 진행에 따라 달라질 수 있어요. 아래는 참고용이에요.</p>
+    <h2>{hasOwn ? '이번 공연 셋리스트' : '셋리스트 미리보기'}</h2>
+    <p class="setlist-caveat">{hasOwn
+      ? '공연이 끝난 뒤 공개된 셋리스트를 모았어요. 출처마다 앵콜 순서가 조금 다를 수 있어요.'
+      : '실제 이번 공연 셋리스트는 투어 진행에 따라 달라질 수 있어요. 아래는 참고용이에요.'}</p>
     <div class="setlist-group">
-      {setlists.map((s) => (
-        <details class="setlist-item">
+      {setlists.map((s, i) => (
+        <details class="setlist-item" open={hasOwn && i === 0}>
           <summary>
             <span class="setlist-label">{s.label}</span>
             {(s.date || s.venue) && (
